@@ -1,0 +1,105 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ArticleCover from '../../components/ui/ArticleCover.astro';
+import { blogPosts, getBlogCategory } from '../../data/blog.data';
+import type { BlogPost } from '../../types/blog';
+
+export function getStaticPaths() {
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: BlogPost;
+}
+
+const { post } = Astro.props;
+const categoryInfo = getBlogCategory(post.category);
+
+// Format date to French
+const formattedDate = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<PageLayout
+  seo={post.seo}
+  breadcrumbs={[
+    { label: 'Blog', href: '/blog' },
+    { label: post.title }
+  ]}
+>
+  <article class="pt-8 lg:pt-16 pb-20 lg:pb-32">
+    <!-- Header -->
+    <header class="container mx-auto px-6 lg:px-8 max-w-4xl mb-12 lg:mb-16 text-center reveal">
+      <div class="flex items-center justify-center gap-4 mb-6 text-sm">
+        <a href={`/blog/categorie/${post.category}`} class="font-semibold uppercase tracking-wider text-porters-gold hover:text-porters-navy transition-colors">
+          {categoryInfo?.label || post.category}
+        </a>
+        <span class="text-porters-black/30">•</span>
+        <time datetime={post.publishedAt} class="text-porters-black/50">{formattedDate}</time>
+        <span class="text-porters-black/30">•</span>
+        <span class="text-porters-black/50">{post.readingTime} min de lecture</span>
+      </div>
+      <h1 class="text-3xl lg:text-5xl mb-8 leading-tight">
+        {post.title}
+      </h1>
+      <p class="text-lg lg:text-xl text-porters-black/60 leading-relaxed max-w-3xl mx-auto">
+        {post.excerpt}
+      </p>
+    </header>
+
+    <!-- Cover Image -->
+    <div class="container mx-auto px-6 lg:px-8 max-w-5xl mb-16 lg:mb-24 reveal">
+      <ArticleCover
+        category={post.category}
+        label={categoryInfo?.label}
+        class="rounded-2xl shadow-[0_22px_70px_rgba(25,43,99,0.12)]"
+        size="large"
+      />
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-6 lg:px-8 max-w-3xl reveal">
+      <div class="prose prose-lg max-w-none text-porters-black/80 prose-headings:font-heading prose-headings:text-porters-navy prose-headings:font-semibold prose-a:text-porters-gold hover:prose-a:text-porters-navy prose-img:rounded-xl">
+        <Fragment set:html={post.content} />
+      </div>
+
+      <div class="mt-16 pt-8 border-t border-porters-navy/10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <p class="font-medium text-porters-navy">Partager cet article :</p>
+          <div class="flex gap-2">
+            <!-- Social placeholders -->
+            <button class="w-10 h-10 rounded-full bg-porters-navy/5 flex items-center justify-center text-porters-navy hover:bg-porters-navy hover:text-porters-white transition-colors" aria-label="Partager sur LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-porters-navy/5 flex items-center justify-center text-porters-navy hover:bg-porters-navy hover:text-porters-white transition-colors" aria-label="Partager sur Twitter">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+            </button>
+          </div>
+        </div>
+        <a href="/blog" class="text-porters-navy hover:text-porters-gold transition-colors font-medium">
+          Retour au blog
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- CTA Section -->
+  <section class="bg-porters-navy py-16">
+    <div class="container mx-auto px-6 lg:px-8 text-center reveal">
+      <h2 class="text-porters-white mb-4">Besoin d'un accompagnement personnalisé ?</h2>
+      <p class="text-porters-white/60 max-w-xl mx-auto mb-8">
+        Nos conseillers sont à votre disposition pour étudier votre projet et répondre à vos questions sur le portage salarial.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
+        <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+      </div>
+    </div>
+  </section>
+</PageLayout>

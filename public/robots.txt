@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://www.porters.fr/sitemap-index.xml
+
+# Do not crawl legacy WordPress paths
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /wp-json/
+Disallow: /xmlrpc.php
+Disallow: /feed/
+Disallow: /comments/feed/
+Disallow: /trackback/
+
+# Do not crawl old taxonomy archives
+Disallow: /tag/
+Disallow: /category/
+Disallow: /author/
+Disallow: /event/
+
+# Do not crawl monthly archives
+Disallow: /2017/
+Disallow: /2019/
+Disallow: /2023/
+Disallow: /2024/

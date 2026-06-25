@@ -1,0 +1,124 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import ArticleCover from '../../components/ui/ArticleCover.astro';
+import { blogPosts, blogCategories, getBlogCategory } from '../../data/blog.data';
+
+const featuredPosts = blogPosts.filter(post => post.featured).slice(0, 3);
+const regularPosts = blogPosts.filter(post => !post.featured);
+---
+
+<PageLayout
+  seo={{
+    title: 'Le blog du portage salarial | The Porters',
+    description: 'Conseils, actualités et guides sur le portage salarial et le statut de consultant indépendant. Retrouvez toute l\'expertise The Porters.',
+  }}
+  breadcrumbs={[{ label: 'Blog' }]}
+>
+  <section class="section pt-8 lg:pt-16 pb-12">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Ressources & Actualités</p>
+        <h1 class="mb-4">Le blog du <span class="gold-underline">portage salarial</span></h1>
+        <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
+          Tous nos conseils pour réussir en tant que consultant indépendant.
+        </p>
+      </div>
+
+      <!-- Categories Navigation -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-16 reveal">
+        <span class="pill pill-active">Tout</span>
+        {blogCategories.map((category) => (
+          <a href={`/blog/categorie/${category.slug}`} class="pill">
+            {category.label}
+          </a>
+        ))}
+      </div>
+
+      {featuredPosts.length > 0 && (
+        <div class="mb-20">
+          <h2 class="text-2xl font-heading font-semibold text-porters-navy mb-8 reveal">À la une</h2>
+          <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <!-- Main featured post -->
+            {featuredPosts[0] && (
+              <a href={`/blog/${featuredPosts[0].slug}`} class="group block reveal">
+                <ArticleCover
+                  category={featuredPosts[0].category}
+                  label={getBlogCategory(featuredPosts[0].category)?.label}
+                  class="mb-6 rounded-xl"
+                  size="large"
+                />
+                <div class="flex items-center gap-4 mb-3">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-porters-gold">{getBlogCategory(featuredPosts[0].category)?.label || featuredPosts[0].category}</span>
+                  <span class="text-xs text-porters-black/40">{featuredPosts[0].readingTime} min</span>
+                </div>
+                <h3 class="text-2xl font-heading font-semibold text-porters-navy mb-4 group-hover:text-porters-gold transition-colors leading-snug">
+                  {featuredPosts[0].title}
+                </h3>
+                <p class="text-porters-black/60 leading-relaxed line-clamp-3">
+                  {featuredPosts[0].excerpt}
+                </p>
+              </a>
+            )}
+
+            <!-- Other featured posts -->
+            <div class="space-y-8 flex flex-col justify-center">
+              {featuredPosts.slice(1).map((post) => (
+                <a href={`/blog/${post.slug}`} class="group flex gap-6 items-center reveal">
+                  <ArticleCover
+                    category={post.category}
+                    class="hidden w-1/3 shrink-0 sm:block"
+                    size="thumb"
+                  />
+                  <div>
+                    <div class="flex items-center gap-3 mb-2">
+                      <span class="text-xs font-semibold uppercase tracking-wider text-porters-gold">{getBlogCategory(post.category)?.label || post.category}</span>
+                      <span class="text-xs text-porters-black/40">{post.readingTime} min</span>
+                    </div>
+                    <h3 class="text-xl font-heading font-semibold text-porters-navy mb-2 group-hover:text-porters-gold transition-colors leading-snug">
+                      {post.title}
+                    </h3>
+                    <p class="text-sm text-porters-black/60 line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <!-- Recent Posts Grid -->
+      <div>
+        <h2 class="text-2xl font-heading font-semibold text-porters-navy mb-8 reveal">Derniers articles</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {regularPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="card p-0 overflow-hidden group reveal block flex flex-col">
+              <ArticleCover
+                category={post.category}
+                label={getBlogCategory(post.category)?.label}
+                class="shrink-0 rounded-none"
+              />
+              <div class="p-6 lg:p-8 flex-1 flex flex-col">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-porters-gold">{getBlogCategory(post.category)?.label || post.category}</span>
+                  <span class="text-xs text-porters-black/40">{post.readingTime} min</span>
+                </div>
+                <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
+                  {post.title}
+                </h3>
+                <p class="text-sm text-porters-black/60 line-clamp-3 mb-4 flex-1">
+                  {post.excerpt}
+                </p>
+                <span class="text-sm font-medium text-porters-navy group-hover:text-porters-gold transition-colors inline-flex items-center gap-1 mt-auto">
+                  Lire l'article
+                  <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

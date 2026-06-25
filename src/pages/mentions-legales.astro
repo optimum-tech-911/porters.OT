@@ -1,0 +1,55 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { pageSeo } from '../data/seo.data';
+---
+
+<PageLayout
+  seo={pageSeo.mentionsLegales}
+  breadcrumbs={[{ label: 'Mentions légales' }]}
+>
+  <section class="section pt-8 lg:pt-16 pb-20">
+    <div class="container mx-auto px-6 lg:px-8 max-w-3xl">
+      <div class="text-center mb-12 reveal">
+        <h1 class="mb-4">Mentions <span class="gold-underline">légales</span></h1>
+      </div>
+
+      <div class="prose max-w-none text-porters-black/80 prose-headings:font-heading prose-headings:text-porters-navy prose-headings:font-semibold prose-a:text-porters-gold hover:prose-a:text-porters-navy reveal">
+
+        <h2>1. Éditeur du site</h2>
+        <p>Le site <strong>www.porters.fr</strong> est édité par la société The Porters :</p>
+        <ul>
+          <li>Raison sociale : THE PORTERS</li>
+          <li>Forme juridique : SAS (Société par Actions Simplifiée)</li>
+          <li>Capital social : [Montant] euros</li>
+          <li>Siège social : [Adresse exacte du siège social]</li>
+          <li>RCS : [Numéro RCS et ville]</li>
+          <li>SIRET : [Numéro SIRET]</li>
+          <li>Numéro de TVA intracommunautaire : [Numéro TVA]</li>
+          <li>Email : contact@porters.fr</li>
+          <li>Téléphone : [Numéro de téléphone]</li>
+        </ul>
+
+        <h2>2. Directeur de la publication</h2>
+        <p>Le directeur de la publication du site est Monsieur [Nom du dirigeant], en sa qualité de Président.</p>
+
+        <h2>3. Hébergement</h2>
+        <p>Le site est hébergé par :</p>
+        <ul>
+          <li>Nom de l'hébergeur : Cloudflare, Inc.</li>
+          <li>Adresse : 101 Townsend St, San Francisco, CA 94107, États-Unis</li>
+          <li>Site web : <a href="https://www.cloudflare.com/" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a></li>
+        </ul>
+
+        <h2>4. Propriété intellectuelle</h2>
+        <p>L'ensemble de ce site relève de la législation française et internationale sur le droit d'auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris pour les documents téléchargeables et les représentations iconographiques et photographiques.</p>
+        <p>La reproduction de tout ou partie de ce site sur un support électronique quel qu'il soit est formellement interdite sauf autorisation expresse du directeur de la publication.</p>
+
+        <h2>5. Données personnelles</h2>
+        <p>Pour en savoir plus sur la collecte et le traitement de vos données personnelles, ainsi que sur vos droits, veuillez consulter notre <a href="/confidentialite">Politique de confidentialité</a>.</p>
+
+        <h2>6. Litiges</h2>
+        <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,68 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { pageSeo } from '../data/seo.data';
+---
+
+<PageLayout
+  seo={pageSeo.confidentialite}
+  breadcrumbs={[{ label: 'Politique de confidentialité' }]}
+>
+  <section class="section pt-8 lg:pt-16 pb-20">
+    <div class="container mx-auto px-6 lg:px-8 max-w-3xl">
+      <div class="text-center mb-12 reveal">
+        <h1 class="mb-4">Politique de <span class="gold-underline">confidentialité</span></h1>
+        <p class="text-porters-black/60 max-w-xl mx-auto">Dernière mise à jour : {new Date().toLocaleDateString('fr-FR')}</p>
+      </div>
+
+      <div class="prose max-w-none text-porters-black/80 prose-headings:font-heading prose-headings:text-porters-navy prose-headings:font-semibold prose-a:text-porters-gold hover:prose-a:text-porters-navy reveal">
+
+        <p>The Porters accorde une grande importance à la protection de vos données personnelles. La présente politique a pour objectif de vous informer sur la manière dont nous collectons, utilisons et protégeons vos données dans le cadre de l'utilisation de notre site web et de nos services.</p>
+
+        <h2>1. Responsable du traitement</h2>
+        <p>Le responsable du traitement des données personnelles collectées via ce site est la société THE PORTERS, dont les coordonnées sont indiquées dans nos <a href="/mentions-legales">Mentions légales</a>.</p>
+
+        <h2>2. Données collectées</h2>
+        <p>Nous sommes susceptibles de collecter les données suivantes :</p>
+        <ul>
+          <li><strong>Données d'identification :</strong> nom, prénom, adresse e-mail, numéro de téléphone, entreprise.</li>
+          <li><strong>Données de connexion :</strong> adresse IP, logs de connexion, pages consultées (via les cookies).</li>
+          <li><strong>Données liées à votre projet :</strong> informations fournies via nos formulaires de contact ou simulateur (taux journalier, etc.).</li>
+        </ul>
+
+        <h2>3. Finalités du traitement</h2>
+        <p>Vos données sont collectées pour les finalités suivantes :</p>
+        <ul>
+          <li>Traiter vos demandes de contact et vous recontacter.</li>
+          <li>Vous fournir des estimations via notre simulateur de revenus.</li>
+          <li>Vous envoyer des informations commerciales et des newsletters (si vous y avez consenti).</li>
+          <li>Améliorer la navigation et l'expérience utilisateur sur notre site.</li>
+        </ul>
+
+        <h2>4. Durée de conservation</h2>
+        <p>Vos données personnelles sont conservées pendant la durée nécessaire aux finalités pour lesquelles elles ont été collectées :</p>
+        <ul>
+          <li><strong>Données de contact :</strong> conservées pendant 3 ans à compter du dernier contact émanant de votre part.</li>
+          <li><strong>Cookies :</strong> conservés pour une durée maximale de 13 mois.</li>
+        </ul>
+
+        <h2>5. Partage des données</h2>
+        <p>Vos données personnelles sont strictement confidentielles. Elles sont uniquement accessibles aux collaborateurs de The Porters dans la limite de leurs attributions. Elles ne sont en aucun cas vendues ou cédées à des tiers à des fins commerciales.</p>
+        <p>Nous pouvons toutefois faire appel à des sous-traitants (par exemple, pour l'hébergement du site) qui traitent vos données pour notre compte et selon nos instructions, dans le respect strict de la réglementation en vigueur.</p>
+
+        <h2>6. Vos droits</h2>
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants concernant vos données personnelles :</p>
+        <ul>
+          <li>Droit d'accès et de rectification</li>
+          <li>Droit à l'effacement (droit à l'oubli)</li>
+          <li>Droit à la limitation du traitement</li>
+          <li>Droit à la portabilité des données</li>
+          <li>Droit d'opposition</li>
+        </ul>
+        <p>Vous pouvez exercer ces droits en nous contactant à l'adresse suivante : dpo@porters.fr (ou via notre formulaire de contact).</p>
+
+        <h2>7. Cookies</h2>
+        <p>Notre site utilise des cookies essentiels au fonctionnement du site, ainsi que des cookies de mesure d'audience pour nous aider à améliorer nos contenus. Vous pouvez à tout moment modifier vos préférences via notre outil de gestion des cookies (bientôt disponible).</p>
+      </div>
+    </div>
+  </section>
+</PageLayout>

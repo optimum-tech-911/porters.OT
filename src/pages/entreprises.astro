@@ -1,0 +1,183 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SiteIcon from '../components/ui/SiteIcon.astro';
+import { pageSeo } from '../data/seo.data';
+import { enterpriseBenefits } from '../data/benefits.data';
+import enterpriseHeroImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_37 (8).webp';
+import collaborationImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (2).webp';
+
+const seo = {
+  title: pageSeo.entreprises.title,
+  description: pageSeo.entreprises.description,
+};
+
+const breadcrumbs = [{ label: 'Entreprises' }];
+
+const painPoints = [
+  {
+    icon: 'scale',
+    title: 'Complexité juridique',
+    description: 'Naviguer dans les réglementations liées à l\'utilisation de prestataires externes peut être un véritable casse-tête juridique.',
+  },
+  {
+    icon: 'alert',
+    title: 'Risque de requalification',
+    description: 'Le recours à des freelances sans cadre adapté expose votre entreprise à un risque de requalification en contrat de travail.',
+  },
+  {
+    icon: 'document',
+    title: 'Charge administrative',
+    description: 'La gestion des contrats, factures et conformités liées aux prestataires externes mobilise des ressources internes précieuses.',
+  },
+  {
+    icon: 'search',
+    title: 'Trouver les bons talents',
+    description: 'Identifier et sécuriser des experts qualifiés pour des missions ponctuelles reste un défi pour beaucoup d\'entreprises.',
+  },
+];
+
+const steps = [
+  {
+    number: '1',
+    title: 'Identifiez votre besoin',
+    description: 'Définissez le périmètre de votre mission et le profil de consultant recherché. Notre équipe peut vous accompagner dans cette démarche.',
+  },
+  {
+    number: '2',
+    title: 'Nous sécurisons la collaboration',
+    description: 'The Porters établit le contrat de prestation, gère les aspects juridiques et administratifs pour garantir une collaboration conforme.',
+  },
+  {
+    number: '3',
+    title: 'Le consultant intervient',
+    description: 'Le consultant réalise sa mission dans un cadre sécurisé. Vous recevez une facture unique de The Porters, sans complexité.',
+  },
+];
+---
+
+<PageLayout seo={seo} breadcrumbs={breadcrumbs}>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-porters-navy text-porters-white">
+    <div class="absolute inset-0">
+      <img
+        src={enterpriseHeroImage.src}
+        width={enterpriseHeroImage.width}
+        height={enterpriseHeroImage.height}
+        alt=""
+        class="h-full w-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,43,99,0.96)_0%,rgba(25,43,99,0.85)_46%,rgba(25,43,99,0.42)_76%,rgba(25,43,99,0.1)_100%)]"></div>
+    </div>
+    <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-2xl reveal">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Solutions entreprises</p>
+        <h1 class="mb-6 max-w-[40rem] text-porters-white">
+          Sécurisez vos collaborations avec des <span class="gold-underline">experts indépendants</span>
+        </h1>
+        <p class="mb-8 max-w-xl text-lg leading-relaxed text-porters-white/84">
+          Simplifiez la gestion de vos ressources externes grâce au portage salarial.
+          Un cadre juridique sécurisé, une flexibilité maximale, zéro risque.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="/contact" class="btn btn-gold">Nous contacter</a>
+          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pain points -->
+  <section class="section">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(18rem,0.42fr)] lg:items-end">
+        <div class="reveal">
+          <h2>Les défis des entreprises face aux <span class="gold-underline">indépendants</span></h2>
+          <p class="mt-4 max-w-2xl" style="color: rgba(11, 16, 32, 0.7);">
+            Collaborer avec des prestataires externes peut être source de complexité. Le portage salarial est la solution.
+          </p>
+        </div>
+        <div class="reveal overflow-hidden rounded-lg border border-porters-navy/10 bg-white shadow-sm">
+          <img
+            src={collaborationImage.src}
+            width={collaborationImage.width}
+            height={collaborationImage.height}
+            alt="Préparation financière d'une collaboration avec un consultant indépendant."
+            class="h-48 w-full object-cover"
+          />
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {painPoints.map((point) => (
+          <div class="card reveal">
+            <div class="icon-chip mb-5">
+              <SiteIcon name={point.icon} />
+            </div>
+            <h3 class="text-lg font-heading font-semibold mb-2">{point.title}</h3>
+            <p class="text-sm mb-0" style="color: rgba(11, 16, 32, 0.7);">{point.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <h2>Les avantages pour votre <span class="gold-underline">entreprise</span></h2>
+        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
+          Le portage salarial offre un cadre simple, sécurisé et flexible pour vos collaborations.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {enterpriseBenefits.map((benefit) => (
+          <div class="card reveal">
+            <h3 class="text-lg font-heading font-semibold mb-2">{benefit.title}</h3>
+            <p class="text-sm mb-0" style="color: rgba(11, 16, 32, 0.7);">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <h2>Comment ça <span class="gold-underline">fonctionne</span> ?</h2>
+        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
+          Un processus simple en trois étapes pour intégrer des experts à vos projets.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {steps.map((step) => (
+          <div class="text-center reveal">
+            <div class="text-5xl font-heading font-bold text-porters-gold mb-4">{step.number}</div>
+            <h3 class="text-lg font-heading font-semibold mb-3">{step.title}</h3>
+            <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="section bg-porters-navy text-porters-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-porters-white mb-4">
+          Simplifiez vos <span class="gold-underline">collaborations</span>
+        </h2>
+        <p class="text-lg mb-8" style="color: rgba(250, 248, 243, 0.8);">
+          Contactez-nous pour découvrir comment le portage salarial peut répondre aux besoins de votre entreprise.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="btn btn-gold">Nous contacter</a>
+          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

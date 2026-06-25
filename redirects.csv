@@ -1,0 +1,37 @@
+old_url,new_url,status_code,action,seo_priority,notes
+/portage-salarial-sur-mesure/,/portage-salarial,301,redirect,highest,Page marketing consultants → pilier consultants
+/portage-salarial/,/portage-salarial,301,merge,highest,Article définition fusionné dans la page pilier
+/avantages-du-portage-salarial-pour-les-entreprises/,/entreprises,301,redirect,highest,Page marketing B2B → pilier entreprises
+/portage-salarial-pour-entreprises/,/entreprises,301,merge,highest,Article B2B fusionné dans la page pilier
+/simulation-revenus/,/simulateur,301,redirect,highest,Ancien slug simulateur
+/contactez-nous/,/contact,301,redirect,high,Ancien slug contact
+/recrutement-commercial-porters/,/recrutement,301,redirect,medium,Ancien slug recrutement
+/the-porters-paris/,/agences/paris,301,redirect,high,Agence Paris active
+/old-portage-salarial-lyon/,/agences/lyon,301,redirect,high,Agence Lyon — slug legacy
+/old-portage-salarial-montpellier/,/agences/montpellier,301,redirect,high,Agence Montpellier — slug legacy
+/old-portage-salarial-marseille/,/agences,301,redirect,low,Pseudo-agence legacy — pas d'implantation réelle confirmée
+/old-portage-salarial-bordeaux/,/agences,301,redirect,low,Pseudo-agence legacy — pas d'implantation réelle confirmée
+/old-portage-salarial-lille/,/agences,301,redirect,low,Pseudo-agence legacy — pas d'implantation réelle confirmée
+/comment-optimiser-sa-remuneration-en-portage-salarial/,/blog/optimiser-remuneration-portage-salarial,301,redirect,high,Article evergreen rémunération
+/les-secteurs-dactivite-les-plus-adaptes-au-portage-salarial/,/blog/secteurs-adaptes-portage-salarial,301,redirect,high,Article evergreen secteurs
+/trouver-des-missions-en-portage-salarial/,/blog/trouver-missions-portage-salarial,301,redirect,high,Article evergreen missions
+/contrat-portage-salarial/,/blog/contrat-portage-salarial,301,redirect,high,Article evergreen contrat
+/frais-gestion-portage-salarial/,/blog/frais-gestion-portage-salarial,301,redirect,high,Article evergreen frais
+/choisir-societe-portage-salarial/,/blog/choisir-societe-portage-salarial,301,redirect,high,Article evergreen comparaison
+/limportance-de-bien-choisir-sa-societe-de-portage-salarial/,/blog/choisir-societe-portage-salarial,301,merge,medium,Doublon d'intention — fusionné avec l'autre article comparaison
+/choisir-statut-independant/,/blog/choisir-statut-independant,301,redirect,high,Article evergreen statut
+/se-mettre-a-son-compte/,/blog/se-mettre-a-son-compte,301,redirect,high,Article evergreen indépendance
+/portage-salarial-informatique-flexibilite/,/blog/portage-salarial-informatique,301,redirect,medium,Article vertical métier IT
+/ingenieurs-choisir-portage-salarial/,/blog/ingenieurs-choisir-portage-salarial,301,redirect,medium,Article vertical métier ingénieurs
+/consultant-informatique-independant-galeres/,/blog/consultant-informatique-independant-galeres,301,redirect,medium,Article métier consultant IT
+/devenir-freelance-informatique/,/blog/devenir-freelance-informatique,301,redirect,medium,Article evergreen freelance IT
+/bien-reussir-mission-portage-salarial-5-cles-succes/,/blog/reussir-mission-portage-salarial,301,redirect,medium,Article evergreen réussite mission
+/le-role-du-charge-de-compte-en-portage-salarial-un-soutien-indispensable/,/blog/role-charge-de-compte-portage-salarial,301,redirect,medium,Article accompagnement
+/portage-salarial-et-international-travailler-a-letranger-en-toute-securite/,/blog/portage-salarial-international,301,redirect,medium,Article evergreen international
+/portage-salarial-solution-flexible/,/blog/portage-salarial-solution-flexible,301,redirect,medium,Article générique flexibilité
+/decouvrez-le-monde-du-portage-salarial-votre-guide-simplifie/,/blog/guide-portage-salarial,301,merge,low,Article générique fusionné
+/quest-ce-que-la-cooptation-et-quels-sont-ses-avantages/,/blog/cooptation-avantages,301,redirect,low,Article RH périphérique
+/cedants-dentreprises-portage-salarial-organiser-accompagnement-apres-cession-par-guillaume-guilhen/,/blog/portage-salarial-apres-cession-entreprise,301,redirect,low,Article niche cession
+/retour-convention-collective-de-portage-salarial-par-guillaume-guilhen/,/blog/convention-collective-portage-salarial,301,redirect,low,Article historique convention collective
+/vers-fin-rsi-travailleurs-independants-guillaume-guilhen/,,410,delete,low,Contenu obsolète — réglementation historique dépassée
+/recrutement-dun-commercial-a-aix-marseille/,/recrutement,301,redirect,low,Offre d'emploi datée

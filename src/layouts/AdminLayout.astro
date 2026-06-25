@@ -1,0 +1,85 @@
+---
+/**
+ * AdminLayout.astro — Standalone admin layout
+ * Isolated from the public website (no SiteHeader/SiteFooter).
+ * Uses its own CSS and noindex meta tag.
+ *
+ * TODO: Before production, /admin must be protected with Supabase Auth + RLS,
+ *       or temporarily hidden behind Cloudflare Access / password protection.
+ */
+import '../styles/global.css';
+import '../styles/admin.css';
+import AdminSidebar from '../components/admin/AdminSidebar';
+import AdminTopbar from '../components/admin/AdminTopbar';
+
+interface Props {
+  title: string;
+  pageTitle: string;
+  pageSubtitle?: string;
+}
+
+const { title, pageTitle } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} — Admin | The Porters</title>
+
+    <!-- Fonts (same as public site for brand consistency) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body style="margin: 0; overflow-x: hidden;">
+    <div class="admin-layout" id="admin-layout">
+      <!-- Sidebar -->
+      <AdminSidebar currentPath={currentPath} client:load />
+
+      <!-- Main content wrapper -->
+      <div class="admin-main-wrapper">
+        <!-- Topbar -->
+        <AdminTopbar pageTitle={pageTitle} client:load />
+
+        <!-- Page content -->
+        <div class="admin-content admin-fade-in">
+          <slot />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Mobile sidebar toggle
+      document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.querySelector('.admin-sidebar');
+        const layout = document.getElementById('admin-layout');
+
+        document.addEventListener('admin-toggle-sidebar', () => {
+          sidebar?.classList.toggle('open');
+          const existing = document.querySelector('.admin-sidebar-overlay');
+          if (existing) {
+            existing.remove();
+          } else if (sidebar?.classList.contains('open')) {
+            const overlay = document.createElement('div');
+            overlay.className = 'admin-sidebar-overlay';
+            overlay.addEventListener('click', () => {
+              sidebar?.classList.remove('open');
+              overlay.remove();
+            });
+            layout?.appendChild(overlay);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

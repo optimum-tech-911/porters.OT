@@ -1,0 +1,135 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  seo: {
+    title: string;
+    description: string;
+    canonical?: string;
+    ogImage?: string;
+    noindex?: boolean;
+    structuredData?: Record<string, unknown>;
+  };
+}
+
+const { seo } = Astro.props;
+const canonicalUrl = seo.canonical || new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = seo.ogImage || new URL('/og-image.jpg', Astro.site).toString();
+const siteName = 'The Porters';
+
+// Organization structured data (global)
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'The Porters',
+  url: 'https://www.porters.fr',
+  logo: 'https://www.porters.fr/logo.svg',
+  description: 'Société de portage salarial premium pour consultants et entreprises en France.',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    availableLanguage: 'French',
+  },
+  sameAs: [
+  ],
+};
+
+// Breadcrumb structured data
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const breadcrumbSchema = pathSegments.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Accueil',
+      item: 'https://www.porters.fr',
+    },
+    ...pathSegments.map((segment, index) => ({
+      '@type': 'ListItem',
+      position: index + 2,
+      name: segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
+      item: `https://www.porters.fr/${pathSegments.slice(0, index + 1).join('/')}`,
+    })),
+  ],
+} : null;
+
+const allStructuredData = [
+  organizationSchema,
+  ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+  ...(seo.structuredData ? [seo.structuredData] : []),
+];
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <link rel="canonical" href={canonicalUrl} />
+    {seo.noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data -->
+    {allStructuredData.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body class="bg-porters-white text-porters-black font-body antialiased">
+    <slot name="header" />
+    <main>
+      <slot />
+    </main>
+    <slot name="footer" />
+
+    <!-- Scroll reveal observer -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

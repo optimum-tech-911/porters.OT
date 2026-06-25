@@ -1,0 +1,331 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SiteIcon from '../components/ui/SiteIcon.astro';
+import { pageSeo } from '../data/seo.data';
+import portageHeroImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_36 (5).webp';
+import advisoryImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (2).webp';
+
+const seo = {
+  title: 'Le portage salarial sur mesure | The Porters',
+  description: pageSeo.portageSalarial.description,
+};
+
+const breadcrumbs = [{ label: 'Portage salarial' }];
+
+const benefits = [
+  {
+    icon: 'shield',
+    title: 'Sécurité sociale',
+    description: 'Bénéficiez de la protection sociale complète d\'un salarié : assurance maladie, retraite, prévoyance et mutuelle d\'entreprise.',
+  },
+  {
+    icon: 'rocket',
+    title: 'Liberté d\'entreprendre',
+    description: 'Choisissez vos missions, vos clients et votre rythme de travail tout en conservant un statut sécurisé.',
+  },
+  {
+    icon: 'clipboard',
+    title: 'Gestion administrative',
+    description: 'Nous prenons en charge l\'intégralité de votre administratif : facturation, déclarations sociales, comptabilité.',
+  },
+  {
+    icon: 'users',
+    title: 'Accompagnement personnalisé',
+    description: 'Un chargé de compte dédié vous accompagne à chaque étape de votre activité de consultant indépendant.',
+  },
+  {
+    icon: 'network',
+    title: 'Réseau professionnel',
+    description: 'Rejoignez une communauté de consultants et participez à des événements de networking organisés par nos agences.',
+  },
+  {
+    icon: 'calculator',
+    title: 'Optimisation fiscale',
+    description: 'Nos experts vous aident à optimiser votre rémunération nette grâce à une gestion fiscale avantageuse et aux frais professionnels.',
+  },
+];
+
+const faqItems = [
+  {
+    question: 'Qu\'est-ce que le portage salarial ?',
+    answer: 'Le portage salarial est une forme d\'emploi qui permet à un professionnel indépendant de bénéficier du statut de salarié tout en exerçant son activité en toute autonomie. La société de portage gère l\'ensemble des aspects administratifs, juridiques et comptables.',
+  },
+  {
+    question: 'À qui s\'adresse le portage salarial ?',
+    answer: 'Le portage salarial s\'adresse à tous les professionnels qui souhaitent exercer une activité de consultant ou de prestataire de services : cadres en reconversion, freelances, retraités actifs, jeunes diplômés ou salariés en quête d\'indépendance.',
+  },
+  {
+    question: 'Quel est le coût du portage salarial ?',
+    answer: 'Les frais de gestion couvrent l\'ensemble des services d\'accompagnement : gestion administrative, facturation, déclarations sociales, assurance RC Pro et suivi personnalisé. Contactez-nous pour obtenir un devis adapté à votre situation.',
+  },
+  {
+    question: 'Le portage salarial est-il encadré par la loi ?',
+    answer: 'Oui, le portage salarial est encadré par le Code du travail (articles L.1254-1 et suivants) et par une convention collective nationale signée en 2017. Ce cadre légal garantit la protection des consultants portés.',
+  },
+  {
+    question: 'Peut-on cumuler portage salarial et chômage ?',
+    answer: 'Oui, il est possible de cumuler portage salarial et allocations chômage sous certaines conditions. En tant que salarié porté, vous cotisez également à l\'assurance chômage pour vos droits futurs.',
+  },
+];
+---
+
+<PageLayout seo={seo} breadcrumbs={breadcrumbs}>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-porters-navy text-porters-white">
+    <div class="absolute inset-0">
+      <img
+        src={portageHeroImage.src}
+        width={portageHeroImage.width}
+        height={portageHeroImage.height}
+        alt=""
+        class="h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,43,99,0.96)_0%,rgba(25,43,99,0.86)_42%,rgba(25,43,99,0.42)_74%,rgba(25,43,99,0.12)_100%)]"></div>
+    </div>
+    <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-2xl reveal">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Portage salarial</p>
+        <h1 class="mb-6 max-w-[36rem] text-porters-white">
+          Le portage salarial, <span class="gold-underline">en toute sérénité</span>
+        </h1>
+        <p class="mb-8 max-w-xl text-lg leading-relaxed text-porters-white/84">
+          La sécurité du salariat alliée à la liberté du consulting. Développez votre activité
+          indépendante sans créer de structure, avec un accompagnement sur mesure.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
+          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is portage salarial -->
+  <section class="section">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(18rem,0.65fr)] lg:items-center">
+        <div class="reveal">
+          <h2 class="mb-6">Qu'est-ce que le <span class="gold-underline">portage salarial</span> ?</h2>
+          <p class="text-lg" style="color: rgba(11, 16, 32, 0.75);">
+            Le portage salarial est une forme d'emploi innovante qui repose sur une relation tripartite
+            entre le <strong>consultant</strong>, la <strong>société de portage</strong> et
+            l'<strong>entreprise cliente</strong>.
+          </p>
+          <p style="color: rgba(11, 16, 32, 0.75);">
+            Concrètement, vous trouvez vos missions et négociez vos conditions avec vos clients.
+            The Porters s'occupe de tout le reste : contrat de travail, facturation, déclarations
+            sociales, paie et accompagnement. Vous bénéficiez du statut de salarié (CDI ou CDD)
+            tout en conservant votre indépendance professionnelle.
+          </p>
+        </div>
+        <div class="reveal overflow-hidden rounded-lg border border-porters-navy/10 bg-white shadow-[0_18px_50px_rgba(25,43,99,0.06)]">
+          <img
+            src={advisoryImage.src}
+            width={advisoryImage.width}
+            height={advisoryImage.height}
+            alt="Documents financiers et calculatrice utilisés pour préparer une simulation de revenus."
+            class="h-full min-h-[21rem] w-full object-cover"
+          />
+        </div>
+
+        <!-- Tripartite diagram -->
+        <div class="reveal mt-12 grid grid-cols-1 gap-8 text-center md:grid-cols-3 lg:col-span-2">
+          <div class="p-6">
+            <div class="w-16 h-16 rounded-full bg-porters-navy/5 flex items-center justify-center mx-auto mb-4">
+              <SiteIcon name="user" class="h-7 w-7 text-porters-navy" />
+            </div>
+            <h3 class="text-lg font-heading font-semibold mb-2">Le consultant</h3>
+            <p class="text-sm" style="color: rgba(11, 16, 32, 0.65);">
+              Trouve ses missions, négocie ses tarifs et réalise ses prestations en toute autonomie.
+            </p>
+          </div>
+          <div class="p-6">
+            <div class="w-16 h-16 rounded-full bg-porters-navy/5 flex items-center justify-center mx-auto mb-4">
+              <SiteIcon name="briefcase" class="h-7 w-7 text-porters-navy" />
+            </div>
+            <h3 class="text-lg font-heading font-semibold mb-2">The Porters</h3>
+            <p class="text-sm" style="color: rgba(11, 16, 32, 0.65);">
+              Gère le contrat de travail, la facturation, les charges sociales et l'accompagnement.
+            </p>
+          </div>
+          <div class="p-6">
+            <div class="w-16 h-16 rounded-full bg-porters-navy/5 flex items-center justify-center mx-auto mb-4">
+              <SiteIcon name="building" class="h-7 w-7 text-porters-navy" />
+            </div>
+            <h3 class="text-lg font-heading font-semibold mb-2">L'entreprise cliente</h3>
+            <p class="text-sm" style="color: rgba(11, 16, 32, 0.65);">
+              Bénéficie de l'expertise du consultant dans un cadre juridique sécurisé.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits grid -->
+  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <h2>Les avantages du <span class="gold-underline">portage salarial</span></h2>
+        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
+          Le portage salarial combine le meilleur du salariat et de l'indépendance.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {benefits.map((benefit) => (
+          <div class="card reveal">
+            <div class="icon-chip mb-5">
+              <SiteIcon name={benefit.icon} />
+            </div>
+            <h3 class="text-lg font-heading font-semibold mb-2">{benefit.title}</h3>
+            <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <h2>Comment ça <span class="gold-underline">fonctionne</span> ?</h2>
+        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
+          Trois étapes simples pour démarrer votre activité en portage salarial.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="text-center reveal">
+          <div class="text-5xl font-heading font-bold text-porters-gold mb-4">1</div>
+          <h3 class="text-lg font-heading font-semibold mb-3">Trouvez votre mission</h3>
+          <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">
+            Prospectez et négociez vos missions auprès de vos clients. Nous pouvons aussi
+            vous accompagner dans cette démarche.
+          </p>
+        </div>
+        <div class="text-center reveal">
+          <div class="text-5xl font-heading font-bold text-porters-gold mb-4">2</div>
+          <h3 class="text-lg font-heading font-semibold mb-3">Signez votre contrat</h3>
+          <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">
+            The Porters établit votre contrat de travail (CDI ou CDD) et le contrat
+            de prestation avec votre client.
+          </p>
+        </div>
+        <div class="text-center reveal">
+          <div class="text-5xl font-heading font-bold text-porters-gold mb-4">3</div>
+          <h3 class="text-lg font-heading font-semibold mb-3">Travaillez en toute sérénité</h3>
+          <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">
+            Concentrez-vous sur votre expertise. Nous gérons la facturation, les charges,
+            la paie et l'administratif.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <h2>Comparatif des <span class="gold-underline">statuts</span></h2>
+        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
+          Portage salarial, auto-entrepreneur ou création de société : faites le bon choix.
+        </p>
+      </div>
+      <div class="overflow-x-auto reveal">
+        <table class="w-full text-sm border-collapse" style="min-width: 600px;">
+          <thead>
+            <tr class="bg-porters-navy text-porters-white">
+              <th class="text-left p-4 font-heading font-semibold rounded-tl-lg">Critère</th>
+              <th class="text-center p-4 font-heading font-semibold">Portage salarial</th>
+              <th class="text-center p-4 font-heading font-semibold">Auto-entrepreneur</th>
+              <th class="text-center p-4 font-heading font-semibold rounded-tr-lg">Création de société</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="transition-colors hover:bg-porters-navy/[0.035]" style="border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
+              <td class="p-4 font-medium">Protection sociale</td>
+              <td class="p-4 text-center text-porters-navy font-semibold">Complète (salarié)</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Minimale</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Variable selon statut</td>
+            </tr>
+            <tr class="transition-colors hover:bg-porters-navy/[0.055]" style="background-color: rgba(25, 43, 99, 0.02); border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
+              <td class="p-4 font-medium">Responsabilité</td>
+              <td class="p-4 text-center text-porters-navy font-semibold">Portée par la société</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Personnelle</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Limitée au capital</td>
+            </tr>
+            <tr class="transition-colors hover:bg-porters-navy/[0.035]" style="border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
+              <td class="p-4 font-medium">Gestion administrative</td>
+              <td class="p-4 text-center text-porters-navy font-semibold">Déléguée</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Simplifiée</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Complexe</td>
+            </tr>
+            <tr class="transition-colors hover:bg-porters-navy/[0.055]" style="background-color: rgba(25, 43, 99, 0.02); border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
+              <td class="p-4 font-medium">Assurance chômage</td>
+              <td class="p-4 text-center text-porters-navy font-semibold">Oui</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Non</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Non (sauf dirigeant salarié)</td>
+            </tr>
+            <tr class="transition-colors hover:bg-porters-navy/[0.035]" style="border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
+              <td class="p-4 font-medium">Retraite</td>
+              <td class="p-4 text-center text-porters-navy font-semibold">Régime général</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Régime micro</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Selon statut</td>
+            </tr>
+            <tr class="transition-colors hover:bg-porters-navy/[0.035]">
+              <td class="p-4 font-medium">Plafond de CA</td>
+              <td class="p-4 text-center text-porters-navy font-semibold">Aucun</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">77 700 € / an</td>
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Aucun</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12 reveal">
+          <h2>Questions <span class="gold-underline">fréquentes</span></h2>
+        </div>
+        <div class="space-y-4 reveal">
+          {faqItems.map((faq) => (
+            <details class="group border rounded-lg" style="border-color: rgba(25, 43, 99, 0.1);">
+              <summary class="flex items-center justify-between p-5 cursor-pointer font-heading font-semibold text-porters-navy hover:text-porters-gold transition-colors">
+                <span>{faq.question}</span>
+                <span class="ml-4 shrink-0 transition-transform group-open:rotate-45 text-porters-gold text-xl">+</span>
+              </summary>
+              <div class="px-5 pb-5" style="color: rgba(11, 16, 32, 0.7);">
+                <p class="mb-0">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA band -->
+  <section class="section bg-porters-navy text-porters-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-porters-white mb-4">
+          Prêt à vous <span class="gold-underline">lancer</span> ?
+        </h2>
+        <p class="text-lg mb-8" style="color: rgba(250, 248, 243, 0.8);">
+          Rejoignez The Porters et développez votre activité en toute sérénité.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
+          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

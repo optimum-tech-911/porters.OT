@@ -1,0 +1,119 @@
+---
+const footerColumns = [
+  {
+    title: 'Consultants',
+    links: [
+      { label: 'Le portage salarial', href: '/portage-salarial' },
+      { label: 'Simulateur de revenus', href: '/simulateur' },
+      { label: 'Parler à un conseiller', href: '/rendez-vous' },
+    ],
+  },
+  {
+    title: 'Entreprises',
+    links: [
+      { label: 'Portage pour entreprises', href: '/entreprises' },
+    ],
+  },
+  {
+    title: 'The Porters',
+    links: [
+      { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
+      { label: 'Notre équipe', href: '/equipe' },
+      { label: 'Nos agences', href: '/agences' },
+      { label: 'Recrutement', href: '/recrutement' },
+      { label: 'Parrainage', href: '/parrainage' },
+    ],
+  },
+  {
+    title: 'Ressources',
+    links: [
+      { label: 'Blog', href: '/blog' },
+      { label: 'Livres blancs', href: '/livres-blancs' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+];
+
+const agencies = [
+  { city: 'Montpellier', href: '/agences/montpellier' },
+  { city: 'Paris', href: '/agences/paris' },
+  { city: 'Lyon', href: '/agences/lyon' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-porters-navy text-porters-white/80">
+  <!-- Gold separator -->
+  <div class="h-[3px] bg-porters-gold"></div>
+
+  <div class="container mx-auto px-6 lg:px-8 pt-16 pb-8">
+    <!-- Top section: Logo + columns -->
+    <div class="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-8 mb-16">
+      <!-- Logo & tagline -->
+      <div class="lg:col-span-2">
+        <a href="/" class="inline-block mb-4" aria-label="The Porters — Accueil">
+          <span class="brand-wordmark brand-wordmark-light brand-wordmark-footer" aria-hidden="true">
+            <span class="brand-wordmark-the">The</span>
+            <span class="brand-wordmark-porters">Porters</span>
+          </span>
+        </a>
+        <p class="text-sm text-porters-white/60 leading-relaxed max-w-xs mb-6">
+          Société de portage salarial premium. Nous accompagnons les consultants et les entreprises partout en France.
+        </p>
+
+        <!-- Agencies -->
+        <div class="space-y-2">
+          <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-2">
+            Nos agences
+          </p>
+          {agencies.map((agency) => (
+            <a
+              href={agency.href}
+              class="block text-sm text-porters-white/60 hover:text-porters-gold transition-colors"
+            >
+              {agency.city}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Navigation columns -->
+      {footerColumns.map((column) => (
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-4">
+            {column.title}
+          </p>
+          <ul class="space-y-2.5">
+            {column.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-porters-white/60 hover:text-porters-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-porters-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-porters-white/40">
+        © {currentYear} The Porters. Tous droits réservés.
+      </p>
+      <div class="flex items-center gap-6">
+        <a href="/mentions-legales" class="text-xs text-porters-white/40 hover:text-porters-white/70 transition-colors">
+          Mentions légales
+        </a>
+        <a href="/confidentialite" class="text-xs text-porters-white/40 hover:text-porters-white/70 transition-colors">
+          Politique de confidentialité
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

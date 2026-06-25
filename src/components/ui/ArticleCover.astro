@@ -1,0 +1,48 @@
+---
+import type { BlogCategory } from '../../types/blog';
+import consultantImage from '../../../images/ChatGPT Image 23 juin 2026, 18_50_36 (6).webp';
+import meetingImage from '../../../images/ChatGPT Image 23 juin 2026, 18_50_35 (2).webp';
+import calculatorImage from '../../../images/ChatGPT Image 23 juin 2026, 18_50_35 (3).webp';
+import workshopImage from '../../../images/ChatGPT Image 23 juin 2026, 18_50_37 (8).webp';
+
+interface Props {
+  category?: BlogCategory | string;
+  class?: string;
+  label?: string;
+  size?: 'large' | 'card' | 'thumb';
+}
+
+const {
+  category = 'fonctionnement',
+  class: className = '',
+  label = '',
+  size = 'card',
+} = Astro.props;
+
+const visuals = {
+  'devenir-consultant': consultantImage,
+  fonctionnement: calculatorImage,
+  secteurs: meetingImage,
+  actualites: workshopImage,
+};
+
+const image = visuals[category as keyof typeof visuals] ?? visuals.fonctionnement;
+const aspectClass = size === 'thumb' ? 'aspect-[4/3]' : 'aspect-video';
+---
+
+<div class:list={['article-cover relative overflow-hidden rounded-lg bg-porters-navy', aspectClass, className]}>
+  <img
+    src={image.src}
+    width={image.width}
+    height={image.height}
+    alt=""
+    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+  />
+  <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,16,32,0)_30%,rgba(11,16,32,0.46)_100%)]"></div>
+  <div class="absolute inset-0 bg-porters-navy/[0.08] transition-colors duration-500 group-hover:bg-transparent"></div>
+  {label && (
+    <div class="absolute bottom-4 left-4 rounded-full border border-white/25 bg-white/14 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+      {label}
+    </div>
+  )}
+</div>

@@ -1,0 +1,79 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { pageSeo } from '../data/seo.data';
+---
+
+<PageLayout
+  seo={pageSeo.parrainage}
+  breadcrumbs={[{ label: 'The Porters', href: '/qui-sommes-nous' }, { label: 'Parrainage' }]}
+>
+  <section class="section pt-8 lg:pt-16 pb-12">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Programme de parrainage</p>
+          <h1 class="mb-6 leading-tight">Recommandez <br/><span class="gold-underline">The Porters</span></h1>
+          <p class="text-porters-black/60 text-lg leading-relaxed mb-8">
+            Vous êtes satisfait de nos services ? Faites-en profiter votre réseau professionnel et soyez récompensé pour chaque nouveau consultant ou entreprise apporté.
+          </p>
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3 text-sm text-porters-black/70">
+              <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
+              Jusqu'à 500 € de prime de parrainage
+            </li>
+            <li class="flex items-start gap-3 text-sm text-porters-black/70">
+              <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
+              Aucune limite de filleuls
+            </li>
+            <li class="flex items-start gap-3 text-sm text-porters-black/70">
+              <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
+              Valable pour les consultants et les entreprises
+            </li>
+          </ul>
+        </div>
+        
+        <div class="card p-8 lg:p-10 bg-porters-navy text-porters-white border-porters-navy">
+          <h2 class="text-porters-white mb-6">Comment ça marche ?</h2>
+          <div class="space-y-8">
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full border border-porters-gold text-porters-gold flex items-center justify-center font-heading font-semibold shrink-0">1</div>
+              <div>
+                <h3 class="text-porters-white text-lg font-semibold mb-1">Recommandez</h3>
+                <p class="text-porters-white/60 text-sm">Parlez de The Porters à une connaissance (consultant indépendant ou entreprise).</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full border border-porters-gold text-porters-gold flex items-center justify-center font-heading font-semibold shrink-0">2</div>
+              <div>
+                <h3 class="text-porters-white text-lg font-semibold mb-1">Mise en relation</h3>
+                <p class="text-porters-white/60 text-sm">Votre filleul nous contacte de votre part, ou vous nous transmettez ses coordonnées (avec son accord).</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-8 h-8 rounded-full border border-porters-gold text-porters-gold flex items-center justify-center font-heading font-semibold shrink-0">3</div>
+              <div>
+                <h3 class="text-porters-white text-lg font-semibold mb-1">Recevez votre prime</h3>
+                <p class="text-porters-white/60 text-sm">Dès le premier mois de facturation de votre filleul, vous percevez votre prime de parrainage.</p>
+              </div>
+            </div>
+          </div>
+          <p class="text-xs text-porters-white/42 mt-8">
+            Programme soumis aux conditions d'éligibilité communiquées lors de la mise en relation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-porters-navy/[0.02]">
+    <div class="container mx-auto px-6 lg:px-8 text-center reveal">
+      <h2 class="mb-6">Commencez à parrainer dès aujourd'hui</h2>
+      <p class="text-porters-black/60 max-w-xl mx-auto mb-8">
+        Remplissez le formulaire de contact en indiquant les coordonnées de votre filleul.
+      </p>
+      <a href="/contact" class="btn btn-primary">
+        Je recommande un profil
+      </a>
+    </div>
+  </section>
+</PageLayout>

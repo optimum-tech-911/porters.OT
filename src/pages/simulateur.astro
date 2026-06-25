@@ -1,0 +1,132 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SimulatorForm from '../components/forms/SimulatorForm.tsx';
+import { pageSeo } from '../data/seo.data';
+import simulatorImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (3).webp';
+import calculatorImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (2).webp';
+
+const seo = {
+  title: pageSeo.simulateur.title,
+  description: pageSeo.simulateur.description,
+};
+
+const breadcrumbs = [{ label: 'Simulateur' }];
+
+const faqItems = [
+  {
+    question: 'Comment est calculé le résultat de la simulation ?',
+    answer: 'La simulation est basée sur un calcul simplifié : chiffre d\'affaires (TJM × jours travaillés) moins les frais de gestion (~8 %), moins les frais professionnels, moins les charges sociales (~45 %). Le résultat est une estimation indicative.',
+  },
+  {
+    question: 'Le résultat de la simulation est-il garanti ?',
+    answer: 'Non, cette simulation fournit une estimation indicative. Votre rémunération réelle dépend de plusieurs facteurs : taux de gestion négocié, situation personnelle, frais professionnels déclarés, etc. Contactez-nous pour une simulation personnalisée.',
+  },
+  {
+    question: 'Quel TJM minimum faut-il pratiquer ?',
+    answer: 'En règle générale, un TJM à partir de 300 € permet de dégager un salaire net confortable en portage salarial. Notre simulateur vous aide à estimer le TJM adapté à vos objectifs de rémunération.',
+  },
+];
+---
+
+<PageLayout seo={seo} breadcrumbs={breadcrumbs}>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-porters-navy text-porters-white">
+    <div class="absolute inset-0">
+      <img
+        src={simulatorImage.src}
+        width={simulatorImage.width}
+        height={simulatorImage.height}
+        alt=""
+        class="h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,43,99,0.96)_0%,rgba(25,43,99,0.84)_42%,rgba(25,43,99,0.38)_72%,rgba(25,43,99,0.12)_100%)]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,16,32,0.18)_0%,rgba(11,16,32,0.42)_100%)]"></div>
+    </div>
+    <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
+      <div class="max-w-2xl reveal">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Simulateur de revenus</p>
+        <h1 class="mb-6 max-w-[36rem] text-porters-white">
+          Projetez votre salaire net en <span class="gold-underline">portage salarial</span>
+        </h1>
+        <p class="max-w-xl text-base leading-relaxed text-porters-white/82 sm:text-lg">
+          Testez quatre scénarios de mission, ajustez votre TJM et visualisez immédiatement
+          l'impact sur votre revenu mensuel.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-porters-white/78">4 profils de simulation</span>
+          <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-porters-white/78">Résultat en direct</span>
+          <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-porters-white/78">Détail transparent</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulator -->
+  <section class="section bg-porters-navy/[0.02]">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-10 grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.28fr)] lg:items-end">
+        <div class="reveal">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Votre projection</p>
+          <h2 class="mb-4">Choisissez un scénario, puis affinez les paramètres</h2>
+          <p class="max-w-2xl text-porters-black/62">
+            Le calcul reste volontairement lisible : chiffre d'affaires, frais de gestion,
+            frais professionnels et charges estimatives.
+          </p>
+        </div>
+        <div class="reveal overflow-hidden rounded-lg border border-porters-navy/10 bg-white shadow-sm">
+          <img
+            src={calculatorImage.src}
+            width={calculatorImage.width}
+            height={calculatorImage.height}
+            alt="Main utilisant une calculatrice sur des documents financiers."
+            class="h-48 w-full object-cover"
+          />
+        </div>
+      </div>
+      <div class="reveal">
+        <SimulatorForm client:visible />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12 reveal">
+          <h2>Questions sur la <span class="gold-underline">simulation</span></h2>
+        </div>
+        <div class="space-y-4 reveal">
+          {faqItems.map((faq) => (
+            <details class="group border rounded-lg" style="border-color: rgba(25, 43, 99, 0.1);">
+              <summary class="flex items-center justify-between p-5 cursor-pointer font-heading font-semibold text-porters-navy hover:text-porters-gold transition-colors">
+                <span>{faq.question}</span>
+                <span class="ml-4 shrink-0 transition-transform group-open:rotate-45 text-porters-gold text-xl">+</span>
+              </summary>
+              <div class="px-5 pb-5" style="color: rgba(11, 16, 32, 0.7);">
+                <p class="mb-0">{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-porters-navy text-porters-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-porters-white mb-4">
+          Vous souhaitez une simulation <span class="gold-underline">personnalisée</span> ?
+        </h2>
+        <p class="text-lg mb-8" style="color: rgba(250, 248, 243, 0.8);">
+          Nos conseillers peuvent affiner ces estimations en fonction de votre situation spécifique.
+        </p>
+        <a href="/rendez-vous" class="btn btn-gold">Parler à un conseiller</a>
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

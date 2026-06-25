@@ -1,0 +1,89 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import ArticleCover from '../../../components/ui/ArticleCover.astro';
+import { blogPosts, blogCategories } from '../../../data/blog.data';
+import type { BlogCategoryInfo } from '../../../types/blog';
+
+export function getStaticPaths() {
+  return blogCategories.map((category) => ({
+    params: { slug: category.slug },
+    props: { categoryInfo: category },
+  }));
+}
+
+const { slug } = Astro.params;
+const { categoryInfo } = Astro.props as { categoryInfo: BlogCategoryInfo };
+const categoryPosts = blogPosts.filter((post) => post.category === slug);
+---
+
+<PageLayout
+  seo={{
+    title: `${categoryInfo.label} | Blog The Porters`,
+    description: categoryInfo.description,
+  }}
+  breadcrumbs={[
+    { label: 'Blog', href: '/blog' },
+    { label: categoryInfo.label }
+  ]}
+>
+  <section class="section pt-8 lg:pt-16 pb-12">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Catégorie</p>
+        <h1 class="mb-4 text-porters-navy">{categoryInfo.label}</h1>
+        <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
+          {categoryInfo.description}
+        </p>
+      </div>
+
+      <!-- Categories Navigation -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-16 reveal">
+        <a href="/blog" class="pill">
+          Tout
+        </a>
+        {blogCategories.map((category) => (
+          <a 
+            href={`/blog/categorie/${category.slug}`} 
+            class:list={['pill', { 'pill-active': category.slug === slug }]}
+          >
+            {category.label}
+          </a>
+        ))}
+      </div>
+
+      {categoryPosts.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categoryPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="card p-0 overflow-hidden group reveal block flex flex-col">
+              <ArticleCover
+                category={post.category}
+                label={categoryInfo.label}
+                class="shrink-0 rounded-none"
+              />
+              <div class="p-6 lg:p-8 flex-1 flex flex-col">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-porters-gold">{categoryInfo.label}</span>
+                  <span class="text-xs text-porters-black/40">{post.readingTime} min</span>
+                </div>
+                <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
+                  {post.title}
+                </h3>
+                <p class="text-sm text-porters-black/60 line-clamp-3 mb-4 flex-1">
+                  {post.excerpt}
+                </p>
+                <span class="text-sm font-medium text-porters-navy group-hover:text-porters-gold transition-colors inline-flex items-center gap-1 mt-auto">
+                  Lire l'article
+                  <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-12">
+          <p class="text-porters-black/50">Aucun article dans cette catégorie pour le moment.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

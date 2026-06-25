@@ -1,0 +1,8 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import AdminMessagesContent from '../../components/admin/pages/AdminMessagesContent';
+---
+
+<AdminLayout title="Messages" pageTitle="Messages">
+  <AdminMessagesContent client:load />
+</AdminLayout>

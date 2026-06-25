@@ -1,0 +1,122 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ContactForm from '../components/forms/ContactForm';
+import { pageSeo } from '../data/seo.data';
+
+const seo = {
+  title: pageSeo.rendezVous.title,
+  description: pageSeo.rendezVous.description,
+};
+
+const breadcrumbs = [{ label: 'Parler à un conseiller' }];
+
+const reasons = [
+  {
+    icon: '30 min',
+    title: 'Un premier échange clair',
+    description: 'Expliquez votre situation, vos objectifs et vos questions. Nous vous orientons rapidement vers la bonne solution.',
+  },
+  {
+    icon: '24h',
+    title: 'Un conseiller dédié',
+    description: 'Vous échangez avec un interlocuteur unique qui comprend votre situation et vos objectifs.',
+  },
+  {
+    icon: 'Sur-mesure',
+    title: 'Une réponse personnalisée',
+    description: 'Que vous soyez consultant ou entreprise, nous revenons vers vous avec des prochaines étapes concrètes.',
+  },
+];
+---
+
+<PageLayout seo={seo} breadcrumbs={breadcrumbs}>
+
+  <!-- Hero -->
+  <section class="section bg-porters-navy text-porters-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-porters-white text-[1.85rem] leading-[1.06] sm:text-[3rem] mb-6 max-w-[16rem] sm:max-w-3xl mx-auto">
+          Parlons de votre <span class="gold-underline">projet</span>
+        </h1>
+        <p class="text-base sm:text-lg max-w-[18rem] sm:max-w-2xl mx-auto" style="color: rgba(250, 248, 243, 0.85);">
+          Décrivez votre besoin et un conseiller The Porters vous recontacte pour cadrer votre situation,
+          répondre à vos questions et vous proposer la bonne prochaine étape.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)] gap-8 lg:gap-12 max-w-6xl mx-auto">
+        <div class="reveal">
+          <div class="card p-5 sm:p-8 lg:p-10">
+            <div class="mb-8">
+              <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-3">
+                Demande de rappel
+              </p>
+              <h2 class="text-xl sm:text-2xl font-heading font-semibold text-porters-navy mb-3">
+                Laissez-nous vos coordonnées
+              </h2>
+              <p class="text-porters-black/65 mb-0">
+                Nous revenons vers vous sous 24 heures ouvrées pour organiser un échange utile,
+                pas une simple prise de contact de plus.
+              </p>
+            </div>
+            <ContactForm client:visible />
+          </div>
+        </div>
+
+        <div class="space-y-6 reveal">
+          <div class="card p-6 sm:p-7 bg-porters-navy text-porters-white border-porters-navy">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold mb-3">
+              Ce que vous obtenez
+            </p>
+            <ul class="space-y-4 text-sm text-porters-white/80">
+              <li>Une lecture claire de votre situation et des options possibles.</li>
+              <li>Une estimation de revenus ou un cadrage de collaboration si besoin.</li>
+              <li>Un interlocuteur humain qui vous suit jusqu'à la prochaine étape.</li>
+            </ul>
+          </div>
+
+          <div class="card p-6 sm:p-7">
+            <h3 class="text-lg font-heading font-semibold text-porters-navy mb-4">
+              Besoin d'une réponse rapide ?
+            </h3>
+            <div class="space-y-4 text-porters-black/70">
+              <div>
+                <p class="text-sm font-medium text-porters-navy mb-1">Par téléphone</p>
+                <a href="tel:+33100000000" class="hover:text-porters-gold transition-colors">01 00 00 00 00</a>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-porters-navy mb-1">Par email</p>
+                <a href="mailto:contact@porters.fr" class="hover:text-porters-gold transition-colors">contact@porters.fr</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 reasons -->
+  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-12 reveal">
+        <h2>Pourquoi nous <span class="gold-underline">contacter maintenant</span> ?</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        {reasons.map((reason) => (
+          <div class="text-center reveal">
+            <div class="inline-flex items-center justify-center min-w-28 px-4 py-2 rounded-full bg-porters-gold/12 text-porters-navy font-heading font-semibold mb-4">
+              {reason.icon}
+            </div>
+            <h3 class="text-lg font-heading font-semibold mb-2">{reason.title}</h3>
+            <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">{reason.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</PageLayout>

@@ -1,0 +1,84 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SiteIcon from '../components/ui/SiteIcon.astro';
+import { resources } from '../data/resources.data';
+import { pageSeo } from '../data/seo.data';
+
+const getTypeLabel = (type: string) => {
+  switch (type) {
+    case 'guide': return 'Guide pratique';
+    case 'livre-blanc': return 'Livre blanc';
+    case 'checklist': return 'Checklist';
+    default: return 'Ressource';
+  }
+};
+
+const getTypeIcon = (type: string) => {
+  switch (type) {
+    case 'guide': return 'document';
+    case 'livre-blanc': return 'chart';
+    case 'checklist': return 'check';
+    default: return 'spark';
+  }
+};
+---
+
+<PageLayout
+  seo={pageSeo.livresBlancs}
+  breadcrumbs={[{ label: 'Livres blancs' }]}
+>
+  <section class="section pt-8 lg:pt-16 pb-20">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Bibliothèque de ressources</p>
+        <h1 class="mb-4">Nos <span class="gold-underline">livres blancs</span> et guides</h1>
+        <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
+          Téléchargez gratuitement nos contenus exclusifs pour vous guider dans votre activité d'indépendant et maîtriser les rouages du portage salarial.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {resources.map((resource) => (
+          <div class="card p-0 overflow-hidden flex flex-col group reveal">
+            <div class="aspect-[4/3] relative flex items-center justify-center overflow-hidden border-b border-porters-navy/5 bg-[radial-gradient(circle_at_22%_18%,rgba(214,180,90,0.22),transparent_32%),linear-gradient(135deg,rgba(25,43,99,0.1),rgba(250,248,243,0.92))]">
+              <div class="absolute inset-x-8 bottom-8 h-px bg-porters-navy/12"></div>
+              <div class="absolute right-8 top-8 h-20 w-20 rounded-full border border-porters-gold/30"></div>
+              <div class="icon-chip h-16 w-16 bg-porters-white/80 text-porters-navy shadow-[0_18px_40px_rgba(25,43,99,0.12)]">
+                <SiteIcon name={getTypeIcon(resource.type)} class="h-7 w-7" />
+              </div>
+              <div class="absolute top-4 left-4">
+                <span class="rounded-full bg-porters-navy px-3 py-1 text-xs font-semibold uppercase tracking-wider text-porters-white">
+                  {getTypeLabel(resource.type)}
+                </span>
+              </div>
+            </div>
+            <div class="p-6 lg:p-8 flex-1 flex flex-col">
+              <h2 class="text-xl font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
+                {resource.title}
+              </h2>
+              <p class="text-sm text-porters-black/60 mb-6 flex-1">
+                {resource.description}
+              </p>
+              <a href={resource.downloadUrl || '/contact'} class="btn btn-secondary w-full text-center">
+                {resource.downloadUrl ? 'Télécharger' : 'Demander la ressource'}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-porters-navy py-16">
+    <div class="container mx-auto px-6 lg:px-8 text-center reveal">
+      <h2 class="text-porters-white mb-4">Inscrivez-vous à notre newsletter</h2>
+      <p class="text-porters-white/60 max-w-xl mx-auto mb-8">
+        Recevez chaque mois nos meilleurs articles, guides et actualités sur le portage salarial.
+      </p>
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Merci, votre demande d’inscription a bien été prise en compte.');">
+        <input type="email" placeholder="Votre adresse email" required class="form-input flex-1 bg-porters-white/10 border-porters-white/20 text-porters-white placeholder:text-porters-white/40 focus:border-porters-gold" />
+        <button type="submit" class="btn btn-gold whitespace-nowrap">S'inscrire</button>
+      </form>
+    </div>
+  </section>
+</PageLayout>

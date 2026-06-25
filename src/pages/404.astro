@@ -1,0 +1,44 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout
+  seo={{
+    title: 'Page introuvable | The Porters',
+    description: 'La page que vous recherchez n\'existe pas ou a été déplacée.',
+    noindex: true
+  }}
+  noBreadcrumbs={true}
+>
+  <section class="section min-h-[60vh] flex items-center pt-8 lg:pt-16 pb-20">
+    <div class="container mx-auto px-6 lg:px-8 text-center reveal">
+      <div class="text-porters-gold font-heading font-bold text-6xl lg:text-8xl mb-6">404</div>
+      <h1 class="mb-6">Page <span class="gold-underline">introuvable</span></h1>
+      <p class="text-porters-black/60 max-w-xl mx-auto text-lg mb-10">
+        Oups ! La page que vous recherchez n'existe pas ou a été déplacée. 
+        Si vous cherchez une information précise, vous pouvez utiliser les liens ci-dessous ou retourner à l'accueil.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+        <a href="/" class="btn btn-primary">
+          Retour à l'accueil
+          <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/contact" class="btn btn-secondary">
+          Nous contacter
+        </a>
+      </div>
+
+      <!-- Quick links -->
+      <div class="max-w-2xl mx-auto border-t border-porters-navy/10 pt-10">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-porters-navy mb-6">Liens utiles</h3>
+        <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+          <a href="/portage-salarial" class="text-porters-black/60 hover:text-porters-gold transition-colors">Le portage salarial</a>
+          <a href="/simulateur" class="text-porters-black/60 hover:text-porters-gold transition-colors">Simulateur de revenus</a>
+          <a href="/agences" class="text-porters-black/60 hover:text-porters-gold transition-colors">Nos agences</a>
+          <a href="/blog" class="text-porters-black/60 hover:text-porters-gold transition-colors">Blog</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

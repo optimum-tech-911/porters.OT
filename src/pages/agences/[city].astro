@@ -1,0 +1,123 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { agencies } from '../../data/agencies.data';
+import type { Agency } from '../../types/agency';
+
+export function getStaticPaths() {
+  return agencies.map((agency) => ({
+    params: { city: agency.slug },
+    props: { agency },
+  }));
+}
+
+interface Props {
+  agency: Agency;
+}
+
+const { agency } = Astro.props;
+---
+
+<PageLayout
+  seo={agency.seo}
+  breadcrumbs={[{ label: 'Agences', href: '/agences' }, { label: agency.city }]}
+>
+  <section class="section pt-8 lg:pt-16 pb-12 lg:pb-20">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="reveal">
+          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">
+            Agence {agency.region}
+          </p>
+          <h1 class="mb-6 leading-tight">
+            The Porters <br/><span class="gold-underline">{agency.city}</span>
+          </h1>
+          <p class="text-lg text-porters-black/70 leading-relaxed mb-8">
+            {agency.heroSubtitle}
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/rendez-vous" class="btn btn-primary">
+              Parler à un conseiller
+            </a>
+            <a href="/simulateur" class="btn btn-secondary">
+              Simuler mes revenus
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="card p-8 lg:p-10 bg-porters-navy text-porters-white border-porters-navy">
+            <h3 class="text-porters-white mb-6">Contactez l'agence</h3>
+            
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <svg class="w-6 h-6 text-porters-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-porters-white/60 mb-1">Adresse</p>
+                  <p class="text-porters-white/90">{agency.address}<br/>{agency.postalCode} {agency.city}</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <svg class="w-6 h-6 text-porters-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.273-3.973-6.869-6.869l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-porters-white/60 mb-1">Téléphone</p>
+                  <a href={`tel:${agency.phone.replace(/\s+/g, '')}`} class="text-porters-white/90 hover:text-porters-gold transition-colors">{agency.phone}</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <svg class="w-6 h-6 text-porters-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-porters-white/60 mb-1">Email</p>
+                  <a href={`mailto:${agency.email}`} class="text-porters-white/90 hover:text-porters-gold transition-colors">{agency.email}</a>
+                </div>
+              </div>
+            </div>
+            
+            <p class="text-xs text-porters-white/42 mt-8 pt-6 border-t border-porters-white/10">
+              Réponse sous 24 heures ouvrées pour toute demande de rendez-vous ou de simulation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-porters-navy/[0.02]">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="mb-8 text-center reveal">Votre partenaire portage salarial à <span class="gold-underline">{agency.city}</span></h2>
+        <div class="prose max-w-none text-porters-black/70 leading-relaxed reveal">
+          <p>{agency.description}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {agency.localFaq.length > 0 && (
+    <section class="section">
+      <div class="container mx-auto px-6 lg:px-8 max-w-3xl">
+        <div class="text-center mb-12 reveal">
+          <h2 class="mb-4">Questions fréquentes sur notre agence</h2>
+        </div>
+        
+        <div class="space-y-4 reveal">
+          {agency.localFaq.map((faq) => (
+            <details class="group bg-white border border-porters-navy/10 rounded-lg overflow-hidden cursor-pointer">
+              <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-porters-navy hover:text-porters-gold transition-colors">
+                <span>{faq.question}</span>
+                <span class="transition group-open:rotate-180">
+                  <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+              </summary>
+              <div class="text-porters-black/70 mt-0 p-5 pt-0 leading-relaxed border-t border-porters-navy/5">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+</PageLayout>

@@ -1,0 +1,42 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <nav aria-label="Fil d'Ariane" class="container mx-auto px-6 lg:px-8 py-4">
+    <ol class="flex items-center gap-2 text-sm text-porters-black/50 flex-wrap">
+      <li>
+        <a href="/" class="hover:text-porters-navy transition-colors">Accueil</a>
+      </li>
+      {items.map((item, index) => (
+        <>
+          <li aria-hidden="true" class="text-porters-black/30">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
+              <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </li>
+          <li>
+            {item.href && index < items.length - 1 ? (
+              <a href={item.href} class="hover:text-porters-navy transition-colors">
+                {item.label}
+              </a>
+            ) : (
+              <span class="text-porters-navy font-medium" aria-current="page">
+                {item.label}
+              </span>
+            )}
+          </li>
+        </>
+      ))}
+    </ol>
+  </nav>
+)}
