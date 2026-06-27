@@ -6,7 +6,7 @@ import { agencies } from '../../data/agencies.data';
 <PageLayout
   seo={{
     title: 'Nos agences de portage salarial | The Porters',
-    description: 'Découvrez nos agences de portage salarial The Porters à Paris, Lyon et Montpellier. Un accompagnement de proximité pour les consultants indépendants.',
+    description: 'Découvrez les agences The Porters à Paris, Lyon, Marseille, Montpellier et Toulouse pour un accompagnement de proximité en portage salarial.',
   }}
   breadcrumbs={[{ label: 'Agences' }]}
 >
@@ -15,11 +15,11 @@ import { agencies } from '../../data/agencies.data';
       <div class="text-center mb-16 reveal">
         <h1 class="mb-4">Nos <span class="gold-underline">agences</span> partout en France</h1>
         <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
-          Un accompagnement de proximité avec des conseillers dédiés, à l'écoute de votre projet.
+          Un accompagnement de proximité pour les consultants IT et tech, avec des coordonnées sensibles publiées uniquement lorsqu'elles sont confirmées.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {agencies.map((agency) => (
           <a href={`/agences/${agency.slug}`} class="card p-8 group reveal block">
             <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">{agency.region}</p>

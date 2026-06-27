@@ -24,8 +24,8 @@
 /old-portage-salarial-lyon /agences/lyon 301
 /old-portage-salarial-montpellier/ /agences/montpellier 301
 /old-portage-salarial-montpellier /agences/montpellier 301
-/old-portage-salarial-marseille/ /agences 301
-/old-portage-salarial-marseille /agences 301
+/old-portage-salarial-marseille/ /agences/marseille 301
+/old-portage-salarial-marseille /agences/marseille 301
 /old-portage-salarial-bordeaux/ /agences 301
 /old-portage-salarial-bordeaux /agences 301
 /old-portage-salarial-lille/ /agences 301
@@ -42,21 +42,21 @@
 /contrat-portage-salarial /blog/contrat-portage-salarial 301
 /frais-gestion-portage-salarial/ /blog/frais-gestion-portage-salarial 301
 /frais-gestion-portage-salarial /blog/frais-gestion-portage-salarial 301
-/choisir-societe-portage-salarial/ /blog/choisir-societe-portage-salarial 301
-/choisir-societe-portage-salarial /blog/choisir-societe-portage-salarial 301
-/limportance-de-bien-choisir-sa-societe-de-portage-salarial/ /blog/choisir-societe-portage-salarial 301
-/limportance-de-bien-choisir-sa-societe-de-portage-salarial /blog/choisir-societe-portage-salarial 301
+/choisir-societe-portage-salarial/ /blog/bien-choisir-societe-portage-salarial 301
+/choisir-societe-portage-salarial /blog/bien-choisir-societe-portage-salarial 301
+/limportance-de-bien-choisir-sa-societe-de-portage-salarial/ /blog/bien-choisir-societe-portage-salarial 301
+/limportance-de-bien-choisir-sa-societe-de-portage-salarial /blog/bien-choisir-societe-portage-salarial 301
 /choisir-statut-independant/ /blog/choisir-statut-independant 301
 /choisir-statut-independant /blog/choisir-statut-independant 301
-/se-mettre-a-son-compte/ /blog/se-mettre-a-son-compte 301
-/se-mettre-a-son-compte /blog/se-mettre-a-son-compte 301
+/se-mettre-a-son-compte/ /blog/choisir-statut-independant 301
+/se-mettre-a-son-compte /blog/choisir-statut-independant 301
 /portage-salarial-informatique-flexibilite/ /blog/portage-salarial-informatique 301
 /portage-salarial-informatique-flexibilite /blog/portage-salarial-informatique 301
-/ingenieurs-choisir-portage-salarial/ /blog/ingenieurs-choisir-portage-salarial 301
+/ingenieurs-choisir-portage-salarial/ /blog/portage-salarial-informatique 301
 /devenir-freelance-informatique/ /blog/devenir-freelance-informatique 301
 /devenir-freelance-informatique /blog/devenir-freelance-informatique 301
-/bien-reussir-mission-portage-salarial-5-cles-succes/ /blog/reussir-mission-portage-salarial 301
-/bien-reussir-mission-portage-salarial-5-cles-succes /blog/reussir-mission-portage-salarial 301
+/bien-reussir-mission-portage-salarial-5-cles-succes/ /blog/trouver-missions-portage-salarial 301
+/bien-reussir-mission-portage-salarial-5-cles-succes /blog/trouver-missions-portage-salarial 301
 /portage-salarial-et-international-travailler-a-letranger-en-toute-securite/ /blog/portage-salarial-international 301
 /portage-salarial-et-international-travailler-a-letranger-en-toute-securite /blog/portage-salarial-international 301
 /portage-salarial-solution-flexible/ /blog/portage-salarial-solution-flexible 301
@@ -66,9 +66,9 @@
 /consultant-informatique-independant-galeres/ /blog/consultant-informatique-independant-galeres 301
 
 # === SECONDARY BLOG ARTICLES ===
-/quest-ce-que-la-cooptation-et-quels-sont-ses-avantages/ /blog/cooptation-avantages 301
-/cedants-dentreprises-portage-salarial-organiser-accompagnement-apres-cession-par-guillaume-guilhen/ /blog/portage-salarial-apres-cession-entreprise 301
-/retour-convention-collective-de-portage-salarial-par-guillaume-guilhen/ /blog/convention-collective-portage-salarial 301
+/quest-ce-que-la-cooptation-et-quels-sont-ses-avantages/ /blog 301
+/cedants-dentreprises-portage-salarial-organiser-accompagnement-apres-cession-par-guillaume-guilhen/ /blog 301
+/retour-convention-collective-de-portage-salarial-par-guillaume-guilhen/ /blog/guide-portage-salarial 301
 /recrutement-dun-commercial-a-aix-marseille/ /recrutement 301
 
 # === TAXONOMIES → BLOG ===

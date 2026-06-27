@@ -1,0 +1,115 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import workshopImage from '../../images/team-workshop.webp';
+
+const commitments = [
+  {
+    number: '01',
+    title: 'Sobriété numérique',
+    text: 'Concevoir des parcours rapides, limiter les médias lourds et privilégier des outils utiles à la mission plutôt que des fonctionnalités superflues.',
+  },
+  {
+    number: '02',
+    title: 'Inclusion et accessibilité',
+    text: "Rendre l'information compréhensible, améliorer l'accessibilité du site et traiter chaque candidature ou demande sans discrimination.",
+  },
+  {
+    number: '03',
+    title: 'Proximité durable',
+    text: "S'appuyer sur cinq implantations et sur le travail à distance pour rapprocher l'accompagnement des consultants et limiter les déplacements inutiles.",
+  },
+  {
+    number: '04',
+    title: 'Éthique et transparence',
+    text: 'Afficher les frais de gestion, expliquer les hypothèses du simulateur et ne publier que des engagements, avis et indicateurs pouvant être justifiés.',
+  },
+];
+---
+
+<PageLayout
+  seo={{
+    title: 'Notre démarche RSE — The Porters',
+    description: 'Sobriété numérique, inclusion, proximité et transparence : découvrez les axes de responsabilité sociale et environnementale de The Porters.',
+  }}
+  breadcrumbs={[{ label: 'Démarche RSE' }]}
+>
+  <section class="relative min-h-[39rem] overflow-hidden bg-porters-navy text-porters-white">
+    <img
+      src={workshopImage.src}
+      width={workshopImage.width}
+      height={workshopImage.height}
+      alt="Équipe réunie autour d'un atelier de travail responsable."
+      class="absolute inset-0 h-full w-full object-cover object-center"
+    />
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.98)_0%,rgba(18,35,48,0.85)_48%,rgba(18,35,48,0.34)_100%)]"></div>
+    <div class="container relative mx-auto flex min-h-[39rem] items-center px-6 py-20 lg:px-8">
+      <div class="max-w-3xl reveal">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Responsabilité sociale et environnementale</p>
+        <h1 class="max-w-3xl text-porters-white">Des engagements utiles, lisibles et mesurables.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
+          Notre démarche RSE se construit autour de pratiques directement liées à notre métier : le numérique, l'inclusion, la proximité et la transparence de l'accompagnement.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Nos quatre axes</p>
+        <h2>La responsabilité intégrée au fonctionnement quotidien</h2>
+      </div>
+      <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
+        {commitments.map((commitment) => (
+          <article class="border-t-2 border-porters-gold pt-6 reveal">
+            <p class="mb-4 font-mono text-sm font-semibold text-porters-gold">{commitment.number}</p>
+            <h3 class="mb-3">{commitment.title}</h3>
+            <p class="mb-0 max-w-xl text-porters-black/66">{commitment.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-porters-navy/[0.03]">
+    <div class="container mx-auto grid gap-12 px-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:gap-20 lg:px-8">
+      <div class="reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Feuille de route</p>
+        <h2>Passer des intentions aux preuves</h2>
+        <p class="mt-5 text-porters-black/66">
+          Les prochaines publications RSE associeront chaque engagement à un responsable, une échéance et un indicateur. Cette méthode évite les promesses générales impossibles à vérifier.
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="grid gap-0 border-y border-porters-navy/12">
+          <div class="grid gap-2 border-b border-porters-navy/10 py-5 sm:grid-cols-[10rem_1fr]">
+            <strong class="text-porters-navy">Numérique</strong>
+            <span class="text-porters-black/64">Suivre le poids des pages et la performance des parcours essentiels.</span>
+          </div>
+          <div class="grid gap-2 border-b border-porters-navy/10 py-5 sm:grid-cols-[10rem_1fr]">
+            <strong class="text-porters-navy">Accessibilité</strong>
+            <span class="text-porters-black/64">Auditer les parcours clés et corriger les obstacles prioritaires.</span>
+          </div>
+          <div class="grid gap-2 border-b border-porters-navy/10 py-5 sm:grid-cols-[10rem_1fr]">
+            <strong class="text-porters-navy">Accompagnement</strong>
+            <span class="text-porters-black/64">Mesurer la qualité de réponse et la satisfaction après les étapes importantes.</span>
+          </div>
+          <div class="grid gap-2 py-5 sm:grid-cols-[10rem_1fr]">
+            <strong class="text-porters-navy">Transparence</strong>
+            <span class="text-porters-black/64">Publier uniquement les indicateurs et certifications officiellement validés.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-porters-navy py-16">
+    <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <div class="max-w-2xl reveal">
+        <h2 class="mb-2 text-porters-white">Une question sur notre démarche ?</h2>
+        <p class="mb-0 text-porters-white/65">Échangez directement avec l'équipe The Porters.</p>
+      </div>
+      <a href="/contact" class="btn btn-gold shrink-0">Contacter l'équipe</a>
+    </div>
+  </section>
+</PageLayout>

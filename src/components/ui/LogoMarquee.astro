@@ -1,0 +1,167 @@
+---
+/**
+ * Infinite auto-scrolling logo marquee.
+ * Uses CSS-only animation — no JS.
+ */
+interface LogoItem {
+  name: string;
+  url?: string;
+}
+
+interface Props {
+  title?: string;
+  logos: (string | LogoItem)[];
+  direction?: 'left' | 'right';
+  speed?: string; // CSS duration, e.g. '30s'
+}
+
+const { title, logos, direction = 'left', speed = '35s' } = Astro.props;
+
+// Normalize to LogoItem
+const normalizedLogos: LogoItem[] = logos.map((l) =>
+  typeof l === 'string' ? { name: l } : l
+);
+
+// Duplicate logos for seamless loop
+const duplicated = [...normalizedLogos, ...normalizedLogos];
+---
+
+<div class="logo-marquee" style={`--marquee-speed: ${speed}`}>
+  {title && (
+    <p class="logo-marquee__title">{title}</p>
+  )}
+  <div class="logo-marquee__track" data-direction={direction}>
+    <div class="logo-marquee__inner" aria-hidden="true">
+      {duplicated.map((logo, i) => (
+        logo.url ? (
+          <img
+            src={logo.url}
+            alt={`Logo ${logo.name}`}
+            class="logo-marquee__img"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <span class="logo-marquee__item" key={`${logo.name}-${i}`}>
+            {logo.name}
+          </span>
+        )
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .logo-marquee {
+    overflow: hidden;
+    padding: 0.85rem 0;
+  }
+
+  .logo-marquee__title {
+    margin-bottom: 1.15rem;
+    color: var(--color-porters-gold);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .logo-marquee__track {
+    display: flex;
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      #000 8%,
+      #000 92%,
+      transparent 100%
+    );
+  }
+
+  .logo-marquee__inner {
+    display: flex;
+    min-width: max-content;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+    animation: marquee-scroll var(--marquee-speed, 35s) linear infinite;
+  }
+
+  [data-direction='right'] .logo-marquee__inner {
+    animation-direction: reverse;
+  }
+
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .logo-marquee__item {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-porters-navy);
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    background: white;
+    border: 1px solid rgba(13, 31, 60, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease;
+  }
+
+  .logo-marquee__img {
+    width: clamp(9.5rem, 42vw, 13.5rem);
+    height: 4.25rem;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(72%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+    margin: 0 0.75rem;
+    background: #ffffff;
+    padding: 0.65rem 1rem;
+    border-radius: 4px;
+  }
+
+  @media (min-width: 768px) {
+    .logo-marquee__img {
+      width: clamp(11rem, 15vw, 16rem);
+      height: 5rem;
+      margin: 0 1.5rem;
+      padding: 0.7rem 1.2rem;
+    }
+  }
+  
+  .logo-marquee__img:hover {
+    filter: grayscale(0%) opacity(100%);
+    transform: translateY(-2px);
+  }
+
+  .logo-marquee__item:hover {
+    border-color: var(--color-porters-gold);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-marquee__inner {
+      animation: none;
+    }
+
+    .logo-marquee__track {
+      overflow-x: auto;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+  }
+</style>

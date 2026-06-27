@@ -1,211 +1,393 @@
 ---
 const navGroups = [
   {
-    label: 'Consultants',
-    items: [
-      { label: 'Le portage salarial', href: '/portage-salarial' },
-      { label: 'Simulateur de revenus', href: '/simulateur' },
-      { label: 'Parler à un conseiller', href: '/rendez-vous' },
+    label: 'Entreprises',
+    href: '/entreprises',
+    title: 'Entreprises',
+    description: 'Sécuriser une collaboration avec un expert externe sans créer d’embauche directe.',
+    cta: { label: 'Découvrir l’offre entreprise', href: '/entreprises' },
+    columns: [
+      {
+        title: 'Solutions',
+        links: [
+          { label: 'Portage pour entreprises', href: '/entreprises', note: 'Souplesse et conformité' },
+          { label: 'Cadrer une mission', href: '/rendez-vous', note: 'Un échange pour qualifier le besoin' },
+          { label: 'Contacter l’équipe', href: '/contact', note: 'Demande directe' },
+        ],
+      },
+      {
+        title: 'Besoins fréquents',
+        links: [
+          { label: 'Expertise IT', href: '/blog/portage-salarial-entreprises', note: 'Tech, data, cyber, cloud' },
+          { label: 'Renfort projet', href: '/blog/portage-salarial-solution-flexible', note: 'Intervention mission par mission' },
+          { label: 'Gestion administrative', href: '/blog/role-charge-de-compte-portage-salarial', note: 'Suivi et facturation' },
+        ],
+      },
     ],
   },
   {
-    label: 'Entreprises',
-    href: '/entreprises',
+    label: 'Indépendants',
+    href: '/portage-salarial',
+    title: 'Consultants indépendants',
+    description: 'Comprendre le portage, estimer ses revenus et organiser un échange avec un conseiller.',
+    cta: { label: 'Voir le parcours consultant', href: '/portage-salarial' },
+    columns: [
+      {
+        title: 'Démarrer',
+        links: [
+          { label: 'Le portage salarial', href: '/portage-salarial', note: 'Cadre, statut, fonctionnement' },
+          { label: 'Tarifs transparents', href: '/tarifs', note: 'Taux, inclusions et frais réels' },
+          { label: 'Simulateur de revenus', href: '/simulateur', note: 'TJM, jours facturés, frais' },
+          { label: 'Prendre rendez-vous', href: '/rendez-vous', note: 'Échange avec un conseiller' },
+        ],
+      },
+      {
+        title: 'Profils IT',
+        links: [
+          { label: 'Cybersécurité', href: '/expertises/cybersecurite', note: 'RSSI, GRC, SOC et sécurité cloud' },
+          { label: 'Data & IA', href: '/expertises/data-ia', note: 'Data engineering, BI et IA' },
+          { label: 'DevOps & cloud', href: '/expertises/devops-cloud', note: 'Cloud, plateforme et SRE' },
+          { label: 'Agilité & coaching', href: '/expertises/agilite-coaching', note: 'Produit, projet et transformation' },
+        ],
+      },
+      {
+        title: 'Questions utiles',
+        links: [
+          { label: 'Frais de gestion', href: '/blog/frais-gestion-portage-salarial', note: 'Ce qu’il faut comparer' },
+          { label: 'Contrat de portage', href: '/blog/contrat-portage-salarial', note: 'Les points à vérifier' },
+          { label: 'FAQ consultants', href: '/faq', note: 'Réponses rapides' },
+        ],
+      },
+    ],
   },
   {
-    label: 'The Porters',
-    items: [
-      { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
-      { label: 'Notre équipe', href: '/equipe' },
-      { label: 'Nos agences', href: '/agences' },
-      { label: 'Recrutement', href: '/recrutement' },
-      { label: 'Parrainage', href: '/parrainage' },
+    label: 'Le groupe',
+    href: '/qui-sommes-nous',
+    title: 'Découvrir The Porters',
+    description: 'Une société de portage pensée pour l’accompagnement humain, la proximité et la clarté.',
+    cta: { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
+    columns: [
+      {
+        title: 'La société',
+        links: [
+          { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'Positionnement et engagements' },
+          { label: 'Notre équipe', href: '/equipe', note: 'Les interlocuteurs' },
+          { label: 'Démarche RSE', href: '/rse', note: 'Responsabilité et progrès mesurable' },
+          { label: 'Recrutement', href: '/recrutement', note: 'Rejoindre l’équipe' },
+        ],
+      },
+      {
+        title: 'Présence locale',
+        links: [
+          { label: 'Nos agences', href: '/agences', note: 'Paris, Lyon, Marseille, Montpellier, Toulouse' },
+          { label: 'Agence Paris', href: '/agences/paris', note: 'Île-de-France' },
+          { label: 'Agence Lyon', href: '/agences/lyon', note: 'Auvergne-Rhône-Alpes' },
+        ],
+      },
+      {
+        title: 'Communauté',
+        links: [
+          { label: 'Parrainage', href: '/parrainage', note: 'Recommander un consultant' },
+          { label: 'Contact', href: '/contact', note: 'Écrire à l’équipe' },
+        ],
+      },
     ],
   },
   {
     label: 'Ressources',
-    items: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'Livres blancs', href: '/livres-blancs' },
-      { label: 'FAQ', href: '/faq' },
+    href: '/blog',
+    title: 'Ressources',
+    description: 'Articles, guides et réponses pratiques pour comprendre le portage salarial.',
+    cta: { label: 'Explorer le blog', href: '/blog' },
+    columns: [
+      {
+        title: 'Guides',
+        links: [
+          { label: 'Blog', href: '/blog', note: 'Tous les articles' },
+          { label: 'Guide du portage salarial', href: '/blog/guide-portage-salarial', note: 'Bases et fonctionnement' },
+          { label: 'Livres blancs', href: '/livres-blancs', note: 'Ressources à télécharger' },
+        ],
+      },
+      {
+        title: 'Articles clés',
+        links: [
+          { label: 'Devenir freelance informatique', href: '/blog/devenir-freelance-informatique', note: 'Choisir son statut' },
+          { label: 'Optimiser sa rémunération', href: '/blog/optimiser-remuneration-portage-salarial', note: 'Comprendre ses leviers' },
+          { label: 'Choisir sa société de portage', href: '/blog/bien-choisir-societe-portage-salarial', note: 'Critères de comparaison' },
+        ],
+      },
+      {
+        title: 'Aide',
+        links: [
+          { label: 'FAQ', href: '/faq', note: 'Questions fréquentes' },
+          { label: 'Contact', href: '/contact', note: 'Besoin d’une réponse précise' },
+        ],
+      },
     ],
   },
 ];
 
 const currentPath = Astro.url.pathname;
+const isHomepage = currentPath === '/';
+const leftNavGroups = navGroups.slice(0, 2);
+const rightNavGroups = navGroups.slice(2);
+const isActiveGroup = (group: typeof navGroups[number]) =>
+  currentPath === group.href ||
+  group.columns.some((column) => column.links.some((link) => currentPath === link.href));
 ---
 
-<header
-  id="site-header"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
->
-  <div class="container mx-auto relative flex items-center justify-between gap-2 h-20 px-4 sm:px-6 lg:px-8">
-    <div class="lg:hidden w-9 h-9 shrink-0" aria-hidden="true"></div>
-
-    <!-- Logo -->
-    <a
-      href="/"
-      class="absolute left-1/2 -translate-x-1/2 flex items-center shrink-0 min-w-0 max-w-[7.4rem] sm:max-w-none lg:static lg:translate-x-0"
-      aria-label="The Porters — Accueil"
-    >
-      <span class="brand-wordmark" aria-hidden="true">
-        <span class="brand-wordmark-the">The</span>
-        <span class="brand-wordmark-porters">Porters</span>
-      </span>
+<header id="site-header" class:list={['site-header', { 'site-header-home': isHomepage }]}>
+  <!-- Reading progress bar -->
+  <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
+  <div class="site-header-bar">
+    <a href="/espace-client" class="mobile-header-account" aria-label="Créer un compte ou se connecter" title="Espace client">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7" />
+        <path d="M5.5 20c.6-4.05 2.77-6.1 6.5-6.1s5.9 2.05 6.5 6.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      </svg>
     </a>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex items-center gap-1" aria-label="Navigation principale">
-      {navGroups.map((group) => (
-        <div class="relative group">
-          {group.items ? (
-            <>
-              <button
-                class="px-4 py-2 text-[0.9375rem] font-medium text-porters-black/80 hover:text-porters-navy transition-colors link-hover-gold"
-                aria-expanded="false"
-                aria-haspopup="true"
-              >
-                {group.label}
-                <svg class="inline-block ml-1 w-3.5 h-3.5 opacity-50 transition-transform group-hover:rotate-180" viewBox="0 0 16 16" fill="none">
-                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                <div class="bg-white border border-porters-navy/8 rounded-lg shadow-lg py-2 min-w-[220px]">
-                  {group.items.map((item) => (
-                    <a
-                      href={item.href}
-                      class:list={[
-                        'block px-5 py-2.5 text-sm text-porters-black/70 hover:text-porters-navy hover:bg-porters-navy/3 transition-colors',
-                        { 'text-porters-navy font-medium': currentPath === item.href },
-                      ]}
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
+    <nav class="site-nav site-nav-left hidden xl:flex" aria-label="Navigation entreprises et indépendants">
+      {leftNavGroups.map((group) => (
+        <div class="site-nav-item">
+          <button
+            type="button"
+            class:list={[
+              'site-nav-link',
+              { 'site-nav-link-active': isActiveGroup(group) },
+            ]}
+            aria-haspopup="true"
+          >
+            {group.label}
+            <svg class="site-nav-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+
+          <div class="mega-menu" role="region" aria-label={`Menu ${group.label}`}>
+            <div class="mega-menu-inner">
+              <div class="mega-menu-intro">
+                <p class="mega-eyebrow">{group.label}</p>
+                <h2>{group.title}</h2>
+                <p>{group.description}</p>
+                <a href={group.cta.href} class="mega-cta">
+                  {group.cta.label}
+                  <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
               </div>
-            </>
-          ) : (
-            <a
-              href={group.href}
-              class:list={[
-                'px-4 py-2 text-[0.9375rem] font-medium text-porters-black/80 hover:text-porters-navy transition-colors link-hover-gold',
-                { 'text-porters-navy': currentPath === group.href },
-              ]}
-            >
-              {group.label}
-            </a>
-          )}
+
+              <div class="mega-menu-columns">
+                {group.columns.map((column) => (
+                  <section class="mega-column">
+                    <h3>{column.title}</h3>
+                    <div class="mega-link-list">
+                      {column.links.map((link) => (
+                        <a
+                          href={link.href}
+                          class:list={[
+                            'mega-link',
+                            { 'mega-link-active': currentPath === link.href },
+                          ]}
+                        >
+                          <span>{link.label}</span>
+                          <small>{link.note}</small>
+                        </a>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       ))}
     </nav>
 
-    <!-- Desktop CTA -->
-    <a
-      href="/simulateur"
-      class="hidden lg:inline-flex btn btn-primary text-sm"
-    >
-      Simuler mes revenus
+    <a href="/" class="brand-home-link" aria-label="The Porters — Accueil">
+      <span class="brand-lockup" aria-hidden="true">
+        <span class="brand-wordmark">
+          <span class="brand-wordmark-the">The</span>
+          <span class="brand-wordmark-porters">Porters</span>
+        </span>
+      </span>
     </a>
 
-    <!-- Mobile Menu Toggle -->
+    <div class="header-right hidden xl:flex">
+      <nav class="site-nav site-nav-right" aria-label="Navigation société et ressources">
+        {rightNavGroups.map((group) => (
+          <div class="site-nav-item">
+            <button
+              type="button"
+              class:list={[
+                'site-nav-link',
+                { 'site-nav-link-active': isActiveGroup(group) },
+              ]}
+              aria-haspopup="true"
+            >
+              {group.label}
+              <svg class="site-nav-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <div class="mega-menu" role="region" aria-label={`Menu ${group.label}`}>
+              <div class="mega-menu-inner">
+                <div class="mega-menu-intro">
+                  <p class="mega-eyebrow">{group.label}</p>
+                  <h2>{group.title}</h2>
+                  <p>{group.description}</p>
+                  <a href={group.cta.href} class="mega-cta">
+                    {group.cta.label}
+                    <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+
+                <div class="mega-menu-columns">
+                  {group.columns.map((column) => (
+                    <section class="mega-column">
+                      <h3>{column.title}</h3>
+                      <div class="mega-link-list">
+                        {column.links.map((link) => (
+                          <a
+                            href={link.href}
+                            class:list={[
+                              'mega-link',
+                              { 'mega-link-active': currentPath === link.href },
+                            ]}
+                          >
+                            <span>{link.label}</span>
+                            <small>{link.note}</small>
+                          </a>
+                        ))}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </nav>
+
+      <div class="header-actions">
+        <a href="/espace-client" class="header-icon-link" aria-label="Créer un compte ou se connecter" title="Espace client">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7" />
+            <path d="M5.5 20c.6-4.05 2.77-6.1 6.5-6.1s5.9 2.05 6.5 6.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+        </a>
+        <a href="/rendez-vous" class="header-rdv-link">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.7" />
+            <path d="M7.5 3.5v4M16.5 3.5v4M3.5 10h17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          </svg>
+          Rendez-vous
+        </a>
+        <a href="/simulateur" class="header-cta btn btn-primary">Simuler</a>
+      </div>
+    </div>
+
     <button
       id="mobile-menu-toggle"
-      class="lg:hidden shrink-0 flex items-center justify-center w-9 h-9 text-porters-navy"
+      class="mobile-menu-toggle"
       aria-label="Ouvrir le menu"
       aria-controls="mobile-menu"
       aria-expanded="false"
     >
-      <svg id="menu-icon-open" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      <svg id="menu-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
       </svg>
-      <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
     </button>
   </div>
 
-  <button
-    id="mobile-menu-backdrop"
-    class="lg:hidden fixed inset-0 top-20 z-30 bg-porters-black/20 opacity-0 pointer-events-none transition-opacity duration-300"
-    aria-hidden="true"
-    tabindex="-1"
-  ></button>
-
-  <!-- Mobile Menu -->
-  <div
-    id="mobile-menu"
-    class="lg:hidden fixed inset-x-0 top-20 bottom-0 bg-porters-white z-40 transform translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto"
-  >
-    <nav class="px-6 py-8 space-y-6" aria-label="Navigation mobile">
-      {navGroups.map((group) => (
-        <div class="border-b border-porters-navy/8 pb-6 last:border-0">
-          {group.items ? (
-            <>
-              <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">
-                {group.label}
-              </p>
-              <div class="space-y-1">
-                {group.items.map((item) => (
-                  <a
-                    href={item.href}
-                    class:list={[
-                      'block py-2 text-porters-black/70 hover:text-porters-navy transition-colors',
-                      { 'text-porters-navy font-medium': currentPath === item.href },
-                    ]}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </>
-          ) : (
-            <a
-              href={group.href}
-              class:list={[
-                'block py-2 text-lg font-medium text-porters-navy',
-                { 'text-porters-gold': currentPath === group.href },
-              ]}
-            >
-              {group.label}
-            </a>
-          )}
-        </div>
-      ))}
-      <a href="/simulateur" class="btn btn-primary w-full text-center mt-4">
-        Simuler mes revenus
-      </a>
-      <a href="/contact" class="btn btn-secondary w-full text-center">
-        Nous contacter
-      </a>
-    </nav>
-  </div>
+  <div class="site-mega-scrim" aria-hidden="true"></div>
 </header>
 
-<!-- Header spacer for fixed positioning -->
-<div class="h-20"></div>
+<button
+  id="mobile-menu-backdrop"
+  class="mobile-menu-backdrop"
+  aria-hidden="true"
+  tabindex="-1"
+></button>
+
+<div id="mobile-menu" class="mobile-menu-panel">
+  <nav class="mobile-nav" aria-label="Navigation mobile">
+    {navGroups.map((group) => (
+      <section class="mobile-nav-section">
+        <a
+          href={group.href}
+          class:list={[
+            'mobile-nav-heading',
+            { 'mobile-nav-heading-active': isActiveGroup(group) },
+          ]}
+        >
+          {group.label}
+        </a>
+        <div class="mobile-nav-links">
+          {group.columns.map((column) => (
+            <div class="mb-3 last:mb-0">
+              {column.links.map((link) => (
+                <a
+                  href={link.href}
+                  class:list={[
+                    'mobile-nav-link',
+                    { 'mobile-nav-link-active': currentPath === link.href },
+                  ]}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+    <div class="mobile-nav-actions">
+      <a href="/simulateur" class="btn btn-primary w-full">Simuler mes revenus</a>
+      <a href="/rendez-vous" class="btn btn-secondary w-full">Prendre rendez-vous</a>
+      <a href="/espace-client" class="mobile-account-link">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7" />
+          <path d="M5.5 20c.6-4.05 2.77-6.1 6.5-6.1s5.9 2.05 6.5 6.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        Créer un compte ou se connecter
+      </a>
+    </div>
+  </nav>
+</div>
+
+<div id="site-header-reveal-zone" class="site-header-reveal-zone" aria-hidden="true"></div>
+<div class:list={['site-header-spacer', { 'site-header-spacer-home': isHomepage }]}></div>
 
 <script>
-  // Mobile menu toggle
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
   const backdrop = document.getElementById('mobile-menu-backdrop');
   const iconOpen = document.getElementById('menu-icon-open');
   const iconClose = document.getElementById('menu-icon-close');
   const menuLinks = menu?.querySelectorAll('a');
+  const header = document.getElementById('site-header');
+  const revealZone = document.getElementById('site-header-reveal-zone');
   let isOpen = false;
+  let lastScrollY = window.scrollY;
+  let revealTimer;
 
   const syncMenuState = (nextState) => {
     isOpen = nextState;
-    menu?.classList.toggle('translate-x-full', !isOpen);
-    menu?.classList.toggle('translate-x-0', isOpen);
-    backdrop?.classList.toggle('opacity-0', !isOpen);
-    backdrop?.classList.toggle('pointer-events-none', !isOpen);
+    header?.classList.toggle('is-mobile-open', isOpen);
+    menu?.classList.toggle('is-open', isOpen);
+    backdrop?.classList.toggle('is-open', isOpen);
     iconOpen?.classList.toggle('hidden', isOpen);
     iconClose?.classList.toggle('hidden', !isOpen);
-    toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+    toggle?.setAttribute('aria-expanded', String(isOpen));
+    toggle?.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
     document.body.style.overflow = isOpen ? 'hidden' : '';
   };
 
@@ -229,24 +411,61 @@ const currentPath = Astro.url.pathname;
     }
   });
 
-  // Header scroll effect
-  const header = document.getElementById('site-header');
-  let lastScroll = 0;
+  const syncScrollState = () => {
+    const currentScrollY = window.scrollY;
+    const delta = currentScrollY - lastScrollY;
+    header?.classList.toggle('is-scrolled', currentScrollY > 24);
 
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > 50) {
-      header?.classList.add('bg-white', 'shadow-sm', 'border-b', 'border-porters-navy/5');
+    if (!isOpen) {
+      if (currentScrollY <= 40 || delta < -8) {
+        header?.classList.remove('is-hidden');
+      } else if (currentScrollY > 140 && delta > 8) {
+        header?.classList.add('is-hidden');
+      }
     } else {
-      header?.classList.remove('bg-white', 'shadow-sm', 'border-b', 'border-porters-navy/5');
+      header?.classList.remove('is-hidden');
     }
 
-    lastScroll = currentScroll;
-  }, { passive: true });
+    lastScrollY = currentScrollY;
+  };
 
-  // Initial state
-  if (window.scrollY > 50) {
-    header?.classList.add('bg-white', 'shadow-sm', 'border-b', 'border-porters-navy/5');
+  const revealHeader = () => {
+    window.clearTimeout(revealTimer);
+    header?.classList.remove('is-hidden');
+  };
+
+  const maybeHideHeader = () => {
+    window.clearTimeout(revealTimer);
+    revealTimer = window.setTimeout(() => {
+      if (!isOpen && window.scrollY > 140 && window.matchMedia('(min-width: 1280px)').matches) {
+        header?.classList.add('is-hidden');
+      }
+    }, 520);
+  };
+
+  revealZone?.addEventListener('mouseenter', revealHeader);
+  header?.addEventListener('mouseenter', revealHeader);
+  header?.addEventListener('mouseleave', maybeHideHeader);
+
+  syncScrollState();
+  window.addEventListener('scroll', syncScrollState, { passive: true });
+  window.addEventListener('resize', syncScrollState, { passive: true });
+
+  // Reading progress bar (blog articles only)
+  const progressBar = document.getElementById('reading-progress');
+  const articleEl = document.querySelector('article');
+  if (progressBar && articleEl) {
+    progressBar.style.display = 'block';
+    const updateProgress = () => {
+      const rect = articleEl.getBoundingClientRect();
+      const articleTop = rect.top + window.scrollY;
+      const articleHeight = articleEl.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      const scrolled = window.scrollY - articleTop + viewportHeight;
+      const progress = Math.min(Math.max(scrolled / articleHeight, 0), 1);
+      progressBar.style.transform = `scaleX(${progress})`;
+    };
+    updateProgress();
+    window.addEventListener('scroll', updateProgress, { passive: true });
   }
 </script>

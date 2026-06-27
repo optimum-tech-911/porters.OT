@@ -3,8 +3,8 @@ import PageLayout from '../layouts/PageLayout.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import { pageSeo } from '../data/seo.data';
 import { enterpriseBenefits } from '../data/benefits.data';
-import enterpriseHeroImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_37 (8).webp';
-import collaborationImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (2).webp';
+import enterpriseHeroImage from '../../images/team-workshop.webp';
+import collaborationImage from '../../images/business-meeting.webp';
 
 const seo = {
   title: pageSeo.entreprises.title,
@@ -53,6 +53,13 @@ const steps = [
     description: 'Le consultant réalise sa mission dans un cadre sécurisé. Vous recevez une facture unique de The Porters, sans complexité.',
   },
 ];
+
+const enterpriseProofs = [
+  { value: '+150', label: 'missions en cours' },
+  { value: '24 h', label: 'pour qualifier une demande' },
+  { value: 'France + international', label: 'capacité de réponse' },
+  { value: '1 interlocuteur', label: 'stable pendant la mission' },
+];
 ---
 
 <PageLayout seo={seo} breadcrumbs={breadcrumbs}>
@@ -73,17 +80,28 @@ const steps = [
       <div class="max-w-2xl reveal">
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Solutions entreprises</p>
         <h1 class="mb-6 max-w-[40rem] text-porters-white">
-          Sécurisez vos collaborations avec des <span class="gold-underline">experts indépendants</span>
+          Sécurisez vos collaborations avec des <span class="gold-underline">experts IT indépendants</span>
         </h1>
         <p class="mb-8 max-w-xl text-lg leading-relaxed text-porters-white/84">
-          Simplifiez la gestion de vos ressources externes grâce au portage salarial.
-          Un cadre juridique sécurisé, une flexibilité maximale, zéro risque.
+          Mobilisez des compétences cyber, data, IA, DevOps, cloud, produit ou projet dans un cadre
+          contractuel lisible, sans embauche directe.
         </p>
         <div class="flex flex-col gap-4 sm:flex-row">
           <a href="/contact" class="btn btn-gold">Nous contacter</a>
           <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="border-b border-porters-navy/10 bg-white">
+    <div class="container mx-auto grid grid-cols-2 px-6 lg:grid-cols-4 lg:px-8">
+      {enterpriseProofs.map((proof) => (
+        <div class="border-porters-navy/10 px-3 py-7 text-center even:border-l lg:border-l lg:first:border-l-0 lg:px-6 reveal">
+          <p class="mb-1 font-heading text-xl font-bold text-porters-navy sm:text-2xl">{proof.value}</p>
+          <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-black/50">{proof.label}</p>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -94,7 +112,7 @@ const steps = [
         <div class="reveal">
           <h2>Les défis des entreprises face aux <span class="gold-underline">indépendants</span></h2>
           <p class="mt-4 max-w-2xl" style="color: rgba(11, 16, 32, 0.7);">
-            Collaborer avec des prestataires externes peut être source de complexité. Le portage salarial est la solution.
+            Collaborer avec des prestataires externes IT peut être source de complexité. Le portage salarial apporte un cadre plus lisible.
           </p>
         </div>
         <div class="reveal overflow-hidden rounded-lg border border-porters-navy/10 bg-white shadow-sm">

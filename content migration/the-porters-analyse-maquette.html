@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Porters — Analyse maquette & Recommandations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0D1F3C;
+  --navy-mid:#162C50;
+  --blue:    #2563EB;
+  --blue-lt: #EFF6FF;
+  --red:     #DC2626;
+  --red-lt:  #FEF2F2;
+  --amber:   #D97706;
+  --amber-lt:#FFFBEB;
+  --orange:  #EA580C;
+  --orange-lt:#FFF7ED;
+  --purple:  #7C3AED;
+  --purple-lt:#F5F3FF;
+  --green:   #16A34A;
+  --green-lt:#F0FDF4;
+  --gray-50: #F8FAFC;
+  --gray-100:#F1F5F9;
+  --gray-200:#E2E8F0;
+  --gray-400:#94A3B8;
+  --gray-500:#64748B;
+  --gray-700:#334155;
+  --gray-900:#0F172A;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-900);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ── HEADER ── */
+.header {
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 40px 44px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 30%;
+  width: 180px; height: 180px;
+  background: rgba(37,99,235,0.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.header-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 1px;
+  background: rgba(255,255,255,.25);
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.header h1 em {
+  font-style: normal;
+  color: #60A5FA;
+}
+
+.header-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+
+.header-meta {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 20px;
+}
+
+.header-meta-item {
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+  padding-right: 24px;
+  margin-right: 24px;
+  border-right: 1px solid rgba(255,255,255,.1);
+  line-height: 1.4;
+}
+
+.header-meta-item:last-child { border-right: none; }
+
+.header-meta-item strong {
+  display: block;
+  color: rgba(255,255,255,.85);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* ── SUMMARY TABLE ── */
+.summary {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 28px;
+}
+
+.summary-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 24px;
+  border-bottom: 1px solid var(--gray-100);
+  transition: background .15s;
+}
+
+.summary-row:last-child { border-bottom: none; }
+.summary-row:hover { background: var(--gray-50); }
+
+.summary-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gray-400);
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.summary-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-absent   { background: var(--red); }
+.dot-partial  { background: var(--amber); }
+.dot-incomplete { background: var(--orange); }
+.dot-vague    { background: var(--purple); }
+
+.summary-label {
+  flex: 1;
+  font-size: 13px;
+  color: var(--gray-700);
+  font-weight: 400;
+}
+
+.summary-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+.b-absent     { background: var(--red-lt);    color: var(--red);    }
+.b-partial    { background: var(--amber-lt);  color: var(--amber);  }
+.b-incomplete { background: var(--orange-lt); color: var(--orange); }
+.b-vague      { background: var(--purple-lt); color: var(--purple); }
+
+/* ── LEGEND ── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  align-items: center;
+}
+
+.legend-label {
+  font-size: 11px;
+  color: var(--gray-400);
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--gray-500);
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+/* ── SECTION HEADING ── */
+.section-heading {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-heading span {
+  background: var(--gray-100);
+  color: var(--gray-500);
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-size: 10px;
+}
+
+/* ── ITEM CARD ── */
+.item {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  position: relative;
+}
+
+.item-stripe {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  border-radius: 16px 0 0 16px;
+}
+
+.stripe-absent     { background: var(--red); }
+.stripe-partial    { background: var(--amber); }
+.stripe-incomplete { background: var(--orange); }
+.stripe-vague      { background: var(--purple); }
+
+.item-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 22px 15px 26px;
+  border-bottom: 1px solid var(--gray-100);
+  background: #fff;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pill-absent     { background: var(--red-lt);    color: var(--red); }
+.pill-partial    { background: var(--amber-lt);  color: var(--amber); }
+.pill-incomplete { background: var(--orange-lt); color: var(--orange); }
+.pill-vague      { background: var(--purple-lt); color: var(--purple); }
+
+.item-number {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray-400);
+  flex-shrink: 0;
+}
+
+.item-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--gray-900);
+  flex: 1;
+  line-height: 1.3;
+}
+
+.item-body {
+  padding: 0;
+}
+
+.block {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.block:last-child { border-bottom: none; }
+
+.block-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  padding: 16px 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  border-right: 1px solid var(--gray-100);
+}
+
+.label-problem {
+  background: var(--gray-50);
+  color: var(--gray-400);
+}
+
+.label-todo {
+  background: var(--blue-lt);
+  color: var(--blue);
+}
+
+.label-plus {
+  background: var(--green-lt);
+  color: var(--green);
+}
+
+.block-content {
+  padding: 14px 20px 14px 18px;
+  font-size: 13.5px;
+  color: var(--gray-500);
+  line-height: 1.65;
+}
+
+.block-content strong {
+  color: var(--gray-900);
+  font-weight: 600;
+}
+
+.block-content em {
+  font-style: italic;
+  color: var(--gray-400);
+  font-size: 12.5px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  margin-top: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.footer-brand {
+  font-size: 12px;
+  color: var(--gray-500);
+  font-weight: 400;
+}
+
+.footer-brand strong {
+  color: var(--gray-700);
+  font-weight: 600;
+}
+
+.footer-date {
+  font-size: 11px;
+  color: var(--gray-400);
+}
+
+/* ── PRINT ── */
+@media print {
+  body { background: white; font-size: 12px; }
+  .page { padding: 20px; max-width: 100%; }
+  .item { break-inside: avoid; }
+  .header { border-radius: 8px; padding: 24px 28px; }
+  .summary { break-inside: avoid; }
+}
+
+@media (max-width: 600px) {
+  .page { padding: 20px 14px 60px; }
+  .header { padding: 28px 22px; }
+  .header-meta { gap: 12px; }
+  .header-meta-item { border-right: none; padding-right: 0; margin-right: 0; }
+  .header h1 { font-size: 22px; }
+  .summary-row { padding: 10px 14px; }
+  .item-head { padding: 12px 14px 12px 18px; flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">Document de travail · Confidentiel</div>
+    <h1>Analyse maquette — <em>The Porters</em><br>Ce qui manque. Ce qu'il faut faire.</h1>
+    <div class="header-sub">Comparaison point par point entre le brief client et la maquette actuelle, avec recommandations proactives.</div>
+    <div class="header-meta">
+      <div class="header-meta-item">
+        <strong>Source client</strong>
+        Mail Lisa Delrieu — 18 juin 2026
+      </div>
+      <div class="header-meta-item">
+        <strong>Maquette analysée</strong>
+        porters-ot.pages.dev
+      </div>
+      <div class="header-meta-item">
+        <strong>Produit par</strong>
+        Cazanave Group
+      </div>
+      <div class="header-meta-item">
+        <strong>Date</strong>
+        Juin 2026
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div class="summary">
+    <div class="summary-header">Vue d'ensemble — 9 points analysés</div>
+
+    <div class="summary-row">
+      <span class="summary-num">01</span>
+      <span class="summary-dot dot-absent"></span>
+      <span class="summary-label">Ciblage consultants IT (cyber, data/IA, DevOps, agilité)</span>
+      <span class="summary-badge b-absent">Absent</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">02</span>
+      <span class="summary-dot dot-absent"></span>
+      <span class="summary-label">Paie versée sous 5 jours ouvrés + avance de trésorerie</span>
+      <span class="summary-badge b-absent">Absent</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">03</span>
+      <span class="summary-dot dot-partial"></span>
+      <span class="summary-label">Politique tarifaire transparente — taux réel affiché</span>
+      <span class="summary-badge b-partial">Partiel</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">04</span>
+      <span class="summary-dot dot-incomplete"></span>
+      <span class="summary-label">Présence nationale — 5 agences (Paris, Lyon, Marseille, Montpellier, Toulouse)</span>
+      <span class="summary-badge b-incomplete">Incomplet</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">05</span>
+      <span class="summary-dot dot-absent"></span>
+      <span class="summary-label">Engagement RSE</span>
+      <span class="summary-badge b-absent">Absent</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">06</span>
+      <span class="summary-dot dot-partial"></span>
+      <span class="summary-label">Simulateur de rémunération avec collecte de coordonnées (lead)</span>
+      <span class="summary-badge b-partial">Partiel</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">07</span>
+      <span class="summary-dot dot-partial"></span>
+      <span class="summary-label">Prise de rendez-vous en ligne</span>
+      <span class="summary-badge b-partial">Partiel</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">08</span>
+      <span class="summary-dot dot-partial"></span>
+      <span class="summary-label">Témoignages crédibles / avis clients vérifiés</span>
+      <span class="summary-badge b-partial">Partiel</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">09</span>
+      <span class="summary-dot dot-vague"></span>
+      <span class="summary-label">FAQ — Accompagnement dans la recherche de missions</span>
+      <span class="summary-badge b-vague">Vague</span>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <span class="legend-label">Lecture :</span>
+    <span class="legend-item"><span style="width:7px;height:7px;background:var(--gray-500);border-radius:50%;display:inline-block"></span> Problème — constat objectif</span>
+    <span class="legend-item"><span style="width:7px;height:7px;background:var(--blue);border-radius:50%;display:inline-block"></span> À faire — ce qui doit être intégré</span>
+    <span class="legend-item"><span style="width:7px;height:7px;background:var(--green);border-radius:50%;display:inline-block"></span> En plus — proposition proactive au-delà du brief</span>
+  </div>
+
+  <!-- SECTION HEADING -->
+  <div class="section-heading">
+    Analyse détaillée <span>9 points</span>
+  </div>
+
+  <!-- ── ITEM 1 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-absent"></div>
+    <div class="item-head">
+      <span class="item-number">01</span>
+      <span class="status-pill pill-absent">● Absent</span>
+      <span class="item-title">Ciblage consultants IT — cyber, data/IA, DevOps, agilité</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          Le site parle à tout le monde : "IT, finance, management, ingénierie". Les mots cybersécurité, DevOps et agilité n'apparaissent jamais dans la navigation ni dans les pages clés. La cible principale ne se reconnaît pas.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Créer <strong>4 pages métiers</strong> dans le menu sous "Consultants" : <strong>Cybersécurité / Data & IA / DevOps & Cloud / Agilité & Coaching</strong>. Chacune avec le vocabulaire du métier, TJM de référence, types de frais pro typiques et CTA vers le simulateur. Refondre le texte du hero en homepage pour s'adresser directement aux consultants tech.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Ajouter 4 articles de blog SEO ciblés (ex. <em>"Portage salarial pour RSSI freelance en 2026"</em>) et un <strong>comparateur de statuts interactif</strong> spécifique IT (portage vs ESN vs freelance pur) — ce que les concurrents directs Mytek et 2iPortage n'ont pas encore.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ITEM 2 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-absent"></div>
+    <div class="item-head">
+      <span class="item-number">02</span>
+      <span class="status-pill pill-absent">● Absent</span>
+      <span class="item-title">Paie versée sous 5 jours ouvrés + avance de trésorerie</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          Argument décisif pour un consultant qui attend que son client paie à 45 ou 60 jours — et il n'existe <strong>nulle part sur le site</strong>. Ni en homepage, ni dans la FAQ, ni dans la liste des avantages.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Créer un <strong>bloc visuel dédié</strong> visible en homepage (style badge ou chiffre mis en avant). Ajouter dans la page "Le portage salarial" + une question FAQ : "Quand est versé mon salaire ?". <em>Wording exact à confirmer avec le client : avance à 100 % du salaire ? conditions d'éligibilité ?</em>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Créer un <strong>mini-simulateur de trésorerie</strong> : "Si mon client me paie à 60 jours, quand reçois-je mon salaire avec The Porters ?" — argument de vente concret et très différenciant face aux sociétés généralistes.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ITEM 3 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-partial"></div>
+    <div class="item-head">
+      <span class="item-number">03</span>
+      <span class="status-pill pill-partial">◑ Partiel</span>
+      <span class="item-title">Politique tarifaire transparente — taux réel affiché</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          La promesse "transparence" est répétée sur toutes les pages mais <strong>aucun chiffre n'est affiché</strong>. Le taux de frais de gestion est absent. Promettre la transparence sans la montrer, c'est l'inverse de la transparence.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Afficher le taux de frais réel (ex. 8 %) sur la page portage et dans le simulateur. Ajouter un tableau <strong>"Ce qui est inclus dans nos frais"</strong> : gestion sociale, admin, accompagnement dédié, accès outils, avance de trésorerie…
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Créer une <strong>page Tarifs dédiée</strong> avec simulateur intégré. Aucun concurrent n'affiche ses conditions aussi clairement en ligne — en faire un argument de marque assumé : <em>"On est les seuls à afficher nos frais complets en ligne."</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ITEM 4 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-incomplete"></div>
+    <div class="item-head">
+      <span class="item-number">04</span>
+      <span class="status-pill pill-incomplete">◑ Incomplet</span>
+      <span class="item-title">Présence nationale — Paris, Lyon, Marseille, Montpellier, Toulouse</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          Le site affiche 3 agences : Paris, Lyon, Montpellier. <strong>Marseille et Toulouse sont absentes.</strong> Le compteur "3 agences" affiché partout est donc faux par rapport au brief client.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Créer les fiches agences <strong>Marseille</strong> et <strong>Toulouse</strong> sur le modèle des fiches existantes. Mettre à jour le compteur "3 agences" → <strong>"5 agences"</strong> partout : homepage, footer, page "Nos agences". <em>Adresses et contacts réels à fournir par le client.</em>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Ajouter une <strong>carte interactive des 5 agences</strong> avec infobulles (contact direct par agence). Positionner Toulouse comme pôle aérospatial/tech stratégique — argument de recrutement local fort pour les profils cyber, embedded et aéro.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ITEM 5 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-absent"></div>
+    <div class="item-head">
+      <span class="item-number">05</span>
+      <span class="status-pill pill-absent">● Absent</span>
+      <span class="item-title">Engagement RSE</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          Totalement inexistant sur le site. La cible IT — data/IA, DevOps, cybersécurité — est particulièrement sensible aux questions d'impact numérique, d'éthique et de responsabilité sociale.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Créer une <strong>page RSE</strong> dans le menu "The Porters". Axes à développer selon les engagements réels du client : sobriété numérique, inclusion/handicap, mobilité durable, mécénat de compétences. <em>Contenu et certifications à fournir par le client.</em>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Proposer un angle <strong>"numérique responsable"</strong> avec un outil de calcul d'empreinte carbone pour consultant en mission à distance. Angle différenciant, très pertinent pour la cible IT. Peut devenir un article SEO + argument commercial fort.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ITEM 6 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-partial"></div>
+    <div class="item-head">
+      <span class="item-number">06</span>
+      <span class="status-pill pill-partial">◑ Partiel</span>
+      <span class="item-title">Simulateur de rémunération avec collecte de coordonnées</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          Le simulateur fonctionne bien techniquement mais <strong>ne collecte aucun lead</strong>. L'utilisateur obtient son résultat et repart sans laisser ses coordonnées. C'est de la valeur commerciale perdue à chaque simulation.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Ajouter <strong>après le résultat</strong> un formulaire en 3 champs : Prénom / Email / Téléphone + case à cocher RGPD obligatoire (consentement explicite, finalité claire). Bouton : "Recevoir ma simulation détaillée par email" → résultat complet en PDF envoyé automatiquement + notification équipe commerciale.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Mettre en place une <strong>séquence email automatique</strong> : J+2, email avec un cas client IT similaire + lien vers prise de RDV. Simple à configurer avec Brevo ou Mailchimp — conversion passive sans effort supplémentaire.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ITEM 7 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-partial"></div>
+    <div class="item-head">
+      <span class="item-number">07</span>
+      <span class="status-pill pill-partial">◑ Partiel</span>
+      <span class="item-title">Prise de rendez-vous en ligne</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          Le bouton "Parler à un conseiller" mène à un formulaire de rappel avec une promesse de réponse sous 24h. Ce n'est <strong>pas un système de réservation en ligne</strong> — c'est un formulaire de contact classique.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Intégrer un widget de réservation <strong>Calendly</strong> ou <strong>Cal.com</strong> avec deux types de créneaux : "Découverte 30 min" et "Cadrage de mission 1h". Conserver le formulaire de rappel en option secondaire. <em>Le client crée son compte et transmet le lien d'intégration.</em>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Proposer un <strong>RDV par spécialité IT</strong> : "Je suis consultant DevOps → je parle directement au conseiller spécialisé tech." Renforce le positionnement de spécialiste et améliore la qualité et la qualification des leads entrants.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ITEM 8 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-partial"></div>
+    <div class="item-head">
+      <span class="item-number">08</span>
+      <span class="status-pill pill-partial">◑ Partiel</span>
+      <span class="item-title">Témoignages crédibles / avis clients vérifiés</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          3 verbatims anonymes — "Consultant IT, Paris" — sans nom, sans photo, sans note vérifiée. Aucune preuve sociale réelle. Le client déclare avoir des avis sur son site : ils ne sont pas intégrés dans la maquette.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Remplacer les verbatims anonymes par des avis réels avec <strong>Prénom Nom, poste, photo</strong>. Intégrer le widget officiel <strong>Trustpilot ou Google Reviews</strong> avec note globale visible. <em>Contenu et accès au compte à fournir par le client.</em>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Produire <strong>2 témoignages vidéo courts</strong> (60 secondes) de consultants IT, format portrait pour mobile. Les pages intégrant une vidéo de témoignage convertissent nettement mieux. Peut se faire avec un smartphone si la qualité est soignée.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ITEM 9 ── -->
+  <div class="item">
+    <div class="item-stripe stripe-vague"></div>
+    <div class="item-head">
+      <span class="item-number">09</span>
+      <span class="status-pill pill-vague">◑ Vague</span>
+      <span class="item-title">FAQ — Accompagnement dans la recherche de missions</span>
+    </div>
+    <div class="item-body">
+      <div class="block">
+        <div class="block-label label-problem">Problème</div>
+        <div class="block-content">
+          C'est l'une des 3 questions les plus posées selon le client. La FAQ actuelle répond de manière évasive, sans s'engager clairement sur ce que The Porters fait réellement pour aider à trouver des missions.
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-todo">À faire</div>
+        <div class="block-content">
+          Réécrire la réponse FAQ avec un <strong>engagement clair et honnête</strong> : conseil de positionnement, réseau actif, mise en relation — ou pas. Dire la vérité. <em>Wording à confirmer avec le client selon le service réellement proposé.</em>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-label label-plus">En plus</div>
+        <div class="block-content">
+          Si un vivier de missions existe : créer une <strong>page "Missions disponibles"</strong> avec filtres par spécialité IT. Si non : mettre en place une newsletter mensuelle <em>"Opportunités IT"</em> — simple à déployer, forte valeur perçue pour fidéliser les consultants inscrits.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      Document produit par <strong>Cazanave Group</strong> — Adrien Cazanave<br>
+      Directeur créatif & Consultant IA contenu
+    </div>
+    <div class="footer-date">Juin 2026 · Confidentiel</div>
+  </div>
+
+</div>
+</body>
+</html>

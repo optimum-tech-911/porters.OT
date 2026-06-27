@@ -2,11 +2,11 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import { pageSeo } from '../data/seo.data';
-import portageHeroImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_36 (5).webp';
-import advisoryImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (2).webp';
+import portageHeroImage from '../../images/advisor-discussion.webp';
+import advisoryImage from '../../images/business-meeting.webp';
 
 const seo = {
-  title: 'Le portage salarial sur mesure | The Porters',
+  title: pageSeo.portageSalarial.title,
   description: pageSeo.portageSalarial.description,
 };
 
@@ -40,8 +40,8 @@ const benefits = [
   },
   {
     icon: 'calculator',
-    title: 'Optimisation fiscale',
-    description: 'Nos experts vous aident à optimiser votre rémunération nette grâce à une gestion fiscale avantageuse et aux frais professionnels.',
+    title: 'Optimisation de revenus',
+    description: 'Nous vous aidons à lire les leviers de rémunération : TJM, jours facturés, frais professionnels et simulation personnalisée.',
   },
 ];
 
@@ -85,13 +85,13 @@ const faqItems = [
     </div>
     <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
       <div class="max-w-2xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Portage salarial</p>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Portage salarial consultants IT</p>
         <h1 class="mb-6 max-w-[36rem] text-porters-white">
-          Le portage salarial, <span class="gold-underline">en toute sérénité</span>
+          Le portage salarial pour <span class="gold-underline">consultants tech</span>
         </h1>
         <p class="mb-8 max-w-xl text-lg leading-relaxed text-porters-white/84">
-          La sécurité du salariat alliée à la liberté du consulting. Développez votre activité
-          indépendante sans créer de structure, avec un accompagnement sur mesure.
+          Cybersécurité, développement, DevOps, cloud, data, IA, Product Ownership, Scrum Master
+          ou chefferie de projet IT : gardez votre autonomie avec un cadre salarié.
         </p>
         <div class="flex flex-col gap-4 sm:flex-row">
           <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
@@ -108,12 +108,12 @@ const faqItems = [
         <div class="reveal">
           <h2 class="mb-6">Qu'est-ce que le <span class="gold-underline">portage salarial</span> ?</h2>
           <p class="text-lg" style="color: rgba(11, 16, 32, 0.75);">
-            Le portage salarial est une forme d'emploi innovante qui repose sur une relation tripartite
+            Le portage salarial est une forme d'emploi encadrée qui repose sur une relation tripartite
             entre le <strong>consultant</strong>, la <strong>société de portage</strong> et
             l'<strong>entreprise cliente</strong>.
           </p>
           <p style="color: rgba(11, 16, 32, 0.75);">
-            Concrètement, vous trouvez vos missions et négociez vos conditions avec vos clients.
+            Concrètement, vous trouvez vos missions IT et négociez vos conditions avec vos clients.
             The Porters s'occupe de tout le reste : contrat de travail, facturation, déclarations
             sociales, paie et accompagnement. Vous bénéficiez du statut de salarié (CDI ou CDD)
             tout en conservant votre indépendance professionnelle.
@@ -200,8 +200,8 @@ const faqItems = [
           <div class="text-5xl font-heading font-bold text-porters-gold mb-4">1</div>
           <h3 class="text-lg font-heading font-semibold mb-3">Trouvez votre mission</h3>
           <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">
-            Prospectez et négociez vos missions auprès de vos clients. Nous pouvons aussi
-            vous accompagner dans cette démarche.
+            Prospectez et négociez vos missions auprès de vos clients. The Porters peut vous aider
+            à clarifier votre positionnement sans promettre de missions garanties.
           </p>
         </div>
         <div class="text-center reveal">

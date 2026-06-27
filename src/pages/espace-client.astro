@@ -1,0 +1,65 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import workspaceImage from '../../images/consultant-workspace.webp';
+---
+
+<PageLayout
+  seo={{
+    title: 'Espace client — The Porters',
+    description: 'Accédez à votre espace The Porters ou demandez la création de votre accès sécurisé.',
+  }}
+  breadcrumbs={[{ label: 'Espace client' }]}
+>
+  <section class="relative min-h-[36rem] overflow-hidden bg-porters-navy text-porters-white">
+    <img
+      src={workspaceImage.src}
+      width={workspaceImage.width}
+      height={workspaceImage.height}
+      alt="Consultant accédant à son espace de travail en ligne."
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.98)_0%,rgba(18,35,48,0.88)_50%,rgba(18,35,48,0.3)_100%)]"></div>
+    <div class="container relative mx-auto flex min-h-[36rem] items-center px-6 py-20 lg:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Espace The Porters</p>
+        <h1 class="text-porters-white">Votre accès, au même endroit.</h1>
+        <p class="mt-6 text-lg leading-relaxed text-porters-white/75">
+          Consultant ou entreprise, demandez votre accès sécurisé ou recevez de nouveau votre lien de connexion auprès de l'équipe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container mx-auto grid gap-0 overflow-hidden border border-porters-navy/10 md:grid-cols-2">
+      <div class="p-7 sm:p-10 lg:p-14 reveal">
+        <svg class="mb-7 h-8 w-8 text-porters-gold" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7" />
+          <path d="M5.5 20c.6-4.05 2.77-6.1 6.5-6.1s5.9 2.05 6.5 6.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Déjà accompagné</p>
+        <h2 class="mb-4">Recevoir mon lien de connexion</h2>
+        <p class="mb-8 text-porters-black/64">L'équipe vérifie votre identité et renvoie le lien d'accès associé à votre dossier.</p>
+        <a href="mailto:contact@porters.fr?subject=Lien%20de%20connexion%20espace%20The%20Porters" class="btn btn-primary">Demander mon lien</a>
+      </div>
+      <div class="border-t border-porters-navy/10 bg-porters-navy/[0.03] p-7 sm:p-10 md:border-l md:border-t-0 lg:p-14 reveal">
+        <svg class="mb-7 h-8 w-8 text-porters-gold" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="9" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7" />
+          <path d="M2.5 20c.6-4.05 2.77-6.1 6.5-6.1 2.4 0 4.18.85 5.28 2.54" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+          <path d="M18 14v6M15 17h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Nouvel accès</p>
+        <h2 class="mb-4">Créer mon espace</h2>
+        <p class="mb-8 text-porters-black/64">Précisez si vous êtes consultant ou entreprise. Un conseiller active le bon parcours et vous transmet les informations de connexion.</p>
+        <a href="mailto:contact@porters.fr?subject=Cr%C3%A9ation%20d%27un%20acc%C3%A8s%20The%20Porters" class="btn btn-secondary">Créer mon accès</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-porters-navy py-14">
+    <div class="container mx-auto px-6 text-center lg:px-8">
+      <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Besoin d'aide ?</p>
+      <p class="mb-0 text-porters-white/75">Écrivez à <a class="font-semibold text-porters-white underline decoration-porters-gold underline-offset-4" href="mailto:contact@porters.fr">contact@porters.fr</a></p>
+    </div>
+  </section>
+</PageLayout>

@@ -4,6 +4,7 @@ const footerColumns = [
     title: 'Consultants',
     links: [
       { label: 'Le portage salarial', href: '/portage-salarial' },
+      { label: 'Tarifs transparents', href: '/tarifs' },
       { label: 'Simulateur de revenus', href: '/simulateur' },
       { label: 'Parler à un conseiller', href: '/rendez-vous' },
     ],
@@ -20,6 +21,7 @@ const footerColumns = [
       { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
       { label: 'Notre équipe', href: '/equipe' },
       { label: 'Nos agences', href: '/agences' },
+      { label: 'Démarche RSE', href: '/rse' },
       { label: 'Recrutement', href: '/recrutement' },
       { label: 'Parrainage', href: '/parrainage' },
     ],
@@ -31,6 +33,7 @@ const footerColumns = [
       { label: 'Livres blancs', href: '/livres-blancs' },
       { label: 'FAQ', href: '/faq' },
       { label: 'Contact', href: '/contact' },
+      { label: 'Espace client', href: '/espace-client' },
     ],
   },
 ];
@@ -39,6 +42,8 @@ const agencies = [
   { city: 'Montpellier', href: '/agences/montpellier' },
   { city: 'Paris', href: '/agences/paris' },
   { city: 'Lyon', href: '/agences/lyon' },
+  { city: 'Marseille', href: '/agences/marseille' },
+  { city: 'Toulouse', href: '/agences/toulouse' },
 ];
 
 const currentYear = new Date().getFullYear();
@@ -54,9 +59,11 @@ const currentYear = new Date().getFullYear();
       <!-- Logo & tagline -->
       <div class="lg:col-span-2">
         <a href="/" class="inline-block mb-4" aria-label="The Porters — Accueil">
-          <span class="brand-wordmark brand-wordmark-light brand-wordmark-footer" aria-hidden="true">
-            <span class="brand-wordmark-the">The</span>
-            <span class="brand-wordmark-porters">Porters</span>
+          <span class="brand-lockup" aria-hidden="true">
+            <span class="brand-wordmark brand-wordmark-light brand-wordmark-footer">
+              <span class="brand-wordmark-the">The</span>
+              <span class="brand-wordmark-porters">Porters</span>
+            </span>
           </span>
         </a>
         <p class="text-sm text-porters-white/60 leading-relaxed max-w-xs mb-6">

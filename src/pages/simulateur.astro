@@ -2,8 +2,8 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import SimulatorForm from '../components/forms/SimulatorForm.tsx';
 import { pageSeo } from '../data/seo.data';
-import simulatorImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (3).webp';
-import calculatorImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (2).webp';
+import simulatorImage from '../../images/financial-calculator.webp';
+import calculatorImage from '../../images/business-meeting.webp';
 
 const seo = {
   title: pageSeo.simulateur.title,
@@ -15,7 +15,7 @@ const breadcrumbs = [{ label: 'Simulateur' }];
 const faqItems = [
   {
     question: 'Comment est calculé le résultat de la simulation ?',
-    answer: 'La simulation est basée sur un calcul simplifié : chiffre d\'affaires (TJM × jours travaillés) moins les frais de gestion (~8 %), moins les frais professionnels, moins les charges sociales (~45 %). Le résultat est une estimation indicative.',
+    answer: 'La simulation est basée sur un calcul simplifié : chiffre d\'affaires (TJM × jours travaillés), frais de gestion techniques, frais professionnels et charges sociales estimatives. Le résultat est indicatif et doit être affiné avec un conseiller.',
   },
   {
     question: 'Le résultat de la simulation est-il garanti ?',

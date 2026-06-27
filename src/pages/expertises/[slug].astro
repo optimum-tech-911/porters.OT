@@ -1,0 +1,102 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import expertiseHero from '../../../hero 2.webp';
+import { expertises, type Expertise } from '../../data/expertises.data';
+
+export function getStaticPaths() {
+  return expertises.map((expertise) => ({
+    params: { slug: expertise.slug },
+    props: { expertise },
+  }));
+}
+
+const { expertise } = Astro.props as { expertise: Expertise };
+---
+
+<PageLayout
+  seo={{
+    title: `${expertise.eyebrow} en portage salarial — The Porters`,
+    description: expertise.seoDescription,
+  }}
+  breadcrumbs={[
+    { label: 'Consultants', href: '/portage-salarial' },
+    { label: expertise.eyebrow },
+  ]}
+>
+  <section class="relative min-h-[38rem] overflow-hidden bg-porters-navy text-porters-white lg:min-h-[44rem]">
+    <img
+      src={expertiseHero.src}
+      width={expertiseHero.width}
+      height={expertiseHero.height}
+      alt="Consultant IT travaillant sur une mission dans un bureau contemporain."
+      class="absolute inset-0 h-full w-full object-cover object-center"
+    />
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.97)_0%,rgba(18,35,48,0.82)_45%,rgba(18,35,48,0.22)_100%)]"></div>
+    <div class="container relative mx-auto flex min-h-[38rem] items-center px-6 py-20 lg:min-h-[44rem] lg:px-8">
+      <div class="max-w-3xl reveal">
+        <p class="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">{expertise.eyebrow} · Consultants IT</p>
+        <h1 class="max-w-3xl text-porters-white">{expertise.title}</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">{expertise.summary}</p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
+          <a href="/rendez-vous" class="btn border-white bg-transparent text-porters-white hover:bg-white hover:text-porters-navy">Parler à un conseiller</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Profils accompagnés</p>
+        <h2>Votre expertise est comprise dès le premier échange</h2>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {expertise.roles.map((role) => (
+          <div class="border-l-[3px] border-porters-gold bg-porters-navy/[0.03] px-5 py-4 reveal">
+            <p class="mb-0 font-heading font-semibold text-porters-navy">{role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-porters-navy/[0.03]">
+    <div class="container mx-auto grid gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+      <div class="reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Missions</p>
+        <h2 class="mb-7">Des interventions cadrées autour de votre valeur</h2>
+        <ul class="space-y-4">
+          {expertise.missionTypes.map((mission) => (
+            <li class="flex items-start gap-3 text-porters-black/72">
+              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold"></span>
+              {mission}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Accompagnement</p>
+        <h2 class="mb-7">Un interlocuteur unique pendant toute la mission</h2>
+        <ol class="space-y-5">
+          {expertise.support.map((item, index) => (
+            <li class="flex items-start gap-4 border-b border-porters-navy/10 pb-5 last:border-0">
+              <span class="font-mono text-sm font-semibold text-porters-gold">0{index + 1}</span>
+              <span class="font-medium text-porters-navy">{item}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-porters-navy py-14 lg:py-18">
+    <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Prochaine étape</p>
+        <h2 class="mb-0 text-porters-white">Parlons de votre TJM, de votre calendrier et de votre mission.</h2>
+      </div>
+      <a href="/rendez-vous" class="btn btn-gold shrink-0">Prendre rendez-vous</a>
+    </div>
+  </section>
+</PageLayout>

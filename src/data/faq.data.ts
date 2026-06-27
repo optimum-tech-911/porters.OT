@@ -6,81 +6,97 @@ export const faqGroups: FaqGroup[] = [
     slug: 'comprendre',
     items: [
       {
-        question: 'Qu\'est-ce que le portage salarial ?',
+        question: 'Comment fonctionne le portage salarial ?',
         answer:
-          'Le portage salarial est une forme d\'emploi qui permet à un professionnel indépendant de bénéficier du statut de salarié tout en exerçant son activité en toute autonomie. La société de portage gère l\'ensemble des aspects administratifs, juridiques et comptables.',
+          "Le portage salarial repose sur une relation tripartite : vous trouvez et réalisez votre mission, l'entreprise cliente contractualise avec The Porters, et The Porters vous salarie pour transformer votre chiffre d'affaires en salaire. Vous gardez votre autonomie commerciale tout en bénéficiant du cadre salarié.",
       },
       {
-        question: 'À qui s\'adresse le portage salarial ?',
+        question: 'Le portage salarial est-il reconnu légalement ?',
         answer:
-          'Le portage salarial s\'adresse à tous les professionnels qui souhaitent exercer une activité de consultant ou de prestataire de services : cadres en reconversion, freelances, retraités actifs, jeunes diplômés ou salariés en quête d\'indépendance.',
+          "Oui. Le portage salarial est encadré par le Code du travail, notamment depuis son intégration en 2008 et l'ordonnance du 2 avril 2015. Il définit les droits et obligations du salarié porté, de l'entreprise cliente et de la société de portage.",
       },
       {
-        question: 'Quelle est la différence entre portage salarial et freelance ?',
+        question: 'Quels métiers IT peuvent être portés ?',
         answer:
-          'Le freelance crée sa propre structure juridique et gère lui-même son administratif. En portage salarial, c\'est la société de portage qui assure cette gestion. Le consultant porté bénéficie ainsi du statut de salarié (protection sociale, chômage, retraite) sans créer d\'entreprise.',
+          'Le portage salarial est adapté aux prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT et conseil tech. Les professions réglementées et services à la personne restent exclus.',
       },
       {
-        question: 'Le portage salarial est-il encadré par la loi ?',
+        question: 'Quelle différence avec la micro-entreprise ou la SASU ?',
         answer:
-          'Oui, le portage salarial est encadré par le Code du travail (articles L.1254-1 et suivants) et par une convention collective nationale signée en 2017. Ce cadre légal garantit la protection des consultants portés et définit les obligations de chaque partie.',
-      },
-      {
-        question: 'Quels métiers peut-on exercer en portage salarial ?',
-        answer:
-          'Le portage salarial est ouvert à la plupart des métiers de prestation intellectuelle : conseil, IT, management, marketing, formation, ingénierie, finance, ressources humaines et bien d\'autres. Les activités de services à la personne et les professions réglementées sont en revanche exclues.',
+          "Le consultant en portage ne crée pas de société et délègue l'administratif, la paie, les déclarations et la facturation. Il conserve une couverture sociale salariée, mais reste responsable de son positionnement, de son TJM et de la recherche de ses missions.",
       },
     ],
   },
   {
-    title: 'Rémunération et frais',
+    title: 'Rémunération, frais et simulateur',
     slug: 'remuneration',
     items: [
       {
-        question: 'Comment est calculée ma rémunération en portage salarial ?',
+        question: 'Comment et quand suis-je payé(e) ?',
         answer:
-          'Votre rémunération est calculée à partir du chiffre d\'affaires facturé à vos clients, duquel sont déduits les frais de gestion de la société de portage, les cotisations sociales et les charges patronales. Le solde constitue votre salaire net.',
+          "Votre salaire et vos frais professionnels validés sont versés au début du mois, dans les cinq premiers jours ouvrés, sous réserve de la réception des éléments de paie et des conditions prévues par votre convention de portage.",
       },
       {
-        question: 'Quels sont les frais de gestion chez The Porters ?',
+        question: 'Que se passe-t-il si mon client règle à 45 ou 60 jours ?',
         answer:
-          'Les frais de gestion de The Porters couvrent l\'ensemble des services d\'accompagnement : gestion administrative, facturation, déclarations sociales, assurance RC Pro et suivi personnalisé. Contactez-nous pour obtenir un devis adapté à votre situation.',
+          "L'avance de trésorerie permet, lorsque les conditions contractuelles sont réunies, de ne pas attendre le règlement final du client pour percevoir votre salaire. Votre conseiller vérifie ces conditions au cadrage de la mission.",
       },
       {
-        question: 'Puis-je déduire mes frais professionnels ?',
+        question: 'Comment sont gérés les frais professionnels ?',
         answer:
-          'Oui, vous pouvez déclarer vos frais professionnels (déplacements, repas, matériel, formation) qui seront remboursés sans charges sociales, augmentant ainsi votre rémunération nette. The Porters vous accompagne dans l\'optimisation de vos frais.',
+          "Les frais liés à votre activité peuvent être pris en compte lorsqu'ils sont justifiés : internet, téléphone, matériel, logiciels, déplacements, repas ou hébergement selon la situation. Ils doivent correspondre à des dépenses professionnelles réelles et documentées.",
       },
       {
-        question: 'Quel TJM faut-il pratiquer pour vivre du portage salarial ?',
+        question: 'Le taux de frais The Porters est-il affiché ?',
         answer:
-          'Le TJM minimum recommandé dépend de votre situation personnelle et de vos charges. En règle générale, un TJM à partir de 300 € permet de dégager un salaire net confortable. Notre simulateur en ligne vous permet d\'estimer précisément votre rémunération.',
+          "Oui. Le taux de frais de gestion utilisé dans le simulateur est fixé à 10 %. Il couvre notamment la gestion sociale et administrative, la facturation, l'accompagnement dédié, les outils et le suivi de votre activité.",
+      },
+      {
+        question: 'À quoi sert le simulateur de revenus ?',
+        answer:
+          "Le simulateur donne une première estimation de salaire net à partir de votre TJM, du nombre de jours travaillés et de vos frais professionnels. Le résultat reste indicatif et peut ensuite être affiné avec un conseiller.",
       },
     ],
   },
   {
-    title: 'Contrat et protection sociale',
-    slug: 'contrat',
+    title: 'Missions et accompagnement',
+    slug: 'missions',
     items: [
       {
-        question: 'Quel type de contrat signe-t-on en portage salarial ?',
+        question: 'Pouvez-vous m’accompagner dans la recherche de missions ?',
         answer:
-          'En portage salarial, vous signez un contrat de travail (CDD ou CDI) avec la société de portage. Un contrat de prestation est également établi entre la société de portage et votre client, définissant les modalités de la mission.',
+          "The Porters ne promet pas de mission garantie. L'équipe vous accompagne sur votre positionnement, la présentation de votre offre, la mobilisation de son réseau, les conseils de prospection et le cadrage de vos opportunités.",
       },
       {
-        question: 'Bénéficie-t-on de l\'assurance chômage en portage salarial ?',
+        question: 'Puis-je garder mes propres clients ?',
         answer:
-          'Oui, en tant que salarié porté, vous cotisez à l\'assurance chômage et pouvez bénéficier des allocations Pôle emploi en cas de fin de mission, sous réserve de remplir les conditions d\'éligibilité habituelles.',
+          "Oui. Le principe du portage salarial est de vous laisser négocier et piloter vos missions tout en déléguant le cadre contractuel, la facturation et la paie à la société de portage.",
       },
       {
-        question: 'Quelle est la couverture sociale en portage salarial ?',
+        question: 'The Porters accompagne-t-il les consultants IT seniors ?',
         answer:
-          'Vous bénéficiez de la même protection sociale qu\'un salarié classique : assurance maladie, cotisations retraite (régime général et complémentaire), prévoyance, mutuelle d\'entreprise et assurance responsabilité civile professionnelle.',
+          'Oui, le positionnement vise notamment les consultants tech expérimentés : DevOps, cloud architects, data engineers, experts IA, RSSI, Product Owners, Scrum Masters, coachs agiles et chefs de projet IT.',
+      },
+    ],
+  },
+  {
+    title: 'Rendez-vous et agences',
+    slug: 'agences-rdv',
+    items: [
+      {
+        question: 'Quels types de rendez-vous puis-je demander ?',
+        answer:
+          'Vous pouvez demander un échange pour découvrir le portage salarial, optimiser votre salaire, passer de freelance à portage, discuter de votre mission IT ou échanger avec une agence.',
       },
       {
-        question: 'Peut-on cumuler portage salarial et autre activité ?',
+        question: 'Puis-je réserver directement un créneau en ligne ?',
         answer:
-          'Oui, il est possible de cumuler le portage salarial avec un emploi salarié, une activité en micro-entreprise ou même la retraite, sous certaines conditions. The Porters vous conseille sur les modalités adaptées à votre situation.',
+          "Oui. Choisissez le motif de l'échange et indiquez vos disponibilités depuis la page Rendez-vous. L'équipe vous confirme ensuite le créneau et le bon interlocuteur par email.",
+      },
+      {
+        question: 'Quelles agences sont mises en avant ?',
+        answer:
+          "The Porters présente cinq implantations : Paris, Lyon, Marseille, Montpellier et Toulouse. Chaque page locale permet de découvrir les expertises accompagnées et de contacter l'équipe.",
       },
     ],
   },
@@ -89,45 +105,14 @@ export const faqGroups: FaqGroup[] = [
     slug: 'entreprises',
     items: [
       {
-        question: 'Pourquoi faire appel à un consultant en portage salarial ?',
+        question: 'Pourquoi travailler avec un consultant en portage salarial ?',
         answer:
-          'Le portage salarial vous permet d\'intégrer rapidement un expert qualifié à votre projet sans les contraintes d\'un recrutement classique. Vous bénéficiez d\'un cadre juridique sécurisé et d\'une flexibilité maximale.',
+          "Le portage salarial permet de collaborer avec un expert indépendant dans un cadre contractuel structuré, sans embauche directe. C'est utile pour des besoins IT, data, cloud, cyber, projet ou transformation avec un périmètre de mission clair.",
       },
       {
-        question: 'Quelles sont les obligations de l\'entreprise cliente ?',
+        question: "Qui signe le contrat avec l'entreprise cliente ?",
         answer:
-          'L\'entreprise cliente signe un contrat de prestation avec la société de portage. Elle n\'a aucune obligation d\'employeur vis-à-vis du consultant. Elle doit simplement définir le périmètre de la mission et respecter les conditions de sécurité sur le lieu de travail.',
-      },
-      {
-        question: 'Le portage salarial est-il plus coûteux qu\'un recrutement classique ?',
-        answer:
-          'Non, le portage salarial est souvent plus avantageux financièrement car vous ne supportez ni les coûts de recrutement, ni les charges liées à l\'embauche permanente. Vous payez uniquement la prestation réalisée, avec une visibilité totale sur les coûts.',
-      },
-    ],
-  },
-  {
-    title: 'Nos agences et accompagnement',
-    slug: 'agences',
-    items: [
-      {
-        question: 'Où sont situées les agences The Porters ?',
-        answer:
-          'The Porters dispose de trois agences en France : Paris, Lyon et Montpellier. Chaque agence propose un accompagnement de proximité avec une équipe dédiée à votre réussite.',
-      },
-      {
-        question: 'Comment se déroule l\'accompagnement chez The Porters ?',
-        answer:
-          'Dès votre inscription, un chargé de compte dédié vous est attribué. Il vous accompagne dans toutes les étapes : signature du contrat, facturation, optimisation de rémunération, gestion des frais et développement de votre activité.',
-      },
-      {
-        question: 'Peut-on travailler partout en France avec The Porters ?',
-        answer:
-          'Oui, nos services de portage salarial sont disponibles sur tout le territoire français, quelle que soit la localisation de votre mission. Nos agences de Paris, Lyon et Montpellier assurent un suivi à distance pour les consultants éloignés.',
-      },
-      {
-        question: 'Comment rejoindre The Porters ?',
-        answer:
-          'Pour rejoindre The Porters, il vous suffit de prendre rendez-vous avec l\'un de nos conseillers via notre site web. Nous étudierons ensemble votre projet et vous proposerons un accompagnement personnalisé.',
+          "L'entreprise cliente contractualise avec The Porters pour la prestation. Le consultant reste salarié porté par The Porters pendant sa mission.",
       },
     ],
   },

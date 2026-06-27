@@ -1,33 +1,26 @@
 import type { Testimonial } from '../types/testimonial';
 
-// TODO: client validation — tous les noms, rôles et témoignages doivent être confirmés par le client
+// Source: old homepage testimonials, extracted in content migration plan.
+// TODO(client): validate consent before using real photos; no reusable testimonial photos were proven in the crawl.
 export const testimonials: Testimonial[] = [
   {
-    name: 'Thomas L.', // TODO: client validation
-    role: 'Consultant IT', // TODO: client validation
+    name: 'Delphine',
+    role: 'Product-Owner en Portage Salarial',
     quote:
-      'Grâce à The Porters, j\'ai pu me concentrer sur mes missions sans me soucier de la gestion administrative. Leur accompagnement personnalisé et leur réactivité font toute la différence au quotidien.', // TODO: client validation
+      "Je voulais devenir indépendante mais je ne souhaitais pas non plus créer ma propre entreprise pour le moment. J'ai entendu parler du portage salarial et j'ai pu me lancer grâce à THE PORTERS. A mi-chemin entre l'indépendance et le salariat, je me sens à la fois libre et accompagnée.",
     city: 'Paris',
   },
   {
-    name: 'Sophie M.', // TODO: client validation
-    role: 'Consultante en management', // TODO: client validation
+    name: 'Chloé',
+    role: 'DSI en Portage Salarial',
     quote:
-      'J\'ai choisi The Porters pour leur transparence sur les frais de gestion et la qualité de leur suivi. Depuis deux ans, je bénéficie d\'une vraie sécurité tout en gardant ma liberté de consultante indépendante.', // TODO: client validation
-    city: 'Lyon',
+      "Grâce au portage salarial, je me sens plus libre et sécurisée. Les charges sont transparentes, je continue à toucher mes indemnités chômage et retraite. Je recommande le portage salarial à tout indépendant voulant bénéficier des avantages du salariat.",
+    city: 'Toulouse',
   },
   {
-    name: 'Karim D.', // TODO: client validation
-    role: 'Expert cybersécurité', // TODO: client validation
+    name: 'Andy P.',
+    role: 'Chef de Projet Digital en Portage Salarial',
     quote:
-      'Le portage salarial avec The Porters m\'a permis de travailler sur des projets internationaux en toute sérénité. La gestion des contrats et de la facturation est impeccable, et l\'équipe est toujours disponible.', // TODO: client validation
-    city: 'Montpellier',
-  },
-  {
-    name: 'Claire B.', // TODO: client validation
-    role: 'Chef de projet digital', // TODO: client validation
-    quote:
-      'Après plusieurs années en freelance, j\'ai opté pour le portage salarial chez The Porters. Le gain de temps sur l\'administratif est considérable, et je profite d\'une couverture sociale complète sans renoncer à mon indépendance.', // TODO: client validation
-    city: 'Paris',
+      "Le jour où j'ai passé le cap du Portage Salarial, j'ai regardé le soleil se coucher. J'avais été tellement inquiet de trouver un emploi que j'avais oublié d'apprécier les petites choses. Je suis beaucoup plus occupé ces jours-ci, mais je n'oublie plus de prendre le temps de respirer.",
   },
 ];

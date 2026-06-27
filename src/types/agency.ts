@@ -21,6 +21,17 @@ export interface Agency {
   heroTitle: string;
   heroSubtitle: string;
   description: string;
+  proofNote?: string;
+  serviceCards?: { title: string; description: string }[];
+  contentSections?: {
+    eyebrow?: string;
+    title: string;
+    paragraphs: string[];
+  }[];
+  highlight?: {
+    title: string;
+    body: string;
+  };
   teamMembers: TeamMember[];
   localFaq: { question: string; answer: string }[];
   coordinates: { lat: number; lng: number };

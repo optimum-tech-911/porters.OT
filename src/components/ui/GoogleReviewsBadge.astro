@@ -1,0 +1,140 @@
+---
+/**
+ * Google Reviews badge – displays star rating, score and review count.
+ * Client-supplied values only — no API calls.
+ */
+interface Props {
+  score?: string;
+  reviewCount?: number;
+  variant?: 'light' | 'dark';
+}
+
+const { score = '4.8', reviewCount = 47, variant = 'light' } = Astro.props;
+const fullStars = Math.floor(parseFloat(score));
+const hasHalf = parseFloat(score) - fullStars >= 0.3;
+---
+
+<a
+  href="https://g.page/r/theporters/review"
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={['google-badge', `google-badge--${variant}`]}
+  aria-label={`Avis Google : ${score}/5 basé sur ${reviewCount} avis`}
+>
+  <span class="google-badge__icon" aria-hidden="true">
+    <!-- Google "G" mini icon -->
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23Z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 0 0 1 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84Z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53Z" fill="#EA4335"/>
+    </svg>
+  </span>
+  <span class="google-badge__content">
+    <span class="google-badge__score">{score}<span class="google-badge__max">/5</span></span>
+    <span class="google-badge__stars" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg class:list={['google-badge__star', { 'google-badge__star--filled': i < fullStars, 'google-badge__star--half': i === fullStars && hasHalf }]} width="14" height="14" viewBox="0 0 20 20">
+          <defs>
+            <linearGradient id={`star-half-${i}`}>
+              <stop offset="50%" stop-color="#FBBC05"/>
+              <stop offset="50%" stop-color="currentColor" stop-opacity="0.25"/>
+            </linearGradient>
+          </defs>
+          <path
+            d="M10 1.12l2.47 5.01 5.53.8-4 3.9.94 5.5L10 13.77l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.12z"
+            fill={i < fullStars ? '#FBBC05' : i === fullStars && hasHalf ? `url(#star-half-${i})` : 'currentColor'}
+            opacity={i < fullStars || (i === fullStars && hasHalf) ? 1 : 0.2}
+          />
+        </svg>
+      ))}
+    </span>
+    <span class="google-badge__count">{reviewCount} avis</span>
+  </span>
+</a>
+
+<style>
+  .google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 1rem 0.6rem 0.75rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .google-badge:hover {
+    transform: translateY(-2px);
+    color: inherit;
+  }
+
+  .google-badge--light {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(40, 55, 67, 0.1);
+    box-shadow: 0 4px 16px rgba(40, 55, 67, 0.08);
+    color: var(--color-porters-navy);
+  }
+
+  .google-badge--light:hover {
+    box-shadow: 0 8px 24px rgba(40, 55, 67, 0.14);
+    color: var(--color-porters-navy);
+  }
+
+  .google-badge--dark {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+  }
+
+  .google-badge--dark:hover {
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    color: #ffffff;
+  }
+
+  .google-badge__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+  }
+
+  .google-badge__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .google-badge__score {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .google-badge__max {
+    font-size: 0.72rem;
+    font-weight: 500;
+    opacity: 0.55;
+  }
+
+  .google-badge__stars {
+    display: flex;
+    gap: 1px;
+  }
+
+  .google-badge__count {
+    font-size: 0.68rem;
+    font-weight: 600;
+    opacity: 0.6;
+    line-height: 1;
+  }
+</style>

@@ -2,14 +2,14 @@ import type { PageSeo } from '../types/seo';
 
 export const pageSeo: Record<string, PageSeo> = {
   home: {
-    title: 'The Porters — Société de portage salarial',
+    title: 'The Porters — Portage salarial consultants IT',
     description:
-      'The Porters, société de portage salarial premium. Accompagnement personnalisé, gestion administrative simplifiée et optimisation de rémunération pour consultants indépendants.',
+      'The Porters accompagne les consultants IT indépendants en portage salarial : cybersécurité, data, IA, DevOps, cloud, agilité, projet et conseil tech.',
   },
   portageSalarial: {
-    title: 'Le portage salarial — The Porters',
+    title: 'Portage salarial pour consultants IT — The Porters',
     description:
-      'Découvrez le portage salarial avec The Porters : statut sécurisé, liberté professionnelle et accompagnement sur mesure pour les consultants indépendants en France.',
+      'Découvrez le portage salarial pour consultants IT : statut salarié, liberté de mission, TJM, frais professionnels, paie et accompagnement The Porters.',
   },
   entreprises: {
     title: 'Portage salarial pour les entreprises — The Porters',
@@ -17,24 +17,24 @@ export const pageSeo: Record<string, PageSeo> = {
       'Intégrez des consultants experts à vos projets grâce au portage salarial. The Porters vous offre flexibilité, sécurité juridique et simplicité contractuelle.',
   },
   simulateur: {
-    title: 'Simulateur de revenus en portage salarial — The Porters',
+    title: 'Simulateur de revenus consultant IT — The Porters',
     description:
-      'Estimez vos revenus nets en portage salarial avec notre simulateur gratuit. Calculez votre salaire en fonction de votre TJM et de vos frais professionnels.',
+      'Estimez vos revenus nets en portage salarial à partir de votre TJM, de vos jours facturés, de votre profil métier et de vos frais professionnels.',
   },
   rendezVous: {
-    title: 'Parler à un conseiller — The Porters',
+    title: 'Prendre rendez-vous portage salarial IT — The Porters',
     description:
-      'Parlez à un conseiller The Porters pour cadrer votre projet, découvrir le portage salarial et obtenir une simulation personnalisée de vos revenus.',
+      'Choisissez un type de rendez-vous The Porters : découvrir le portage, optimiser votre salaire, passer de freelance à portage ou discuter de votre mission IT.',
   },
   agences: {
     title: 'Nos agences de portage salarial — The Porters',
     description:
-      'Retrouvez les agences The Porters à Paris, Lyon et Montpellier. Un accompagnement de proximité pour les consultants indépendants partout en France.',
+      'Retrouvez les agences The Porters à Paris, Lyon, Marseille, Montpellier et Toulouse. Coordonnées locales publiées après validation client.',
   },
   blog: {
-    title: 'Blog — Conseils et actualités du portage salarial',
+    title: 'Blog portage salarial IT — The Porters',
     description:
-      'Articles, guides et conseils pratiques sur le portage salarial. Retrouvez toutes les ressources pour réussir en tant que consultant indépendant.',
+      'Guides et conseils sur le portage salarial pour consultants IT : TJM, frais, missions, contrats, data, cloud, cyber, DevOps et indépendance.',
   },
   livresBlancs: {
     title: 'Livres blancs et guides — The Porters',
@@ -42,9 +42,9 @@ export const pageSeo: Record<string, PageSeo> = {
       'Téléchargez nos livres blancs et guides pratiques sur le portage salarial. Ressources gratuites pour comprendre et optimiser votre activité indépendante.',
   },
   faq: {
-    title: 'FAQ — Questions fréquentes sur le portage salarial',
+    title: 'FAQ portage salarial consultants IT — The Porters',
     description:
-      'Trouvez les réponses à vos questions sur le portage salarial : fonctionnement, rémunération, contrat, protection sociale et accompagnement.',
+      'Réponses sur le portage salarial, la rémunération, les frais, la recherche de missions, les agences, le simulateur et les rendez-vous The Porters.',
   },
   contact: {
     title: 'Contactez-nous — The Porters',
@@ -52,9 +52,9 @@ export const pageSeo: Record<string, PageSeo> = {
       'Contactez The Porters pour en savoir plus sur le portage salarial. Notre équipe est à votre disposition par téléphone, email ou dans nos agences.',
   },
   quiSommesNous: {
-    title: 'Qui sommes-nous — The Porters',
+    title: 'Qui sommes-nous — The Porters portage salarial IT',
     description:
-      'Découvrez The Porters, société de portage salarial fondée sur la proximité et la qualité de service. Notre mission : accompagner les consultants indépendants.',
+      'Découvrez The Porters, société de portage salarial à taille humaine pour consultants indépendants, avec un focus renforcé sur les profils IT et tech.',
   },
   equipe: {
     title: 'Notre équipe — The Porters',

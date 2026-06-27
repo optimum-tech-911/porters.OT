@@ -1,75 +1,210 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import HomeHeroCarousel from '../components/home/HomeHeroCarousel';
-import heroImage from '../../hero .webp';
-import heroImage2 from '../../hero 2.webp';
-import heroImage3 from '../../hero 3.webp';
-import consultantImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_36 (6).webp';
-import enterpriseImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_34 (1).webp';
-import simulatorPreviewImage from '../../images/ChatGPT Image 23 juin 2026, 18_50_35 (2).webp';
+import LogoMarquee from '../components/ui/LogoMarquee.astro';
+import independentHero1Desktop from '../../images/hero/independent-hero-01-desktop.webp';
+import independentHero2Desktop from '../../images/hero/independent-hero-02-desktop.webp';
+import independentHero3Desktop from '../../images/hero/independent-hero-03-desktop.webp';
+import independentHero4Desktop from '../../images/hero/independent-hero-04-desktop.webp';
+import independentHero1Mobile from '../../images/hero/independent-hero-01-mobile.webp';
+import independentHero2Mobile from '../../images/hero/independent-hero-02-mobile.webp';
+import independentHero3Mobile from '../../images/hero/independent-hero-03-mobile.webp';
+import independentHero4Mobile from '../../images/hero/independent-hero-04-mobile.webp';
+import enterpriseDesktop1 from '../../images/hero/entreprise-desktop-01.webp';
+import enterpriseDesktop2 from '../../images/hero/entreprise-desktop-02.webp';
+import enterpriseDesktop3 from '../../images/hero/entreprise-desktop-03.webp';
+import enterpriseMobile1 from '../../images/hero/entreprise-mobile-01.webp';
+import enterpriseMobile2 from '../../images/hero/entreprise-mobile-02.webp';
+import pathwayConsultantImage from '../../images/sections/home-pathway-consultant.webp';
+import pathwayEnterpriseImage from '../../images/sections/home-pathway-enterprise.webp';
+import pathwaySimulationImage from '../../images/sections/home-pathway-simulation.webp';
+import simulatorPreviewImage from '../../images/business-meeting.webp';
+import { agencies } from '../data/agencies.data';
+import { testimonials } from '../data/testimonials.data';
+import { blogPosts, getBlogCategory } from '../data/blog.data';
 
-const heroSlides = [
+const homepageAgencies = agencies.filter((agency) =>
+  ['paris', 'lyon', 'marseille', 'montpellier', 'toulouse'].includes(agency.slug),
+);
+const homepagePosts = [
+  'secteurs-adaptes-portage-salarial',
+  'optimiser-remuneration-portage-salarial',
+  'role-charge-de-compte-portage-salarial',
+]
+  .map((slug) => blogPosts.find((post) => post.slug === slug))
+  .filter(Boolean);
+
+const partnerNames = [
+  'BPCE',
+  'Groupama',
+  'Airbus',
+  'Safran',
+  'Thales',
+  'CMA CGM',
+  'Sopra Steria',
+  'Akkodis',
+  'Scalian',
+  'Inetum',
+];
+const partnerLogos = partnerNames.map((name, index) => ({
+  name,
+  url: `/images/logos/partners/partner-${index + 1}.png`,
+}));
+const row1 = partnerLogos.slice(0, 5);
+const row2 = partnerLogos.slice(5, 10);
+const testimonialPortraits = [
   {
-    label: 'Société de portage salarial',
-    titleLines: ['Entreprendre librement,', 'en toute sécurité'],
-    description:
-      "The Porters accompagne les consultants indépendants et les entreprises dans une relation de confiance. Bénéficiez de la liberté de l'indépendance avec la protection du salariat.",
-    mobileDescription:
-      "La liberté de l'indépendance, avec la sécurité du salariat et un accompagnement humain.",
-    primaryCta: { label: 'Simuler mes revenus', href: '/simulateur' },
-    secondaryCta: { label: 'Parler à un conseiller', href: '/rendez-vous' },
-    image: heroImage,
-    alt: 'Conseillère The Porters au téléphone devant des bureaux modernes.',
-    mobileObjectPosition: '72% center',
-    desktopObjectPosition: '84% center',
-    mobileTitleMaxWidth: '18rem',
-    mobileTextMaxWidth: '18rem',
+    image: independentHero2Mobile,
+    alt: 'Portrait d’un consultant indépendant dans son environnement de travail.',
+    objectPosition: '58% 34%',
   },
   {
-    label: 'SIMULATION & RÉMUNÉRATION',
-    titleLines: ["Transformez votre chiffre d'affaires", 'en salaire, sans complexité'],
-    description:
-      "Estimez vos revenus, comprenez vos frais et avancez avec une vision claire de votre rémunération en portage salarial.",
-    mobileDescription:
-      "Estimez vos revenus et avancez avec une vision claire de votre rémunération.",
-    primaryCta: { label: 'Simuler mon salaire', href: '/simulateur' },
-    secondaryCta: { label: 'Comprendre le portage', href: '/portage-salarial' },
-    image: heroImage2,
-    alt: 'Consultante en rendez-vous professionnel dans un bureau lumineux.',
-    mobileObjectPosition: '58% center',
-    desktopObjectPosition: 'center center',
-    mobileTitleMaxWidth: '18.5rem',
-    mobileTextMaxWidth: '17.5rem',
+    image: enterpriseMobile1,
+    alt: 'Professionnelle participant au cadrage d’une mission IT.',
+    objectPosition: '24% 28%',
   },
   {
-    label: 'ACCOMPAGNEMENT CONSULTANT',
-    titleLines: ['Concentrez-vous sur vos missions,', 'The Porters gère le reste'],
-    description:
-      "Contrats, facturation, bulletins de paie et cadre administratif : vous restez concentré sur votre expertise, avec un accompagnement humain à chaque étape.",
-    mobileDescription:
-      "Contrats, facturation et paie : restez concentré sur vos missions, nous gérons le reste.",
-    primaryCta: { label: 'Prendre rendez-vous', href: '/rendez-vous' },
-    secondaryCta: { label: "Découvrir l'accompagnement", href: '/portage-salarial' },
-    image: heroImage3,
-    alt: 'Consultant concentré devant son ordinateur dans un espace de travail clair.',
-    mobileObjectPosition: '64% center',
-    desktopObjectPosition: 'center center',
-    mobileTitleMaxWidth: '17.5rem',
-    mobileTextMaxWidth: '17.5rem',
+    image: enterpriseMobile2,
+    alt: 'Expert IT échangeant avec une équipe projet.',
+    objectPosition: '51% 32%',
   },
 ];
+const statusCards = [
+  {
+    title: 'Portage salarial',
+    body: 'Pour exercer en autonomie avec un contrat salarié, une paie structurée et une gestion administrative déléguée.',
+  },
+  {
+    title: 'CDI',
+    body: 'Pour les profils qui recherchent un cadre durable, une continuité de mission et une protection sociale complète.',
+  },
+  {
+    title: 'CDD',
+    body: 'Pour cadrer une mission limitée dans le temps avec une structure contractuelle claire.',
+  },
+  {
+    title: 'Freelance',
+    body: 'Pour comparer les statuts, comprendre les arbitrages et choisir le bon niveau de charge administrative.',
+  },
+];
+const expertiseGroups = [
+  'IT & digital',
+  'Data / IA',
+  'Cybersécurité',
+  'Cloud & DevOps',
+  'Banque / assurance',
+  'Industrie',
+  'Aéronautique',
+  'Management de projet',
+];
+
+const heroAudiences = [
+  {
+    id: 'consultant' as const,
+    tabLabel: 'Je suis indépendant',
+    eyebrow: 'Portage salarial · Consultants IT indépendants',
+    headline: 'Restez libre. On porte le reste.',
+    subhead: 'Cybersécurité, data/IA, DevOps, agilité : vous gardez la mission, nous gérons le contrat, la paie et l’administratif.',
+    stat: { value: '+10 ans', label: 'd’accompagnement' },
+    primaryCta: { label: 'Simuler mon salaire', href: '/simulateur' },
+    secondaryCta: { label: 'Prendre rendez-vous', href: '/rendez-vous' },
+    desktopImages: [
+      {
+        ...independentHero1Desktop,
+        alt: 'Deux consultants indépendants analysant ensemble les résultats d’une mission.',
+        objectPosition: 'center',
+      },
+      {
+        ...independentHero2Desktop,
+        alt: 'Consultant indépendant concentré sur son activité devant son ordinateur.',
+        objectPosition: 'center',
+      },
+      {
+        ...independentHero3Desktop,
+        alt: 'Consultante indépendante échangeant avec un client dans un bureau contemporain.',
+        objectPosition: 'center',
+      },
+      {
+        ...independentHero4Desktop,
+        alt: 'Consultante indépendante travaillant sur son ordinateur dans son espace de travail.',
+        objectPosition: 'center',
+      },
+    ],
+    mobileImages: [
+      {
+        ...independentHero1Mobile,
+        alt: 'Deux consultants indépendants analysant ensemble les résultats d’une mission.',
+        objectPosition: '52% 44%',
+      },
+      {
+        ...independentHero2Mobile,
+        alt: 'Consultant indépendant travaillant dans un bureau contemporain.',
+        objectPosition: '66% 43%',
+      },
+      {
+        ...independentHero3Mobile,
+        alt: 'Consultante indépendante échangeant avec un client.',
+        objectPosition: '62% 42%',
+      },
+      {
+        ...independentHero4Mobile,
+        alt: 'Consultante indépendante travaillant sur son ordinateur.',
+        objectPosition: '55% 42%',
+      },
+    ],
+  },
+  {
+    id: 'entreprise' as const,
+    tabLabel: 'Je suis une entreprise',
+    eyebrow: 'Solutions IT · Entreprises',
+    headline: 'Le bon consultant IT, sans la lourdeur administrative.',
+    subhead: 'Sourcing rapide en France et à l’international, zéro gestion RH, un interlocuteur unique du brief à la fin de mission.',
+    stat: { value: '+150', label: 'missions en cours' },
+    primaryCta: { label: 'Trouver un consultant', href: '/entreprises' },
+    secondaryCta: { label: 'Prendre rendez-vous', href: '/rendez-vous' },
+    desktopImages: [
+      {
+        ...enterpriseDesktop1,
+        alt: 'Équipe de professionnels cadrant une mission autour d’un ordinateur.',
+        objectPosition: 'center',
+      },
+      {
+        ...enterpriseDesktop2,
+        alt: 'Consultants et entreprise réunis dans un bureau lumineux.',
+        objectPosition: 'center',
+      },
+      {
+        ...enterpriseDesktop3,
+        alt: 'Équipe projet en échange autour d’une mission IT.',
+        objectPosition: '35% center',
+      },
+    ],
+    mobileImages: [
+      {
+        ...enterpriseMobile1,
+        alt: 'Équipe projet réunie autour d’un ordinateur.',
+        objectPosition: '50% center',
+      },
+      {
+        ...enterpriseMobile2,
+        alt: 'Professionnels étudiant ensemble les besoins d’une mission.',
+        objectPosition: '50% center',
+      },
+    ],
+  },
+].reverse();
 ---
 
 <PageLayout
   seo={{
-    title: 'The Porters — Société de portage salarial premium en France',
-    description: 'The Porters, société de portage salarial premium. Accompagnement personnalisé pour consultants et entreprises à Paris, Lyon et Montpellier. Simulez vos revenus.',
+    title: 'The Porters — Portage salarial pour consultants IT et tech',
+    description: 'The Porters accompagne les consultants IT indépendants en portage salarial : cyber, data, IA, DevOps, cloud, agilité et projet. Simulez vos revenus.',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'The Porters',
       url: 'https://www.porters.fr',
-      description: 'Société de portage salarial premium pour consultants et entreprises en France.',
+      description: 'Société de portage salarial pour consultants IT, tech, conseil et entreprises en France.',
       potentialAction: {
         '@type': 'SearchAction',
         target: 'https://www.porters.fr/blog?q={search_term_string}',
@@ -82,129 +217,229 @@ const heroSlides = [
   <!-- ==========================================
        HERO SECTION
        ========================================== -->
-  <HomeHeroCarousel client:load slides={heroSlides} />
+  <HomeHeroCarousel client:load audiences={heroAudiences} />
 
   <!-- ==========================================
-       TRUST BAR
+       LOGO MARQUEE — Clients & Partners
        ========================================== -->
-  <section class="border-y border-porters-navy/8 py-8 sm:py-9 bg-porters-navy/[0.02]">
+  <section class="partner-proof-section">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-4 md:gap-8 text-center">
-        <div class="reveal">
-          <p class="text-[1.8rem] sm:text-2xl lg:text-3xl font-heading font-bold text-porters-navy">3</p>
-          <p class="text-sm text-porters-black/60 mt-2">Agences en France</p>
+      <div class="partner-proof-intro reveal reveal-up">
+        <div>
+          <p class="partner-proof-kicker">Collaborations & écosystème</p>
+          <h2>Des équipes qui nous font déjà <span class="gold-underline">confiance</span></h2>
         </div>
-        <div class="reveal">
-          <p class="text-[1.8rem] sm:text-2xl lg:text-3xl font-heading font-bold text-porters-navy">
-            <span class="text-porters-gold">+</span>10 ans
-          </p>
-          <p class="text-sm text-porters-black/60 mt-2">D'expérience</p>
-        </div>
-        <div class="reveal">
-          <p class="text-[1.2rem] sm:text-2xl lg:text-3xl font-heading font-bold text-porters-navy">
-            Accompagnement
-          </p>
-          <p class="text-sm text-porters-black/60 mt-2">Dédié à votre réussite</p>
-        </div>
-        <div class="reveal">
-          <p class="text-[1.2rem] sm:text-2xl lg:text-3xl font-heading font-bold text-porters-navy">
-            Transparence
-          </p>
-          <p class="text-sm text-porters-black/60 mt-2">Sans surprise</p>
-        </div>
+        <p>Grands comptes et partenaires ESN mobilisent The Porters pour des missions IT, data, cyber, cloud et transformation.</p>
       </div>
+    </div>
+    <div class="partner-proof-marquees reveal reveal-scale">
+      <LogoMarquee
+        title="Entreprises accompagnées"
+        logos={row1}
+        direction="left"
+        speed="34s"
+      />
+      <LogoMarquee
+        title="Partenaires ESN"
+        logos={row2}
+        direction="right"
+        speed="38s"
+      />
     </div>
   </section>
 
   <!-- ==========================================
-       CONSULTANT VS ENTREPRISE SPLIT
+       TESTIMONIALS
        ========================================== -->
-  <section class="section pt-14 lg:pt-16">
+  <section class="testimonial-feature-section">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-10 lg:mb-14 reveal">
-        <h2 class="mb-4">Vous êtes <span class="gold-underline">consultant</span> ou <span class="gold-underline">entreprise</span> ?</h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Découvrez comment The Porters vous accompagne selon votre profil.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Consultant card -->
-        <div class="card p-0 overflow-hidden reveal group">
-          <div class="aspect-[16/9] overflow-hidden">
-            <img
-              src={consultantImage.src}
-              width={consultantImage.width}
-              height={consultantImage.height}
-              alt="Consultante indépendante travaillant sur ordinateur dans un bureau lumineux."
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            />
+      <div class="testimonial-feature-grid">
+        <div class="testimonial-feature-intro reveal reveal-left">
+          <p class="testimonial-feature-kicker">L’accompagnement dans la durée</p>
+          <div class="testimonial-experience">
+            <strong>+10 ans</strong>
+            <span>d’expérience aux côtés des consultants indépendants</span>
           </div>
-          <div class="p-8 lg:p-10">
-            <div class="w-12 h-12 rounded-lg bg-porters-navy/5 flex items-center justify-center mb-6">
-              <svg class="w-6 h-6 text-porters-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+          <h2>Un suivi humain qui reste présent <span class="gold-underline">pendant la mission</span></h2>
+          <p>Un interlocuteur unique, une équipe disponible et des réponses concrètes sur le contrat, la paie, les frais et la relation client.</p>
+
+          <div class="testimonial-portrait-group" aria-label="Profils de consultants accompagnés">
+            <div class="testimonial-portraits">
+              {testimonialPortraits.map((portrait) => (
+                <img
+                  src={portrait.image.src}
+                  width={portrait.image.width}
+                  height={portrait.image.height}
+                  alt={portrait.alt}
+                  style={`object-position: ${portrait.objectPosition}`}
+                  loading="lazy"
+                />
+              ))}
             </div>
-            <h3 class="text-porters-navy mb-3">Consultants indépendants</h3>
-            <p class="text-porters-black/60 mb-6 leading-relaxed">
-              Vous souhaitez vous lancer en tant que consultant indépendant ou optimiser votre activité actuelle ? Le portage salarial vous offre la sécurité du salariat avec la liberté de l'entrepreneuriat.
-            </p>
-            <ul class="space-y-3 mb-8 text-sm text-porters-black/70">
-              <li class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-                Protection sociale complète
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-                Gestion administrative simplifiée
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-                Accompagnement personnalisé
-              </li>
-            </ul>
-            <a href="/portage-salarial" class="btn btn-ghost group-hover:text-porters-gold">
-              Découvrir le portage salarial
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+            <span>Profils IT, produit, data et transformation</span>
           </div>
         </div>
 
-        <!-- Enterprise card -->
-        <div class="card p-0 overflow-hidden reveal group">
-          <div class="aspect-[16/9] overflow-hidden">
-            <img
-              src={enterpriseImage.src}
-              width={enterpriseImage.width}
-              height={enterpriseImage.height}
-              alt="Rendez-vous professionnel conclu par une poignée de main."
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-          </div>
-          <div class="p-8 lg:p-10">
-            <div class="w-12 h-12 rounded-lg bg-porters-navy/5 flex items-center justify-center mb-6">
-              <svg class="w-6 h-6 text-porters-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 0h.008v.008h-.008V7.5Z" /></svg>
-            </div>
-            <h3 class="text-porters-navy mb-3">Entreprises</h3>
-            <p class="text-porters-black/60 mb-6 leading-relaxed">
-              Vous avez besoin de compétences externes spécialisées ? Le portage salarial sécurise vos collaborations avec des consultants indépendants qualifiés, en toute conformité.
-            </p>
-            <ul class="space-y-3 mb-8 text-sm text-porters-black/70">
-              <li class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-                Conformité juridique garantie
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-                Simplification administrative
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-                Accès aux meilleurs talents
-              </li>
-            </ul>
-            <a href="/entreprises" class="btn btn-ghost group-hover:text-porters-gold">
-              Solutions pour entreprises
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
+        <article class="testimonial-feature-quote reveal reveal-right">
+          <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+          <blockquote>« {testimonials[0].quote} »</blockquote>
+          <footer>
+            <strong>{testimonials[0].name}</strong>
+            <span>{testimonials[0].role}{testimonials[0].city ? ` — ${testimonials[0].city}` : ''}</span>
+          </footer>
+        </article>
+      </div>
+
+      <div class="testimonial-secondary-grid">
+        {testimonials.slice(1, 3).map((testimonial, index) => (
+          <article class="testimonial-secondary-quote reveal reveal-up" style={`--reveal-delay: ${(index + 1) * 110}ms`}>
+            <blockquote>« {testimonial.quote} »</blockquote>
+            <footer>
+              <strong>{testimonial.name}</strong>
+              <span>{testimonial.role}{testimonial.city ? ` — ${testimonial.city}` : ''}</span>
+            </footer>
+          </article>
+        ))}
+      </div>
+
+      <p class="testimonial-source-note">Témoignages issus du site The Porters. Les visuels illustrent les profils accompagnés et ne prétendent pas représenter les personnes citées.</p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       EXPERIENCE PATHWAYS
+       ========================================== -->
+  <section class="section pt-14 lg:pt-16 bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-10 lg:mb-14 reveal">
+        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Explorer The Porters</p>
+        <h2 class="mb-4">Une plateforme de services pour avancer <span class="gold-underline">plus clairement</span></h2>
+        <p class="text-porters-black/60 max-w-3xl mx-auto">
+          Consultants, entreprises et équipes locales accèdent rapidement au bon parcours : comprendre, simuler, cadrer une mission ou parler à un conseiller.
+        </p>
+      </div>
+
+      <div class="experience-grid reveal">
+        <a href="/portage-salarial" class="experience-card group">
+          <img
+            src={pathwayConsultantImage.src}
+            width={pathwayConsultantImage.width}
+            height={pathwayConsultantImage.height}
+            alt="Consultante indépendante organisant sa mission depuis son espace de travail."
+            class="experience-card-image experience-card-image-consultant"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="experience-card-overlay"></span>
+          <span class="experience-card-content">
+            <span class="experience-card-kicker">Consultants IT</span>
+            <span class="experience-card-title">Exercer librement avec un cadre salarié</span>
+            <span class="experience-card-text">
+              Cybersécurité, data, IA, cloud, DevOps, Product Ownership ou chefferie de projet : gardez votre autonomie, The Porters prend le relais administratif.
+            </span>
+            <span class="experience-card-action">
+              Découvrir le portage
+              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="/entreprises" class="experience-card group">
+          <img
+            src={pathwayEnterpriseImage.src}
+            width={pathwayEnterpriseImage.width}
+            height={pathwayEnterpriseImage.height}
+            alt="Rendez-vous professionnel conclu par une poignée de main."
+            class="experience-card-image experience-card-image-enterprise"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="experience-card-overlay"></span>
+          <span class="experience-card-content">
+            <span class="experience-card-kicker">Entreprises</span>
+            <span class="experience-card-title">Collaborer avec des experts sans complexité</span>
+            <span class="experience-card-text">
+              Sécurisez une collaboration avec un consultant externe sur un projet IT, data, cloud, cyber ou transformation.
+            </span>
+            <span class="experience-card-action">
+              Solutions entreprises
+              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="/simulateur" class="experience-card group">
+          <img
+            src={pathwaySimulationImage.src}
+            width={pathwaySimulationImage.width}
+            height={pathwaySimulationImage.height}
+            alt="Consultants examinant ensemble des données financières et de mission."
+            class="experience-card-image experience-card-image-simulation"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="experience-card-overlay"></span>
+          <span class="experience-card-content">
+            <span class="experience-card-kicker">Simulation</span>
+            <span class="experience-card-title">Estimer son salaire avant d’avancer</span>
+            <span class="experience-card-text">
+              Comprenez rapidement l’impact de votre TJM, de vos jours facturés et de vos frais professionnels.
+            </span>
+            <span class="experience-card-action">
+              Simuler mes revenus
+              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3 reveal">
+        <div class="service-proof">
+          <span>01</span>
+          <p>Contrats, facturation et suivi administratif cadrés avec l’entreprise cliente.</p>
+        </div>
+        <div class="service-proof">
+          <span>02</span>
+          <p>Lecture claire du TJM, des frais professionnels et des éléments de paie à valider.</p>
+        </div>
+        <div class="service-proof">
+          <span>03</span>
+          <p>Accompagnement humain pour positionnement, transition freelance et relation client.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section bg-porters-navy text-porters-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
+        <div class="reveal">
+          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Offres & statuts</p>
+          <h2 class="text-porters-white mb-5">Un discours clair pour consultants et entreprises</h2>
+          <p class="text-porters-white/68 leading-relaxed">
+            La navigation et le contenu séparent maintenant les besoins côté collaborateur et côté client, avec des entrées lisibles par statut, expertise et niveau d'accompagnement.
+          </p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 reveal">
+          {statusCards.map((status) => (
+            <article class="status-card">
+              <h3>{status.title}</h3>
+              <p>{status.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="expertise-band reveal">
+        <div>
+          <p class="mb-2 text-sm font-semibold uppercase tracking-wider text-porters-gold">Domaines d'expertise</p>
+          <h3 class="text-porters-white">Des expertises organisées en sous-catégories</h3>
+        </div>
+        <div class="expertise-tags">
+          {expertiseGroups.map((expertise) => (
+            <span>{expertise}</span>
+          ))}
         </div>
       </div>
     </div>
@@ -216,8 +451,9 @@ const heroSlides = [
   <section class="section bg-porters-navy/[0.02]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
+        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">L'atelier du Portage Salarial</p>
         <h2 class="mb-4">Du chiffre d'affaires au <span class="gold-underline">salaire</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Un processus simple et transparent pour transformer votre activité de consultant en salaire net.</p>
+        <p class="text-porters-black/60 max-w-2xl mx-auto">Simplicité, souplesse, service et sécurité pour transformer votre mission en salaire.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
@@ -225,9 +461,9 @@ const heroSlides = [
           <div class="w-16 h-16 rounded-full border-2 border-porters-gold flex items-center justify-center mx-auto mb-6">
             <span class="text-2xl font-heading font-bold text-porters-navy">1</span>
           </div>
-          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Trouvez votre mission</h3>
+          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Optimisez vos revenus</h3>
           <p class="text-sm text-porters-black/60 leading-relaxed">
-            Vous identifiez vos missions et négociez vos conditions avec l'entreprise cliente. Nous vous accompagnons dans la contractualisation.
+            Vous négociez votre mission et votre TJM avec le client. The Porters met ensuite en place le cadre légal et contractuel.
           </p>
         </div>
 
@@ -235,9 +471,9 @@ const heroSlides = [
           <div class="w-16 h-16 rounded-full border-2 border-porters-gold flex items-center justify-center mx-auto mb-6">
             <span class="text-2xl font-heading font-bold text-porters-navy">2</span>
           </div>
-          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Signez votre contrat</h3>
+          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Libérez-vous de l'administratif</h3>
           <p class="text-sm text-porters-black/60 leading-relaxed">
-            The Porters établit un contrat de travail en CDI ou CDD. Vous bénéficiez de la protection sociale complète dès le premier jour.
+            Facturation, relation administrative, frais professionnels et suivi de paie sont traités pour vous laisser avancer sur la mission.
           </p>
         </div>
 
@@ -245,9 +481,9 @@ const heroSlides = [
           <div class="w-16 h-16 rounded-full border-2 border-porters-gold flex items-center justify-center mx-auto mb-6">
             <span class="text-2xl font-heading font-bold text-porters-navy">3</span>
           </div>
-          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Travaillez sereinement</h3>
+          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Conservez le statut salarié</h3>
           <p class="text-sm text-porters-black/60 leading-relaxed">
-            Concentrez-vous sur votre expertise. Nous gérons la facturation, les déclarations, les bulletins de paie et l'accompagnement au quotidien.
+            Votre chiffre d'affaires devient un salaire avec bulletin de paie, protection sociale et avantages liés au salariat.
           </p>
         </div>
       </div>
@@ -278,7 +514,7 @@ const heroSlides = [
             <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
           </div>
           <h4 class="font-heading font-semibold text-porters-navy mb-2">Transparence des frais</h4>
-          <p class="text-sm text-porters-black/60">Des frais de gestion clairs et compétitifs, sans surprise. Vous savez exactement ce que vous gagnez.</p>
+          <p class="text-sm text-porters-black/60">Le taux de gestion de 10 % est affiché dans le simulateur avec le détail des frais, des charges et du net estimé.</p>
         </div>
 
         <div class="card p-6 reveal">
@@ -293,8 +529,8 @@ const heroSlides = [
           <div class="w-10 h-10 rounded bg-porters-gold/10 flex items-center justify-center mb-4">
             <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" /></svg>
           </div>
-          <h4 class="font-heading font-semibold text-porters-navy mb-2">Optimisation de revenus</h4>
-          <p class="text-sm text-porters-black/60">Bénéficiez de conseils pour optimiser votre rémunération : frais professionnels, épargne salariale, formations.</p>
+          <h4 class="font-heading font-semibold text-porters-navy mb-2">Paie et avance de trésorerie</h4>
+          <p class="text-sm text-porters-black/60">Salaire et frais validés versés dans les cinq premiers jours ouvrés, avec avance de trésorerie selon les conditions contractuelles.</p>
         </div>
 
         <div class="card p-6 reveal">
@@ -302,16 +538,16 @@ const heroSlides = [
             <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
           </div>
           <h4 class="font-heading font-semibold text-porters-navy mb-2">Proximité locale</h4>
-          <p class="text-sm text-porters-black/60">Des agences à Paris, Lyon et Montpellier pour un accompagnement de proximité, avec des interlocuteurs accessibles.</p>
+          <p class="text-sm text-porters-black/60">Paris, Lyon, Marseille, Montpellier et Toulouse : cinq implantations et un suivi à distance partout en France.</p>
         </div>
 
-        <div class="card p-6 reveal">
+        <a href="/rse" class="card p-6 reveal block">
           <div class="w-10 h-10 rounded bg-porters-gold/10 flex items-center justify-center mb-4">
             <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15a2.25 2.25 0 0 1 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" /></svg>
           </div>
-          <h4 class="font-heading font-semibold text-porters-navy mb-2">Gestion simplifiée</h4>
-          <p class="text-sm text-porters-black/60">Facturation, paie, déclarations sociales et fiscales : nous prenons en charge toute la gestion administrative.</p>
-        </div>
+          <h4 class="font-heading font-semibold text-porters-navy mb-2">Démarche RSE</h4>
+          <p class="text-sm text-porters-black/60">Sobriété numérique, inclusion, proximité et transparence structurent une feuille de route suivie et vérifiable.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -335,7 +571,7 @@ const heroSlides = [
             </li>
             <li class="flex items-start gap-3 text-sm text-porters-black/70">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-              Frais de gestion transparents
+              Taux de gestion de 10 % affiché
             </li>
             <li class="flex items-start gap-3 text-sm text-porters-black/70">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
@@ -369,10 +605,15 @@ const heroSlides = [
                 <p class="text-3xl font-heading font-bold text-porters-navy">18 <span class="text-base font-normal text-porters-black/40">jours</span></p>
               </div>
               <div class="h-px bg-porters-navy/8"></div>
+              <div>
+                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Frais professionnels réels</p>
+                <p class="text-3xl font-heading font-bold text-porters-navy">500 €<span class="text-base font-normal text-porters-black/40"> / mois</span></p>
+              </div>
+              <div class="h-px bg-porters-navy/8"></div>
               <div class="bg-porters-navy/[0.03] rounded p-4">
                 <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Salaire net estimé</p>
                 <p class="text-3xl font-heading font-bold text-porters-navy">
-                  ≈ 4 455 €<span class="text-base font-normal text-porters-black/40"> / mois</span>
+                  ≈ 4 180 €<span class="text-base font-normal text-porters-black/40"> / mois</span>
                 </p>
                 <p class="text-xs text-porters-black/40 mt-2">Estimation indicative avant optimisation</p>
               </div>
@@ -412,39 +653,21 @@ const heroSlides = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
         <h2 class="mb-4">Nos <span class="gold-underline">agences</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Un accompagnement de proximité à Paris, Lyon et Montpellier.</p>
+        <p class="text-porters-black/60 max-w-2xl mx-auto">Paris, Lyon, Marseille, Montpellier, Toulouse : un interlocuteur local pour accompagner votre activité sur place.</p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <a href="/agences/paris" class="card p-6 group reveal block">
-          <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-2">Île-de-France</p>
-          <h3 class="text-xl font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors">Paris</h3>
-          <p class="text-sm text-porters-black/60 mb-4">Notre agence parisienne accompagne les consultants et entreprises en Île-de-France.</p>
-          <span class="text-sm font-medium text-porters-navy group-hover:text-porters-gold transition-colors inline-flex items-center gap-1">
-            Découvrir
-            <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </a>
-
-        <a href="/agences/lyon" class="card p-6 group reveal block">
-          <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-2">Auvergne-Rhône-Alpes</p>
-          <h3 class="text-xl font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors">Lyon</h3>
-          <p class="text-sm text-porters-black/60 mb-4">Notre agence lyonnaise est au service des professionnels indépendants de la région.</p>
-          <span class="text-sm font-medium text-porters-navy group-hover:text-porters-gold transition-colors inline-flex items-center gap-1">
-            Découvrir
-            <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </a>
-
-        <a href="/agences/montpellier" class="card p-6 group reveal block">
-          <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-2">Occitanie</p>
-          <h3 class="text-xl font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors">Montpellier</h3>
-          <p class="text-sm text-porters-black/60 mb-4">Notre agence montpelliéraine accompagne les consultants du sud de la France.</p>
-          <span class="text-sm font-medium text-porters-navy group-hover:text-porters-gold transition-colors inline-flex items-center gap-1">
-            Découvrir
-            <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </a>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        {homepageAgencies.map((agency) => (
+          <a href={`/agences/${agency.slug}`} class="card p-6 group reveal block">
+            <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-2">{agency.region}</p>
+            <h3 class="text-xl font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors">{agency.city}</h3>
+            <p class="text-sm text-porters-black/60 mb-4 line-clamp-3">{agency.heroSubtitle}</p>
+            <span class="text-sm font-medium text-porters-navy group-hover:text-porters-gold transition-colors inline-flex items-center gap-1">
+              Découvrir
+              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+        ))}
       </div>
 
       <div class="text-center mt-10 reveal">
@@ -455,52 +678,6 @@ const heroSlides = [
     </div>
   </section>
 
-  <!-- ==========================================
-       TESTIMONIALS
-       ========================================== -->
-  <section class="section bg-porters-navy/[0.02]">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="mb-4">Ce qu'ils disent de <span class="gold-underline">nous</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Découvrez les témoignages de consultants qui nous font confiance.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card p-8 reveal">
-          <div class="w-8 h-[3px] bg-porters-gold mb-6"></div>
-          <blockquote class="text-porters-black/70 leading-relaxed mb-6 italic">
-            « The Porters m'a permis de me lancer en tant que consultant IT en toute sérénité. L'accompagnement est personnalisé et les frais de gestion sont transparents. »
-          </blockquote>
-          <div>
-            <p class="font-medium text-porters-navy text-sm">Consultant IT</p>
-            <p class="text-xs text-porters-black/50">Paris</p>
-          </div>
-        </div>
-
-        <div class="card p-8 reveal">
-          <div class="w-8 h-[3px] bg-porters-gold mb-6"></div>
-          <blockquote class="text-porters-black/70 leading-relaxed mb-6 italic">
-            « Ce qui m'a convaincue, c'est la qualité de l'accompagnement humain. Mon chargé de compte est toujours disponible et de bon conseil pour optimiser ma situation. »
-          </blockquote>
-          <div>
-            <p class="font-medium text-porters-navy text-sm">Consultante en management</p>
-            <p class="text-xs text-porters-black/50">Lyon</p>
-          </div>
-        </div>
-
-        <div class="card p-8 reveal">
-          <div class="w-8 h-[3px] bg-porters-gold mb-6"></div>
-          <blockquote class="text-porters-black/70 leading-relaxed mb-6 italic">
-            « En tant qu'expert en cybersécurité, j'avais besoin d'une structure fiable pour gérer mes missions. The Porters répond parfaitement à cette exigence. »
-          </blockquote>
-          <div>
-            <p class="font-medium text-porters-navy text-sm">Expert cybersécurité</p>
-            <p class="text-xs text-porters-black/50">Montpellier</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ==========================================
        RESOURCES PREVIEW
@@ -519,44 +696,20 @@ const heroSlides = [
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <a href="/blog/optimiser-remuneration-portage-salarial" class="card p-0 overflow-hidden group reveal block">
-          <div class="h-2 bg-porters-gold"></div>
-          <div class="p-6">
-            <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">Fonctionnement</p>
-            <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
-              Comment optimiser sa rémunération en portage salarial
-            </h3>
-            <p class="text-sm text-porters-black/60 line-clamp-3">
-              Découvrez les leviers pour maximiser vos revenus nets en portage salarial : frais professionnels, épargne salariale, optimisation fiscale.
-            </p>
-          </div>
-        </a>
-
-        <a href="/blog/secteurs-adaptes-portage-salarial" class="card p-0 overflow-hidden group reveal block">
-          <div class="h-2 bg-porters-gold"></div>
-          <div class="p-6">
-            <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">Devenir consultant</p>
-            <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
-              Les secteurs d'activité les plus adaptés au portage salarial
-            </h3>
-            <p class="text-sm text-porters-black/60 line-clamp-3">
-              IT, conseil, management, ingénierie : quels métiers se prêtent le mieux au portage salarial ? Tour d'horizon des secteurs porteurs.
-            </p>
-          </div>
-        </a>
-
-        <a href="/blog/trouver-missions-portage-salarial" class="card p-0 overflow-hidden group reveal block">
-          <div class="h-2 bg-porters-gold"></div>
-          <div class="p-6">
-            <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">Devenir consultant</p>
-            <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
-              Comment trouver des missions en portage salarial
-            </h3>
-            <p class="text-sm text-porters-black/60 line-clamp-3">
-              Réseau, plateformes, prospection directe : toutes les stratégies pour décrocher vos prochaines missions de consultant.
-            </p>
-          </div>
-        </a>
+        {homepagePosts.map((post) => (
+          <a href={`/blog/${post.slug}`} class="card p-0 overflow-hidden group reveal block">
+            <div class="h-2 bg-porters-gold"></div>
+            <div class="p-6">
+              <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">{getBlogCategory(post.category)?.label || post.category}</p>
+              <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
+                {post.title}
+              </h3>
+              <p class="text-sm text-porters-black/60 line-clamp-3">
+                {post.excerpt}
+              </p>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   </section>

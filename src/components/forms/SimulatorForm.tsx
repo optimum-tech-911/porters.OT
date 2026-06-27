@@ -27,7 +27,7 @@ const scenarios: Scenario[] = [
     description: 'Le scénario courant pour un consultant avec une activité mensuelle suivie.',
     tjm: 550,
     jours: 18,
-    frais: 250,
+    frais: 500,
   },
   {
     id: 'senior',
@@ -49,7 +49,7 @@ const scenarios: Scenario[] = [
   },
 ];
 
-const MANAGEMENT_RATE = 0.08;
+const MANAGEMENT_RATE = 0.1;
 const SOCIAL_CHARGE_RATE = 0.45;
 
 export default function SimulatorForm() {
@@ -57,6 +57,7 @@ export default function SimulatorForm() {
   const [tjm, setTjm] = useState<number>(scenarios[1].tjm);
   const [jours, setJours] = useState<number>(scenarios[1].jours);
   const [frais, setFrais] = useState<number>(scenarios[1].frais);
+  const [leadSent, setLeadSent] = useState(false);
 
   const selectScenario = (scenario: Scenario) => {
     setActiveScenario(scenario);
@@ -94,7 +95,7 @@ export default function SimulatorForm() {
       type: 'positive',
     },
     {
-      label: 'Frais de gestion estimatifs (8 %)',
+      label: 'Frais de gestion (10 %)',
       value: `- ${formatCurrency(fraisGestion)}`,
       type: 'negative',
     },
@@ -328,6 +329,107 @@ export default function SimulatorForm() {
             Repartez avec une base claire pour un échange précis avec l'équipe The Porters.
           </p>
         </div>
+      </div>
+
+      <div className="rounded-lg border border-porters-navy/10 bg-white p-5 shadow-[0_18px_50px_rgba(25,43,99,0.06)] sm:p-7">
+        <div className="mb-6 max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">
+            Recevoir ma simulation
+          </p>
+          <h3 className="mt-2 font-heading text-2xl font-semibold text-porters-navy">
+            Gardez une trace de votre scénario
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-porters-black/60">
+            Laissez vos coordonnées pour préparer un échange précis autour de votre TJM, de votre
+            profil métier et de vos frais professionnels.
+          </p>
+        </div>
+
+        {leadSent ? (
+          <div className="rounded-lg border border-porters-gold/30 bg-porters-gold/10 p-5">
+            <p className="font-heading text-lg font-semibold text-porters-navy">
+              Votre demande a bien été envoyée.
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-porters-black/65">
+              Un conseiller The Porters vous contactera très prochainement pour affiner cette
+              simulation avec vous et répondre à toutes vos questions.
+            </p>
+          </div>
+        ) : (
+          <form
+            className="grid gap-4 md:grid-cols-2"
+            onSubmit={(event) => {
+              event.preventDefault();
+              // TODO: branch Supabase lead capture, PDF/email sending and admin notification.
+              setLeadSent(true);
+            }}
+          >
+            <div>
+              <label className="form-label" htmlFor="lead-first-name">
+                Prénom
+              </label>
+              <input id="lead-first-name" name="firstName" className="form-input" required />
+            </div>
+            <div>
+              <label className="form-label" htmlFor="lead-last-name">
+                Nom
+              </label>
+              <input id="lead-last-name" name="lastName" className="form-input" required />
+            </div>
+            <div>
+              <label className="form-label" htmlFor="lead-email">
+                Email
+              </label>
+              <input id="lead-email" name="email" type="email" className="form-input" required />
+            </div>
+            <div>
+              <label className="form-label" htmlFor="lead-phone">
+                Téléphone
+              </label>
+              <input id="lead-phone" name="phone" type="tel" className="form-input" required />
+            </div>
+            <div>
+              <label className="form-label" htmlFor="lead-profile">
+                Profil métier / poste
+              </label>
+              <select id="lead-profile" name="profile" className="form-input" required>
+                <option value="">Sélectionner</option>
+                <option>Consultant cybersécurité</option>
+                <option>Développeur</option>
+                <option>DevOps / Cloud engineer</option>
+                <option>Data / IA</option>
+                <option>Product Owner / Scrum Master</option>
+                <option>Chef de projet IT</option>
+                <option>Autre consultant tech</option>
+              </select>
+            </div>
+            <div>
+              <label className="form-label" htmlFor="lead-revenue-type">
+                Base de calcul
+              </label>
+              <select id="lead-revenue-type" name="revenueType" className="form-input" required>
+                <option>TJM</option>
+                <option>Chiffre d'affaires mensuel</option>
+              </select>
+            </div>
+            <input type="hidden" name="tjm" value={tjm} />
+            <input type="hidden" name="daysWorked" value={jours} />
+            <input type="hidden" name="professionalExpenses" value={frais} />
+            <input type="hidden" name="estimatedNetMonthly" value={Math.round(netMensuel)} />
+            <label className="md:col-span-2 flex items-start gap-3 rounded-lg bg-porters-navy/[0.03] p-4 text-sm text-porters-black/65">
+              <input type="checkbox" name="consent" className="mt-1" required />
+              <span>
+                J'accepte que The Porters utilise ces informations pour me recontacter au sujet de
+                ma simulation, conformément à la politique de confidentialité.
+              </span>
+            </label>
+            <div className="md:col-span-2">
+              <button type="submit" className="btn btn-primary">
+                Recevoir ma simulation détaillée
+              </button>
+            </div>
+          </form>
+        )}
       </div>
 
       <div className="flex flex-col gap-3 rounded-lg border border-porters-navy/10 bg-porters-navy/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between">

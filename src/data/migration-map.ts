@@ -86,11 +86,11 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/old-portage-salarial-marseille/',
-    newUrl: '/agences',
+    newUrl: '/agences/marseille',
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'low',
-    notes: 'Ancienne page Marseille redirigée vers le hub agences (agence supprimée).',
+    notes: 'Ancienne page Marseille redirigée vers la fiche Marseille, avec adresse à valider.',
   },
   {
     oldUrl: '/old-portage-salarial-bordeaux/',
@@ -98,7 +98,7 @@ export const migrationMap: MigrationEntry[] = [
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'low',
-    notes: 'Ancienne page Bordeaux redirigée vers le hub agences (agence supprimée).',
+    notes: 'Ancienne page Bordeaux redirigée vers le hub agences, activation à confirmer par le client.',
   },
   {
     oldUrl: '/old-portage-salarial-lille/',
@@ -106,7 +106,7 @@ export const migrationMap: MigrationEntry[] = [
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'low',
-    notes: 'Ancienne page Lille redirigée vers le hub agences (agence supprimée).',
+    notes: 'Ancienne page Lille redirigée vers le hub agences, activation à confirmer par le client.',
   },
 
   // ─── Blog articles (high priority) ───────────────────────────────
@@ -152,7 +152,7 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/choisir-societe-portage-salarial/',
-    newUrl: '/blog/choisir-societe-portage-salarial',
+    newUrl: '/blog/bien-choisir-societe-portage-salarial',
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'high',
@@ -160,7 +160,7 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/limportance-de-bien-choisir-sa-societe-de-portage-salarial/',
-    newUrl: '/blog/choisir-societe-portage-salarial',
+    newUrl: '/blog/bien-choisir-societe-portage-salarial',
     statusCode: 301,
     action: 'merge',
     seoPriority: 'medium',
@@ -176,7 +176,7 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/se-mettre-a-son-compte/',
-    newUrl: '/blog/se-mettre-a-son-compte',
+    newUrl: '/blog/choisir-statut-independant',
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'high',
@@ -192,7 +192,7 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/ingenieurs-choisir-portage-salarial/',
-    newUrl: '/blog/ingenieurs-choisir-portage-salarial',
+    newUrl: '/blog/portage-salarial-informatique',
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'medium',
@@ -216,7 +216,7 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/bien-reussir-mission-portage-salarial-5-cles-succes/',
-    newUrl: '/blog/reussir-mission-portage-salarial',
+    newUrl: '/blog/trouver-missions-portage-salarial',
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'medium',
@@ -274,7 +274,7 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/quest-ce-que-la-cooptation-et-quels-sont-ses-avantages/',
-    newUrl: '/blog/cooptation-avantages',
+    newUrl: '/blog',
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'low',
@@ -282,7 +282,7 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/cedants-dentreprises-portage-salarial-organiser-accompagnement-apres-cession-par-guillaume-guilhen/',
-    newUrl: '/blog/portage-salarial-apres-cession-entreprise',
+    newUrl: '/blog',
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'low',
@@ -290,7 +290,7 @@ export const migrationMap: MigrationEntry[] = [
   },
   {
     oldUrl: '/retour-convention-collective-de-portage-salarial-par-guillaume-guilhen/',
-    newUrl: '/blog/convention-collective-portage-salarial',
+    newUrl: '/blog/guide-portage-salarial',
     statusCode: 301,
     action: 'redirect',
     seoPriority: 'low',
