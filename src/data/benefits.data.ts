@@ -41,6 +41,12 @@ export const consultantBenefits: Benefit[] = [
     description:
       'Un chargé de compte dédié vous accompagne à chaque étape : démarrage, négociation, développement de votre activité.',
   },
+  {
+    icon: 'briefcase',
+    title: 'Réactivité commerciale',
+    description:
+      'L’équipe vous aide à qualifier les opportunités de mission, à préparer votre positionnement et à accélérer les échanges avec les entreprises clientes.',
+  },
 ];
 
 export const enterpriseBenefits: Benefit[] = [

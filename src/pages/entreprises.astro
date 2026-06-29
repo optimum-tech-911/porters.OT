@@ -56,9 +56,26 @@ const steps = [
 
 const enterpriseProofs = [
   { value: '+150', label: 'missions en cours' },
-  { value: '24 h', label: 'pour qualifier une demande' },
+  { value: '50–250', label: 'collaborateurs · taille publiée' },
+  { value: '50 k€', label: 'de capital social publié' },
   { value: 'France + international', label: 'capacité de réponse' },
-  { value: '1 interlocuteur', label: 'stable pendant la mission' },
+];
+
+const engagementModels = [
+  {
+    eyebrow: 'Portage salarial',
+    title: 'Le consultant a déjà sa mission',
+    description:
+      'The Porters met en place le cadre contractuel, salarial et administratif. L’entreprise cliente garde une relation opérationnelle simple, avec une facture unique.',
+    points: ['Cadre salarial sécurisé', 'Contrat, paie et facturation pris en charge', 'Interlocuteur dédié pendant la mission'],
+  },
+  {
+    eyebrow: 'Renfort via ESN',
+    title: 'Vous cherchez encore le bon profil',
+    description:
+      'Notre écosystème de partenaires permet d’orienter le besoin vers un modèle ESN lorsque le sourcing et le pilotage du renfort priment sur le portage salarial.',
+    points: ['Sourcing IT ciblé', 'Choix du modèle selon le besoin', 'Suivi opérationnel cadré'],
+  },
 ];
 ---
 
@@ -154,6 +171,36 @@ const enterpriseProofs = [
             <h3 class="text-lg font-heading font-semibold mb-2">{benefit.title}</h3>
             <p class="text-sm mb-0" style="color: rgba(11, 16, 32, 0.7);">{benefit.description}</p>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagement model choice -->
+  <section class="section bg-porters-navy/[0.03]">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mx-auto mb-12 max-w-3xl text-center reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Deux cadres, un besoin bien orienté</p>
+        <h2>Portage salarial ou renfort ESN : <span class="gold-underline">choisir le bon modèle</span></h2>
+        <p class="mt-4 text-porters-black/65">
+          Le point de départ n’est pas le statut, mais votre besoin : sécuriser un consultant déjà identifié ou trouver une expertise à mobiliser.
+        </p>
+      </div>
+      <div class="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
+        {engagementModels.map((model) => (
+          <article class="card reveal p-7 lg:p-9">
+            <p class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-porters-gold">{model.eyebrow}</p>
+            <h3 class="mb-3 font-heading text-xl font-semibold text-porters-navy">{model.title}</h3>
+            <p class="mb-6 text-sm leading-relaxed text-porters-black/65">{model.description}</p>
+            <ul class="space-y-3">
+              {model.points.map((point) => (
+                <li class="flex items-start gap-3 text-sm text-porters-black/70">
+                  <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </article>
         ))}
       </div>
     </div>

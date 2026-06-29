@@ -1,7 +1,7 @@
 ---
 /**
- * Google Reviews badge – displays star rating, score and review count.
- * Client-supplied values only — no API calls.
+ * Google Reviews badge. A numeric score is rendered only when explicitly supplied
+ * from a client-verified source; otherwise the badge remains factual and generic.
  */
 interface Props {
   score?: string;
@@ -9,17 +9,19 @@ interface Props {
   variant?: 'light' | 'dark';
 }
 
-const { score = '4.8', reviewCount = 47, variant = 'light' } = Astro.props;
-const fullStars = Math.floor(parseFloat(score));
-const hasHalf = parseFloat(score) - fullStars >= 0.3;
+const { score, reviewCount, variant = 'light' } = Astro.props;
+const hasVerifiedRating = Boolean(score && reviewCount);
+const numericScore = score ? parseFloat(score) : 0;
+const fullStars = Math.floor(numericScore);
+const hasHalf = numericScore - fullStars >= 0.3;
 ---
 
 <a
-  href="https://g.page/r/theporters/review"
+  href="https://share.google/gDlz5nF5tyEg4cq7i"
   target="_blank"
   rel="noopener noreferrer"
   class:list={['google-badge', `google-badge--${variant}`]}
-  aria-label={`Avis Google : ${score}/5 basé sur ${reviewCount} avis`}
+  aria-label={hasVerifiedRating ? `Avis Google : ${score}/5 basé sur ${reviewCount} avis` : 'Consulter les avis Google de The Porters'}
 >
   <span class="google-badge__icon" aria-hidden="true">
     <!-- Google "G" mini icon -->
@@ -31,25 +33,34 @@ const hasHalf = parseFloat(score) - fullStars >= 0.3;
     </svg>
   </span>
   <span class="google-badge__content">
-    <span class="google-badge__score">{score}<span class="google-badge__max">/5</span></span>
-    <span class="google-badge__stars" aria-hidden="true">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg class:list={['google-badge__star', { 'google-badge__star--filled': i < fullStars, 'google-badge__star--half': i === fullStars && hasHalf }]} width="14" height="14" viewBox="0 0 20 20">
-          <defs>
-            <linearGradient id={`star-half-${i}`}>
-              <stop offset="50%" stop-color="#FBBC05"/>
-              <stop offset="50%" stop-color="currentColor" stop-opacity="0.25"/>
-            </linearGradient>
-          </defs>
-          <path
-            d="M10 1.12l2.47 5.01 5.53.8-4 3.9.94 5.5L10 13.77l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.12z"
-            fill={i < fullStars ? '#FBBC05' : i === fullStars && hasHalf ? `url(#star-half-${i})` : 'currentColor'}
-            opacity={i < fullStars || (i === fullStars && hasHalf) ? 1 : 0.2}
-          />
-        </svg>
-      ))}
-    </span>
-    <span class="google-badge__count">{reviewCount} avis</span>
+    {hasVerifiedRating ? (
+      <>
+        <span class="google-badge__score">{score}<span class="google-badge__max">/5</span></span>
+        <span class="google-badge__stars" aria-hidden="true">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <svg class:list={['google-badge__star', { 'google-badge__star--filled': i < fullStars, 'google-badge__star--half': i === fullStars && hasHalf }]} width="14" height="14" viewBox="0 0 20 20">
+              <defs>
+                <linearGradient id={`star-half-${i}`}>
+                  <stop offset="50%" stop-color="#FBBC05"/>
+                  <stop offset="50%" stop-color="currentColor" stop-opacity="0.25"/>
+                </linearGradient>
+              </defs>
+              <path
+                d="M10 1.12l2.47 5.01 5.53.8-4 3.9.94 5.5L10 13.77l-4.94 2.6.94-5.5-4-3.9 5.53-.8L10 1.12z"
+                fill={i < fullStars ? '#FBBC05' : i === fullStars && hasHalf ? `url(#star-half-${i})` : 'currentColor'}
+                opacity={i < fullStars || (i === fullStars && hasHalf) ? 1 : 0.2}
+              />
+            </svg>
+          ))}
+        </span>
+        <span class="google-badge__count">{reviewCount} avis</span>
+      </>
+    ) : (
+      <>
+        <span class="google-badge__label">Avis Google</span>
+        <span class="google-badge__count">Consulter les avis vérifiés</span>
+      </>
+    )}
   </span>
 </a>
 
@@ -118,6 +129,13 @@ const hasHalf = parseFloat(score) - fullStars >= 0.3;
     font-size: 1.1rem;
     font-weight: 700;
     line-height: 1;
+  }
+
+  .google-badge__label {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.1;
   }
 
   .google-badge__max {

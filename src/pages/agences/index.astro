@@ -1,12 +1,17 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { agencies } from '../../data/agencies.data';
+
+const featuredAgencySlugs = ['paris', 'lyon', 'aix-en-provence', 'montpellier'];
+const featuredAgencies = featuredAgencySlugs
+  .map((slug) => agencies.find((agency) => agency.slug === slug))
+  .filter(Boolean);
 ---
 
 <PageLayout
   seo={{
     title: 'Nos agences de portage salarial | The Porters',
-    description: 'Découvrez les agences The Porters à Paris, Lyon, Marseille, Montpellier et Toulouse pour un accompagnement de proximité en portage salarial.',
+    description: 'Découvrez les implantations The Porters à Paris, Lyon, Aix-en-Provence et Montpellier pour un accompagnement de proximité en portage salarial.',
   }}
   breadcrumbs={[{ label: 'Agences' }]}
 >
@@ -20,7 +25,7 @@ import { agencies } from '../../data/agencies.data';
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {agencies.map((agency) => (
+        {featuredAgencies.map((agency) => agency && (
           <a href={`/agences/${agency.slug}`} class="card p-8 group reveal block">
             <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">{agency.region}</p>
             <h2 class="text-2xl font-heading font-semibold text-porters-navy mb-4 group-hover:text-porters-gold transition-colors">{agency.city}</h2>

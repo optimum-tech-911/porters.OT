@@ -159,6 +159,65 @@ export const agencies: Agency[] = [
     },
   },
   {
+    slug: 'aix-en-provence',
+    city: 'Aix-en-Provence',
+    region: "Provence-Alpes-Côte d'Azur",
+    address: '',
+    postalCode: '',
+    phone: '',
+    email: 'contact@porters.fr',
+    heroTitle: 'The Porters Aix-en-Provence — Portage salarial en PACA',
+    heroSubtitle:
+      'Un accompagnement de proximité pour les consultants IT, data, cyber, cloud, produit et projet du bassin aixois.',
+    description:
+      "The Porters accompagne les consultants indépendants et les entreprises à Aix-en-Provence pour cadrer une mission, comparer les statuts, simuler les revenus et sécuriser la gestion contractuelle et administrative.",
+    proofNote:
+      "Rendez-vous à distance ou selon les modalités convenues avec l'équipe pour le bassin d'Aix-en-Provence.",
+    serviceCards: coreServices,
+    contentSections: [
+      {
+        eyebrow: 'Portage salarial Aix-en-Provence',
+        title: 'Structurer une mission tech dans le bassin aixois',
+        paragraphs: [
+          "Aix-en-Provence et son bassin réunissent des besoins en IT, data, cloud, cybersécurité, industrie et transformation. Le portage salarial permet aux experts d'intervenir avec un cadre contractuel et social lisible.",
+          "The Porters accompagne le cadrage du TJM ou du chiffre d'affaires, la simulation, la contractualisation, la facturation et le suivi de mission.",
+        ],
+      },
+      {
+        eyebrow: 'Consultants et entreprises',
+        title: 'Un parcours adapté à chaque besoin',
+        paragraphs: [
+          "Le consultant peut sécuriser une mission déjà trouvée, tandis que l'entreprise peut qualifier son besoin et choisir entre portage salarial et renfort via un partenaire ESN.",
+          "Chaque parcours conserve un interlocuteur identifiable pour éviter la dispersion entre le contrat, la paie, la facturation et le suivi opérationnel.",
+        ],
+      },
+    ],
+    highlight: {
+      title: 'Aix-en-Provence, un bassin actif pour les expertises numériques',
+      body:
+        "IT, industrie, data, cybersécurité et transformation créent un terrain naturel pour les consultants spécialisés accompagnés par The Porters.",
+    },
+    teamMembers: [],
+    localFaq: [
+      {
+        question: 'Comment rencontrer The Porters à Aix-en-Provence ?',
+        answer:
+          "Un premier rendez-vous peut être organisé à distance ou selon les modalités confirmées par l'équipe pour le bassin aixois.",
+      },
+      {
+        question: 'Quels profils sont accompagnés à Aix-en-Provence ?',
+        answer:
+          'Les parcours couvrent notamment les consultants IT, data, cloud, DevOps, cybersécurité, produit, projet et transformation.',
+      },
+    ],
+    coordinates: { lat: 43.5297, lng: 5.4474 },
+    seo: {
+      title: 'Portage salarial à Aix-en-Provence — The Porters',
+      description:
+        'The Porters accompagne les consultants IT et tech en portage salarial à Aix-en-Provence et dans le bassin aixois.',
+    },
+  },
+  {
     slug: 'marseille',
     city: 'Marseille',
     region: "Provence-Alpes-Côte d'Azur",

@@ -79,7 +79,7 @@ const navGroups = [
       {
         title: 'Présence locale',
         links: [
-          { label: 'Nos agences', href: '/agences', note: 'Paris, Lyon, Marseille, Montpellier, Toulouse' },
+          { label: 'Nos agences', href: '/agences', note: 'Paris, Lyon, Aix-en-Provence, Montpellier' },
           { label: 'Agence Paris', href: '/agences/paris', note: 'Île-de-France' },
           { label: 'Agence Lyon', href: '/agences/lyon', note: 'Auvergne-Rhône-Alpes' },
         ],
@@ -134,6 +134,7 @@ const rightNavGroups = navGroups.slice(2);
 const isActiveGroup = (group: typeof navGroups[number]) =>
   currentPath === group.href ||
   group.columns.some((column) => column.links.some((link) => currentPath === link.href));
+const defaultMobileGroupIndex = Math.max(navGroups.findIndex((group) => isActiveGroup(group)), 0);
 ---
 
 <header id="site-header" class:list={['site-header', { 'site-header-home': isHomepage }]}>
@@ -319,20 +320,38 @@ const isActiveGroup = (group: typeof navGroups[number]) =>
 
 <div id="mobile-menu" class="mobile-menu-panel">
   <nav class="mobile-nav" aria-label="Navigation mobile">
-    {navGroups.map((group) => (
-      <section class="mobile-nav-section">
-        <a
-          href={group.href}
+    <div class="mobile-nav-intro">
+      <p>Menu principal</p>
+      <span>Choisissez votre parcours ou accédez directement à un service.</span>
+    </div>
+
+    {navGroups.map((group, groupIndex) => (
+      <section class:list={['mobile-nav-section', { 'is-open': groupIndex === defaultMobileGroupIndex }] }>
+        <button
+          type="button"
           class:list={[
             'mobile-nav-heading',
             { 'mobile-nav-heading-active': isActiveGroup(group) },
           ]}
+          data-mobile-nav-toggle
+          aria-expanded={groupIndex === defaultMobileGroupIndex ? 'true' : 'false'}
+          aria-controls={`mobile-nav-panel-${groupIndex}`}
         >
-          {group.label}
-        </a>
-        <div class="mobile-nav-links">
+          <span><small>0{groupIndex + 1}</small>{group.label}</span>
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m6 8 4 4 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+        <div
+          id={`mobile-nav-panel-${groupIndex}`}
+          class="mobile-nav-links"
+          hidden={groupIndex !== defaultMobileGroupIndex}
+        >
+          <a href={group.href} class="mobile-nav-overview">
+            <span>{group.cta.label}</span>
+            <small>{group.description}</small>
+          </a>
           {group.columns.map((column) => (
-            <div class="mb-3 last:mb-0">
+            <div class="mobile-nav-column">
+              <p>{column.title}</p>
               {column.links.map((link) => (
                 <a
                   href={link.href}
@@ -341,7 +360,8 @@ const isActiveGroup = (group: typeof navGroups[number]) =>
                     { 'mobile-nav-link-active': currentPath === link.href },
                   ]}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  <small>{link.note}</small>
                 </a>
               ))}
             </div>
@@ -373,6 +393,7 @@ const isActiveGroup = (group: typeof navGroups[number]) =>
   const iconOpen = document.getElementById('menu-icon-open');
   const iconClose = document.getElementById('menu-icon-close');
   const menuLinks = menu?.querySelectorAll('a');
+  const mobileNavToggles = menu?.querySelectorAll('[data-mobile-nav-toggle]');
   const header = document.getElementById('site-header');
   const revealZone = document.getElementById('site-header-reveal-zone');
   let isOpen = false;
@@ -402,6 +423,31 @@ const isActiveGroup = (group: typeof navGroups[number]) =>
   menuLinks?.forEach((link) => {
     link.addEventListener('click', () => {
       syncMenuState(false);
+    });
+  });
+
+  mobileNavToggles?.forEach((item) => {
+    const button = item as HTMLButtonElement;
+    button.addEventListener('click', () => {
+      const controlsId = button.getAttribute('aria-controls');
+      const panel = controlsId ? document.getElementById(controlsId) : null;
+      const section = button.closest('.mobile-nav-section');
+      const willOpen = button.getAttribute('aria-expanded') !== 'true';
+
+      mobileNavToggles.forEach((otherItem) => {
+        const otherButton = otherItem as HTMLButtonElement;
+        const otherId = otherButton.getAttribute('aria-controls');
+        const otherPanel = otherId ? document.getElementById(otherId) : null;
+        otherButton.setAttribute('aria-expanded', 'false');
+        otherButton.closest('.mobile-nav-section')?.classList.remove('is-open');
+        if (otherPanel) otherPanel.hidden = true;
+      });
+
+      if (willOpen) {
+        button.setAttribute('aria-expanded', 'true');
+        section?.classList.add('is-open');
+        if (panel) panel.hidden = false;
+      }
     });
   });
 
@@ -453,7 +499,7 @@ const isActiveGroup = (group: typeof navGroups[number]) =>
 
   // Reading progress bar (blog articles only)
   const progressBar = document.getElementById('reading-progress');
-  const articleEl = document.querySelector('article');
+  const articleEl = document.querySelector('article[data-reading-progress]');
   if (progressBar && articleEl) {
     progressBar.style.display = 'block';
     const updateProgress = () => {

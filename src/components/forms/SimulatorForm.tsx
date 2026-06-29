@@ -10,12 +10,14 @@ type Scenario = {
   frais: number;
 };
 
+type SimulatorMode = 'portage' | 'freelance';
+
 const scenarios: Scenario[] = [
   {
     id: 'launch',
     title: 'Premier contrat',
     eyebrow: 'Je démarre',
-    description: 'Un cadre prudent pour valider une première mission en portage salarial.',
+    description: 'Un cadre prudent pour projeter une première mission.',
     tjm: 420,
     jours: 16,
     frais: 150,
@@ -33,7 +35,7 @@ const scenarios: Scenario[] = [
     id: 'senior',
     title: 'Expert senior',
     eyebrow: 'J’optimise',
-    description: 'Un TJM plus élevé avec une lecture claire du net mensuel disponible.',
+    description: 'Une activité soutenue pour visualiser un niveau de facturation senior.',
     tjm: 750,
     jours: 19,
     frais: 350,
@@ -53,9 +55,11 @@ const MANAGEMENT_RATE = 0.1;
 const SOCIAL_CHARGE_RATE = 0.45;
 
 export default function SimulatorForm() {
+  const [mode, setMode] = useState<SimulatorMode>('portage');
   const [activeScenario, setActiveScenario] = useState<Scenario>(scenarios[1]);
   const [tjm, setTjm] = useState<number>(scenarios[1].tjm);
   const [jours, setJours] = useState<number>(scenarios[1].jours);
+  const [monthlyRevenue, setMonthlyRevenue] = useState<number>(scenarios[1].tjm * scenarios[1].jours);
   const [frais, setFrais] = useState<number>(scenarios[1].frais);
   const [leadSent, setLeadSent] = useState(false);
 
@@ -63,17 +67,19 @@ export default function SimulatorForm() {
     setActiveScenario(scenario);
     setTjm(scenario.tjm);
     setJours(scenario.jours);
+    setMonthlyRevenue(scenario.tjm * scenario.jours);
     setFrais(scenario.frais);
   };
 
-  const ca = tjm * jours;
-  const fraisGestion = ca * MANAGEMENT_RATE;
+  const ca = mode === 'freelance' ? tjm * jours : monthlyRevenue;
+  const fraisGestion = mode === 'portage' ? ca * MANAGEMENT_RATE : 0;
   const baseAvantCharges = ca - fraisGestion - frais;
   const chargesSociales = baseAvantCharges > 0 ? baseAvantCharges * SOCIAL_CHARGE_RATE : 0;
   const netMensuel = baseAvantCharges > 0 ? baseAvantCharges - chargesSociales : 0;
-  const netAnnuel = netMensuel * 12;
-  const netParJour = jours > 0 ? netMensuel / jours : 0;
   const retentionRate = ca > 0 ? (netMensuel / ca) * 100 : 0;
+  const freelanceAvailable = Math.max(ca - frais, 0);
+  const resultMonthly = mode === 'portage' ? netMensuel : ca;
+  const resultAnnual = resultMonthly * 12;
 
   const formatCurrency = (value: number) =>
     new Intl.NumberFormat('fr-FR', {
@@ -88,7 +94,7 @@ export default function SimulatorForm() {
       maximumFractionDigits: 0,
     }).format(value);
 
-  const breakdownRows = [
+  const portageBreakdownRows = [
     {
       label: "Chiffre d'affaires mensuel",
       value: formatCurrency(ca),
@@ -111,8 +117,64 @@ export default function SimulatorForm() {
     },
   ];
 
+  const freelanceBreakdownRows = [
+    {
+      label: "Chiffre d'affaires mensuel (TJM × jours)",
+      value: formatCurrency(ca),
+      type: 'positive',
+    },
+    {
+      label: 'Frais professionnels mensuels',
+      value: `- ${formatCurrency(frais)}`,
+      type: 'negative',
+    },
+    {
+      label: 'Disponible avant cotisations et impôts',
+      value: formatCurrency(freelanceAvailable),
+      type: 'positive',
+    },
+  ];
+  const breakdownRows = mode === 'portage' ? portageBreakdownRows : freelanceBreakdownRows;
+
   return (
     <div className="space-y-8">
+      <div className="grid gap-4 md:grid-cols-2" role="tablist" aria-label="Choisir un simulateur">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mode === 'portage'}
+          className={`rounded-xl border p-5 text-left transition-all ${
+            mode === 'portage'
+              ? 'border-porters-gold bg-porters-navy text-white shadow-[0_16px_38px_rgba(25,43,99,0.14)]'
+              : 'border-porters-navy/10 bg-white text-porters-navy hover:border-porters-gold/60'
+          }`}
+          onClick={() => setMode('portage')}
+        >
+          <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">Simulateur 01</span>
+          <strong className="mt-2 block font-heading text-xl">Portage salarial</strong>
+          <span className={`mt-2 block text-sm leading-relaxed ${mode === 'portage' ? 'text-white/68' : 'text-porters-black/58'}`}>
+            Estimez votre salaire à partir du chiffre d’affaires mensuel. Le TJM n’est pas affiché dans ce parcours.
+          </span>
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={mode === 'freelance'}
+          className={`rounded-xl border p-5 text-left transition-all ${
+            mode === 'freelance'
+              ? 'border-porters-gold bg-porters-navy text-white shadow-[0_16px_38px_rgba(25,43,99,0.14)]'
+              : 'border-porters-navy/10 bg-white text-porters-navy hover:border-porters-gold/60'
+          }`}
+          onClick={() => setMode('freelance')}
+        >
+          <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">Simulateur 02</span>
+          <strong className="mt-2 block font-heading text-xl">Activité freelance</strong>
+          <span className={`mt-2 block text-sm leading-relaxed ${mode === 'freelance' ? 'text-white/68' : 'text-porters-black/58'}`}>
+            Calculez votre chiffre d’affaires avec un TJM et un nombre de jours facturés, sans l’assimiler à un salaire net.
+          </span>
+        </button>
+      </div>
+
       <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         {scenarios.map((scenario) => {
           const isActive = scenario.id === activeScenario.id;
@@ -172,7 +234,34 @@ export default function SimulatorForm() {
           </div>
 
           <div className="space-y-7">
-            <div>
+            {mode === 'portage' ? (
+              <div>
+                <div className="mb-3 flex items-center justify-between gap-4">
+                  <label htmlFor="monthly-revenue" className="form-label mb-0">
+                    Chiffre d’affaires mensuel
+                  </label>
+                  <output htmlFor="monthly-revenue" className="font-heading text-xl font-bold text-porters-navy">
+                    {formatCurrency(monthlyRevenue)}
+                  </output>
+                </div>
+                <input
+                  type="range"
+                  id="monthly-revenue"
+                  className="sim-range"
+                  min="3000"
+                  max="25000"
+                  step="100"
+                  value={monthlyRevenue}
+                  onChange={(event) => setMonthlyRevenue(Number(event.target.value))}
+                />
+                <div className="mt-2 flex justify-between text-xs text-porters-black/45">
+                  <span>3 000 €</span>
+                  <span>25 000 €</span>
+                </div>
+              </div>
+            ) : (
+              <>
+              <div>
               <div className="mb-3 flex items-center justify-between gap-4">
                 <label htmlFor="tjm" className="form-label mb-0">
                   Taux journalier moyen
@@ -221,6 +310,8 @@ export default function SimulatorForm() {
                 <span>22 jours</span>
               </div>
             </div>
+              </>
+            )}
 
             <div>
               <div className="mb-3 flex items-center justify-between gap-4">
@@ -254,27 +345,35 @@ export default function SimulatorForm() {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">
               Résultat live
             </p>
-            <p className="mt-3 text-porters-white/62">Salaire net mensuel estimé</p>
+            <p className="mt-3 text-porters-white/62">
+              {mode === 'portage' ? 'Salaire net mensuel estimé' : "Chiffre d'affaires mensuel estimé"}
+            </p>
             <p className="mt-2 font-heading text-[2.7rem] font-bold leading-none text-porters-white sm:text-[3.35rem]">
-              {formatCurrency(netMensuel)}
+              {formatCurrency(resultMonthly)}
             </p>
             <p className="mt-3 text-sm text-porters-white/56">
-              soit {formatCurrency(netAnnuel)} net estimé sur 12 mois
+              {mode === 'portage'
+                ? `soit ${formatCurrency(resultAnnual)} net estimé sur 12 mois`
+                : `soit ${formatCurrency(resultAnnual)} de chiffre d’affaires sur 12 mois`}
             </p>
           </div>
 
           <div className="grid grid-cols-2 border-b border-white/10 text-center">
             <div className="border-r border-white/10 p-4">
               <p className="font-heading text-xl font-bold text-porters-gold">
-                {formatCurrency(netParJour)}
+                {mode === 'portage' ? formatCurrency(netMensuel) : formatCurrency(tjm)}
               </p>
-              <p className="mt-1 text-xs text-porters-white/54">net par jour facturé</p>
+              <p className="mt-1 text-xs text-porters-white/54">
+                {mode === 'portage' ? 'net mensuel estimé' : 'TJM saisi'}
+              </p>
             </div>
             <div className="p-4">
               <p className="font-heading text-xl font-bold text-porters-gold">
-                {formatPercent(retentionRate)} %
+                {mode === 'portage' ? `${formatPercent(retentionRate)} %` : `${jours} j`}
               </p>
-              <p className="mt-1 text-xs text-porters-white/54">du CA en net estimé</p>
+              <p className="mt-1 text-xs text-porters-white/54">
+                {mode === 'portage' ? 'du CA en net estimé' : 'facturés par mois'}
+              </p>
             </div>
           </div>
 
@@ -302,8 +401,9 @@ export default function SimulatorForm() {
 
             <div className="mt-6 rounded-lg border border-porters-gold/30 bg-porters-gold/10 p-4">
               <p className="text-sm leading-relaxed text-porters-white/78">
-                Cette estimation donne une première lecture. Un conseiller peut ensuite affiner
-                les frais, le taux de gestion, la mutuelle et les options d'optimisation.
+                {mode === 'portage'
+                  ? "Cette estimation donne une première lecture. Un conseiller peut ensuite affiner les frais, le taux de gestion, la mutuelle et les options d'optimisation."
+                  : "Ce parcours calcule le chiffre d'affaires, pas un revenu net. Les cotisations et impôts dépendent du statut freelance choisi."}
               </p>
             </div>
           </div>
@@ -314,7 +414,9 @@ export default function SimulatorForm() {
         <div className="rounded-lg border border-porters-navy/10 bg-white p-5">
           <p className="font-heading font-semibold text-porters-navy">Lecture immédiate</p>
           <p className="mt-2 text-sm leading-relaxed text-porters-black/60">
-            Visualisez l'effet du TJM, des jours facturés et des frais sur votre net.
+            {mode === 'portage'
+              ? "Visualisez l'effet du chiffre d'affaires et des frais sur votre salaire estimé."
+              : "Visualisez l'effet du TJM, des jours facturés et des frais sur votre chiffre d'affaires."}
           </p>
         </div>
         <div className="rounded-lg border border-porters-navy/10 bg-white p-5">
@@ -340,8 +442,8 @@ export default function SimulatorForm() {
             Gardez une trace de votre scénario
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-porters-black/60">
-            Laissez vos coordonnées pour préparer un échange précis autour de votre TJM, de votre
-            profil métier et de vos frais professionnels.
+            Laissez vos coordonnées pour préparer un échange précis autour de votre activité, de
+            votre profil métier et de vos frais professionnels.
           </p>
         </div>
 
@@ -414,8 +516,10 @@ export default function SimulatorForm() {
             </div>
             <input type="hidden" name="tjm" value={tjm} />
             <input type="hidden" name="daysWorked" value={jours} />
+            <input type="hidden" name="simulatorMode" value={mode} />
+            <input type="hidden" name="monthlyRevenue" value={ca} />
             <input type="hidden" name="professionalExpenses" value={frais} />
-            <input type="hidden" name="estimatedNetMonthly" value={Math.round(netMensuel)} />
+            <input type="hidden" name="estimatedNetMonthly" value={mode === 'portage' ? Math.round(netMensuel) : ''} />
             <label className="md:col-span-2 flex items-start gap-3 rounded-lg bg-porters-navy/[0.03] p-4 text-sm text-porters-black/65">
               <input type="checkbox" name="consent" className="mt-1" required />
               <span>

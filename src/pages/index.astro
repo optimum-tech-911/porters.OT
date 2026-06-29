@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import HomeHeroCarousel from '../components/home/HomeHeroCarousel';
 import LogoMarquee from '../components/ui/LogoMarquee.astro';
+import GoogleReviewsBadge from '../components/ui/GoogleReviewsBadge.astro';
 import independentHero1Desktop from '../../images/hero/independent-hero-01-desktop.webp';
 import independentHero2Desktop from '../../images/hero/independent-hero-02-desktop.webp';
 import independentHero3Desktop from '../../images/hero/independent-hero-03-desktop.webp';
@@ -24,7 +25,7 @@ import { testimonials } from '../data/testimonials.data';
 import { blogPosts, getBlogCategory } from '../data/blog.data';
 
 const homepageAgencies = agencies.filter((agency) =>
-  ['paris', 'lyon', 'marseille', 'montpellier', 'toulouse'].includes(agency.slug),
+  ['paris', 'lyon', 'aix-en-provence', 'montpellier'].includes(agency.slug),
 );
 const homepagePosts = [
   'secteurs-adaptes-portage-salarial',
@@ -217,7 +218,9 @@ const heroAudiences = [
   <!-- ==========================================
        HERO SECTION
        ========================================== -->
-  <HomeHeroCarousel client:load audiences={heroAudiences} />
+  <HomeHeroCarousel client:load audiences={heroAudiences}>
+    <GoogleReviewsBadge variant="dark" />
+  </HomeHeroCarousel>
 
   <!-- ==========================================
        LOGO MARQUEE — Clients & Partners
@@ -538,7 +541,7 @@ const heroAudiences = [
             <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
           </div>
           <h4 class="font-heading font-semibold text-porters-navy mb-2">Proximité locale</h4>
-          <p class="text-sm text-porters-black/60">Paris, Lyon, Marseille, Montpellier et Toulouse : cinq implantations et un suivi à distance partout en France.</p>
+          <p class="text-sm text-porters-black/60">Paris, Lyon, Aix-en-Provence et Montpellier : quatre implantations mises en avant, avec un suivi à distance partout en France.</p>
         </div>
 
         <a href="/rse" class="card p-6 reveal block">
@@ -653,7 +656,7 @@ const heroAudiences = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
         <h2 class="mb-4">Nos <span class="gold-underline">agences</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Paris, Lyon, Marseille, Montpellier, Toulouse : un interlocuteur local pour accompagner votre activité sur place.</p>
+        <p class="text-porters-black/60 max-w-2xl mx-auto">Paris, Lyon, Aix-en-Provence et Montpellier : un interlocuteur pour accompagner votre activité, sur place ou à distance.</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
