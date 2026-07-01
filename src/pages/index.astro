@@ -35,24 +35,24 @@ const homepagePosts = [
   .map((slug) => blogPosts.find((post) => post.slug === slug))
   .filter(Boolean);
 
-const partnerNames = [
-  'BPCE',
-  'Groupama',
-  'Airbus',
-  'Safran',
-  'Thales',
-  'CMA CGM',
-  'Sopra Steria',
-  'Akkodis',
-  'Scalian',
-  'Inetum',
+const clientLogos = [
+  { name: 'BPCE', url: '/images/logos/partners/partner-1.png' },
+  { name: 'Groupama', url: '/images/logos/partners/partner-2.png' },
+  { name: 'Airbus', url: '/images/logos/partners/partner-3.png' },
+  { name: 'Safran', url: '/images/logos/partners/partner-4.png' },
+  { name: 'Thales', url: '/images/logos/partners/partner-5.png' },
+  { name: 'CMA CGM', url: '/images/logos/partners/partner-6.png' },
 ];
-const partnerLogos = partnerNames.map((name, index) => ({
-  name,
-  url: `/images/logos/partners/partner-${index + 1}.png`,
-}));
-const row1 = partnerLogos.slice(0, 5);
-const row2 = partnerLogos.slice(5, 10);
+const esnPartnerLogos = [
+  { name: 'Sopra Steria', url: '/images/logos/partners/partner-7.png' },
+  { name: 'Akkodis', url: '/images/logos/partners/partner-8.png' },
+  { name: 'Scalian', url: '/images/logos/partners/partner-9.png' },
+  { name: 'Inetum', url: '/images/logos/partners/partner-10.png' },
+  { name: 'Capgemini', url: '/images/logos/partners/capgemini.svg' },
+  { name: 'GFI', url: '/images/logos/partners/gfi.svg' },
+  { name: 'SGI', url: '/images/logos/partners/sgi.svg' },
+  { name: 'Atos', url: '/images/logos/partners/atos.svg' },
+];
 const testimonialPortraits = [
   {
     image: independentHero2Mobile,
@@ -97,6 +97,23 @@ const expertiseGroups = [
   'Industrie',
   'Aéronautique',
   'Management de projet',
+];
+const googleReviewHighlights = [
+  {
+    author: 'Yoann Deroux',
+    meta: 'Avis Google · visité en juin',
+    quote: 'Contact réactif, agréable et disponible pour accompagner les échanges.',
+  },
+  {
+    author: 'Safrana Chloé',
+    meta: 'Avis Google · visité en octobre 2025',
+    quote: 'Une équipe engagée, claire et toujours disponible pour le portage salarial.',
+  },
+  {
+    author: 'Mylène Pernin',
+    meta: 'Avis Google · visité en octobre 2025',
+    quote: 'Un accompagnement exemplaire sur le coaching, le suivi et la partie administrative.',
+  },
 ];
 
 const heroAudiences = [
@@ -219,7 +236,7 @@ const heroAudiences = [
        HERO SECTION
        ========================================== -->
   <HomeHeroCarousel client:load audiences={heroAudiences}>
-    <GoogleReviewsBadge variant="dark" />
+    <GoogleReviewsBadge score="4,4" reviewCount={21} variant="dark" />
   </HomeHeroCarousel>
 
   <!-- ==========================================
@@ -238,13 +255,13 @@ const heroAudiences = [
     <div class="partner-proof-marquees reveal reveal-scale">
       <LogoMarquee
         title="Entreprises accompagnées"
-        logos={row1}
+        logos={clientLogos}
         direction="left"
         speed="34s"
       />
       <LogoMarquee
         title="Partenaires ESN"
-        logos={row2}
+        logos={esnPartnerLogos}
         direction="right"
         speed="38s"
       />
@@ -306,6 +323,36 @@ const heroAudiences = [
       </div>
 
       <p class="testimonial-source-note">Témoignages issus du site The Porters. Les visuels illustrent les profils accompagnés et ne prétendent pas représenter les personnes citées.</p>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="google-proof-panel reveal reveal-up">
+        <div class="google-proof-intro">
+          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-3">Avis Google</p>
+          <h2 class="mb-4">Des retours clients plus visibles, dès la page d’accueil</h2>
+          <p class="text-porters-black/60 leading-relaxed">
+            Note Google affichée : <strong>4,4/5</strong> sur <strong>21 avis</strong>. Les extraits ci-dessous reprennent l’esprit des avis publics fournis, avec des formulations courtes pour rester lisibles.
+          </p>
+          <div class="mt-6">
+            <GoogleReviewsBadge score="4,4" reviewCount={21} />
+          </div>
+        </div>
+
+        <div class="google-review-grid">
+          {googleReviewHighlights.map((review) => (
+            <article class="google-review-card">
+              <div class="google-review-stars" aria-label="Avis 5 étoiles">★★★★★</div>
+              <blockquote>« {review.quote} »</blockquote>
+              <footer>
+                <strong>{review.author}</strong>
+                <span>{review.meta}</span>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
@@ -565,12 +612,12 @@ const heroAudiences = [
           <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Simulateur</p>
           <h2 class="mb-6">Estimez vos <span class="gold-underline">revenus</span> en portage salarial</h2>
           <p class="text-porters-black/60 mb-6 leading-relaxed">
-            Notre simulateur vous permet d'estimer votre salaire net en fonction de votre taux journalier et de votre volume d'activité. Transparent, simple et immédiat.
+            Notre simulateur propose deux parcours : une estimation portage à partir du chiffre d’affaires mensuel, et une lecture freelance avec TJM et jours facturés. Transparent, simple et immédiat.
           </p>
           <ul class="space-y-3 mb-8">
             <li class="flex items-start gap-3 text-sm text-porters-black/70">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-              Estimation en temps réel
+              Deux simulateurs distincts : portage salarial et freelance
             </li>
             <li class="flex items-start gap-3 text-sm text-porters-black/70">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
@@ -578,7 +625,7 @@ const heroAudiences = [
             </li>
             <li class="flex items-start gap-3 text-sm text-porters-black/70">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-              Sans engagement
+              Base de frais professionnels à 500 €/mois, calculée au réel
             </li>
           </ul>
           <a href="/simulateur" class="btn btn-primary">
@@ -599,13 +646,13 @@ const heroAudiences = [
             <div class="p-8 lg:p-10">
             <div class="space-y-6">
               <div>
-                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Taux journalier moyen</p>
-                <p class="text-3xl font-heading font-bold text-porters-navy">500 €<span class="text-base font-normal text-porters-black/40"> / jour</span></p>
+                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Chiffre d’affaires mensuel</p>
+                <p class="text-3xl font-heading font-bold text-porters-navy">9 000 €<span class="text-base font-normal text-porters-black/40"> / mois</span></p>
               </div>
               <div class="h-px bg-porters-navy/8"></div>
               <div>
-                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Jours travaillés par mois</p>
-                <p class="text-3xl font-heading font-bold text-porters-navy">18 <span class="text-base font-normal text-porters-black/40">jours</span></p>
+                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Frais de gestion</p>
+                <p class="text-3xl font-heading font-bold text-porters-navy">10 %<span class="text-base font-normal text-porters-black/40"> affichés</span></p>
               </div>
               <div class="h-px bg-porters-navy/8"></div>
               <div>

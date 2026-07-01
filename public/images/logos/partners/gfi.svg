@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 230" role="img" aria-labelledby="title">
+  <title id="title">GFI</title>
+  <g fill="#4b555c">
+    <text x="18" y="164" font-family="Georgia, 'Times New Roman', serif" font-size="184" letter-spacing="-20">gfi</text>
+    <text x="178" y="205" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" letter-spacing="1.2">NEW CHALLENGES, NEW IDEAS</text>
+  </g>
+  <path d="M256 58c61 12 104 54 120 110 5 16 7 29 3 37-7 14-24 10-24-4 0-14 21-32 50-43" fill="none" stroke="#f4a900" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="427" cy="153" r="12" fill="#f4a900"/>
+</svg>
