@@ -1,0 +1,41 @@
+export const consultantsPage = {
+  audiences: [
+    'Consultants IT et architecture',
+    'Experts cybersécurité',
+    'Profils Data & IA',
+    'Cloud, DevOps et SRE',
+    'Product Owners et Product Managers',
+    'Scrum Masters et Agile Coaches',
+    'Chefs de projet, PMO et managers de transition',
+  ],
+  process: [
+    { title: 'Vous trouvez et négociez la mission', text: 'Vous gardez la main sur votre offre, votre client, votre TJM, votre calendrier et les conditions opérationnelles.' },
+    { title: 'Nous validons le cadre', text: 'The Porters vérifie l’éligibilité de la mission et prépare les contrats qui structurent la relation tripartite.' },
+    { title: 'Vous réalisez la prestation', text: 'Vous intervenez auprès du client avec votre autonomie d’expert et rendez compte de votre activité.' },
+    { title: 'Nous facturons et établissons la paie', text: 'The Porters suit la facturation, les éléments d’activité, les frais validés et le bulletin de salaire.' },
+  ],
+  handled: [
+    'Contrat de travail avec le salarié porté',
+    'Contrat de prestation avec l’entreprise cliente',
+    'Facturation et suivi administratif',
+    'Déclarations sociales et bulletin de paie',
+    'Traitement des frais professionnels validés',
+    'Point de contact pendant la mission',
+  ],
+  controlled: [
+    'Votre positionnement et votre offre',
+    'Le choix de vos clients et missions',
+    'La négociation de votre TJM',
+    'Votre organisation de travail',
+    'La relation opérationnelle avec le client',
+    'La qualité et les livrables de votre intervention',
+  ],
+  practicalTopics: [
+    { title: 'Salaire', text: 'Le chiffre d’affaires disponible finance les frais de gestion applicables, les cotisations, les éventuels frais validés et votre rémunération.' },
+    { title: 'Frais de gestion', text: 'Le taux et les services inclus doivent être présentés dans une simulation et confirmés avant contractualisation.' },
+    { title: 'Frais professionnels', text: 'Ils doivent être liés à l’activité, justifiés et validés selon les règles applicables à votre situation.' },
+    { title: 'Contrats', text: 'La relation repose sur votre contrat de travail avec The Porters et le contrat de prestation conclu avec le client.' },
+    { title: 'Relation client', text: 'Vous restez l’expert en charge de la mission. The Porters intervient sur le cadre contractuel et administratif.' },
+    { title: 'Simulation', text: 'Le résultat est indicatif : TJM, jours facturés, frais, cotisations et conditions contractuelles influencent le net final.' },
+  ],
+};

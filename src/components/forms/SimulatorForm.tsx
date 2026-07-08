@@ -51,7 +51,6 @@ const scenarios: Scenario[] = [
   },
 ];
 
-const MANAGEMENT_RATE = 0.1;
 const SOCIAL_CHARGE_RATE = 0.45;
 
 export default function SimulatorForm() {
@@ -61,6 +60,7 @@ export default function SimulatorForm() {
   const [jours, setJours] = useState<number>(scenarios[1].jours);
   const [monthlyRevenue, setMonthlyRevenue] = useState<number>(scenarios[1].tjm * scenarios[1].jours);
   const [frais, setFrais] = useState<number>(scenarios[1].frais);
+  const [managementRatePercent, setManagementRatePercent] = useState<number>(10);
   const [leadSent, setLeadSent] = useState(false);
 
   const selectScenario = (scenario: Scenario) => {
@@ -72,7 +72,7 @@ export default function SimulatorForm() {
   };
 
   const ca = mode === 'freelance' ? tjm * jours : monthlyRevenue;
-  const fraisGestion = mode === 'portage' ? ca * MANAGEMENT_RATE : 0;
+  const fraisGestion = mode === 'portage' ? ca * (managementRatePercent / 100) : 0;
   const baseAvantCharges = ca - fraisGestion - frais;
   const chargesSociales = baseAvantCharges > 0 ? baseAvantCharges * SOCIAL_CHARGE_RATE : 0;
   const netMensuel = baseAvantCharges > 0 ? baseAvantCharges - chargesSociales : 0;
@@ -101,7 +101,7 @@ export default function SimulatorForm() {
       type: 'positive',
     },
     {
-      label: 'Frais de gestion (10 %)',
+      label: `Frais de gestion — hypothèse ${formatPercent(managementRatePercent)} %`,
       value: `- ${formatCurrency(fraisGestion)}`,
       type: 'negative',
     },
@@ -235,6 +235,7 @@ export default function SimulatorForm() {
 
           <div className="space-y-7">
             {mode === 'portage' ? (
+              <>
               <div>
                 <div className="mb-3 flex items-center justify-between gap-4">
                   <label htmlFor="monthly-revenue" className="form-label mb-0">
@@ -259,6 +260,34 @@ export default function SimulatorForm() {
                   <span>25 000 €</span>
                 </div>
               </div>
+              <div>
+                <div className="mb-3 flex items-center justify-between gap-4">
+                  <label htmlFor="management-rate" className="form-label mb-0">
+                    Hypothèse de frais de gestion
+                  </label>
+                  <output htmlFor="management-rate" className="font-heading text-xl font-bold text-porters-navy">
+                    {formatPercent(managementRatePercent)} %
+                  </output>
+                </div>
+                <input
+                  type="range"
+                  id="management-rate"
+                  className="sim-range"
+                  min="4"
+                  max="15"
+                  step="0.5"
+                  value={managementRatePercent}
+                  onChange={(event) => setManagementRatePercent(Number(event.target.value))}
+                />
+                <div className="mt-2 flex justify-between text-xs text-porters-black/45">
+                  <span>4 %</span>
+                  <span>15 %</span>
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-porters-black/48">
+                  Cette valeur sert uniquement à la projection. Le taux applicable et les services inclus sont confirmés avant contractualisation.
+                </p>
+              </div>
+              </>
             ) : (
               <>
               <div>

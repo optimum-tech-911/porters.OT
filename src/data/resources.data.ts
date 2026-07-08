@@ -5,7 +5,7 @@ export const resources: Resource[] = [
     slug: 'guide-complet-portage-salarial',
     title: 'Guide complet du portage salarial',
     description:
-      'Tout ce que vous devez savoir sur le portage salarial en un seul document. Ce guide détaille le fonctionnement, les avantages, les obligations légales et les étapes pour démarrer votre activité de consultant indépendant.',
+      'Comprendre la relation tripartite, les contrats, la facturation, la paie et les vérifications à effectuer avant de démarrer.',
     type: 'guide',
     downloadUrl: '', // TODO: client validation — URL de téléchargement à fournir
     coverImage: '', // TODO: client validation — image de couverture à fournir
@@ -20,7 +20,7 @@ export const resources: Resource[] = [
     slug: 'comparatif-statuts-freelances',
     title: 'Comparatif des statuts pour freelances',
     description:
-      'Micro-entreprise, SASU, EURL ou portage salarial ? Ce livre blanc compare les différents statuts juridiques disponibles pour les travailleurs indépendants en France, avec leurs avantages, inconvénients et implications fiscales.',
+      'Comparer micro-entreprise, société et portage selon quatre critères : autonomie, protection, gestion administrative et modèle de coûts.',
     type: 'livre-blanc',
     downloadUrl: '', // TODO: client validation — URL de téléchargement à fournir
     coverImage: '', // TODO: client validation — image de couverture à fournir
@@ -35,7 +35,7 @@ export const resources: Resource[] = [
     slug: 'checklist-demarrer-portage-salarial',
     title: 'Checklist pour démarrer en portage salarial',
     description:
-      'Une checklist pratique et étape par étape pour lancer votre activité en portage salarial. De la préparation de votre offre de services à la signature de votre premier contrat, rien n\'est laissé au hasard.',
+      'Vérifier votre mission, votre TJM, l’accord du client, les documents nécessaires et les points à clarifier avant la contractualisation.',
     type: 'checklist',
     downloadUrl: '', // TODO: client validation — URL de téléchargement à fournir
     coverImage: '', // TODO: client validation — image de couverture à fournir

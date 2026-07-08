@@ -30,10 +30,10 @@ const getTypeIcon = (type: string) => {
   <section class="section pt-8 lg:pt-16 pb-20">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
-        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Bibliothèque de ressources</p>
-        <h1 class="mb-4">Nos <span class="gold-underline">livres blancs</span> et guides</h1>
+        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Guides pratiques</p>
+        <h1 class="mb-4">Des ressources pour <span class="gold-underline">décider avec méthode</span></h1>
         <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
-          Téléchargez gratuitement nos contenus exclusifs pour vous guider dans votre activité d'indépendant et maîtriser les rouages du portage salarial.
+          Comparez les statuts, préparez votre démarrage et identifiez les questions à poser avant de contractualiser.
         </p>
       </div>
 
@@ -71,14 +71,11 @@ const getTypeIcon = (type: string) => {
 
   <section class="bg-porters-navy py-16">
     <div class="container mx-auto px-6 lg:px-8 text-center reveal">
-      <h2 class="text-porters-white mb-4">Inscrivez-vous à notre newsletter</h2>
+      <h2 class="text-porters-white mb-4">Recevez les prochains guides utiles à votre activité</h2>
       <p class="text-porters-white/60 max-w-xl mx-auto mb-8">
-        Recevez chaque mois nos meilleurs articles, guides et actualités sur le portage salarial.
+        Dites-nous les sujets que vous souhaitez approfondir. Nous vous orienterons vers les ressources disponibles.
       </p>
-      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Merci, votre demande d’inscription a bien été prise en compte.');">
-        <input type="email" placeholder="Votre adresse email" required class="form-input flex-1 bg-porters-white/10 border-porters-white/20 text-porters-white placeholder:text-porters-white/40 focus:border-porters-gold" />
-        <button type="submit" class="btn btn-gold whitespace-nowrap">S'inscrire</button>
-      </form>
+      <a href="/contact" class="btn btn-gold">Être informé des prochains guides</a>
     </div>
   </section>
 </PageLayout>

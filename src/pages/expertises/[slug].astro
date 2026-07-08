@@ -15,8 +15,16 @@ const { expertise } = Astro.props as { expertise: Expertise };
 
 <PageLayout
   seo={{
-    title: `${expertise.eyebrow} en portage salarial — The Porters`,
+    title: `${expertise.title} — The Porters`,
     description: expertise.seoDescription,
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: expertise.title,
+      description: expertise.seoDescription,
+      provider: { '@type': 'Organization', name: 'The Porters' },
+      areaServed: 'France',
+    },
   }}
   breadcrumbs={[
     { label: 'Consultants', href: '/portage-salarial' },
@@ -46,10 +54,28 @@ const { expertise } = Astro.props as { expertise: Expertise };
   </section>
 
   <section class="section bg-white">
+    <div class="container mx-auto grid gap-10 px-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.38fr)] lg:gap-20 lg:px-8">
+      <div class="reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Enjeux de mission</p>
+        <h2>{expertise.introTitle}</h2>
+        <div class="mt-6 space-y-4 text-porters-black/68 leading-relaxed">
+          {expertise.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+      </div>
+      <aside class="reveal border-l-2 border-porters-gold bg-porters-navy/[0.03] p-7">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-porters-gold">Le cadre The Porters</p>
+        <p class="mb-0 text-porters-black/68 leading-relaxed">
+          Vous pilotez l’expertise et la relation opérationnelle. The Porters porte le cadre salarial, contractuel et administratif.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Profils accompagnés</p>
-        <h2>Votre expertise est comprise dès le premier échange</h2>
+        <h2>Des profils reconnus pour ce qu’ils apportent au projet</h2>
       </div>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {expertise.roles.map((role) => (
@@ -61,11 +87,11 @@ const { expertise } = Astro.props as { expertise: Expertise };
     </div>
   </section>
 
-  <section class="section bg-porters-navy/[0.03]">
+  <section class="section bg-white">
     <div class="container mx-auto grid gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
       <div class="reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Missions</p>
-        <h2 class="mb-7">Des interventions cadrées autour de votre valeur</h2>
+        <h2 class="mb-7">Des missions où votre expertise fait la différence</h2>
         <ul class="space-y-4">
           {expertise.missionTypes.map((mission) => (
             <li class="flex items-start gap-3 text-porters-black/72">
@@ -77,7 +103,7 @@ const { expertise } = Astro.props as { expertise: Expertise };
       </div>
       <div class="reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Accompagnement</p>
-        <h2 class="mb-7">Un interlocuteur unique pendant toute la mission</h2>
+        <h2 class="mb-7">Ce que The Porters prend en charge</h2>
         <ol class="space-y-5">
           {expertise.support.map((item, index) => (
             <li class="flex items-start gap-4 border-b border-porters-navy/10 pb-5 last:border-0">
@@ -90,11 +116,47 @@ const { expertise } = Astro.props as { expertise: Expertise };
     </div>
   </section>
 
+  <section class="section bg-porters-navy/[0.03]">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Méthode et impact</p>
+        <h2>Une méthode visible. Une valeur compréhensible.</h2>
+      </div>
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]">
+        <div class="reveal">
+          <h3 class="mb-5 text-xl">Repères de méthode</h3>
+          <ul class="space-y-3">
+            {expertise.methods.map((method) => (
+              <li class="flex items-start gap-3 text-sm text-porters-black/70">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>
+                {method}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3 reveal">
+          {expertise.businessValue.map((value) => (
+            <article class="border-t-2 border-porters-gold bg-white p-5 shadow-sm">
+              <h3 class="mb-3 text-lg">{value.title}</h3>
+              <p class="mb-0 text-sm leading-relaxed text-porters-black/64">{value.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="mt-12 border-t border-porters-navy/10 pt-7 reveal">
+        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-porters-gold">Secteurs concernés</p>
+        <div class="flex flex-wrap gap-2">
+          {expertise.sectors.map((sector) => <span class="rounded-full border border-porters-navy/12 bg-white px-4 py-2 text-sm font-semibold text-porters-navy">{sector}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="bg-porters-navy py-14 lg:py-18">
     <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <div class="max-w-2xl reveal">
         <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Prochaine étape</p>
-        <h2 class="mb-0 text-porters-white">Parlons de votre TJM, de votre calendrier et de votre mission.</h2>
+        <h2 class="mb-0 text-porters-white">Votre prochaine mission commence par un cadre clair.</h2>
       </div>
       <a href="/rendez-vous" class="btn btn-gold shrink-0">Prendre rendez-vous</a>
     </div>

@@ -15,7 +15,7 @@ const included = [
 <PageLayout
   seo={{
     title: 'Tarifs du portage salarial — The Porters',
-    description: 'Frais de gestion The Porters fixés à 10 %, services inclus et prise en compte des frais professionnels réels. Une tarification lisible, sans frais cachés.',
+    description: 'Comprendre les frais de gestion du portage salarial, les services inclus et les paramètres à valider dans votre simulation The Porters.',
   }}
   breadcrumbs={[{ label: 'Tarifs' }]}
 >
@@ -30,10 +30,10 @@ const included = [
     <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.98)_0%,rgba(18,35,48,0.9)_50%,rgba(18,35,48,0.4)_100%)]"></div>
     <div class="container relative mx-auto flex min-h-[38rem] items-center px-6 py-20 lg:px-8">
       <div class="max-w-3xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Tarification transparente</p>
-        <h1 class="max-w-2xl text-porters-white">10 % de frais de gestion. Tout est lisible.</h1>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Comprendre avant de signer</p>
+        <h1 class="max-w-2xl text-porters-white">Des frais lisibles. Une simulation que vous pouvez questionner.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
-          Le taux appliqué dans le simulateur est affiché avant toute prise de contact. Vous voyez le chiffre d'affaires, les frais, les charges estimatives et le net projeté.
+          Une simulation utile distingue le chiffre d’affaires, les frais de gestion, les frais professionnels, les cotisations estimatives et le net projeté. Le taux applicable est confirmé selon votre mission.
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/simulateur" class="btn btn-gold">Calculer mon revenu</a>
@@ -48,13 +48,13 @@ const included = [
       <div class="grid gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:gap-20">
         <div class="reveal">
           <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Frais de gestion</p>
-          <p class="font-heading text-[4.5rem] font-bold leading-none text-porters-navy sm:text-[6.5rem]">10 %</p>
+          <p class="font-heading text-[3rem] font-bold leading-none text-porters-navy sm:text-[4.5rem]">Taux à confirmer</p>
           <p class="mt-5 max-w-md text-lg leading-relaxed text-porters-black/66">
-            Un taux unique utilisé pour votre estimation. La simulation reste indicative jusqu'à l'étude de votre situation et de votre convention de portage.
+            Le niveau de frais et les services inclus dépendent des conditions présentées dans votre simulation et des éléments contractuels validés avant le démarrage.
           </p>
         </div>
         <div class="reveal">
-          <h2 class="mb-8">Ce qui est inclus dans nos frais</h2>
+          <h2 class="mb-8">Ce que les frais de gestion doivent réellement couvrir</h2>
           <div class="grid gap-x-8 gap-y-5 sm:grid-cols-2">
             {included.map((item) => (
               <div class="flex items-start gap-3 border-b border-porters-navy/10 pb-5">
@@ -79,13 +79,13 @@ const included = [
       </div>
       <div class="reveal">
         <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">02</p>
-        <h3 class="mb-3">Paie en début de mois</h3>
-        <p class="mb-0 text-porters-black/64">Le salaire et les frais validés sont versés dans les cinq premiers jours ouvrés, selon les éléments de paie reçus et les conditions contractuelles.</p>
+        <h3 class="mb-3">Calendrier de paie</h3>
+        <p class="mb-0 text-porters-black/64">Les dates de transmission des éléments d’activité et de versement sont expliquées dans votre convention et confirmées par votre conseiller.</p>
       </div>
       <div class="reveal">
         <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">03</p>
-        <h3 class="mb-3">Avance de trésorerie</h3>
-        <p class="mb-0 text-porters-black/64">Lorsque les conditions sont réunies, l'avance évite de faire dépendre votre salaire du délai de règlement final de l'entreprise cliente.</p>
+        <h3 class="mb-3">Conditions de trésorerie</h3>
+        <p class="mb-0 text-porters-black/64">Le traitement des délais de règlement client et toute éventuelle avance doivent être validés explicitement avant la mission.</p>
       </div>
     </div>
   </section>
@@ -93,7 +93,7 @@ const included = [
   <section class="bg-porters-navy py-16">
     <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <div class="max-w-2xl reveal">
-        <h2 class="mb-2 text-porters-white">Votre simulation, expliquée par un conseiller.</h2>
+        <h2 class="mb-2 text-porters-white">Comprendre votre projection avant de vous engager.</h2>
         <p class="mb-0 text-porters-white/65">Passez du calcul indicatif à une projection adaptée à votre mission.</p>
       </div>
       <a href="/rendez-vous" class="btn btn-gold shrink-0">Prendre rendez-vous</a>

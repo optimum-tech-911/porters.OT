@@ -1,15 +1,29 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import { teamMembers } from '../data/team.data';
 import { pageSeo } from '../data/seo.data';
 
-const getInitials = (name: string) =>
-  name
-    .split(' ')
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join('');
+const functions = [
+  {
+    number: '01',
+    title: 'Conseil et cadrage',
+    description: 'Comprendre votre situation, répondre aux questions de statut et préparer un démarrage sans zone grise.',
+  },
+  {
+    number: '02',
+    title: 'Contrats et conformité',
+    description: 'Organiser la relation tripartite et rendre lisibles les engagements du consultant, du client et de The Porters.',
+  },
+  {
+    number: '03',
+    title: 'Facturation et paie',
+    description: 'Suivre les éléments d’activité, la facturation, les frais admissibles et la transformation du chiffre d’affaires en salaire.',
+  },
+  {
+    number: '04',
+    title: 'Suivi de mission',
+    description: 'Rester disponible pendant la mission pour traiter les questions administratives et anticiper les étapes suivantes.',
+  },
+];
 ---
 
 <PageLayout
@@ -19,34 +33,19 @@ const getInitials = (name: string) =>
   <section class="section pt-8 lg:pt-16 pb-20">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
-        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">L'humain avant tout</p>
-        <h1 class="mb-4">Notre <span class="gold-underline">équipe</span></h1>
+        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Des interlocuteurs, pas une plateforme anonyme</p>
+        <h1 class="mb-4">Une équipe présente quand la mission en a <span class="gold-underline">besoin</span></h1>
         <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
-          Rencontrez les interlocuteurs qui vous accompagnent au quotidien. Une équipe dédiée à votre réussite.
+          Du premier échange au suivi administratif, chaque sujet est pris en charge par une fonction clairement identifiée.
         </p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        {teamMembers.map((member) => (
-          <div class="card p-0 overflow-hidden reveal group text-center">
-            <div class="aspect-square bg-porters-navy/5 relative flex items-center justify-center border-b border-porters-navy/5">
-              {member.photo ? (
-                <img src={member.photo} alt={member.name} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-              ) : (
-                <div class="absolute inset-0 flex items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(214,180,90,0.18),transparent_34%),linear-gradient(135deg,rgba(25,43,99,0.08),rgba(25,43,99,0.02))]">
-                  <span class="font-heading text-4xl font-bold text-porters-navy/70">
-                    {getInitials(member.name)}
-                  </span>
-                </div>
-              )}
-            </div>
-            <div class="p-6">
-              <h3 class="font-heading font-semibold text-porters-navy mb-1">{member.name}</h3>
-              <p class="text-sm font-medium text-porters-gold mb-3">{member.role}</p>
-              <p class="text-sm text-porters-black/60 line-clamp-3">
-                {member.bio}
-              </p>
-            </div>
+        {functions.map((item) => (
+          <div class="card p-7 reveal">
+            <p class="mb-5 font-heading text-sm font-semibold text-porters-gold">{item.number}</p>
+            <h2 class="mb-3 text-xl text-porters-navy">{item.title}</h2>
+            <p class="mb-0 text-sm leading-relaxed text-porters-black/60">{item.description}</p>
           </div>
         ))}
       </div>
@@ -55,9 +54,9 @@ const getInitials = (name: string) =>
 
   <section class="bg-porters-navy/[0.02] border-y border-porters-navy/5 py-16">
     <div class="container mx-auto px-6 lg:px-8 text-center reveal">
-      <h2 class="mb-6">Envie de nous rejoindre ?</h2>
+      <h2 class="mb-6">Vous aimez rendre les sujets complexes plus simples ?</h2>
       <p class="text-porters-black/60 max-w-xl mx-auto mb-8">
-        The Porters grandit et recrute de nouveaux talents pour accompagner notre développement.
+        Découvrez les métiers et les opportunités publiées par The Porters.
       </p>
       <a href="/recrutement" class="btn btn-primary">
         Voir nos offres

@@ -3803,7 +3803,7 @@
     gap: 0.65rem;
   }
 
-  .expertise-tags span {
+  .expertise-tags a {
     border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.08);
@@ -3812,6 +3812,15 @@
     font-weight: 800;
     line-height: 1;
     padding: 0.72rem 0.9rem;
+    text-decoration: none;
+    transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+  }
+
+  .expertise-tags a:hover,
+  .expertise-tags a:focus-visible {
+    border-color: var(--color-porters-gold);
+    background: rgba(214, 180, 90, 0.14);
+    color: #ffffff;
   }
 
   @media (min-width: 1024px) {

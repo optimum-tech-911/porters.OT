@@ -3,6 +3,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 import HomeHeroCarousel from '../components/home/HomeHeroCarousel';
 import LogoMarquee from '../components/ui/LogoMarquee.astro';
 import GoogleReviewsBadge from '../components/ui/GoogleReviewsBadge.astro';
+import GoogleReviewsMarquee from '../components/ui/GoogleReviewsMarquee.astro';
 import independentHero1Desktop from '../../images/hero/independent-hero-01-desktop.webp';
 import independentHero2Desktop from '../../images/hero/independent-hero-02-desktop.webp';
 import independentHero3Desktop from '../../images/hero/independent-hero-03-desktop.webp';
@@ -23,6 +24,12 @@ import simulatorPreviewImage from '../../images/business-meeting.webp';
 import { agencies } from '../data/agencies.data';
 import { testimonials } from '../data/testimonials.data';
 import { blogPosts, getBlogCategory } from '../data/blog.data';
+import {
+  googleReviewHighlights,
+  homeExpertises,
+  homePortageSteps,
+  homeWhyPorters,
+} from '../content/pages/home';
 
 const homepageAgencies = agencies.filter((agency) =>
   ['paris', 'lyon', 'aix-en-provence', 'montpellier'].includes(agency.slug),
@@ -88,44 +95,16 @@ const statusCards = [
     body: 'Pour comparer les statuts, comprendre les arbitrages et choisir le bon niveau de charge administrative.',
   },
 ];
-const expertiseGroups = [
-  'IT & digital',
-  'Data / IA',
-  'Cybersécurité',
-  'Cloud & DevOps',
-  'Banque / assurance',
-  'Industrie',
-  'Aéronautique',
-  'Management de projet',
-];
-const googleReviewHighlights = [
-  {
-    author: 'Yoann Deroux',
-    meta: 'Avis Google · visité en juin',
-    quote: 'Contact réactif, agréable et disponible pour accompagner les échanges.',
-  },
-  {
-    author: 'Safrana Chloé',
-    meta: 'Avis Google · visité en octobre 2025',
-    quote: 'Une équipe engagée, claire et toujours disponible pour le portage salarial.',
-  },
-  {
-    author: 'Mylène Pernin',
-    meta: 'Avis Google · visité en octobre 2025',
-    quote: 'Un accompagnement exemplaire sur le coaching, le suivi et la partie administrative.',
-  },
-];
-
 const heroAudiences = [
   {
     id: 'consultant' as const,
     tabLabel: 'Je suis indépendant',
-    eyebrow: 'Portage salarial · Consultants IT indépendants',
-    headline: 'Restez libre. On porte le reste.',
-    subhead: 'Cybersécurité, data/IA, DevOps, agilité : vous gardez la mission, nous gérons le contrat, la paie et l’administratif.',
-    stat: { value: '+10 ans', label: 'd’accompagnement' },
-    primaryCta: { label: 'Simuler mon salaire', href: '/simulateur' },
-    secondaryCta: { label: 'Prendre rendez-vous', href: '/rendez-vous' },
+    eyebrow: 'Portage salarial · Experts du numérique',
+    headline: 'Votre expertise. Votre liberté. Un cadre qui vous protège.',
+    subhead: 'Vous développez vos missions. The Porters transforme votre activité en salaire et prend en charge les contrats, la facturation, la paie et le suivi administratif.',
+    stat: { value: 'Libre', label: 'sans être seul' },
+    primaryCta: { label: 'Simuler mes revenus', href: '/simulateur' },
+    secondaryCta: { label: 'Parler à un conseiller', href: '/rendez-vous' },
     desktopImages: [
       {
         ...independentHero1Desktop,
@@ -174,12 +153,12 @@ const heroAudiences = [
   {
     id: 'entreprise' as const,
     tabLabel: 'Je suis une entreprise',
-    eyebrow: 'Solutions IT · Entreprises',
-    headline: 'Le bon consultant IT, sans la lourdeur administrative.',
-    subhead: 'Sourcing rapide en France et à l’international, zéro gestion RH, un interlocuteur unique du brief à la fin de mission.',
-    stat: { value: '+150', label: 'missions en cours' },
-    primaryCta: { label: 'Trouver un consultant', href: '/entreprises' },
-    secondaryCta: { label: 'Prendre rendez-vous', href: '/rendez-vous' },
+    eyebrow: 'Expertises externes · Entreprises',
+    headline: 'L’expertise qu’il vous faut. Le cadre qui sécurise la mission.',
+    subhead: 'Vous avez un besoin IT, data, cyber, cloud ou transformation. Nous clarifions le cadre de collaboration, la contractualisation et le suivi administratif.',
+    stat: { value: 'Cadré', label: 'du besoin au suivi' },
+    primaryCta: { label: 'Déposer un besoin', href: '/contact' },
+    secondaryCta: { label: 'Parler à l’équipe', href: '/rendez-vous' },
     desktopImages: [
       {
         ...enterpriseDesktop1,
@@ -210,7 +189,7 @@ const heroAudiences = [
       },
     ],
   },
-].reverse();
+];
 ---
 
 <PageLayout
@@ -236,7 +215,7 @@ const heroAudiences = [
        HERO SECTION
        ========================================== -->
   <HomeHeroCarousel client:load audiences={heroAudiences}>
-    <GoogleReviewsBadge score="4,4" reviewCount={21} variant="dark" />
+    <GoogleReviewsBadge variant="dark" />
   </HomeHeroCarousel>
 
   <!-- ==========================================
@@ -247,9 +226,9 @@ const heroAudiences = [
       <div class="partner-proof-intro reveal reveal-up">
         <div>
           <p class="partner-proof-kicker">Collaborations & écosystème</p>
-          <h2>Des équipes qui nous font déjà <span class="gold-underline">confiance</span></h2>
+          <h2>Un écosystème habitué aux <span class="gold-underline">projets exigeants</span></h2>
         </div>
-        <p>Grands comptes et partenaires ESN mobilisent The Porters pour des missions IT, data, cyber, cloud et transformation.</p>
+        <p>Entreprises et partenaires ESN retrouvent un cadre lisible pour collaborer avec des experts IT, data, cyber, cloud et transformation.</p>
       </div>
     </div>
     <div class="partner-proof-marquees reveal reveal-scale">
@@ -277,11 +256,11 @@ const heroAudiences = [
         <div class="testimonial-feature-intro reveal reveal-left">
           <p class="testimonial-feature-kicker">L’accompagnement dans la durée</p>
           <div class="testimonial-experience">
-            <strong>+10 ans</strong>
-            <span>d’expérience aux côtés des consultants indépendants</span>
+            <strong>Suivi</strong>
+            <span>humain, contractuel et administratif pendant la mission</span>
           </div>
-          <h2>Un suivi humain qui reste présent <span class="gold-underline">pendant la mission</span></h2>
-          <p>Un interlocuteur unique, une équipe disponible et des réponses concrètes sur le contrat, la paie, les frais et la relation client.</p>
+          <h2>Être indépendant ne veut pas dire <span class="gold-underline">être seul</span></h2>
+          <p>Un interlocuteur connaît votre dossier et répond concrètement sur le contrat, la facturation, la paie, les frais et la relation client.</p>
 
           <div class="testimonial-portrait-group" aria-label="Profils de consultants accompagnés">
             <div class="testimonial-portraits">
@@ -331,28 +310,17 @@ const heroAudiences = [
       <div class="google-proof-panel reveal reveal-up">
         <div class="google-proof-intro">
           <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-3">Avis Google</p>
-          <h2 class="mb-4">Des retours clients plus visibles, dès la page d’accueil</h2>
+          <h2 class="mb-4">La qualité de service se lit dans les retours</h2>
           <p class="text-porters-black/60 leading-relaxed">
-            Note Google affichée : <strong>4,4/5</strong> sur <strong>21 avis</strong>. Les extraits ci-dessous reprennent l’esprit des avis publics fournis, avec des formulations courtes pour rester lisibles.
+            Disponibilité, clarté et suivi administratif reviennent dans les avis publics. Le ruban s’arrête au survol et respecte la préférence de mouvement réduit.
           </p>
           <div class="mt-6">
-            <GoogleReviewsBadge score="4,4" reviewCount={21} />
+            <GoogleReviewsBadge />
           </div>
         </div>
-
-        <div class="google-review-grid">
-          {googleReviewHighlights.map((review) => (
-            <article class="google-review-card">
-              <div class="google-review-stars" aria-label="Avis 5 étoiles">★★★★★</div>
-              <blockquote>« {review.quote} »</blockquote>
-              <footer>
-                <strong>{review.author}</strong>
-                <span>{review.meta}</span>
-              </footer>
-            </article>
-          ))}
-        </div>
+        <GoogleReviewsMarquee reviews={googleReviewHighlights} speed="32s" />
       </div>
+      <p class="testimonial-source-note">Extraits condensés d’avis publics Google. La fiche Google reste la source de référence pour les textes intégraux et la note en cours.</p>
     </div>
   </section>
 
@@ -362,10 +330,10 @@ const heroAudiences = [
   <section class="section pt-14 lg:pt-16 bg-white">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-10 lg:mb-14 reveal">
-        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Explorer The Porters</p>
-        <h2 class="mb-4">Une plateforme de services pour avancer <span class="gold-underline">plus clairement</span></h2>
+        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Deux publics, une même exigence</p>
+        <h2 class="mb-4">Un parcours clair pour <span class="gold-underline">chaque situation</span></h2>
         <p class="text-porters-black/60 max-w-3xl mx-auto">
-          Consultants, entreprises et équipes locales accèdent rapidement au bon parcours : comprendre, simuler, cadrer une mission ou parler à un conseiller.
+          Consultant prêt à se lancer ou entreprise avec un besoin d’expertise : commencez par la question qui vous concerne vraiment.
         </p>
       </div>
 
@@ -465,10 +433,10 @@ const heroAudiences = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
         <div class="reveal">
-          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Offres & statuts</p>
-          <h2 class="text-porters-white mb-5">Un discours clair pour consultants et entreprises</h2>
+          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Choisir son cadre</p>
+          <h2 class="text-porters-white mb-5">La bonne manière de travailler dépend de votre projet</h2>
           <p class="text-porters-white/68 leading-relaxed">
-            La navigation et le contenu séparent maintenant les besoins côté collaborateur et côté client, avec des entrées lisibles par statut, expertise et niveau d'accompagnement.
+            Portage salarial, CDI, CDD ou activité freelance : comparez le niveau d’autonomie, de protection et de gestion qui correspond à votre trajectoire.
           </p>
         </div>
         <div class="grid gap-4 sm:grid-cols-2 reveal">
@@ -487,8 +455,8 @@ const heroAudiences = [
           <h3 class="text-porters-white">Des expertises organisées en sous-catégories</h3>
         </div>
         <div class="expertise-tags">
-          {expertiseGroups.map((expertise) => (
-            <span>{expertise}</span>
+          {homeExpertises.map((expertise) => (
+            <a href={expertise.href}>{expertise.label}</a>
           ))}
         </div>
       </div>
@@ -502,40 +470,20 @@ const heroAudiences = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
         <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">L'atelier du Portage Salarial</p>
-        <h2 class="mb-4">Du chiffre d'affaires au <span class="gold-underline">salaire</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Simplicité, souplesse, service et sécurité pour transformer votre mission en salaire.</p>
+        <h2 class="mb-4">Vous signez la mission. <span class="gold-underline">Nous organisons le reste.</span></h2>
+        <p class="text-porters-black/60 max-w-2xl mx-auto">Trois étapes pour passer d’une prestation négociée à une activité salariée, suivie et lisible.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-        <div class="text-center reveal">
-          <div class="w-16 h-16 rounded-full border-2 border-porters-gold flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-heading font-bold text-porters-navy">1</span>
+        {homePortageSteps.map((step, index) => (
+          <div class="text-center reveal">
+            <div class="w-16 h-16 rounded-full border-2 border-porters-gold flex items-center justify-center mx-auto mb-6">
+              <span class="text-2xl font-heading font-bold text-porters-navy">{index + 1}</span>
+            </div>
+            <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">{step.title}</h3>
+            <p class="text-sm text-porters-black/60 leading-relaxed">{step.text}</p>
           </div>
-          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Optimisez vos revenus</h3>
-          <p class="text-sm text-porters-black/60 leading-relaxed">
-            Vous négociez votre mission et votre TJM avec le client. The Porters met ensuite en place le cadre légal et contractuel.
-          </p>
-        </div>
-
-        <div class="text-center reveal">
-          <div class="w-16 h-16 rounded-full border-2 border-porters-gold flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-heading font-bold text-porters-navy">2</span>
-          </div>
-          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Libérez-vous de l'administratif</h3>
-          <p class="text-sm text-porters-black/60 leading-relaxed">
-            Facturation, relation administrative, frais professionnels et suivi de paie sont traités pour vous laisser avancer sur la mission.
-          </p>
-        </div>
-
-        <div class="text-center reveal">
-          <div class="w-16 h-16 rounded-full border-2 border-porters-gold flex items-center justify-center mx-auto mb-6">
-            <span class="text-2xl font-heading font-bold text-porters-navy">3</span>
-          </div>
-          <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">Conservez le statut salarié</h3>
-          <p class="text-sm text-porters-black/60 leading-relaxed">
-            Votre chiffre d'affaires devient un salaire avec bulletin de paie, protection sociale et avantages liés au salariat.
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -546,58 +494,18 @@ const heroAudiences = [
   <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
-        <h2 class="mb-4">Pourquoi choisir <span class="gold-underline">The Porters</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Un accompagnement premium, transparent et humain pour vous permettre de vous concentrer sur l'essentiel : votre métier.</p>
+        <h2 class="mb-4">Pourquoi les consultants choisissent <span class="gold-underline">The Porters</span></h2>
+        <p class="text-porters-black/60 max-w-2xl mx-auto">Parce qu’un bon portage ne se limite pas à éditer une fiche de paie : il rend chaque étape compréhensible.</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="card p-6 reveal">
-          <div class="w-10 h-10 rounded bg-porters-gold/10 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" /></svg>
-          </div>
-          <h4 class="font-heading font-semibold text-porters-navy mb-2">Protection complète</h4>
-          <p class="text-sm text-porters-black/60">Sécurité sociale, mutuelle, prévoyance et cotisations retraite. Vous êtes protégé comme un salarié classique.</p>
-        </div>
-
-        <div class="card p-6 reveal">
-          <div class="w-10 h-10 rounded bg-porters-gold/10 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-          </div>
-          <h4 class="font-heading font-semibold text-porters-navy mb-2">Transparence des frais</h4>
-          <p class="text-sm text-porters-black/60">Le taux de gestion de 10 % est affiché dans le simulateur avec le détail des frais, des charges et du net estimé.</p>
-        </div>
-
-        <div class="card p-6 reveal">
-          <div class="w-10 h-10 rounded bg-porters-gold/10 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" /></svg>
-          </div>
-          <h4 class="font-heading font-semibold text-porters-navy mb-2">Accompagnement humain</h4>
-          <p class="text-sm text-porters-black/60">Un chargé de compte dédié vous accompagne au quotidien. Conseils, suivi administratif et support personnalisé.</p>
-        </div>
-
-        <div class="card p-6 reveal">
-          <div class="w-10 h-10 rounded bg-porters-gold/10 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" /></svg>
-          </div>
-          <h4 class="font-heading font-semibold text-porters-navy mb-2">Paie et avance de trésorerie</h4>
-          <p class="text-sm text-porters-black/60">Salaire et frais validés versés dans les cinq premiers jours ouvrés, avec avance de trésorerie selon les conditions contractuelles.</p>
-        </div>
-
-        <div class="card p-6 reveal">
-          <div class="w-10 h-10 rounded bg-porters-gold/10 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
-          </div>
-          <h4 class="font-heading font-semibold text-porters-navy mb-2">Proximité locale</h4>
-          <p class="text-sm text-porters-black/60">Paris, Lyon, Aix-en-Provence et Montpellier : quatre implantations mises en avant, avec un suivi à distance partout en France.</p>
-        </div>
-
-        <a href="/rse" class="card p-6 reveal block">
-          <div class="w-10 h-10 rounded bg-porters-gold/10 flex items-center justify-center mb-4">
-            <svg class="w-5 h-5 text-porters-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15a2.25 2.25 0 0 1 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" /></svg>
-          </div>
-          <h4 class="font-heading font-semibold text-porters-navy mb-2">Démarche RSE</h4>
-          <p class="text-sm text-porters-black/60">Sobriété numérique, inclusion, proximité et transparence structurent une feuille de route suivie et vérifiable.</p>
-        </a>
+        {homeWhyPorters.map((benefit, index) => (
+          <article class="card p-6 reveal">
+            <span class="mb-4 flex h-10 w-10 items-center justify-center rounded bg-porters-gold/10 font-mono text-sm font-semibold text-porters-gold">0{index + 1}</span>
+            <h3 class="font-heading text-lg font-semibold text-porters-navy mb-2">{benefit.title}</h3>
+            <p class="text-sm text-porters-black/60">{benefit.text}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
@@ -610,7 +518,7 @@ const heroAudiences = [
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="reveal">
           <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Simulateur</p>
-          <h2 class="mb-6">Estimez vos <span class="gold-underline">revenus</span> en portage salarial</h2>
+          <h2 class="mb-6">Projetez vos revenus <span class="gold-underline">avant de décider</span></h2>
           <p class="text-porters-black/60 mb-6 leading-relaxed">
             Notre simulateur propose deux parcours : une estimation portage à partir du chiffre d’affaires mensuel, et une lecture freelance avec TJM et jours facturés. Transparent, simple et immédiat.
           </p>
@@ -621,7 +529,7 @@ const heroAudiences = [
             </li>
             <li class="flex items-start gap-3 text-sm text-porters-black/70">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-              Taux de gestion de 10 % affiché
+              Frais de gestion expliqués selon les conditions de la mission
             </li>
             <li class="flex items-start gap-3 text-sm text-porters-black/70">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
@@ -652,7 +560,7 @@ const heroAudiences = [
               <div class="h-px bg-porters-navy/8"></div>
               <div>
                 <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Frais de gestion</p>
-                <p class="text-3xl font-heading font-bold text-porters-navy">10 %<span class="text-base font-normal text-porters-black/40"> affichés</span></p>
+                <p class="text-3xl font-heading font-bold text-porters-navy">Selon contrat<span class="text-base font-normal text-porters-black/40"> · à confirmer</span></p>
               </div>
               <div class="h-px bg-porters-navy/8"></div>
               <div>
@@ -663,7 +571,7 @@ const heroAudiences = [
               <div class="bg-porters-navy/[0.03] rounded p-4">
                 <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Salaire net estimé</p>
                 <p class="text-3xl font-heading font-bold text-porters-navy">
-                  ≈ 4 180 €<span class="text-base font-normal text-porters-black/40"> / mois</span>
+                  Calcul détaillé<span class="text-base font-normal text-porters-black/40"> après saisie</span>
                 </p>
                 <p class="text-xs text-porters-black/40 mt-2">Estimation indicative avant optimisation</p>
               </div>
@@ -681,9 +589,9 @@ const heroAudiences = [
   <section class="bg-porters-navy py-16 lg:py-20">
     <div class="container mx-auto px-6 lg:px-8 text-center reveal">
       <div class="w-12 h-[3px] bg-porters-gold mx-auto mb-8"></div>
-      <h2 class="text-porters-white mb-4">Échangeons sur votre projet</h2>
+      <h2 class="text-porters-white mb-4">Parlons de votre prochaine mission</h2>
       <p class="text-porters-white/60 max-w-xl mx-auto mb-8 leading-relaxed">
-        Un premier échange gratuit et sans engagement avec l'un de nos conseillers pour répondre à toutes vos questions sur le portage salarial.
+        Mission trouvée, statut à comparer ou besoin d’expertise : partez de votre situation et repartez avec des prochaines étapes claires.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/rendez-vous" class="btn btn-gold">
@@ -702,8 +610,8 @@ const heroAudiences = [
   <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
-        <h2 class="mb-4">Nos <span class="gold-underline">agences</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Paris, Lyon, Aix-en-Provence et Montpellier : un interlocuteur pour accompagner votre activité, sur place ou à distance.</p>
+        <h2 class="mb-4">Proches quand c’est utile. <span class="gold-underline">À distance quand c’est plus simple.</span></h2>
+        <p class="text-porters-black/60 max-w-2xl mx-auto">Retrouvez nos points de contact documentés et choisissez le format d’échange adapté à votre mission.</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
@@ -736,8 +644,8 @@ const heroAudiences = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 reveal">
         <div>
-          <h2 class="mb-2">Nos <span class="gold-underline">ressources</span></h2>
-          <p class="text-porters-black/60">Articles, guides et livres blancs pour vous accompagner.</p>
+          <h2 class="mb-2">Des contenus utiles, <span class="gold-underline">pas du jargon</span></h2>
+          <p class="text-porters-black/60">Statut, TJM, contrats, métiers : allez directement aux réponses qui font avancer votre projet.</p>
         </div>
         <a href="/blog" class="btn btn-ghost mt-4 md:mt-0">
           Voir le blog
@@ -771,10 +679,10 @@ const heroAudiences = [
     <div class="container mx-auto px-6 lg:px-8 text-center reveal">
       <div class="w-16 h-[3px] bg-porters-gold mx-auto mb-8"></div>
       <h2 class="text-porters-white mb-4 max-w-2xl mx-auto">
-        Prêt à entreprendre<br />en toute sérénité ?
+        Prêt à donner un nouveau cadre<br />à votre indépendance ?
       </h2>
       <p class="text-porters-white/60 max-w-xl mx-auto mb-10 leading-relaxed">
-        Rejoignez The Porters et bénéficiez d'un accompagnement premium pour votre activité de consultant indépendant.
+        Choisissez vos missions. Nous cadrons les contrats, la facturation, la paie et le suivi administratif.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/simulateur" class="btn btn-gold">

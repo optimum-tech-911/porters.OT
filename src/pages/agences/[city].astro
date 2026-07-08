@@ -49,7 +49,7 @@ const hasPhone = agency.phone.trim().length > 0;
 
         <div class="reveal">
           <div class="card p-8 lg:p-10 bg-porters-navy text-porters-white border-porters-navy">
-            <h3 class="text-porters-white mb-6">Contactez l'agence</h3>
+            <h3 class="text-porters-white mb-6">Organiser un échange</h3>
             
             <div class="space-y-6">
               <div class="flex items-start gap-4">
@@ -84,7 +84,7 @@ const hasPhone = agency.phone.trim().length > 0;
             </div>
             
             <p class="text-xs text-porters-white/42 mt-8 pt-6 border-t border-porters-white/10">
-              Réponse sous 24 heures ouvrées pour toute demande de rendez-vous ou de simulation.
+              Le délai de réponse et le format du rendez-vous sont confirmés après réception de votre demande.
             </p>
           </div>
         </div>
@@ -95,7 +95,7 @@ const hasPhone = agency.phone.trim().length > 0;
   <section class="section bg-porters-navy/[0.02]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
-        <h2 class="mb-8 text-center reveal">Votre partenaire portage salarial à <span class="gold-underline">{agency.city}</span></h2>
+        <h2 class="mb-8 text-center reveal">Développez votre activité à <span class="gold-underline">{agency.city}</span>, sans porter seul le cadre</h2>
         <div class="prose max-w-none text-porters-black/70 leading-relaxed reveal">
           <p>{agency.description}</p>
         </div>
@@ -107,8 +107,8 @@ const hasPhone = agency.phone.trim().length > 0;
     <section class="section">
       <div class="container mx-auto px-6 lg:px-8">
         <div class="mb-12 text-center reveal">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-porters-gold">Nos services</p>
-          <h2>Un accompagnement concret à <span class="gold-underline">{agency.city}</span></h2>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-porters-gold">Ce que nous prenons en charge</p>
+          <h2>Un cadre clair, où que vous soyez à <span class="gold-underline">{agency.city}</span></h2>
         </div>
         <div class="grid gap-6 md:grid-cols-3">
           {agency.serviceCards.map((service) => (

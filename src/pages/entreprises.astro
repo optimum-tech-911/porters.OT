@@ -5,6 +5,7 @@ import { pageSeo } from '../data/seo.data';
 import { enterpriseBenefits } from '../data/benefits.data';
 import enterpriseHeroImage from '../../images/team-workshop.webp';
 import collaborationImage from '../../images/business-meeting.webp';
+import { enterprisePage } from '../content/pages/entreprises';
 
 const seo = {
   title: pageSeo.entreprises.title,
@@ -16,49 +17,31 @@ const breadcrumbs = [{ label: 'Entreprises' }];
 const painPoints = [
   {
     icon: 'scale',
-    title: 'Complexité juridique',
-    description: 'Naviguer dans les réglementations liées à l\'utilisation de prestataires externes peut être un véritable casse-tête juridique.',
+    title: 'Un cadre à sécuriser',
+    description: 'La mission doit préciser les responsabilités, les livrables, la durée et les conditions d’intervention de l’expert.',
   },
   {
     icon: 'alert',
-    title: 'Risque de requalification',
-    description: 'Le recours à des freelances sans cadre adapté expose votre entreprise à un risque de requalification en contrat de travail.',
+    title: 'Des responsabilités à clarifier',
+    description: 'L’autonomie du consultant et le rôle de chaque partie doivent être cohérents avec le fonctionnement réel de la mission.',
   },
   {
     icon: 'document',
-    title: 'Charge administrative',
-    description: 'La gestion des contrats, factures et conformités liées aux prestataires externes mobilise des ressources internes précieuses.',
+    title: 'Une gestion à simplifier',
+    description: 'Contrats, facturation et suivi administratif ne doivent pas disperser vos équipes internes.',
   },
   {
     icon: 'search',
-    title: 'Trouver les bons talents',
-    description: 'Identifier et sécuriser des experts qualifiés pour des missions ponctuelles reste un défi pour beaucoup d\'entreprises.',
-  },
-];
-
-const steps = [
-  {
-    number: '1',
-    title: 'Identifiez votre besoin',
-    description: 'Définissez le périmètre de votre mission et le profil de consultant recherché. Notre équipe peut vous accompagner dans cette démarche.',
-  },
-  {
-    number: '2',
-    title: 'Nous sécurisons la collaboration',
-    description: 'The Porters établit le contrat de prestation, gère les aspects juridiques et administratifs pour garantir une collaboration conforme.',
-  },
-  {
-    number: '3',
-    title: 'Le consultant intervient',
-    description: 'Le consultant réalise sa mission dans un cadre sécurisé. Vous recevez une facture unique de The Porters, sans complexité.',
+    title: 'Une expertise à bien qualifier',
+    description: 'Le bon profil dépend du résultat attendu, du contexte technique, du calendrier et du niveau de responsabilité.',
   },
 ];
 
 const enterpriseProofs = [
-  { value: '+150', label: 'missions en cours' },
-  { value: '50–250', label: 'collaborateurs · taille publiée' },
-  { value: '50 k€', label: 'de capital social publié' },
-  { value: 'France + international', label: 'capacité de réponse' },
+  { value: '01', label: 'besoin qualifié' },
+  { value: '02', label: 'cadre choisi' },
+  { value: '03', label: 'mission contractualisée' },
+  { value: '04', label: 'exécution suivie' },
 ];
 
 const engagementModels = [
@@ -97,15 +80,14 @@ const engagementModels = [
       <div class="max-w-2xl reveal">
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Solutions entreprises</p>
         <h1 class="mb-6 max-w-[40rem] text-porters-white">
-          Sécurisez vos collaborations avec des <span class="gold-underline">experts IT indépendants</span>
+          Une expertise externe. <span class="gold-underline">Un cadre maîtrisé.</span>
         </h1>
         <p class="mb-8 max-w-xl text-lg leading-relaxed text-porters-white/84">
-          Mobilisez des compétences cyber, data, IA, DevOps, cloud, produit ou projet dans un cadre
-          contractuel lisible, sans embauche directe.
+          Faites intervenir un consultant IT, data, cyber, cloud ou transformation sans ajouter une relation d’emploi directe à gérer.
         </p>
         <div class="flex flex-col gap-4 sm:flex-row">
-          <a href="/contact" class="btn btn-gold">Nous contacter</a>
-          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+          <a href="/contact" class="btn btn-gold">Déposer un besoin</a>
+          <a href="/rendez-vous" class="btn btn-white">Parler à l’équipe</a>
         </div>
       </div>
     </div>
@@ -127,9 +109,9 @@ const engagementModels = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(18rem,0.42fr)] lg:items-end">
         <div class="reveal">
-          <h2>Les défis des entreprises face aux <span class="gold-underline">indépendants</span></h2>
+          <h2>Une expertise externe ne doit pas créer <span class="gold-underline">une complexité interne</span></h2>
           <p class="mt-4 max-w-2xl" style="color: rgba(11, 16, 32, 0.7);">
-            Collaborer avec des prestataires externes IT peut être source de complexité. Le portage salarial apporte un cadre plus lisible.
+            Le portage salarial structure la relation avec un consultant autonome et centralise le volet contractuel et administratif.
           </p>
         </div>
         <div class="reveal overflow-hidden rounded-lg border border-porters-navy/10 bg-white shadow-sm">
@@ -160,9 +142,9 @@ const engagementModels = [
   <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-12 reveal">
-        <h2>Les avantages pour votre <span class="gold-underline">entreprise</span></h2>
+        <h2>Ce que votre entreprise <span class="gold-underline">gagne en lisibilité</span></h2>
         <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Le portage salarial offre un cadre simple, sécurisé et flexible pour vos collaborations.
+          Un contrat de prestation, une facturation centralisée et un point de contact pour le suivi administratif.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -176,12 +158,30 @@ const engagementModels = [
     </div>
   </section>
 
+  <section class="section bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mx-auto mb-12 max-w-3xl text-center reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Cas d’usage</p>
+        <h2>Des expertises pour les moments où le projet ne peut pas attendre</h2>
+        <p class="mt-4 text-porters-black/65">Le besoin peut être technique, fonctionnel ou organisationnel. Le point commun : une mission définie, des responsabilités lisibles et un suivi proportionné.</p>
+      </div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {enterprisePage.useCases.map((useCase) => (
+          <article class="card reveal p-6">
+            <h3 class="text-lg">{useCase.title}</h3>
+            <p class="mb-0 mt-3 text-sm leading-relaxed text-porters-black/64">{useCase.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Engagement model choice -->
   <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mx-auto mb-12 max-w-3xl text-center reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Deux cadres, un besoin bien orienté</p>
-        <h2>Portage salarial ou renfort ESN : <span class="gold-underline">choisir le bon modèle</span></h2>
+        <h2>Deux modèles. <span class="gold-underline">Un choix à faire dès le départ.</span></h2>
         <p class="mt-4 text-porters-black/65">
           Le point de départ n’est pas le statut, mais votre besoin : sécuriser un consultant déjà identifié ou trouver une expertise à mobiliser.
         </p>
@@ -210,13 +210,13 @@ const engagementModels = [
   <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-12 reveal">
-        <h2>Comment ça <span class="gold-underline">fonctionne</span> ?</h2>
+        <h2>Du besoin à la mission, <span class="gold-underline">sans zone grise</span></h2>
         <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Un processus simple en trois étapes pour intégrer des experts à vos projets.
+          Un processus en quatre étapes pour choisir le bon cadre, contractualiser et suivre la mission.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        {steps.map((step) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        {enterprisePage.process.map((step) => (
           <div class="text-center reveal">
             <div class="text-5xl font-heading font-bold text-porters-gold mb-4">{step.number}</div>
             <h3 class="text-lg font-heading font-semibold mb-3">{step.title}</h3>
@@ -232,14 +232,14 @@ const engagementModels = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-porters-white mb-4">
-          Simplifiez vos <span class="gold-underline">collaborations</span>
+          Votre besoin est précis ? <span class="gold-underline">Cadrons la collaboration.</span>
         </h2>
         <p class="text-lg mb-8" style="color: rgba(250, 248, 243, 0.8);">
-          Contactez-nous pour découvrir comment le portage salarial peut répondre aux besoins de votre entreprise.
+          Qualifions votre besoin, le bon modèle de collaboration et les prochaines étapes.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" class="btn btn-gold">Nous contacter</a>
-          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+          <a href="/contact" class="btn btn-gold">Déposer un besoin</a>
+          <a href="/rendez-vous" class="btn btn-white">Parler à l’équipe</a>
         </div>
       </div>
     </div>

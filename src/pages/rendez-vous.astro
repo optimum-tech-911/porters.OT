@@ -34,7 +34,7 @@ const meetingTypes = [
   {
     title: 'Échanger avec une agence',
     duration: '30 min',
-    description: 'Préparer un échange avec Paris, Lyon, Marseille, Montpellier ou Toulouse.',
+    description: 'Préparer un échange avec un point de contact documenté ou organiser un rendez-vous à distance.',
   },
 ];
 
@@ -45,7 +45,7 @@ const reasons = [
     description: 'Expliquez votre situation, vos objectifs et vos questions. Nous vous orientons rapidement vers la bonne solution.',
   },
   {
-    icon: '24h',
+    icon: 'Suivi',
     title: 'Un conseiller dédié',
     description: 'Vous échangez avec un interlocuteur unique qui comprend votre situation et vos objectifs.',
   },
@@ -64,11 +64,10 @@ const reasons = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
         <h1 class="text-porters-white text-[1.85rem] leading-[1.06] sm:text-[3rem] mb-6 max-w-[16rem] sm:max-w-3xl mx-auto">
-          Parlons de votre <span class="gold-underline">projet</span>
+          Un échange utile commence par <span class="gold-underline">la bonne question</span>
         </h1>
         <p class="text-base sm:text-lg max-w-[18rem] sm:max-w-2xl mx-auto" style="color: rgba(250, 248, 243, 0.85);">
-          Choisissez le bon motif d'échange et préparez un rendez-vous utile : portage, salaire,
-          passage freelance, mission IT ou agence locale.
+          Statut, simulation, mission IT ou besoin d’entreprise : choisissez votre sujet pour parler directement de votre situation.
         </p>
       </div>
     </div>
@@ -82,7 +81,7 @@ const reasons = [
             <div class="mb-8">
               <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-3">Demande de rendez-vous</p>
               <h2 class="text-xl sm:text-2xl font-heading font-semibold text-porters-navy mb-3">
-                Sélectionnez le sujet de l'échange
+                De quoi avez-vous besoin maintenant ?
               </h2>
               <p class="text-porters-black/65 mb-0">
                 Choisissez le sujet, puis indiquez vos coordonnées et vos disponibilités. Un conseiller vous confirme le créneau et prépare l'échange avec les bonnes informations.
@@ -123,7 +122,7 @@ const reasons = [
             <div class="space-y-4 text-porters-black/70">
               <div>
                 <p class="text-sm font-medium text-porters-navy mb-1">Délai de réponse</p>
-                <p class="mb-0">Sous 24 heures ouvrées pour confirmer votre demande.</p>
+                <p class="mb-0">Le délai et le format de l’échange sont confirmés après réception de votre demande.</p>
               </div>
               <div>
                 <p class="text-sm font-medium text-porters-navy mb-1">Par email</p>
@@ -140,7 +139,7 @@ const reasons = [
   <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-12 reveal">
-        <h2>Pourquoi nous <span class="gold-underline">contacter maintenant</span> ?</h2>
+        <h2>Un rendez-vous pour <span class="gold-underline">sortir avec des réponses</span></h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
         {reasons.map((reason) => (

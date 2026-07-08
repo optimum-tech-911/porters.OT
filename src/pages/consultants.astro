@@ -1,0 +1,91 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import consultantImage from '../../images/consultant-workspace.webp';
+import { consultantsPage } from '../content/pages/consultants';
+---
+
+<PageLayout
+  seo={{
+    title: 'Portage salarial pour consultants IT et tech — The Porters',
+    description: 'Le parcours The Porters pour consultants IT, cyber, data, IA, cloud, DevOps, produit et transformation : contrats, paie, frais et suivi.',
+  }}
+  breadcrumbs={[{ label: 'Consultants' }]}
+>
+  <section class="relative overflow-hidden bg-porters-navy text-porters-white">
+    <img src={consultantImage.src} width={consultantImage.width} height={consultantImage.height} alt="Consultante indépendante préparant sa mission." class="absolute inset-0 h-full w-full object-cover object-center" />
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.97)_0%,rgba(18,35,48,0.84)_50%,rgba(18,35,48,0.3)_100%)]"></div>
+    <div class="container relative mx-auto px-6 py-24 lg:px-8 lg:py-32">
+      <div class="max-w-3xl reveal">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Parcours consultants</p>
+        <h1 class="text-porters-white">Travaillez en indépendant. Restez protégé comme un salarié.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/80">Votre mission, votre expertise et votre TJM restent entre vos mains. Les contrats, la facturation, la paie et le suivi administratif passent entre les nôtres.</p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+          <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
+          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Pour qui ?</p>
+        <h2>Vous vendez une expertise, pas du temps disponible</h2>
+        <p class="mt-5 text-porters-black/66">Le portage salarial s’adresse aux professionnels qualifiés capables de négocier et d’exécuter une prestation pour une entreprise cliente.</p>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {consultantsPage.audiences.map((audience) => <p class="mb-0 border-l-[3px] border-porters-gold bg-porters-navy/[0.03] px-5 py-4 font-heading font-semibold text-porters-navy reveal">{audience}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-porters-navy/[0.03]">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Comment ça fonctionne</p>
+        <h2>Votre parcours, de la négociation au premier salaire</h2>
+      </div>
+      <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {consultantsPage.process.map((step, index) => (
+          <li class="border-t-2 border-porters-gold bg-white p-6 shadow-sm reveal">
+            <span class="font-mono text-sm font-semibold text-porters-gold">0{index + 1}</span>
+            <h3 class="mt-5 text-lg">{step.title}</h3>
+            <p class="mb-0 mt-3 text-sm leading-relaxed text-porters-black/64">{step.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container mx-auto grid gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+      <div class="reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Ce que The Porters gère</p>
+        <h2>Nous portons le cadre</h2>
+        <ul class="mt-7 space-y-4">{consultantsPage.handled.map((item) => <li class="flex gap-3 text-porters-black/70"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold"></span>{item}</li>)}</ul>
+      </div>
+      <div class="reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Ce que vous gardez</p>
+        <h2>Vous gardez les décisions</h2>
+        <ul class="mt-7 space-y-4">{consultantsPage.controlled.map((item) => <li class="flex gap-3 text-porters-black/70"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold"></span>{item}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-porters-navy/[0.03]">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal"><p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Avant de contractualiser</p><h2>Les six sujets à mettre au clair</h2></div>
+      <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {consultantsPage.practicalTopics.map((topic) => <article class="card reveal p-6"><h3 class="text-lg">{topic.title}</h3><p class="mb-0 mt-3 text-sm leading-relaxed text-porters-black/64">{topic.text}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-porters-navy py-16 text-porters-white">
+    <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <div class="max-w-2xl"><h2 class="mb-2 text-porters-white">Votre mission mérite une simulation expliquée.</h2><p class="mb-0 text-porters-white/65">Estimez vos revenus, puis validez les hypothèses avec un conseiller.</p></div>
+      <div class="flex flex-col gap-3 sm:flex-row"><a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a><a href="/rendez-vous" class="btn btn-white">Prendre rendez-vous</a></div>
+    </div>
+  </section>
+</PageLayout>

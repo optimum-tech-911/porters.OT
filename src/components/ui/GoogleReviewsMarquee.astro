@@ -1,0 +1,126 @@
+---
+interface Review {
+  author: string;
+  meta: string;
+  quote: string;
+}
+
+interface Props {
+  reviews: Review[];
+  speed?: string;
+}
+
+const { reviews, speed = '34s' } = Astro.props;
+const duplicatedReviews = [...reviews, ...reviews];
+---
+
+<div class="reviews-marquee" style={`--reviews-speed: ${speed}`} role="region" aria-label="Avis Google en défilement automatique" tabindex="0">
+  <div class="reviews-marquee__viewport">
+    <div class="reviews-marquee__track">
+      {duplicatedReviews.map((review, index) => (
+        <article class="reviews-marquee__card" aria-hidden={index >= reviews.length ? 'true' : undefined}>
+          <div class="reviews-marquee__stars" aria-label={index < reviews.length ? 'Avis cinq étoiles' : undefined}>★★★★★</div>
+          <blockquote>« {review.quote} »</blockquote>
+          <footer>
+            <strong>{review.author}</strong>
+            <span>{review.meta}</span>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .reviews-marquee {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reviews-marquee__viewport {
+    overflow: hidden;
+    padding-block: 0.6rem 1.1rem;
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+
+  .reviews-marquee__track {
+    display: flex;
+    width: max-content;
+    gap: 1rem;
+    animation: reviews-scroll var(--reviews-speed) linear infinite;
+    will-change: transform;
+  }
+
+  .reviews-marquee:hover .reviews-marquee__track,
+  .reviews-marquee:focus-within .reviews-marquee__track {
+    animation-play-state: paused;
+  }
+
+  .reviews-marquee__card {
+    display: flex;
+    width: clamp(17rem, 33vw, 24rem);
+    min-height: 13.5rem;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.35rem;
+    border: 1px solid rgba(40, 55, 67, 0.09);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 14px 34px rgba(25, 43, 99, 0.07);
+  }
+
+  .reviews-marquee__stars {
+    color: #fbbc05;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+  }
+
+  .reviews-marquee__card blockquote {
+    flex: 1;
+    margin: 0;
+    color: rgba(40, 55, 67, 0.76);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .reviews-marquee__card footer {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .reviews-marquee__card strong {
+    color: var(--color-porters-navy);
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+  }
+
+  .reviews-marquee__card span {
+    color: rgba(40, 55, 67, 0.5);
+    font-size: 0.73rem;
+  }
+
+  @keyframes reviews-scroll {
+    to {
+      transform: translate3d(calc(-50% - 0.5rem), 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reviews-marquee__viewport {
+      overflow-x: auto;
+      mask-image: none;
+      -webkit-mask-image: none;
+      scrollbar-width: thin;
+    }
+
+    .reviews-marquee__track {
+      animation: none;
+      will-change: auto;
+    }
+
+    .reviews-marquee__card[aria-hidden='true'] {
+      display: none;
+    }
+  }
+</style>

@@ -24,10 +24,36 @@ const formattedDate = new Date(post.publishedAt).toLocaleDateString('fr-FR', {
   month: 'long',
   day: 'numeric'
 });
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.publishedAt,
+      dateModified: post.updatedAt || post.publishedAt,
+      mainEntityOfPage: `https://www.porters.fr/blog/${post.slug}`,
+      author: { '@type': 'Organization', name: 'The Porters' },
+      publisher: { '@type': 'Organization', name: 'The Porters' },
+    },
+    ...(post.faq?.length
+      ? [{
+          '@type': 'FAQPage',
+          mainEntity: post.faq.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: { '@type': 'Answer', text: item.answer },
+          })),
+        }]
+      : []),
+  ],
+};
 ---
 
 <PageLayout
-  seo={post.seo}
+  seo={{ ...post.seo, structuredData: articleSchema }}
   breadcrumbs={[
     { label: 'Blog', href: '/blog' },
     { label: post.title }

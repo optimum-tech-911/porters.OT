@@ -15,7 +15,7 @@ const breadcrumbs = [{ label: 'Simulateur' }];
 const faqItems = [
   {
     question: 'Comment est calculé le résultat de la simulation ?',
-    answer: 'La simulation est basée sur un calcul simplifié : chiffre d\'affaires (TJM × jours travaillés), frais de gestion techniques, frais professionnels et charges sociales estimatives. Le résultat est indicatif et doit être affiné avec un conseiller.',
+    answer: 'La simulation est basée sur un calcul simplifié : chiffre d\'affaires, hypothèse de frais de gestion, frais professionnels et charges sociales estimatives. Le résultat est indicatif et doit être affiné avec un conseiller.',
   },
   {
     question: 'Le résultat de la simulation est-il garanti ?',
@@ -23,12 +23,23 @@ const faqItems = [
   },
   {
     question: 'Quel TJM minimum faut-il pratiquer ?',
-    answer: 'En règle générale, un TJM à partir de 300 € permet de dégager un salaire net confortable en portage salarial. Notre simulateur vous aide à estimer le TJM adapté à vos objectifs de rémunération.',
+    answer: 'Il n’existe pas de TJM universel. Le tarif dépend de votre expertise, du marché, de la durée, des frais et de votre objectif de rémunération. La simulation permet de tester plusieurs scénarios.',
   },
 ];
 ---
 
-<PageLayout seo={seo} breadcrumbs={breadcrumbs}>
+<PageLayout seo={{
+  ...seo,
+  structuredData: {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+  },
+}} breadcrumbs={breadcrumbs}>
 
   <!-- Hero -->
   <section class="relative overflow-hidden bg-porters-navy text-porters-white">
@@ -45,13 +56,12 @@ const faqItems = [
     </div>
     <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
       <div class="max-w-2xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Deux simulateurs distincts</p>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Décider avec des chiffres</p>
         <h1 class="mb-6 max-w-[36rem] text-porters-white">
-          Comparez votre activité freelance et le <span class="gold-underline">portage salarial</span>
+          Du chiffre d’affaires au salaire : <span class="gold-underline">voyez ce qui change</span>
         </h1>
         <p class="max-w-xl text-base leading-relaxed text-porters-white/82 sm:text-lg">
-          Utilisez le chiffre d’affaires mensuel pour le portage, ou le TJM et les jours facturés
-          pour votre projection freelance. Les deux lectures restent clairement séparées.
+          Testez vos hypothèses de chiffre d’affaires, de frais et de charges. Le résultat reste indicatif jusqu’à la validation de votre situation.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-porters-white/78">Portage + freelance</span>
@@ -68,7 +78,7 @@ const faqItems = [
       <div class="mb-10 grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.28fr)] lg:items-end">
         <div class="reveal">
           <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Votre projection</p>
-          <h2 class="mb-4">Choisissez votre simulateur, puis affinez les paramètres</h2>
+          <h2 class="mb-4">Commencez par votre situation réelle</h2>
           <p class="max-w-2xl text-porters-black/62">
             Le parcours portage n’affiche pas le TJM. Le parcours freelance l’utilise pour calculer
             le chiffre d’affaires, sans présenter ce montant comme un salaire net.
@@ -119,7 +129,7 @@ const faqItems = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-porters-white mb-4">
-          Vous souhaitez une simulation <span class="gold-underline">personnalisée</span> ?
+          Un chiffre ne suffit pas. <span class="gold-underline">Faites-le expliquer.</span>
         </h2>
         <p class="text-lg mb-8" style="color: rgba(250, 248, 243, 0.8);">
           Nos conseillers peuvent affiner ces estimations en fonction de votre situation spécifique.

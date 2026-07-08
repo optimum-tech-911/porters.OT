@@ -73,7 +73,7 @@ export const agencies: Agency[] = [
       {
         question: 'Comment organiser un rendez-vous avec The Porters Paris ?',
         answer:
-          "Utilisez la page Rendez-vous pour choisir le motif de l'échange et indiquer vos disponibilités. L'équipe vous confirme le créneau sous 24 heures ouvrées.",
+          "Utilisez la page Rendez-vous pour choisir le motif de l'échange et indiquer vos disponibilités. L'équipe vous confirme ensuite le créneau et son format.",
       },
       {
         question: 'Quels profils accompagne The Porters Paris ?',
@@ -415,7 +415,10 @@ export const agencies: Agency[] = [
         'The Porters Toulouse accompagne les consultants IT et tech en portage salarial : simulation, cadrage de mission et suivi personnalisé.',
     },
   },
-];
+].filter((agency) => agency.slug !== 'toulouse');
+
+// TODO(client): réintégrer Toulouse dans `agencies` uniquement après confirmation
+// d'une présence réelle, du format de rendez-vous et des coordonnées publiables.
 
 export const legacyAgencyNotes = [
   {

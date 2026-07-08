@@ -10,66 +10,110 @@
 /avantages-du-portage-salarial-pour-les-entreprises /entreprises 301
 /portage-salarial-pour-entreprises/ /entreprises 301
 /portage-salarial-pour-entreprises /entreprises 301
+/portage-salarial-pour-entreprises/* /entreprises 301
 /simulation-revenus/ /simulateur 301
 /simulation-revenus /simulateur 301
+/simulateur-de-salaire/ /simulateur 301
+/simulateur-de-salaire /simulateur 301
 /contactez-nous/ /contact 301
 /contactez-nous /contact 301
+/contactez-nous/* /contact 301
 /recrutement-commercial-porters/ /recrutement 301
 /recrutement-commercial-porters /recrutement 301
+/recrutement-commercial-porters/* /recrutement 301
+/ressources/ /blog 301
+/ressources /blog 301
+/politique-de-confidentialite/ /confidentialite 301
+/politique-de-confidentialite /confidentialite 301
+/old-parrainage/ /parrainage 301
+/old-parrainage /parrainage 301
+/reunion-d-information/ /rendez-vous 301
+/reunion-d-information /rendez-vous 301
+/prendre-rdv-avec-un-charge-d-affaires/ /rendez-vous 301
+/prendre-rdv-avec-un-charge-d-affaires /rendez-vous 301
 
 # === AGENCES ===
 /the-porters-paris/ /agences/paris 301
 /the-porters-paris /agences/paris 301
+/the-porters-paris/* /agences/paris 301
+/old-portage-salarial-paris/ /agences/paris 301
+/old-portage-salarial-paris /agences/paris 301
+/old-portage-salarial-paris/* /agences/paris 301
 /old-portage-salarial-lyon/ /agences/lyon 301
 /old-portage-salarial-lyon /agences/lyon 301
+/old-portage-salarial-lyon/* /agences/lyon 301
 /old-portage-salarial-montpellier/ /agences/montpellier 301
 /old-portage-salarial-montpellier /agences/montpellier 301
+/old-portage-salarial-montpellier/* /agences/montpellier 301
 /old-portage-salarial-marseille/ /agences/marseille 301
 /old-portage-salarial-marseille /agences/marseille 301
+/old-portage-salarial-marseille/* /agences/marseille 301
 /old-portage-salarial-bordeaux/ /agences 301
 /old-portage-salarial-bordeaux /agences 301
+/old-portage-salarial-bordeaux/* /agences 301
 /old-portage-salarial-lille/ /agences 301
 /old-portage-salarial-lille /agences 301
+/old-portage-salarial-lille/* /agences 301
+
+# === EXPERTISES ===
+/expertises/devops-cloud/ /expertises/cloud-devops 301
+/expertises/devops-cloud /expertises/cloud-devops 301
 
 # === BLOG EVERGREEN ARTICLES ===
 /comment-optimiser-sa-remuneration-en-portage-salarial/ /blog/optimiser-remuneration-portage-salarial 301
 /comment-optimiser-sa-remuneration-en-portage-salarial /blog/optimiser-remuneration-portage-salarial 301
+/comment-optimiser-sa-remuneration-en-portage-salarial/* /blog/optimiser-remuneration-portage-salarial 301
 /les-secteurs-dactivite-les-plus-adaptes-au-portage-salarial/ /blog/secteurs-adaptes-portage-salarial 301
 /les-secteurs-dactivite-les-plus-adaptes-au-portage-salarial /blog/secteurs-adaptes-portage-salarial 301
+/les-secteurs-dactivite-les-plus-adaptes-au-portage-salarial/* /blog/secteurs-adaptes-portage-salarial 301
 /trouver-des-missions-en-portage-salarial/ /blog/trouver-missions-portage-salarial 301
 /trouver-des-missions-en-portage-salarial /blog/trouver-missions-portage-salarial 301
+/trouver-des-missions-en-portage-salarial/* /blog/trouver-missions-portage-salarial 301
 /contrat-portage-salarial/ /blog/contrat-portage-salarial 301
 /contrat-portage-salarial /blog/contrat-portage-salarial 301
+/contrat-portage-salarial/* /blog/contrat-portage-salarial 301
 /frais-gestion-portage-salarial/ /blog/frais-gestion-portage-salarial 301
 /frais-gestion-portage-salarial /blog/frais-gestion-portage-salarial 301
+/frais-gestion-portage-salarial/* /blog/frais-gestion-portage-salarial 301
 /choisir-societe-portage-salarial/ /blog/bien-choisir-societe-portage-salarial 301
 /choisir-societe-portage-salarial /blog/bien-choisir-societe-portage-salarial 301
+/choisir-societe-portage-salarial/* /blog/bien-choisir-societe-portage-salarial 301
 /limportance-de-bien-choisir-sa-societe-de-portage-salarial/ /blog/bien-choisir-societe-portage-salarial 301
 /limportance-de-bien-choisir-sa-societe-de-portage-salarial /blog/bien-choisir-societe-portage-salarial 301
 /choisir-statut-independant/ /blog/choisir-statut-independant 301
 /choisir-statut-independant /blog/choisir-statut-independant 301
+/choisir-statut-independant/* /blog/choisir-statut-independant 301
 /se-mettre-a-son-compte/ /blog/choisir-statut-independant 301
 /se-mettre-a-son-compte /blog/choisir-statut-independant 301
+/se-mettre-a-son-compte/* /blog/choisir-statut-independant 301
 /portage-salarial-informatique-flexibilite/ /blog/portage-salarial-informatique 301
 /portage-salarial-informatique-flexibilite /blog/portage-salarial-informatique 301
+/portage-salarial-informatique-flexibilite/* /blog/portage-salarial-informatique 301
 /ingenieurs-choisir-portage-salarial/ /blog/portage-salarial-informatique 301
 /devenir-freelance-informatique/ /blog/devenir-freelance-informatique 301
 /devenir-freelance-informatique /blog/devenir-freelance-informatique 301
+/devenir-freelance-informatique/* /blog/devenir-freelance-informatique 301
 /bien-reussir-mission-portage-salarial-5-cles-succes/ /blog/trouver-missions-portage-salarial 301
 /bien-reussir-mission-portage-salarial-5-cles-succes /blog/trouver-missions-portage-salarial 301
 /portage-salarial-et-international-travailler-a-letranger-en-toute-securite/ /blog/portage-salarial-international 301
 /portage-salarial-et-international-travailler-a-letranger-en-toute-securite /blog/portage-salarial-international 301
 /portage-salarial-solution-flexible/ /blog/portage-salarial-solution-flexible 301
 /portage-salarial-solution-flexible /blog/portage-salarial-solution-flexible 301
+/portage-salarial-solution-flexible/* /blog/portage-salarial-solution-flexible 301
 /decouvrez-le-monde-du-portage-salarial-votre-guide-simplifie/ /blog/guide-portage-salarial 301
+/decouvrez-le-monde-du-portage-salarial-votre-guide-simplifie/* /blog/guide-portage-salarial 301
 /le-role-du-charge-de-compte-en-portage-salarial-un-soutien-indispensable/ /blog/role-charge-de-compte-portage-salarial 301
 /consultant-informatique-independant-galeres/ /blog/consultant-informatique-independant-galeres 301
+/consultant-informatique-independant-galeres/* /blog/consultant-informatique-independant-galeres 301
 
 # === SECONDARY BLOG ARTICLES ===
 /quest-ce-que-la-cooptation-et-quels-sont-ses-avantages/ /blog 301
+/quest-ce-que-la-cooptation-et-quels-sont-ses-avantages/* /blog 301
 /cedants-dentreprises-portage-salarial-organiser-accompagnement-apres-cession-par-guillaume-guilhen/ /blog 301
+/cedants-dentreprises-portage-salarial-organiser-accompagnement-apres-cession-par-guillaume-guilhen/* /blog 301
 /retour-convention-collective-de-portage-salarial-par-guillaume-guilhen/ /blog/guide-portage-salarial 301
 /recrutement-dun-commercial-a-aix-marseille/ /recrutement 301
+/recrutement-dun-commercial-a-aix-marseille/* /recrutement 301
 
 # === TAXONOMIES → BLOG ===
 /category/actualite-portage-salarial/ /blog 301
@@ -90,6 +134,20 @@
 
 # === EVENTS (broken legacy) → BLOG ===
 /event/* /blog 301
+/new-accueil/* / 301
+/events/ /blog 301
+/events /blog 301
+/events/categorie/* /blog 301
+
+# === LEGACY DEMO CONTENT TYPES ===
+/cpt_courses/ /livres-blancs 301
+/cpt_courses/* /livres-blancs 301
+/cpt_courses_group/* /livres-blancs 301
+/cpt_team/ /equipe 301
+/cpt_team/* /equipe 301
+/cpt_team_group/* /equipe 301
+/cpt_testimonials_group/* / 301
+/author/* /blog 301
 
 # === WORDPRESS FEEDS ===
 /feed/ / 301

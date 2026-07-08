@@ -7,12 +7,12 @@ type Props = {
 
 const testimonials = [
   {
-    quote: 'Enfin un portage clair, humain et réactif.',
+    quote: 'À mi-chemin entre l’indépendance et le salariat, je me sens à la fois libre et accompagnée.',
     author: 'Delphine — Product Owner, Paris',
   },
   {
-    quote: 'Je reste concentré sur mes missions, The Porters gère le cadre.',
-    author: 'Andy P. — Chef de projet digital',
+    quote: 'Grâce au portage salarial, je me sens plus libre et sécurisée.',
+    author: 'Chloé — DSI, Toulouse',
   },
 ];
 

@@ -34,12 +34,12 @@ export const faqGroups: FaqGroup[] = [
       {
         question: 'Comment et quand suis-je payé(e) ?',
         answer:
-          "Votre salaire et vos frais professionnels validés sont versés au début du mois, dans les cinq premiers jours ouvrés, sous réserve de la réception des éléments de paie et des conditions prévues par votre convention de portage.",
+          "Le calendrier de paie dépend de la réception des éléments d'activité et des conditions prévues par votre convention de portage. Votre conseiller vous communique les dates applicables avant le démarrage.",
       },
       {
         question: 'Que se passe-t-il si mon client règle à 45 ou 60 jours ?',
         answer:
-          "L'avance de trésorerie permet, lorsque les conditions contractuelles sont réunies, de ne pas attendre le règlement final du client pour percevoir votre salaire. Votre conseiller vérifie ces conditions au cadrage de la mission.",
+          "Le traitement du délai de règlement client et toute éventuelle avance dépendent des conditions contractuelles proposées. Ce point doit être confirmé au cadrage de la mission.",
       },
       {
         question: 'Comment sont gérés les frais professionnels ?',
@@ -49,7 +49,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: 'Le taux de frais The Porters est-il affiché ?',
         answer:
-          "Oui. Le taux de frais de gestion utilisé dans le simulateur est fixé à 10 %. Il couvre notamment la gestion sociale et administrative, la facturation, l'accompagnement dédié, les outils et le suivi de votre activité.",
+          "Le simulateur permet de tester une hypothèse de frais de gestion. Le taux réellement applicable et les services inclus sont détaillés dans la proposition et confirmés avant la contractualisation.",
       },
       {
         question: 'À quoi sert le simulateur de revenus ?',
@@ -96,7 +96,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: 'Quelles agences sont mises en avant ?',
         answer:
-          "The Porters présente cinq implantations : Paris, Lyon, Marseille, Montpellier et Toulouse. Chaque page locale permet de découvrir les expertises accompagnées et de contacter l'équipe.",
+          "Le site présente les zones et points de contact actuellement documentés. Les modalités de rendez-vous, l'adresse et la présence physique sont précisées sur chaque page locale lorsqu'elles sont confirmées.",
       },
     ],
   },

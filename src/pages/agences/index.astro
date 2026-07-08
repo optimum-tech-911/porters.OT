@@ -2,7 +2,7 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 import { agencies } from '../../data/agencies.data';
 
-const featuredAgencySlugs = ['paris', 'lyon', 'aix-en-provence', 'montpellier'];
+const featuredAgencySlugs = ['paris', 'lyon', 'aix-en-provence', 'marseille', 'montpellier'];
 const featuredAgencies = featuredAgencySlugs
   .map((slug) => agencies.find((agency) => agency.slug === slug))
   .filter(Boolean);
@@ -11,16 +11,16 @@ const featuredAgencies = featuredAgencySlugs
 <PageLayout
   seo={{
     title: 'Nos agences de portage salarial | The Porters',
-    description: 'Découvrez les implantations The Porters à Paris, Lyon, Aix-en-Provence et Montpellier pour un accompagnement de proximité en portage salarial.',
+    description: 'Découvrez les points de contact The Porters documentés à Paris, Lyon, Aix-en-Provence, Marseille et Montpellier pour votre projet de portage salarial.',
   }}
   breadcrumbs={[{ label: 'Agences' }]}
 >
   <section class="section pt-8 lg:pt-16">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-16 reveal">
-        <h1 class="mb-4">Nos <span class="gold-underline">agences</span> partout en France</h1>
+        <h1 class="mb-4">La proximité, <span class="gold-underline">sans dépendre de la distance</span></h1>
         <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
-          Un accompagnement de proximité pour les consultants IT et tech, avec des coordonnées sensibles publiées uniquement lorsqu'elles sont confirmées.
+          Rencontrez un interlocuteur dans un point de contact documenté ou organisez un échange à distance selon votre situation.
         </p>
       </div>
 
@@ -43,7 +43,7 @@ const featuredAgencies = featuredAgencySlugs
       <div class="mt-20 p-8 lg:p-12 bg-porters-navy/[0.03] rounded-xl text-center reveal border border-porters-navy/5">
         <h3 class="text-xl font-heading font-semibold text-porters-navy mb-4">Vous ne trouvez pas votre ville ?</h3>
         <p class="text-porters-black/60 max-w-xl mx-auto mb-8">
-          The Porters accompagne les consultants indépendants et les entreprises sur l'ensemble du territoire national grâce à notre plateforme en ligne et à nos conseillers à distance.
+          L’accompagnement peut être organisé à distance lorsque votre ville ne dispose pas d’une adresse confirmée sur le site.
         </p>
         <a href="/contact" class="btn btn-primary">
           Contactez-nous

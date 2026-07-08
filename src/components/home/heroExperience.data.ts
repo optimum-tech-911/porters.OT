@@ -66,11 +66,11 @@ export const heroProofImages = {
 
 export const heroExperience: Record<HeroAudienceId, HeroExperience> = {
   consultant: {
-    ticker: ['+150 missions en cours', 'Paie rapide', 'Conseiller dédié', 'Frais clairs'],
+    ticker: ['Mission choisie', 'Contrat cadré', 'Paie suivie', 'Frais expliqués'],
     stickers: [
       {
-        title: 'CDI sécurisé',
-        text: 'Liberté freelance + protection salariale',
+        title: 'Cadre salarié',
+        text: 'Votre autonomie, avec la protection du salariat',
         image: heroProofImages.security,
         href: '/portage-salarial',
         detail: {
@@ -92,49 +92,49 @@ export const heroExperience: Record<HeroAudienceId, HeroExperience> = {
       },
     ],
     mobileProofs: [
-      { title: 'CDI sécurisé', image: heroProofImages.security, href: '/portage-salarial' },
-      { title: 'Paie rapide', image: heroProofImages.payment, href: '/tarifs' },
-      { title: 'Conseiller dédié', image: heroProofImages.advisor, href: '/rendez-vous' },
-      { title: 'Frais clairs', image: heroProofImages.admin, href: '/tarifs' },
+      { title: 'Cadre salarié', image: heroProofImages.security, href: '/portage-salarial' },
+      { title: 'Revenus simulés', image: heroProofImages.payment, href: '/simulateur' },
+      { title: 'Suivi dédié', image: heroProofImages.advisor, href: '/rendez-vous' },
+      { title: 'Frais expliqués', image: heroProofImages.admin, href: '/tarifs' },
     ],
     journey: [
       {
-        title: 'Estimer mes revenus',
-        text: 'TJM, jours facturés et frais professionnels.',
+        title: 'Projeter mes revenus',
+        text: 'Chiffre d’affaires, frais et salaire estimé.',
         image: heroProofImages.payment,
         href: '/simulateur',
       },
       {
-        title: 'Cadrer mon portage',
-        text: 'Contrat, paie, facturation et administratif.',
+        title: 'Sécuriser mon cadre',
+        text: 'Contrat, facturation, paie et administratif.',
         image: heroProofImages.security,
         href: '/portage-salarial',
       },
       {
-        title: 'Avancer avec un conseiller',
-        text: 'Un interlocuteur humain pour suivre la mission.',
+        title: 'Préparer mon démarrage',
+        text: 'Un échange concret avant de contractualiser.',
         image: heroProofImages.advisor,
         href: '/rendez-vous',
       },
     ],
   },
   entreprise: {
-    ticker: ['+150 missions en cours', 'Sourcing IT rapide', 'Zéro gestion RH', 'Mission cadrée'],
+    ticker: ['Besoin clarifié', 'Cadre choisi', 'Contrat suivi', 'Facture centralisée'],
     stickers: [
       {
-        title: 'Sourcing IT rapide',
-        text: 'Profils qualifiés en France et à l’international',
+        title: 'Besoin cadré',
+        text: 'Objectifs, compétences et calendrier clarifiés',
         image: heroProofImages.sourcing,
         href: '/entreprises',
         detail: {
           eyebrow: 'Qualification du besoin',
-          body: 'Le brief est traduit en critères concrets pour identifier plus vite les expertises réellement adaptées au projet.',
-          points: ['Profils IT et transformation', 'France et international'],
+          body: 'Le brief est traduit en critères concrets pour orienter la demande vers le cadre et l’expertise adaptés.',
+          points: ['Profils IT et transformation', 'Périmètre de mission explicite'],
         },
       },
       {
-        title: 'Zéro gestion RH',
-        text: 'Contrat, paie et administratif pris en charge',
+        title: 'Cadre maîtrisé',
+        text: 'Contrat, facturation et suivi administratif',
         image: heroProofImages.admin,
         href: '/entreprises',
         detail: {
@@ -145,27 +145,27 @@ export const heroExperience: Record<HeroAudienceId, HeroExperience> = {
       },
     ],
     mobileProofs: [
-      { title: 'Sourcing rapide', image: heroProofImages.sourcing, href: '/entreprises' },
-      { title: 'Zéro gestion RH', image: heroProofImages.admin, href: '/entreprises' },
-      { title: 'Mission cadrée', image: heroProofImages.payment, href: '/rendez-vous' },
-      { title: 'Interlocuteur unique', image: heroProofImages.advisor, href: '/rendez-vous' },
+      { title: 'Besoin clarifié', image: heroProofImages.sourcing, href: '/entreprises' },
+      { title: 'Cadre contractuel', image: heroProofImages.admin, href: '/entreprises' },
+      { title: 'Mission suivie', image: heroProofImages.payment, href: '/rendez-vous' },
+      { title: 'Contact identifié', image: heroProofImages.advisor, href: '/rendez-vous' },
     ],
     journey: [
       {
-        title: 'Déposer un besoin',
-        text: 'Brief mission IT, contexte, budget et timing.',
+        title: 'Clarifier le besoin',
+        text: 'Objectif, périmètre, compétences et calendrier.',
         image: heroProofImages.admin,
         href: '/rendez-vous',
       },
       {
-        title: 'Identifier le bon profil',
-        text: 'Consultant tech qualifié selon l’expertise recherchée.',
+        title: 'Choisir le bon cadre',
+        text: 'Portage ou renfort ESN selon votre situation.',
         image: heroProofImages.sourcing,
         href: '/entreprises',
       },
       {
-        title: 'Lancer la mission',
-        text: 'Contrat, cadre administratif et suivi simplifiés.',
+        title: 'Cadrer la mission',
+        text: 'Contrat, facturation et suivi administratif.',
         image: heroProofImages.security,
         href: '/contact',
       },

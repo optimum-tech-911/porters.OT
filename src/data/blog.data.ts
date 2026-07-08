@@ -39,6 +39,9 @@ ${post.sections
 <p>${section.body}</p>`,
   )
   .join('\n')}
+${post.expertiseHref ? `<p><a href="${post.expertiseHref}">Découvrir la page expertise associée</a></p>` : ''}
+${post.faq?.length ? `<h2>Questions fréquentes</h2>
+${post.faq.map((item) => `<h3>${item.question}</h3><p>${item.answer}</p>`).join('\n')}` : ''}
 <h2>Passer à l'étape suivante</h2>
 <p>Pour appliquer ces principes à votre situation, utilisez le simulateur The Porters ou demandez un rendez-vous avec un conseiller. Les chiffres exacts, les frais et les conditions d'accompagnement sont toujours à valider selon votre mission.</p>`;
 
@@ -397,7 +400,7 @@ const posts: BlogSeed[] = [
     excerpt:
       'Comprendre ce que couvrent les frais de gestion et pourquoi la transparence compte plus qu’un simple taux affiché.',
     intro:
-      "Les frais de gestion rémunèrent les services de la société de portage. Chez The Porters, le taux affiché est de 10 % et doit toujours être lu avec le détail des services inclus.",
+      "Les frais de gestion rémunèrent les services de la société de portage. Le taux applicable doit toujours être lu avec le détail des services inclus et confirmé avant la contractualisation.",
     sections: [
       {
         title: 'Ce qui peut être inclus',
@@ -477,6 +480,90 @@ const posts: BlogSeed[] = [
       description:
         'Comparer les statuts indépendants et comprendre quand le portage salarial peut être pertinent.',
     },
+  },
+  {
+    slug: 'portage-salarial-consultant-cybersecurite',
+    title: 'Portage salarial pour consultant cybersécurité',
+    excerpt: 'RSSI, GRC, SOC, pentest ou sécurité cloud : comment cadrer une mission cyber en portage salarial sans perdre son autonomie.',
+    intro: 'Les consultants cybersécurité interviennent sur des sujets sensibles où le périmètre, les responsabilités et la confidentialité doivent être explicités. Le portage salarial fournit un cadre contractuel et social sans se substituer à l’expertise du consultant.',
+    sections: [
+      { title: 'Des missions à forte responsabilité', body: 'Audit, analyse de risques, gouvernance, SOC, pentest, cloud security ou gestion d’incident impliquent des accès, des livrables et des obligations qui doivent être définis avant le démarrage.' },
+      { title: 'Ce que le portage prend en charge', body: 'La société de portage encadre la relation contractuelle avec le client, la facturation, les déclarations sociales et la paie. Le consultant garde la responsabilité opérationnelle de son intervention.' },
+      { title: 'Les points à cadrer', body: 'TJM, durée, astreintes éventuelles, habilitations, confidentialité, responsabilités, assurance et frais de déplacement doivent apparaître dans les échanges préparatoires.' },
+    ],
+    faq: [
+      { question: 'Un RSSI freelance peut-il travailler en portage salarial ?', answer: 'Oui, lorsque la mission relève d’une prestation intellectuelle autonome et que les conditions d’éligibilité du portage sont réunies.' },
+      { question: 'Le portage couvre-t-il la responsabilité technique ?', answer: 'Le cadre contractuel doit préciser les responsabilités et assurances applicables. Il ne dispense jamais le consultant de respecter les règles de sécurité et le périmètre convenu.' },
+    ],
+    expertiseHref: '/expertises/cybersecurite',
+    publishedAt: '2026-07-08',
+    readingTime: 7,
+    featured: true,
+    category: 'secteurs',
+    seo: { title: 'Portage salarial consultant cybersécurité — The Porters', description: 'Guide du portage salarial pour RSSI, GRC, SOC, pentesters et experts cloud security : missions, contrats, TJM et responsabilités.' },
+  },
+  {
+    slug: 'portage-salarial-consultant-data-ia',
+    title: 'Portage salarial pour consultant Data & IA',
+    excerpt: 'Data engineering, BI, gouvernance, machine learning et IA : structurer sa mission, son TJM et son cadre contractuel.',
+    intro: 'Les missions Data & IA vont du cadrage stratégique à l’industrialisation. Le portage salarial permet à l’expert de rester autonome tout en déléguant les contrats, la facturation et la paie.',
+    sections: [
+      { title: 'Partir du besoin métier', body: 'Une mission crédible relie les données, les utilisateurs et un résultat attendu : qualité, décision, automatisation, délai, coût ou maîtrise des risques.' },
+      { title: 'Cadrer l’accès aux données', body: 'Sources, droits d’accès, sécurité, environnement cloud, propriété des livrables et exigences de gouvernance doivent être clarifiés avant l’intervention.' },
+      { title: 'Du prototype à la production', body: 'Un POC ne suffit pas toujours. Les responsabilités d’industrialisation, de documentation, de MLOps et de suivi de performance doivent être nommées.' },
+    ],
+    faq: [
+      { question: 'Quels profils Data & IA utilisent le portage ?', answer: 'Data Analysts, Data Engineers, Data Scientists, ML Engineers, architectes data ou IA, spécialistes BI et consultants en gouvernance peuvent y recourir.' },
+      { question: 'Comment définir son TJM Data ou IA ?', answer: 'Le TJM dépend de l’expérience, de la rareté des compétences, de la responsabilité, de la durée et du contexte. Une simulation aide à relier ce TJM au revenu estimé.' },
+    ],
+    expertiseHref: '/expertises/data-ia',
+    publishedAt: '2026-07-08',
+    readingTime: 7,
+    featured: true,
+    category: 'secteurs',
+    seo: { title: 'Portage salarial consultant Data & IA — The Porters', description: 'Portage salarial Data et IA : data engineering, BI, gouvernance, machine learning, TJM, contrats et industrialisation.' },
+  },
+  {
+    slug: 'portage-salarial-devops-freelance',
+    title: 'Portage salarial pour DevOps freelance',
+    excerpt: 'Cloud, CI/CD, infrastructure as code, SRE et plateforme : les points à cadrer pour une mission DevOps en portage salarial.',
+    intro: 'Le DevOps freelance intervient au cœur de la chaîne de livraison. Son contrat doit rendre lisibles les responsabilités d’exploitation, les accès, les niveaux de service et les éventuelles astreintes.',
+    sections: [
+      { title: 'Définir le périmètre technique', body: 'Cloud concerné, environnements, pipelines, infrastructure as code, observabilité, sécurité et documentation doivent être identifiés.' },
+      { title: 'Clarifier l’exploitation', body: 'Les horaires, astreintes, procédures d’incident, responsabilités de mise en production et niveaux de service ne doivent pas rester implicites.' },
+      { title: 'Conserver son autonomie', body: 'Le consultant choisit et négocie sa mission. The Porters encadre la contractualisation, la facturation et la paie sans diriger la réalisation technique.' },
+    ],
+    faq: [
+      { question: 'Un SRE peut-il être salarié porté ?', answer: 'Oui, si la mission est compatible avec le portage salarial et conserve une autonomie suffisante. Les astreintes et responsabilités doivent être explicitement cadrées.' },
+      { question: 'Quels frais DevOps peuvent être pris en compte ?', answer: 'Les frais doivent être professionnels, justifiés et validés. Matériel, logiciels, certifications ou déplacements sont examinés selon la situation.' },
+    ],
+    expertiseHref: '/expertises/cloud-devops',
+    publishedAt: '2026-07-08',
+    readingTime: 7,
+    featured: true,
+    category: 'secteurs',
+    seo: { title: 'Portage salarial DevOps freelance — The Porters', description: 'Guide du portage salarial pour DevOps, SRE et cloud engineers : périmètre, astreintes, TJM, frais et contrats.' },
+  },
+  {
+    slug: 'portage-salarial-product-owner-scrum-master',
+    title: 'Portage salarial pour Product Owner et Scrum Master',
+    excerpt: 'Produit, agilité et transformation : pourquoi le portage salarial convient aux Product Owners, Scrum Masters et Agile Coaches.',
+    intro: 'Product Owners et Scrum Masters interviennent souvent sur des transformations limitées dans le temps, avec une forte autonomie de conseil et de facilitation. Le portage salarial donne un cadre à cette activité.',
+    sections: [
+      { title: 'Deux rôles, deux responsabilités', body: 'Le Product Owner organise la valeur et les priorités du produit. Le Scrum Master facilite le fonctionnement de l’équipe et aide à lever les obstacles.' },
+      { title: 'Cadrer les attentes', body: 'Roadmap, backlog, rituels, indicateurs, parties prenantes, périmètre d’équipe et niveau d’autonomie doivent être clarifiés avec le client.' },
+      { title: 'Un statut adapté aux missions de transformation', body: 'Le portage permet de tester ou développer une activité indépendante tout en conservant un contrat salarié et une gestion administrative déléguée.' },
+    ],
+    faq: [
+      { question: 'Le portage convient-il à un Agile Coach ?', answer: 'Oui, notamment pour les missions d’accompagnement, de diagnostic ou de transformation dont le périmètre et la durée sont définis.' },
+      { question: 'Qui négocie le TJM ?', answer: 'Le consultant reste autonome dans la négociation de son TJM avec le client. The Porters l’aide ensuite à lire l’impact de ce tarif dans la simulation.' },
+    ],
+    expertiseHref: '/expertises/agilite-coaching',
+    publishedAt: '2026-07-08',
+    readingTime: 7,
+    featured: true,
+    category: 'secteurs',
+    seo: { title: 'Portage salarial Product Owner et Scrum Master', description: 'Portage salarial pour Product Owners, Scrum Masters et Agile Coaches : missions, autonomie, TJM, contrats et accompagnement.' },
   },
 ];
 

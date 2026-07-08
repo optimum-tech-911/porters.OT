@@ -120,14 +120,14 @@ export default function HomeHeroCarousel({ audiences, children }: Props) {
 
   const statDetail = audience.id === 'entreprise'
     ? {
-        eyebrow: 'Activité The Porters',
-        body: 'Un volume de missions qui reflète une capacité concrète à cadrer et suivre des collaborations IT dans la durée.',
-        points: ['Expertises IT, data, cyber et cloud', 'Suivi en France et à l’international'],
+        eyebrow: 'Parcours entreprise',
+        body: 'Un cadre lisible pour qualifier le besoin, contractualiser l’intervention et suivre les éléments administratifs de la mission.',
+        points: ['Expertises IT et transformation', 'Un point de contact identifiable'],
       }
     : {
-        eyebrow: 'Expérience The Porters',
-        body: 'Plus de dix ans consacrés à rendre le portage plus lisible, plus humain et mieux adapté aux consultants indépendants.',
-        points: ['Accompagnement personnalisé', 'Suivi pendant la mission'],
+        eyebrow: 'Parcours consultant',
+        body: 'Un cadre salarial pour exercer en autonomie tout en déléguant la gestion contractuelle, sociale et administrative.',
+        points: ['Autonomie commerciale conservée', 'Suivi pendant la mission'],
       };
 
   return (
@@ -177,7 +177,7 @@ export default function HomeHeroCarousel({ audiences, children }: Props) {
             key={`stat-${audience.id}`}
             className="hero-floating-sticker hero-stat-card audience-stat-desktop"
             href={audience.id === 'entreprise' ? '/entreprises' : '/qui-sommes-nous'}
-            aria-label={`Repère chiffré : ${audience.stat.value} ${audience.stat.label}`}
+            aria-label={`${audience.stat.value} : ${audience.stat.label}`}
           >
             <span className="hero-proof-image-wrap">
               <img

@@ -5,7 +5,12 @@ export const navigation: Navigation = {
     {
       label: 'Consultants',
       items: [
+        { label: 'Parcours consultants', href: '/consultants' },
         { label: 'Le portage salarial', href: '/portage-salarial' },
+        { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
+        { label: 'Data & IA', href: '/expertises/data-ia' },
+        { label: 'Cloud & DevOps', href: '/expertises/cloud-devops' },
+        { label: 'Agilité & Coaching', href: '/expertises/agilite-coaching' },
         { label: 'Simulateur de revenus', href: '/simulateur' },
         { label: 'Parler à un conseiller', href: '/rendez-vous' },
       ],
@@ -42,7 +47,9 @@ export const navigation: Navigation = {
       {
         title: 'Consultants',
         links: [
+          { label: 'Parcours consultants', href: '/consultants' },
           { label: 'Le portage salarial', href: '/portage-salarial' },
+          { label: 'Nos expertises', href: '/expertises/cybersecurite' },
           { label: 'Simulateur de revenus', href: '/simulateur' },
           { label: 'Parler à un conseiller', href: '/rendez-vous' },
         ],

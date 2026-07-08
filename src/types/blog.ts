@@ -10,6 +10,8 @@ export interface BlogPost {
   readingTime: number;
   featured: boolean;
   category: BlogCategory;
+  faq?: { question: string; answer: string }[];
+  expertiseHref?: string;
   seo: {
     title: string;
     description: string;

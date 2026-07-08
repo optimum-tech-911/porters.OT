@@ -16,7 +16,7 @@ const commitments = [
   {
     number: '03',
     title: 'Proximité durable',
-    text: "S'appuyer sur cinq implantations et sur le travail à distance pour rapprocher l'accompagnement des consultants et limiter les déplacements inutiles.",
+    text: "Privilégier le travail à distance et les ressources locales lorsque le contexte de mission le permet, afin de limiter les déplacements inutiles.",
   },
   {
     number: '04',
@@ -30,6 +30,7 @@ const commitments = [
   seo={{
     title: 'Notre démarche RSE — The Porters',
     description: 'Sobriété numérique, inclusion, proximité et transparence : découvrez les axes de responsabilité sociale et environnementale de The Porters.',
+    noindex: true,
   }}
   breadcrumbs={[{ label: 'Démarche RSE' }]}
 >
@@ -45,9 +46,9 @@ const commitments = [
     <div class="container relative mx-auto flex min-h-[39rem] items-center px-6 py-20 lg:px-8">
       <div class="max-w-3xl reveal">
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Responsabilité sociale et environnementale</p>
-        <h1 class="max-w-3xl text-porters-white">Des engagements utiles, lisibles et mesurables.</h1>
+        <h1 class="max-w-3xl text-porters-white">Des intentions aux preuves.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
-          Notre démarche RSE se construit autour de pratiques directement liées à notre métier : le numérique, l'inclusion, la proximité et la transparence de l'accompagnement.
+          Le mémoire technique du Groupe Porters documente plusieurs pratiques liées au numérique, à l’inclusion, à la proximité et à la transparence. Leur périmètre exact pour The Porters reste à valider avant indexation de cette page.
         </p>
       </div>
     </div>
@@ -56,8 +57,8 @@ const commitments = [
   <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Nos quatre axes</p>
-        <h2>La responsabilité intégrée au fonctionnement quotidien</h2>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Quatre axes documentés</p>
+        <h2>Des pratiques à confirmer pour l’entité The Porters</h2>
       </div>
       <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
         {commitments.map((commitment) => (

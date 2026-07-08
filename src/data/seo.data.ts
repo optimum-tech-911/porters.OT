@@ -2,9 +2,9 @@ import type { PageSeo } from '../types/seo';
 
 export const pageSeo: Record<string, PageSeo> = {
   home: {
-    title: 'The Porters — Portage salarial consultants IT',
+    title: 'Portage salarial pour experts IT — The Porters',
     description:
-      'The Porters accompagne les consultants IT indépendants en portage salarial : cybersécurité, data, IA, DevOps, cloud, agilité, projet et conseil tech.',
+      'Gardez la liberté de choisir vos missions IT. The Porters prend en charge contrats, facturation, paie et suivi dans un cadre salarié.',
   },
   portageSalarial: {
     title: 'Portage salarial pour consultants IT — The Porters',
@@ -12,9 +12,9 @@ export const pageSeo: Record<string, PageSeo> = {
       'Découvrez le portage salarial pour consultants IT : statut salarié, liberté de mission, TJM, frais professionnels, paie et accompagnement The Porters.',
   },
   entreprises: {
-    title: 'Portage salarial pour les entreprises — The Porters',
+    title: 'Expertises IT externes, cadre maîtrisé — The Porters',
     description:
-      'Intégrez des consultants experts à vos projets grâce au portage salarial. The Porters vous offre flexibilité, sécurité juridique et simplicité contractuelle.',
+      'Mobilisez une expertise IT externe avec un besoin clarifié, une relation contractuelle cadrée et un suivi administratif lisible.',
   },
   simulateur: {
     title: 'Simulateur de revenus consultant IT — The Porters',
@@ -29,7 +29,7 @@ export const pageSeo: Record<string, PageSeo> = {
   agences: {
     title: 'Nos agences de portage salarial — The Porters',
     description:
-      'Retrouvez les agences The Porters à Paris, Lyon, Marseille, Montpellier et Toulouse. Coordonnées locales publiées après validation client.',
+      'Retrouvez les points de contact The Porters documentés et les modalités d’accompagnement à distance pour votre projet de portage salarial.',
   },
   blog: {
     title: 'Blog portage salarial IT — The Porters',
@@ -39,7 +39,7 @@ export const pageSeo: Record<string, PageSeo> = {
   livresBlancs: {
     title: 'Livres blancs et guides — The Porters',
     description:
-      'Téléchargez nos livres blancs et guides pratiques sur le portage salarial. Ressources gratuites pour comprendre et optimiser votre activité indépendante.',
+      'Guides pratiques pour comparer les statuts, préparer une mission et poser les bonnes questions avant de choisir le portage salarial.',
   },
   faq: {
     title: 'FAQ portage salarial consultants IT — The Porters',
@@ -47,19 +47,19 @@ export const pageSeo: Record<string, PageSeo> = {
       'Réponses sur le portage salarial, la rémunération, les frais, la recherche de missions, les agences, le simulateur et les rendez-vous The Porters.',
   },
   contact: {
-    title: 'Contactez-nous — The Porters',
+    title: 'Parlons de votre situation — The Porters',
     description:
-      'Contactez The Porters pour en savoir plus sur le portage salarial. Notre équipe est à votre disposition par téléphone, email ou dans nos agences.',
+      'Mission trouvée, changement de statut ou besoin d’expertise externe : expliquez-nous votre situation pour obtenir une réponse adaptée.',
   },
   quiSommesNous: {
     title: 'Qui sommes-nous — The Porters portage salarial IT',
     description:
-      'Découvrez The Porters, société de portage salarial à taille humaine pour consultants indépendants, avec un focus renforcé sur les profils IT et tech.',
+      'The Porters rend le portage salarial plus lisible pour les experts du numérique grâce à une approche fondée sur la clarté, l’expertise et la proximité.',
   },
   equipe: {
-    title: 'Notre équipe — The Porters',
+    title: 'Une équipe présente à chaque étape — The Porters',
     description:
-      'Rencontrez l\'équipe The Porters : des experts du portage salarial dédiés à l\'accompagnement personnalisé de chaque consultant indépendant.',
+      'Conseil, contrats, facturation, paie et suivi de mission : découvrez les fonctions qui accompagnent votre activité chez The Porters.',
   },
   recrutement: {
     title: 'Recrutement — Rejoignez The Porters',
@@ -69,7 +69,7 @@ export const pageSeo: Record<string, PageSeo> = {
   parrainage: {
     title: 'Programme de parrainage — The Porters',
     description:
-      'Parrainez un consultant et bénéficiez d\'avantages exclusifs avec le programme de parrainage The Porters. Recommandez, gagnez, développez votre réseau.',
+      'Recommandez The Porters à un consultant ou une entreprise, avec son accord. Les conditions et l’éligibilité sont confirmées avant la mise en relation.',
   },
   mentionsLegales: {
     title: 'Mentions légales — The Porters',

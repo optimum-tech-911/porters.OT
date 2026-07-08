@@ -15,7 +15,7 @@ export const consultantBenefits: Benefit[] = [
     icon: 'calculator',
     title: 'Rémunération optimisée',
     description:
-      'Nos experts vous aident à optimiser votre TJM et votre rémunération nette grâce à une gestion fiscale avantageuse.',
+      'Un conseiller vous aide à lire l’effet du TJM, des jours facturés, des frais et des hypothèses de simulation sur votre rémunération estimée.',
   },
   {
     icon: 'briefcase',
@@ -33,7 +33,7 @@ export const consultantBenefits: Benefit[] = [
     icon: 'users',
     title: 'Réseau professionnel',
     description:
-      'Rejoignez une communauté de consultants et participez à des événements de networking organisés par nos agences.',
+      'Accédez aux ressources et échanges proposés par The Porters lorsque des événements ou rencontres sont programmés.',
   },
   {
     icon: 'trending-up',
@@ -54,7 +54,7 @@ export const enterpriseBenefits: Benefit[] = [
     icon: 'clock',
     title: 'Flexibilité des ressources',
     description:
-      'Intégrez rapidement des experts qualifiés à vos projets sans les contraintes d\'un recrutement classique.',
+      'Cadrez l’intervention d’un expert externe sur une durée et un périmètre définis, sans embauche directe.',
   },
   {
     icon: 'lock',
@@ -72,18 +72,18 @@ export const enterpriseBenefits: Benefit[] = [
     icon: 'globe',
     title: 'Accès à l\'international',
     description:
-      'Faites appel à des consultants pour des missions à l\'international en toute conformité réglementaire.',
+      'Étudiez le cadre d’une mission internationale avant de valider les conditions contractuelles, sociales et administratives applicables.',
   },
   {
     icon: 'building',
     title: 'Maîtrise des coûts',
     description:
-      'Pas de charges fixes liées à l\'embauche : vous ne payez que pour la prestation réalisée, avec une transparence totale.',
+      'Le contrat de prestation rend visibles le tarif, le périmètre et les conditions de facturation convenues pour la mission.',
   },
   {
     icon: 'heart',
-    title: 'Experts qualifiés',
+    title: 'Expertises ciblées',
     description:
-      'Accédez à un vivier de consultants expérimentés dans des domaines variés : IT, management, finance, marketing.',
+      'Orientez le besoin vers les compétences IT, data, cyber, cloud, produit, projet ou transformation réellement nécessaires.',
   },
 ];

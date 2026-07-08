@@ -14,7 +14,7 @@ interface Props {
 
 const { seo } = Astro.props;
 const canonicalUrl = seo.canonical || new URL(Astro.url.pathname, Astro.site).toString();
-const ogImage = seo.ogImage || new URL('/og-image.jpg', Astro.site).toString();
+const ogImage = seo.ogImage || new URL('/favicon.svg', Astro.site).toString();
 const siteName = 'The Porters';
 
 // Organization structured data (global)
@@ -23,8 +23,8 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'The Porters',
   url: 'https://www.porters.fr',
-  logo: 'https://www.porters.fr/logo.svg',
-  description: 'Société de portage salarial premium pour consultants et entreprises en France.',
+  logo: 'https://www.porters.fr/favicon.svg',
+  description: 'Portage salarial pour consultants IT : contrats, facturation, paie et suivi administratif dans un cadre lisible.',
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
