@@ -7,9 +7,9 @@ export interface Benefit {
 export const consultantBenefits: Benefit[] = [
   {
     icon: 'shield',
-    title: 'Protection sociale complète',
+    title: 'Protection sociale du salariat',
     description:
-      'Bénéficiez de la même couverture sociale qu\'un salarié classique : assurance maladie, retraite, prévoyance et mutuelle.',
+      'Le statut salarié ouvre les droits associés à l’assurance maladie, à la retraite, à la prévoyance et à la mutuelle selon les règles applicables.',
   },
   {
     icon: 'calculator',
@@ -25,9 +25,9 @@ export const consultantBenefits: Benefit[] = [
   },
   {
     icon: 'file-text',
-    title: 'Zéro administratif',
+    title: 'Gestion administrative prise en charge',
     description:
-      'Nous prenons en charge l\'intégralité de la gestion administrative : facturation, déclarations sociales, comptabilité.',
+      'The Porters suit les contrats, la facturation, les déclarations sociales et les éléments nécessaires à la paie.',
   },
   {
     icon: 'users',

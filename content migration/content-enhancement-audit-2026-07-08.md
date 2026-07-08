@@ -61,3 +61,16 @@ Date : 8 juillet 2026
 ## Ligne éditoriale retenue
 
 Des paragraphes courts, un vocabulaire métier précis et une hiérarchie facile à parcourir. Le consultant reste maître de sa mission, de son TJM et de sa relation client ; The Porters cadre la relation tripartite, le contrat, la facturation, la paie et le suivi administratif. Côté entreprise, le discours porte sur la qualification, la contractualisation, la simplicité administrative et le suivi d’exécution, sans promettre un sourcing ou une performance non démontrés.
+
+## Contrôle final du 8 juillet 2026
+
+- Réécriture des héros et des principaux titres orientée bénéfices, avec la hiérarchie éditoriale observée sur les captures KwickStart, sans copie mot à mot.
+- Suppression des profils d’équipe fictifs, du téléphone générique, du faux succès du formulaire, du délai de réponse non sourcé et de la prime de parrainage non validée.
+- Suppression des formulations absolues telles que « zéro administratif » et « même couverture sociale ».
+- Vérification du cadre légal sur les articles L1254-1 et L1254-2 du Code du travail : relation entre société de portage, entreprise cliente et salarié porté ; expertise, qualification et autonomie du salarié porté.
+- Ajout d’un assistant interne sans API : 70 entrées issues des données structurées du site, recherche FlexSearch locale, réponses courtes, seuil de confiance et redirections.
+- Ajout d’une page `/expertises` pour offrir une destination cohérente à la recherche globale et à la navigation.
+
+## Point de déploiement hors contenu public
+
+Les routes `/admin/*` sont des écrans de démonstration en `noindex`, mais ne disposent pas encore d’une protection d’accès. Elles doivent être protégées ou retirées du déploiement public avant mise en production.

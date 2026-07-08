@@ -41,7 +41,7 @@ const seo = {
 
       <div class="max-w-3xl mx-auto space-y-16">
         {faqGroups.map((group) => (
-          <div class="reveal">
+          <div id={group.slug} class="reveal scroll-mt-28">
             <h2 class="text-2xl font-heading font-semibold text-porters-navy mb-6">{group.title}</h2>
             <div class="space-y-4">
               {group.items.map((faq) => (

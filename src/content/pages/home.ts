@@ -26,7 +26,7 @@ export const homeWhyPorters = [
     text: 'Un contrat de travail et la protection sociale associée, sans renoncer à votre autonomie commerciale.',
   },
   {
-    title: 'Gestion administrative complète',
+    title: 'Cadre administratif suivi',
     text: 'Contrats, facturation, déclarations sociales et bulletins de paie sont pris en charge.',
   },
   {

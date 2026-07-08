@@ -7,6 +7,7 @@ export const navigation: Navigation = {
       items: [
         { label: 'Parcours consultants', href: '/consultants' },
         { label: 'Le portage salarial', href: '/portage-salarial' },
+        { label: 'Toutes les expertises', href: '/expertises' },
         { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
         { label: 'Data & IA', href: '/expertises/data-ia' },
         { label: 'Cloud & DevOps', href: '/expertises/cloud-devops' },
@@ -49,7 +50,7 @@ export const navigation: Navigation = {
         links: [
           { label: 'Parcours consultants', href: '/consultants' },
           { label: 'Le portage salarial', href: '/portage-salarial' },
-          { label: 'Nos expertises', href: '/expertises/cybersecurite' },
+          { label: 'Nos expertises', href: '/expertises' },
           { label: 'Simulateur de revenus', href: '/simulateur' },
           { label: 'Parler à un conseiller', href: '/rendez-vous' },
         ],

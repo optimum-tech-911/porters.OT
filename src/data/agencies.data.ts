@@ -104,7 +104,7 @@ export const agencies: Agency[] = [
     heroTitle: 'The Porters Lyon — Portage salarial en Auvergne-Rhône-Alpes',
     heroSubtitle: "L'accompagnement portage pour consultants indépendants à Lyon.",
     description:
-      "The Porters Lyon accompagne les consultants indépendants en Auvergne-Rhône-Alpes avec un suivi de proximité, une gestion administrative complète et un cadre salarial adapté aux missions de conseil, IT, ingénierie, data, cloud, DevOps et transformation digitale.",
+      "The Porters Lyon accompagne les consultants indépendants en Auvergne-Rhône-Alpes avec un suivi de proximité, une gestion administrative structurée et un cadre salarial adapté aux missions de conseil, IT, ingénierie, data, cloud, DevOps et transformation digitale.",
     proofNote: 'Accueil au 4 place Amédée Bonnet, 69002 Lyon, sur rendez-vous.',
     serviceCards: coreServices,
     contentSections: [
@@ -260,7 +260,7 @@ export const agencies: Agency[] = [
     highlight: {
       title: "Un point d'entrée clair pour la région PACA",
       body:
-        "Consultant en mission ou entreprise à la recherche d'une expertise IT : l'équipe qualifie la demande et organise rapidement le bon échange.",
+        "Consultant en mission ou entreprise à la recherche d'une expertise IT : l'équipe qualifie la demande et organise l'échange adapté.",
     },
     teamMembers: [],
     localFaq: [

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ChatbotButton from '../components/Chatbot/ChatbotButton';
 
 interface Props {
   seo: {
@@ -112,6 +113,7 @@ const allStructuredData = [
       <slot />
     </main>
     <slot name="footer" />
+    <ChatbotButton client:idle />
 
     <!-- Scroll reveal observer -->
     <script>

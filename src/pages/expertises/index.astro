@@ -1,0 +1,55 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { expertises } from '../../data/expertises.data';
+
+const seo = {
+  title: 'Expertises IT, data, cyber, cloud et produit — The Porters',
+  description:
+    'Découvrez les expertises accompagnées par The Porters : cybersécurité, Data & IA, Cloud & DevOps, Agilité & Coaching, Product & Project Management.',
+};
+---
+
+<PageLayout seo={seo} breadcrumbs={[{ label: 'Expertises' }]}>
+  <section class="section pt-8 lg:pt-16 pb-20">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mx-auto mb-16 max-w-3xl text-center reveal">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-wider text-porters-gold">Nos expertises</p>
+        <h1 class="mb-5">Une expertise pour chaque étape de votre <span class="gold-underline">transformation</span></h1>
+        <p class="mx-auto max-w-2xl text-lg leading-relaxed text-porters-black/60">
+          Identifiez votre domaine, les profils concernés et les missions où cette expertise apporte une valeur concrète.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {expertises.map((expertise, index) => (
+          <a
+            href={`/expertises/${expertise.slug}`}
+            class="group card flex min-h-[22rem] flex-col p-7 reveal hover:-translate-y-1 hover:border-porters-gold/45"
+          >
+            <div class="mb-8 flex items-center justify-between">
+              <span class="font-mono text-xs font-semibold text-porters-gold">0{index + 1}</span>
+              <span class="grid h-9 w-9 place-items-center rounded-full border border-porters-navy/10 text-porters-navy transition-colors group-hover:border-porters-gold group-hover:bg-porters-gold" aria-hidden="true">↗</span>
+            </div>
+            <p class="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-porters-gold">{expertise.eyebrow}</p>
+            <h2 class="mb-4 text-2xl leading-tight">{expertise.introTitle}</h2>
+            <p class="mb-6 text-sm leading-relaxed text-porters-black/60">{expertise.summary}</p>
+            <div class="mt-auto flex flex-wrap gap-2">
+              {expertise.roles.slice(0, 3).map((role) => (
+                <span class="rounded-full bg-porters-navy/[0.055] px-3 py-1.5 text-xs text-porters-navy/70">{role}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-porters-navy py-16 text-center">
+    <div class="container mx-auto px-6 lg:px-8 reveal">
+      <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-porters-gold">Votre profil n’entre pas dans une case ?</p>
+      <h2 class="mb-5 text-porters-white">Partons de votre mission, pas d’une étiquette.</h2>
+      <p class="mx-auto mb-8 max-w-xl text-porters-white/65">Expliquez-nous votre spécialité, votre contexte et le résultat attendu.</p>
+      <a href="/contact" class="btn btn-gold">Parler de mon expertise</a>
+    </div>
+  </section>
+</PageLayout>
