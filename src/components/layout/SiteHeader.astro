@@ -1,517 +1,1206 @@
 ---
-const navGroups = [
+import { franceMapPins, franceMapRoutes } from '../../data/france-map.data';
+
+type NavLink = {
+  label: string;
+  href: string;
+  note?: string;
+};
+
+type NavItem = {
+  id: string;
+  label: string;
+  href: string;
+  description: string;
+  links: NavLink[];
+};
+
+const leftNav: NavItem[] = [
   {
-    label: 'Entreprises',
-    href: '/entreprises',
-    title: 'Entreprises',
-    description: 'Sécuriser une collaboration avec un expert externe sans créer d’embauche directe.',
-    cta: { label: 'Découvrir l’offre entreprise', href: '/entreprises' },
-    columns: [
-      {
-        title: 'Solutions',
-        links: [
-          { label: 'Portage pour entreprises', href: '/entreprises', note: 'Souplesse et conformité' },
-          { label: 'Cadrer une mission', href: '/rendez-vous', note: 'Un échange pour qualifier le besoin' },
-          { label: 'Contacter l’équipe', href: '/contact', note: 'Demande directe' },
-        ],
-      },
-      {
-        title: 'Besoins fréquents',
-        links: [
-          { label: 'Expertise IT', href: '/blog/portage-salarial-entreprises', note: 'Tech, data, cyber, cloud' },
-          { label: 'Renfort projet', href: '/blog/portage-salarial-solution-flexible', note: 'Intervention mission par mission' },
-          { label: 'Gestion administrative', href: '/blog/role-charge-de-compte-portage-salarial', note: 'Suivi et facturation' },
-        ],
-      },
+    id: 'portage',
+    label: 'Le portage salarial',
+    href: '/portage-salarial',
+    description: 'Comprendre le cadre, les étapes et les réponses utiles sans alourdir la navigation.',
+    links: [
+      { label: 'Comprendre le portage salarial', href: '/portage-salarial', note: 'Cadre, contrat, paie' },
+      { label: 'Pour consultants indépendants', href: '/consultants', note: 'Parcours consultant' },
+      { label: 'FAQ portage salarial', href: '/faq', note: 'Questions clés' },
     ],
   },
   {
-    label: 'Indépendants',
+    id: 'offers',
+    label: 'Nos offres',
     href: '/consultants',
-    title: 'Consultants indépendants',
-    description: 'Comprendre le portage, estimer ses revenus et organiser un échange avec un conseiller.',
-    cta: { label: 'Voir le parcours consultant', href: '/consultants' },
-    columns: [
-      {
-        title: 'Démarrer',
-        links: [
-          { label: 'Le portage salarial', href: '/portage-salarial', note: 'Cadre, statut, fonctionnement' },
-          { label: 'Comprendre les frais', href: '/tarifs', note: 'Hypothèses, inclusions et frais réels' },
-          { label: 'Simulateur de revenus', href: '/simulateur', note: 'TJM, jours facturés, frais' },
-          { label: 'Prendre rendez-vous', href: '/rendez-vous', note: 'Échange avec un conseiller' },
-        ],
-      },
-      {
-        title: 'Profils IT',
-        links: [
-          { label: 'Cybersécurité', href: '/expertises/cybersecurite', note: 'RSSI, GRC, SOC et sécurité cloud' },
-          { label: 'Data & IA', href: '/expertises/data-ia', note: 'Data engineering, BI et IA' },
-          { label: 'Cloud & DevOps', href: '/expertises/cloud-devops', note: 'Cloud, plateforme et SRE' },
-          { label: 'Agilité & coaching', href: '/expertises/agilite-coaching', note: 'Produit, projet et transformation' },
-        ],
-      },
-      {
-        title: 'Questions utiles',
-        links: [
-          { label: 'Frais de gestion', href: '/blog/frais-gestion-portage-salarial', note: 'Ce qu’il faut comparer' },
-          { label: 'Contrat de portage', href: '/blog/contrat-portage-salarial', note: 'Les points à vérifier' },
-          { label: 'FAQ consultants', href: '/faq', note: 'Réponses rapides' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Le groupe',
-    href: '/qui-sommes-nous',
-    title: 'Découvrir The Porters',
-    description: 'Une société de portage pensée pour l’accompagnement humain, la proximité et la clarté.',
-    cta: { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
-    columns: [
-      {
-        title: 'La société',
-        links: [
-          { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'Positionnement et engagements' },
-          { label: 'Notre équipe', href: '/equipe', note: 'Les interlocuteurs' },
-          { label: 'Démarche RSE', href: '/rse', note: 'Responsabilité et progrès mesurable' },
-          { label: 'Recrutement', href: '/recrutement', note: 'Rejoindre l’équipe' },
-        ],
-      },
-      {
-        title: 'Présence locale',
-        links: [
-          { label: 'Nos points de contact', href: '/agences', note: 'Paris, Lyon, Aix-Marseille, Montpellier' },
-          { label: 'Agence Paris', href: '/agences/paris', note: 'Île-de-France' },
-          { label: 'Agence Lyon', href: '/agences/lyon', note: 'Auvergne-Rhône-Alpes' },
-        ],
-      },
-      {
-        title: 'Communauté',
-        links: [
-          { label: 'Parrainage', href: '/parrainage', note: 'Recommander un consultant' },
-          { label: 'Contact', href: '/contact', note: 'Écrire à l’équipe' },
-        ],
-      },
-    ],
-  },
-  {
-    label: 'Ressources',
-    href: '/blog',
-    title: 'Ressources',
-    description: 'Articles, guides et réponses pratiques pour comprendre le portage salarial.',
-    cta: { label: 'Explorer le blog', href: '/blog' },
-    columns: [
-      {
-        title: 'Guides',
-        links: [
-          { label: 'Blog', href: '/blog', note: 'Tous les articles' },
-          { label: 'Guide du portage salarial', href: '/blog/guide-portage-salarial', note: 'Bases et fonctionnement' },
-          { label: 'Livres blancs', href: '/livres-blancs', note: 'Ressources à télécharger' },
-        ],
-      },
-      {
-        title: 'Articles clés',
-        links: [
-          { label: 'Devenir freelance informatique', href: '/blog/devenir-freelance-informatique', note: 'Choisir son statut' },
-          { label: 'Optimiser sa rémunération', href: '/blog/optimiser-remuneration-portage-salarial', note: 'Comprendre ses leviers' },
-          { label: 'Choisir sa société de portage', href: '/blog/bien-choisir-societe-portage-salarial', note: 'Critères de comparaison' },
-        ],
-      },
-      {
-        title: 'Aide',
-        links: [
-          { label: 'FAQ', href: '/faq', note: 'Questions fréquentes' },
-          { label: 'Contact', href: '/contact', note: 'Besoin d’une réponse précise' },
-        ],
-      },
+    description: 'Des parcours distincts pour consultants, entreprises et expertises IT.',
+    links: [
+      { label: 'Consultants', href: '/consultants', note: 'Indépendance cadrée' },
+      { label: 'Entreprises', href: '/entreprises', note: 'Renforts experts' },
+      { label: 'Expertises IT', href: '/expertises', note: 'Cyber, data, cloud' },
     ],
   },
 ];
 
+const rightNav: NavItem[] = [
+  {
+    id: 'group',
+    label: 'Le groupe',
+    href: '/qui-sommes-nous',
+    description: 'Mission, expertises, histoire et points de contact The Porters.',
+    links: [
+      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'Notre mission et notre vision' },
+      { label: 'Agences', href: '/agences', note: 'Points de contact documentés' },
+    ],
+  },
+  {
+    id: 'resources',
+    label: 'Ressources',
+    href: '/blog',
+    description: 'Guides, réponses et contenus pour avancer avec plus de clarté.',
+    links: [
+      { label: 'Blog', href: '/blog', note: 'Articles et guides' },
+      { label: 'FAQ', href: '/faq', note: 'Réponses rapides' },
+      { label: 'Livres blancs', href: '/livres-blancs', note: 'Guides pratiques' },
+    ],
+  },
+];
+
+const mobileNav = [...leftNav, ...rightNav];
+
 const currentPath = Astro.url.pathname;
-const isHomepage = currentPath === '/';
-const leftNavGroups = navGroups.slice(0, 2);
-const rightNavGroups = navGroups.slice(2);
-const isActiveGroup = (group: typeof navGroups[number]) =>
-  currentPath === group.href ||
-  group.columns.some((column) => column.links.some((link) => currentPath === link.href));
-const defaultMobileGroupIndex = Math.max(navGroups.findIndex((group) => isActiveGroup(group)), 0);
+const active = (href: string) => {
+  const path = href.split('#')[0];
+  return path !== '/' && (currentPath === path || currentPath.startsWith(`${path}/`));
+};
 ---
 
-<header id="site-header" class:list={['site-header', { 'site-header-home': isHomepage }]}>
-  <!-- Reading progress bar -->
-  <div id="reading-progress" class="reading-progress" aria-hidden="true"></div>
-  <div class="site-header-bar">
-    <a href="/espace-client" class="mobile-header-account" aria-label="Créer un compte ou se connecter" title="Espace client">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7" />
-        <path d="M5.5 20c.6-4.05 2.77-6.1 6.5-6.1s5.9 2.05 6.5 6.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-      </svg>
-    </a>
-
-    <nav class="site-nav site-nav-left hidden xl:flex" aria-label="Navigation entreprises et indépendants">
-      {leftNavGroups.map((group) => (
-        <div class="site-nav-item">
+<header class="tp-site-header" id="site-header">
+  <div class="tp-header-glow" aria-hidden="true"></div>
+  <div class="tp-header-inner">
+    <nav class="tp-desktop-nav tp-desktop-nav--left" aria-label="Navigation principale gauche">
+      {leftNav.map((item) => (
+        <div class:list={['tp-nav-item', { 'is-active': active(item.href) }]} data-popover>
+          <a href={item.href} class="tp-nav-link">{item.label}</a>
           <button
+            class="tp-nav-toggle"
             type="button"
-            class:list={[
-              'site-nav-link',
-              { 'site-nav-link-active': isActiveGroup(group) },
-            ]}
-            aria-haspopup="true"
+            aria-label={`Afficher ${item.label}`}
+            aria-controls={`tp-nav-popover-${item.id}`}
+            aria-expanded="false"
           >
-            {group.label}
-            <svg class="site-nav-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            <span aria-hidden="true">⌄</span>
           </button>
-
-          <div class="mega-menu" role="region" aria-label={`Menu ${group.label}`}>
-            <div class="mega-menu-inner">
-              <div class="mega-menu-intro">
-                <p class="mega-eyebrow">{group.label}</p>
-                <h2>{group.title}</h2>
-                <p>{group.description}</p>
-                <a href={group.cta.href} class="mega-cta">
-                  {group.cta.label}
-                  <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
+          <div class="tp-nav-popover" id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
+            <div class="tp-popover-intro">
+              <span>{item.label}</span>
+              <p>{item.description}</p>
+            </div>
+            <div class="tp-popover-links">
+              {item.links.map((link) => (
+                <a href={link.href}>
+                  <span>
+                    <strong>{link.label}</strong>
+                    {link.note && <small>{link.note}</small>}
+                  </span>
+                  <b aria-hidden="true">↗</b>
                 </a>
-              </div>
-
-              <div class="mega-menu-columns">
-                {group.columns.map((column) => (
-                  <section class="mega-column">
-                    <h3>{column.title}</h3>
-                    <div class="mega-link-list">
-                      {column.links.map((link) => (
-                        <a
-                          href={link.href}
-                          class:list={[
-                            'mega-link',
-                            { 'mega-link-active': currentPath === link.href },
-                          ]}
-                        >
-                          <span>{link.label}</span>
-                          <small>{link.note}</small>
-                        </a>
-                      ))}
-                    </div>
-                  </section>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
       ))}
+      <a href="/simulateur" class:list={['tp-nav-direct', { 'is-active': active('/simulateur') }]}>Simulateur</a>
     </nav>
 
-    <a href="/" class="brand-home-link" aria-label="The Porters — Accueil">
-      <span class="brand-lockup" aria-hidden="true">
-        <span class="brand-wordmark">
-          <span class="brand-wordmark-the">The</span>
-          <span class="brand-wordmark-porters">Porters</span>
-        </span>
+    <a href="/" class="tp-header-brand" aria-label="The Porters - Accueil">
+      <span class="brand-wordmark brand-wordmark-light" aria-hidden="true">
+        <span class="brand-wordmark-the">The</span>
+        <span class="brand-wordmark-porters">Porters</span>
       </span>
     </a>
 
-    <div class="header-right hidden xl:flex">
-      <nav class="site-nav site-nav-right" aria-label="Navigation société et ressources">
-        {rightNavGroups.map((group) => (
-          <div class="site-nav-item">
-            <button
-              type="button"
-              class:list={[
-                'site-nav-link',
-                { 'site-nav-link-active': isActiveGroup(group) },
-              ]}
-              aria-haspopup="true"
-            >
-              {group.label}
-              <svg class="site-nav-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
-
-            <div class="mega-menu" role="region" aria-label={`Menu ${group.label}`}>
-              <div class="mega-menu-inner">
-                <div class="mega-menu-intro">
-                  <p class="mega-eyebrow">{group.label}</p>
-                  <h2>{group.title}</h2>
-                  <p>{group.description}</p>
-                  <a href={group.cta.href} class="mega-cta">
-                    {group.cta.label}
-                    <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-
-                <div class="mega-menu-columns">
-                  {group.columns.map((column) => (
-                    <section class="mega-column">
-                      <h3>{column.title}</h3>
-                      <div class="mega-link-list">
-                        {column.links.map((link) => (
-                          <a
-                            href={link.href}
-                            class:list={[
-                              'mega-link',
-                              { 'mega-link-active': currentPath === link.href },
-                            ]}
-                          >
-                            <span>{link.label}</span>
-                            <small>{link.note}</small>
-                          </a>
-                        ))}
-                      </div>
-                    </section>
-                  ))}
-                </div>
-              </div>
+    <nav class="tp-desktop-nav tp-desktop-nav--right" aria-label="Navigation principale droite">
+      {rightNav.map((item) => (
+        <div class:list={['tp-nav-item', `tp-nav-item--${item.id}`, { 'is-active': active(item.href) }]} data-popover>
+          <a href={item.href} class="tp-nav-link">{item.label}</a>
+          <button
+            class="tp-nav-toggle"
+            type="button"
+            aria-label={`Afficher ${item.label}`}
+            aria-controls={`tp-nav-popover-${item.id}`}
+            aria-expanded="false"
+          >
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class:list={['tp-nav-popover', { 'tp-nav-popover--group': item.id === 'group' }]} id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
+            <div class="tp-popover-intro">
+              <span>{item.label}</span>
+              <p>{item.description}</p>
             </div>
-          </div>
-        ))}
-      </nav>
-
-      <div class="header-actions">
-        <a href="/espace-client" class="header-icon-link" aria-label="Créer un compte ou se connecter" title="Espace client">
-          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7" />
-            <path d="M5.5 20c.6-4.05 2.77-6.1 6.5-6.1s5.9 2.05 6.5 6.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-          </svg>
-        </a>
-        <a href="/rendez-vous" class="header-rdv-link">
-          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.7" />
-            <path d="M7.5 3.5v4M16.5 3.5v4M3.5 10h17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-          </svg>
-          Rendez-vous
-        </a>
-        <a href="/simulateur" class="header-cta btn btn-primary">Simuler</a>
-      </div>
-    </div>
-
-    <button
-      id="mobile-menu-toggle"
-      class="mobile-menu-toggle"
-      aria-label="Ouvrir le menu"
-      aria-controls="mobile-menu"
-      aria-expanded="false"
-    >
-      <svg id="menu-icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-      </svg>
-      <svg id="menu-icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-      </svg>
-    </button>
-  </div>
-
-  <div class="site-mega-scrim" aria-hidden="true"></div>
-</header>
-
-<button
-  id="mobile-menu-backdrop"
-  class="mobile-menu-backdrop"
-  aria-hidden="true"
-  tabindex="-1"
-></button>
-
-<div id="mobile-menu" class="mobile-menu-panel">
-  <nav class="mobile-nav" aria-label="Navigation mobile">
-    <div class="mobile-nav-intro">
-      <p>Menu principal</p>
-      <span>Choisissez votre parcours ou accédez directement à un service.</span>
-    </div>
-
-    {navGroups.map((group, groupIndex) => (
-      <section class:list={['mobile-nav-section', { 'is-open': groupIndex === defaultMobileGroupIndex }] }>
-        <button
-          type="button"
-          class:list={[
-            'mobile-nav-heading',
-            { 'mobile-nav-heading-active': isActiveGroup(group) },
-          ]}
-          data-mobile-nav-toggle
-          aria-expanded={groupIndex === defaultMobileGroupIndex ? 'true' : 'false'}
-          aria-controls={`mobile-nav-panel-${groupIndex}`}
-        >
-          <span><small>0{groupIndex + 1}</small>{group.label}</span>
-          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m6 8 4 4 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
-        </button>
-        <div
-          id={`mobile-nav-panel-${groupIndex}`}
-          class="mobile-nav-links"
-          hidden={groupIndex !== defaultMobileGroupIndex}
-        >
-          <a href={group.href} class="mobile-nav-overview">
-            <span>{group.cta.label}</span>
-            <small>{group.description}</small>
-          </a>
-          {group.columns.map((column) => (
-            <div class="mobile-nav-column">
-              <p>{column.title}</p>
-              {column.links.map((link) => (
-                <a
-                  href={link.href}
-                  class:list={[
-                    'mobile-nav-link',
-                    { 'mobile-nav-link-active': currentPath === link.href },
-                  ]}
-                >
-                  <span>{link.label}</span>
-                  <small>{link.note}</small>
+            <div class="tp-popover-links">
+              {item.links.map((link) => (
+                <a href={link.href} class:list={[{ 'tp-agences-trigger': link.label === 'Agences' }]} data-agences={link.label === 'Agences' ? 'true' : undefined}>
+                  <span>
+                    <strong>{link.label}</strong>
+                    {link.note && <small>{link.note}</small>}
+                  </span>
+                  <b aria-hidden="true">↗</b>
                 </a>
               ))}
             </div>
-          ))}
+            {item.id === 'group' && (
+              <div class="tp-france-map-panel" id="tp-france-map" aria-label="Carte des agences The Porters">
+                <div class="tp-france-map-inner">
+                  <div class="tp-france-map-container">
+                    <img src="/images/france-outline-source.svg" alt="Carte de France" loading="lazy" decoding="async" class="tp-france-svg" />
+                    <svg class="tp-france-routes" viewBox="0 0 507 520" aria-hidden="true">
+                      {franceMapRoutes.map((route) => <path d={route.d} />)}
+                    </svg>
+                    {franceMapPins.map((pin, index) => (
+                      <a
+                        href={pin.href}
+                        class:list={['tp-map-pin', `label-${pin.labelSide || 'right'}`, { 'is-muted': pin.status, 'is-active': !pin.status }]}
+                        style={`--pin-x:${pin.x}%;--pin-y:${pin.y}%;--pin-delay:${index * 95}ms`}
+                        title={pin.status ? `${pin.city} — ${pin.status}` : pin.city}
+                        aria-label={pin.city}
+                      >
+                        <span class="tp-map-pin-dot"></span>
+                        <span class="tp-map-pin-pulse"></span>
+                        <span class="tp-map-pin-label">{pin.city}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <div class="tp-france-map-legend">
+                    <strong>Nos agences</strong>
+                    <small>Paris · Lyon · Montpellier · Aix-Marseille</small>
+                    <em>Lille et Bordeaux — bientôt</em>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      </section>
-    ))}
-    <div class="mobile-nav-actions">
-      <a href="/simulateur" class="btn btn-primary w-full">Simuler mes revenus</a>
-      <a href="/rendez-vous" class="btn btn-secondary w-full">Prendre rendez-vous</a>
-      <a href="/espace-client" class="mobile-account-link">
-        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7" />
-          <path d="M5.5 20c.6-4.05 2.77-6.1 6.5-6.1s5.9 2.05 6.5 6.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+      ))}
+      <a href="/contact" class="tp-contact-link" aria-label="Contacter The Porters">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.5 6.5h15v11h-15z"></path>
+          <path d="m5 7 7 6 7-6"></path>
         </svg>
-        Créer un compte ou se connecter
       </a>
-    </div>
-  </nav>
-</div>
+      <a href="/rendez-vous" class="tp-appointment-link">Rendez-vous <span aria-hidden="true">→</span></a>
+    </nav>
 
-<div id="site-header-reveal-zone" class="site-header-reveal-zone" aria-hidden="true"></div>
-<div class:list={['site-header-spacer', { 'site-header-spacer-home': isHomepage }]}></div>
+    <button class="tp-menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="tp-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Navigation mobile">
+      {mobileNav.map((item, index) => (
+        <details class="tp-mobile-group">
+          <summary>
+            <span>0{index + 1}</span>
+            {item.label}
+            <b aria-hidden="true">⌄</b>
+          </summary>
+          <div>
+            <a class="tp-mobile-overview" href={item.href}>
+              <strong>Vue d’ensemble</strong>
+              <small>{item.description}</small>
+            </a>
+            {item.links.map((link) => (
+              <a href={link.href}>
+                <span>
+                  <strong>{link.label}</strong>
+                  {link.note && <small>{link.note}</small>}
+                </span>
+                <b aria-hidden="true">→</b>
+              </a>
+            ))}
+          </div>
+        </details>
+      ))}
+      <div class="tp-mobile-actions">
+        <a href="/simulateur">Simulateur</a>
+        <a href="/rendez-vous">Prendre rendez-vous</a>
+        <a href="/contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+<div class="tp-header-spacer" aria-hidden="true"></div>
 
 <script>
-  const toggle = document.getElementById('mobile-menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  const backdrop = document.getElementById('mobile-menu-backdrop');
-  const iconOpen = document.getElementById('menu-icon-open');
-  const iconClose = document.getElementById('menu-icon-close');
-  const menuLinks = menu?.querySelectorAll('a');
-  const mobileNavToggles = menu?.querySelectorAll('[data-mobile-nav-toggle]');
   const header = document.getElementById('site-header');
-  const revealZone = document.getElementById('site-header-reveal-zone');
-  let isOpen = false;
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const navItems = document.querySelectorAll<HTMLElement>('.tp-nav-item[data-popover]');
   let lastScrollY = window.scrollY;
-  let revealTimer;
+  let ticking = false;
+  let mobileOpen = false;
 
-  const syncMenuState = (nextState) => {
-    isOpen = nextState;
-    header?.classList.toggle('is-mobile-open', isOpen);
-    menu?.classList.toggle('is-open', isOpen);
-    backdrop?.classList.toggle('is-open', isOpen);
-    iconOpen?.classList.toggle('hidden', isOpen);
-    iconClose?.classList.toggle('hidden', !isOpen);
-    toggle?.setAttribute('aria-expanded', String(isOpen));
-    toggle?.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+  const hasOpenPopover = () => Array.from(navItems).some((item) => item.classList.contains('is-open'));
+  const syncHeaderOpenState = () => {
+    header?.classList.toggle('tp-site-header--menu-open', mobileOpen || hasOpenPopover() || Boolean(header?.matches(':focus-within')));
   };
 
-  toggle?.addEventListener('click', () => {
-    syncMenuState(!isOpen);
-  });
+  const setMobileOpen = (open: boolean) => {
+    mobileOpen = open;
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    menu?.setAttribute('aria-hidden', String(!open));
+    header?.classList.toggle('tp-site-header--mobile-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    syncHeaderOpenState();
+  };
 
-  backdrop?.addEventListener('click', () => {
-    syncMenuState(false);
-  });
+  const setPopoverOpen = (item: HTMLElement, open: boolean) => {
+    const button = item.querySelector<HTMLButtonElement>('.tp-nav-toggle');
+    item.classList.toggle('is-open', open);
+    button?.setAttribute('aria-expanded', String(open));
+    syncHeaderOpenState();
+  };
 
-  menuLinks?.forEach((link) => {
-    link.addEventListener('click', () => {
-      syncMenuState(false);
+  const closePopovers = (except?: HTMLElement) => {
+    navItems.forEach((item) => {
+      if (item !== except) setPopoverOpen(item, false);
+    });
+  };
+
+  navItems.forEach((item) => {
+    const button = item.querySelector<HTMLButtonElement>('.tp-nav-toggle');
+
+    item.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'mouse') {
+        closePopovers(item);
+        setPopoverOpen(item, true);
+      }
+    });
+
+    item.addEventListener('pointerleave', (event) => {
+      if (event.pointerType === 'mouse') setPopoverOpen(item, false);
+    });
+
+    item.addEventListener('focusin', () => {
+      closePopovers(item);
+      setPopoverOpen(item, true);
+    });
+
+    item.addEventListener('focusout', (event) => {
+      if (!item.contains(event.relatedTarget as Node | null)) setPopoverOpen(item, false);
+    });
+
+    button?.addEventListener('click', (event) => {
+      event.preventDefault();
+      const opening = !item.classList.contains('is-open');
+      closePopovers(item);
+      setPopoverOpen(item, opening);
     });
   });
 
-  mobileNavToggles?.forEach((item) => {
-    const button = item as HTMLButtonElement;
-    button.addEventListener('click', () => {
-      const controlsId = button.getAttribute('aria-controls');
-      const panel = controlsId ? document.getElementById(controlsId) : null;
-      const section = button.closest('.mobile-nav-section');
-      const willOpen = button.getAttribute('aria-expanded') !== 'true';
+  toggle?.addEventListener('click', () => setMobileOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMobileOpen(false)));
 
-      mobileNavToggles.forEach((otherItem) => {
-        const otherButton = otherItem as HTMLButtonElement;
-        const otherId = otherButton.getAttribute('aria-controls');
-        const otherPanel = otherId ? document.getElementById(otherId) : null;
-        otherButton.setAttribute('aria-expanded', 'false');
-        otherButton.closest('.mobile-nav-section')?.classList.remove('is-open');
-        if (otherPanel) otherPanel.hidden = true;
-      });
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    closePopovers();
+    setMobileOpen(false);
+  });
 
-      if (willOpen) {
-        button.setAttribute('aria-expanded', 'true');
-        section?.classList.add('is-open');
-        if (panel) panel.hidden = false;
+  document.addEventListener('click', (event) => {
+    const target = event.target as Node;
+    if (!header?.contains(target)) closePopovers();
+  });
+
+  const syncScroll = () => {
+    const current = window.scrollY;
+    const lockedOpen = mobileOpen || hasOpenPopover() || Boolean(header?.matches(':focus-within'));
+
+    header?.classList.toggle('tp-site-header--scrolled', current > 8);
+
+    if (current < 80 || lockedOpen) {
+      header?.classList.remove('tp-site-header--hidden');
+    } else if (current > lastScrollY + 8 && current > 120) {
+      header?.classList.add('tp-site-header--hidden');
+    } else if (current < lastScrollY - 8) {
+      header?.classList.remove('tp-site-header--hidden');
+    }
+
+    lastScrollY = Math.max(current, 0);
+    ticking = false;
+  };
+
+  syncScroll();
+  addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(syncScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Interactive France map - show on Agences hover
+  const agencesLink = document.querySelector<HTMLElement>('[data-agences]');
+  const franceMap = document.getElementById('tp-france-map');
+
+  if (agencesLink && franceMap) {
+    agencesLink.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'mouse') {
+        franceMap.classList.add('is-visible');
       }
     });
-  });
 
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && isOpen) {
-      syncMenuState(false);
-    }
-  });
-
-  const syncScrollState = () => {
-    const currentScrollY = window.scrollY;
-    const delta = currentScrollY - lastScrollY;
-    header?.classList.toggle('is-scrolled', currentScrollY > 24);
-
-    if (!isOpen) {
-      if (currentScrollY <= 40 || delta < -8) {
-        header?.classList.remove('is-hidden');
-      } else if (currentScrollY > 140 && delta > 8) {
-        header?.classList.add('is-hidden');
+    agencesLink.addEventListener('pointerleave', (event) => {
+      if (event.pointerType === 'mouse') {
+        // Check if pointer moved to the map itself
+        const related = event.relatedTarget as Node | null;
+        if (!franceMap.contains(related)) {
+          franceMap.classList.remove('is-visible');
+        }
       }
-    } else {
-      header?.classList.remove('is-hidden');
-    }
+    });
 
-    lastScrollY = currentScrollY;
-  };
-
-  const revealHeader = () => {
-    window.clearTimeout(revealTimer);
-    header?.classList.remove('is-hidden');
-  };
-
-  const maybeHideHeader = () => {
-    window.clearTimeout(revealTimer);
-    revealTimer = window.setTimeout(() => {
-      if (!isOpen && window.scrollY > 140 && window.matchMedia('(min-width: 1280px)').matches) {
-        header?.classList.add('is-hidden');
+    franceMap.addEventListener('pointerleave', (event) => {
+      if (event.pointerType === 'mouse') {
+        const related = event.relatedTarget as Node | null;
+        if (related !== agencesLink && !agencesLink.contains(related)) {
+          franceMap.classList.remove('is-visible');
+        }
       }
-    }, 520);
-  };
+    });
 
-  revealZone?.addEventListener('mouseenter', revealHeader);
-  header?.addEventListener('mouseenter', revealHeader);
-  header?.addEventListener('mouseleave', maybeHideHeader);
-
-  syncScrollState();
-  window.addEventListener('scroll', syncScrollState, { passive: true });
-  window.addEventListener('resize', syncScrollState, { passive: true });
-
-  // Reading progress bar (blog articles only)
-  const progressBar = document.getElementById('reading-progress');
-  const articleEl = document.querySelector('article[data-reading-progress]');
-  if (progressBar && articleEl) {
-    progressBar.style.display = 'block';
-    const updateProgress = () => {
-      const rect = articleEl.getBoundingClientRect();
-      const articleTop = rect.top + window.scrollY;
-      const articleHeight = articleEl.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      const scrolled = window.scrollY - articleTop + viewportHeight;
-      const progress = Math.min(Math.max(scrolled / articleHeight, 0), 1);
-      progressBar.style.transform = `scaleX(${progress})`;
-    };
-    updateProgress();
-    window.addEventListener('scroll', updateProgress, { passive: true });
+    franceMap.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'mouse') {
+        franceMap.classList.add('is-visible');
+      }
+    });
   }
 </script>
+
+<style>
+  .tp-site-header {
+    --tp-header-height: 5.75rem;
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 80;
+    color: #fff;
+    background:
+      linear-gradient(180deg, rgba(16, 32, 43, 0.96), rgba(16, 32, 43, 0.84)),
+      radial-gradient(ellipse at 50% -20%, rgba(190, 158, 88, 0.18), transparent 58%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(1.08);
+    transition:
+      transform 320ms var(--ease-soft),
+      background 260ms ease,
+      box-shadow 260ms ease,
+      border-color 260ms ease;
+  }
+
+  .tp-site-header::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(190, 158, 88, 0.74), transparent);
+    content: "";
+    opacity: 0.5;
+    transform: scaleX(0.34);
+    transition: opacity 260ms ease, transform 520ms var(--ease-soft);
+  }
+
+  .tp-site-header--hidden {
+    transform: translateY(calc(-100% - 2px));
+  }
+
+  .tp-site-header--scrolled,
+  .tp-site-header--menu-open {
+    background:
+      linear-gradient(180deg, rgba(16, 32, 43, 0.985), rgba(16, 32, 43, 0.94)),
+      radial-gradient(ellipse at 50% -18%, rgba(190, 158, 88, 0.2), transparent 60%);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 18px 55px rgba(5, 15, 22, 0.22);
+  }
+
+  .tp-site-header--scrolled::after,
+  .tp-site-header--menu-open::after {
+    opacity: 0.9;
+    transform: scaleX(1);
+  }
+
+  .tp-header-glow {
+    position: absolute;
+    inset: 0 18%;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% -24%, rgba(255, 255, 255, 0.08), transparent 56%);
+  }
+
+  .tp-header-inner {
+    position: relative;
+    display: grid;
+    width: min(100% - 3rem, 94rem);
+    height: var(--tp-header-height);
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1rem, 2.4vw, 2.4rem);
+    margin-inline: auto;
+  }
+
+  .tp-desktop-nav {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: clamp(0.75rem, 1.6vw, 1.55rem);
+  }
+
+  .tp-desktop-nav--left {
+    justify-content: flex-end;
+  }
+
+  .tp-desktop-nav--right {
+    justify-content: flex-start;
+  }
+
+  .tp-header-brand {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    width: max-content;
+    color: #fff;
+  }
+
+  .tp-header-brand .brand-wordmark {
+    transform: scale(0.96);
+    transform-origin: center;
+    transition: transform 320ms var(--ease-soft), filter 220ms ease;
+  }
+
+  .tp-header-brand:hover .brand-wordmark,
+  .tp-header-brand:focus-visible .brand-wordmark {
+    filter: drop-shadow(0 0 15px rgba(190, 158, 88, 0.3));
+    transform: scale(1);
+  }
+
+  .tp-header-brand :global(.brand-wordmark-the),
+  .tp-header-brand :global(.brand-wordmark-porters) {
+    color: #fff !important;
+  }
+
+  .tp-nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-block: 1.85rem;
+  }
+
+  .tp-nav-link,
+  .tp-nav-direct {
+    position: relative;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: clamp(0.98rem, 1.12vw, 1.16rem);
+    font-weight: 760;
+    line-height: 1;
+    white-space: nowrap;
+    transition: color 180ms ease;
+  }
+
+  .tp-nav-link::after,
+  .tp-nav-direct::after {
+    position: absolute;
+    right: 0;
+    bottom: -0.58rem;
+    left: 0;
+    height: 1px;
+    background: #be9e58;
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 240ms var(--ease-soft);
+  }
+
+  .tp-nav-direct {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.9rem;
+    padding-inline: 0.55rem;
+  }
+
+  .tp-nav-item:hover .tp-nav-link,
+  .tp-nav-item:focus-within .tp-nav-link,
+  .tp-nav-item.is-active .tp-nav-link,
+  .tp-nav-direct:hover,
+  .tp-nav-direct:focus-visible,
+  .tp-nav-direct.is-active {
+    color: #fff;
+  }
+
+  .tp-nav-item:hover .tp-nav-link::after,
+  .tp-nav-item:focus-within .tp-nav-link::after,
+  .tp-nav-item.is-active .tp-nav-link::after,
+  .tp-nav-direct:hover::after,
+  .tp-nav-direct:focus-visible::after,
+  .tp-nav-direct.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .tp-nav-toggle {
+    display: grid;
+    width: 1.42rem;
+    height: 1.42rem;
+    place-items: center;
+    border: 0;
+    background: none;
+    color: rgba(255, 255, 255, 0.52);
+    cursor: pointer;
+    font: inherit;
+    transition: color 180ms ease, transform 240ms var(--ease-soft);
+  }
+
+  .tp-nav-toggle span {
+    display: block;
+    transform: translateY(-1px);
+  }
+
+  .tp-nav-item:hover .tp-nav-toggle,
+  .tp-nav-item:focus-within .tp-nav-toggle,
+  .tp-nav-item.is-open .tp-nav-toggle {
+    color: #d8bb70;
+    transform: rotate(180deg);
+  }
+
+  .tp-nav-popover {
+    position: absolute;
+    top: 5.15rem;
+    left: 50%;
+    display: grid;
+    width: min(22rem, calc(100vw - 2rem));
+    gap: 0.62rem;
+    padding: 0.7rem;
+    border: 1px solid rgba(190, 158, 88, 0.25);
+    border-radius: 18px;
+    background: rgba(248, 245, 238, 0.98);
+    box-shadow: 0 24px 65px rgba(5, 15, 22, 0.26);
+    color: #203440;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(-50%, 10px, 0) scale(0.985);
+    transition:
+      opacity 180ms ease,
+      visibility 180ms ease,
+      transform 240ms var(--ease-soft);
+  }
+
+  .tp-nav-popover--group {
+    left: auto;
+    right: -6rem;
+    width: min(30rem, calc(100vw - 2rem));
+    transform: translate3d(0, 10px, 0) scale(0.985);
+  }
+
+  .tp-nav-item:hover .tp-nav-popover,
+  .tp-nav-item:focus-within .tp-nav-popover,
+  .tp-nav-item.is-open .tp-nav-popover {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(-50%, 0, 0) scale(1);
+  }
+
+  .tp-nav-item:hover .tp-nav-popover--group,
+  .tp-nav-item:focus-within .tp-nav-popover--group,
+  .tp-nav-item.is-open .tp-nav-popover--group {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .tp-popover-intro {
+    padding: 0.7rem 0.75rem 0.55rem;
+    border-bottom: 1px solid rgba(32, 52, 64, 0.08);
+  }
+
+  .tp-popover-intro span {
+    color: #a98238;
+    font-size: 0.58rem;
+    font-weight: 820;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .tp-popover-intro p {
+    margin: 0.32rem 0 0;
+    color: rgba(32, 52, 64, 0.62);
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+
+  .tp-popover-links {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .tp-popover-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 14px;
+    padding: 0.72rem 0.78rem;
+    color: #203440;
+    transition: background 180ms ease, padding 220ms var(--ease-soft), color 180ms ease;
+  }
+
+  .tp-popover-links strong,
+  .tp-agency-copy strong {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 760;
+    line-height: 1.2;
+  }
+
+  .tp-popover-links small,
+  .tp-agency-copy small,
+  .tp-agency-copy em {
+    display: block;
+    margin-top: 0.2rem;
+    color: rgba(32, 52, 64, 0.55);
+    font-size: 0.66rem;
+    font-style: normal;
+    line-height: 1.35;
+  }
+
+  .tp-popover-links b {
+    color: #a98238;
+    font-size: 0.75rem;
+    transition: transform 180ms var(--ease-soft);
+  }
+
+  .tp-popover-links a:hover,
+  .tp-popover-links a:focus-visible,
+  .tp-agency-preview:hover,
+  .tp-agency-preview:focus-visible {
+    background: rgba(190, 158, 88, 0.12);
+    color: #10202b;
+  }
+
+  .tp-popover-links a:hover {
+    padding-left: 0.95rem;
+  }
+
+  .tp-popover-links a:hover b,
+  .tp-popover-links a:focus-visible b {
+    transform: translate(3px, -3px);
+  }
+
+  /* --- Interactive France Map Panel --- */
+  .tp-agences-trigger {
+    position: relative;
+  }
+
+  .tp-france-map-panel {
+    max-height: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    opacity: 0;
+    transition: max-height 380ms var(--ease-soft), opacity 280ms ease, margin 280ms ease;
+    margin-top: 0;
+  }
+
+  .tp-france-map-panel.is-visible {
+    max-height: 26rem;
+    opacity: 1;
+    margin-top: 0.5rem;
+  }
+
+  .tp-france-map-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid rgba(32, 52, 64, 0.1);
+    border-radius: 16px;
+    background: linear-gradient(145deg, #10202b 0%, #1a3040 100%);
+    box-shadow: 0 18px 45px rgba(5, 15, 22, 0.22);
+  }
+
+  .tp-france-map-container {
+    position: relative;
+    aspect-ratio: 507 / 520;
+    padding: 0.6rem;
+  }
+
+  .tp-france-svg,
+  .tp-france-routes {
+    position: absolute;
+    inset: 0.6rem;
+    width: calc(100% - 1.2rem);
+    height: calc(100% - 1.2rem);
+  }
+
+  .tp-france-svg {
+    object-fit: contain;
+    opacity: 0.86;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.2));
+  }
+
+  .tp-france-routes {
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .tp-france-routes path {
+    fill: none;
+    stroke: rgba(216, 187, 112, 0.58);
+    stroke-width: 1.15;
+    stroke-dasharray: 5 8;
+    stroke-linecap: round;
+    animation: tp-route-flow 18s linear infinite;
+  }
+
+  .tp-france-routes path:nth-child(2n) {
+    animation-duration: 22s;
+  }
+
+  .tp-map-pin {
+    position: absolute;
+    left: var(--pin-x);
+    top: var(--pin-y);
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    text-decoration: none;
+    opacity: 0;
+    animation: tp-map-pin-enter 520ms var(--ease-soft) var(--pin-delay, 0ms) both;
+  }
+
+  .tp-map-pin-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #d8bb70;
+    border: 1.5px solid #10202b;
+    box-shadow: 0 0 0 3px rgba(216, 187, 112, 0.25);
+    transition: transform 240ms var(--ease-soft), box-shadow 240ms ease;
+    z-index: 2;
+  }
+
+  .tp-map-pin-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: rgba(216, 187, 112, 0.25);
+    transform: translate(-50%, -50%) scale(0);
+    animation: pin-pulse 2.4s ease-in-out infinite;
+    z-index: 1;
+  }
+
+  .tp-map-pin.is-active .tp-map-pin-pulse {
+    animation: pin-pulse 2.4s ease-in-out infinite;
+  }
+
+  .tp-map-pin.is-muted .tp-map-pin-dot {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  }
+
+  .tp-map-pin.is-muted .tp-map-pin-pulse {
+    animation: none;
+  }
+
+  .tp-map-pin-label {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 0.38rem);
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-size: 0.58rem;
+    font-weight: 720;
+    color: #d8bb70;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.78;
+    pointer-events: none;
+    transition: opacity 180ms ease, transform 200ms var(--ease-soft), color 180ms ease;
+  }
+
+  .tp-map-pin.label-left .tp-map-pin-label {
+    right: calc(100% + 0.42rem);
+    left: auto;
+  }
+
+  .tp-map-pin.label-top .tp-map-pin-label {
+    top: auto;
+    bottom: calc(100% + 0.42rem);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tp-map-pin.label-bottom .tp-map-pin-label {
+    top: calc(100% + 0.42rem);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tp-map-pin:hover .tp-map-pin-dot,
+  .tp-map-pin:focus-visible .tp-map-pin-dot {
+    transform: scale(1.4);
+    box-shadow: 0 0 0 5px rgba(216, 187, 112, 0.35);
+  }
+
+  .tp-map-pin:hover .tp-map-pin-label,
+  .tp-map-pin:focus-visible .tp-map-pin-label {
+    color: #fff;
+    opacity: 1;
+    transform: translateY(-50%) translateX(3px);
+  }
+
+  .tp-map-pin.label-left:hover .tp-map-pin-label,
+  .tp-map-pin.label-left:focus-visible .tp-map-pin-label {
+    transform: translateY(-50%) translateX(-3px);
+  }
+
+  .tp-france-map-legend {
+    padding: 0.5rem;
+    color: #fff;
+  }
+
+  .tp-france-map-legend strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 760;
+    margin-bottom: 0.4rem;
+    color: #fff;
+  }
+
+  .tp-france-map-legend small {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .tp-france-map-legend em {
+    display: block;
+    margin-top: 0.35rem;
+    color: #d8bb70;
+    font-size: 0.66rem;
+    font-style: normal;
+    font-weight: 680;
+  }
+
+  @keyframes pin-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(0); opacity: 0.6; }
+    50% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+  }
+
+  @keyframes tp-route-flow {
+    to { stroke-dashoffset: -160; }
+  }
+
+  @keyframes tp-map-pin-enter {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.62); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .tp-contact-link {
+    display: grid;
+    width: 2.35rem;
+    height: 2.35rem;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: #fff;
+    transition:
+      transform 240ms var(--ease-soft),
+      border-color 180ms ease,
+      background 180ms ease;
+  }
+
+  .tp-contact-link svg {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .tp-contact-link path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.65;
+  }
+
+  .tp-contact-link:hover,
+  .tp-contact-link:focus-visible {
+    border-color: #d8bb70;
+    background: rgba(190, 158, 88, 0.1);
+    color: #fff;
+    transform: translateY(-2px) rotate(-4deg);
+  }
+
+  .tp-appointment-link {
+    display: inline-flex;
+    min-height: 3.55rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: 999px;
+    padding-inline: 1.85rem;
+    background: #be9e58;
+    color: #10202b;
+    font-size: 1rem;
+    font-weight: 820;
+    white-space: nowrap;
+    transition:
+      transform 240ms var(--ease-soft),
+      box-shadow 240ms ease,
+      background 180ms ease;
+  }
+
+  .tp-appointment-link span {
+    transition: transform 180ms var(--ease-soft);
+  }
+
+  .tp-appointment-link:hover,
+  .tp-appointment-link:focus-visible {
+    background: #ddc178;
+    color: #10202b;
+    box-shadow: 0 0 0 7px rgba(190, 158, 88, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .tp-appointment-link:hover span {
+    transform: translateX(3px);
+  }
+
+  .tp-menu-toggle,
+  .tp-mobile-menu {
+    display: none;
+  }
+
+  .tp-header-spacer {
+    height: var(--tp-header-height, 5.75rem);
+  }
+
+  @media (max-width: 1180px) {
+    .tp-header-inner {
+      width: min(100% - 2rem, 94rem);
+      grid-template-columns: auto 1fr auto;
+      height: 4.85rem;
+    }
+
+    .tp-site-header {
+      --tp-header-height: 4.85rem;
+    }
+
+    .tp-desktop-nav {
+      display: none;
+    }
+
+    .tp-header-brand {
+      justify-self: start;
+    }
+
+    .tp-header-brand .brand-wordmark {
+      transform: scale(0.82);
+      transform-origin: left center;
+    }
+
+    .tp-menu-toggle {
+      position: relative;
+      z-index: 4;
+      display: grid;
+      width: 2.9rem;
+      height: 2.9rem;
+      place-content: center;
+      justify-self: end;
+      gap: 0.38rem;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+      transition:
+        transform 220ms var(--ease-soft),
+        border-color 180ms ease,
+        background 180ms ease;
+    }
+
+    .tp-menu-toggle:hover,
+    .tp-menu-toggle:focus-visible {
+      border-color: rgba(190, 158, 88, 0.76);
+      background: rgba(190, 158, 88, 0.08);
+      transform: scale(1.03);
+    }
+
+    .tp-menu-toggle span {
+      display: block;
+      width: 1.2rem;
+      height: 1px;
+      background: #fff;
+      transition: transform 220ms var(--ease-soft), opacity 180ms ease;
+    }
+
+    .tp-site-header--mobile-open .tp-menu-toggle span:first-child {
+      transform: translateY(3px) rotate(45deg);
+    }
+
+    .tp-site-header--mobile-open .tp-menu-toggle span:last-child {
+      transform: translateY(-3px) rotate(-45deg);
+    }
+
+    .tp-mobile-menu {
+      position: fixed;
+      inset: 4.85rem 0 0;
+      display: block;
+      padding: 1.2rem 1rem calc(2rem + env(safe-area-inset-bottom));
+      background:
+        radial-gradient(circle at 20% 0%, rgba(190, 158, 88, 0.14), transparent 38%),
+        #10202b;
+      opacity: 0;
+      visibility: hidden;
+      overflow: auto;
+      transform: translateY(-10px);
+      transition:
+        opacity 220ms ease,
+        visibility 220ms ease,
+        transform 260ms var(--ease-soft);
+    }
+
+    .tp-site-header--mobile-open .tp-mobile-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
+
+    .tp-mobile-menu nav {
+      display: grid;
+      max-width: 42rem;
+      gap: 0.55rem;
+      margin-inline: auto;
+    }
+
+    .tp-mobile-group {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .tp-mobile-group[open] {
+      border-color: rgba(190, 158, 88, 0.44);
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .tp-mobile-group summary {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.05rem;
+      color: #fff;
+      font-size: 1.02rem;
+      font-weight: 760;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .tp-mobile-group summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .tp-mobile-group summary > span {
+      color: #d8bb70;
+      font: 700 0.62rem/1 var(--font-mono);
+    }
+
+    .tp-mobile-group summary > b {
+      margin-left: auto;
+      color: #d8bb70;
+      font-size: 0.85rem;
+      transition: transform 180ms ease;
+    }
+
+    .tp-mobile-group[open] summary > b {
+      transform: rotate(180deg);
+    }
+
+    .tp-mobile-group > div {
+      display: grid;
+      gap: 0.3rem;
+      padding: 0 0.72rem 0.8rem;
+    }
+
+    .tp-mobile-group a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-radius: 7px;
+      padding: 0.72rem 0.72rem;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.86rem;
+    }
+
+    .tp-mobile-group a:hover,
+    .tp-mobile-group a:focus-visible {
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+    }
+
+    .tp-mobile-group a small {
+      display: block;
+      margin-top: 0.16rem;
+      color: rgba(255, 255, 255, 0.46);
+      font-size: 0.66rem;
+      line-height: 1.35;
+    }
+
+    .tp-mobile-overview {
+      border: 1px solid rgba(190, 158, 88, 0.24);
+      background: rgba(190, 158, 88, 0.08);
+    }
+
+    .tp-mobile-actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+
+    .tp-mobile-actions a {
+      display: grid;
+      min-height: 3rem;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 0.85rem;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 760;
+    }
+
+    .tp-mobile-actions a:nth-child(2) {
+      border-color: #be9e58;
+      background: #be9e58;
+      color: #10202b;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .tp-header-inner {
+      width: min(100% - 1.5rem, 94rem);
+    }
+
+    .tp-mobile-actions {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tp-site-header,
+    .tp-site-header *,
+    .tp-site-header::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

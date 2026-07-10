@@ -68,12 +68,24 @@ const duplicatedReviews = [...reviews, ...reviews];
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.94);
     box-shadow: 0 14px 34px rgba(25, 43, 99, 0.07);
+    transition:
+      transform var(--motion-medium, 320ms) var(--ease-soft, cubic-bezier(0.22, 1, 0.36, 1)),
+      border-color var(--motion-fast, 180ms) ease,
+      box-shadow var(--motion-medium, 320ms) ease;
+  }
+
+  .reviews-marquee__card:hover,
+  .reviews-marquee__card:focus-within {
+    border-color: rgba(190, 158, 88, 0.45);
+    box-shadow: 0 18px 42px rgba(25, 43, 99, 0.1);
+    transform: translateY(-4px);
   }
 
   .reviews-marquee__stars {
     color: #fbbc05;
     font-size: 0.9rem;
     letter-spacing: 0.08em;
+    animation: review-stars-arrive 700ms ease both;
   }
 
   .reviews-marquee__card blockquote {
@@ -106,6 +118,11 @@ const duplicatedReviews = [...reviews, ...reviews];
     }
   }
 
+  @keyframes review-stars-arrive {
+    from { opacity: 0.35; transform: translateY(3px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .reviews-marquee__viewport {
       overflow-x: auto;
@@ -117,6 +134,13 @@ const duplicatedReviews = [...reviews, ...reviews];
     .reviews-marquee__track {
       animation: none;
       will-change: auto;
+    }
+
+    .reviews-marquee__card,
+    .reviews-marquee__stars {
+      animation: none;
+      transform: none;
+      transition: none;
     }
 
     .reviews-marquee__card[aria-hidden='true'] {

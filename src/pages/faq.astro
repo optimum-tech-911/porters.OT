@@ -3,75 +3,670 @@ import PageLayout from '../layouts/PageLayout.astro';
 import { faqGroups } from '../data/faq.data';
 import { pageSeo } from '../data/seo.data';
 
-// Create structured data for FAQ
 const faqStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqGroups.flatMap(group => 
-    group.items.map(q => ({
+  mainEntity: faqGroups.flatMap((group) =>
+    group.items.map((q) => ({
       '@type': 'Question',
       name: q.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: q.answer
-      }
-    }))
-  )
+        text: q.answer,
+      },
+    })),
+  ),
 };
 
 const seo = {
   ...pageSeo.faq,
-  structuredData: faqStructuredData
+  structuredData: faqStructuredData,
 };
 ---
 
-<PageLayout
-  seo={seo}
-  breadcrumbs={[{ label: 'FAQ' }]}
->
-  <section class="section pt-8 lg:pt-16 pb-20">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Comprendre le portage</p>
-        <h1 class="mb-4">Les réponses avant <span class="gold-underline">les décisions</span></h1>
-        <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
-          Statut, contrats, revenus, frais, missions et entreprises : commencez par le sujet qui bloque votre avancée.
-        </p>
-      </div>
+<PageLayout seo={seo} breadcrumbs={[{ label: 'FAQ' }]}>
+  <section class="faq-page">
+    <div class="faq-shell">
+      <header class="faq-hero reveal">
+        <p>Questions fréquentes</p>
+        <h1>Des réponses claires, avant de choisir votre cadre.</h1>
+        <span>
+          Statut, rémunération, frais, mission, rendez-vous ou entreprise cliente : partez du sujet qui vous bloque, puis ouvrez la réponse utile.
+        </span>
+      </header>
 
-      <div class="max-w-3xl mx-auto space-y-16">
-        {faqGroups.map((group) => (
-          <div id={group.slug} class="reveal scroll-mt-28">
-            <h2 class="text-2xl font-heading font-semibold text-porters-navy mb-6">{group.title}</h2>
-            <div class="space-y-4">
-              {group.items.map((faq) => (
-                <details class="group bg-white border border-porters-navy/10 rounded-lg overflow-hidden cursor-pointer">
-                  <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-5 text-porters-navy hover:text-porters-gold transition-colors">
-                    <span>{faq.question}</span>
-                    <span class="transition group-open:rotate-180 shrink-0 ml-4">
-                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                    </span>
-                  </summary>
-                  <div class="text-porters-black/70 mt-0 p-5 pt-0 leading-relaxed border-t border-porters-navy/5">
-                    {faq.answer}
-                  </div>
-                </details>
-              ))}
+      <div class="faq-board reveal" data-faq-board>
+        <aside class="faq-map" aria-label="Plan des questions fréquentes">
+          <div class="faq-orbit">
+            <svg viewBox="0 0 560 560" aria-hidden="true">
+              <circle cx="280" cy="280" r="112" />
+              <circle cx="280" cy="280" r="188" />
+              <circle cx="280" cy="280" r="250" />
+              <path d="M280 30V530M30 280H530M104 104 456 456M456 104 104 456" />
+            </svg>
+            <div class="faq-center">
+              <small>The Porters</small>
+              <strong>FAQ</strong>
+              <span>{faqGroups.reduce((total, group) => total + group.items.length, 0)} réponses indexées</span>
             </div>
+            {faqGroups.map((group, index) => (
+              <a href={`#${group.slug}`} class:list={['faq-chip', `chip-${index + 1}`, { active: index === 0 }]} data-faq-chip={group.slug}>
+                <span>0{index + 1}</span>
+                <b>{group.title}</b>
+                <small>{group.items.length} points</small>
+              </a>
+            ))}
           </div>
-        ))}
-      </div>
+          <p class="faq-map-note">Le schéma reste volontairement simple : chaque bloc mène à une famille de questions, sans détour inutile.</p>
+        </aside>
 
-      <div class="mt-20 p-8 lg:p-12 bg-porters-navy text-center rounded-2xl reveal">
-        <h3 class="text-2xl font-heading font-semibold text-porters-white mb-4">Vous n'avez pas trouvé votre réponse ?</h3>
-        <p class="text-porters-white/70 max-w-xl mx-auto mb-8">
-          Notre équipe est à votre disposition pour répondre à toutes vos questions spécifiques.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a href="/contact" class="btn btn-gold">Contactez-nous</a>
-          <a href="/rendez-vous" class="btn btn-white border-none">Parler à un conseiller</a>
+        <div class="faq-groups">
+          {faqGroups.map((group, groupIndex) => (
+            <section id={group.slug} class="faq-group reveal-up" data-reveal data-faq-group={group.slug} style={`--reveal-delay:${groupIndex * 80}ms`}>
+              <header>
+                <span>0{groupIndex + 1}</span>
+                <div>
+                  <p>Thème</p>
+                  <h2>{group.title}</h2>
+                </div>
+              </header>
+              <div class="faq-items">
+                {group.items.map((faq, index) => (
+                  <details class="faq-item" style={`--item-delay:${index * 55}ms`}>
+                    <summary aria-expanded="false">
+                      <span>{String(index + 1).padStart(2, '0')}</span>
+                      <strong>{faq.question}</strong>
+                      <i aria-hidden="true">+</i>
+                    </summary>
+                    <div class="faq-answer">
+                      <div><p>{faq.answer}</p></div>
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
       </div>
+
+      <section class="faq-cta reveal-scale" data-reveal>
+        <div>
+          <p>Besoin d’un échange humain ?</p>
+          <h2>Si votre cas est spécifique, parlez-en avec un conseiller.</h2>
+        </div>
+        <div>
+          <a href="/rendez-vous">Prendre rendez-vous <span>→</span></a>
+          <a href="/contact">Contacter The Porters <span>→</span></a>
+        </div>
+      </section>
     </div>
   </section>
 </PageLayout>
+
+<script>
+  const faqChips = Array.from(document.querySelectorAll<HTMLElement>('[data-faq-chip]'));
+  const faqGroups = Array.from(document.querySelectorAll<HTMLElement>('[data-faq-group]'));
+  const setActiveFaq = (slug: string) => {
+    faqChips.forEach((chip) => chip.classList.toggle('active', chip.dataset.faqChip === slug));
+  };
+
+  document.querySelectorAll<HTMLDetailsElement>('.faq-item').forEach((detail) => {
+    const summary = detail.querySelector('summary');
+    detail.addEventListener('toggle', () => summary?.setAttribute('aria-expanded', String(detail.open)));
+  });
+
+  faqChips.forEach((chip) => {
+    chip.addEventListener('mouseenter', () => chip.dataset.faqChip && setActiveFaq(chip.dataset.faqChip));
+    chip.addEventListener('focus', () => chip.dataset.faqChip && setActiveFaq(chip.dataset.faqChip));
+  });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        const slug = visible?.target instanceof HTMLElement ? visible.target.dataset.faqGroup : undefined;
+        if (slug) setActiveFaq(slug);
+      },
+      { threshold: [0.25, 0.45, 0.65], rootMargin: '-20% 0px -45% 0px' },
+    );
+    faqGroups.forEach((group) => observer.observe(group));
+  }
+</script>
+
+<style>
+  .faq-page {
+    padding-block: clamp(4.5rem, 8vw, 8rem);
+    background:
+      radial-gradient(circle at 78% 7%, rgba(198, 164, 90, 0.13), transparent 30%),
+      linear-gradient(180deg, #f7f4ed 0%, #fff 28%, #f7f4ed 100%);
+  }
+
+  .faq-shell {
+    width: min(100% - 3rem, 82rem);
+    margin-inline: auto;
+  }
+
+  .faq-hero {
+    max-width: 62rem;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .faq-hero > p,
+  .faq-group header p,
+  .faq-cta p {
+    margin: 0 0 0.9rem;
+    color: #b79245;
+    font-size: 0.72rem;
+    font-weight: 780;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .faq-hero h1 {
+    max-width: 14ch;
+    color: #203440;
+    font-size: clamp(3rem, 6vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .faq-hero span {
+    display: block;
+    max-width: 42rem;
+    margin-top: 1.5rem;
+    color: rgba(32, 52, 64, 0.62);
+    font-size: clamp(1rem, 1.25vw, 1.16rem);
+    line-height: 1.75;
+  }
+
+  .faq-board {
+    display: grid;
+    grid-template-columns: minmax(24rem, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2.5rem, 6vw, 5.5rem);
+    align-items: start;
+  }
+
+  .faq-map {
+    position: sticky;
+    top: 7rem;
+  }
+
+  .faq-orbit {
+    position: relative;
+    aspect-ratio: 1;
+    border: 1px solid rgba(32, 52, 64, 0.1);
+    border-radius: 1.4rem;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(198, 164, 90, 0.08), transparent 36%),
+      rgba(255, 255, 255, 0.72);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(32, 52, 64, 0.08);
+  }
+
+  .faq-orbit svg {
+    position: absolute;
+    inset: 7%;
+    width: 86%;
+    height: 86%;
+  }
+
+  .faq-orbit circle,
+  .faq-orbit path {
+    fill: none;
+    stroke: rgba(32, 52, 64, 0.11);
+    stroke-dasharray: 5 10;
+    transform-origin: center;
+    animation: faq-orbit 42s linear infinite;
+  }
+
+  .faq-orbit circle:nth-child(2) {
+    stroke: rgba(198, 164, 90, 0.26);
+    animation-direction: reverse;
+    animation-duration: 55s;
+  }
+
+  .faq-orbit circle:nth-child(3) {
+    stroke: rgba(32, 52, 64, 0.07);
+    animation-duration: 70s;
+  }
+
+  .faq-orbit path {
+    animation: none;
+    stroke: rgba(32, 52, 64, 0.06);
+  }
+
+  .faq-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    width: 10.5rem;
+    height: 10.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(198, 164, 90, 0.65);
+    border-radius: 50%;
+    background: #203440;
+    color: white;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 24px 70px rgba(32, 52, 64, 0.18);
+  }
+
+  .faq-center small {
+    color: #c6a45a;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .faq-center strong {
+    margin-top: 0.35rem;
+    font-size: 1.4rem;
+  }
+
+  .faq-center span {
+    margin-top: 0.35rem;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 0.68rem;
+  }
+
+  .faq-chip {
+    position: absolute;
+    display: grid;
+    min-width: 10.8rem;
+    gap: 0.18rem;
+    padding: 0.72rem 0.86rem;
+    border: 1px solid rgba(32, 52, 64, 0.12);
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.88);
+    color: #203440;
+    box-shadow: 0 12px 34px rgba(32, 52, 64, 0.08);
+    animation: faq-float 7s ease-in-out var(--float-delay, 0s) infinite;
+    transition:
+      transform 260ms var(--ease-soft),
+      border-color 180ms ease,
+      background 180ms ease,
+      box-shadow 260ms ease;
+  }
+
+  .faq-orbit:hover .faq-chip,
+  .faq-orbit:focus-within .faq-chip,
+  .faq-orbit:hover circle,
+  .faq-orbit:focus-within circle {
+    animation-play-state: paused;
+  }
+
+  .faq-chip span {
+    color: #b79245;
+    font: 780 0.56rem/1 var(--font-mono);
+  }
+
+  .faq-chip b {
+    font-size: 0.72rem;
+    line-height: 1.28;
+  }
+
+  .faq-chip small {
+    color: rgba(32, 52, 64, 0.52);
+    font-size: 0.62rem;
+  }
+
+  .faq-chip:hover,
+  .faq-chip:focus-visible,
+  .faq-chip.active {
+    z-index: 2;
+    border-color: rgba(198, 164, 90, 0.72);
+    background: #fff;
+    box-shadow: 0 20px 48px rgba(32, 52, 64, 0.14);
+    outline: none;
+    transform: translateY(-5px) scale(1.02);
+  }
+
+  .chip-1 { left: 50%; top: 5%; margin-left: -5.4rem; --float-delay: -0.6s; }
+  .chip-2 { right: 3%; top: 32%; --float-delay: -1.9s; }
+  .chip-3 { right: 13%; bottom: 8%; --float-delay: -3.1s; }
+  .chip-4 { left: 13%; bottom: 8%; --float-delay: -4.3s; }
+  .chip-5 { left: 3%; top: 32%; --float-delay: -5.6s; }
+
+  .faq-map-note {
+    margin: 1.2rem 0 0;
+    color: rgba(32, 52, 64, 0.55);
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+
+  .faq-groups {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .faq-group {
+    scroll-margin-top: 7rem;
+    border: 1px solid rgba(32, 52, 64, 0.1);
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 24px 65px rgba(32, 52, 64, 0.06);
+    overflow: hidden;
+  }
+
+  .faq-group > header {
+    display: grid;
+    grid-template-columns: 3.8rem 1fr;
+    gap: 1rem;
+    padding: 1.35rem 1.4rem;
+    border-bottom: 1px solid rgba(32, 52, 64, 0.08);
+    background:
+      radial-gradient(circle at 90% 0%, rgba(198, 164, 90, 0.1), transparent 34%),
+      #fff;
+  }
+
+  .faq-group > header > span {
+    display: grid;
+    width: 3.2rem;
+    height: 3.2rem;
+    place-items: center;
+    border: 1px solid rgba(198, 164, 90, 0.48);
+    border-radius: 50%;
+    color: #b79245;
+    font: 780 0.72rem/1 var(--font-mono);
+  }
+
+  .faq-group header p {
+    margin-bottom: 0.28rem;
+    font-size: 0.58rem;
+  }
+
+  .faq-group h2 {
+    color: #203440;
+    font-size: clamp(1.3rem, 2.2vw, 2.1rem);
+    line-height: 1.08;
+  }
+
+  .faq-items {
+    padding: 0.55rem;
+  }
+
+  .faq-item {
+    border-radius: 0.92rem;
+    animation: faq-item-rise 0.65s var(--ease-soft) var(--item-delay, 0ms) both;
+    transition: background 180ms ease, box-shadow 240ms ease;
+  }
+
+  .faq-item + .faq-item {
+    margin-top: 0.2rem;
+  }
+
+  .faq-item:hover,
+  .faq-item[open] {
+    background: #f8f5ee;
+    box-shadow: inset 0 0 0 1px rgba(198, 164, 90, 0.2);
+  }
+
+  .faq-item summary {
+    display: grid;
+    grid-template-columns: 2.3rem 1fr auto;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.05rem;
+    color: #203440;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary > span {
+    color: #b79245;
+    font: 760 0.6rem/1 var(--font-mono);
+  }
+
+  .faq-item summary strong {
+    font-size: 0.92rem;
+    line-height: 1.42;
+  }
+
+  .faq-item summary i {
+    display: grid;
+    width: 1.9rem;
+    height: 1.9rem;
+    place-items: center;
+    border: 1px solid rgba(32, 52, 64, 0.12);
+    border-radius: 50%;
+    color: #b79245;
+    font-style: normal;
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  }
+
+  .faq-item[open] summary i {
+    border-color: rgba(198, 164, 90, 0.55);
+    background: rgba(198, 164, 90, 0.1);
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows 320ms var(--ease-soft),
+      opacity 240ms ease;
+  }
+
+  .faq-answer > div {
+    overflow: hidden;
+  }
+
+  .faq-item[open] .faq-answer {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    padding: 0 1.05rem 1.18rem 4.2rem;
+    color: rgba(32, 52, 64, 0.62);
+    font-size: 0.86rem;
+    line-height: 1.75;
+  }
+
+  .faq-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: clamp(3rem, 6vw, 5rem);
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: 1.35rem;
+    background:
+      radial-gradient(circle at 88% 20%, rgba(198, 164, 90, 0.18), transparent 28%),
+      #203440;
+    color: white;
+  }
+
+  .faq-cta h2 {
+    max-width: 18ch;
+    color: white;
+    font-size: clamp(1.7rem, 3vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  .faq-cta > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .faq-cta a {
+    display: inline-flex;
+    min-height: 3.1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    padding-inline: 1.2rem;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 750;
+    transition: transform 220ms var(--ease-soft), background 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  .faq-cta a:first-child {
+    border-color: #c6a45a;
+    background: #c6a45a;
+    color: #10202b;
+  }
+
+  .faq-cta a:hover {
+    transform: translateY(-3px);
+  }
+
+  .faq-cta a:not(:first-child):hover {
+    border-color: #c6a45a;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  @keyframes faq-orbit {
+    to { transform: rotate(1turn); }
+  }
+
+  @keyframes faq-float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -8px; }
+  }
+
+  @keyframes faq-item-rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 1020px) {
+    .faq-board {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-map {
+      position: relative;
+      top: auto;
+    }
+
+    .faq-orbit {
+      max-width: 38rem;
+      margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .faq-shell {
+      width: min(100% - 2rem, 82rem);
+    }
+
+    .faq-page {
+      padding-block: 3.8rem 5rem;
+    }
+
+    .faq-hero h1 {
+      font-size: clamp(2.35rem, 12vw, 3.8rem);
+    }
+
+    .faq-orbit {
+      display: grid;
+      aspect-ratio: auto;
+      gap: 0.65rem;
+      padding: 1rem;
+      overflow: visible;
+    }
+
+    .faq-orbit svg {
+      display: none;
+    }
+
+    .faq-center {
+      position: relative;
+      left: auto;
+      top: auto;
+      width: 100%;
+      height: auto;
+      min-height: 7.5rem;
+      border-radius: 1rem;
+      padding: 1.4rem;
+      transform: none;
+    }
+
+    .faq-chip,
+    .chip-1,
+    .chip-2,
+    .chip-3,
+    .chip-4,
+    .chip-5 {
+      position: relative;
+      inset: auto;
+      margin-left: 0;
+      min-width: 0;
+      transform: none;
+      animation: none;
+    }
+
+    .faq-chip:hover,
+    .faq-chip:focus-visible,
+    .faq-chip.active {
+      transform: translateY(-2px);
+    }
+
+    .faq-group > header,
+    .faq-item summary {
+      grid-template-columns: 2.8rem 1fr auto;
+      gap: 0.65rem;
+    }
+
+    .faq-group > header {
+      padding: 1rem;
+    }
+
+    .faq-group > header > span {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    .faq-item summary {
+      padding: 0.95rem 0.75rem;
+    }
+
+    .faq-answer p {
+      padding: 0 0.75rem 1rem 3.4rem;
+      font-size: 0.8rem;
+    }
+
+    .faq-cta {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .faq-cta > div:last-child,
+    .faq-cta a {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-orbit circle,
+    .faq-chip,
+    .faq-item {
+      animation: none !important;
+    }
+
+    .faq-chip,
+    .faq-item summary i,
+    .faq-answer,
+    .faq-cta a {
+      transition: none !important;
+    }
+  }
+</style>

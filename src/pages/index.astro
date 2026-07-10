@@ -1,698 +1,1390 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import HomeHeroCarousel from '../components/home/HomeHeroCarousel';
-import LogoMarquee from '../components/ui/LogoMarquee.astro';
+import HomeHero from '../components/home/HomeHero.astro';
 import GoogleReviewsBadge from '../components/ui/GoogleReviewsBadge.astro';
 import GoogleReviewsMarquee from '../components/ui/GoogleReviewsMarquee.astro';
-import independentHero1Desktop from '../../images/hero/independent-hero-01-desktop.webp';
-import independentHero2Desktop from '../../images/hero/independent-hero-02-desktop.webp';
-import independentHero3Desktop from '../../images/hero/independent-hero-03-desktop.webp';
-import independentHero4Desktop from '../../images/hero/independent-hero-04-desktop.webp';
-import independentHero1Mobile from '../../images/hero/independent-hero-01-mobile.webp';
-import independentHero2Mobile from '../../images/hero/independent-hero-02-mobile.webp';
-import independentHero3Mobile from '../../images/hero/independent-hero-03-mobile.webp';
-import independentHero4Mobile from '../../images/hero/independent-hero-04-mobile.webp';
-import enterpriseDesktop1 from '../../images/hero/entreprise-desktop-01.webp';
-import enterpriseDesktop2 from '../../images/hero/entreprise-desktop-02.webp';
-import enterpriseDesktop3 from '../../images/hero/entreprise-desktop-03.webp';
-import enterpriseMobile1 from '../../images/hero/entreprise-mobile-01.webp';
-import enterpriseMobile2 from '../../images/hero/entreprise-mobile-02.webp';
-import pathwayConsultantImage from '../../images/sections/home-pathway-consultant.webp';
-import pathwayEnterpriseImage from '../../images/sections/home-pathway-enterprise.webp';
-import pathwaySimulationImage from '../../images/sections/home-pathway-simulation.webp';
-import simulatorPreviewImage from '../../images/business-meeting.webp';
-import { agencies } from '../data/agencies.data';
-import { testimonials } from '../data/testimonials.data';
-import { blogPosts, getBlogCategory } from '../data/blog.data';
-import {
-  googleReviewHighlights,
-  homeExpertises,
-  homePortageSteps,
-  homeWhyPorters,
-} from '../content/pages/home';
+import SiteIcon from '../components/ui/SiteIcon.astro';
+import { faqGroups } from '../data/faq.data';
+import { pageSeo } from '../data/seo.data';
+import { googleReviewHighlights, homeWhyPorters } from '../content/pages/home';
 
-const homepageAgencies = agencies.filter((agency) =>
-  ['paris', 'lyon', 'aix-en-provence', 'montpellier'].includes(agency.slug),
-);
-const homepagePosts = [
-  'secteurs-adaptes-portage-salarial',
-  'optimiser-remuneration-portage-salarial',
-  'role-charge-de-compte-portage-salarial',
-]
-  .map((slug) => blogPosts.find((post) => post.slug === slug))
-  .filter(Boolean);
-
-const clientLogos = [
+const partnerLogos = [
   { name: 'BPCE', url: '/images/logos/partners/partner-1.png' },
   { name: 'Groupama', url: '/images/logos/partners/partner-2.png' },
   { name: 'Airbus', url: '/images/logos/partners/partner-3.png' },
   { name: 'Safran', url: '/images/logos/partners/partner-4.png' },
   { name: 'Thales', url: '/images/logos/partners/partner-5.png' },
-  { name: 'CMA CGM', url: '/images/logos/partners/partner-6.png' },
-];
-const esnPartnerLogos = [
-  { name: 'Sopra Steria', url: '/images/logos/partners/partner-7.png' },
-  { name: 'Akkodis', url: '/images/logos/partners/partner-8.png' },
-  { name: 'Scalian', url: '/images/logos/partners/partner-9.png' },
-  { name: 'Inetum', url: '/images/logos/partners/partner-10.png' },
   { name: 'Capgemini', url: '/images/logos/partners/capgemini.svg' },
-  { name: 'GFI', url: '/images/logos/partners/gfi.svg' },
-  { name: 'SGI', url: '/images/logos/partners/sgi.svg' },
-  { name: 'Atos', url: '/images/logos/partners/atos.svg' },
 ];
-const testimonialPortraits = [
+
+const situations = [
   {
-    image: independentHero2Mobile,
-    alt: 'Portrait d’un consultant indépendant dans son environnement de travail.',
-    objectPosition: '58% 34%',
+    number: '01',
+    title: 'Consultant indépendant',
+    text: 'Sécurisez vos missions avec un contrat salarié, une paie lisible et une gestion administrative prise en charge.',
+    href: '/consultants',
+    cta: 'Parcours consultant',
   },
   {
-    image: enterpriseMobile1,
-    alt: 'Professionnelle participant au cadrage d’une mission IT.',
-    objectPosition: '24% 28%',
+    number: '02',
+    title: 'Expert IT en mission',
+    text: 'Transformez une mission déjà négociée en cadre contractuel clair, du TJM jusqu’au démarrage.',
+    href: '/portage-salarial',
+    cta: 'Cadre du portage',
   },
   {
-    image: enterpriseMobile2,
-    alt: 'Expert IT échangeant avec une équipe projet.',
-    objectPosition: '51% 32%',
-  },
-];
-const statusCards = [
-  {
-    title: 'Portage salarial',
-    body: 'Pour exercer en autonomie avec un contrat salarié, une paie structurée et une gestion administrative déléguée.',
+    number: '03',
+    title: 'Entreprise cliente',
+    text: 'Intégrez une expertise externe avec un cadre de mission simple, suivi et documenté.',
+    href: '/entreprises',
+    cta: 'Offre entreprises',
   },
   {
-    title: 'CDI',
-    body: 'Pour les profils qui recherchent un cadre durable, une continuité de mission et la protection sociale du salariat.',
-  },
-  {
-    title: 'CDD',
-    body: 'Pour cadrer une mission limitée dans le temps avec une structure contractuelle claire.',
-  },
-  {
-    title: 'Freelance',
-    body: 'Pour comparer les statuts, comprendre les arbitrages et choisir le bon niveau de charge administrative.',
+    number: '04',
+    title: 'En transition',
+    text: 'Comparez vos options, vos revenus cibles et le niveau de gestion que vous souhaitez déléguer.',
+    href: '/simulateur',
+    cta: 'Simulation revenus',
   },
 ];
-const heroAudiences = [
+
+const offerTitles = [
+  'Accompagnement humain',
+  'Cadre salarié',
+  'Cadre administratif suivi',
+  'Expertise IT & transformation',
+];
+const offerItems = offerTitles
+  .map((title, index) => {
+    const item = homeWhyPorters.find((candidate) => candidate.title === title);
+    return item ? { ...item, icon: ['user', 'shield', 'clipboard', 'network'][index] as 'user' | 'shield' | 'clipboard' | 'network' } : undefined;
+  })
+  .filter(Boolean);
+
+const supportAvatars = [
+  { name: 'Ambre Lambert', image: '/images/team/ambre-lambert.png' },
+  { name: 'Eric Bensaid', image: '/images/team/eric-bensaid.png' },
+  { name: 'Lisa Delrieu', image: '/images/team/lisa-delrieu.png' },
+];
+
+const supportQuotes = [
   {
-    id: 'consultant' as const,
-    tabLabel: 'Je suis indépendant',
-    eyebrow: 'Portage salarial · Experts du numérique',
-    headline: 'Votre expertise. Votre liberté. Un cadre qui vous protège.',
-    subhead: 'Vous développez vos missions. The Porters transforme votre activité en salaire et prend en charge les contrats, la facturation, la paie et le suivi administratif.',
-    stat: { value: 'Libre', label: 'sans être seul' },
-    primaryCta: { label: 'Simuler mes revenus', href: '/simulateur' },
-    secondaryCta: { label: 'Parler à un conseiller', href: '/rendez-vous' },
-    desktopImages: [
-      {
-        ...independentHero1Desktop,
-        alt: 'Deux consultants indépendants analysant ensemble les résultats d’une mission.',
-        objectPosition: 'center',
-      },
-      {
-        ...independentHero2Desktop,
-        alt: 'Consultant indépendant concentré sur son activité devant son ordinateur.',
-        objectPosition: 'center',
-      },
-      {
-        ...independentHero3Desktop,
-        alt: 'Consultante indépendante échangeant avec un client dans un bureau contemporain.',
-        objectPosition: 'center',
-      },
-      {
-        ...independentHero4Desktop,
-        alt: 'Consultante indépendante travaillant sur son ordinateur dans son espace de travail.',
-        objectPosition: 'center',
-      },
-    ],
-    mobileImages: [
-      {
-        ...independentHero1Mobile,
-        alt: 'Deux consultants indépendants analysant ensemble les résultats d’une mission.',
-        objectPosition: '52% 44%',
-      },
-      {
-        ...independentHero2Mobile,
-        alt: 'Consultant indépendant travaillant dans un bureau contemporain.',
-        objectPosition: '66% 43%',
-      },
-      {
-        ...independentHero3Mobile,
-        alt: 'Consultante indépendante échangeant avec un client.',
-        objectPosition: '62% 42%',
-      },
-      {
-        ...independentHero4Mobile,
-        alt: 'Consultante indépendante travaillant sur son ordinateur.',
-        objectPosition: '55% 42%',
-      },
-    ],
+    quote: 'Grâce au portage salarial, je me sens plus libre et sécurisée. Les charges sont transparentes, je continue à toucher mes indemnités chômage et retraite.',
+    name: 'Chloé',
+    role: 'Consultante data en portage — Lyon',
   },
   {
-    id: 'entreprise' as const,
-    tabLabel: 'Je suis une entreprise',
-    eyebrow: 'Expertises externes · Entreprises',
-    headline: 'L’expertise qu’il vous faut. Le cadre qui sécurise la mission.',
-    subhead: 'Vous avez un besoin IT, data, cyber, cloud ou transformation. Nous clarifions le cadre de collaboration, la contractualisation et le suivi administratif.',
-    stat: { value: 'Cadré', label: 'du besoin au suivi' },
-    primaryCta: { label: 'Déposer un besoin', href: '/contact' },
-    secondaryCta: { label: 'Parler à l’équipe', href: '/rendez-vous' },
-    desktopImages: [
-      {
-        ...enterpriseDesktop1,
-        alt: 'Équipe de professionnels cadrant une mission autour d’un ordinateur.',
-        objectPosition: 'center',
-      },
-      {
-        ...enterpriseDesktop2,
-        alt: 'Consultants et entreprise réunis dans un bureau lumineux.',
-        objectPosition: 'center',
-      },
-      {
-        ...enterpriseDesktop3,
-        alt: 'Équipe projet en échange autour d’une mission IT.',
-        objectPosition: '35% center',
-      },
-    ],
-    mobileImages: [
-      {
-        ...enterpriseMobile1,
-        alt: 'Équipe projet réunie autour d’un ordinateur.',
-        objectPosition: '50% center',
-      },
-      {
-        ...enterpriseMobile2,
-        alt: 'Professionnels étudiant ensemble les besoins d’une mission.',
-        objectPosition: '50% center',
-      },
-    ],
+    quote: 'Le jour où j’ai passé le cap du portage salarial, j’ai retrouvé une vraie respiration : je reste indépendant, mais je ne porte plus tout seul l’administratif.',
+    name: 'Andy P.',
+    role: 'Product manager freelance — Paris',
   },
 ];
+
+const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 ---
 
-<PageLayout
-  seo={{
-    title: 'The Porters — Portage salarial pour consultants IT et tech',
-    description: 'The Porters accompagne les consultants IT indépendants en portage salarial : cyber, data, IA, DevOps, cloud, agilité et projet. Simulez vos revenus.',
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: 'The Porters',
-      url: 'https://www.porters.fr',
-      description: 'Société de portage salarial pour consultants IT, tech, conseil et entreprises en France.',
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: 'https://www.porters.fr/blog?q={search_term_string}',
-        'query-input': 'required name=search_term_string',
-      },
-    },
-  }}
-  noBreadcrumbs={true}
->
-  <!-- ==========================================
-       HERO SECTION
-       ========================================== -->
-  <HomeHeroCarousel client:load audiences={heroAudiences}>
-    <GoogleReviewsBadge variant="dark" />
-  </HomeHeroCarousel>
+<PageLayout seo={pageSeo.home} noBreadcrumbs>
+  <HomeHero />
 
-  <!-- ==========================================
-       LOGO MARQUEE — Clients & Partners
-       ========================================== -->
-  <section class="partner-proof-section">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="partner-proof-intro reveal reveal-up">
-        <div>
-          <p class="partner-proof-kicker">Collaborations & écosystème</p>
-          <h2>Un écosystème habitué aux <span class="gold-underline">projets exigeants</span></h2>
-        </div>
-        <p>Entreprises et partenaires ESN retrouvent un cadre lisible pour collaborer avec des experts IT, data, cyber, cloud et transformation.</p>
-      </div>
+  <section class="light-logo-strip" aria-label="Écosystème professionnel" data-reveal>
+    <div class="light-logo-intro">
+      <span>Un écosystème habitué aux projets exigeants</span>
     </div>
-    <div class="partner-proof-marquees reveal reveal-scale">
-      <LogoMarquee
-        title="Entreprises accompagnées"
-        logos={clientLogos}
-        direction="left"
-        speed="34s"
-      />
-      <LogoMarquee
-        title="Partenaires ESN"
-        logos={esnPartnerLogos}
-        direction="right"
-        speed="38s"
-      />
+    <div class="light-logo-marquee auto-marquee" tabindex="0">
+      <div class="light-logo-track auto-marquee-track">
+        <div class="light-logo-group">
+          {partnerLogos.map((logo) => (
+            <img src={logo.url} alt={logo.name} loading="lazy" decoding="async" />
+          ))}
+        </div>
+        <div class="light-logo-group" aria-hidden="true">
+          {partnerLogos.map((logo) => (
+            <img src={logo.url} alt="" loading="lazy" decoding="async" />
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       TESTIMONIALS
-       ========================================== -->
-  <section class="testimonial-feature-section">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="testimonial-feature-grid">
-        <div class="testimonial-feature-intro reveal reveal-left">
-          <p class="testimonial-feature-kicker">L’accompagnement dans la durée</p>
-          <div class="testimonial-experience">
-            <strong>Suivi</strong>
-            <span>humain, contractuel et administratif pendant la mission</span>
-          </div>
-          <h2>Être indépendant ne veut pas dire <span class="gold-underline">être seul</span></h2>
-          <p>Un interlocuteur connaît votre dossier et répond concrètement sur le contrat, la facturation, la paie, les frais et la relation client.</p>
-
-          <div class="testimonial-portrait-group" aria-label="Profils de consultants accompagnés">
-            <div class="testimonial-portraits">
-              {testimonialPortraits.map((portrait) => (
-                <img
-                  src={portrait.image.src}
-                  width={portrait.image.width}
-                  height={portrait.image.height}
-                  alt={portrait.alt}
-                  style={`object-position: ${portrait.objectPosition}`}
-                  loading="lazy"
-                />
-              ))}
-            </div>
-            <span>Profils IT, produit, data et transformation</span>
-          </div>
-        </div>
-
-        <article class="testimonial-feature-quote reveal reveal-right">
-          <span class="testimonial-quote-mark" aria-hidden="true">“</span>
-          <blockquote>« {testimonials[0].quote} »</blockquote>
-          <footer>
-            <strong>{testimonials[0].name}</strong>
-            <span>{testimonials[0].role}{testimonials[0].city ? ` — ${testimonials[0].city}` : ''}</span>
-          </footer>
-        </article>
+  <section class="light-section light-situations reveal-fade" data-reveal>
+    <div class="light-container">
+      <div class="light-section-heading reveal-up" data-reveal>
+        <p>Choisir son parcours</p>
+        <h2>Un cadre adapté à votre situation professionnelle</h2>
+        <span>Identifiez le parcours qui correspond à votre mission, à votre statut et au niveau d’accompagnement attendu.</span>
       </div>
 
-      <div class="testimonial-secondary-grid">
-        {testimonials.slice(1, 3).map((testimonial, index) => (
-          <article class="testimonial-secondary-quote reveal reveal-up" style={`--reveal-delay: ${(index + 1) * 110}ms`}>
-            <blockquote>« {testimonial.quote} »</blockquote>
-            <footer>
-              <strong>{testimonial.name}</strong>
-              <span>{testimonial.role}{testimonial.city ? ` — ${testimonial.city}` : ''}</span>
-            </footer>
-          </article>
+      <div class="light-situation-grid stagger-children">
+        {situations.map((item, index) => (
+          <a href={item.href} class="light-situation-card premium-hover reveal-up" data-reveal style={`--reveal-delay: ${index * 90}ms`}>
+            <span class="light-card-number">{item.number}</span>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+            <strong>{item.cta} <span aria-hidden="true">↗</span></strong>
+          </a>
         ))}
       </div>
-
-      <p class="testimonial-source-note">Témoignages issus du site The Porters. Les visuels illustrent les profils accompagnés et ne prétendent pas représenter les personnes citées.</p>
     </div>
   </section>
 
-  <section class="section pt-0">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="google-proof-panel reveal reveal-up">
-        <div class="google-proof-intro">
-          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-3">Avis Google</p>
-          <h2 class="mb-4">La qualité de service se lit dans les retours</h2>
-          <p class="text-porters-black/60 leading-relaxed">
-            Disponibilité, clarté et suivi administratif reviennent dans les avis publics. Le ruban s’arrête au survol et respecte la préférence de mouvement réduit.
-          </p>
-          <div class="mt-6">
-            <GoogleReviewsBadge />
-          </div>
+  <section class="light-section light-offer-section reveal-fade" data-reveal>
+    <div class="light-container light-offer-layout">
+      <div class="light-offer-copy reveal-up" data-reveal>
+        <p>Ce que nous prenons en charge</p>
+        <h2>Vous développez votre expertise. Nous rendons le cadre plus simple.</h2>
+        <span>Survolez ou sélectionnez une étape pour comprendre comment le suivi s’organise autour de votre mission.</span>
+        <a href="/portage-salarial">Découvrir le fonctionnement <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="light-offer-schema stagger-children" data-offer-schema>
+        <div class="light-offer-flow" aria-label="Schéma d’accompagnement The Porters">
+
+        {offerItems.map((item, index) => item && (
+          <button
+            type="button"
+            class:list={['light-offer-item', 'reveal-up', { 'is-active': index === 0 }]}
+            data-reveal
+            data-offer-step
+            data-offer-title={item.title}
+            data-offer-text={item.text}
+            data-offer-index={`0${index + 1}`}
+            style={`--reveal-delay: ${index * 90}ms; --step:${index}`}
+          >
+            <span>0{index + 1}</span>
+            <span class="light-offer-icon"><SiteIcon name={item.icon} class="h-5 w-5" /></span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </button>
+        ))}
         </div>
-        <GoogleReviewsMarquee reviews={googleReviewHighlights} speed="32s" />
-      </div>
-      <p class="testimonial-source-note">Extraits condensés d’avis publics Google. La fiche Google reste la source de référence pour les textes intégraux et la note en cours.</p>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       EXPERIENCE PATHWAYS
-       ========================================== -->
-  <section class="section pt-14 lg:pt-16 bg-white">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-10 lg:mb-14 reveal">
-        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Deux publics, une même exigence</p>
-        <h2 class="mb-4">Un parcours clair pour <span class="gold-underline">chaque situation</span></h2>
-        <p class="text-porters-black/60 max-w-3xl mx-auto">
-          Consultant prêt à se lancer ou entreprise avec un besoin d’expertise : commencez par la question qui vous concerne vraiment.
-        </p>
-      </div>
-
-      <div class="experience-grid reveal">
-        <a href="/portage-salarial" class="experience-card group">
-          <img
-            src={pathwayConsultantImage.src}
-            width={pathwayConsultantImage.width}
-            height={pathwayConsultantImage.height}
-            alt="Consultante indépendante organisant sa mission depuis son espace de travail."
-            class="experience-card-image experience-card-image-consultant"
-            loading="lazy"
-            decoding="async"
-          />
-          <span class="experience-card-overlay"></span>
-          <span class="experience-card-content">
-            <span class="experience-card-kicker">Consultants IT</span>
-            <span class="experience-card-title">Exercer librement avec un cadre salarié</span>
-            <span class="experience-card-text">
-              Cybersécurité, data, IA, cloud, DevOps, Product Ownership ou chefferie de projet : gardez votre autonomie, The Porters prend le relais administratif.
-            </span>
-            <span class="experience-card-action">
-              Découvrir le portage
-              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="/entreprises" class="experience-card group">
-          <img
-            src={pathwayEnterpriseImage.src}
-            width={pathwayEnterpriseImage.width}
-            height={pathwayEnterpriseImage.height}
-            alt="Rendez-vous professionnel conclu par une poignée de main."
-            class="experience-card-image experience-card-image-enterprise"
-            loading="lazy"
-            decoding="async"
-          />
-          <span class="experience-card-overlay"></span>
-          <span class="experience-card-content">
-            <span class="experience-card-kicker">Entreprises</span>
-            <span class="experience-card-title">Collaborer avec des experts sans complexité</span>
-            <span class="experience-card-text">
-              Sécurisez une collaboration avec un consultant externe sur un projet IT, data, cloud, cyber ou transformation.
-            </span>
-            <span class="experience-card-action">
-              Solutions entreprises
-              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="/simulateur" class="experience-card group">
-          <img
-            src={pathwaySimulationImage.src}
-            width={pathwaySimulationImage.width}
-            height={pathwaySimulationImage.height}
-            alt="Consultants examinant ensemble des données financières et de mission."
-            class="experience-card-image experience-card-image-simulation"
-            loading="lazy"
-            decoding="async"
-          />
-          <span class="experience-card-overlay"></span>
-          <span class="experience-card-content">
-            <span class="experience-card-kicker">Simulation</span>
-            <span class="experience-card-title">Estimer son salaire avant d’avancer</span>
-            <span class="experience-card-text">
-              Comprenez rapidement l’impact de votre TJM, de vos jours facturés et de vos frais professionnels.
-            </span>
-            <span class="experience-card-action">
-              Simuler mes revenus
-              <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </span>
-        </a>
-      </div>
-
-      <div class="mt-12 grid gap-6 lg:grid-cols-3 reveal">
-        <div class="service-proof">
+        <aside class="light-offer-detail" aria-live="polite">
           <span>01</span>
-          <p>Contrats, facturation et suivi administratif cadrés avec l’entreprise cliente.</p>
-        </div>
-        <div class="service-proof">
-          <span>02</span>
-          <p>Lecture claire du TJM, des frais professionnels et des éléments de paie à valider.</p>
-        </div>
-        <div class="service-proof">
-          <span>03</span>
-          <p>Accompagnement humain pour positionnement, transition freelance et relation client.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section bg-porters-navy text-porters-white">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid gap-12 lg:grid-cols-[0.42fr_0.58fr] lg:items-start">
-        <div class="reveal">
-          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Choisir son cadre</p>
-          <h2 class="text-porters-white mb-5">La bonne manière de travailler dépend de votre projet</h2>
-          <p class="text-porters-white/68 leading-relaxed">
-            Portage salarial, CDI, CDD ou activité freelance : comparez le niveau d’autonomie, de protection et de gestion qui correspond à votre trajectoire.
-          </p>
-        </div>
-        <div class="grid gap-4 sm:grid-cols-2 reveal">
-          {statusCards.map((status) => (
-            <article class="status-card">
-              <h3>{status.title}</h3>
-              <p>{status.body}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      <div class="expertise-band reveal">
-        <div>
-          <p class="mb-2 text-sm font-semibold uppercase tracking-wider text-porters-gold">Domaines d'expertise</p>
-          <h3 class="text-porters-white">Des expertises organisées en sous-catégories</h3>
-        </div>
-        <div class="expertise-tags">
-          {homeExpertises.map((expertise) => (
-            <a href={expertise.href}>{expertise.label}</a>
-          ))}
-        </div>
+          <h3>{offerItems[0]?.title}</h3>
+          <p>{offerItems[0]?.text}</p>
+          <a href="/rendez-vous">Échanger avec un conseiller <b aria-hidden="true">→</b></a>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       3-STEP PROCESS
-       ========================================== -->
-  <section class="section bg-porters-navy/[0.02]">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">L'atelier du Portage Salarial</p>
-        <h2 class="mb-4">Vous signez la mission. <span class="gold-underline">Nous organisons le reste.</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Trois étapes pour passer d’une prestation négociée à une activité salariée, suivie et lisible.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-        {homePortageSteps.map((step, index) => (
-          <div class="text-center reveal">
-            <div class="w-16 h-16 rounded-full border-2 border-porters-gold flex items-center justify-center mx-auto mb-6">
-              <span class="text-2xl font-heading font-bold text-porters-navy">{index + 1}</span>
-            </div>
-            <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3">{step.title}</h3>
-            <p class="text-sm text-porters-black/60 leading-relaxed">{step.text}</p>
+  <section class="light-section light-follow-section reveal-fade" data-reveal id="avantages">
+    <div class="light-container light-follow-layout">
+      <div class="light-follow-copy reveal-up" data-reveal>
+        <p>L’accompagnement dans la durée</p>
+        <div class="light-follow-title">
+          <h2>Suivi</h2>
+          <span>humain, contractuel et administratif pendant la mission</span>
+        </div>
+        <h3>Être indépendant ne veut pas dire être seul</h3>
+        <span>Un interlocuteur connaît votre dossier et répond concrètement sur le contrat, la facturation, la paie, les frais et la relation client.</span>
+        <div class="light-follow-people">
+          <div aria-hidden="true">
+            {supportAvatars.map((person) => (
+              <img src={person.image} alt="" loading="lazy" decoding="async" />
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       BENEFITS
-       ========================================== -->
-  <section class="section">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="mb-4">Pourquoi les consultants choisissent <span class="gold-underline">The Porters</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Parce qu’un bon portage ne se limite pas à éditer une fiche de paie : il rend chaque étape compréhensible.</p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {homeWhyPorters.map((benefit, index) => (
-          <article class="card p-6 reveal">
-            <span class="mb-4 flex h-10 w-10 items-center justify-center rounded bg-porters-gold/10 font-mono text-sm font-semibold text-porters-gold">0{index + 1}</span>
-            <h3 class="font-heading text-lg font-semibold text-porters-navy mb-2">{benefit.title}</h3>
-            <p class="text-sm text-porters-black/60">{benefit.text}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       SIMULATOR PREVIEW
-       ========================================== -->
-  <section class="section bg-porters-navy/[0.02]">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div class="reveal">
-          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Simulateur</p>
-          <h2 class="mb-6">Projetez vos revenus <span class="gold-underline">avant de décider</span></h2>
-          <p class="text-porters-black/60 mb-6 leading-relaxed">
-            Notre simulateur propose deux parcours : une estimation portage à partir du chiffre d’affaires mensuel, et une lecture freelance avec TJM et jours facturés. Chaque hypothèse reste visible et modifiable.
-          </p>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-start gap-3 text-sm text-porters-black/70">
-              <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-              Deux simulateurs distincts : portage salarial et freelance
-            </li>
-            <li class="flex items-start gap-3 text-sm text-porters-black/70">
-              <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-              Frais de gestion expliqués selon les conditions de la mission
-            </li>
-            <li class="flex items-start gap-3 text-sm text-porters-black/70">
-              <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
-              Base de frais professionnels à 500 €/mois, calculée au réel
-            </li>
-          </ul>
-          <a href="/simulateur" class="btn btn-primary">
-            Accéder au simulateur
-            <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="reveal">
-          <div class="overflow-hidden rounded-lg border border-porters-navy/8 bg-white shadow-[0_18px_50px_rgba(25,43,99,0.06)]">
-            <img
-              src={simulatorPreviewImage.src}
-              width={simulatorPreviewImage.width}
-              height={simulatorPreviewImage.height}
-              alt="Calcul de revenus sur des documents financiers."
-              class="h-56 w-full object-cover"
-            />
-            <div class="p-8 lg:p-10">
-            <div class="space-y-6">
-              <div>
-                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Chiffre d’affaires mensuel</p>
-                <p class="text-3xl font-heading font-bold text-porters-navy">9 000 €<span class="text-base font-normal text-porters-black/40"> / mois</span></p>
-              </div>
-              <div class="h-px bg-porters-navy/8"></div>
-              <div>
-                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Frais de gestion</p>
-                <p class="text-3xl font-heading font-bold text-porters-navy">Selon la mission<span class="text-base font-normal text-porters-black/40"> · précisé avant contrat</span></p>
-              </div>
-              <div class="h-px bg-porters-navy/8"></div>
-              <div>
-                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Frais professionnels réels</p>
-                <p class="text-3xl font-heading font-bold text-porters-navy">500 €<span class="text-base font-normal text-porters-black/40"> / mois</span></p>
-              </div>
-              <div class="h-px bg-porters-navy/8"></div>
-              <div class="bg-porters-navy/[0.03] rounded p-4">
-                <p class="text-xs uppercase tracking-wider text-porters-black/40 mb-1">Salaire net estimé</p>
-                <p class="text-3xl font-heading font-bold text-porters-navy">
-                  Calcul détaillé<span class="text-base font-normal text-porters-black/40"> après saisie</span>
-                </p>
-                <p class="text-xs text-porters-black/40 mt-2">Estimation indicative avant optimisation</p>
-              </div>
-            </div>
-            </div>
-          </div>
+          <strong>Profils IT, produit, data et transformation</strong>
         </div>
       </div>
+
+      <figure class="light-follow-feature reveal-up" data-reveal style="--reveal-delay: 120ms">
+        <span aria-hidden="true">“</span>
+        <blockquote>
+          Je voulais devenir indépendante mais je ne souhaitais pas non plus créer ma propre entreprise pour le moment. J’ai entendu parler du portage salarial et j’ai pu me lancer grâce à The Porters. À mi-chemin entre l’indépendance et le salariat, je me sens à la fois libre et accompagnée.
+        </blockquote>
+        <figcaption>
+          <strong>Delphine</strong>
+          <span>Product Owner en portage salarial — Paris</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="light-container light-follow-quotes stagger-children">
+      {supportQuotes.map((item, index) => (
+        <article class="light-follow-quote reveal-up" data-reveal style={`--reveal-delay: ${220 + index * 100}ms`}>
+          <p>« {item.quote} »</p>
+          <strong>{item.name}</strong>
+          <span>{item.role}</span>
+        </article>
+      ))}
     </div>
   </section>
 
-  <!-- ==========================================
-       APPOINTMENT CTA BAND
-       ========================================== -->
-  <section class="bg-porters-navy py-16 lg:py-20">
-    <div class="container mx-auto px-6 lg:px-8 text-center reveal">
-      <div class="w-12 h-[3px] bg-porters-gold mx-auto mb-8"></div>
-      <h2 class="text-porters-white mb-4">Parlons de votre prochaine mission</h2>
-      <p class="text-porters-white/60 max-w-xl mx-auto mb-8 leading-relaxed">
-        Mission trouvée, statut à comparer ou besoin d’expertise : partez de votre situation et repartez avec des prochaines étapes claires.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/rendez-vous" class="btn btn-gold">
-          Parler à un conseiller
-        </a>
-        <a href="/contact" class="btn btn-white">
-          Nous contacter
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       AGENCIES PREVIEW
-       ========================================== -->
-  <section class="section">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <h2 class="mb-4">Proches quand c’est utile. <span class="gold-underline">À distance quand c’est plus simple.</span></h2>
-        <p class="text-porters-black/60 max-w-2xl mx-auto">Retrouvez nos points de contact documentés et choisissez le format d’échange adapté à votre mission.</p>
-      </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-        {homepageAgencies.map((agency) => (
-          <a href={`/agences/${agency.slug}`} class="card p-6 group reveal block">
-            <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-2">{agency.region}</p>
-            <h3 class="text-xl font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors">{agency.city}</h3>
-            <p class="text-sm text-porters-black/60 mb-4 line-clamp-3">{agency.heroSubtitle}</p>
-            <span class="text-sm font-medium text-porters-navy group-hover:text-porters-gold transition-colors inline-flex items-center gap-1">
-              Découvrir
-              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </a>
-        ))}
-      </div>
-
-      <div class="text-center mt-10 reveal">
-        <a href="/agences" class="btn btn-secondary">
-          Toutes nos agences
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ==========================================
-       RESOURCES PREVIEW
-       ========================================== -->
-  <section class="section">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-12 reveal">
+  <section class="light-section light-reviews reveal-fade" data-reveal>
+    <div class="light-container">
+      <div class="light-reviews-header reveal-up" data-reveal>
         <div>
-          <h2 class="mb-2">Des contenus utiles, <span class="gold-underline">pas du jargon</span></h2>
-          <p class="text-porters-black/60">Statut, TJM, contrats, métiers : allez directement aux réponses qui font avancer votre projet.</p>
+          <p>Avis Google</p>
+          <h2>La qualité de service se lit dans les retours</h2>
         </div>
-        <a href="/blog" class="btn btn-ghost mt-4 md:mt-0">
-          Voir le blog
-          <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <GoogleReviewsBadge />
       </div>
+      <div class="reveal-fade" data-reveal><GoogleReviewsMarquee reviews={googleReviewHighlights} speed="34s" /></div>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        {homepagePosts.map((post) => (
-          <a href={`/blog/${post.slug}`} class="card p-0 overflow-hidden group reveal block">
-            <div class="h-2 bg-porters-gold"></div>
-            <div class="p-6">
-              <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">{getBlogCategory(post.category)?.label || post.category}</p>
-              <h3 class="text-lg font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
-                {post.title}
-              </h3>
-              <p class="text-sm text-porters-black/60 line-clamp-3">
-                {post.excerpt}
-              </p>
-            </div>
-          </a>
+  <section class="light-section light-faq reveal-fade" data-reveal>
+    <div class="light-container light-faq-layout">
+      <div class="light-faq-copy reveal-up" data-reveal>
+        <p>Questions fréquentes</p>
+        <h2>Les réponses avant les décisions</h2>
+        <span>Statut, revenus, frais et missions : retrouvez les points essentiels avant d’avancer.</span>
+        <a href="/faq">Consulter toute la FAQ <b aria-hidden="true">→</b></a>
+      </div>
+      <div class="light-faq-list reveal-up" data-reveal>
+        {faqPreview.map((faq) => (
+          <details>
+            <summary aria-expanded="false">{faq.question}<span aria-hidden="true">+</span></summary>
+            <div class="light-faq-answer"><div><p>{faq.answer}</p></div></div>
+          </details>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ==========================================
-       FINAL CTA
-       ========================================== -->
-  <section class="bg-porters-navy py-20 lg:py-24">
-    <div class="container mx-auto px-6 lg:px-8 text-center reveal">
-      <div class="w-16 h-[3px] bg-porters-gold mx-auto mb-8"></div>
-      <h2 class="text-porters-white mb-4 max-w-2xl mx-auto">
-        Prêt à donner un nouveau cadre<br />à votre indépendance ?
-      </h2>
-      <p class="text-porters-white/60 max-w-xl mx-auto mb-10 leading-relaxed">
-        Choisissez vos missions. Nous cadrons les contrats, la facturation, la paie et le suivi administratif.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/simulateur" class="btn btn-gold">
-          Simuler mes revenus
-          <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="/rendez-vous" class="btn btn-white">
-          Parler à un conseiller
-        </a>
+  <section class="light-final-cta reveal-fade" data-reveal>
+    <div class="light-container reveal-scale" data-reveal>
+      <p>Votre prochaine étape</p>
+      <h2>Prêt à donner un nouveau cadre à votre indépendance ?</h2>
+      <span>Choisissez vos missions. Nous cadrons les contrats, la facturation, la paie et le suivi administratif.</span>
+      <div>
+        <a href="/simulateur" class="light-final-primary">Simuler mes revenus</a>
+        <a href="/rendez-vous" class="light-final-secondary">Parler à un conseiller</a>
       </div>
     </div>
   </section>
 </PageLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-offer-schema]').forEach((schema) => {
+    const steps = schema.querySelectorAll<HTMLButtonElement>('[data-offer-step]');
+    const detail = schema.querySelector<HTMLElement>('.light-offer-detail');
+    const detailIndex = detail?.querySelector<HTMLElement>(':scope > span');
+    const detailTitle = detail?.querySelector<HTMLElement>('h3');
+    const detailText = detail?.querySelector<HTMLElement>('p');
+
+    const selectStep = (step: HTMLButtonElement) => {
+      steps.forEach((item) => item.classList.toggle('is-active', item === step));
+      if (detailIndex) detailIndex.textContent = step.dataset.offerIndex || '';
+      if (detailTitle) detailTitle.textContent = step.dataset.offerTitle || '';
+      if (detailText) detailText.textContent = step.dataset.offerText || '';
+      detail?.classList.remove('is-switching');
+      requestAnimationFrame(() => detail?.classList.add('is-switching'));
+    };
+
+    steps.forEach((step) => {
+      step.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse') selectStep(step);
+      });
+      step.addEventListener('focus', () => selectStep(step));
+      step.addEventListener('click', () => selectStep(step));
+    });
+  });
+
+  document.querySelectorAll('.light-faq-list details').forEach((detail) => {
+    const summary = detail.querySelector('summary');
+    detail.addEventListener('toggle', () => {
+      summary?.setAttribute('aria-expanded', String(detail.hasAttribute('open')));
+    });
+  });
+</script>
+
+<style>
+  .light-container {
+    width: min(100% - 2.5rem, 78rem);
+    margin-inline: auto;
+  }
+
+  .light-section {
+    padding-block: clamp(5rem, 8vw, 8rem);
+  }
+
+  .light-situations {
+    padding-top: clamp(4rem, 6vw, 6rem);
+  }
+
+  .light-section-heading {
+    max-width: 46rem;
+    margin-bottom: 3rem;
+  }
+
+  .light-section-heading > p,
+  .light-offer-copy > p,
+  .light-reviews-header p,
+  .light-proximity-copy > p,
+  .light-faq-copy > p,
+  .light-final-cta p {
+    margin-bottom: 0.8rem;
+    color: var(--color-porters-gold);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .light-section-heading h2,
+  .light-offer-copy h2,
+  .light-proximity-copy h2,
+  .light-faq-copy h2,
+  .light-final-cta h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(2.3rem, 4.4vw, 4.2rem);
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .light-section-heading > span,
+  .light-proximity-copy > span,
+  .light-faq-copy > span,
+  .light-final-cta > .light-container > span {
+    display: block;
+    color: rgba(40, 55, 67, 0.6);
+    line-height: 1.7;
+  }
+
+  .light-logo-strip {
+    display: grid;
+    min-height: 7rem;
+    grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.35fr);
+    align-items: center;
+    border-block: 1px solid rgba(40, 55, 67, 0.08);
+    background: white;
+  }
+
+  .light-logo-intro {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding-inline: clamp(1.5rem, 5vw, 5rem);
+    border-right: 1px solid rgba(40, 55, 67, 0.08);
+  }
+
+  .light-logo-intro span {
+    max-width: 17rem;
+    color: rgba(40, 55, 67, 0.58);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .light-logo-marquee {
+    min-width: 0;
+    padding-block: 1.5rem;
+  }
+
+  .light-logo-track {
+    --marquee-duration: 38s;
+    gap: 0;
+  }
+
+  .light-logo-group {
+    display: flex;
+    min-width: max-content;
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    padding-right: clamp(2.5rem, 5vw, 5rem);
+  }
+
+  .light-logo-group img {
+    width: clamp(4.5rem, 7vw, 6.5rem);
+    max-width: 6.5rem;
+    max-height: 2.25rem;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.68;
+    transition: opacity var(--motion-fast) ease, transform var(--motion-medium) var(--ease-soft), filter var(--motion-fast) ease;
+  }
+
+  .light-logo-group img:hover {
+    filter: grayscale(0.25);
+    opacity: 0.92;
+    transform: scale(1.05);
+  }
+
+  .light-situations {
+    background: white;
+  }
+
+  .light-situation-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(40, 55, 67, 0.14);
+  }
+
+  .light-situation-card {
+    display: flex;
+    min-height: 20rem;
+    flex-direction: column;
+    padding: 1.6rem;
+    border-right: 1px solid rgba(40, 55, 67, 0.12);
+    color: var(--color-porters-navy);
+    box-shadow: 0 0 0 rgba(40, 55, 67, 0);
+    cursor: pointer;
+    transition:
+      background-color var(--motion-fast) ease,
+      border-color var(--motion-fast) ease,
+      transform var(--motion-medium) var(--ease-soft),
+      box-shadow var(--motion-medium) var(--ease-soft);
+  }
+
+  .light-situation-card:first-child {
+    border-left: 1px solid rgba(40, 55, 67, 0.12);
+  }
+
+  .light-situation-card:hover {
+    z-index: 1;
+    border-color: rgba(190, 158, 88, 0.62);
+    background: #faf7f0;
+    box-shadow: 0 22px 50px rgba(40, 55, 67, 0.1);
+    transform: translateY(-6px);
+  }
+
+  .light-situation-card:focus-visible {
+    z-index: 2;
+    border-color: var(--color-porters-gold);
+    box-shadow: 0 0 0 3px rgba(190, 158, 88, 0.16), 0 22px 50px rgba(40, 55, 67, 0.1);
+  }
+
+  .light-card-number,
+  .light-offer-item > span,
+  .light-city-list a > span {
+    color: var(--color-porters-gold);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
+
+  .light-situation-card h3 {
+    margin: 3rem 0 1rem;
+    font-size: 1.45rem;
+  }
+
+  .light-situation-card p {
+    color: rgba(40, 55, 67, 0.6);
+    font-size: 0.83rem;
+    line-height: 1.65;
+  }
+
+  .light-situation-card strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    color: var(--color-porters-navy);
+    font-size: 0.72rem;
+  }
+
+  .light-situation-card .light-card-number,
+  .light-situation-card strong > span {
+    transition: color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-soft);
+  }
+
+  .light-situation-card:hover .light-card-number {
+    color: var(--color-porters-navy);
+  }
+
+  .light-situation-card:hover strong > span,
+  .light-situation-card:focus-visible strong > span {
+    transform: translate(3px, -3px);
+  }
+
+  .light-offer-section {
+    background: #f7f4ed;
+  }
+
+  .light-offer-layout,
+  .light-proximity-layout,
+  .light-faq-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: clamp(3rem, 8vw, 7rem);
+  }
+
+  .light-offer-copy,
+  .light-proximity-copy,
+  .light-faq-copy {
+    align-self: start;
+  }
+
+  .light-offer-copy h2,
+  .light-proximity-copy h2,
+  .light-faq-copy h2 {
+    font-size: clamp(2.2rem, 3.6vw, 3.5rem);
+  }
+
+  .light-offer-copy > span {
+    display: block;
+    max-width: 30rem;
+    color: rgba(40, 55, 67, 0.62);
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .light-offer-copy > a,
+  .light-proximity-copy > a,
+  .light-faq-copy > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+    color: var(--color-porters-navy);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .light-offer-schema {
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .light-offer-flow {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    min-height: 25rem;
+    padding: clamp(1rem, 2vw, 1.35rem);
+    border: 1px solid rgba(40, 55, 67, 0.1);
+    border-radius: 8px;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(190, 158, 88, 0.13), transparent 28%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.18));
+  }
+
+  .light-offer-flow::before,
+  .light-offer-flow::after {
+    position: absolute;
+    inset: 50% 1.35rem auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(190, 158, 88, 0.46), transparent);
+    content: "";
+    pointer-events: none;
+  }
+
+  .light-offer-flow::after {
+    inset: 1.35rem auto 1.35rem 50%;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, transparent, rgba(190, 158, 88, 0.46), transparent);
+  }
+
+
+
+  .light-offer-item {
+    display: grid;
+    grid-template-columns: 2.2rem 2.6rem 1fr;
+    align-items: start;
+    gap: 1rem;
+    min-height: 10.7rem;
+    border: 1px solid rgba(40, 55, 67, 0.1);
+    border-radius: 8px;
+    padding: 1.1rem;
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--color-porters-navy);
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    transition:
+      transform var(--motion-medium) var(--ease-soft),
+      box-shadow var(--motion-medium) ease,
+      background-color var(--motion-fast) ease,
+      border-color var(--motion-fast) ease;
+  }
+
+  .light-offer-item:hover,
+  .light-offer-item:focus-visible,
+  .light-offer-item.is-active {
+    border-color: rgba(190, 158, 88, 0.48);
+    background: #fff;
+    box-shadow: 0 18px 42px rgba(40, 55, 67, 0.1);
+    outline: none;
+    transform: translateY(-5px);
+  }
+
+  .light-offer-icon {
+    display: grid;
+    width: 2.5rem;
+    height: 2.5rem;
+    place-items: center;
+    border: 1px solid rgba(190, 158, 88, 0.4);
+    border-radius: 50%;
+    color: var(--color-porters-gold);
+    transform: scale(0.92);
+    transition:
+      color var(--motion-fast) ease,
+      background-color var(--motion-fast) ease,
+      transform var(--motion-medium) var(--ease-soft);
+  }
+
+  .light-offer-item:hover .light-offer-icon,
+  .light-offer-item:focus-visible .light-offer-icon,
+  .light-offer-item.is-active .light-offer-icon {
+    background: var(--color-porters-gold);
+    color: var(--color-porters-navy);
+    transform: scale(1) rotate(-4deg);
+  }
+
+  .light-offer-item h3 {
+    margin-bottom: 0.45rem;
+    font-size: 1.1rem;
+  }
+
+  .light-offer-item p {
+    margin: 0;
+    color: rgba(40, 55, 67, 0.6);
+    font-size: 0.8rem;
+    line-height: 1.65;
+  }
+
+  .light-offer-detail {
+    position: relative;
+    overflow: hidden;
+    min-height: 12rem;
+    border: 1px solid rgba(40, 55, 67, 0.1);
+    border-radius: 8px;
+    padding: clamp(1.25rem, 2vw, 1.8rem);
+    background: #fff;
+    box-shadow: 0 18px 42px rgba(40, 55, 67, 0.06);
+  }
+
+  .light-offer-detail::after {
+    position: absolute;
+    right: -4rem;
+    bottom: -5rem;
+    width: 13rem;
+    aspect-ratio: 1;
+    border: 1px solid rgba(190, 158, 88, 0.24);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+  }
+
+  .light-offer-detail > span {
+    display: block;
+    color: rgba(40, 55, 67, 0.2);
+    font: 780 2.6rem/1 var(--font-mono);
+  }
+
+  .light-offer-detail h3 {
+    margin-top: 0.35rem;
+    color: var(--color-porters-navy);
+    font-size: clamp(1.35rem, 2vw, 1.85rem);
+  }
+
+  .light-offer-detail p {
+    max-width: 34rem;
+    margin-top: 0.65rem;
+    color: rgba(40, 55, 67, 0.64);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .light-offer-detail a {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    gap: 0.65rem;
+    margin-top: 1.15rem;
+    color: var(--color-porters-navy);
+    font-size: 0.78rem;
+    font-weight: 760;
+  }
+
+  .light-offer-detail b {
+    color: var(--color-porters-gold);
+    transition: transform var(--motion-fast) var(--ease-soft);
+  }
+
+  .light-offer-detail a:hover b {
+    transform: translateX(4px);
+  }
+
+  .light-offer-detail.is-switching {
+    animation: offer-detail-pop 360ms var(--ease-soft);
+  }
+
+  .light-follow-section {
+    overflow: hidden;
+    padding-block: clamp(4.5rem, 6.2vw, 6.5rem);
+    background:
+      radial-gradient(circle at 84% 24%, rgba(190, 158, 88, 0.08), transparent 30%),
+      linear-gradient(180deg, #fff 0%, #f7f5ef 100%);
+  }
+
+  .light-follow-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.32fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .light-follow-copy {
+    padding-top: clamp(0.5rem, 2vw, 1.5rem);
+  }
+
+  .light-follow-copy > p {
+    margin-bottom: 1rem;
+    color: rgba(40, 55, 67, 0.58);
+    font-size: 0.72rem;
+    font-weight: 780;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .light-follow-title {
+    display: grid;
+    grid-template-columns: auto minmax(0, 12rem);
+    gap: 1.25rem;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 2px solid rgba(190, 158, 88, 0.78);
+  }
+
+  .light-follow-title h2 {
+    margin: 0;
+    color: var(--color-porters-navy);
+    font-family: var(--font-mono);
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    font-weight: 600;
+    letter-spacing: -0.07em;
+    line-height: 0.92;
+  }
+
+  .light-follow-title span {
+    color: rgba(40, 55, 67, 0.62);
+    font-size: clamp(0.92rem, 1.2vw, 1.08rem);
+    font-weight: 760;
+    line-height: 1.35;
+  }
+
+  .light-follow-copy h3 {
+    max-width: 17ch;
+    margin: clamp(1.25rem, 2.4vw, 2rem) 0 1rem;
+    color: var(--color-porters-navy);
+    font-size: clamp(2.25rem, 3.2vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .light-follow-copy h3::after {
+    display: inline-block;
+    width: min(8rem, 34vw);
+    height: 2px;
+    margin-left: 0.35rem;
+    background: var(--color-porters-gold);
+    content: "";
+    vertical-align: 0.25em;
+  }
+
+  .light-follow-copy > span {
+    display: block;
+    max-width: 34rem;
+    color: rgba(40, 55, 67, 0.64);
+    font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+    line-height: 1.72;
+  }
+
+  .light-follow-people {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: clamp(1.7rem, 3.8vw, 3rem);
+  }
+
+  .light-follow-people > div {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  .light-follow-people img {
+    width: clamp(2.8rem, 4vw, 3.5rem);
+    aspect-ratio: 1;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 24px rgba(40, 55, 67, 0.16);
+  }
+
+  .light-follow-people img + img {
+    margin-left: -0.9rem;
+  }
+
+  .light-follow-people strong {
+    max-width: 15rem;
+    color: rgba(40, 55, 67, 0.62);
+    font-size: 0.82rem;
+    line-height: 1.35;
+  }
+
+  .light-follow-feature {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    padding: clamp(2rem, 3.2vw, 3rem);
+    background:
+      radial-gradient(circle at 92% 14%, rgba(190, 158, 88, 0.15), transparent 20%),
+      linear-gradient(145deg, #203440 0%, #283743 100%);
+    color: #fff;
+    box-shadow: 0 30px 80px rgba(40, 55, 67, 0.18);
+  }
+
+  .light-follow-feature::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 11rem;
+    height: 4px;
+    background: var(--color-porters-gold);
+    content: "";
+  }
+
+  .light-follow-feature > span {
+    position: absolute;
+    top: 1.5rem;
+    right: 2.2rem;
+    color: rgba(216, 187, 112, 0.28);
+    font-family: Georgia, serif;
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 1;
+  }
+
+  .light-follow-feature blockquote {
+    position: relative;
+    z-index: 1;
+    max-width: 29ch;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(1.65rem, 2.25vw, 2.35rem);
+    font-weight: 500;
+    line-height: 1.34;
+    letter-spacing: -0.035em;
+  }
+
+  .light-follow-feature figcaption {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.35rem;
+    margin-top: clamp(1.5rem, 3vw, 2.6rem);
+  }
+
+  .light-follow-feature figcaption strong {
+    color: var(--color-porters-gold);
+    font-size: 0.96rem;
+  }
+
+  .light-follow-feature figcaption span {
+    color: rgba(255, 255, 255, 0.52);
+    font-size: 0.82rem;
+  }
+
+  .light-follow-quotes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .light-follow-quote {
+    min-height: 11.5rem;
+    border: 1px solid rgba(40, 55, 67, 0.08);
+    border-radius: 6px;
+    padding: clamp(1.4rem, 2vw, 2rem);
+    background: #fff;
+    box-shadow: 0 14px 36px rgba(40, 55, 67, 0.06);
+    transition:
+      transform var(--motion-medium) var(--ease-soft),
+      box-shadow var(--motion-medium) ease,
+      border-color var(--motion-fast) ease;
+  }
+
+  .light-follow-quote p {
+    margin: 0 0 1.8rem;
+    color: rgba(40, 55, 67, 0.64);
+    font-size: clamp(0.95rem, 1.15vw, 1.08rem);
+    line-height: 1.62;
+  }
+
+  .light-follow-quote strong {
+    display: block;
+    color: var(--color-porters-navy);
+    font-size: 0.92rem;
+  }
+
+  .light-follow-quote span {
+    display: block;
+    margin-top: 0.25rem;
+    color: rgba(40, 55, 67, 0.48);
+    font-size: 0.76rem;
+  }
+
+  .light-follow-quote:hover,
+  .light-follow-quote:focus-within {
+    border-color: rgba(190, 158, 88, 0.38);
+    box-shadow: 0 20px 46px rgba(40, 55, 67, 0.1);
+    transform: translateY(-5px);
+  }
+
+  .light-reviews {
+    background: white;
+  }
+
+  .light-reviews-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .light-reviews-header h2 {
+    max-width: 38rem;
+    margin: 0;
+    font-size: clamp(2rem, 3.5vw, 3.25rem);
+  }
+
+  .light-reviews :global(.reviews-marquee__card) {
+    min-height: 11rem;
+    box-shadow: none;
+  }
+
+  .light-proximity {
+    background: #f7f4ed;
+  }
+
+  .light-city-list {
+    border-top: 1px solid rgba(40, 55, 67, 0.16);
+  }
+
+  .light-city-list a {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr minmax(8rem, 0.7fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1.15rem;
+    border-bottom: 1px solid rgba(40, 55, 67, 0.12);
+    color: var(--color-porters-navy);
+    transition:
+      padding-inline var(--motion-medium) var(--ease-soft),
+      background-color var(--motion-fast) ease,
+      border-color var(--motion-fast) ease,
+      transform var(--motion-medium) var(--ease-soft);
+  }
+
+  .light-city-list a:hover,
+  .light-city-list a:focus-visible {
+    padding-inline: 0.75rem;
+    border-color: rgba(190, 158, 88, 0.58);
+    background: rgba(255, 255, 255, 0.52);
+    color: var(--color-porters-navy);
+    transform: translateX(5px);
+  }
+
+  .light-city-list strong {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+  }
+
+  .light-city-list small {
+    color: rgba(40, 55, 67, 0.48);
+    font-size: 0.7rem;
+  }
+
+  .light-city-list b {
+    color: var(--color-porters-gold);
+    transition: transform var(--motion-fast) var(--ease-soft);
+  }
+
+  .light-city-list a:hover b,
+  .light-city-list a:focus-visible b {
+    transform: translate(3px, -3px);
+  }
+
+  .light-faq {
+    background: white;
+  }
+
+  .light-faq-list {
+    border-top: 1px solid rgba(40, 55, 67, 0.16);
+  }
+
+  .light-faq-list details {
+    position: relative;
+    border-bottom: 1px solid rgba(40, 55, 67, 0.12);
+    overflow: hidden;
+    transition:
+      border-color var(--motion-fast) ease,
+      background-color var(--motion-fast) ease,
+      transform var(--motion-medium) var(--ease-soft),
+      box-shadow var(--motion-medium) ease;
+  }
+
+  .light-faq-list details::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--color-porters-gold);
+    content: "";
+    opacity: 0;
+    transform: scaleY(0.2);
+    transition: opacity var(--motion-fast) ease, transform var(--motion-medium) var(--ease-soft);
+  }
+
+  .light-faq-list details:hover,
+  .light-faq-list details[open] {
+    border-color: rgba(190, 158, 88, 0.55);
+    background: rgba(247, 244, 237, 0.52);
+    box-shadow: 0 14px 34px rgba(40, 55, 67, 0.06);
+    transform: translateX(5px);
+  }
+
+  .light-faq-list details:hover::before,
+  .light-faq-list details[open]::before {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  .light-faq-list summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.35rem;
+    color: var(--color-porters-navy);
+    font-size: 0.9rem;
+    font-weight: 600;
+    list-style: none;
+    cursor: pointer;
+    padding-inline: 0.65rem;
+    transition: color var(--motion-fast) ease, padding-inline var(--motion-medium) var(--ease-soft);
+  }
+
+  .light-faq-list details:hover summary,
+  .light-faq-list details[open] summary {
+    padding-inline: 1rem 0.65rem;
+  }
+
+  .light-faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .light-faq-list summary span {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid rgba(190, 158, 88, 0.28);
+    border-radius: 50%;
+    color: var(--color-porters-gold);
+    font-size: 1.2rem;
+    font-weight: 400;
+    transition:
+      transform 220ms var(--ease-soft),
+      background-color var(--motion-fast) ease,
+      color var(--motion-fast) ease;
+  }
+
+  .light-faq-list details[open] summary span {
+    background: var(--color-porters-gold);
+    color: var(--color-porters-navy);
+    transform: rotate(45deg);
+  }
+
+  .light-faq-list details p {
+    max-width: 42rem;
+    padding: 0.1rem 2rem 1.35rem 0.65rem;
+    color: rgba(40, 55, 67, 0.62);
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+
+  .light-faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows var(--motion-medium) var(--ease-soft),
+      opacity var(--motion-medium) ease;
+  }
+
+  .light-faq-list details:not([open]) > .light-faq-answer {
+    display: grid;
+  }
+
+  .light-faq-answer > div {
+    overflow: hidden;
+  }
+
+  .light-faq-list details[open] .light-faq-answer {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .light-faq-list details[open] .light-faq-answer > div {
+    animation: faq-answer-in 360ms var(--ease-soft) both;
+  }
+
+  .light-final-cta {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(5.5rem, 9vw, 8.5rem);
+    background:
+      radial-gradient(circle at 50% 120%, rgba(190, 158, 88, 0.22), transparent 44%),
+      var(--color-porters-navy);
+    text-align: center;
+  }
+
+  .light-final-cta h2 {
+    max-width: 18ch;
+    margin-inline: auto;
+    color: white;
+  }
+
+  .light-final-cta > .light-container > span {
+    display: block;
+    max-width: 38rem;
+    margin-inline: auto;
+    color: rgba(255, 255, 255, 0.58);
+  }
+
+  .light-final-cta > .light-container > div {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .light-final-primary,
+  .light-final-secondary {
+    display: inline-flex;
+    min-height: 3.25rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding-inline: 1.35rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition:
+      transform var(--motion-fast) var(--ease-soft),
+      background-color var(--motion-fast) ease,
+      border-color var(--motion-fast) ease,
+      color var(--motion-fast) ease,
+      box-shadow var(--motion-fast) ease;
+  }
+
+  .light-final-primary {
+    background: var(--color-porters-gold);
+    color: var(--color-porters-navy);
+    box-shadow: 0 12px 30px rgba(10, 21, 29, 0.18);
+  }
+
+  .light-final-secondary {
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    color: white;
+  }
+
+  .light-final-primary:hover,
+  .light-final-secondary:hover {
+    transform: translateY(-3px);
+  }
+
+  .light-final-primary:hover {
+    background: white;
+    color: var(--color-porters-navy);
+    box-shadow: 0 17px 38px rgba(10, 21, 29, 0.24);
+  }
+
+  .light-final-secondary:hover {
+    border-color: var(--color-porters-gold);
+    background: rgba(255, 255, 255, 0.06);
+    color: white;
+  }
+
+  .light-final-primary:active,
+  .light-final-secondary:active {
+    transform: translateY(0);
+  }
+
+  @keyframes offer-detail-pop {
+    from { opacity: 0.82; transform: translateY(10px) scale(0.985); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes faq-answer-in {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 960px) {
+    .light-situation-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .light-situation-card:nth-child(3) {
+      border-left: 1px solid rgba(40, 55, 67, 0.12);
+    }
+
+    .light-offer-layout,
+    .light-follow-layout,
+    .light-proximity-layout,
+    .light-faq-layout {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .light-offer-copy,
+    .light-follow-copy,
+    .light-proximity-copy,
+    .light-faq-copy {
+      max-width: 42rem;
+    }
+
+    .light-follow-feature blockquote {
+      max-width: 24ch;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .light-container {
+      width: min(100% - 2rem, 78rem);
+    }
+
+    .light-section {
+      padding-block: 4.5rem;
+    }
+
+    .light-logo-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .light-logo-intro {
+      min-height: 4rem;
+      border-right: 0;
+      border-bottom: 1px solid rgba(40, 55, 67, 0.08);
+    }
+
+    .light-logo-marquee {
+      padding-block: 1.25rem;
+    }
+
+    .light-logo-group {
+      gap: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+    .light-situation-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .light-situation-card,
+    .light-situation-card:nth-child(3) {
+      min-height: 15rem;
+      border-left: 1px solid rgba(40, 55, 67, 0.12);
+    }
+
+    .light-situation-card h3 {
+      margin-top: 1.8rem;
+    }
+
+    .light-offer-flow {
+      grid-template-columns: 1fr;
+      min-height: 0;
+    }
+
+    .light-offer-flow::before,
+    .light-offer-flow::after {
+      display: none;
+    }
+
+
+
+    .light-offer-item {
+      min-height: auto;
+    }
+
+    .light-follow-title {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .light-follow-title h2 {
+      font-size: clamp(3.2rem, 19vw, 4.6rem);
+    }
+
+    .light-follow-copy h3 {
+      max-width: 12ch;
+      font-size: clamp(2.2rem, 12vw, 3rem);
+    }
+
+    .light-follow-people {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    .light-follow-feature {
+      padding: 2rem 1.25rem;
+    }
+
+    .light-follow-feature blockquote {
+      max-width: none;
+      font-size: clamp(1.55rem, 8vw, 2.1rem);
+      line-height: 1.38;
+    }
+
+    .light-follow-quotes {
+      grid-template-columns: 1fr;
+    }
+
+    .light-follow-quote {
+      min-height: auto;
+    }
+
+    .light-reviews-header {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .light-city-list a {
+      grid-template-columns: 2rem 1fr auto;
+    }
+
+    .light-city-list small {
+      display: none;
+    }
+
+    .light-final-cta > .light-container > div {
+      flex-direction: column;
+    }
+
+    .light-final-primary,
+    .light-final-secondary {
+      width: 100%;
+    }
+
+    .light-final-cta {
+      padding-bottom: calc(7rem + env(safe-area-inset-bottom));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .light-situation-card,
+    .light-faq-list summary span {
+      transition: none;
+    }
+
+    .light-situation-card:hover {
+      transform: none;
+    }
+
+    .light-faq-answer {
+      transition: none;
+    }
+  }
+</style>

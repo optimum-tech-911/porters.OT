@@ -60,7 +60,7 @@ export default function SimulatorForm() {
   const [jours, setJours] = useState<number>(scenarios[1].jours);
   const [monthlyRevenue, setMonthlyRevenue] = useState<number>(scenarios[1].tjm * scenarios[1].jours);
   const [frais, setFrais] = useState<number>(scenarios[1].frais);
-  const [managementRatePercent, setManagementRatePercent] = useState<number>(10);
+  const managementRatePercent = 10;
   const [leadSent, setLeadSent] = useState(false);
 
   const selectScenario = (scenario: Scenario) => {
@@ -101,7 +101,7 @@ export default function SimulatorForm() {
       type: 'positive',
     },
     {
-      label: `Frais de gestion — hypothèse ${formatPercent(managementRatePercent)} %`,
+      label: 'Services de portage estimés',
       value: `- ${formatCurrency(fraisGestion)}`,
       type: 'negative',
     },
@@ -260,33 +260,6 @@ export default function SimulatorForm() {
                   <span>25 000 €</span>
                 </div>
               </div>
-              <div>
-                <div className="mb-3 flex items-center justify-between gap-4">
-                  <label htmlFor="management-rate" className="form-label mb-0">
-                    Hypothèse de frais de gestion
-                  </label>
-                  <output htmlFor="management-rate" className="font-heading text-xl font-bold text-porters-navy">
-                    {formatPercent(managementRatePercent)} %
-                  </output>
-                </div>
-                <input
-                  type="range"
-                  id="management-rate"
-                  className="sim-range"
-                  min="4"
-                  max="15"
-                  step="0.5"
-                  value={managementRatePercent}
-                  onChange={(event) => setManagementRatePercent(Number(event.target.value))}
-                />
-                <div className="mt-2 flex justify-between text-xs text-porters-black/45">
-                  <span>4 %</span>
-                  <span>15 %</span>
-                </div>
-                <p className="mt-3 text-xs leading-relaxed text-porters-black/48">
-                  Cette valeur sert uniquement à la projection. Le taux applicable et les services inclus sont confirmés avant contractualisation.
-                </p>
-              </div>
               </>
             ) : (
               <>
@@ -431,7 +404,7 @@ export default function SimulatorForm() {
             <div className="mt-6 rounded-lg border border-porters-gold/30 bg-porters-gold/10 p-4">
               <p className="text-sm leading-relaxed text-porters-white/78">
                 {mode === 'portage'
-                  ? "Cette estimation donne une première lecture. Un conseiller peut ensuite affiner les frais, le taux de gestion, la mutuelle et les options d'optimisation."
+                  ? "Cette estimation donne une première lecture. Un conseiller peut ensuite affiner les paramètres de votre situation, la mutuelle et les éléments contractuels."
                   : "Ce parcours calcule le chiffre d'affaires, pas un revenu net. Les cotisations et impôts dépendent du statut freelance choisi."}
               </p>
             </div>

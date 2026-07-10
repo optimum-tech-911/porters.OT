@@ -47,9 +47,9 @@ export const faqGroups: FaqGroup[] = [
           "Les frais liés à votre activité peuvent être pris en compte lorsqu'ils sont justifiés : internet, téléphone, matériel, logiciels, déplacements, repas ou hébergement selon la situation. Ils doivent correspondre à des dépenses professionnelles réelles et documentées.",
       },
       {
-        question: 'Le taux de frais The Porters est-il affiché ?',
+        question: 'Quels paramètres influencent la simulation ?',
         answer:
-          "Le simulateur permet de tester une hypothèse de frais de gestion. Le taux réellement applicable et les services inclus sont détaillés dans la proposition et confirmés avant la contractualisation.",
+          "Le chiffre d’affaires, les frais professionnels, les paramètres sociaux estimatifs et votre situation influencent le résultat. La proposition personnalisée précise ensuite les éléments contractuels applicables.",
       },
       {
         question: 'À quoi sert le simulateur de revenus ?',

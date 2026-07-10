@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import { agencies } from '../../data/agencies.data';
+import FranceAgencyMap from '../../components/agencies/FranceAgencyMap.astro';
 
 const featuredAgencySlugs = ['paris', 'lyon', 'aix-en-provence', 'marseille', 'montpellier'];
 const featuredAgencies = featuredAgencySlugs
@@ -24,21 +25,7 @@ const featuredAgencies = featuredAgencySlugs
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        {featuredAgencies.map((agency) => agency && (
-          <a href={`/agences/${agency.slug}`} class="card p-8 group reveal block">
-            <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-3">{agency.region}</p>
-            <h2 class="text-2xl font-heading font-semibold text-porters-navy mb-4 group-hover:text-porters-gold transition-colors">{agency.city}</h2>
-            <p class="text-sm text-porters-black/60 mb-6 leading-relaxed line-clamp-3">
-              {agency.description}
-            </p>
-            <span class="text-sm font-medium text-porters-navy group-hover:text-porters-gold transition-colors inline-flex items-center gap-1">
-              Découvrir l'agence
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </a>
-        ))}
-      </div>
+      <div class="reveal"><FranceAgencyMap agencies={featuredAgencies.filter((agency): agency is NonNullable<typeof agency> => Boolean(agency))} /></div>
 
       <div class="mt-20 p-8 lg:p-12 bg-porters-navy/[0.03] rounded-xl text-center reveal border border-porters-navy/5">
         <h3 class="text-xl font-heading font-semibold text-porters-navy mb-4">Vous ne trouvez pas votre ville ?</h3>

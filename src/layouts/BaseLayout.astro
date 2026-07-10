@@ -117,21 +117,26 @@ const allStructuredData = [
 
     <!-- Scroll reveal observer -->
     <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.14, rootMargin: '0px 0px -8% 0px' }
-      );
+      const revealElements = document.querySelectorAll('[data-reveal], .reveal');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      document.querySelectorAll('.reveal').forEach((el) => {
-        observer.observe(el);
-      });
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => element.classList.add('visible', 'is-visible'));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible', 'is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: '0px 0px -80px 0px' }
+        );
+
+        revealElements.forEach((element) => observer.observe(element));
+      }
     </script>
   </body>
 </html>

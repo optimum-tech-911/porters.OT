@@ -1,0 +1,437 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#1B2436;
+    --navy-soft:#2A3654;
+    --cream:#F6F1E7;
+    --cream-deep:#EDE5D3;
+    --gold:#C9A24C;
+    --gold-soft:#E8D9AE;
+    --ink:#1B2436;
+    --ink-mute:#5B6478;
+    --line:#DED4BE;
+  }
+
+  *{box-sizing:border-box;}
+  .porters-hero{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* ---------- NAV ---------- */
+  .p-nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 48px;
+    position:relative;z-index:5;
+  }
+  .p-logo{
+    font-family:'Fraunces',serif;
+    font-size:22px;letter-spacing:0.5px;color:var(--navy);
+    display:flex; flex-direction:column; line-height:0.95;
+  }
+  .p-logo em{font-style:italic;font-weight:400;font-size:14px;color:var(--gold);}
+  .p-logo b{font-weight:600;letter-spacing:2px;}
+  .p-nav-links{display:flex;gap:34px;align-items:center;font-size:14.5px;font-weight:500;color:var(--navy);}
+  .p-cta-small{
+    background:var(--navy); color:var(--cream); padding:10px 20px; border-radius:100px;
+    font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;
+  }
+
+  /* ---------- HERO GRID ---------- */
+  .p-hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    padding:36px 48px 0 48px;
+    position:relative;
+    min-height:600px;
+  }
+
+  .p-eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-size:12.5px; letter-spacing:2px; font-weight:600; color:var(--gold);
+    text-transform:uppercase; margin-bottom:22px;
+  }
+  .p-eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);}
+
+  .p-headline{
+    font-family:'Fraunces',serif;
+    font-size:52px;
+    line-height:1.08;
+    font-weight:500;
+    color:var(--navy);
+    max-width:560px;
+    margin:0 0 26px 0;
+  }
+  .p-headline .stat{
+    background:var(--gold-soft);
+    padding:2px 14px;
+    border-radius:100px;
+    font-weight:600;
+    white-space:nowrap;
+    display:inline-block;
+  }
+
+  .p-sub{
+    font-size:17px; line-height:1.55; color:var(--ink-mute);
+    max-width:440px; margin-bottom:36px;
+  }
+
+  /* ---------- SEARCH / SIMULATOR BAR ---------- */
+  .p-tabs{display:flex; gap:28px; margin-bottom:14px;}
+  .p-tab{
+    font-size:14.5px; font-weight:600; color:var(--ink-mute);
+    padding-bottom:8px; cursor:pointer; position:relative;
+  }
+  .p-tab.active{color:var(--navy);}
+  .p-tab.active::after{
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--gold);
+  }
+
+  .p-search-bar{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:100px;
+    display:flex;
+    align-items:center;
+    padding:6px;
+    max-width:520px;
+    box-shadow:0 12px 30px -18px rgba(27,36,54,0.25);
+  }
+  .p-search-field{
+    flex:1; padding:10px 18px; font-size:14.5px; color:var(--ink); border:none; outline:none;
+    background:transparent; font-family:'Inter',sans-serif;
+  }
+  .p-search-field::placeholder{color:#9A9686;}
+  .p-search-divider{width:1px; height:24px; background:var(--line);}
+  .p-search-loc{display:flex;align-items:center;gap:6px;padding:10px 16px;font-size:14px;color:var(--ink-mute);white-space:nowrap;}
+  .p-search-btn{
+    background:var(--navy); color:var(--cream); border:none; border-radius:100px;
+    padding:12px 22px; font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;
+    cursor:pointer; font-family:'Inter',sans-serif;
+  }
+
+  /* ---------- RIGHT VISUAL CLUSTER ---------- */
+  .p-visual{
+    position:relative;
+    height:560px;
+  }
+
+  .p-blob{
+    position:absolute;
+    top:-60px; right:-140px;
+    width:640px; height:640px;
+    border-radius:44% 56% 60% 40% / 50% 45% 55% 50%;
+    background:linear-gradient(150deg,var(--gold-soft) 0%, var(--cream-deep) 55%, transparent 100%);
+    opacity:0.9;
+    animation:blobFloat 14s ease-in-out infinite;
+  }
+  @keyframes blobFloat{
+    0%,100%{ transform:rotate(0deg) scale(1); }
+    50%{ transform:rotate(6deg) scale(1.02); }
+  }
+
+  .p-chatbubble{
+    position:absolute; top:18px; right:60px;
+    background:var(--navy); color:var(--cream);
+    padding:13px 22px; border-radius:100px;
+    font-size:14.5px; font-weight:500;
+    display:flex; align-items:center; gap:10px;
+    box-shadow:0 14px 26px -14px rgba(27,36,54,0.5);
+    opacity:0; animation:riseIn 0.6s ease forwards; animation-delay:0.1s;
+  }
+
+  .p-dotted{
+    position:absolute; border-left:1.5px dashed var(--gold);
+    opacity:0.55;
+  }
+
+  .p-card{
+    position:absolute;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 20px 40px -20px rgba(27,36,54,0.28);
+    opacity:0; animation:riseIn 0.6s ease forwards;
+  }
+
+  .p-card-name{font-size:14.5px; font-weight:600; color:var(--navy);}
+  .p-card-role{font-size:12px; color:var(--ink-mute); margin-top:2px;}
+  .p-card-tag{
+    position:absolute; top:10px; right:10px;
+    background:#fff; color:var(--gold); font-size:13px;
+    width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 6px 14px -6px rgba(27,36,54,0.35);
+  }
+
+  /* overlapping profile stack */
+  .p-stack-card{ width:168px; padding:12px; }
+  .p-stack-card img{width:100%; height:142px; object-fit:cover; border-radius:12px; display:block; margin-bottom:10px;}
+  .p-stack-left{  top:225px; right:388px; z-index:1; transform:rotate(-7deg); }
+  .p-stack-right{ top:225px; right:64px;  z-index:1; transform:rotate(7deg); }
+  .p-stack-center{
+    top:150px; right:210px; width:196px; z-index:3;
+    box-shadow:0 30px 54px -22px rgba(27,36,54,0.38);
+  }
+  .p-stack-center img{height:168px;}
+
+  /* widgets tucked into the stack's corners */
+  .p-widget{ padding:16px; width:176px; z-index:4; }
+  .p-widget-facturation{ bottom:36px; right:398px; }
+  .p-widget-suivi{ top:56px; right:8px; width:192px; }
+
+  .p-progress{ height:6px; background:var(--gold-soft); border-radius:100px; overflow:hidden; margin-top:10px; }
+  .p-progress-fill{ height:100%; background:var(--gold); }
+  .p-progress-legend{ display:flex; justify-content:space-between; font-size:10px; color:var(--ink-mute); margin-top:6px; gap:8px; }
+
+  /* fanning dotted connectors from the chat bubble to the stack */
+  .p-connector{
+    position:absolute; top:68px; width:1.5px; height:78px;
+    background-image:linear-gradient(var(--gold) 55%, transparent 0%);
+    background-size:1.5px 8px; background-repeat:repeat-y;
+    transform-origin:top center; opacity:0.55;
+  }
+  .c-mid{ right:250px; }
+  .c-left{ right:390px; transform:rotate(-19deg); }
+  .c-right{ right:112px; transform:rotate(19deg); }
+
+  .p-mini-label{font-size:11px; font-weight:600; color:var(--ink-mute); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; display:flex; align-items:center; gap:6px;}
+  .p-mini-label .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .p-mini-value{font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:500; color:var(--navy);}
+  .p-mini-sub{font-size:11.5px; color:var(--ink-mute); margin-top:3px;}
+
+  .p-bars{display:flex; align-items:flex-end; gap:4px; height:34px; margin-top:10px;}
+  .p-bars span{flex:1; background:var(--gold-soft); border-radius:2px;}
+  .p-bars span.hi{background:var(--gold);}
+
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  @media (max-width:960px){
+    .p-hero-grid{grid-template-columns:1fr; padding:28px 24px;}
+    .p-headline{font-size:36px;}
+    .p-visual{display:none;}
+    .p-nav{padding:18px 24px;}
+    .p-nav-links{display:none;}
+  }
+
+  /* ---------- live simulator ---------- */
+  .p-sim{
+    background:#fff; border:1px solid var(--line); border-radius:20px;
+    padding:20px 24px; max-width:460px; box-shadow:0 12px 30px -18px rgba(27,36,54,0.25);
+  }
+  .p-sim-row{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px;}
+  .p-sim-label{font-size:13px; color:var(--ink-mute); font-weight:600;}
+  .p-sim-tjm{font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--navy); font-weight:600;}
+  .p-sim input[type=range]{
+    -webkit-appearance:none; width:100%; height:4px; border-radius:100px;
+    background:var(--gold-soft); margin-bottom:18px; cursor:pointer;
+  }
+  .p-sim input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:18px; height:18px; border-radius:50%;
+    background:var(--gold); border:3px solid #fff; box-shadow:0 2px 8px rgba(27,36,54,0.35); cursor:pointer;
+  }
+  .p-sim-result{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:14px; border-top:1px dashed var(--line);
+  }
+  .p-sim-result-label{font-size:13px; color:var(--ink-mute);}
+  .p-sim-result-value{
+    font-family:'IBM Plex Mono',monospace; font-size:26px; font-weight:600; color:var(--navy);
+  }
+  .p-sim-cta{
+    background:var(--navy); color:var(--cream); border:none; border-radius:100px;
+    padding:10px 18px; font-size:13px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
+  }
+
+  /* ---------- proof strip (scroll-triggered counters) ---------- */
+  .p-proof{
+    display:flex; gap:60px; padding:70px 48px; background:var(--cream-deep);
+    justify-content:center; flex-wrap:wrap;
+  }
+  .p-proof-item{text-align:center;}
+  .p-proof-num{
+    font-family:'Fraunces',serif; font-size:44px; font-weight:500; color:var(--navy);
+  }
+  .p-proof-label{font-size:13px; color:var(--ink-mute); margin-top:4px; max-width:160px;}
+
+  .p-stack-card, .p-widget{ transition:transform 0.25s ease; }
+</style>
+
+<div class="porters-hero">
+
+  <nav class="p-nav">
+    <div class="p-logo"><em>The</em><b>PORTERS</b></div>
+    <div class="p-nav-links">
+      <span>Le portage salarial</span>
+      <span>Nos offres</span>
+      <span>Simulateur</span>
+      <span>Ressources</span>
+      <span>À propos</span>
+    </div>
+    <div class="p-cta-small">Rendez-vous →</div>
+  </nav>
+
+  <div class="p-hero-grid">
+    <div>
+      <div class="p-eyebrow">Portage salarial · Experts du numérique</div>
+      <h1 class="p-headline">Rejoignez <span class="stat">+199</span> experts IT en toute liberté</h1>
+      <p class="p-sub">Consultant salarié, mission à votre main. The Porters structure le contrat, la facturation et la paie — sans jamais toucher à votre expertise.</p>
+
+      <div class="p-tabs">
+        <div class="p-tab" id="tabSearch">Trouver une mission</div>
+        <div class="p-tab active" id="tabSim">Simuler mes revenus</div>
+      </div>
+
+      <div class="p-sim">
+        <div class="p-sim-row">
+          <span class="p-sim-label">Votre TJM</span>
+          <span class="p-sim-tjm" id="tjmValue">550 €</span>
+        </div>
+        <input type="range" id="tjmSlider" min="250" max="1200" step="10" value="550">
+        <div class="p-sim-result">
+          <div>
+            <div class="p-sim-result-label">Revenu net estimé / mois</div>
+            <div class="p-sim-result-value" id="simResult">6 380 €</div>
+          </div>
+          <button class="p-sim-cta">Détail complet →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-visual">
+      <div class="p-blob"></div>
+
+      <div class="p-chatbubble">💬 <span id="bubbleText">Je cherche un Lead DevOps</span></div>
+      <div class="p-connector c-left"></div>
+      <div class="p-connector c-mid"></div>
+      <div class="p-connector c-right"></div>
+
+      <div class="p-card p-stack-card p-stack-left" style="animation-delay:0.4s;">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop" alt="">
+        <div class="p-card-name">Nadir B.</div>
+        <div class="p-card-role">Data & AI Engineer</div>
+      </div>
+
+      <div class="p-card p-stack-card p-stack-center" style="animation-delay:0.2s;">
+        <div class="p-card-tag">♥</div>
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop" alt="">
+        <div class="p-card-name">Camille R.</div>
+        <div class="p-card-role">Lead DevOps · TJM 620€</div>
+      </div>
+
+      <div class="p-card p-stack-card p-stack-right" style="animation-delay:0.55s;">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop" alt="">
+        <div class="p-card-name">Sarah K.</div>
+        <div class="p-card-role">Cybersécurité</div>
+      </div>
+
+      <div class="p-card p-widget p-widget-facturation" style="animation-delay:0.7s;">
+        <div class="p-mini-label"><span class="dot"></span>Facturation</div>
+        <div class="p-bars">
+          <span style="height:35%"></span><span style="height:55%"></span><span class="hi" style="height:100%"></span>
+          <span style="height:70%"></span><span style="height:85%"></span><span style="height:60%"></span>
+        </div>
+      </div>
+
+      <div class="p-card p-widget p-widget-suivi" style="animation-delay:0.85s;">
+        <div class="p-mini-label"><span class="dot"></span>Contrat & Paie</div>
+        <div class="p-progress"><div class="p-progress-fill" style="width:76%;"></div></div>
+        <div class="p-progress-legend"><span>Signé</span><span>Prochaine paie · 28 fév.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-proof">
+    <div class="p-proof-item"><div class="p-proof-num" data-target="199" data-suffix="+">0</div><div class="p-proof-label">Consultants portés partout en France</div></div>
+    <div class="p-proof-item"><div class="p-proof-num" data-target="98.6" data-suffix="%" data-decimal="1">0%</div><div class="p-proof-label">Nous recommanderaient à leur entourage</div></div>
+    <div class="p-proof-item"><div class="p-proof-num" data-target="69" data-suffix="">0</div><div class="p-proof-label">Entreprises clientes qui nous font confiance</div></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const scope = document.currentScript.previousElementSibling;
+
+  /* 1 — rotating chat bubble text */
+  const missions = ["Je cherche un Lead DevOps","Je cherche un Data Engineer","Je cherche une Product Owner","Je cherche un Expert Cyber"];
+  const bubbleEl = document.getElementById('bubbleText');
+  let mIndex = 0;
+  if(bubbleEl){
+    setInterval(()=>{
+      mIndex = (mIndex+1) % missions.length;
+      bubbleEl.style.opacity = 0;
+      setTimeout(()=>{ bubbleEl.textContent = missions[mIndex]; bubbleEl.style.opacity = 1; }, 250);
+    }, 2600);
+    bubbleEl.style.transition = 'opacity 0.25s ease';
+  }
+
+  /* 2 — cursor tilt on the profile stack */
+  const visual = document.querySelector('.p-visual');
+  const tiltCards = document.querySelectorAll('.p-stack-card, .p-widget');
+  if(visual){
+    visual.addEventListener('mousemove', (e)=>{
+      const r = visual.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      tiltCards.forEach(card=>{
+        const depth = card.classList.contains('p-stack-center') ? 10 : 5;
+        card.style.transform = (card.style.transform || '').replace(/rotate\([^)]*\)/,'') ;
+        card.style.transform += ` rotate(${px*depth}deg) translateY(${py*depth}px)`;
+      });
+    });
+    visual.addEventListener('mouseleave', ()=>{
+      tiltCards.forEach(card=> card.style.transform = card.style.transform.replace(/rotate\([^)]*\)\s*translateY\([^)]*\)/,''));
+    });
+  }
+
+  /* 3 — live TJM simulator */
+  const slider = document.getElementById('tjmSlider');
+  const tjmValue = document.getElementById('tjmValue');
+  const simResult = document.getElementById('simResult');
+  function computeNet(tjm){
+    // rough illustrative estimate: ~20 billable days/month, ~58% conversion TJM -> net salary
+    return Math.round(tjm * 20 * 0.58 / 10) * 10;
+  }
+  if(slider){
+    slider.addEventListener('input', ()=>{
+      const tjm = parseInt(slider.value,10);
+      tjmValue.textContent = tjm + ' €';
+      simResult.textContent = computeNet(tjm).toLocaleString('fr-FR') + ' €';
+    });
+  }
+
+  /* 4 — scroll-triggered count-up on the proof strip */
+  const counters = document.querySelectorAll('.p-proof-num');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target);
+      const decimals = parseInt(el.dataset.decimal || '0',10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1200;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now-start)/duration, 1);
+        const val = target * (1 - Math.pow(1-p, 3));
+        el.textContent = val.toFixed(decimals) + suffix;
+        if(p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      io.unobserve(el);
+    });
+  }, {threshold:0.6});
+  counters.forEach(c=> io.observe(c));
+})();
+</script>
