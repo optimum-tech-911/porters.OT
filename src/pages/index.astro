@@ -8,6 +8,10 @@ import { faqGroups } from '../data/faq.data';
 import { pageSeo } from '../data/seo.data';
 import { googleReviewHighlights, homeWhyPorters } from '../content/pages/home';
 
+import advisorDiscussionImg from '../../images/advisor-discussion.webp';
+import teamWorkshopImg from '../../images/team-workshop.webp';
+import businessMeetingImg from '../../images/business-meeting.webp';
+
 const partnerLogos = [
   { name: 'BPCE', url: '/images/logos/partners/partner-1.png' },
   { name: 'Groupama', url: '/images/logos/partners/partner-2.png' },
@@ -62,9 +66,9 @@ const offerItems = offerTitles
   .filter(Boolean);
 
 const supportAvatars = [
-  { name: 'Ambre Lambert', image: '/images/team/ambre-lambert.png' },
-  { name: 'Eric Bensaid', image: '/images/team/eric-bensaid.png' },
-  { name: 'Lisa Delrieu', image: '/images/team/lisa-delrieu.png' },
+  { name: 'Conseiller', image: advisorDiscussionImg.src },
+  { name: 'Équipe', image: teamWorkshopImg.src },
+  { name: 'Réunion', image: businessMeetingImg.src },
 ];
 
 const supportQuotes = [
