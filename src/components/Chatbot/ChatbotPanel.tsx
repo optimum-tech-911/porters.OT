@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
+import { useEffect, useId, useRef, useState, type SubmitEvent } from 'react';
 import { emitAssistantEvent, localSearchAssistant, type AssistantResponse } from '../../lib/searchAssistant';
 import ChatMessage from './ChatMessage';
 import QuickQuestions from './QuickQuestions';
@@ -91,7 +91,7 @@ export default function ChatbotPanel({ open, onClose }: Props) {
     }, 240);
   };
 
-  const submit = (event: FormEvent) => {
+  const submit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     ask(query);
   };

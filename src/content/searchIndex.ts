@@ -357,7 +357,9 @@ const agencyItems: SearchIndexItem[] = agencies.map((agency) => ({
     agency.description,
     agency.proofNote,
     agency.serviceCards?.flatMap((item) => [item.title, item.description]),
-    agency.contentSections?.flatMap((section) => [section.eyebrow, section.title, ...section.paragraphs]),
+    agency.contentSections
+      ?.flatMap((section) => [section.eyebrow, section.title, ...section.paragraphs])
+      .filter((value): value is string => Boolean(value)),
     agency.localFaq.flatMap((item) => [item.question, item.answer]),
   ),
   category: 'agence',

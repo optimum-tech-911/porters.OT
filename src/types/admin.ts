@@ -1,9 +1,8 @@
 // =============================================================================
 // Admin Panel — TypeScript Types
 // =============================================================================
-// TODO: When Supabase is connected, these types should match the database schema.
-// TODO: Before production, /admin must be protected with Supabase Auth + RLS,
-//       or temporarily hidden behind Cloudflare Access / password protection.
+// TODO: Non-CMS admin modules still use mock data and should be aligned with
+//       their future Supabase schemas when those backends are connected.
 
 // --- Roles & Users ---
 

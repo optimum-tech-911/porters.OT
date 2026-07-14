@@ -1,68 +1,59 @@
 ---
+import { cmsAttrs, cmsText } from '../../cms/content';
+
 const teamCards = [
   {
     id: 'eric',
-    name: 'Eric BENSAID',
-    role: 'Fondateur',
+    name: cmsText('home.hero.team.eric.name'),
+    nameKey: 'home.hero.team.eric.name',
+    role: cmsText('home.hero.team.eric.role'),
+    roleKey: 'home.hero.team.eric.role',
     initials: 'EB',
-    tone: 'Vision',
+    tone: cmsText('home.hero.team.eric.tone'),
+    toneKey: 'home.hero.team.eric.tone',
     image: '/images/team/eric-bensaid.png',
     imagePosition: '50% 42%',
-    text: 'Une vision portée par l\u2019expertise IT et la proximité humaine.',
+    text: cmsText('home.hero.team.eric.description'),
+    textKey: 'home.hero.team.eric.description',
     links: [
-      { label: 'Découvrir le groupe', href: '/qui-sommes-nous' },
-      { label: 'Prendre rendez-vous', href: '/rendez-vous' },
+      { label: cmsText('home.hero.team.eric.primary_cta'), key: 'home.hero.team.eric.primary_cta', href: '/qui-sommes-nous' },
+      { label: cmsText('home.hero.team.eric.secondary_cta'), key: 'home.hero.team.eric.secondary_cta', href: '/rendez-vous' },
     ],
   },
   {
     id: 'ambre',
-    name: 'Ambre LAMBERT',
-    role: 'Directrice commerciale IT',
+    name: cmsText('home.hero.team.ambre.name'),
+    nameKey: 'home.hero.team.ambre.name',
+    role: cmsText('home.hero.team.ambre.role'),
+    roleKey: 'home.hero.team.ambre.role',
     initials: 'AL',
-    tone: 'Entreprises',
+    tone: cmsText('home.hero.team.ambre.tone'),
+    toneKey: 'home.hero.team.ambre.tone',
     image: '/images/team/ambre-lambert.png',
     imagePosition: '50% 42%',
-    text: 'Un point d\u2019entrée pour qualifier les besoins entreprises et cadrer les missions.',
+    text: cmsText('home.hero.team.ambre.description'),
+    textKey: 'home.hero.team.ambre.description',
     links: [
-      { label: 'Je suis une entreprise', href: '/entreprises' },
-      { label: 'Voir les expertises', href: '/expertises' },
+      { label: cmsText('home.hero.team.ambre.primary_cta'), key: 'home.hero.team.ambre.primary_cta', href: '/entreprises' },
+      { label: cmsText('home.hero.team.ambre.secondary_cta'), key: 'home.hero.team.ambre.secondary_cta', href: '/expertises' },
     ],
   },
   {
     id: 'lisa',
-    name: 'Lisa Delrieu',
-    role: 'Chargée de recrutement',
+    name: cmsText('home.hero.team.lisa.name'),
+    nameKey: 'home.hero.team.lisa.name',
+    role: cmsText('home.hero.team.lisa.role'),
+    roleKey: 'home.hero.team.lisa.role',
     initials: 'LD',
-    tone: 'Consultants',
+    tone: cmsText('home.hero.team.lisa.tone'),
+    toneKey: 'home.hero.team.lisa.tone',
     image: '/images/team/lisa-delrieu.png',
     imagePosition: '50% 42%',
-    text: 'Un accompagnement pour orienter les profils, clarifier les missions et faciliter les échanges.',
+    text: cmsText('home.hero.team.lisa.description'),
+    textKey: 'home.hero.team.lisa.description',
     links: [
-      { label: 'Je suis consultant', href: '/consultants' },
-      { label: 'Parler à un conseiller', href: '/rendez-vous' },
-    ],
-  },
-];
-
-const topicCards = [
-  {
-    id: 'histoire',
-    label: 'Notre histoire',
-    step: '01',
-    text: 'Découvrez l’histoire du groupe, son ancrage IT et la manière dont The Porters a construit son accompagnement humain.',
-    links: [
-      { label: 'Lire notre histoire', href: '/qui-sommes-nous#histoire' },
-      { label: 'Rencontrer l’équipe', href: '/equipe' },
-    ],
-  },
-  {
-    id: 'simulateur',
-    label: 'Simulateur',
-    step: '02',
-    text: 'Projetez rapidement votre TJM, votre revenu net estimé et les bons repères avant de cadrer votre prochaine mission.',
-    links: [
-      { label: 'Simuler mes revenus', href: '/simulateur' },
-      { label: 'Prendre rendez-vous', href: '/rendez-vous' },
+      { label: cmsText('home.hero.team.lisa.primary_cta'), key: 'home.hero.team.lisa.primary_cta', href: '/consultants' },
+      { label: cmsText('home.hero.team.lisa.secondary_cta'), key: 'home.hero.team.lisa.secondary_cta', href: '/rendez-vous' },
     ],
   },
 ];
@@ -72,14 +63,10 @@ const detailCards = [
     id: card.id,
     eyebrow: card.role,
     title: card.name,
+    titleKey: card.nameKey,
     text: card.text,
-    links: card.links,
-  })),
-  ...topicCards.map((card) => ({
-    id: card.id,
-    eyebrow: `Étape ${card.step}`,
-    title: card.label,
-    text: card.text,
+    textKey: card.textKey,
+    eyebrowKey: card.roleKey,
     links: card.links,
   })),
 ];
@@ -89,22 +76,18 @@ const detailCards = [
   <div class="hero-grid">
     <!-- Left: Copy -->
     <div class="hero-copy">
-      <p class="hero-eyebrow hero-enter hero-enter-1">Portage salarial · Experts du numérique</p>
-      <h1 id="home-hero-title" class="hero-enter hero-enter-2">
-        Votre expertise.<br/>Votre liberté.<br/>Un cadre qui vous protège.
-      </h1>
-      <p class="hero-subhead hero-enter hero-enter-3">
-        Vous développez vos missions. The Porters transforme votre activité en salaire et prend en charge les contrats, la facturation, la paie et le suivi administratif.
-      </p>
+      <p class="hero-eyebrow hero-enter hero-enter-1" {...cmsAttrs('home.hero.eyebrow')}>{cmsText('home.hero.eyebrow')}</p>
+      <h1 id="home-hero-title" class="hero-enter hero-enter-2 cms-preserve-lines" {...cmsAttrs('home.hero.title')}>{cmsText('home.hero.title')}</h1>
+      <p class="hero-subhead hero-enter hero-enter-3" {...cmsAttrs('home.hero.description')}>{cmsText('home.hero.description')}</p>
       <div class="hero-actions hero-enter hero-enter-4">
-        <a href="/rendez-vous" class="hero-action hero-action--primary">Parler à un conseiller <span aria-hidden="true">→</span></a>
-        <a href="/portage-salarial" class="hero-action hero-action--secondary">Découvrir le portage <span aria-hidden="true">→</span></a>
-        <a href="/entreprises" class="hero-action hero-action--quiet">Je suis une entreprise <span aria-hidden="true">→</span></a>
+        <a href="/rendez-vous" class="hero-action hero-action--primary"><span {...cmsAttrs('home.hero.primary_cta')}>{cmsText('home.hero.primary_cta')}</span> <span aria-hidden="true">→</span></a>
+        <a href="/portage-salarial" class="hero-action hero-action--secondary"><span {...cmsAttrs('home.hero.secondary_cta')}>{cmsText('home.hero.secondary_cta')}</span> <span aria-hidden="true">→</span></a>
+        <a href="/entreprises" class="hero-action hero-action--quiet"><span {...cmsAttrs('home.hero.enterprise_cta')}>{cmsText('home.hero.enterprise_cta')}</span> <span aria-hidden="true">→</span></a>
       </div>
       <ul class="hero-trust hero-enter hero-enter-5" aria-label="Repères The Porters">
-        <li>Interlocuteurs identifiés</li>
-        <li>Cadre salarié</li>
-        <li>Expertise IT</li>
+        <li {...cmsAttrs('home.hero.trust.interlocutors')}>{cmsText('home.hero.trust.interlocutors')}</li>
+        <li {...cmsAttrs('home.hero.trust.employee_framework')}>{cmsText('home.hero.trust.employee_framework')}</li>
+        <li {...cmsAttrs('home.hero.trust.it_expertise')}>{cmsText('home.hero.trust.it_expertise')}</li>
       </ul>
     </div>
 
@@ -139,55 +122,14 @@ const detailCards = [
             />
           </span>
           <span class="hero-person-card__body">
-            <small>{card.tone}</small>
-            <strong>{card.name}</strong>
-            <em>{card.role}</em>
+            <small {...cmsAttrs(card.toneKey)}>{card.tone}</small>
+            <strong {...cmsAttrs(card.nameKey)}>{card.name}</strong>
+            <em {...cmsAttrs(card.roleKey)}>{card.role}</em>
           </span>
 
         </button>
       ))}
 
-      <!-- Widget: Simulator -->
-      <a
-        class="hero-widget hero-widget--facturation"
-        href="/simulateur"
-        data-hero-detail="simulateur"
-        aria-controls="hero-detail-simulateur"
-        aria-expanded="false"
-        aria-label="Ouvrir le simulateur de revenus"
-      >
-        <span class="hero-widget-label"><span class="hero-widget-dot"></span> Simulateur</span>
-        <span class="hero-widget-simulator" aria-hidden="true">
-          <span class="hero-widget-slider"><span></span></span>
-          <span class="hero-widget-kpis">
-            <span>TJM <strong>620€</strong></span>
-            <span>Net <strong>7.2k€</strong></span>
-          </span>
-        </span>
-        <span class="hero-widget-action">Simuler mes revenus <b aria-hidden="true">→</b></span>
-      </a>
-
-      <!-- Widget: Story -->
-      <a
-        class="hero-widget hero-widget--contrat"
-        href="/qui-sommes-nous#histoire"
-        data-hero-detail="histoire"
-        aria-controls="hero-detail-histoire"
-        aria-expanded="false"
-        aria-label="Découvrir notre histoire"
-      >
-        <span class="hero-widget-label"><span class="hero-widget-dot"></span> Notre histoire</span>
-        <span class="hero-widget-timeline" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-        <span class="hero-widget-legend">
-          <span>Groupe IT</span>
-          <span>Portage humain</span>
-        </span>
-        <span class="hero-widget-action">Lire l'histoire <b aria-hidden="true">→</b></span>
-      </a>
 
       <!-- Detail card (shown on hover/click) -->
       <div class="hero-detail-stack" aria-live="polite">
@@ -198,11 +140,11 @@ const detailCards = [
             data-hero-detail-panel={detail.id}
             aria-hidden={detail.id === 'eric' ? 'false' : 'true'}
           >
-            <p>{detail.eyebrow}</p>
-            <h2>{detail.title}</h2>
-            <span>{detail.text}</span>
+            <p {...cmsAttrs(detail.eyebrowKey)}>{detail.eyebrow}</p>
+            <h2 {...cmsAttrs(detail.titleKey)}>{detail.title}</h2>
+            <span {...cmsAttrs(detail.textKey)}>{detail.text}</span>
             <div>
-              {detail.links.map((link) => <a href={link.href}>{link.label} <b aria-hidden="true">→</b></a>)}
+              {detail.links.map((link) => <a href={link.href}><span {...cmsAttrs(link.key)}>{link.label}</span> <b aria-hidden="true">→</b></a>)}
             </div>
           </article>
         ))}
@@ -396,13 +338,13 @@ const detailCards = [
   .hero-action:nth-child(2) { animation-delay: 420ms, 2.2s; }
   .hero-action:nth-child(3) { animation-delay: 500ms, 2.6s; }
 
-  .hero-action span { transition: transform 180ms var(--ease-soft); }
+  .hero-action > span[aria-hidden] { transition: transform 180ms var(--ease-soft); }
 
   .hero-action:hover,
   .hero-action:focus-visible { transform: translateY(-2px); }
 
-  .hero-action:hover span,
-  .hero-action:focus-visible span { transform: translateX(3px); }
+  .hero-action:hover > span[aria-hidden],
+  .hero-action:focus-visible > span[aria-hidden] { transform: translateX(3px); }
 
   .hero-action--primary {
     background: var(--hero-blue);

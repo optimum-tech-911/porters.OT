@@ -32,7 +32,7 @@ const duplicated = [...normalizedLogos, ...normalizedLogos];
   )}
   <div class="logo-marquee__track" data-direction={direction}>
     <div class="logo-marquee__inner" aria-hidden="true">
-      {duplicated.map((logo, i) => (
+      {duplicated.map((logo) => (
         logo.url ? (
           <img
             src={logo.url}
@@ -42,7 +42,7 @@ const duplicated = [...normalizedLogos, ...normalizedLogos];
             decoding="async"
           />
         ) : (
-          <span class="logo-marquee__item" key={`${logo.name}-${i}`}>
+          <span class="logo-marquee__item">
             {logo.name}
           </span>
         )

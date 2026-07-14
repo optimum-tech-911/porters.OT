@@ -6,7 +6,8 @@ import GoogleReviewsMarquee from '../components/ui/GoogleReviewsMarquee.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import { faqGroups } from '../data/faq.data';
 import { pageSeo } from '../data/seo.data';
-import { googleReviewHighlights, homeWhyPorters } from '../content/pages/home';
+import { googleReviewHighlights } from '../content/pages/home';
+import { cmsAttrs, cmsText } from '../cms/content';
 
 import advisorDiscussionImg from '../../images/advisor-discussion.webp';
 import teamWorkshopImg from '../../images/team-workshop.webp';
@@ -24,46 +25,44 @@ const partnerLogos = [
 const situations = [
   {
     number: '01',
-    title: 'Consultant indépendant',
-    text: 'Sécurisez vos missions avec un contrat salarié, une paie lisible et une gestion administrative prise en charge.',
+    key: 'home.journeys.consultant',
+    title: cmsText('home.journeys.consultant.title'),
+    text: cmsText('home.journeys.consultant.description'),
     href: '/consultants',
-    cta: 'Parcours consultant',
+    cta: cmsText('home.journeys.consultant.cta'),
   },
   {
     number: '02',
-    title: 'Expert IT en mission',
-    text: 'Transformez une mission déjà négociée en cadre contractuel clair, du TJM jusqu’au démarrage.',
+    key: 'home.journeys.it_expert',
+    title: cmsText('home.journeys.it_expert.title'),
+    text: cmsText('home.journeys.it_expert.description'),
     href: '/portage-salarial',
-    cta: 'Cadre du portage',
+    cta: cmsText('home.journeys.it_expert.cta'),
   },
   {
     number: '03',
-    title: 'Entreprise cliente',
-    text: 'Intégrez une expertise externe avec un cadre de mission simple, suivi et documenté.',
+    key: 'home.journeys.enterprise',
+    title: cmsText('home.journeys.enterprise.title'),
+    text: cmsText('home.journeys.enterprise.description'),
     href: '/entreprises',
-    cta: 'Offre entreprises',
+    cta: cmsText('home.journeys.enterprise.cta'),
   },
   {
     number: '04',
-    title: 'En transition',
-    text: 'Comparez vos options, vos revenus cibles et le niveau de gestion que vous souhaitez déléguer.',
+    key: 'home.journeys.transition',
+    title: cmsText('home.journeys.transition.title'),
+    text: cmsText('home.journeys.transition.description'),
     href: '/simulateur',
-    cta: 'Simulation revenus',
+    cta: cmsText('home.journeys.transition.cta'),
   },
 ];
 
-const offerTitles = [
-  'Accompagnement humain',
-  'Cadre salarié',
-  'Cadre administratif suivi',
-  'Expertise IT & transformation',
+const offerItems = [
+  { key: 'home.offer.human', title: cmsText('home.offer.human.title'), text: cmsText('home.offer.human.description'), icon: 'user' as const },
+  { key: 'home.offer.employee', title: cmsText('home.offer.employee.title'), text: cmsText('home.offer.employee.description'), icon: 'shield' as const },
+  { key: 'home.offer.admin', title: cmsText('home.offer.admin.title'), text: cmsText('home.offer.admin.description'), icon: 'clipboard' as const },
+  { key: 'home.offer.it', title: cmsText('home.offer.it.title'), text: cmsText('home.offer.it.description'), icon: 'network' as const },
 ];
-const offerItems = offerTitles
-  .map((title, index) => {
-    const item = homeWhyPorters.find((candidate) => candidate.title === title);
-    return item ? { ...item, icon: ['user', 'shield', 'clipboard', 'network'][index] as 'user' | 'shield' | 'clipboard' | 'network' } : undefined;
-  })
-  .filter(Boolean);
 
 const supportAvatars = [
   { name: 'Conseiller', image: advisorDiscussionImg.src },
@@ -73,14 +72,16 @@ const supportAvatars = [
 
 const supportQuotes = [
   {
-    quote: 'Grâce au portage salarial, je me sens plus libre et sécurisée. Les charges sont transparentes, je continue à toucher mes indemnités chômage et retraite.',
-    name: 'Chloé',
-    role: 'Consultante data en portage — Lyon',
+    key: 'home.support.chloe',
+    quote: cmsText('home.support.chloe.quote'),
+    name: cmsText('home.support.chloe.name'),
+    role: cmsText('home.support.chloe.role'),
   },
   {
-    quote: 'Le jour où j’ai passé le cap du portage salarial, j’ai retrouvé une vraie respiration : je reste indépendant, mais je ne porte plus tout seul l’administratif.',
-    name: 'Andy P.',
-    role: 'Product manager freelance — Paris',
+    key: 'home.support.andy',
+    quote: cmsText('home.support.andy.quote'),
+    name: cmsText('home.support.andy.name'),
+    role: cmsText('home.support.andy.role'),
   },
 ];
 
@@ -92,7 +93,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 
   <section class="light-logo-strip" aria-label="Écosystème professionnel" data-reveal>
     <div class="light-logo-intro">
-      <span>Un écosystème habitué aux projets exigeants</span>
+      <span {...cmsAttrs('home.ecosystem.label')}>{cmsText('home.ecosystem.label')}</span>
     </div>
     <div class="light-logo-marquee auto-marquee" tabindex="0">
       <div class="light-logo-track auto-marquee-track">
@@ -113,18 +114,18 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   <section class="light-section light-situations reveal-fade" data-reveal>
     <div class="light-container">
       <div class="light-section-heading reveal-up" data-reveal>
-        <p>Choisir son parcours</p>
-        <h2>Un cadre adapté à votre situation professionnelle</h2>
-        <span>Identifiez le parcours qui correspond à votre mission, à votre statut et au niveau d’accompagnement attendu.</span>
+        <p {...cmsAttrs('home.journeys.eyebrow')}>{cmsText('home.journeys.eyebrow')}</p>
+        <h2 {...cmsAttrs('home.journeys.title')}>{cmsText('home.journeys.title')}</h2>
+        <span {...cmsAttrs('home.journeys.description')}>{cmsText('home.journeys.description')}</span>
       </div>
 
       <div class="light-situation-grid stagger-children">
         {situations.map((item, index) => (
           <a href={item.href} class="light-situation-card premium-hover reveal-up" data-reveal style={`--reveal-delay: ${index * 90}ms`}>
             <span class="light-card-number">{item.number}</span>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-            <strong>{item.cta} <span aria-hidden="true">↗</span></strong>
+            <h3 {...cmsAttrs(`${item.key}.title`)}>{item.title}</h3>
+            <p {...cmsAttrs(`${item.key}.description`)}>{item.text}</p>
+            <strong><span {...cmsAttrs(`${item.key}.cta`)}>{item.cta}</span> <span aria-hidden="true">↗</span></strong>
           </a>
         ))}
       </div>
@@ -134,10 +135,10 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   <section class="light-section light-offer-section reveal-fade" data-reveal>
     <div class="light-container light-offer-layout">
       <div class="light-offer-copy reveal-up" data-reveal>
-        <p>Ce que nous prenons en charge</p>
-        <h2>Vous développez votre expertise. Nous rendons le cadre plus simple.</h2>
-        <span>Survolez ou sélectionnez une étape pour comprendre comment le suivi s’organise autour de votre mission.</span>
-        <a href="/portage-salarial">Découvrir le fonctionnement <span aria-hidden="true">→</span></a>
+        <p {...cmsAttrs('home.offer.eyebrow')}>{cmsText('home.offer.eyebrow')}</p>
+        <h2 {...cmsAttrs('home.offer.title')}>{cmsText('home.offer.title')}</h2>
+        <span {...cmsAttrs('home.offer.description')}>{cmsText('home.offer.description')}</span>
+        <a href="/portage-salarial"><span {...cmsAttrs('home.offer.cta')}>{cmsText('home.offer.cta')}</span> <span aria-hidden="true">→</span></a>
       </div>
       <div class="light-offer-schema stagger-children" data-offer-schema>
         <div class="light-offer-flow" aria-label="Schéma d’accompagnement The Porters">
@@ -156,18 +157,59 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
             <span>0{index + 1}</span>
             <span class="light-offer-icon"><SiteIcon name={item.icon} class="h-5 w-5" /></span>
             <div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              <h3 {...cmsAttrs(`${item.key}.title`, 'data-offer-title')}>{item.title}</h3>
+              <p {...cmsAttrs(`${item.key}.description`, 'data-offer-text')}>{item.text}</p>
             </div>
           </button>
         ))}
         </div>
         <aside class="light-offer-detail" aria-live="polite">
           <span>01</span>
-          <h3>{offerItems[0]?.title}</h3>
-          <p>{offerItems[0]?.text}</p>
-          <a href="/rendez-vous">Échanger avec un conseiller <b aria-hidden="true">→</b></a>
+          <h3 {...cmsAttrs('home.offer.human.title')}>{offerItems[0]?.title}</h3>
+          <p {...cmsAttrs('home.offer.human.description')}>{offerItems[0]?.text}</p>
+          <a href="/rendez-vous"><span {...cmsAttrs('home.offer.advisor_cta')}>{cmsText('home.offer.advisor_cta')}</span> <b aria-hidden="true">→</b></a>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section light-hellowork-section reveal-fade" data-reveal>
+    <div class="light-container">
+      <div class="light-hellowork-card reveal-up" data-reveal>
+        <div class="light-hellowork-layout">
+          <div class="light-hellowork-copy">
+            <p {...cmsAttrs('home.jobs.eyebrow')}>{cmsText('home.jobs.eyebrow')}</p>
+            <span>01</span>
+            <h2 {...cmsAttrs('home.jobs.title')}>{cmsText('home.jobs.title')}</h2>
+            <strong {...cmsAttrs('home.jobs.description')}>{cmsText('home.jobs.description')}</strong>
+            <ul class="light-hellowork-points" aria-label="Repères recrutement">
+              <li {...cmsAttrs('home.jobs.point.current')}>{cmsText('home.jobs.point.current')}</li>
+              <li {...cmsAttrs('home.jobs.point.direct')}>{cmsText('home.jobs.point.direct')}</li>
+              <li {...cmsAttrs('home.jobs.point.full')}>{cmsText('home.jobs.point.full')}</li>
+            </ul>
+            <div>
+              <a href="https://www.hellowork.com/fr-fr/entreprises/the-porters-171310.html" target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.external_cta')}>{cmsText('home.jobs.external_cta')}</span> <b aria-hidden="true">→</b></a>
+              <a href="/recrutement"><span {...cmsAttrs('home.jobs.internal_cta')}>{cmsText('home.jobs.internal_cta')}</span> <b aria-hidden="true">→</b></a>
+            </div>
+          </div>
+          <div class="light-hellowork-preview" aria-hidden="true">
+            <div class="light-hellowork-orbit"></div>
+            <article class="light-hellowork-panel light-hellowork-panel--primary">
+              <small {...cmsAttrs('home.jobs.preview.platform')}>{cmsText('home.jobs.preview.platform')}</small>
+              <strong {...cmsAttrs('home.jobs.preview.company')}>{cmsText('home.jobs.preview.company')}</strong>
+              <span {...cmsAttrs('home.jobs.preview.status')}>{cmsText('home.jobs.preview.status')}</span>
+            </article>
+            <article class="light-hellowork-panel light-hellowork-panel--floating">
+              <small {...cmsAttrs('home.jobs.preview.focus')}>{cmsText('home.jobs.preview.focus')}</small>
+              <strong {...cmsAttrs('home.jobs.preview.profiles')}>{cmsText('home.jobs.preview.profiles')}</strong>
+            </article>
+            <div class="light-hellowork-tags">
+              <span>Rendez-vous</span>
+              <span>RH</span>
+              <span>Conseil</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -175,31 +217,29 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   <section class="light-section light-follow-section reveal-fade" data-reveal id="avantages">
     <div class="light-container light-follow-layout">
       <div class="light-follow-copy reveal-up" data-reveal>
-        <p>L’accompagnement dans la durée</p>
+        <p {...cmsAttrs('home.support.eyebrow')}>{cmsText('home.support.eyebrow')}</p>
         <div class="light-follow-title">
-          <h2>Suivi</h2>
-          <span>humain, contractuel et administratif pendant la mission</span>
+          <h2 {...cmsAttrs('home.support.title')}>{cmsText('home.support.title')}</h2>
+          <span {...cmsAttrs('home.support.title_detail')}>{cmsText('home.support.title_detail')}</span>
         </div>
-        <h3>Être indépendant ne veut pas dire être seul</h3>
-        <span>Un interlocuteur connaît votre dossier et répond concrètement sur le contrat, la facturation, la paie, les frais et la relation client.</span>
+        <h3 {...cmsAttrs('home.support.subtitle')}>{cmsText('home.support.subtitle')}</h3>
+        <span {...cmsAttrs('home.support.description')}>{cmsText('home.support.description')}</span>
         <div class="light-follow-people">
           <div aria-hidden="true">
             {supportAvatars.map((person) => (
               <img src={person.image} alt="" loading="lazy" decoding="async" />
             ))}
           </div>
-          <strong>Profils IT, produit, data et transformation</strong>
+          <strong {...cmsAttrs('home.support.profiles')}>{cmsText('home.support.profiles')}</strong>
         </div>
       </div>
 
       <figure class="light-follow-feature reveal-up" data-reveal style="--reveal-delay: 120ms">
         <span aria-hidden="true">“</span>
-        <blockquote>
-          Je voulais devenir indépendante mais je ne souhaitais pas non plus créer ma propre entreprise pour le moment. J’ai entendu parler du portage salarial et j’ai pu me lancer grâce à The Porters. À mi-chemin entre l’indépendance et le salariat, je me sens à la fois libre et accompagnée.
-        </blockquote>
+        <blockquote {...cmsAttrs('home.support.feature.quote')}>{cmsText('home.support.feature.quote')}</blockquote>
         <figcaption>
-          <strong>Delphine</strong>
-          <span>Product Owner en portage salarial — Paris</span>
+          <strong {...cmsAttrs('home.support.feature.name')}>{cmsText('home.support.feature.name')}</strong>
+          <span {...cmsAttrs('home.support.feature.role')}>{cmsText('home.support.feature.role')}</span>
         </figcaption>
       </figure>
     </div>
@@ -207,9 +247,9 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     <div class="light-container light-follow-quotes stagger-children">
       {supportQuotes.map((item, index) => (
         <article class="light-follow-quote reveal-up" data-reveal style={`--reveal-delay: ${220 + index * 100}ms`}>
-          <p>« {item.quote} »</p>
-          <strong>{item.name}</strong>
-          <span>{item.role}</span>
+          <p {...cmsAttrs(`${item.key}.quote`)}>{item.quote}</p>
+          <strong {...cmsAttrs(`${item.key}.name`)}>{item.name}</strong>
+          <span {...cmsAttrs(`${item.key}.role`)}>{item.role}</span>
         </article>
       ))}
     </div>
@@ -219,8 +259,8 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     <div class="light-container">
       <div class="light-reviews-header reveal-up" data-reveal>
         <div>
-          <p>Avis Google</p>
-          <h2>La qualité de service se lit dans les retours</h2>
+          <p {...cmsAttrs('home.reviews.eyebrow')}>{cmsText('home.reviews.eyebrow')}</p>
+          <h2 {...cmsAttrs('home.reviews.title')}>{cmsText('home.reviews.title')}</h2>
         </div>
         <GoogleReviewsBadge />
       </div>
@@ -231,10 +271,10 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   <section class="light-section light-faq reveal-fade" data-reveal>
     <div class="light-container light-faq-layout">
       <div class="light-faq-copy reveal-up" data-reveal>
-        <p>Questions fréquentes</p>
-        <h2>Les réponses avant les décisions</h2>
-        <span>Statut, revenus, frais et missions : retrouvez les points essentiels avant d’avancer.</span>
-        <a href="/faq">Consulter toute la FAQ <b aria-hidden="true">→</b></a>
+        <p {...cmsAttrs('home.faq.eyebrow')}>{cmsText('home.faq.eyebrow')}</p>
+        <h2 {...cmsAttrs('home.faq.title')}>{cmsText('home.faq.title')}</h2>
+        <span {...cmsAttrs('home.faq.description')}>{cmsText('home.faq.description')}</span>
+        <a href="/faq"><span {...cmsAttrs('home.faq.cta')}>{cmsText('home.faq.cta')}</span> <b aria-hidden="true">→</b></a>
       </div>
       <div class="light-faq-list reveal-up" data-reveal>
         {faqPreview.map((faq) => (
@@ -249,12 +289,12 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 
   <section class="light-final-cta reveal-fade" data-reveal>
     <div class="light-container reveal-scale" data-reveal>
-      <p>Votre prochaine étape</p>
-      <h2>Prêt à donner un nouveau cadre à votre indépendance ?</h2>
-      <span>Choisissez vos missions. Nous cadrons les contrats, la facturation, la paie et le suivi administratif.</span>
+      <p {...cmsAttrs('home.final_cta.eyebrow')}>{cmsText('home.final_cta.eyebrow')}</p>
+      <h2 {...cmsAttrs('home.final_cta.title')}>{cmsText('home.final_cta.title')}</h2>
+      <span {...cmsAttrs('home.final_cta.description')}>{cmsText('home.final_cta.description')}</span>
       <div>
-        <a href="/simulateur" class="light-final-primary">Simuler mes revenus</a>
-        <a href="/rendez-vous" class="light-final-secondary">Parler à un conseiller</a>
+        <a href="/simulateur" class="light-final-primary" {...cmsAttrs('home.final_cta.simulator')}>{cmsText('home.final_cta.simulator')}</a>
+        <a href="/rendez-vous" class="light-final-secondary" {...cmsAttrs('home.final_cta.advisor')}>{cmsText('home.final_cta.advisor')}</a>
       </div>
     </div>
   </section>
@@ -715,6 +755,274 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     background:
       radial-gradient(circle at 84% 24%, rgba(190, 158, 88, 0.08), transparent 30%),
       linear-gradient(180deg, #fff 0%, #f7f5ef 100%);
+  }
+
+  .light-hellowork-section {
+    padding-block: clamp(1rem, 2.2vw, 1.8rem) clamp(2.2rem, 4vw, 3rem);
+    background:
+      radial-gradient(circle at 70% 30%, rgba(190, 158, 88, 0.08), transparent 26%),
+      linear-gradient(180deg, #f7f4ed 0%, #fbfaf6 100%);
+  }
+
+  .light-hellowork-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 18rem;
+    margin-inline: auto;
+    width: min(100%, 58rem);
+    border: 1px solid rgba(40, 55, 67, 0.08);
+    border-radius: 8px;
+    padding: clamp(1.5rem, 3vw, 2.35rem);
+    background:
+      radial-gradient(circle at 84% 26%, rgba(190, 158, 88, 0.12), transparent 22%),
+      linear-gradient(135deg, #ffffff 0%, #fcfaf6 100%);
+    box-shadow: 0 24px 60px rgba(40, 55, 67, 0.08);
+    transition:
+      transform var(--motion-medium) var(--ease-soft),
+      box-shadow var(--motion-medium) ease,
+      border-color var(--motion-fast) ease;
+  }
+
+  .light-hellowork-card:hover,
+  .light-hellowork-card:focus-within {
+    border-color: rgba(190, 158, 88, 0.32);
+    box-shadow: 0 30px 72px rgba(40, 55, 67, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .light-hellowork-card::after {
+    position: absolute;
+    right: -5rem;
+    bottom: -5.5rem;
+    width: 16rem;
+    aspect-ratio: 1;
+    border: 1px solid rgba(190, 158, 88, 0.22);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2.5rem rgba(190, 158, 88, 0.05);
+    content: "";
+    pointer-events: none;
+  }
+
+  .light-hellowork-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 43rem;
+  }
+
+  .light-hellowork-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.72fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: center;
+  }
+
+  .light-hellowork-copy > p {
+    margin-bottom: 0.7rem;
+    color: var(--color-porters-gold);
+    font-size: 0.7rem;
+    font-weight: 760;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .light-hellowork-copy > span {
+    display: block;
+    color: rgba(40, 55, 67, 0.18);
+    font: 780 clamp(2.7rem, 5vw, 4.2rem)/1 var(--font-mono);
+  }
+
+  .light-hellowork-copy h2 {
+    margin-top: 0.5rem;
+    color: var(--color-porters-navy);
+    font-size: clamp(2rem, 3.2vw, 3.15rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+
+  .light-hellowork-copy strong {
+    display: block;
+    max-width: 42rem;
+    margin-top: 1rem;
+    color: rgba(40, 55, 67, 0.62);
+    font-size: clamp(0.98rem, 1.28vw, 1.14rem);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  .light-hellowork-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    margin-top: 1.15rem;
+    color: rgba(40, 55, 67, 0.56);
+    font-size: 0.76rem;
+    font-weight: 680;
+  }
+
+  .light-hellowork-points li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .light-hellowork-points li::before {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: var(--color-porters-gold);
+    box-shadow: 0 0 0 6px rgba(190, 158, 88, 0.12);
+    content: "";
+    flex: 0 0 auto;
+  }
+
+  .light-hellowork-copy > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.75rem;
+  }
+
+  .light-hellowork-copy a {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    gap: 0.7rem;
+    border-radius: 999px;
+    padding-inline: 1.2rem;
+    border: 1px solid rgba(40, 55, 67, 0.12);
+    color: var(--color-porters-navy);
+    font-size: 0.82rem;
+    font-weight: 760;
+    transition:
+      transform var(--motion-fast) var(--ease-soft),
+      border-color var(--motion-fast) ease,
+      box-shadow var(--motion-fast) ease,
+      background-color var(--motion-fast) ease;
+  }
+
+  .light-hellowork-copy a:first-child {
+    background: var(--color-porters-navy);
+    border-color: var(--color-porters-navy);
+    color: #fff;
+  }
+
+  .light-hellowork-copy a:hover,
+  .light-hellowork-copy a:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(190, 158, 88, 0.52);
+    box-shadow: 0 16px 38px rgba(40, 55, 67, 0.1);
+    outline: none;
+  }
+
+  .light-hellowork-copy a:first-child:hover,
+  .light-hellowork-copy a:first-child:focus-visible {
+    background: #2c4454;
+  }
+
+  .light-hellowork-copy b {
+    color: var(--color-porters-gold);
+    transition: transform var(--motion-fast) var(--ease-soft);
+  }
+
+  .light-hellowork-copy a:hover b,
+  .light-hellowork-copy a:focus-visible b {
+    transform: translateX(4px);
+  }
+
+  .light-hellowork-preview {
+    position: relative;
+    min-height: 17rem;
+    animation: hellowork-float 7s ease-in-out infinite;
+  }
+
+  .light-hellowork-orbit {
+    position: absolute;
+    inset: 1rem 0.8rem 0.6rem 1.2rem;
+    border: 1px dashed rgba(190, 158, 88, 0.34);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+
+  .light-hellowork-orbit::after {
+    position: absolute;
+    inset: 1rem;
+    border: 1px dashed rgba(40, 55, 67, 0.12);
+    border-radius: 50%;
+    content: "";
+  }
+
+  .light-hellowork-panel {
+    position: absolute;
+    border: 1px solid rgba(40, 55, 67, 0.08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 38px rgba(40, 55, 67, 0.08);
+    backdrop-filter: blur(10px);
+  }
+
+  .light-hellowork-panel small {
+    color: var(--color-porters-gold);
+    font-size: 0.6rem;
+    font-weight: 760;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .light-hellowork-panel strong {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--color-porters-navy);
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .light-hellowork-panel span {
+    display: block;
+    margin-top: 0.35rem;
+    color: rgba(40, 55, 67, 0.58);
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+
+  .light-hellowork-panel--primary {
+    top: 0;
+    right: 0;
+    width: 14rem;
+    padding: 1rem;
+    animation: hellowork-drift 6s ease-in-out infinite;
+  }
+
+  .light-hellowork-panel--floating {
+    top: 6rem;
+    left: 0;
+    width: 14rem;
+    padding: 1rem;
+    animation: hellowork-drift 6.8s ease-in-out -1.5s infinite;
+  }
+
+  .light-hellowork-tags {
+    position: absolute;
+    top: 14rem;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.45rem;
+    max-width: 14rem;
+  }
+
+  .light-hellowork-tags span {
+    display: inline-flex;
+    min-height: 2rem;
+    align-items: center;
+    border: 1px solid rgba(190, 158, 88, 0.24);
+    border-radius: 999px;
+    padding-inline: 0.8rem;
+    background: rgba(255, 255, 255, 0.74);
+    color: var(--color-porters-navy);
+    font-size: 0.68rem;
+    font-weight: 720;
+    box-shadow: 0 10px 24px rgba(40, 55, 67, 0.06);
   }
 
   .light-follow-layout {
@@ -1224,6 +1532,16 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     to { opacity: 1; transform: none; }
   }
 
+  @keyframes hellowork-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  @keyframes hellowork-drift {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    50% { transform: translate3d(0, -7px, 0); }
+  }
+
   @media (max-width: 960px) {
     .light-situation-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -1311,6 +1629,23 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       min-height: auto;
     }
 
+    .light-hellowork-card {
+      width: 100%;
+      min-height: 0;
+      margin-left: 0;
+    }
+
+    .light-hellowork-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .light-hellowork-preview {
+      min-height: 13.5rem;
+      max-width: 22rem;
+      width: 100%;
+      margin-inline: auto;
+    }
+
     .light-follow-title {
       grid-template-columns: 1fr;
       gap: 0.75rem;
@@ -1330,6 +1665,28 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       flex-direction: column;
       gap: 0.9rem;
       margin-top: 2rem;
+    }
+
+    .light-hellowork-section {
+      padding-block: 0.75rem 2rem;
+    }
+
+    .light-hellowork-copy > div {
+      flex-direction: column;
+    }
+
+    .light-hellowork-copy a {
+      justify-content: center;
+    }
+
+    .light-hellowork-panel--primary {
+      right: 0;
+      width: min(100%, 13rem);
+    }
+
+    .light-hellowork-panel--floating {
+      left: 0;
+      width: min(100%, 12rem);
     }
 
     .light-follow-feature {
@@ -1379,7 +1736,11 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 
   @media (prefers-reduced-motion: reduce) {
     .light-situation-card,
-    .light-faq-list summary span {
+    .light-faq-list summary span,
+    .light-hellowork-card,
+    .light-hellowork-preview,
+    .light-hellowork-panel--primary,
+    .light-hellowork-panel--floating {
       transition: none;
     }
 
@@ -1389,6 +1750,12 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 
     .light-faq-answer {
       transition: none;
+    }
+
+    .light-hellowork-preview,
+    .light-hellowork-panel--primary,
+    .light-hellowork-panel--floating {
+      animation: none;
     }
   }
 </style>

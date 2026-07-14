@@ -1,21 +1,37 @@
-/**
- * AdminTopbar — Sticky top bar with search, notifications, profile
- * TODO: Connect search to Supabase full-text search when backend is ready.
- * TODO: Connect notification bell to real-time Supabase notifications.
- */
-import { notifications as allNotifications, adminUsers } from '../../data/admin-demo.data';
+import { useEffect, useState } from 'react';
+import { supabase } from '../../lib/supabase';
+import type { CmsAdmin } from '../../types/cms';
 
 interface Props {
   pageTitle: string;
 }
 
 export default function AdminTopbar({ pageTitle }: Props) {
-  const unreadCount = allNotifications.filter((n) => !n.read).length;
-  const currentUser = adminUsers[0]; // Demo: always Guillaume
+  const [currentUser, setCurrentUser] = useState<CmsAdmin | null>(null);
+
+  useEffect(() => {
+    void supabase.auth.getUser().then(async ({ data }) => {
+      if (!data.user) return;
+      const { data: admin } = await supabase
+        .from('cms_admins')
+        .select('user_id,display_name,role,enabled')
+        .eq('user_id', data.user.id)
+        .maybeSingle();
+      if (admin) setCurrentUser(admin as CmsAdmin);
+    });
+  }, []);
 
   const handleHamburger = () => {
     document.dispatchEvent(new CustomEvent('admin-toggle-sidebar'));
   };
+
+  const logout = async () => {
+    await supabase.auth.signOut();
+    window.location.replace('/admin/login');
+  };
+
+  const displayName = currentUser?.display_name || 'Administrateur';
+  const initials = displayName.split(' ').map((part) => part[0]).join('').slice(0, 2).toUpperCase();
 
   return (
     <header className="admin-topbar">
@@ -54,26 +70,23 @@ export default function AdminTopbar({ pageTitle }: Props) {
 
       {/* Right side */}
       <div className="admin-topbar-right">
-        {/* Notifications bell */}
-        <a href="/admin/notifications" className="admin-topbar-btn" aria-label="Notifications" style={{ textDecoration: 'none' }}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 01-3.46 0" />
-          </svg>
-          {unreadCount > 0 && <span className="admin-topbar-badge" />}
-        </a>
-
         {/* Profile */}
         <div className="admin-topbar-profile">
           <div className="admin-topbar-avatar">
-            {currentUser.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+            {initials}
           </div>
           <div className="admin-topbar-profile-info">
-            <div className="admin-topbar-profile-name">{currentUser.name}</div>
+            <div className="admin-topbar-profile-name">{displayName}</div>
             <div className="admin-topbar-profile-role">
-              {currentUser.role === 'owner' ? 'Propriétaire' : currentUser.role}
+              {currentUser?.role === 'owner' ? 'Propriétaire' : 'Éditeur'}
             </div>
           </div>
-          {/* TODO: Add dropdown menu with logout, profile settings */}
+          <button type="button" className="admin-topbar-logout" onClick={logout} title="Se déconnecter" aria-label="Se déconnecter">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <path d="m16 17 5-5-5-5M21 12H9" />
+            </svg>
+          </button>
         </div>
       </div>
     </header>

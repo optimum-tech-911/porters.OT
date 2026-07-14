@@ -1,4 +1,6 @@
-# Astro Starter Kit: Minimal
+# The Porters website
+
+The visual content-management setup, Supabase schema, administrator bootstrap, and rollout notes are documented in [docs/CMS.md](docs/CMS.md). The repository-wide text audit is in [docs/CMS_CONTENT_AUDIT.md](docs/CMS_CONTENT_AUDIT.md).
 
 ```sh
 npm create astro@latest -- --template minimal

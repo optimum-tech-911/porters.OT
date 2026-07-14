@@ -4,7 +4,6 @@
  */
 import { useState } from 'react';
 import type { CalendarEvent } from '../../types/admin';
-import { adminUsers } from '../../data/admin-demo.data';
 
 interface Props {
   events: CalendarEvent[];

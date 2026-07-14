@@ -993,6 +993,11 @@ const active = (href: string) => {
       --tp-header-height: 4.85rem;
     }
 
+    .tp-site-header--mobile-open {
+      z-index: 1000;
+      isolation: isolate;
+    }
+
     .tp-desktop-nav {
       display: none;
     }
@@ -1051,7 +1056,10 @@ const active = (href: string) => {
     .tp-mobile-menu {
       position: fixed;
       inset: 4.85rem 0 0;
+      z-index: 2;
       display: block;
+      height: calc(100dvh - 4.85rem);
+      box-sizing: border-box;
       padding: 1.2rem 1rem calc(2rem + env(safe-area-inset-bottom));
       background:
         radial-gradient(circle at 20% 0%, rgba(190, 158, 88, 0.14), transparent 38%),
@@ -1059,6 +1067,7 @@ const active = (href: string) => {
       opacity: 0;
       visibility: hidden;
       overflow: auto;
+      overscroll-behavior: contain;
       transform: translateY(-10px);
       transition:
         opacity 220ms ease,

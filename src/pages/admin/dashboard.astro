@@ -1,12 +1,12 @@
 ---
 /**
  * /admin/dashboard — Main admin dashboard overview
- * TODO: Before production, protect with Supabase Auth + RLS or Cloudflare Access.
+ * Protected by AdminAuthGate and Supabase RLS.
  */
 import AdminLayout from '../../layouts/AdminLayout.astro';
-import AdminDashboardContent from '../../components/admin/pages/AdminDashboardContent';
+import CmsDashboardContent from '../../components/admin/pages/CmsDashboardContent';
 ---
 
 <AdminLayout title="Tableau de bord" pageTitle="Tableau de bord">
-  <AdminDashboardContent client:load />
+  <CmsDashboardContent client:load />
 </AdminLayout>

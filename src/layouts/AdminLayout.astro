@@ -2,15 +2,13 @@
 /**
  * AdminLayout.astro — Standalone admin layout
  * Isolated from the public website (no SiteHeader/SiteFooter).
- * Uses its own CSS and noindex meta tag.
- *
- * TODO: Before production, /admin must be protected with Supabase Auth + RLS,
- *       or temporarily hidden behind Cloudflare Access / password protection.
+ * Uses its own CSS, noindex meta tag, and Supabase-backed auth gate.
  */
 import '../styles/global.css';
 import '../styles/admin.css';
 import AdminSidebar from '../components/admin/AdminSidebar';
 import AdminTopbar from '../components/admin/AdminTopbar';
+import AdminAuthGate from '../components/admin/AdminAuthGate';
 
 interface Props {
   title: string;
@@ -41,7 +39,8 @@ const currentPath = Astro.url.pathname;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body style="margin: 0; overflow-x: hidden;">
+  <body class="admin-auth-pending" style="margin: 0; overflow-x: hidden;">
+    <AdminAuthGate client:load />
     <div class="admin-layout" id="admin-layout">
       <!-- Sidebar -->
       <AdminSidebar currentPath={currentPath} client:load />

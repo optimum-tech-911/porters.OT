@@ -127,7 +127,7 @@ const history = [
       node.addEventListener('focus', () => select(node, position));
     });
   });
-  document.querySelectorAll<HTMLElement>('.values-list details').forEach((detail) => {
+  document.querySelectorAll<HTMLDetailsElement>('.values-list details').forEach((detail) => {
     const summary = detail.querySelector('summary');
     detail.addEventListener('toggle', () => {
       summary?.setAttribute('aria-expanded', String(detail.open));
@@ -136,15 +136,15 @@ const history = [
   document.querySelectorAll<HTMLElement>('[data-history-schema]').forEach((schema) => {
     const steps = Array.from(schema.querySelectorAll<HTMLElement>('[data-history-step]'));
 
-    const setActive = (step: HTMLElement, index: number) => {
+    const setActive = (step: HTMLElement) => {
       steps.forEach((item) => item.classList.toggle('is-active', item === step));
     };
 
-    steps.forEach((step, index) => {
+    steps.forEach((step) => {
       step.addEventListener('pointerenter', (event) => {
-        if (event.pointerType === 'mouse') setActive(step, index);
+        if (event.pointerType === 'mouse') setActive(step);
       });
-      step.addEventListener('focusin', () => setActive(step, index));
+      step.addEventListener('focusin', () => setActive(step));
     });
 
     if ('IntersectionObserver' in window) {
@@ -152,7 +152,7 @@ const history = [
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const index = steps.indexOf(entry.target as HTMLElement);
-          if (index >= 0) setActive(entry.target as HTMLElement, index);
+          if (index >= 0) setActive(entry.target as HTMLElement);
         });
       }, { rootMargin: '-25% 0px -55% 0px', threshold: 0.2 });
       steps.forEach((step) => observer.observe(step));

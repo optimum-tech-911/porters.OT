@@ -1,8 +1,7 @@
 ---
 /**
  * /admin — Redirects to /admin/dashboard
- * TODO: Before production, this route must be protected with Supabase Auth + RLS,
- *       or temporarily hidden behind Cloudflare Access / password protection.
+ * Protected by AdminAuthGate and Supabase RLS on the target admin layout.
  */
 return Astro.redirect('/admin/dashboard');
 ---

@@ -1,4 +1,5 @@
 export type HeroAudienceId = 'consultant' | 'entreprise';
+export type HeroIconName = 'shield' | 'calculator' | 'contract' | 'profile' | 'rocket' | 'brief' | 'advisor';
 
 export type HeroProofImage = {
   src: string;
