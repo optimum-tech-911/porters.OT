@@ -55,21 +55,13 @@ const SOCIAL_CHARGE_RATE = 0.45;
 
 export default function SimulatorForm() {
   const [mode, setMode] = useState<SimulatorMode>('portage');
-  const [activeScenario, setActiveScenario] = useState<Scenario>(scenarios[1]);
+  const activeScenario = scenarios[1];
   const [tjm, setTjm] = useState<number>(scenarios[1].tjm);
   const [jours, setJours] = useState<number>(scenarios[1].jours);
   const [monthlyRevenue, setMonthlyRevenue] = useState<number>(scenarios[1].tjm * scenarios[1].jours);
   const [frais, setFrais] = useState<number>(scenarios[1].frais);
   const managementRatePercent = 10;
   const [leadSent, setLeadSent] = useState(false);
-
-  const selectScenario = (scenario: Scenario) => {
-    setActiveScenario(scenario);
-    setTjm(scenario.tjm);
-    setJours(scenario.jours);
-    setMonthlyRevenue(scenario.tjm * scenario.jours);
-    setFrais(scenario.frais);
-  };
 
   const ca = mode === 'freelance' ? tjm * jours : monthlyRevenue;
   const fraisGestion = mode === 'portage' ? ca * (managementRatePercent / 100) : 0;
@@ -173,48 +165,6 @@ export default function SimulatorForm() {
             Calculez votre chiffre d’affaires avec un TJM et un nombre de jours facturés, sans l’assimiler à un salaire net.
           </span>
         </button>
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        {scenarios.map((scenario) => {
-          const isActive = scenario.id === activeScenario.id;
-
-          return (
-            <button
-              key={scenario.id}
-              type="button"
-              className={`rounded-lg border p-4 text-left transition-all duration-200 ${
-                isActive
-                  ? 'border-porters-gold bg-porters-navy text-porters-white shadow-[0_14px_30px_rgba(25,43,99,0.14)]'
-                  : 'border-porters-navy/10 bg-white text-porters-black hover:border-porters-gold/60'
-              }`}
-              aria-pressed={isActive}
-              onClick={() => selectScenario(scenario)}
-            >
-              <span
-                className={`mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.18em] ${
-                  isActive ? 'text-porters-gold' : 'text-porters-gold'
-                }`}
-              >
-                {scenario.eyebrow}
-              </span>
-              <span
-                className={`block font-heading text-base font-semibold ${
-                  isActive ? 'text-porters-white' : 'text-porters-navy'
-                }`}
-              >
-                {scenario.title}
-              </span>
-              <span
-                className={`mt-2 block text-sm leading-relaxed ${
-                  isActive ? 'text-porters-white/68' : 'text-porters-black/58'
-                }`}
-              >
-                {scenario.description}
-              </span>
-            </button>
-          );
-        })}
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(20rem,0.58fr)] lg:items-start">
