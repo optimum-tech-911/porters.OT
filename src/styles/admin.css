@@ -2126,6 +2126,20 @@
 .cms-editor-panel textarea { width: 100%; resize: vertical; box-sizing: border-box; border: 1px solid var(--admin-border-strong); border-radius: 7px; padding: .8rem; color: var(--admin-text-primary); font: 500 .75rem/1.6 var(--font-body, sans-serif); outline: none; }
 .cms-editor-panel textarea:focus, .cms-format-grid select:focus { border-color: var(--admin-gold); box-shadow: 0 0 0 3px rgba(214,180,90,.12); }
 .cms-character-count { margin-top: .25rem; color: var(--admin-text-muted); font-size: .58rem; text-align: right; }
+
+/* Merged text blocks store inline markup, so the field renders it rather than
+   showing tags: the panel looks like the sentence it edits. */
+.cms-rich-field { border: 1px solid var(--admin-border-strong); border-radius: 7px; overflow: hidden; background: #fff; }
+.cms-rich-field:focus-within { border-color: var(--admin-gold); box-shadow: 0 0 0 3px rgba(214,180,90,.12); }
+.cms-rich-toolbar { display: flex; gap: .2rem; border-bottom: 1px solid var(--admin-border); padding: .3rem; background: var(--admin-bg); }
+.cms-rich-toolbar button { display: grid; width: 1.85rem; height: 1.85rem; place-items: center; border: 1px solid transparent; border-radius: 5px; background: transparent; color: var(--admin-text-primary); font-size: .72rem; line-height: 1; cursor: pointer; }
+.cms-rich-toolbar button:hover { border-color: var(--admin-border-strong); background: #fff; }
+.cms-rich-toolbar button:focus-visible { outline: 2px solid var(--admin-gold); outline-offset: 1px; }
+.cms-rich-accent span { border-bottom: 2px solid var(--admin-gold); }
+.cms-rich-input { min-height: 5.5rem; max-height: 18rem; overflow-y: auto; padding: .8rem; color: var(--admin-text-primary); font: 500 .75rem/1.7 var(--font-body, sans-serif); outline: none; }
+.cms-rich-input a { color: var(--admin-navy); text-decoration: underline; }
+/* Mirrors the site's accent so the editor sees the styling it is applying. */
+.cms-rich-input .gold-underline { padding: 0 .03em .13em; background: linear-gradient(#d6b45a, #d6b45a) 0 calc(100% - .03em) / 100% 2px no-repeat; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 .cms-format-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1rem; }
 .cms-format-grid label { color: var(--admin-text-secondary); font-size: .62rem; font-weight: 650; }
 .cms-format-grid select { width: 100%; height: 2.35rem; margin-top: .3rem; border: 1px solid var(--admin-border); border-radius: 6px; padding: 0 .55rem; background: #fff; color: var(--admin-text-primary); font: 500 .65rem var(--font-body, sans-serif); outline: none; }

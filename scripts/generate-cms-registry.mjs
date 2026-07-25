@@ -2,6 +2,7 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import { parse } from 'parse5';
+import { INLINE_TAGS, serializeInlineNodes } from '../src/cms/inline-html.ts';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
@@ -30,15 +31,86 @@ function attribute(node, name) {
   return node.attrs?.find((entry) => entry.name === name)?.value;
 }
 
-function hasExcludedAncestor(node) {
+function hasExcludedAncestor(node, claimed) {
   let current = node;
   while (current) {
     if (excluded.has(current.tagName)) return true;
     if (attribute(current, 'aria-hidden') === 'true' || attribute(current, 'data-cms-ignore') !== undefined) return true;
     if (attribute(current, 'data-cms-key') !== undefined) return true;
+    // Mirrors the runtime's closest('[data-cms-key]') test: once a sentence is
+    // claimed whole, its inline parts must not become blocks of their own.
+    if (claimed?.has(current)) return true;
     current = current.parentNode;
   }
   return false;
+}
+
+const LETTER = /[A-Za-zÀ-ÖØ-öø-ÿ]/;
+
+function descendantElements(node, collected = []) {
+  for (const child of node.childNodes || []) {
+    if (!child.tagName) continue;
+    collected.push(child);
+    descendantElements(child, collected);
+  }
+  return collected;
+}
+
+/**
+ * Walks down to the element that actually owns the text. A wrapper such as
+ * `<li><a href="/faq">FAQ</a></li>` must resolve to the anchor: claiming the
+ * wrapper would pull the link's markup into the editable copy and would move
+ * the block off the key the anchor already owns.
+ */
+function resolveBlock(node) {
+  let current = node;
+  for (;;) {
+    const hasDirectText = (current.childNodes || [])
+      .some((child) => child.nodeName === '#text' && LETTER.test(child.value || ''));
+    const elementChildren = (current.childNodes || []).filter((child) => child.tagName);
+    if (hasDirectText || elementChildren.length !== 1) return current;
+    if (!candidates.has(elementChildren[0].tagName)) return current;
+    current = elementChildren[0];
+  }
+}
+
+/** The parse5 counterpart of isMergeable() in CmsRuntime.astro. */
+function isMergeable(node) {
+  // Owning text directly is what separates one flowing sentence from a wrapper
+  // holding several independent texts, such as a menu entry's title and blurb.
+  // The latter must stay separately editable rather than collapse into one field.
+  const ownsText = (node.childNodes || [])
+    .some((child) => child.nodeName === '#text' && LETTER.test(child.value || ''));
+  if (!ownsText) return false;
+
+  return descendantElements(node).every((child) =>
+    INLINE_TAGS.has(child.tagName)
+    && attribute(child, 'data-cms-key') === undefined
+    && attribute(child, 'data-cms-ignore') === undefined);
+}
+
+/** Adapts a parse5 tree to the shared emitter in src/cms/inline-html.ts. */
+function toInlineNodes(node) {
+  const nodes = [];
+  for (const child of node.childNodes || []) {
+    if (child.nodeName === '#text') {
+      nodes.push({ tag: null, text: child.value || '', attributes: [], children: [] });
+      continue;
+    }
+    if (!child.tagName) continue;
+    nodes.push({
+      tag: child.tagName,
+      text: '',
+      attributes: (child.attrs || []).map((entry) => [entry.name, entry.value]),
+      children: toInlineNodes(child),
+    });
+  }
+  return nodes;
+}
+
+/** Serializes a merged block's children under the shared inline markup policy. */
+function serializeInline(node) {
+  return serializeInlineNodes(toInlineNodes(node));
 }
 
 function closest(node, tagName) {
@@ -122,30 +194,52 @@ for (const file of files) {
   if (!body) continue;
 
   let pageCount = 0;
+  const claimed = new Set();
+
+  // Pre-order, so a merged block is always claimed before its inline children
+  // are visited — the same ordering guarantee the runtime gets from
+  // querySelectorAll returning nodes in document order.
   walk(body, (node) => {
-    if (!candidates.has(node.tagName) || hasExcludedAncestor(node)) return;
-    const main = closest(node, 'main');
-    const header = main ? null : closest(node, 'header');
-    const footer = main ? null : closest(node, 'footer');
+    if (!candidates.has(node.tagName) || hasExcludedAncestor(node, claimed)) return;
+    if (!LETTER.test(textContent(node))) return;
+
+    const target = resolveBlock(node);
+    if (target !== node && hasExcludedAncestor(target, claimed)) return;
+
+    const main = closest(target, 'main');
+    const header = main ? null : closest(target, 'header');
+    const footer = main ? null : closest(target, 'footer');
     const scopeRoot = header || footer || main || body;
     const scope = header ? 'global.header' : footer ? 'global.footer' : `pages.${routeToken(route)}`;
     const routePath = header || footer ? GLOBAL_ROUTE : route;
-    const nodePath = structuralPath(node, scopeRoot);
-    let directTextIndex = 0;
+    const nodePath = structuralPath(target, scopeRoot);
+    const type = elementType(target.tagName);
 
-    for (const child of node.childNodes || []) {
-      if (child.nodeName !== '#text') continue;
-      const content = (child.value || '').trim();
-      if (!/[A-Za-zÀ-ÖØ-öø-ÿ]/.test(content)) continue;
-      directTextIndex += 1;
-      const type = elementType(node.tagName);
-      const key = `${scope}.auto.${type}.${hashString(`${nodePath}|text:${directTextIndex}`)}`;
+    const record = (key, content, rich) => {
       const existing = registryByKey.get(key);
       if (existing && existing.content !== content) {
         throw new Error(`CMS key collision for ${key}: "${existing.content}" / "${content}"`);
       }
-      registryByKey.set(key, { key, route: routePath, type, content });
+      registryByKey.set(key, { key, route: routePath, type, content, ...(rich ? { rich: true } : {}) });
       if (routePath === route) pageCount += 1;
+    };
+
+    if (isMergeable(target)) {
+      claimed.add(target);
+      // Deliberately the historic first-fragment key so blocks that were already
+      // a single text node keep the exact key they hold in the database.
+      const content = serializeInline(target).trim();
+      if (content) record(`${scope}.auto.${type}.${hashString(`${nodePath}|text:1`)}`, content, true);
+      return;
+    }
+
+    let directTextIndex = 0;
+    for (const child of target.childNodes || []) {
+      if (child.nodeName !== '#text') continue;
+      const content = (child.value || '').trim();
+      if (!LETTER.test(content)) continue;
+      directTextIndex += 1;
+      record(`${scope}.auto.${type}.${hashString(`${nodePath}|text:${directTextIndex}`)}`, content, false);
     }
   });
 
@@ -168,7 +262,9 @@ const rows = Array.from(combined.values()).sort((left, right) => left.key.locale
 );
 
 const sql = `-- Generated from the built public routes by scripts/generate-cms-registry.mjs.
--- Idempotent: existing draft/published values and version history are preserved.
+-- Idempotent. Administrator edits and version history are never overwritten:
+-- a block only adopts the regenerated fallback while its stored content still
+-- matches the fallback it was seeded with, which means nobody has touched it.
 
 insert into public.cms_content_blocks (
   content_key, route_path, element_type, fallback_content,
@@ -185,7 +281,25 @@ ${rows.join(',\n')}
 on conflict (content_key) do update
 set route_path = excluded.route_path,
     element_type = excluded.element_type,
-    fallback_content = excluded.fallback_content;
+    fallback_content = excluded.fallback_content,
+    -- The right-hand side reads the pre-update row, so these comparisons are
+    -- against the previous fallback rather than the one being written above.
+    draft_content = case
+      when cms_content_blocks.draft_content = cms_content_blocks.fallback_content
+        then excluded.fallback_content
+      else cms_content_blocks.draft_content
+    end,
+    published_content = case
+      when cms_content_blocks.published_content = cms_content_blocks.fallback_content
+        then excluded.fallback_content
+      else cms_content_blocks.published_content
+    end,
+    status = case
+      when cms_content_blocks.draft_content = cms_content_blocks.fallback_content
+       and cms_content_blocks.published_content = cms_content_blocks.fallback_content
+        then 'published'
+      else cms_content_blocks.status
+    end;
 
 insert into public.cms_content_versions (
   content_block_id, version_number, content, format, action
@@ -197,7 +311,22 @@ where block.published_version = 1
     select 1 from public.cms_content_versions as version
     where version.content_block_id = block.id and version.version_number = 1
   );
+
+-- Keep the seed snapshot aligned for blocks that have never been published
+-- again, so restoring version 1 cannot resurrect a pre-merge fragment.
+update public.cms_content_versions as version
+set content = block.published_content,
+    format = block.published_format
+from public.cms_content_blocks as block
+where version.content_block_id = block.id
+  and version.version_number = 1
+  and version.action = 'seed'
+  and block.published_version = 1
+  and version.content <> block.published_content;
 `;
 
 await writeFile(migrationPath, sql);
+
+const richCount = autoRegistry.filter((entry) => entry.rich).length;
 console.log(`Generated ${pages.length} editable pages and ${combined.size} CMS keys.`);
+console.log(`${richCount} of ${autoRegistry.length} discovered keys are merged rich-text blocks.`);

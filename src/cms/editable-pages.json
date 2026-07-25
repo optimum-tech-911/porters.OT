@@ -2,7 +2,7 @@
   {
     "route": "/",
     "name": "Accueil",
-    "contentCount": 20
+    "contentCount": 22
   },
   {
     "route": "/blog/categorie/actualites",
@@ -27,7 +27,7 @@
   {
     "route": "/blog",
     "name": "Conseils portage salarial et métiers IT",
-    "contentCount": 86
+    "contentCount": 85
   },
   {
     "route": "/blog/consultant-informatique-independant-galeres",
@@ -57,17 +57,17 @@
   {
     "route": "/espace-client",
     "name": "Espace client",
-    "contentCount": 17
+    "contentCount": 16
   },
   {
     "route": "/entreprises",
     "name": "Expertises IT externes, cadre maîtrisé",
-    "contentCount": 86
+    "contentCount": 80
   },
   {
     "route": "/expertises",
     "name": "Expertises IT, data, cyber, cloud et produit",
-    "contentCount": 41
+    "contentCount": 40
   },
   {
     "route": "/faq",
@@ -87,17 +87,17 @@
   {
     "route": "/livres-blancs",
     "name": "Livres blancs et guides",
-    "contentCount": 22
+    "contentCount": 21
   },
   {
     "route": "/mentions-legales",
     "name": "Mentions légales",
-    "contentCount": 34
+    "contentCount": 29
   },
   {
     "route": "/agences",
     "name": "Nos agences de portage salarial",
-    "contentCount": 47
+    "contentCount": 45
   },
   {
     "route": "/rse",
@@ -112,32 +112,32 @@
   {
     "route": "/contact",
     "name": "Parlons de votre situation",
-    "contentCount": 40
+    "contentCount": 38
   },
   {
     "route": "/confidentialite",
     "name": "Politique de confidentialité",
-    "contentCount": 43
+    "contentCount": 36
   },
   {
     "route": "/agences/aix-en-provence",
     "name": "Portage salarial à Aix-en-Provence",
-    "contentCount": 42
+    "contentCount": 38
   },
   {
     "route": "/agences/lyon",
     "name": "Portage salarial à Lyon",
-    "contentCount": 48
+    "contentCount": 43
   },
   {
     "route": "/agences/marseille",
     "name": "Portage salarial à Marseille",
-    "contentCount": 46
+    "contentCount": 42
   },
   {
     "route": "/agences/montpellier",
     "name": "Portage salarial à Montpellier",
-    "contentCount": 48
+    "contentCount": 43
   },
   {
     "route": "/blog/portage-salarial-consultant-cybersecurite",
@@ -172,7 +172,7 @@
   {
     "route": "/agences/paris",
     "name": "Portage salarial IT à Paris",
-    "contentCount": 51
+    "contentCount": 46
   },
   {
     "route": "/expertises/cloud-devops",
@@ -187,7 +187,7 @@
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 68
+    "contentCount": 56
   },
   {
     "route": "/consultants",
@@ -222,22 +222,22 @@
   {
     "route": "/rendez-vous",
     "name": "Prendre rendez-vous portage salarial IT",
-    "contentCount": 50
+    "contentCount": 47
   },
   {
     "route": "/parrainage",
     "name": "Programme de parrainage",
-    "contentCount": 22
+    "contentCount": 21
   },
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 63
+    "contentCount": 459
   },
   {
     "route": "/recrutement",
     "name": "Recrutement — Rejoignez The Porters",
-    "contentCount": 16
+    "contentCount": 15
   },
   {
     "route": "/blog/secteurs-adaptes-portage-salarial",
@@ -252,7 +252,7 @@
   {
     "route": "/simulateur",
     "name": "Simulateur de revenus consultant IT",
-    "contentCount": 79
+    "contentCount": 63
   },
   {
     "route": "/tarifs",
@@ -267,6 +267,6 @@
   {
     "route": "/equipe",
     "name": "Une équipe présente à chaque étape",
-    "contentCount": 19
+    "contentCount": 18
   }
 ]

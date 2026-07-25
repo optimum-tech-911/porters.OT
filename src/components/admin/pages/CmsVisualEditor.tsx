@@ -3,6 +3,8 @@ import { supabase } from '../../../lib/supabase';
 import type { CmsFormat } from '../../../cms/content';
 import type { CmsContentBlock, CmsContentVersion } from '../../../types/cms';
 import editablePages from '../../../cms/editable-pages.json';
+import { inlineHtmlToPlainText, sanitizeInlineHtml } from '../../../cms/inline-html';
+import CmsRichTextField from '../CmsRichTextField';
 
 const defaults: Required<CmsFormat> = {
   size: 'default',
@@ -33,10 +35,29 @@ export default function CmsVisualEditor() {
   const [frameError, setFrameError] = useState('');
   const [pageMenuOpen, setPageMenuOpen] = useState(false);
   const [pageSearch, setPageSearch] = useState('');
+  const [richKeys, setRichKeys] = useState<Set<string>>(new Set());
+  const [fieldToken, setFieldToken] = useState(0);
 
-  const dirty = useMemo(() => Boolean(selected) && (
-    content !== selected?.draft_content || JSON.stringify(format || {}) !== JSON.stringify(selected?.draft_format || {})
-  ), [content, format, selected]);
+  const isRich = Boolean(selected && richKeys.has(selected.content_key));
+
+  // What a visitor would actually read. Only merged blocks hold markup; a plain
+  // block stores literal text, and parsing it would reinterpret characters the
+  // editor typed on purpose.
+  const readableText = useCallback(
+    (value: string) => (isRich ? inlineHtmlToPlainText(value) : value),
+    [isRich],
+  );
+
+  const dirty = useMemo(() => {
+    if (!selected) return false;
+    if (JSON.stringify(format || {}) !== JSON.stringify(selected.draft_format || {})) return true;
+    // A merged block round-trips through the browser's HTML parser, which may
+    // reorder attributes or requote them. Comparing the normalized forms keeps
+    // simply opening a block from looking like an unsaved change.
+    return isRich
+      ? sanitizeInlineHtml(content) !== sanitizeInlineHtml(selected.draft_content)
+      : content !== selected.draft_content;
+  }, [content, format, isRich, selected]);
 
   const post = useCallback((message: Record<string, unknown>) => {
     iframeRef.current?.contentWindow?.postMessage(message, window.location.origin);
@@ -106,6 +127,7 @@ export default function CmsVisualEditor() {
     setSelected(block);
     setContent(block.draft_content);
     setFormat(block.draft_format || {});
+    setFieldToken((current) => current + 1);
     setNotice('');
     setError('');
     void loadVersions(block.id);
@@ -128,6 +150,7 @@ export default function CmsVisualEditor() {
         const incoming = (event.data.blocks || []) as CmsContentBlock[];
         const requestedKey = new URLSearchParams(window.location.search).get('key');
         setBlocks(incoming);
+        setRichKeys(new Set((event.data.richKeys || []) as string[]));
         const nextRoute = event.data.route || '/';
         setRoute(nextRoute);
         setLoadingFrame(false);
@@ -135,7 +158,10 @@ export default function CmsVisualEditor() {
         updateEditorUrl(nextRoute);
 
         const requested = requestedKey ? incoming.find((block) => block.content_key === requestedKey) : undefined;
-        if (requested) chooseBlock(requested);
+        if (requested) {
+          chooseBlock(requested);
+          post({ type: 'cms:focus', key: requested.content_key });
+        }
       }
 
       if (event.data.type === 'cms:navigate-request' && typeof event.data.url === 'string') {
@@ -150,7 +176,7 @@ export default function CmsVisualEditor() {
 
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [approveNavigation, chooseBlock, updateEditorUrl]);
+  }, [approveNavigation, chooseBlock, post, updateEditorUrl]);
 
   useEffect(() => {
     if (!loadingFrame) return;
@@ -177,8 +203,14 @@ export default function CmsVisualEditor() {
 
   async function persistDraft(nextContent = content, nextFormat = format): Promise<CmsContentBlock | null> {
     if (!selected) return null;
-    if (!nextContent.trim()) {
+    // A merged block can look empty while still holding markup such as a stray
+    // line break, so emptiness is judged on the text a visitor would read.
+    if (!readableText(nextContent).trim()) {
       setError('Le contenu ne peut pas être vide.');
+      return null;
+    }
+    if (nextContent.length > 10000) {
+      setError('Ce texte est trop long pour être enregistré. Raccourcissez-le puis réessayez.');
       return null;
     }
 
@@ -329,9 +361,13 @@ export default function CmsVisualEditor() {
 
               <div className="cms-key-card"><small>Clé stable</small><code>{selected.content_key}</code><span>{selected.route_path}</span></div>
 
-              <label className="cms-field-label" htmlFor="cms-content">Contenu</label>
-              <textarea id="cms-content" value={content} onChange={(event) => setContent(event.target.value)} rows={selected.element_type === 'heading' ? 4 : 7} maxLength={10000} />
-              <div className="cms-character-count">{content.length} / 10 000</div>
+              <label className="cms-field-label" htmlFor={isRich ? undefined : 'cms-content'}>Contenu</label>
+              {isRich ? (
+                <CmsRichTextField value={content} syncToken={fieldToken} onChange={setContent} />
+              ) : (
+                <textarea id="cms-content" value={content} onChange={(event) => setContent(event.target.value)} rows={selected.element_type === 'heading' ? 4 : 7} maxLength={10000} />
+              )}
+              <div className="cms-character-count">{readableText(content).length} / 10 000</div>
 
               <div className="cms-format-grid">
                 <label>Taille
@@ -367,7 +403,10 @@ export default function CmsVisualEditor() {
 
               <div className="cms-editor-actions">
                 <button type="button" className="admin-btn admin-btn-secondary" disabled={!dirty || busy} onClick={() => {
-                  setContent(selected.draft_content); setFormat(selected.draft_format || {}); setNotice('Modifications locales annulées.');
+                  setContent(selected.draft_content);
+                  setFormat(selected.draft_format || {});
+                  setFieldToken((current) => current + 1);
+                  setNotice('Modifications locales annulées.');
                 }}>Annuler</button>
                 <button type="button" className="admin-btn admin-btn-secondary" disabled={!dirty || busy} onClick={() => void persistDraft()}>{busy ? 'Enregistrement…' : 'Enregistrer le brouillon'}</button>
                 <button type="button" className="admin-btn admin-btn-primary" disabled={busy} onClick={() => void publish()}>Publier</button>

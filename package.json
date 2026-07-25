@@ -11,8 +11,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "cms:discover": "astro build && node scripts/generate-cms-registry.mjs",
+    "cms:discover": "astro build && node scripts/generate-cms-registry.mjs && node scripts/verify-cms-discovery.mjs",
     "cms:seed": "node scripts/generate-cms-registry.mjs",
+    "cms:check": "node scripts/verify-cms-discovery.mjs",
     "cms:verify": "node scripts/verify-cms.mjs",
     "cms:admin": "node scripts/create-cms-admin.mjs"
   },
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "linkedom": "^0.18.13",
     "typescript": "^6.0.3"
   }
 }

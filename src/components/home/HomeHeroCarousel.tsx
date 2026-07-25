@@ -1,3 +1,4 @@
+
 import { useEffect, useState, type ReactNode } from 'react';
 import HeroFloatingStickers from './HeroFloatingStickers';
 import HeroJourneyRail from './HeroJourneyRail';

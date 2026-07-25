@@ -2,11 +2,17 @@
 // Every page keeps its rendered copy as an SEO-safe fallback. The runtime adds
 // stable keys to unregistered visible text and then performs one request for
 // the current route plus the shared header/footer content.
+//
+// A block whose children are only inline decoration is claimed whole, so an
+// editor sees one sentence rather than one field per text node. Those blocks
+// store inline HTML; everything else keeps the per-text-node wrappers.
 ---
 
 <script>
   import { supabase } from '../../lib/supabase';
   import type { CmsFormat } from '../../cms/content';
+  import { sanitizeInlineHtml } from '../../cms/inline-html';
+  import { discoverEditableText } from '../../cms/discover';
 
   type PublishedBlock = {
     content_key: string;
@@ -28,103 +34,12 @@
   };
 
   const GLOBAL_ROUTE = '/_global';
-  const candidateSelector = 'h1,h2,h3,h4,h5,h6,p,a,button,label,li,summary,blockquote,figcaption,strong,small,span';
-  const excludedSelector = 'script,style,svg,noscript,template,[aria-hidden="true"],[data-cms-ignore]';
   const pageRoute = window.location.pathname.replace(/\/$/, '') || '/';
   const editorMode = new URLSearchParams(window.location.search).get('cms-editor') === '1';
   const blockByKey = new Map<string, PublishedBlock | EditorBlock>();
   let previewState: 'draft' | 'published' = editorMode ? 'draft' : 'published';
 
-  function hashString(value: string) {
-    let hash = 0x811c9dc5;
-    for (let index = 0; index < value.length; index += 1) {
-      hash ^= value.charCodeAt(index);
-      hash = Math.imul(hash, 0x01000193);
-    }
-    return (hash >>> 0).toString(36);
-  }
-
-  function routeToken(route: string) {
-    if (route === '/') return 'home';
-    return route.slice(1).toLowerCase().replace(/[^a-z0-9/_-]+/g, '-').replaceAll('/', '.');
-  }
-
-  function nthOfType(element: Element) {
-    let position = 1;
-    let sibling = element.previousElementSibling;
-    while (sibling) {
-      if (sibling.tagName === element.tagName) position += 1;
-      sibling = sibling.previousElementSibling;
-    }
-    return position;
-  }
-
-  function structuralPath(element: Element, root: Element) {
-    const parts: string[] = [];
-    let current: Element | null = element;
-    while (current && current !== root) {
-      parts.unshift(`${current.tagName.toLowerCase()}:${nthOfType(current)}`);
-      current = current.parentElement;
-    }
-    return parts.join('/');
-  }
-
-  function elementType(element: Element) {
-    const tag = element.tagName.toLowerCase();
-    if (/^h[1-6]$/.test(tag)) return 'heading';
-    if (tag === 'a' || tag === 'button' || tag === 'summary') return 'button';
-    if (tag === 'label') return 'label';
-    if (tag === 'li') return 'list_item';
-    if (tag === 'blockquote') return 'quote';
-    return 'paragraph';
-  }
-
-  function discoverEditableText() {
-    const elements = Array.from(document.body.querySelectorAll<HTMLElement>(candidateSelector));
-    const descriptors: Array<{ parent: HTMLElement; node: Text; key: string; route: string; type: string }> = [];
-
-    elements.forEach((parent) => {
-      if (parent.matches(excludedSelector) || parent.closest(excludedSelector)) return;
-      if (parent.matches('[data-cms-key]') || parent.closest('[data-cms-key]')) return;
-
-      const main = parent.closest('main');
-      const header = main ? null : parent.closest('header');
-      const footer = main ? null : parent.closest('footer');
-      const root = header || footer || main || document.body;
-      const scope = header ? 'global.header' : footer ? 'global.footer' : `pages.${routeToken(pageRoute)}`;
-      const route = header || footer ? GLOBAL_ROUTE : pageRoute;
-      const path = structuralPath(parent, root);
-      let directTextIndex = 0;
-
-      Array.from(parent.childNodes).forEach((node) => {
-        if (node.nodeType !== Node.TEXT_NODE) return;
-        const text = node.textContent || '';
-        if (!/[A-Za-zÀ-ÖØ-öø-ÿ]/.test(text.trim())) return;
-        directTextIndex += 1;
-        const type = elementType(parent);
-        const key = `${scope}.auto.${type}.${hashString(`${path}|text:${directTextIndex}`)}`;
-        descriptors.push({ parent, node: node as Text, key, route, type });
-      });
-    });
-
-    descriptors.forEach(({ parent, node, key, route, type }) => {
-      if (!node.isConnected || parent.closest('[data-cms-key]')) return;
-      const original = node.textContent || '';
-      const leading = original.match(/^\s*/)?.[0] || '';
-      const trailing = original.match(/\s*$/)?.[0] || '';
-      const wrapper = document.createElement('span');
-      wrapper.dataset.cmsKey = key;
-      wrapper.dataset.cmsRoute = route;
-      wrapper.dataset.cmsElementType = type;
-      wrapper.dataset.cmsAuto = 'true';
-      wrapper.dataset.cmsLeading = leading;
-      wrapper.dataset.cmsTrailing = trailing;
-      wrapper.textContent = original;
-      node.replaceWith(wrapper);
-    });
-  }
-
-  discoverEditableText();
+  discoverEditableText(document, pageRoute, GLOBAL_ROUTE);
 
   const formatAttributes = ['size', 'weight', 'alignment', 'color', 'line-height'] as const;
 
@@ -140,9 +55,15 @@
   function applyValue(key: string, content: string, format: CmsFormat) {
     document.querySelectorAll<HTMLElement>('[data-cms-key]').forEach((node) => {
       if (node.dataset.cmsKey !== key) return;
-      const leading = node.dataset.cmsAuto === 'true' ? node.dataset.cmsLeading || '' : '';
-      const trailing = node.dataset.cmsAuto === 'true' ? node.dataset.cmsTrailing || '' : '';
-      node.textContent = `${leading}${content}${trailing}`;
+      if (node.dataset.cmsRich === 'true') {
+        // Sanitized on the way in as well as on the way out: the stored value is
+        // admin-authored, but it still reaches every visitor's page.
+        node.innerHTML = sanitizeInlineHtml(content);
+      } else {
+        const leading = node.dataset.cmsAuto === 'true' ? node.dataset.cmsLeading || '' : '';
+        const trailing = node.dataset.cmsAuto === 'true' ? node.dataset.cmsTrailing || '' : '';
+        node.textContent = `${leading}${content}${trailing}`;
+      }
       applyFormat(node, format);
 
       const mirrorAttribute = node.dataset.cmsMirrorAttribute;
@@ -159,6 +80,17 @@
     );
   }
 
+  function richKeys() {
+    return Array.from(document.querySelectorAll<HTMLElement>('[data-cms-rich="true"]'))
+      .map((node) => node.dataset.cmsKey || '')
+      .filter(Boolean);
+  }
+
+  function markActive(key: string) {
+    document.querySelectorAll('.cms-editor-active').forEach((node) => node.classList.remove('cms-editor-active'));
+    document.querySelectorAll(`[data-cms-key="${CSS.escape(key)}"]`).forEach((node) => node.classList.add('cms-editor-active'));
+  }
+
   function announceReady() {
     if (!editorMode) return;
     document.body.classList.add('cms-editor-mode');
@@ -166,6 +98,7 @@
       type: 'cms:ready',
       route: pageRoute,
       blocks: Array.from(blockByKey.values()),
+      richKeys: richKeys(),
     }, window.location.origin);
   }
 
@@ -210,11 +143,13 @@
         event.stopPropagation();
         const block = blockByKey.get(target.dataset.cmsKey);
         if (!block) return;
+        markActive(target.dataset.cmsKey);
         window.parent.postMessage({
           type: 'cms:select',
           key: target.dataset.cmsKey,
           route: target.dataset.cmsRoute,
           elementType: target.dataset.cmsElementType,
+          rich: target.dataset.cmsRich === 'true',
           block,
         }, window.location.origin);
         return;
@@ -237,6 +172,11 @@
     window.addEventListener('message', (event) => {
       if (event.origin !== window.location.origin || !event.data?.type) return;
       if (event.data.type === 'cms:update-preview') applyValue(event.data.key, event.data.content, event.data.format || {});
+      if (event.data.type === 'cms:focus' && typeof event.data.key === 'string') {
+        markActive(event.data.key);
+        document.querySelector(`[data-cms-key="${CSS.escape(event.data.key)}"]`)
+          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
       if (event.data.type === 'cms:set-preview-state') {
         previewState = event.data.state === 'published' ? 'published' : 'draft';
         blockByKey.forEach(applyBlock);
@@ -281,17 +221,30 @@
   [data-cms-format-line-height='normal'] { line-height: 1.4 !important; }
   [data-cms-format-line-height='relaxed'] { line-height: 1.75 !important; }
 
+  /*
+   * Editor affordances never use a positive outline-offset. Two blocks share a
+   * line whenever a sentence carries inline decoration, and offset outlines on
+   * adjacent inline boxes visibly collide — both across a single space and
+   * across the leading of a tight heading.
+   */
   body.cms-editor-mode [data-cms-key] {
     border-radius: 3px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
     cursor: pointer !important;
-    outline: 1px dashed rgba(190, 158, 88, 0.58);
-    outline-offset: 3px;
-    transition: outline-color 160ms ease, box-shadow 160ms ease;
+    outline: 1px dashed rgba(190, 158, 88, 0.5);
+    outline-offset: 0;
+    transition: outline-color 160ms ease, background-color 160ms ease;
   }
 
   body.cms-editor-mode [data-cms-key]:hover,
   body.cms-editor-mode [data-cms-key]:focus {
+    background-color: rgba(190, 158, 88, 0.14);
+    outline: 2px solid rgba(190, 158, 88, 0.9);
+  }
+
+  body.cms-editor-mode [data-cms-key].cms-editor-active {
+    background-color: rgba(190, 158, 88, 0.18);
     outline: 2px solid #be9e58;
-    box-shadow: 0 0 0 5px rgba(190, 158, 88, 0.15);
   }
 </style>
