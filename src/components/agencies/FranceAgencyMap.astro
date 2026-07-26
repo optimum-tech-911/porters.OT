@@ -1,8 +1,14 @@
 ---
 import { franceMapPins, franceMapRoutes } from '../../data/france-map.data';
 import type { Agency } from '../../types/agency';
-interface Props { agencies: Agency[]; compact?: boolean; }
-const { agencies, compact = false } = Astro.props;
+
+/**
+ * `coverage` switches the intro from an agency directory to a national-coverage
+ * statement, for reuse outside /agences. Both variants read the same data, so
+ * the city list can never drift from the agencies that actually exist.
+ */
+interface Props { agencies: Agency[]; compact?: boolean; coverage?: boolean; }
+const { agencies, compact = false, coverage = false } = Astro.props;
 const agencyBySlug = new Map(agencies.map((agency) => [agency.slug, agency]));
 const referencePoints = franceMapPins.map((point) => {
   const agency = point.agencySlugs.map((slug) => agencyBySlug.get(slug)).find(Boolean);
@@ -14,16 +20,35 @@ const referencePoints = franceMapPins.map((point) => {
     href: agency ? `/agences/${agency.slug}` : point.href,
   };
 });
+
+// A pin without a status is a real, published agency. Anything still marked as
+// to be confirmed is deliberately left out of the written list.
+const agencyCities = referencePoints.filter((point) => point.agency).map((point) => point.city);
 ---
 
-<div class:list={['agency-map-layout', { compact }]}>
+<div class:list={['agency-map-layout', { compact }, { coverage }]}>
   <div class="map-intro">
-    <p class="map-eyebrow">The Porters en France</p>
-    <h2>Un contact proche,<br />où que commence votre mission.</h2>
-    <p>Sélectionnez une ville pour découvrir son accompagnement, ses coordonnées confirmées et les modalités de rendez-vous.</p>
-    <div class="map-legend"><span></span>Survolez un point · cliquez pour ouvrir l’agence</div>
+    {coverage ? (
+      <>
+        <p class="map-eyebrow">Couverture nationale</p>
+        <h2>Nos consultants interviennent partout en France.</h2>
+        <p class="map-agencies">Agences : {agencyCities.join(', ')}.</p>
+        <ul class="map-levels">
+          <li><span class="level-pin" aria-hidden="true"></span>Agences physiques</li>
+          <li><span class="level-zone" aria-hidden="true"></span>Zone d’intervention</li>
+        </ul>
+      </>
+    ) : (
+      <>
+        <p class="map-eyebrow">The Porters en France</p>
+        <h2>Un contact proche,<br />où que commence votre mission.</h2>
+        <p>Sélectionnez une ville pour découvrir son accompagnement, ses coordonnées confirmées et les modalités de rendez-vous.</p>
+        <div class="map-legend"><span></span>Survolez un point · cliquez pour ouvrir l’agence</div>
+      </>
+    )}
   </div>
   <div class="map-stage" aria-label="Carte des agences The Porters en France">
+    {coverage && <span class="coverage-halo" aria-hidden="true"></span>}
     <img class="france-outline" src="/images/france-outline-source.svg" alt="Contour de la France métropolitaine" />
     <svg class="routes" viewBox="0 0 507 520" aria-hidden="true">
       {franceMapRoutes.map((route) => <path class:list={['route', `route-${route.id}`]} d={route.d} />)}
@@ -278,6 +303,52 @@ const referencePoints = franceMapPins.map((point) => {
   .agency-mobile-list { display: none; }
   .compact { padding: clamp(2rem, 4vw, 3.5rem); }
   .compact .map-stage { max-width: 29rem; }
+
+  /* Coverage variant: the halo reads as "we work everywhere", the pins as
+     "these are the actual offices". Two levels, visually distinct. */
+  .map-agencies {
+    margin-top: 1.2rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .map-levels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .map-levels li {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.7rem;
+  }
+  .level-pin,
+  .level-zone {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+  }
+  .level-pin {
+    background: #c6a45a;
+    box-shadow: 0 0 0 4px rgba(198, 164, 90, 0.18);
+  }
+  .level-zone {
+    background: rgba(198, 164, 90, 0.16);
+    box-shadow: 0 0 0 4px rgba(198, 164, 90, 0.07);
+  }
+  .coverage-halo {
+    position: absolute;
+    inset: 6%;
+    z-index: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(198, 164, 90, 0.17) 0%, rgba(198, 164, 90, 0.06) 52%, transparent 74%);
+    pointer-events: none;
+  }
   
   @keyframes pulse { 0% { opacity: 0.8; transform: scale(0.7); } 70%, 100% { opacity: 0; transform: scale(2); } }
   @keyframes route { to { stroke-dashoffset: -190; } }

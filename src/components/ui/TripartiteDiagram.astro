@@ -1,0 +1,560 @@
+---
+/**
+ * The tripartite relation of portage salarial, as an interactive schema.
+ *
+ * Selecting a party lights the contracts binding it; selecting a contract lights
+ * the two parties it binds. The detail panel only ever recomposes strings that
+ * are already visible in the schema, so it is a projection — it carries no copy
+ * of its own and is kept out of the CMS.
+ *
+ * Accessibility: the connectors are decorative SVG (aria-hidden) and every
+ * interactive part is a real <button> with aria-pressed, so keyboard and screen
+ * reader users get the same six choices. The panel is an aria-live region.
+ * Below 900px a triangle stops being legible, so the stage becomes a stacked
+ * list and the whole content is shown at once.
+ */
+import SiteIcon from './SiteIcon.astro';
+
+const parties = [
+  {
+    id: 'consultant',
+    name: 'Le consultant',
+    detail: 'Trouve ses missions et réalise ses prestations.',
+    icon: 'user' as const,
+    contracts: ['work', 'mission'],
+    peers: ['porters', 'client'],
+    pos: { x: 18.1, y: 83.8, w: 34.4 },
+  },
+  {
+    id: 'porters',
+    name: 'The Porters',
+    detail: 'Contrat, facturation, paie et déclarations.',
+    icon: 'briefcase' as const,
+    contracts: ['work', 'service'],
+    peers: ['consultant', 'client'],
+    pos: { x: 50, y: 13, w: 31.1 },
+  },
+  {
+    id: 'client',
+    name: "L'entreprise cliente",
+    detail: "Bénéficie de l'expertise, dans un cadre sécurisé.",
+    icon: 'building' as const,
+    contracts: ['service', 'mission'],
+    peers: ['porters', 'consultant'],
+    pos: { x: 81.9, y: 83.8, w: 34.4 },
+  },
+];
+
+const contracts = [
+  { id: 'work', label: 'Contrat de travail', detail: 'CDI ou CDD', parties: ['porters', 'consultant'], pos: { x: 26.4, y: 41.7 } },
+  { id: 'service', label: 'Contrat de prestation', detail: 'Convention de mission', parties: ['porters', 'client'], pos: { x: 73.6, y: 41.7 } },
+  { id: 'mission', label: 'Mission réalisée', detail: 'Conditions négociées entre eux', parties: ['consultant', 'client'], pos: { x: 50, y: 72 } },
+];
+
+const nameOf = Object.fromEntries(parties.map((p) => [p.id, p.name]));
+const labelOf = Object.fromEntries(contracts.map((c) => [c.id, c.label]));
+const initial = parties.find((p) => p.id === 'porters')!;
+---
+
+<div class="tri" data-tri>
+  <div class="tri-head">
+    <p class="tri-eyebrow">Relation tripartite</p>
+    <p class="tri-hint">Survolez un acteur ou un contrat pour le détailler.</p>
+  </div>
+
+  <div class="tri-body">
+    <div class="tri-stage">
+      <!--
+        Connectors run centre-to-centre and are painted before the buttons, so
+        the ends tuck under the cards. The cards are HTML with content-driven
+        heights, so anything that tried to stop at a card's edge would detach
+        from it at some widths; overshooting cannot.
+
+        The two contracts are mutual bonds and carry no arrowhead. Only the
+        mission is directional, so it gets one — placed at the middle vertex,
+        which is always in open space.
+      -->
+      <svg class="tri-links" viewBox="0 0 900 470" aria-hidden="true" preserveAspectRatio="none">
+        <defs>
+          <marker id="tri-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M0 0 10 5 0 10z" class="tri-arrowhead" />
+          </marker>
+        </defs>
+        <g class="tri-link" data-link="work">
+          <line class="link-base" x1="450" y1="61" x2="163" y2="394" />
+          <line class="link-flow" x1="450" y1="61" x2="163" y2="394" />
+        </g>
+        <g class="tri-link" data-link="service">
+          <line class="link-base" x1="450" y1="61" x2="737" y2="394" />
+          <line class="link-flow" x1="450" y1="61" x2="737" y2="394" />
+        </g>
+        <g class="tri-link" data-link="mission">
+          <polyline class="link-base" points="163,394 450,394 737,394" marker-mid="url(#tri-arrow)" />
+          <polyline class="link-flow" points="163,394 450,394 737,394" />
+        </g>
+      </svg>
+
+      {parties.map((party, index) => (
+        <button
+          type="button"
+          class="tri-node"
+          data-party={party.id}
+          data-links={party.contracts.join(' ')}
+          data-parties={party.peers.join(' ')}
+          data-kind="party"
+          data-title={party.name}
+          data-lead={party.detail}
+          data-meta-label="Contrats"
+          data-meta={party.contracts.map((id) => labelOf[id]).join(' · ')}
+          aria-pressed={party.id === initial.id ? 'true' : 'false'}
+          style={`--x:${party.pos.x}%; --y:${party.pos.y}%; --w:${party.pos.w}%; --enter:${index * 90}ms`}
+        >
+          <span class="tri-node-icon" aria-hidden="true"><SiteIcon name={party.icon} class="h-4 w-4" /></span>
+          <span class="tri-node-name">{party.name}</span>
+          <span class="tri-node-detail">{party.detail}</span>
+        </button>
+      ))}
+
+      {contracts.map((contract, index) => (
+        <button
+          type="button"
+          class="tri-contract"
+          data-contract={contract.id}
+          data-links={contract.id}
+          data-parties={contract.parties.join(' ')}
+          data-kind="contract"
+          data-title={contract.label}
+          data-lead={contract.detail}
+          data-meta-label="Entre"
+          data-meta={contract.parties.map((id) => nameOf[id]).join(' et ')}
+          aria-pressed="false"
+          style={`--x:${contract.pos.x}%; --y:${contract.pos.y}%; --enter:${360 + index * 90}ms`}
+        >
+          <span class="tri-contract-label">{contract.label}</span>
+          <span class="tri-contract-detail">{contract.detail}</span>
+        </button>
+      ))}
+    </div>
+
+    <aside class="tri-detail" data-tri-detail aria-live="polite" data-cms-ignore>
+      <span class="tri-detail-kind" data-detail-kind>Acteur</span>
+      <h3 data-detail-title>{initial.name}</h3>
+      <p data-detail-lead>{initial.detail}</p>
+      <div class="tri-detail-meta">
+        <small data-detail-meta-label>Contrats</small>
+        <strong data-detail-meta>{initial.contracts.map((id) => labelOf[id]).join(' · ')}</strong>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tri]').forEach((root) => {
+    const items = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-kind]'));
+    const detail = root.querySelector<HTMLElement>('[data-tri-detail]');
+    const field = (name: string) => detail?.querySelector<HTMLElement>(`[data-detail-${name}]`);
+
+    const select = (item: HTMLButtonElement) => {
+      const links = (item.dataset.links || '').split(' ').filter(Boolean);
+      const parties = (item.dataset.parties || item.dataset.party || '').split(' ').filter(Boolean);
+
+      items.forEach((other) => {
+        const active = other === item;
+        other.classList.toggle('is-active', active);
+        other.setAttribute('aria-pressed', String(active));
+        // A related party or contract stays lit; everything else recedes.
+        const relatedLink = other.dataset.contract ? links.includes(other.dataset.contract) : false;
+        const relatedParty = other.dataset.party ? parties.includes(other.dataset.party) : false;
+        other.classList.toggle('is-related', !active && (relatedLink || relatedParty));
+      });
+
+      root.querySelectorAll<SVGElement>('[data-link]').forEach((link) => {
+        link.classList.toggle('is-active', links.includes(link.dataset.link || ''));
+      });
+
+      const kind = field('kind');
+      if (kind) kind.textContent = item.dataset.kind === 'contract' ? 'Contrat' : 'Acteur';
+      const title = field('title');
+      if (title) title.textContent = item.dataset.title || '';
+      const lead = field('lead');
+      if (lead) lead.textContent = item.dataset.lead || '';
+      const metaLabel = field('meta-label');
+      if (metaLabel) metaLabel.textContent = item.dataset.metaLabel || '';
+      const meta = field('meta');
+      if (meta) meta.textContent = item.dataset.meta || '';
+
+      detail?.classList.remove('is-switching');
+      requestAnimationFrame(() => detail?.classList.add('is-switching'));
+    };
+
+    items.forEach((item) => {
+      item.addEventListener('click', () => select(item));
+      item.addEventListener('focus', () => select(item));
+      // Pointer only: touch already fires click, and hover-select on touch would
+      // fight the tap.
+      item.addEventListener('pointerenter', (event) => {
+        if ((event as PointerEvent).pointerType === 'mouse') select(item);
+      });
+    });
+
+    const start = items.find((item) => item.getAttribute('aria-pressed') === 'true');
+    if (start) select(start);
+  });
+</script>
+
+<style>
+  .tri {
+    --gold: var(--color-porters-gold, #be9e58);
+    --gold-ink: #7d5f1f;
+    --navy: var(--color-porters-navy, #283743);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(190, 158, 88, 0.22);
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at 50% 8%, rgba(190, 158, 88, 0.09), transparent 46%),
+      var(--color-porters-white, #faf8f3);
+    padding: clamp(1.1rem, 2.6vw, 2rem);
+  }
+
+  .tri-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: clamp(0.8rem, 2vw, 1.5rem);
+  }
+
+  .tri-eyebrow {
+    margin: 0;
+    color: var(--gold-ink);
+    font-size: 0.62rem;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .tri-hint {
+    margin: 0;
+    color: rgba(40, 55, 67, 0.5);
+    font-size: 0.7rem;
+  }
+
+  .tri-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(13.5rem, 0.34fr);
+    align-items: start;
+    gap: clamp(1rem, 2.5vw, 2.25rem);
+  }
+
+  /* Fixed aspect stage, so the SVG connectors and the percentage-positioned
+     buttons share one coordinate space and stay aligned at any width. */
+  .tri-stage {
+    position: relative;
+    aspect-ratio: 900 / 470;
+    width: 100%;
+  }
+
+  .tri-links {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .tri-link {
+    transition: opacity 260ms ease;
+  }
+
+  .tri-arrowhead {
+    fill: var(--gold);
+  }
+
+  .link-base {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.6;
+    opacity: 0.4;
+    transition: stroke-width 240ms ease, opacity 240ms ease;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .link-flow {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-dasharray: 4 20;
+    opacity: 0;
+    transition: opacity 240ms ease;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .tri-link.is-active .link-base {
+    stroke-width: 2.4;
+    opacity: 1;
+  }
+
+  .tri-link.is-active .link-flow {
+    opacity: 0.95;
+    animation: tri-flow 1.6s linear infinite;
+  }
+
+  /* ---------- nodes ---------- */
+  .tri-node,
+  .tri-contract {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    animation: tri-enter 560ms cubic-bezier(0.22, 1, 0.36, 1) var(--enter, 0ms) both;
+  }
+
+  .tri-node {
+    display: grid;
+    width: var(--w);
+    justify-items: center;
+    gap: 0.15rem;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #35495c, var(--navy));
+    box-shadow: 0 14px 30px rgba(11, 16, 32, 0.18);
+    padding: 0.85rem 0.9rem;
+    color: #fff;
+    text-align: center;
+    transition:
+      transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 240ms ease,
+      box-shadow 260ms ease,
+      opacity 240ms ease;
+  }
+
+  .tri-node-icon {
+    display: grid;
+    width: 1.7rem;
+    height: 1.7rem;
+    place-items: center;
+    margin-bottom: 0.15rem;
+    border-radius: 50%;
+    background: rgba(190, 158, 88, 0.18);
+    color: var(--gold);
+    transition: background-color 240ms ease;
+  }
+
+  .tri-node-name {
+    font-family: var(--font-heading, var(--font-display, sans-serif));
+    font-size: clamp(0.82rem, 1.35vw, 1.1rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .tri-node-detail {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: clamp(0.62rem, 0.95vw, 0.8rem);
+    line-height: 1.4;
+  }
+
+  .tri-node:hover,
+  .tri-node.is-active {
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(11, 16, 32, 0.26), 0 0 0 4px rgba(190, 158, 88, 0.16);
+    transform: translate(-50%, -50%) translateY(-4px);
+  }
+
+  .tri-node.is-active .tri-node-icon {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .tri-node.is-related {
+    border-color: rgba(190, 158, 88, 0.5);
+  }
+
+  /* ---------- contract labels ---------- */
+  .tri-contract {
+    display: grid;
+    justify-items: center;
+    gap: 0.05rem;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    background: rgba(250, 248, 243, 0.92);
+    padding: 0.35rem 0.6rem;
+    text-align: center;
+    transition:
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 240ms ease,
+      background-color 240ms ease,
+      opacity 240ms ease;
+  }
+
+  .tri-contract-label {
+    color: var(--gold-ink);
+    font-size: clamp(0.7rem, 1.05vw, 0.9rem);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .tri-contract-detail {
+    color: rgba(40, 55, 67, 0.6);
+    font-size: clamp(0.6rem, 0.9vw, 0.76rem);
+    line-height: 1.3;
+  }
+
+  .tri-contract:hover,
+  .tri-contract.is-active {
+    border-color: var(--gold);
+    background: #fff;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+
+  .tri-contract.is-related {
+    border-color: rgba(190, 158, 88, 0.45);
+  }
+
+  /* Selecting one thing pushes the unrelated ones back. */
+  .tri-stage:has(.is-active) .tri-node:not(.is-active):not(.is-related),
+  .tri-stage:has(.is-active) .tri-contract:not(.is-active):not(.is-related) {
+    opacity: 0.5;
+  }
+
+  .tri-node:focus-visible,
+  .tri-contract:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* ---------- detail panel ---------- */
+  .tri-detail {
+    border: 1px solid rgba(190, 158, 88, 0.28);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 14px 34px rgba(11, 16, 32, 0.07);
+    padding: 1.1rem 1.2rem;
+  }
+
+  .tri-detail-kind {
+    display: inline-block;
+    border-radius: 999px;
+    background: rgba(190, 158, 88, 0.14);
+    padding: 0.18rem 0.55rem;
+    color: var(--gold-ink);
+    font-size: 0.58rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tri-detail h3 {
+    margin: 0.65rem 0 0;
+    color: var(--navy);
+    font-family: var(--font-heading, var(--font-display, sans-serif));
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .tri-detail p {
+    margin: 0.4rem 0 0;
+    color: rgba(40, 55, 67, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  .tri-detail-meta {
+    margin-top: 0.9rem;
+    border-top: 1px solid rgba(40, 55, 67, 0.1);
+    padding-top: 0.7rem;
+  }
+
+  .tri-detail-meta small {
+    display: block;
+    color: rgba(40, 55, 67, 0.45);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .tri-detail-meta strong {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--gold-ink);
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .tri-detail.is-switching {
+    animation: tri-switch 320ms ease;
+  }
+
+  @keyframes tri-flow { to { stroke-dashoffset: -48; } }
+  @keyframes tri-enter { from { opacity: 0; transform: translate(-50%, -50%) translateY(12px) scale(0.97); } }
+  @keyframes tri-switch { from { opacity: 0.35; transform: translateY(4px); } }
+
+  @media (max-width: 1080px) {
+    .tri-body { grid-template-columns: minmax(0, 1fr); }
+    .tri-detail { order: 2; }
+  }
+
+  /* A triangle stops being readable here: stack the same buttons instead. */
+  @media (max-width: 900px) {
+    .tri-links { display: none; }
+
+    .tri-stage {
+      display: grid;
+      aspect-ratio: auto;
+      gap: 0.5rem;
+    }
+
+    .tri-node,
+    .tri-contract {
+      position: static;
+      width: auto;
+      transform: none;
+      animation: none;
+      text-align: left;
+      justify-items: start;
+    }
+
+    .tri-node { grid-template-columns: auto 1fr; column-gap: 0.7rem; }
+    .tri-node-icon { grid-row: span 2; margin-bottom: 0; }
+    .tri-node-name, .tri-node-detail { grid-column: 2; }
+
+    .tri-node:hover,
+    .tri-node.is-active { transform: none; }
+
+    .tri-contract:hover,
+    .tri-contract.is-active { transform: none; }
+
+    .tri-contract { border-color: rgba(190, 158, 88, 0.3); }
+
+    .tri-stage:has(.is-active) .tri-node:not(.is-active):not(.is-related),
+    .tri-stage:has(.is-active) .tri-contract:not(.is-active):not(.is-related) {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tri-node,
+    .tri-contract,
+    .tri-detail.is-switching,
+    .tri-link.is-active .link-flow {
+      animation: none;
+    }
+
+    .tri-node,
+    .tri-contract,
+    .tri-link,
+    .link-base,
+    .link-flow {
+      transition: none;
+    }
+
+    .tri-node:hover,
+    .tri-node.is-active,
+    .tri-contract:hover,
+    .tri-contract.is-active {
+      transform: translate(-50%, -50%);
+    }
+  }
+</style>

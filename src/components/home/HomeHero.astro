@@ -1,152 +1,252 @@
 ---
 import { cmsAttrs, cmsText } from '../../cms/content';
 
-const teamCards = [
+type HeroSlide = {
+  id: string;
+  base: string;
+  width: number;
+  height: number;
+  desktopPosition: string;
+  mobilePosition: string;
+  duration: number;
+  zoom: 'in' | 'out';
+};
+
+const heroSlides: HeroSlide[] = [
   {
-    id: 'eric',
-    name: cmsText('home.hero.team.eric.name'),
-    nameKey: 'home.hero.team.eric.name',
-    role: cmsText('home.hero.team.eric.role'),
-    roleKey: 'home.hero.team.eric.role',
-    initials: 'EB',
-    tone: cmsText('home.hero.team.eric.tone'),
-    toneKey: 'home.hero.team.eric.tone',
-    image: '/images/team/eric-bensaid.png',
-    imagePosition: '50% 42%',
-    text: cmsText('home.hero.team.eric.description'),
-    textKey: 'home.hero.team.eric.description',
-    links: [
-      { label: cmsText('home.hero.team.eric.primary_cta'), key: 'home.hero.team.eric.primary_cta', href: '/qui-sommes-nous' },
-      { label: cmsText('home.hero.team.eric.secondary_cta'), key: 'home.hero.team.eric.secondary_cta', href: '/rendez-vous' },
-    ],
+    id: 'consultant-window',
+    base: 'consultant-window',
+    width: 1024,
+    height: 1536,
+    desktopPosition: '62% 42%',
+    mobilePosition: '61% 38%',
+    duration: 8400,
+    zoom: 'in',
   },
   {
-    id: 'ambre',
-    name: cmsText('home.hero.team.ambre.name'),
-    nameKey: 'home.hero.team.ambre.name',
-    role: cmsText('home.hero.team.ambre.role'),
-    roleKey: 'home.hero.team.ambre.role',
-    initials: 'AL',
-    tone: cmsText('home.hero.team.ambre.tone'),
-    toneKey: 'home.hero.team.ambre.tone',
-    image: '/images/team/ambre-lambert.png',
-    imagePosition: '50% 42%',
-    text: cmsText('home.hero.team.ambre.description'),
-    textKey: 'home.hero.team.ambre.description',
-    links: [
-      { label: cmsText('home.hero.team.ambre.primary_cta'), key: 'home.hero.team.ambre.primary_cta', href: '/entreprises' },
-      { label: cmsText('home.hero.team.ambre.secondary_cta'), key: 'home.hero.team.ambre.secondary_cta', href: '/expertises' },
-    ],
+    id: 'walking-corridor',
+    base: 'walking-corridor',
+    width: 1440,
+    height: 1080,
+    desktopPosition: '56% 50%',
+    mobilePosition: '55% 44%',
+    duration: 8000,
+    zoom: 'out',
   },
   {
-    id: 'lisa',
-    name: cmsText('home.hero.team.lisa.name'),
-    nameKey: 'home.hero.team.lisa.name',
-    role: cmsText('home.hero.team.lisa.role'),
-    roleKey: 'home.hero.team.lisa.role',
-    initials: 'LD',
-    tone: cmsText('home.hero.team.lisa.tone'),
-    toneKey: 'home.hero.team.lisa.tone',
-    image: '/images/team/lisa-delrieu.png',
-    imagePosition: '50% 42%',
-    text: cmsText('home.hero.team.lisa.description'),
-    textKey: 'home.hero.team.lisa.description',
-    links: [
-      { label: cmsText('home.hero.team.lisa.primary_cta'), key: 'home.hero.team.lisa.primary_cta', href: '/consultants' },
-      { label: cmsText('home.hero.team.lisa.secondary_cta'), key: 'home.hero.team.lisa.secondary_cta', href: '/rendez-vous' },
-    ],
+    id: 'conversation-corridor',
+    base: 'conversation-corridor',
+    width: 1440,
+    height: 1080,
+    desktopPosition: '43% 50%',
+    mobilePosition: '42% 42%',
+    duration: 8200,
+    zoom: 'in',
+  },
+  {
+    id: 'consultant-window-full',
+    base: 'consultant-window-full',
+    width: 1024,
+    height: 1536,
+    desktopPosition: '47% 46%',
+    mobilePosition: '47% 43%',
+    duration: 8600,
+    zoom: 'out',
   },
 ];
 
-const detailCards = [
-  ...teamCards.map((card) => ({
-    id: card.id,
-    eyebrow: card.role,
-    title: card.name,
-    titleKey: card.nameKey,
-    text: card.text,
-    textKey: card.textKey,
-    eyebrowKey: card.roleKey,
-    links: card.links,
-  })),
+const mobileOrder = [
+  'consultant-window',
+  'consultant-window-full',
+  'walking-corridor',
+  'conversation-corridor',
 ];
+
+const featureCards = [
+  { id: 'contact', key: 'home.hero.trust.interlocutors', label: cmsText('home.hero.trust.interlocutors') },
+  { id: 'missions', key: 'home.hero.trust.secured_missions', label: cmsText('home.hero.trust.secured_missions') },
+  { id: 'status', key: 'home.hero.trust.employee_framework', label: cmsText('home.hero.trust.employee_framework') },
+  { id: 'expertise', key: 'home.hero.trust.it_expertise', label: cmsText('home.hero.trust.it_expertise') },
+];
+
+const assetRoot = '/images/hero/editorial';
+const portraitWidths = [640, 1024];
+const landscapeWidths = [720, 1440];
+const sourceSet = (slide: HeroSlide, format: 'avif' | 'webp') => {
+  const widths = slide.width === 1024 ? portraitWidths : landscapeWidths;
+  return widths.map((width) => `${assetRoot}/${slide.base}-${width}.${format} ${width}w`).join(', ');
+};
+const fallbackSource = (slide: HeroSlide) => `${assetRoot}/${slide.base}-${slide.width}.webp`;
+const transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 ---
 
-<section class="home-hero" aria-labelledby="home-hero-title">
-  <div class="hero-grid">
-    <!-- Left: Copy -->
+<section
+  class="home-hero"
+  aria-labelledby="home-hero-title"
+  data-hero-root
+  data-mobile-order={mobileOrder.join(',')}
+>
+  <div class="hero-shell">
     <div class="hero-copy">
-      <p class="hero-eyebrow hero-enter hero-enter-1" {...cmsAttrs('home.hero.eyebrow')}>{cmsText('home.hero.eyebrow')}</p>
-      <h1 id="home-hero-title" class="hero-enter hero-enter-2 cms-preserve-lines" {...cmsAttrs('home.hero.title')}>{cmsText('home.hero.title')}</h1>
-      <p class="hero-subhead hero-enter hero-enter-3" {...cmsAttrs('home.hero.description')}>{cmsText('home.hero.description')}</p>
-      <div class="hero-actions hero-enter hero-enter-4">
-        <a href="/rendez-vous" class="hero-action hero-action--primary"><span {...cmsAttrs('home.hero.primary_cta')}>{cmsText('home.hero.primary_cta')}</span> <span aria-hidden="true">→</span></a>
-        <a href="/portage-salarial" class="hero-action hero-action--secondary"><span {...cmsAttrs('home.hero.secondary_cta')}>{cmsText('home.hero.secondary_cta')}</span> <span aria-hidden="true">→</span></a>
-        <a href="/entreprises" class="hero-action hero-action--quiet"><span {...cmsAttrs('home.hero.enterprise_cta')}>{cmsText('home.hero.enterprise_cta')}</span> <span aria-hidden="true">→</span></a>
+      <p class="hero-eyebrow hero-enter hero-enter--eyebrow" {...cmsAttrs('home.hero.eyebrow')}>
+        {cmsText('home.hero.eyebrow')}
+      </p>
+
+      <h1
+        id="home-hero-title"
+        class="hero-title hero-enter hero-enter--title cms-preserve-lines"
+        {...cmsAttrs('home.hero.title')}
+      >
+        {cmsText('home.hero.title')}
+      </h1>
+
+      <p class="hero-subhead hero-enter hero-enter--copy" {...cmsAttrs('home.hero.description')}>
+        {cmsText('home.hero.description')}
+      </p>
+
+      <div class="hero-actions hero-enter hero-enter--actions">
+        <a href="/rendez-vous" class="hero-action hero-action--primary">
+          <span {...cmsAttrs('home.hero.primary_cta')}>{cmsText('home.hero.primary_cta')}</span>
+          <span class="hero-action__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="/portage-salarial" class="hero-action hero-action--secondary">
+          <span {...cmsAttrs('home.hero.secondary_cta')}>{cmsText('home.hero.secondary_cta')}</span>
+          <span class="hero-action__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="/entreprises" class="hero-action hero-action--tertiary">
+          <span {...cmsAttrs('home.hero.enterprise_cta')}>{cmsText('home.hero.enterprise_cta')}</span>
+          <span class="hero-action__arrow" aria-hidden="true">→</span>
+        </a>
       </div>
-      <ul class="hero-trust hero-enter hero-enter-5" aria-label="Repères The Porters">
-        <li {...cmsAttrs('home.hero.trust.interlocutors')}>{cmsText('home.hero.trust.interlocutors')}</li>
-        <li {...cmsAttrs('home.hero.trust.employee_framework')}>{cmsText('home.hero.trust.employee_framework')}</li>
-        <li {...cmsAttrs('home.hero.trust.it_expertise')}>{cmsText('home.hero.trust.it_expertise')}</li>
-      </ul>
     </div>
 
-    <!-- Right: Visual cluster -->
-    <div class="hero-visual hero-enter hero-enter-6" data-hero-visual>
-      <div class="hero-blob" aria-hidden="true"></div>
+    <div class="hero-media hero-enter hero-enter--media" data-hero-media>
+      <div class="hero-media__halo" aria-hidden="true"></div>
 
-      <!-- Dashed connectors -->
-      <div class="hero-connector c-left" aria-hidden="true"></div>
-      <div class="hero-connector c-mid" aria-hidden="true"></div>
-      <div class="hero-connector c-right" aria-hidden="true"></div>
+      <svg class="hero-orbit" viewBox="0 0 760 720" aria-hidden="true">
+        <path id="hero-orbit-primary" d="M57 365C75 155 238 44 452 71c189 23 304 170 249 366-43 153-177 243-359 222C156 637 41 534 57 365Z" />
+        <path id="hero-orbit-secondary" d="M112 468c101 102 251 140 392 79 117-50 181-155 176-272" />
+        <circle class="hero-orbit__node hero-orbit__node--one" cx="62" cy="356" r="6" />
+        <circle class="hero-orbit__node hero-orbit__node--two" cx="684" cy="280" r="6" />
+        <circle class="hero-orbit__node hero-orbit__node--three" cx="505" cy="548" r="7" />
+        <circle class="hero-orbit__particle hero-orbit__particle--one" r="4.5">
+          <animateMotion dur="19s" begin="-5s" repeatCount="indefinite">
+            <mpath href="#hero-orbit-primary" />
+          </animateMotion>
+        </circle>
+        <circle class="hero-orbit__particle hero-orbit__particle--two" r="3.5">
+          <animateMotion dur="14s" begin="-9s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
+            <mpath href="#hero-orbit-secondary" />
+          </animateMotion>
+        </circle>
+      </svg>
 
-      <!-- Profile cards stacked -->
-      {teamCards.map((card) => (
-        <button
-          class:list={['hero-person-card', `hero-person-card--${card.id}`]}
-          type="button"
-          data-hero-detail={card.id}
-          aria-controls={`hero-detail-${card.id}`}
-          aria-expanded={card.id === 'eric' ? 'true' : 'false'}
-          aria-label={`Afficher le détail ${card.tone} : ${card.name}`}
-        >
-          <span class="hero-person-card__portrait">
-            <img
-              src={card.image}
-              alt=""
-              width="1254"
-              height="1254"
-              loading="eager"
-              decoding="async"
-              style={`object-position:${card.imagePosition}`}
-            />
-          </span>
-          <span class="hero-person-card__body">
-            <small {...cmsAttrs(card.toneKey)}>{card.tone}</small>
-            <strong {...cmsAttrs(card.nameKey)}>{card.name}</strong>
-            <em {...cmsAttrs(card.roleKey)}>{card.role}</em>
-          </span>
-
-        </button>
-      ))}
-
-
-      <!-- Detail card (shown on hover/click) -->
-      <div class="hero-detail-stack" aria-live="polite">
-        {detailCards.map((detail) => (
-          <article
-            id={`hero-detail-${detail.id}`}
-            class:list={['hero-detail-card', { 'is-active': detail.id === 'eric' }]}
-            data-hero-detail-panel={detail.id}
-            aria-hidden={detail.id === 'eric' ? 'false' : 'true'}
+      <div class="hero-photo-frame">
+        {heroSlides.map((slide, index) => (
+          <div
+            class:list={['hero-slide', { 'is-active': index === 0 }]}
+            data-hero-slide={slide.id}
+            data-duration={slide.duration}
+            data-loaded={index === 0 ? 'true' : 'false'}
+            data-zoom={slide.zoom}
+            style={`--desktop-position:${slide.desktopPosition};--mobile-position:${slide.mobilePosition};--slide-duration:${slide.duration}ms`}
+            aria-hidden="true"
           >
-            <p {...cmsAttrs(detail.eyebrowKey)}>{detail.eyebrow}</p>
-            <h2 {...cmsAttrs(detail.titleKey)}>{detail.title}</h2>
-            <span {...cmsAttrs(detail.textKey)}>{detail.text}</span>
-            <div>
-              {detail.links.map((link) => <a href={link.href}><span {...cmsAttrs(link.key)}>{link.label}</span> <b aria-hidden="true">→</b></a>)}
-            </div>
-          </article>
+            <picture data-hero-picture>
+              {index === 0 ? (
+                <>
+                  <source type="image/avif" srcset={sourceSet(slide, 'avif')} sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px" />
+                  <source type="image/webp" srcset={sourceSet(slide, 'webp')} sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px" />
+                </>
+              ) : (
+                <>
+                  <source type="image/avif" data-srcset={sourceSet(slide, 'avif')} sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px" />
+                  <source type="image/webp" data-srcset={sourceSet(slide, 'webp')} sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px" />
+                </>
+              )}
+              <img
+                src={index === 0 ? fallbackSource(slide) : transparentPixel}
+                srcset={index === 0 ? sourceSet(slide, 'webp') : undefined}
+                data-src={index === 0 ? undefined : fallbackSource(slide)}
+                data-srcset={index === 0 ? undefined : sourceSet(slide, 'webp')}
+                sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px"
+                alt=""
+                width={slide.width}
+                height={slide.height}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                fetchpriority={index === 0 ? 'high' : 'low'}
+              />
+            </picture>
+          </div>
+        ))}
+        <div class="hero-photo-frame__wash" aria-hidden="true"></div>
+      </div>
+
+      <ul class="hero-features" aria-label="Les atouts The Porters">
+        {featureCards.map((card, index) => (
+          <li
+            class:list={['hero-feature', `hero-feature--${card.id}`]}
+            style={`--feature-delay:${360 + index * 90}ms;--float-duration:${7.4 + index * 0.7}s;--float-delay:${1.3 - index * 0.55}s`}
+            data-hero-feature={card.id}
+          >
+            <span class="hero-feature__surface">
+              <span class="hero-feature__icon" aria-hidden="true">
+                {card.id === 'contact' && (
+                  <svg viewBox="0 0 32 32">
+                    <circle cx="16" cy="10" r="5"></circle>
+                    <path d="M6.5 27c.6-6 4.1-9 9.5-9s8.9 3 9.5 9"></path>
+                    <path d="M4 13v6M28 13v6"></path>
+                  </svg>
+                )}
+                {card.id === 'missions' && (
+                  <svg viewBox="0 0 32 32">
+                    <path d="M16 3.5 26 7v8.2c0 6.4-4.1 10.9-10 13.3-5.9-2.4-10-6.9-10-13.3V7l10-3.5Z"></path>
+                    <path d="m11.2 15.8 3.1 3.1 6.7-7"></path>
+                  </svg>
+                )}
+                {card.id === 'status' && (
+                  <svg viewBox="0 0 32 32">
+                    <rect x="4" y="9" width="24" height="17" rx="3"></rect>
+                    <path d="M12 9V6.5h8V9M4 15.5c5.7 2.9 18.3 2.9 24 0M14 17h4"></path>
+                  </svg>
+                )}
+                {card.id === 'expertise' && (
+                  <svg viewBox="0 0 32 32">
+                    <path d="m16 3.5 3.6 7.3 8.1 1.2-5.9 5.7 1.4 8.1-7.2-3.9-7.2 3.9 1.4-8.1L4.3 12l8.1-1.2L16 3.5Z"></path>
+                  </svg>
+                )}
+              </span>
+              <span class="hero-feature__label" {...cmsAttrs(card.key)}>{card.label}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="hero-mobile-expertise">
+        <span class="hero-mobile-expertise__line" aria-hidden="true"></span>
+        <span class="hero-mobile-expertise__icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <path d="m16 3.5 3.6 7.3 8.1 1.2-5.9 5.7 1.4 8.1-7.2-3.9-7.2 3.9 1.4-8.1L4.3 12l8.1-1.2L16 3.5Z"></path>
+          </svg>
+        </span>
+        <span class="hero-mobile-expertise__label" {...cmsAttrs('home.hero.trust.it_expertise')}>
+          {cmsText('home.hero.trust.it_expertise')}
+        </span>
+        <span class="hero-mobile-expertise__line" aria-hidden="true"></span>
+      </div>
+
+      <div class="hero-slide-controls" role="group" aria-label="Choisir la photographie du hero">
+        {heroSlides.map((_, index) => (
+          <button
+            type="button"
+            class:list={['hero-slide-control', { 'is-active': index === 0 }]}
+            data-hero-control={index}
+            aria-label={`Afficher la photographie ${index + 1}`}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            <span aria-hidden="true"></span>
+          </button>
         ))}
       </div>
     </div>
@@ -154,94 +254,341 @@ const detailCards = [
 </section>
 
 <script>
-  const heroVisual = document.querySelector<HTMLElement>('[data-hero-visual]');
-  const heroControls = document.querySelectorAll<HTMLElement>('[data-hero-detail]');
-  const heroPanels = document.querySelectorAll<HTMLElement>('[data-hero-detail-panel]');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const heroControlIds = Array.from(heroControls)
-    .map((control) => control.dataset.heroDetail)
-    .filter((id): id is string => Boolean(id));
-  let activeHeroDetail = 'eric';
-  let heroAutoTimer: number | undefined;
-  let userHasInteracted = false;
+  const setupEditorialHero = (root: HTMLElement) => {
+    const media = root.querySelector<HTMLElement>('[data-hero-media]');
+    const slides = Array.from(root.querySelectorAll<HTMLElement>('[data-hero-slide]'));
+    const controls = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-hero-control]'));
+    const featureCards = Array.from(root.querySelectorAll<HTMLElement>('[data-hero-feature]'));
+    const orbitGraphic = root.querySelector<SVGSVGElement>('.hero-orbit');
+    const mobileQuery = window.matchMedia('(max-width: 900px)');
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const desktopOrder = slides.map((slide) => slide.dataset.heroSlide || '');
+    const mobileOrder = (root.dataset.mobileOrder || '').split(',').filter(Boolean);
+    let order = mobileQuery.matches ? mobileOrder : desktopOrder;
+    let activeSlideId = order[0];
+    let activePosition = 0;
+    let autoplayTimer: number | undefined;
+    let transitionTimer: number | undefined;
+    let pointerFrame: number | undefined;
+    let controlsPaused = false;
+    let destroyed = false;
+    let hoveredFeature: HTMLElement | null = null;
+    const featureAnimationByCard = new Map<HTMLElement, Animation>();
 
-  const setHeroDetail = (id: string, userInitiated = false) => {
-    activeHeroDetail = id;
-    if (userInitiated) {
-      userHasInteracted = true;
-      if (heroAutoTimer) window.clearInterval(heroAutoTimer);
-    }
+    type FeatureMotionSettings = {
+      duration: number;
+      delay: number;
+      points: Array<[number, number]>;
+    };
 
-    heroControls.forEach((control) => {
-      const active = control.dataset.heroDetail === id;
-      control.classList.toggle('is-active', active);
-      control.setAttribute('aria-expanded', String(active));
+    const featureMotion: Record<string, FeatureMotionSettings> = {
+      contact: {
+        duration: 13200,
+        delay: 2400,
+        points: [[0, 0], [18, -11], [32, 3], [19, 19], [-6, 12], [0, 0]],
+      },
+      missions: {
+        duration: 15700,
+        delay: 7100,
+        points: [[0, 0], [-9, -18], [9, -34], [30, -18], [22, 8], [0, 0]],
+      },
+      status: {
+        duration: 14600,
+        delay: 4600,
+        points: [[0, 0], [20, 4], [30, -13], [13, -28], [-8, -16], [0, 0]],
+      },
+      expertise: {
+        duration: 16900,
+        delay: 9200,
+        points: [[0, 0], [-19, 10], [-34, -7], [-15, -27], [12, -18], [0, 0]],
+      },
+    };
+
+    const stopFeatureMotion = () => {
+      featureAnimationByCard.forEach((animation) => animation.cancel());
+      featureAnimationByCard.clear();
+    };
+
+    const startFeatureMotion = () => {
+      stopFeatureMotion();
+      if (mobileQuery.matches || motionQuery.matches || document.visibilityState !== 'visible') return;
+
+      featureCards.forEach((card) => {
+        const id = card.dataset.heroFeature || '';
+        const settings = featureMotion[id];
+        if (!settings) return;
+        const keyframes = settings.points.map(([x, y], index) => ({
+          transform: `translate3d(${x}px, ${y}px, 0)`,
+          offset: index / (settings.points.length - 1),
+        }));
+        const animation = card.animate(keyframes, {
+          duration: settings.duration,
+          delay: -settings.delay,
+          iterations: Infinity,
+          easing: 'linear',
+        });
+        featureAnimationByCard.set(card, animation);
+      });
+    };
+
+    const setOrbitalAnimationState = (paused: boolean) => {
+      featureAnimationByCard.forEach((animation, card) => {
+        if (paused || card === hoveredFeature) animation.pause();
+        else animation.play();
+      });
+      if (paused) orbitGraphic?.pauseAnimations?.();
+      else orbitGraphic?.unpauseAnimations?.();
+    };
+
+    const resetPointerDepth = () => {
+      featureCards.forEach((card) => {
+        const surface = card.querySelector<HTMLElement>('.hero-feature__surface');
+        surface?.style.setProperty('--card-shift-x', '0px');
+        surface?.style.setProperty('--card-shift-y', '0px');
+      });
+      media?.style.setProperty('--photo-shift-x', '0px');
+      media?.style.setProperty('--photo-shift-y', '0px');
+      media?.style.setProperty('--orbit-shift-x', '0px');
+      media?.style.setProperty('--orbit-shift-y', '0px');
+    };
+
+    const pulseFeatures = () => {
+      if (motionQuery.matches) return;
+      featureCards.forEach((card, index) => {
+        const icon = card.querySelector<HTMLElement>('.hero-feature__icon');
+        icon?.animate(
+          [
+            { transform: 'scale(1)', color: 'var(--hero-navy)' },
+            { transform: 'scale(1.09)', color: '#956a18', offset: 0.45 },
+            { transform: 'scale(1)', color: 'var(--hero-navy)' },
+          ],
+          {
+            duration: 620,
+            delay: index * 55,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          },
+        );
+      });
+    };
+
+    const slideIndexForId = (id: string) => slides.findIndex((slide) => slide.dataset.heroSlide === id);
+    const slideForId = (id: string) => slides[slideIndexForId(id)];
+
+    const loadSlide = async (id: string) => {
+      const slide = slideForId(id);
+      if (!slide || slide.dataset.loaded === 'true') return;
+      const picture = slide.querySelector<HTMLPictureElement>('[data-hero-picture]');
+      const image = picture?.querySelector<HTMLImageElement>('img');
+      if (!picture || !image) return;
+
+      picture.querySelectorAll<HTMLSourceElement>('source[data-srcset]').forEach((source) => {
+        if (source.dataset.srcset) source.srcset = source.dataset.srcset;
+      });
+      if (image.dataset.srcset) image.srcset = image.dataset.srcset;
+      if (image.dataset.src) image.src = image.dataset.src;
+      slide.dataset.loaded = 'true';
+
+      try {
+        await image.decode();
+      } catch {
+        // The fallback stays in place if decoding fails; the next transition can retry naturally.
+      }
+    };
+
+    const syncControls = () => {
+      controls.forEach((control, index) => {
+        const active = index === activePosition;
+        control.classList.toggle('is-active', active);
+        control.setAttribute('aria-pressed', String(active));
+      });
+    };
+
+    const clearAutoplay = () => {
+      if (autoplayTimer) window.clearTimeout(autoplayTimer);
+      autoplayTimer = undefined;
+    };
+
+    const canAutoplay = () => (
+      !motionQuery.matches
+      && !controlsPaused
+      && document.visibilityState === 'visible'
+      && order.length > 1
+    );
+
+    const scheduleAutoplay = () => {
+      clearAutoplay();
+      if (!canAutoplay()) return;
+      const activeSlide = slideForId(activeSlideId);
+      const duration = Number(activeSlide?.dataset.duration || 8200);
+      autoplayTimer = window.setTimeout(() => {
+        void showPosition((activePosition + 1) % order.length);
+      }, duration);
+    };
+
+    const showPosition = async (position: number) => {
+      const normalizedPosition = (position + order.length) % order.length;
+      const nextId = order[normalizedPosition];
+      if (!nextId || nextId === activeSlideId || destroyed) {
+        scheduleAutoplay();
+        return;
+      }
+
+      clearAutoplay();
+      await loadSlide(nextId);
+      if (destroyed) return;
+
+      const previousSlide = slideForId(activeSlideId);
+      const nextSlide = slideForId(nextId);
+      if (!nextSlide) return;
+
+      if (transitionTimer) window.clearTimeout(transitionTimer);
+      nextSlide.classList.add('is-adjacent');
+      nextSlide.getBoundingClientRect();
+
+      previousSlide?.classList.remove('is-active');
+      previousSlide?.classList.add('is-adjacent');
+      nextSlide.classList.remove('is-adjacent');
+      nextSlide.classList.add('is-active');
+
+      activeSlideId = nextId;
+      activePosition = normalizedPosition;
+      root.dataset.activeSlide = nextId;
+      syncControls();
+      pulseFeatures();
+
+      transitionTimer = window.setTimeout(() => {
+        slides.forEach((slide) => {
+          if (slide !== nextSlide) slide.classList.remove('is-adjacent');
+        });
+      }, 1600);
+      scheduleAutoplay();
+    };
+
+    const hydrateDeferredSlides = () => {
+      order.slice(1).forEach((id, index) => {
+        window.setTimeout(() => void loadSlide(id), index * 180);
+      });
+    };
+
+    controls.forEach((control, index) => {
+      control.addEventListener('click', () => void showPosition(index));
+      control.addEventListener('pointerenter', () => {
+        controlsPaused = true;
+        clearAutoplay();
+      });
+      control.addEventListener('pointerleave', () => {
+        controlsPaused = false;
+        scheduleAutoplay();
+      });
+      control.addEventListener('focus', () => {
+        controlsPaused = true;
+        clearAutoplay();
+      });
+      control.addEventListener('blur', () => {
+        controlsPaused = false;
+        scheduleAutoplay();
+      });
     });
-    heroPanels.forEach((panel) => {
-      const active = panel.dataset.heroDetailPanel === id;
-      panel.classList.toggle('is-active', active);
-      panel.setAttribute('aria-hidden', String(!active));
+
+    featureCards.forEach((card) => {
+      card.addEventListener('pointerenter', () => {
+        hoveredFeature = card;
+        featureAnimationByCard.get(card)?.pause();
+      });
+      card.addEventListener('pointerleave', () => {
+        hoveredFeature = null;
+        if (!motionQuery.matches && document.visibilityState === 'visible') {
+          featureAnimationByCard.get(card)?.play();
+        }
+      });
     });
+
+    media?.addEventListener('pointermove', (event) => {
+      if (mobileQuery.matches || motionQuery.matches || pointerFrame) return;
+      pointerFrame = window.requestAnimationFrame(() => {
+        pointerFrame = undefined;
+        const rect = media.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+        const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+        const depths = [0.9, -0.62, 0.48, -0.76];
+
+        featureCards.forEach((card, index) => {
+          const surface = card.querySelector<HTMLElement>('.hero-feature__surface');
+          const depth = depths[index] || 0.5;
+          surface?.style.setProperty('--card-shift-x', `${(x * 7 * depth).toFixed(2)}px`);
+          surface?.style.setProperty('--card-shift-y', `${(y * 5 * depth).toFixed(2)}px`);
+        });
+
+        media.style.setProperty('--photo-shift-x', `${(x * 2.5).toFixed(2)}px`);
+        media.style.setProperty('--photo-shift-y', `${(y * 2).toFixed(2)}px`);
+        media.style.setProperty('--orbit-shift-x', `${(x * -4).toFixed(2)}px`);
+        media.style.setProperty('--orbit-shift-y', `${(y * -3).toFixed(2)}px`);
+      });
+    });
+
+    media?.addEventListener('pointerleave', resetPointerDepth);
+
+    const syncResponsiveOrder = () => {
+      order = mobileQuery.matches ? mobileOrder : desktopOrder;
+      activePosition = Math.max(0, order.indexOf(activeSlideId));
+      resetPointerDepth();
+      startFeatureMotion();
+      syncControls();
+      scheduleAutoplay();
+    };
+
+    const syncVisibility = () => {
+      const hidden = document.visibilityState !== 'visible';
+      media?.classList.toggle('is-paused', hidden);
+      setOrbitalAnimationState(hidden || motionQuery.matches);
+      if (hidden) clearAutoplay();
+      else {
+        if (featureAnimationByCard.size === 0) startFeatureMotion();
+        scheduleAutoplay();
+      }
+    };
+
+    const syncMotionPreference = () => {
+      media?.classList.toggle('is-reduced-motion', motionQuery.matches);
+      resetPointerDepth();
+      startFeatureMotion();
+      setOrbitalAnimationState(motionQuery.matches || document.visibilityState !== 'visible');
+      if (motionQuery.matches) clearAutoplay();
+      else scheduleAutoplay();
+    };
+
+    mobileQuery.addEventListener('change', syncResponsiveOrder);
+    motionQuery.addEventListener('change', syncMotionPreference);
+    document.addEventListener('visibilitychange', syncVisibility);
+    window.addEventListener('pagehide', () => {
+      destroyed = true;
+      clearAutoplay();
+      if (transitionTimer) window.clearTimeout(transitionTimer);
+      if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
+      stopFeatureMotion();
+    }, { once: true });
+
+    window.setTimeout(hydrateDeferredSlides, 900);
+    syncMotionPreference();
+    syncControls();
+    scheduleAutoplay();
   };
 
-  heroControls.forEach((control) => {
-    const id = control.dataset.heroDetail;
-    if (!id) return;
-    control.addEventListener('click', () => {
-      setHeroDetail(id, true);
-    });
-    control.addEventListener('focus', () => setHeroDetail(id, true));
-    control.addEventListener('keydown', (event) => {
-      if (!['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)) return;
-      event.preventDefault();
-      const currentIndex = heroControlIds.indexOf(activeHeroDetail);
-      const direction = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1;
-      const nextIndex = (currentIndex + direction + heroControlIds.length) % heroControlIds.length;
-      const nextControl = heroControls[nextIndex];
-      nextControl?.focus();
-      setHeroDetail(heroControlIds[nextIndex], true);
-    });
-    control.addEventListener('pointerenter', (event) => {
-      if (event.pointerType === 'mouse') setHeroDetail(id, true);
-    });
-  });
-
-  if (!reduceMotion && heroControlIds.length > 1) {
-    heroAutoTimer = window.setInterval(() => {
-      if (userHasInteracted) return;
-      const currentIndex = heroControlIds.indexOf(activeHeroDetail);
-      const nextIndex = (currentIndex + 1) % heroControlIds.length;
-      setHeroDetail(heroControlIds[nextIndex]);
-    }, 4200);
-  }
-
-  if (heroVisual && !reduceMotion) {
-    heroVisual.addEventListener('pointerdown', () => {
-      userHasInteracted = true;
-      if (heroAutoTimer) window.clearInterval(heroAutoTimer);
-    });
-    heroVisual.addEventListener('pointermove', (event) => {
-      const rect = heroVisual.getBoundingClientRect();
-      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 12;
-      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 8;
-      heroVisual.style.setProperty('--hero-shift-x', `${x.toFixed(2)}px`);
-      heroVisual.style.setProperty('--hero-shift-y', `${y.toFixed(2)}px`);
-    });
-    heroVisual.addEventListener('pointerleave', () => {
-      heroVisual.style.setProperty('--hero-shift-x', '0px');
-      heroVisual.style.setProperty('--hero-shift-y', '0px');
-    });
-  }
+  document.querySelectorAll<HTMLElement>('[data-hero-root]').forEach(setupEditorialHero);
 </script>
 
 <style>
-  /* ===== HERO SECTION ===== */
   .home-hero {
-    --hero-blue: #203440;
-    --hero-blue-deep: #10202b;
-    --hero-blue-soft: #2f6f73;
-    background: #f8f4ec;
-    overflow: hidden;
+    --hero-navy: #102b3a;
+    --hero-navy-deep: #082230;
+    --hero-gold: #c79838;
+    --hero-cream: #f8f4ed;
+    position: relative;
+    overflow: clip;
+    background:
+      radial-gradient(circle at 71% 42%, rgba(255, 255, 255, 0.92), transparent 29rem),
+      linear-gradient(110deg, #fbf8f3 0%, var(--hero-cream) 62%, #f1ede6 100%);
+    color: var(--hero-navy);
   }
 
   .home-hero,
@@ -251,59 +598,63 @@ const detailCards = [
     box-sizing: border-box;
   }
 
-  .hero-grid {
+  .hero-shell {
     display: grid;
-    min-height: clamp(38rem, calc(100vh - 5.35rem), 48rem);
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    width: min(100% - 3rem, 94rem);
+    min-height: clamp(42rem, calc(100svh - 5.75rem), 51rem);
+    grid-template-columns: minmax(0, 0.92fr) minmax(31rem, 1.08fr);
     align-items: center;
-    width: min(100% - 3rem, 84rem);
+    gap: clamp(0.5rem, 1.6vw, 1.5rem);
     margin-inline: auto;
   }
 
-  /* ===== LEFT COPY ===== */
   .hero-copy {
+    position: relative;
+    z-index: 6;
     display: flex;
     min-width: 0;
     flex-direction: column;
-    justify-content: center;
-    padding: 4.5rem 2rem 4.5rem 0;
+    align-items: flex-start;
+    padding: clamp(3.4rem, 6vh, 5.2rem) 1rem clamp(3.4rem, 6vh, 5.2rem) 0;
   }
 
   .hero-eyebrow {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    margin: 0 0 1.35rem;
-    color: #a98238;
-    font-size: 0.72rem;
-    font-weight: 780;
-    letter-spacing: 0.14em;
+    gap: 0.82rem;
+    margin: 0 0 1.45rem;
+    color: #aa7b23;
+    font-size: clamp(0.67rem, 0.72vw, 0.78rem);
+    font-weight: 760;
+    letter-spacing: 0.135em;
     line-height: 1.4;
     text-transform: uppercase;
   }
 
   .hero-eyebrow::before {
     width: 2rem;
-    height: 1px;
+    height: 1.5px;
+    flex: 0 0 auto;
     background: currentColor;
-    content: "";
+    content: '';
   }
 
-  h1 {
-    max-width: 13ch;
+  .hero-title {
+    max-width: 10.7ch;
     margin: 0;
-    color: #203440;
-    font-size: clamp(3.2rem, 4.8vw, 4.8rem);
-    font-weight: 620;
-    line-height: 0.96;
-    letter-spacing: -0.045em;
+    color: var(--hero-navy);
+    font-size: clamp(3.15rem, 4.25vw, 4.6rem);
+    font-weight: 650;
+    letter-spacing: -0.052em;
+    line-height: 0.97;
+    text-wrap: initial;
   }
 
   .hero-subhead {
-    max-width: 36rem;
-    margin: 1.4rem 0 0;
-    color: rgba(32, 52, 64, 0.62);
-    font-size: 1.02rem;
+    max-width: 38rem;
+    margin: 1.45rem 0 0;
+    color: rgba(16, 43, 58, 0.63);
+    font-size: clamp(0.96rem, 1.12vw, 1.08rem);
     line-height: 1.65;
   }
 
@@ -311,863 +662,823 @@ const detailCards = [
     display: flex;
     flex-wrap: wrap;
     gap: 0.72rem;
-    margin-top: 1.8rem;
+    margin-top: 1.75rem;
   }
 
   .hero-action {
     display: inline-flex;
-    translate: 0 0;
-    min-height: 3.1rem;
+    min-height: 3.35rem;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem;
+    gap: 0.75rem;
     border-radius: 999px;
-    padding: 0 1.25rem;
+    padding: 0.15rem 1.35rem;
+    color: var(--hero-navy);
     font-size: 0.82rem;
     font-weight: 760;
+    line-height: 1.2;
     transition:
       transform 240ms var(--ease-soft),
-      background 180ms ease,
       color 180ms ease,
+      background 180ms ease,
       border-color 180ms ease,
       box-shadow 240ms ease;
-    animation: hero-button-in 760ms var(--ease-soft) both, hero-soft-float 7.2s ease-in-out 1.8s infinite;
   }
 
-  .hero-action:nth-child(1) { animation-delay: 340ms, 1.8s; }
-  .hero-action:nth-child(2) { animation-delay: 420ms, 2.2s; }
-  .hero-action:nth-child(3) { animation-delay: 500ms, 2.6s; }
-
-  .hero-action > span[aria-hidden] { transition: transform 180ms var(--ease-soft); }
+  .hero-action__arrow {
+    font-size: 1.1rem;
+    line-height: 1;
+    transition: transform 200ms var(--ease-soft);
+  }
 
   .hero-action:hover,
-  .hero-action:focus-visible { transform: translateY(-2px); }
+  .hero-action:focus-visible {
+    transform: translateY(-2px);
+  }
 
-  .hero-action:hover > span[aria-hidden],
-  .hero-action:focus-visible > span[aria-hidden] { transform: translateX(3px); }
+  .hero-action:hover .hero-action__arrow,
+  .hero-action:focus-visible .hero-action__arrow {
+    transform: translateX(4px);
+  }
 
   .hero-action--primary {
-    background: var(--hero-blue);
+    border: 1px solid var(--hero-gold);
+    background: var(--hero-navy);
+    box-shadow: 0 16px 34px rgba(8, 34, 48, 0.18);
     color: #fff;
-    box-shadow: 0 14px 30px rgba(32, 52, 64, 0.14);
   }
 
   .hero-action--primary:hover,
   .hero-action--primary:focus-visible {
-    background: var(--hero-blue-deep);
+    background: var(--hero-navy-deep);
+    box-shadow: 0 20px 38px rgba(8, 34, 48, 0.24);
     color: #fff;
-    box-shadow: 0 18px 34px rgba(16, 32, 43, 0.2);
   }
 
   .hero-action--secondary {
-    border: 1px solid rgba(32, 52, 64, 0.22);
-    color: #203440;
+    border: 1px solid rgba(170, 123, 35, 0.52);
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .hero-action--secondary:hover,
   .hero-action--secondary:focus-visible {
-    border-color: rgba(32, 52, 64, 0.45);
-    background: #fff;
+    border-color: rgba(170, 123, 35, 0.9);
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--hero-navy);
   }
 
-  .hero-action--quiet { color: rgba(32, 52, 64, 0.62); }
-  .hero-action--quiet:hover,
-  .hero-action--quiet:focus-visible { color: #203440; }
-
-  .hero-trust {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.72rem 1.2rem;
-    margin: 1.6rem 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .hero-trust li {
-    display: flex;
-    align-items: center;
-    gap: 0.48rem;
-    color: rgba(32, 52, 64, 0.62);
-    font-size: 0.72rem;
-    font-weight: 680;
-    opacity: 0;
-    animation: hero-pill-in 620ms var(--ease-soft) both;
-  }
-
-  .hero-trust li:nth-child(1) { animation-delay: 520ms; }
-  .hero-trust li:nth-child(2) { animation-delay: 590ms; }
-  .hero-trust li:nth-child(3) { animation-delay: 660ms; }
-
-  .hero-trust li::before {
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 50%;
-    background: #2f6f73;
-    content: "";
-  }
-
-  /* ===== RIGHT VISUAL ===== */
-  .hero-visual {
-    --hero-shift-x: 0px;
-    --hero-shift-y: 0px;
+  .hero-action--tertiary {
     position: relative;
-    min-height: clamp(39rem, 48vw, 43rem);
-    padding: 2rem 0;
+    min-height: 2.6rem;
+    justify-content: flex-start;
+    border-radius: 0;
+    padding: 0.15rem 0;
+    color: rgba(16, 43, 58, 0.78);
+  }
+
+  .hero-action--tertiary::after {
+    position: absolute;
+    right: 2rem;
+    bottom: 0.25rem;
+    left: 0;
+    height: 1px;
+    background: rgba(199, 152, 56, 0.55);
+    content: '';
+    transition: right 220ms var(--ease-soft), background 180ms ease;
+  }
+
+  .hero-action--tertiary:hover,
+  .hero-action--tertiary:focus-visible {
+    color: var(--hero-navy);
+  }
+
+  .hero-action--tertiary:hover::after,
+  .hero-action--tertiary:focus-visible::after {
+    right: 0;
+    background: var(--hero-gold);
+  }
+
+  .hero-media {
+    position: relative;
+    min-width: 0;
+    height: clamp(40rem, calc(100svh - 7rem), 48rem);
+    min-height: 40rem;
+    max-height: 48rem;
     isolation: isolate;
   }
 
-  .hero-blob {
+  .hero-media__halo {
     position: absolute;
-    top: -3.5rem;
-    right: -7rem;
-    width: min(44rem, 58vw);
-    height: min(44rem, 58vw);
-    border-radius: 44% 56% 60% 40% / 50% 45% 55% 50%;
-    background:
-      radial-gradient(circle at 62% 34%, rgba(255, 255, 255, 0.26) 0 12%, transparent 34%),
-      radial-gradient(circle at 26% 72%, rgba(47, 111, 115, 0.34) 0 18%, transparent 44%),
-      linear-gradient(145deg, rgba(16, 32, 43, 0.76) 0%, rgba(32, 52, 64, 0.62) 42%, rgba(47, 111, 115, 0.42) 72%, rgba(248, 244, 236, 0) 100%);
-    box-shadow:
-      inset 0 0 100px rgba(255, 255, 255, 0.2),
-      0 34px 95px rgba(16, 32, 43, 0.22);
-    animation: hero-blob 14s ease-in-out infinite;
-    pointer-events: none;
-  }
-
-  .hero-connector {
-    position: absolute;
-    top: 5rem;
-    width: 1.5px;
-    height: 5.5rem;
-    background-image: linear-gradient(rgba(32, 52, 64, 0.72) 55%, transparent 0%);
-    background-size: 1.5px 8px;
-    background-repeat: repeat-y;
-    transform-origin: top center;
-    opacity: 0.35;
-    pointer-events: none;
-  }
-
-  .c-mid { right: 46%; }
-  .c-left { right: 70%; transform: rotate(-18deg); }
-  .c-right { right: 22%; transform: rotate(18deg); }
-
-  /* ===== PERSON CARDS (Stacked like mockup) ===== */
-  .hero-person-card {
-    position: absolute;
-    z-index: 4;
-    display: grid;
-    width: clamp(11.2rem, 14vw, 13.4rem);
-    gap: 0.55rem;
-    padding: 0.6rem;
-    border: 1px solid rgba(32, 52, 64, 0.12);
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 18px 42px -14px rgba(32, 52, 64, 0.22);
-    color: #203440;
-    cursor: pointer;
-    overflow: hidden;
-    text-align: left;
-    font: inherit;
-    transition:
-      transform 280ms var(--ease-soft),
-      border-color 180ms ease,
-      box-shadow 260ms ease;
-    transform: translate3d(var(--hero-shift-x), var(--hero-shift-y), 0);
-    animation: hero-rise 650ms ease both;
-  }
-
-  .hero-person-card::after {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(120deg, transparent 18%, rgba(255, 255, 255, 0.42) 45%, transparent 68%);
-    content: "";
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-120%);
-    transition: opacity 180ms ease, transform 520ms var(--ease-soft);
-  }
-
-  .hero-person-card--eric {
-    top: 14%;
-    left: 33%;
-    z-index: 6;
-    width: clamp(12.6rem, 16vw, 14.5rem);
-    box-shadow: 0 28px 55px -18px rgba(32, 52, 64, 0.32);
-    animation: hero-rise 650ms ease both, hero-float 6s ease-in-out 1.2s infinite;
-  }
-
-  .hero-person-card--ambre {
-    top: 31%;
+    z-index: -2;
+    top: 9%;
     left: 3%;
-    transform: rotate(-7deg) translate3d(var(--hero-shift-x), var(--hero-shift-y), 0);
-    animation: hero-rise 650ms ease 400ms both, hero-float 7s ease-in-out 1.8s infinite;
+    width: 84%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 58% 42%, rgba(255, 255, 255, 0.92) 0 25%, rgba(219, 217, 211, 0.42) 58%, rgba(219, 217, 211, 0) 74%);
+    filter: blur(0.2px);
   }
 
-  .hero-person-card--lisa {
-    top: 29%;
-    right: 1%;
-    transform: rotate(7deg) translate3d(var(--hero-shift-x), var(--hero-shift-y), 0);
-    animation: hero-rise 650ms ease 550ms both, hero-float 8s ease-in-out 2.2s infinite;
-  }
-
-  .hero-person-card:hover,
-  .hero-person-card:focus-visible,
-  .hero-person-card.is-active {
-    border-color: rgba(32, 52, 64, 0.35);
-    box-shadow: 0 26px 58px -16px rgba(4, 16, 24, 0.32), 0 0 0 3px rgba(32, 52, 64, 0.08);
-    transform: translateY(-8px) scale(1.03);
-    animation-play-state: paused;
-  }
-
-  .hero-person-card:hover::after,
-  .hero-person-card:focus-visible::after,
-  .hero-person-card.is-active::after {
-    opacity: 1;
-    transform: translateX(120%);
-  }
-
-  .hero-person-card--ambre:hover,
-  .hero-person-card--ambre.is-active {
-    transform: rotate(-3deg) translateY(-8px) scale(1.03);
-  }
-
-  .hero-person-card--lisa:hover,
-  .hero-person-card--lisa.is-active {
-    transform: rotate(3deg) translateY(-8px) scale(1.03);
-  }
-
-  .hero-person-card__portrait {
-    position: relative;
-    display: block;
-    aspect-ratio: 1 / 0.82;
+  .hero-photo-frame {
+    position: absolute;
+    z-index: 1;
+    top: 4.5%;
+    right: 2.5%;
+    width: 76%;
+    height: 91%;
     overflow: hidden;
-    border-radius: 13px;
-    background: linear-gradient(145deg, #e7dcc4, #f8f4ec);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 45% 45% 36% 38% / 24% 24% 18% 20%;
+    background: #e7e4de;
+    box-shadow:
+      0 34px 78px rgba(30, 44, 51, 0.15),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.26);
+    transform: translate3d(var(--photo-shift-x, 0px), var(--photo-shift-y, 0px), 0);
+    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .hero-person-card__portrait img {
+  .hero-photo-frame__wash {
     position: absolute;
     inset: 0;
+    z-index: 4;
+    background:
+      linear-gradient(90deg, rgba(248, 244, 237, 0.14), transparent 24%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 35%, rgba(16, 43, 58, 0.04));
+    pointer-events: none;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1450ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 1500ms;
+  }
+
+  .hero-slide.is-adjacent,
+  .hero-slide.is-active {
+    visibility: visible;
+    transition: opacity 1450ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
+  }
+
+  .hero-slide.is-adjacent {
+    z-index: 1;
+  }
+
+  .hero-slide.is-active {
+    z-index: 2;
+    opacity: 1;
+  }
+
+  .hero-slide picture,
+  .hero-slide img {
+    display: block;
     width: 100%;
     height: 100%;
+  }
+
+  .hero-slide img {
     object-fit: cover;
-    transition: transform 520ms var(--ease-soft), filter 360ms ease;
+    object-position: var(--desktop-position);
+    transform: scale(1.015);
+    will-change: transform;
   }
 
-  .hero-person-card:hover .hero-person-card__portrait img,
-  .hero-person-card:focus-visible .hero-person-card__portrait img,
-  .hero-person-card.is-active .hero-person-card__portrait img {
-    filter: saturate(1.04) contrast(1.03);
-    transform: scale(1.045);
+  .hero-slide.is-active[data-zoom='in'] img {
+    animation: hero-zoom-in var(--slide-duration) cubic-bezier(0.2, 0.5, 0.3, 1) both;
   }
 
-  .hero-person-card__body { display: grid; min-width: 0; padding: 0 0.15rem 0.15rem; }
-
-  .hero-person-card small {
-    color: #a98238;
-    font-size: 0.56rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+  .hero-slide.is-active[data-zoom='out'] img {
+    animation: hero-zoom-out var(--slide-duration) cubic-bezier(0.2, 0.5, 0.3, 1) both;
   }
 
-  .hero-person-card strong {
-    margin-top: 0.18rem;
-    color: #203440;
-    font-size: 0.86rem;
-    line-height: 1.12;
+  .hero-orbit {
+    position: absolute;
+    z-index: 2;
+    inset: 5% -3% 2% -4%;
+    width: 107%;
+    height: 93%;
+    overflow: visible;
+    fill: none;
+    pointer-events: none;
+    transform: translate3d(var(--orbit-shift-x, 0px), var(--orbit-shift-y, 0px), 0);
+    transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  .hero-person-card em {
-    margin-top: 0.15rem;
-    color: rgba(32, 52, 64, 0.55);
-    font-size: 0.66rem;
-    font-style: normal;
+  .hero-orbit path {
+    stroke: rgba(199, 152, 56, 0.5);
+    stroke-width: 1.15;
+  }
+
+  .hero-orbit__node {
+    fill: #fffaf0;
+    stroke: rgba(199, 152, 56, 0.74);
+    stroke-width: 2;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: hero-node-pulse 4.8s ease-in-out infinite;
+  }
+
+  .hero-orbit__node--two { animation-delay: -1.8s; }
+  .hero-orbit__node--three { animation-delay: -3.1s; }
+
+  .hero-orbit__particle {
+    fill: #c79838;
+    stroke: rgba(255, 253, 249, 0.92);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 5px rgba(199, 152, 56, 0.58));
+  }
+
+  .hero-orbit__particle--two {
+    fill: #fffaf0;
+    stroke: rgba(199, 152, 56, 0.82);
+  }
+
+  .hero-features {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    pointer-events: none;
+  }
+
+  .hero-feature {
+    position: absolute;
+    width: clamp(11.5rem, 15vw, 14rem);
+    color: var(--hero-navy);
+    pointer-events: auto;
+    will-change: transform;
+  }
+
+  .hero-feature__surface {
+    --card-shift-x: 0px;
+    --card-shift-y: 0px;
+    --card-lift: 0px;
+    display: flex;
+    width: 100%;
+    min-height: 5rem;
+    align-items: center;
+    gap: 0.88rem;
+    border: 1px solid rgba(190, 158, 88, 0.26);
+    border-radius: 1.1rem;
+    padding: 0.85rem 1rem;
+    background: rgba(255, 253, 249, 0.93);
+    box-shadow: 0 18px 38px rgba(19, 39, 50, 0.13);
+    backdrop-filter: blur(12px);
+    transform: translate3d(var(--card-shift-x), var(--card-shift-y), 0) translateY(var(--card-lift));
+    transition:
+      transform 180ms var(--ease-soft),
+      border-color 180ms ease,
+      box-shadow 240ms ease,
+      background 180ms ease;
+    animation: hero-feature-surface-enter 680ms var(--ease-soft) var(--feature-delay) backwards;
+  }
+
+  .hero-feature:hover .hero-feature__surface {
+    --card-lift: -4px;
+    border-color: rgba(190, 158, 88, 0.54);
+    background: rgba(255, 254, 251, 0.98);
+    box-shadow: 0 23px 44px rgba(19, 39, 50, 0.17);
+  }
+
+  .hero-feature__icon {
+    display: grid;
+    width: 2.65rem;
+    height: 2.65rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 0.8rem;
+    background: rgba(190, 158, 88, 0.09);
+    color: var(--hero-navy);
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .hero-feature:hover .hero-feature__icon {
+    background: rgba(190, 158, 88, 0.16);
+    color: #956a18;
+  }
+
+  .hero-feature__icon svg {
+    width: 1.8rem;
+    height: 1.8rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.6;
+  }
+
+  .hero-feature__label {
+    max-width: 8.2rem;
+    font-size: 0.85rem;
+    font-weight: 720;
     line-height: 1.25;
   }
 
-  /* ===== WIDGET CARDS ===== */
-  .hero-widget {
+  .hero-feature--contact {
+    top: 13%;
+    left: 0;
+  }
+
+  .hero-feature--missions {
+    bottom: 24%;
+    left: -2%;
+  }
+
+  .hero-feature--status {
+    right: 31%;
+    bottom: 4%;
+  }
+
+  .hero-feature--expertise {
+    right: -1.5%;
+    bottom: 22%;
+  }
+
+  .hero-slide-controls {
     position: absolute;
-    z-index: 5;
-    display: grid;
-    gap: 0.45rem;
-    background: rgba(255, 255, 255, 0.96);
-    border-radius: 16px;
-    padding: 0.9rem 1rem;
-    border: 1px solid rgba(32, 52, 64, 0.08);
-    box-shadow: 0 14px 34px -12px rgba(32, 52, 64, 0.22);
-    color: #203440;
-    cursor: pointer;
-    font: inherit;
-    overflow: hidden;
-    text-align: left;
-    text-decoration: none;
-    transform: translate3d(var(--hero-shift-x), var(--hero-shift-y), 0);
-    transition:
-      transform 260ms var(--ease-soft),
-      border-color 180ms ease,
-      box-shadow 240ms ease,
-      background 180ms ease,
-      color 180ms ease;
-    animation: hero-rise 650ms ease both;
-  }
-
-  .hero-widget::before {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(135deg, rgba(32, 52, 64, 0.1), transparent 42%),
-      linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.54) 46%, transparent 72%);
-    content: "";
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-110%);
-    transition: opacity 180ms ease, transform 520ms var(--ease-soft);
-  }
-
-  .hero-widget:hover,
-  .hero-widget:focus-visible,
-  .hero-widget.is-active {
-    border-color: rgba(32, 52, 64, 0.42);
-    background: #fff;
-    box-shadow: 0 22px 46px -14px rgba(4, 16, 24, 0.28), 0 0 0 3px rgba(32, 52, 64, 0.08);
-    transform: translateY(-6px);
-    animation-play-state: paused;
-  }
-
-  .hero-widget:hover::before,
-  .hero-widget:focus-visible::before,
-  .hero-widget.is-active::before {
-    opacity: 1;
-    transform: translateX(110%);
-  }
-
-  .hero-widget-label {
-    font-size: 0.66rem;
-    font-weight: 700;
-    color: rgba(32, 52, 64, 0.52);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    display: flex;
-    align-items: center;
-    gap: 0.38rem;
-  }
-
-  .hero-widget-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--hero-blue-soft);
-    display: inline-block;
-    box-shadow: 0 0 0 4px rgba(47, 111, 115, 0.1);
-  }
-
-  .hero-widget--facturation {
-    bottom: 9%;
-    left: 5%;
-    width: 12rem;
-    animation: hero-rise 650ms ease 700ms both, hero-float 9s ease-in-out 2.5s infinite;
-  }
-
-  .hero-widget--contrat {
-    top: 8%;
-    right: 2%;
-    width: 14rem;
-    animation: hero-rise 650ms ease 850ms both, hero-float 7.5s ease-in-out 1.5s infinite;
-  }
-
-  .hero-widget-bars {
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    height: 2rem;
-  }
-
-  .hero-widget-bars span {
-    flex: 1;
-    background: rgba(216, 187, 112, 0.25);
-    border-radius: 2px;
-  }
-
-  .hero-widget-bars span.hi { background: #be9e58; }
-
-  .hero-widget > span {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-widget-simulator {
-    display: grid;
-    gap: 0.38rem;
-  }
-
-  .hero-widget-slider {
-    position: relative;
-    display: block;
-    height: 0.46rem;
-    overflow: hidden;
-    border-radius: 999px;
-    background: rgba(32, 52, 64, 0.11);
-  }
-
-  .hero-widget-slider span {
-    display: block;
-    width: 68%;
-    height: 100%;
-    border-radius: inherit;
-    background: linear-gradient(90deg, var(--hero-blue), var(--hero-blue-soft));
-  }
-
-  .hero-widget-slider::after {
-    position: absolute;
-    top: 50%;
-    left: 65%;
-    width: 0.76rem;
-    height: 0.76rem;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    background: var(--hero-blue);
-    box-shadow: 0 5px 12px rgba(16, 32, 43, 0.22);
-    content: "";
-    transform: translate(-50%, -50%);
-    animation: hero-slider-pulse 2.8s ease-in-out infinite;
-  }
-
-  .hero-widget-kpis {
-    display: flex;
-    justify-content: space-between;
-    gap: 0.45rem;
-  }
-
-  .hero-widget-kpis span {
-    display: grid;
-    min-width: 0;
-    color: rgba(32, 52, 64, 0.48);
-    font-size: 0.55rem;
-    font-weight: 760;
-    letter-spacing: 0.04em;
-    line-height: 1.15;
-    text-transform: uppercase;
-  }
-
-  .hero-widget-kpis strong {
-    color: var(--hero-blue);
-    font-size: 0.78rem;
-    letter-spacing: 0;
-    line-height: 1.2;
-    text-transform: none;
-  }
-
-  .hero-widget-timeline {
-    position: relative;
-    display: grid;
-    height: 1.25rem;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: center;
-  }
-
-  .hero-widget-timeline::before {
-    position: absolute;
-    right: 0.2rem;
-    left: 0.2rem;
-    height: 0.26rem;
-    border-radius: 999px;
-    background: rgba(32, 52, 64, 0.11);
-    content: "";
-  }
-
-  .hero-widget-timeline span {
-    position: relative;
-    z-index: 1;
-    width: 0.74rem;
-    height: 0.74rem;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    background: var(--hero-blue);
-    box-shadow: 0 5px 14px rgba(32, 52, 64, 0.2);
-  }
-
-  .hero-widget-timeline span:nth-child(2) {
-    justify-self: center;
-    background: var(--hero-blue-soft);
-  }
-
-  .hero-widget-timeline span:nth-child(3) {
-    justify-self: end;
-    background: #be9e58;
-    animation: hero-story-pulse 2.8s ease-in-out infinite;
-  }
-
-  .hero-widget-progress {
-    display: block;
-    height: 5px;
-    background: rgba(216, 187, 112, 0.2);
-    border-radius: 999px;
-    overflow: hidden;
-    margin-bottom: 0.35rem;
-  }
-
-  .hero-widget-progress-fill {
-    display: block;
-    height: 100%;
-    background: #be9e58;
-    border-radius: 999px;
-  }
-
-  .hero-widget .hero-widget-legend {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.6rem;
-    color: rgba(32, 52, 64, 0.42);
-    gap: 0.75rem;
-  }
-
-  .hero-widget-action {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.28rem;
-    color: #203440;
-    font-size: 0.62rem;
-    font-weight: 780;
-    line-height: 1.1;
-  }
-
-  .hero-widget-action b {
-    transition: transform 180ms var(--ease-soft);
-  }
-
-  .hero-widget:hover .hero-widget-action b,
-  .hero-widget:focus-visible .hero-widget-action b,
-  .hero-widget.is-active .hero-widget-action b {
-    transform: translateX(3px);
-  }
-
-  /* ===== DETAIL CARD ===== */
-  .hero-detail-stack {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .hero-detail-card {
-    position: absolute;
-    right: 7%;
-    bottom: 5%;
     z-index: 7;
-    display: grid;
-    width: min(22rem, 46%);
-    gap: 0.55rem;
-    padding: 1.25rem;
-    overflow: hidden;
-    border: 1px solid rgba(32, 52, 64, 0.16);
-    border-radius: 20px;
-    background:
-      linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(248, 245, 238, 0.96)),
-      radial-gradient(circle at 100% 0%, rgba(47, 111, 115, 0.14), transparent 42%);
-    box-shadow: 0 24px 54px rgba(32, 52, 64, 0.16);
-    backdrop-filter: blur(14px);
-    color: #203440;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translate3d(0, 12px, 0) scale(0.985);
-    transform-origin: 78% 18%;
-    transition:
-      opacity 180ms ease,
-      visibility 180ms ease,
-      transform 240ms var(--ease-soft);
-  }
-
-  .hero-detail-card::before {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 4px;
-    background: linear-gradient(180deg, var(--hero-blue), var(--hero-blue-soft), #be9e58);
-    content: "";
-    opacity: 0.9;
-  }
-
-  .hero-detail-card::after {
-    position: absolute;
-    top: -35%;
-    right: -20%;
-    width: 12rem;
-    height: 12rem;
-    border-radius: 50%;
-    background: rgba(32, 52, 64, 0.07);
-    content: "";
-    pointer-events: none;
-  }
-
-  .hero-detail-card.is-active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translate3d(0, 0, 0) scale(1);
-    animation: hero-detail-pop 420ms var(--ease-soft) both;
-  }
-
-  .hero-detail-card.is-active:hover,
-  .hero-detail-card.is-active:focus-within {
-    transform: translate3d(0, -4px, 0) scale(1.01);
-    box-shadow: 0 30px 62px rgba(32, 52, 64, 0.2);
-  }
-
-  .hero-detail-card p {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    color: #a98238;
-    font-size: 0.56rem;
-    font-weight: 820;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .hero-detail-card h2 {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    color: #203440;
-    font-size: 1.15rem;
-    line-height: 1.08;
-  }
-
-  .hero-detail-card > span {
-    position: relative;
-    z-index: 1;
-    color: rgba(32, 52, 64, 0.6);
-    font-size: 0.76rem;
-    line-height: 1.55;
-  }
-
-  .hero-detail-card div {
-    position: relative;
-    z-index: 1;
+    right: 6.5%;
+    bottom: 1.7%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.15rem;
-  }
-
-  .hero-detail-card a {
-    display: inline-flex;
-    min-height: 2.2rem;
+    min-height: 2.75rem;
     align-items: center;
     gap: 0.35rem;
-    border: 1px solid rgba(32, 52, 64, 0.12);
     border-radius: 999px;
-    padding: 0 0.7rem;
-    background: rgba(255, 255, 255, 0.46);
-    color: #203440;
-    font-size: 0.66rem;
-    font-weight: 760;
-    transition:
-      border-color 180ms ease,
-      background 180ms ease,
-      transform 200ms var(--ease-soft),
-      box-shadow 200ms ease;
+    padding: 0.45rem 0.55rem;
+    background: rgba(255, 253, 249, 0.8);
+    box-shadow: 0 10px 25px rgba(19, 39, 50, 0.08);
+    backdrop-filter: blur(9px);
   }
 
-  .hero-detail-card a b {
-    transition: transform 180ms var(--ease-soft);
+  .hero-slide-control {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
   }
 
-  .hero-detail-card a:hover,
-  .hero-detail-card a:focus-visible {
-    border-color: rgba(32, 52, 64, 0.28);
-    background: #fff;
-    box-shadow: 0 12px 22px rgba(32, 52, 64, 0.1);
-    transform: translateY(-2px);
+  .hero-slide-control span {
+    display: block;
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: rgba(16, 43, 58, 0.3);
+    transition: width 220ms var(--ease-soft), background 180ms ease;
   }
 
-  .hero-detail-card a:hover b,
-  .hero-detail-card a:focus-visible b {
-    transform: translateX(3px);
+  .hero-slide-control:hover span,
+  .hero-slide-control:focus-visible span {
+    background: rgba(16, 43, 58, 0.62);
   }
 
-  /* ===== ANIMATIONS ===== */
+  .hero-slide-control.is-active span {
+    width: 1.1rem;
+    border-radius: 999px;
+    background: var(--hero-gold);
+  }
+
+  .hero-mobile-expertise {
+    display: none;
+  }
+
   .hero-enter {
     opacity: 0;
-    transform: translate3d(0, 22px, 0) scale(0.985);
-    filter: blur(8px);
-    animation: hero-enter 760ms var(--ease-soft) both;
+    animation: hero-enter 720ms var(--ease-soft) both;
   }
 
-  .hero-enter-1 { animation-delay: 60ms; }
-  .hero-enter-2 { animation-delay: 140ms; }
-  .hero-enter-3 { animation-delay: 220ms; }
-  .hero-enter-4 { animation-delay: 300ms; }
-  .hero-enter-5 { animation-delay: 380ms; }
-  .hero-enter-6 { animation-delay: 120ms; }
+  .hero-enter--eyebrow { animation-delay: 40ms; }
+  .hero-enter--title { animation-delay: 110ms; }
+  .hero-enter--copy { animation-delay: 200ms; }
+  .hero-enter--actions { animation-delay: 280ms; }
+  .hero-enter--media {
+    animation-name: hero-media-enter;
+    animation-delay: 170ms;
+    animation-duration: 820ms;
+  }
+
+  .hero-media.is-paused .hero-slide img,
+  .hero-media.is-paused .hero-feature,
+  .hero-media.is-paused .hero-feature__surface,
+  .hero-media.is-paused .hero-orbit__node {
+    animation-play-state: paused !important;
+  }
 
   @keyframes hero-enter {
-    to { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes hero-button-in {
-    from { opacity: 0; filter: blur(7px); scale: 0.96; translate: 0 14px; }
-    to { opacity: 1; filter: blur(0); scale: 1; translate: 0 0; }
+  @keyframes hero-media-enter {
+    from { opacity: 0; transform: translateY(10px) scale(0.975); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  @keyframes hero-pill-in {
-    from { opacity: 0; filter: blur(6px); translate: 0 10px; }
-    to { opacity: 1; filter: blur(0); translate: 0 0; }
+  @keyframes hero-feature-surface-enter {
+    from { opacity: 0; filter: blur(3px); }
+    to { opacity: 1; filter: blur(0); }
   }
 
-  @keyframes hero-soft-float {
+  @keyframes hero-feature-float {
     0%, 100% { translate: 0 0; }
-    50% { translate: 0 -3px; }
+    50% { translate: 0 -6px; }
   }
 
-  @keyframes hero-blob {
-    0%, 100% { border-radius: 44% 56% 60% 40% / 50% 45% 55% 50%; transform: rotate(0deg) scale(1); }
-    50% { border-radius: 55% 45% 46% 54% / 44% 52% 48% 56%; transform: rotate(6deg) scale(1.02); }
+  @keyframes hero-node-pulse {
+    0%, 100% { opacity: 0.58; transform: scale(0.86); }
+    50% { opacity: 1; transform: scale(1.18); }
   }
 
-  @keyframes hero-rise {
-    from { opacity: 0; filter: blur(9px); scale: 0.95; }
-    to { opacity: 1; filter: blur(0); scale: 1; }
+  @keyframes hero-zoom-in {
+    from { transform: scale(1.015); }
+    to { transform: scale(1.06); }
   }
 
-  @keyframes hero-float {
-    0%, 100% { translate: 0 0; }
-    50% { translate: 0 -8px; }
+  @keyframes hero-zoom-out {
+    from { transform: scale(1.06); }
+    to { transform: scale(1.018); }
   }
 
-  @keyframes hero-slider-pulse {
-    0%, 100% { box-shadow: 0 5px 12px rgba(16, 32, 43, 0.22), 0 0 0 0 rgba(47, 111, 115, 0.18); }
-    50% { box-shadow: 0 5px 12px rgba(16, 32, 43, 0.22), 0 0 0 8px rgba(47, 111, 115, 0); }
-  }
-
-  @keyframes hero-story-pulse {
-    0%, 100% { box-shadow: 0 5px 14px rgba(32, 52, 64, 0.2), 0 0 0 0 rgba(190, 158, 88, 0.18); }
-    50% { box-shadow: 0 5px 14px rgba(32, 52, 64, 0.2), 0 0 0 8px rgba(190, 158, 88, 0); }
-  }
-
-  @keyframes hero-detail-pop {
-    from { opacity: 0; filter: blur(10px); transform: translate3d(0, 16px, 0) scale(0.96); }
-    to { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
-  }
-
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 1100px) {
-    .hero-grid {
-      grid-template-columns: 1fr;
-      min-height: auto;
-      width: 100%;
+  @media (min-width: 1440px) {
+    .hero-shell {
+      grid-template-columns: minmax(0, 0.9fr) minmax(38rem, 1.1fr);
     }
 
     .hero-copy {
-      width: min(100% - 2.5rem, 44rem);
-      max-width: none;
-      margin-inline: auto;
-      padding: 4.5rem 0 2.5rem;
-    }
-
-    h1 { max-width: 14ch; font-size: 3.2rem; }
-
-    .hero-visual {
-      min-height: auto;
-      padding: 0 max(1.25rem, 5vw) 3rem;
-      background: linear-gradient(180deg, #f4efe4 0%, #10202b 0.1%, #203440 100%);
-    }
-
-    .hero-blob,
-    .hero-connector { display: none; }
-
-    .hero-visual {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-
-    .hero-person-card,
-    .hero-person-card--eric,
-    .hero-person-card--ambre,
-    .hero-person-card--lisa,
-    .hero-widget,
-    .hero-widget--facturation,
-    .hero-widget--contrat {
-      position: relative;
-      top: auto;
-      left: auto;
-      right: auto;
-      bottom: auto;
-      flex: 0 0 min(82vw, 17rem);
-      width: auto;
-      transform: none;
-    }
-
-    .hero-person-card:hover,
-    .hero-person-card.is-active,
-    .hero-widget:hover,
-    .hero-widget.is-active {
-      transform: translateY(-4px);
-    }
-
-    .hero-detail-stack {
-      position: relative;
-      inset: auto;
-      order: 10;
-      width: 100%;
-      min-height: 13rem;
-    }
-
-    .hero-detail-card {
-      position: absolute;
-      inset: 0;
-      width: 100%;
+      padding-left: 0.75rem;
     }
   }
 
-  @media (max-width: 640px) {
-    .hero-copy {
-      width: min(100% - 2rem, 34rem);
+  @media (max-width: 1180px) and (min-width: 901px) {
+    .hero-shell {
+      width: min(100% - 2.25rem, 94rem);
+      min-height: 42rem;
+      grid-template-columns: minmax(0, 0.95fr) minmax(29rem, 1.05fr);
+    }
+
+    .hero-title {
+      font-size: clamp(2.9rem, 4.3vw, 3.7rem);
+    }
+
+    .hero-subhead {
+      font-size: 0.93rem;
+    }
+
+    .hero-media {
+      height: 41rem;
+      min-height: 41rem;
+    }
+
+    .hero-feature {
+      width: 11.2rem;
+    }
+
+    .hero-feature__surface {
+      min-height: 4.55rem;
+      padding: 0.72rem 0.82rem;
+    }
+
+    .hero-feature__icon {
+      width: 2.35rem;
+      height: 2.35rem;
+    }
+
+    .hero-feature__label {
+      font-size: 0.76rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .home-hero {
+      background:
+        radial-gradient(circle at 48% 76%, rgba(255, 255, 255, 0.94), transparent 19rem),
+        linear-gradient(150deg, #fbf8f3, #f5f0e8 68%, #eeeae4);
+    }
+
+    .hero-shell {
+      display: block;
+      width: min(100% - 2rem, 44rem);
+      min-height: 0;
       padding: 3rem 0 2.2rem;
     }
 
-    h1 { max-width: 100%; font-size: 2.65rem; line-height: 1.02; }
+    .hero-copy {
+      align-items: stretch;
+      padding: 0;
+    }
 
-    .hero-subhead { font-size: 0.94rem; line-height: 1.6; }
+    .hero-eyebrow {
+      margin-bottom: 1.2rem;
+      font-size: 0.64rem;
+      letter-spacing: 0.115em;
+    }
+
+    .hero-eyebrow::before {
+      width: 1.7rem;
+    }
+
+    .hero-title {
+      max-width: 13ch;
+      font-size: clamp(2.55rem, 9.8vw, 4rem);
+      line-height: 1.02;
+    }
+
+    .hero-subhead {
+      max-width: 39rem;
+      margin-top: 1.25rem;
+      font-size: clamp(0.98rem, 3.2vw, 1.18rem);
+      line-height: 1.58;
+    }
 
     .hero-actions {
       display: grid;
-      grid-template-columns: 1fr;
+      gap: 0.7rem;
+      margin-top: 1.55rem;
     }
 
-    .hero-action { width: 100%; }
-
-    .hero-visual {
-      overflow: visible;
-      flex-wrap: wrap;
-      scroll-snap-type: none;
-      padding: 0.5rem 1rem 2.5rem;
+    .hero-action {
+      width: min(100%, 24rem);
+      min-height: 3.75rem;
+      justify-content: space-between;
+      padding-inline: 1.45rem;
+      font-size: 0.94rem;
     }
 
-    .hero-person-card,
-    .hero-person-card--eric,
-    .hero-person-card--ambre,
-    .hero-person-card--lisa,
-    .hero-widget,
-    .hero-widget--facturation,
-    .hero-widget--contrat {
-      flex: 1 1 min(100%, 16rem);
-      scroll-snap-align: start;
+    .hero-action--tertiary {
+      width: max-content;
+      min-height: 3.25rem;
+      padding-inline: 0;
     }
 
-    .hero-detail-stack { min-height: 15rem; }
+    .hero-media {
+      height: clamp(31rem, 121vw, 41rem);
+      min-height: 31rem;
+      max-height: 41rem;
+      margin-top: 1.75rem;
+    }
+
+    .hero-media__halo {
+      top: 7%;
+      left: 4%;
+      width: 92%;
+    }
+
+    .hero-photo-frame {
+      top: 4%;
+      right: 7%;
+      width: 86%;
+      height: calc(100% - 5.8rem);
+      border-radius: 25% 25% 22% 22% / 15% 15% 13% 13%;
+    }
+
+    .hero-slide img {
+      object-position: var(--mobile-position);
+    }
+
+    .hero-orbit {
+      inset: 3% -2% 12% -2%;
+      width: 104%;
+      height: 86%;
+    }
+
+    .hero-orbit path:nth-of-type(2),
+    .hero-orbit__node--two,
+    .hero-orbit__particle--two {
+      display: none;
+    }
+
+    .hero-feature {
+      width: clamp(9.6rem, 42vw, 12rem);
+      animation: hero-feature-float var(--float-duration) ease-in-out var(--float-delay) infinite;
+    }
+
+    .hero-feature__surface {
+      min-height: 4.6rem;
+      gap: 0.65rem;
+      border-radius: 0.95rem;
+      padding: 0.68rem 0.72rem;
+    }
+
+    .hero-feature__icon {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 0.7rem;
+    }
+
+    .hero-feature__icon svg {
+      width: 1.55rem;
+      height: 1.55rem;
+    }
+
+    .hero-feature__label {
+      max-width: 6.8rem;
+      font-size: clamp(0.66rem, 2.2vw, 0.78rem);
+    }
+
+    .hero-feature--contact {
+      top: 0;
+      left: 0;
+    }
+
+    .hero-feature--missions {
+      bottom: 34%;
+      left: 0;
+    }
+
+    .hero-feature--status {
+      right: 0;
+      bottom: 15%;
+    }
+
+    .hero-feature--expertise {
+      display: none;
+    }
+
+    .hero-mobile-expertise {
+      position: absolute;
+      right: 2%;
+      bottom: 0;
+      left: 2%;
+      display: grid;
+      grid-template-columns: minmax(2rem, 1fr) auto minmax(2rem, 1fr);
+      grid-template-rows: auto auto;
+      align-items: center;
+      gap: 0.25rem 0.75rem;
+      color: rgba(16, 43, 58, 0.68);
+      text-align: center;
+    }
+
+    .hero-mobile-expertise__line {
+      height: 1px;
+      background:
+        radial-gradient(circle at 50% 50%, #fff 0 3px, transparent 4px),
+        repeating-linear-gradient(90deg, rgba(199, 152, 56, 0.75) 0 2px, transparent 2px 6px);
+    }
+
+    .hero-mobile-expertise__icon {
+      display: grid;
+      width: 2.7rem;
+      height: 2.7rem;
+      grid-column: 2;
+      place-items: center;
+      color: #aa7b23;
+    }
+
+    .hero-mobile-expertise__icon svg {
+      width: 2.3rem;
+      height: 2.3rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.5;
+    }
+
+    .hero-mobile-expertise__label {
+      grid-column: 1 / -1;
+      font-size: 0.82rem;
+      font-weight: 720;
+    }
+
+    .hero-slide-controls {
+      right: auto;
+      bottom: 4.3rem;
+      left: 50%;
+      min-height: 2.6rem;
+      padding-block: 0.35rem;
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero-shell {
+      width: min(100% - 1.5rem, 44rem);
+      padding-top: 2.35rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.25rem, 11.4vw, 3.25rem);
+      letter-spacing: -0.045em;
+    }
+
+    .hero-subhead {
+      font-size: 0.98rem;
+    }
+
+    .hero-action {
+      width: 100%;
+      min-height: 3.65rem;
+    }
+
+    .hero-action--tertiary {
+      width: max-content;
+    }
+
+    .hero-media {
+      height: clamp(29rem, 128vw, 35rem);
+      min-height: 29rem;
+      margin-top: 1.45rem;
+    }
+
+    .hero-photo-frame {
+      right: 6%;
+      width: 88%;
+      height: calc(100% - 5.5rem);
+    }
+
+    .hero-feature--missions {
+      bottom: 35%;
+    }
+
+    .hero-feature--status {
+      bottom: 16%;
+    }
+
+    .hero-slide-controls {
+      bottom: 4rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .hero-eyebrow {
+      align-items: flex-start;
+      font-size: 0.59rem;
+    }
+
+    .hero-eyebrow::before {
+      margin-top: 0.4rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.15rem, 11.5vw, 2.6rem);
+    }
+
+    .hero-feature {
+      width: 9.45rem;
+    }
+
+    .hero-feature__surface {
+      min-height: 4.25rem;
+      padding: 0.6rem;
+    }
+
+    .hero-feature__icon {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .hero-feature__label {
+      font-size: 0.64rem;
+    }
+  }
+
+  @media (hover: none) {
+    .hero-feature:hover .hero-feature__surface {
+      --card-lift: 0px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero-enter { animation: none !important; opacity: 1; filter: none; transform: none; }
-    .hero-blob { animation: none !important; }
-    .hero-person-card, .hero-widget, .hero-action, .hero-trust li { animation: none !important; opacity: 1; filter: none; }
-    .hero-widget-slider::after,
-    .hero-widget-timeline span:nth-child(3),
-    .hero-detail-card.is-active { animation: none !important; }
-    .hero-person-card, .hero-widget, .hero-action, .hero-detail-card { transition: none !important; }
+    .home-hero *,
+    .home-hero *::before,
+    .home-hero *::after {
+      scroll-behavior: auto !important;
+    }
+
+    .hero-enter,
+    .hero-feature,
+    .hero-feature__surface,
+    .hero-orbit__node,
+    .hero-slide.is-active img {
+      animation: none !important;
+    }
+
+    .hero-enter {
+      opacity: 1;
+      transform: none;
+    }
+
+    .hero-slide {
+      transition-duration: 80ms;
+    }
+
+    .hero-feature {
+      translate: none;
+      transform: none !important;
+    }
+
+    .hero-feature__surface {
+      --card-shift-x: 0px;
+      --card-shift-y: 0px;
+      --card-lift: 0px;
+    }
   }
 </style>

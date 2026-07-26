@@ -2,14 +2,15 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import HomeHero from '../components/home/HomeHero.astro';
 import GoogleReviewsBadge from '../components/ui/GoogleReviewsBadge.astro';
+import FranceAgencyMap from '../components/agencies/FranceAgencyMap.astro';
+import PresidentVideo from '../components/ui/PresidentVideo.astro';
 import GoogleReviewsMarquee from '../components/ui/GoogleReviewsMarquee.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import { faqGroups } from '../data/faq.data';
 import { pageSeo } from '../data/seo.data';
 import { googleReviewHighlights } from '../content/pages/home';
+import { agencies } from '../data/agencies.data';
 import { cmsAttrs, cmsText } from '../cms/content';
-
-import presidentVideo from '../../video president porters (1).mp4';
 
 const partnerLogos = [
   { name: 'BPCE', url: '/images/logos/partners/partner-1.png' },
@@ -20,40 +21,6 @@ const partnerLogos = [
   { name: 'Capgemini', url: '/images/logos/partners/capgemini.svg' },
 ];
 
-const situations = [
-  {
-    number: '01',
-    key: 'home.journeys.consultant',
-    title: cmsText('home.journeys.consultant.title'),
-    text: cmsText('home.journeys.consultant.description'),
-    href: '/consultants',
-    cta: cmsText('home.journeys.consultant.cta'),
-  },
-  {
-    number: '02',
-    key: 'home.journeys.it_expert',
-    title: cmsText('home.journeys.it_expert.title'),
-    text: cmsText('home.journeys.it_expert.description'),
-    href: '/portage-salarial',
-    cta: cmsText('home.journeys.it_expert.cta'),
-  },
-  {
-    number: '03',
-    key: 'home.journeys.enterprise',
-    title: cmsText('home.journeys.enterprise.title'),
-    text: cmsText('home.journeys.enterprise.description'),
-    href: '/entreprises',
-    cta: cmsText('home.journeys.enterprise.cta'),
-  },
-  {
-    number: '04',
-    key: 'home.journeys.transition',
-    title: cmsText('home.journeys.transition.title'),
-    text: cmsText('home.journeys.transition.description'),
-    href: '/simulateur',
-    cta: cmsText('home.journeys.transition.cta'),
-  },
-];
 
 const offerItems = [
   { key: 'home.offer.human', title: cmsText('home.offer.human.title'), text: cmsText('home.offer.human.description'), icon: 'user' as const },
@@ -62,20 +29,6 @@ const offerItems = [
   { key: 'home.offer.it', title: cmsText('home.offer.it.title'), text: cmsText('home.offer.it.description'), icon: 'network' as const },
 ];
 
-const supportQuotes = [
-  {
-    key: 'home.support.chloe',
-    quote: cmsText('home.support.chloe.quote'),
-    name: cmsText('home.support.chloe.name'),
-    role: cmsText('home.support.chloe.role'),
-  },
-  {
-    key: 'home.support.andy',
-    quote: cmsText('home.support.andy.quote'),
-    name: cmsText('home.support.andy.name'),
-    role: cmsText('home.support.andy.role'),
-  },
-];
 
 const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 ---
@@ -99,27 +52,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
             <img src={logo.url} alt="" loading="lazy" decoding="async" />
           ))}
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="light-section light-situations reveal-fade" data-reveal>
-    <div class="light-container">
-      <div class="light-section-heading reveal-up" data-reveal>
-        <p {...cmsAttrs('home.journeys.eyebrow')}>{cmsText('home.journeys.eyebrow')}</p>
-        <h2 {...cmsAttrs('home.journeys.title')}>{cmsText('home.journeys.title')}</h2>
-        <span {...cmsAttrs('home.journeys.description')}>{cmsText('home.journeys.description')}</span>
-      </div>
-
-      <div class="light-situation-grid stagger-children">
-        {situations.map((item, index) => (
-          <a href={item.href} class="light-situation-card premium-hover reveal-up" data-reveal style={`--reveal-delay: ${index * 90}ms`}>
-            <span class="light-card-number">{item.number}</span>
-            <h3 {...cmsAttrs(`${item.key}.title`)}>{item.title}</h3>
-            <p {...cmsAttrs(`${item.key}.description`)}>{item.text}</p>
-            <strong><span {...cmsAttrs(`${item.key}.cta`)}>{item.cta}</span> <span aria-hidden="true">↗</span></strong>
-          </a>
-        ))}
       </div>
     </div>
   </section>
@@ -165,91 +97,9 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     </div>
   </section>
 
-  <section class="light-section light-hellowork-section reveal-fade" data-reveal>
-    <div class="light-container">
-      <div class="light-hellowork-card reveal-up" data-reveal>
-        <div class="light-hellowork-layout">
-          <div class="light-hellowork-copy">
-            <p {...cmsAttrs('home.jobs.eyebrow')}>{cmsText('home.jobs.eyebrow')}</p>
-            <h2 {...cmsAttrs('home.jobs.title')}>{cmsText('home.jobs.title')}</h2>
-            <strong {...cmsAttrs('home.jobs.description')}>{cmsText('home.jobs.description')}</strong>
-            <ul class="light-hellowork-points" aria-label="Repères recrutement">
-              <li {...cmsAttrs('home.jobs.point.current')}>{cmsText('home.jobs.point.current')}</li>
-              <li {...cmsAttrs('home.jobs.point.direct')}>{cmsText('home.jobs.point.direct')}</li>
-              <li {...cmsAttrs('home.jobs.point.full')}>{cmsText('home.jobs.point.full')}</li>
-            </ul>
-            <div>
-              <a href="https://www.hellowork.com/fr-fr/entreprises/the-porters-171310.html" target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.external_cta')}>{cmsText('home.jobs.external_cta')}</span> <b aria-hidden="true">→</b></a>
-              <a href="/recrutement"><span {...cmsAttrs('home.jobs.internal_cta')}>{cmsText('home.jobs.internal_cta')}</span> <b aria-hidden="true">→</b></a>
-            </div>
-          </div>
-          <div class="light-hellowork-preview" aria-hidden="true">
-            <div class="light-hellowork-orbit"></div>
-            <article class="light-hellowork-panel light-hellowork-panel--primary">
-              <small {...cmsAttrs('home.jobs.preview.platform')}>{cmsText('home.jobs.preview.platform')}</small>
-              <strong {...cmsAttrs('home.jobs.preview.company')}>{cmsText('home.jobs.preview.company')}</strong>
-              <span {...cmsAttrs('home.jobs.preview.status')}>{cmsText('home.jobs.preview.status')}</span>
-            </article>
-            <article class="light-hellowork-panel light-hellowork-panel--floating">
-              <small {...cmsAttrs('home.jobs.preview.focus')}>{cmsText('home.jobs.preview.focus')}</small>
-              <strong {...cmsAttrs('home.jobs.preview.profiles')}>{cmsText('home.jobs.preview.profiles')}</strong>
-            </article>
-            <div class="light-hellowork-tags">
-              <span>Rendez-vous</span>
-              <span>RH</span>
-              <span>Conseil</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="light-section light-follow-section reveal-fade" data-reveal id="avantages">
-    <div class="light-container light-follow-layout">
-      <div class="light-follow-copy reveal-up" data-reveal>
-        <p {...cmsAttrs('home.support.eyebrow')}>{cmsText('home.support.eyebrow')}</p>
-        <div class="light-follow-title">
-          <h2 {...cmsAttrs('home.support.title')}>{cmsText('home.support.title')}</h2>
-          <span {...cmsAttrs('home.support.title_detail')}>{cmsText('home.support.title_detail')}</span>
-        </div>
-        <h3 {...cmsAttrs('home.support.subtitle')}>{cmsText('home.support.subtitle')}</h3>
-        <span {...cmsAttrs('home.support.description')}>{cmsText('home.support.description')}</span>
-        <div class="light-follow-people">
-          <strong {...cmsAttrs('home.support.profiles')}>{cmsText('home.support.profiles')}</strong>
-        </div>
-      </div>
-
-      <div class="light-follow-feature-stack reveal-up" data-reveal style="--reveal-delay: 120ms">
-        <figure class="light-follow-feature">
-          <span aria-hidden="true">“</span>
-          <blockquote {...cmsAttrs('home.support.feature.quote')}>{cmsText('home.support.feature.quote')}</blockquote>
-          <figcaption>
-            <strong {...cmsAttrs('home.support.feature.name')}>{cmsText('home.support.feature.name')}</strong>
-            <span {...cmsAttrs('home.support.feature.role')}>{cmsText('home.support.feature.role')}</span>
-          </figcaption>
-        </figure>
-        <figure class="light-follow-video">
-          <div class="light-follow-video-heading">
-            <div>
-              <p>Le mot du président</p>
-              <h3>Une vision du portage, au plus près des talents</h3>
-            </div>
-            <span aria-hidden="true">▶</span>
-          </div>
-          <video controls preload="metadata" playsinline aria-label="Le mot du président de The Porters" src={presidentVideo}></video>
-        </figure>
-      </div>
-    </div>
-
-    <div class="light-container light-follow-quotes stagger-children">
-      {supportQuotes.map((item, index) => (
-        <article class="light-follow-quote reveal-up" data-reveal style={`--reveal-delay: ${220 + index * 100}ms`}>
-          <p {...cmsAttrs(`${item.key}.quote`)}>{item.quote}</p>
-          <strong {...cmsAttrs(`${item.key}.name`)}>{item.name}</strong>
-          <span {...cmsAttrs(`${item.key}.role`)}>{item.role}</span>
-        </article>
-      ))}
+  <section class="light-section light-president reveal-fade" data-reveal>
+    <div class="light-container light-president-layout">
+      <PresidentVideo />
     </div>
   </section>
 
@@ -281,6 +131,14 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
             <div class="light-faq-answer"><div><p>{faq.answer}</p></div></div>
           </details>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="light-section light-coverage reveal-fade" data-reveal>
+    <div class="light-container">
+      <div class="reveal-up" data-reveal>
+        <FranceAgencyMap agencies={agencies} coverage compact />
       </div>
     </div>
   </section>
@@ -337,25 +195,23 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     width: min(100% - 2.5rem, 78rem);
     margin-inline: auto;
   }
-
   .light-section {
     padding-block: clamp(5rem, 8vw, 8rem);
   }
-
-  .light-situations {
-    padding-top: clamp(4rem, 6vw, 6rem);
-  }
-
   .light-section-heading {
     max-width: 46rem;
     margin-bottom: 3rem;
   }
-
   .light-section-heading > p,
   .light-offer-copy > p,
   .light-reviews-header p,
   .light-proximity-copy > p,
   .light-faq-copy > p,
+  .light-president-layout {
+    max-width: 46rem;
+    margin-inline: auto;
+  }
+
   .light-final-cta p {
     margin-bottom: 0.8rem;
     color: var(--color-porters-gold);
@@ -364,7 +220,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
-
   .light-section-heading h2,
   .light-offer-copy h2,
   .light-proximity-copy h2,
@@ -376,7 +231,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     line-height: 1.02;
     letter-spacing: -0.035em;
   }
-
   .light-section-heading > span,
   .light-proximity-copy > span,
   .light-faq-copy > span,
@@ -385,7 +239,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     color: rgba(40, 55, 67, 0.6);
     line-height: 1.7;
   }
-
   .light-logo-strip {
     display: grid;
     min-height: 7rem;
@@ -394,7 +247,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     border-block: 1px solid rgba(40, 55, 67, 0.08);
     background: white;
   }
-
   .light-logo-intro {
     display: flex;
     height: 100%;
@@ -402,7 +254,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     padding-inline: clamp(1.5rem, 5vw, 5rem);
     border-right: 1px solid rgba(40, 55, 67, 0.08);
   }
-
   .light-logo-intro span {
     max-width: 17rem;
     color: rgba(40, 55, 67, 0.58);
@@ -410,17 +261,14 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-weight: 600;
     line-height: 1.5;
   }
-
   .light-logo-marquee {
     min-width: 0;
     padding-block: 1.5rem;
   }
-
   .light-logo-track {
     --marquee-duration: 38s;
     gap: 0;
   }
-
   .light-logo-group {
     display: flex;
     min-width: max-content;
@@ -428,7 +276,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     gap: clamp(2.5rem, 5vw, 5rem);
     padding-right: clamp(2.5rem, 5vw, 5rem);
   }
-
   .light-logo-group img {
     width: clamp(4.5rem, 7vw, 6.5rem);
     max-width: 6.5rem;
@@ -438,58 +285,11 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     opacity: 0.68;
     transition: opacity var(--motion-fast) ease, transform var(--motion-medium) var(--ease-soft), filter var(--motion-fast) ease;
   }
-
   .light-logo-group img:hover {
     filter: grayscale(0.25);
     opacity: 0.92;
     transform: scale(1.05);
   }
-
-  .light-situations {
-    background: white;
-  }
-
-  .light-situation-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid rgba(40, 55, 67, 0.14);
-  }
-
-  .light-situation-card {
-    display: flex;
-    min-height: 20rem;
-    flex-direction: column;
-    padding: 1.6rem;
-    border-right: 1px solid rgba(40, 55, 67, 0.12);
-    color: var(--color-porters-navy);
-    box-shadow: 0 0 0 rgba(40, 55, 67, 0);
-    cursor: pointer;
-    transition:
-      background-color var(--motion-fast) ease,
-      border-color var(--motion-fast) ease,
-      transform var(--motion-medium) var(--ease-soft),
-      box-shadow var(--motion-medium) var(--ease-soft);
-  }
-
-  .light-situation-card:first-child {
-    border-left: 1px solid rgba(40, 55, 67, 0.12);
-  }
-
-  .light-situation-card:hover {
-    z-index: 1;
-    border-color: rgba(190, 158, 88, 0.62);
-    background: #faf7f0;
-    box-shadow: 0 22px 50px rgba(40, 55, 67, 0.1);
-    transform: translateY(-6px);
-  }
-
-  .light-situation-card:focus-visible {
-    z-index: 2;
-    border-color: var(--color-porters-gold);
-    box-shadow: 0 0 0 3px rgba(190, 158, 88, 0.16), 0 22px 50px rgba(40, 55, 67, 0.1);
-  }
-
-  .light-card-number,
   .light-offer-item > span,
   .light-city-list a > span {
     color: var(--color-porters-gold);
@@ -497,45 +297,9 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-size: 0.66rem;
     font-weight: 700;
   }
-
-  .light-situation-card h3 {
-    margin: 3rem 0 1rem;
-    font-size: 1.45rem;
-  }
-
-  .light-situation-card p {
-    color: rgba(40, 55, 67, 0.6);
-    font-size: 0.83rem;
-    line-height: 1.65;
-  }
-
-  .light-situation-card strong {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: auto;
-    color: var(--color-porters-navy);
-    font-size: 0.72rem;
-  }
-
-  .light-situation-card .light-card-number,
-  .light-situation-card strong > span {
-    transition: color var(--motion-fast) ease, transform var(--motion-fast) var(--ease-soft);
-  }
-
-  .light-situation-card:hover .light-card-number {
-    color: var(--color-porters-navy);
-  }
-
-  .light-situation-card:hover strong > span,
-  .light-situation-card:focus-visible strong > span {
-    transform: translate(3px, -3px);
-  }
-
   .light-offer-section {
     background: #f7f4ed;
   }
-
   .light-offer-layout,
   .light-proximity-layout,
   .light-faq-layout {
@@ -543,19 +307,16 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
     gap: clamp(3rem, 8vw, 7rem);
   }
-
   .light-offer-copy,
   .light-proximity-copy,
   .light-faq-copy {
     align-self: start;
   }
-
   .light-offer-copy h2,
   .light-proximity-copy h2,
   .light-faq-copy h2 {
     font-size: clamp(2.2rem, 3.6vw, 3.5rem);
   }
-
   .light-offer-copy > span {
     display: block;
     max-width: 30rem;
@@ -563,7 +324,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-size: 0.95rem;
     line-height: 1.75;
   }
-
   .light-offer-copy > a,
   .light-proximity-copy > a,
   .light-faq-copy > a {
@@ -575,12 +335,10 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-size: 0.78rem;
     font-weight: 700;
   }
-
   .light-offer-schema {
     display: grid;
     gap: 1.1rem;
   }
-
   .light-offer-flow {
     position: relative;
     display: grid;
@@ -594,7 +352,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       radial-gradient(circle at 50% 50%, rgba(190, 158, 88, 0.13), transparent 28%),
       linear-gradient(135deg, rgba(255, 255, 255, 0.64), rgba(255, 255, 255, 0.18));
   }
-
   .light-offer-flow::before,
   .light-offer-flow::after {
     position: absolute;
@@ -604,16 +361,12 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     content: "";
     pointer-events: none;
   }
-
   .light-offer-flow::after {
     inset: 1.35rem auto 1.35rem 50%;
     width: 1px;
     height: auto;
     background: linear-gradient(180deg, transparent, rgba(190, 158, 88, 0.46), transparent);
   }
-
-
-
   .light-offer-item {
     display: grid;
     grid-template-columns: 2.2rem 2.6rem 1fr;
@@ -634,7 +387,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       background-color var(--motion-fast) ease,
       border-color var(--motion-fast) ease;
   }
-
   .light-offer-item:hover,
   .light-offer-item:focus-visible,
   .light-offer-item.is-active {
@@ -644,7 +396,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     outline: none;
     transform: translateY(-5px);
   }
-
   .light-offer-icon {
     display: grid;
     width: 2.5rem;
@@ -659,7 +410,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       background-color var(--motion-fast) ease,
       transform var(--motion-medium) var(--ease-soft);
   }
-
   .light-offer-item:hover .light-offer-icon,
   .light-offer-item:focus-visible .light-offer-icon,
   .light-offer-item.is-active .light-offer-icon {
@@ -667,19 +417,16 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     color: var(--color-porters-navy);
     transform: scale(1) rotate(-4deg);
   }
-
   .light-offer-item h3 {
     margin-bottom: 0.45rem;
     font-size: 1.1rem;
   }
-
   .light-offer-item p {
     margin: 0;
     color: rgba(40, 55, 67, 0.6);
     font-size: 0.8rem;
     line-height: 1.65;
   }
-
   .light-offer-detail {
     position: relative;
     overflow: hidden;
@@ -690,7 +437,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     background: #fff;
     box-shadow: 0 18px 42px rgba(40, 55, 67, 0.06);
   }
-
   .light-offer-detail::after {
     position: absolute;
     right: -4rem;
@@ -702,19 +448,16 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     content: "";
     pointer-events: none;
   }
-
   .light-offer-detail > span {
     display: block;
     color: rgba(40, 55, 67, 0.2);
     font: 780 2.6rem/1 var(--font-mono);
   }
-
   .light-offer-detail h3 {
     margin-top: 0.35rem;
     color: var(--color-porters-navy);
     font-size: clamp(1.35rem, 2vw, 1.85rem);
   }
-
   .light-offer-detail p {
     max-width: 34rem;
     margin-top: 0.65rem;
@@ -722,7 +465,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-size: 0.92rem;
     line-height: 1.7;
   }
-
   .light-offer-detail a {
     position: relative;
     z-index: 1;
@@ -733,551 +475,19 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-size: 0.78rem;
     font-weight: 760;
   }
-
   .light-offer-detail b {
     color: var(--color-porters-gold);
     transition: transform var(--motion-fast) var(--ease-soft);
   }
-
   .light-offer-detail a:hover b {
     transform: translateX(4px);
   }
-
   .light-offer-detail.is-switching {
     animation: offer-detail-pop 360ms var(--ease-soft);
   }
-
-  .light-follow-section {
-    overflow: hidden;
-    padding-block: clamp(4.5rem, 6.2vw, 6.5rem);
-    background:
-      radial-gradient(circle at 84% 24%, rgba(190, 158, 88, 0.08), transparent 30%),
-      linear-gradient(180deg, #fff 0%, #f7f5ef 100%);
-  }
-
-  .light-hellowork-section {
-    padding-block: clamp(1rem, 2.2vw, 1.8rem) clamp(2.2rem, 4vw, 3rem);
-    background:
-      radial-gradient(circle at 70% 30%, rgba(190, 158, 88, 0.08), transparent 26%),
-      linear-gradient(180deg, #f7f4ed 0%, #fbfaf6 100%);
-  }
-
-  .light-hellowork-card {
-    position: relative;
-    overflow: hidden;
-    min-height: 18rem;
-    margin-inline: auto;
-    width: min(100%, 58rem);
-    border: 1px solid rgba(40, 55, 67, 0.08);
-    border-radius: 8px;
-    padding: clamp(1.5rem, 3vw, 2.35rem);
-    background:
-      radial-gradient(circle at 84% 26%, rgba(190, 158, 88, 0.12), transparent 22%),
-      linear-gradient(135deg, #ffffff 0%, #fcfaf6 100%);
-    box-shadow: 0 24px 60px rgba(40, 55, 67, 0.08);
-    transition:
-      transform var(--motion-medium) var(--ease-soft),
-      box-shadow var(--motion-medium) ease,
-      border-color var(--motion-fast) ease;
-  }
-
-  .light-hellowork-card:hover,
-  .light-hellowork-card:focus-within {
-    border-color: rgba(190, 158, 88, 0.32);
-    box-shadow: 0 30px 72px rgba(40, 55, 67, 0.12);
-    transform: translateY(-4px);
-  }
-
-  .light-hellowork-card::after {
-    position: absolute;
-    right: -5rem;
-    bottom: -5.5rem;
-    width: 16rem;
-    aspect-ratio: 1;
-    border: 1px solid rgba(190, 158, 88, 0.22);
-    border-radius: 50%;
-    box-shadow: 0 0 0 2.5rem rgba(190, 158, 88, 0.05);
-    content: "";
-    pointer-events: none;
-  }
-
-  .light-hellowork-copy {
-    position: relative;
-    z-index: 1;
-    max-width: 43rem;
-  }
-
-  .light-hellowork-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.72fr);
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-    align-items: center;
-  }
-
-  .light-hellowork-copy > p {
-    margin-bottom: 0.7rem;
-    color: var(--color-porters-gold);
-    font-size: 0.7rem;
-    font-weight: 760;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .light-hellowork-copy h2 {
-    margin-top: 0;
-    color: var(--color-porters-navy);
-    font-size: clamp(2rem, 3.2vw, 3.15rem);
-    line-height: 1.08;
-    letter-spacing: -0.035em;
-  }
-
-  .light-hellowork-copy strong {
-    display: block;
-    max-width: 42rem;
-    margin-top: 1rem;
-    color: rgba(40, 55, 67, 0.62);
-    font-size: clamp(0.98rem, 1.28vw, 1.14rem);
-    font-weight: 500;
-    line-height: 1.7;
-  }
-
-  .light-hellowork-points {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem 1rem;
-    margin-top: 1.15rem;
-    color: rgba(40, 55, 67, 0.56);
-    font-size: 0.76rem;
-    font-weight: 680;
-  }
-
-  .light-hellowork-points li {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-  }
-
-  .light-hellowork-points li::before {
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 50%;
-    background: var(--color-porters-gold);
-    box-shadow: 0 0 0 6px rgba(190, 158, 88, 0.12);
-    content: "";
-    flex: 0 0 auto;
-  }
-
-  .light-hellowork-copy > div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-top: 1.75rem;
-  }
-
-  .light-hellowork-copy a {
-    display: inline-flex;
-    min-height: 3rem;
-    align-items: center;
-    gap: 0.7rem;
-    border-radius: 999px;
-    padding-inline: 1.2rem;
-    border: 1px solid rgba(40, 55, 67, 0.12);
-    color: var(--color-porters-navy);
-    font-size: 0.82rem;
-    font-weight: 760;
-    transition:
-      transform var(--motion-fast) var(--ease-soft),
-      border-color var(--motion-fast) ease,
-      box-shadow var(--motion-fast) ease,
-      background-color var(--motion-fast) ease;
-  }
-
-  .light-hellowork-copy a:first-child {
-    background: var(--color-porters-navy);
-    border-color: var(--color-porters-navy);
-    color: #fff;
-  }
-
-  .light-hellowork-copy a:hover,
-  .light-hellowork-copy a:focus-visible {
-    transform: translateY(-3px);
-    border-color: rgba(190, 158, 88, 0.52);
-    box-shadow: 0 16px 38px rgba(40, 55, 67, 0.1);
-    outline: none;
-  }
-
-  .light-hellowork-copy a:first-child:hover,
-  .light-hellowork-copy a:first-child:focus-visible {
-    background: #2c4454;
-  }
-
-  .light-hellowork-copy b {
-    color: var(--color-porters-gold);
-    transition: transform var(--motion-fast) var(--ease-soft);
-  }
-
-  .light-hellowork-copy a:hover b,
-  .light-hellowork-copy a:focus-visible b {
-    transform: translateX(4px);
-  }
-
-  .light-hellowork-preview {
-    position: relative;
-    min-height: 17rem;
-    animation: hellowork-float 7s ease-in-out infinite;
-  }
-
-  .light-hellowork-orbit {
-    position: absolute;
-    inset: 1rem 0.8rem 0.6rem 1.2rem;
-    border: 1px dashed rgba(190, 158, 88, 0.34);
-    border-radius: 50%;
-    opacity: 0.8;
-  }
-
-  .light-hellowork-orbit::after {
-    position: absolute;
-    inset: 1rem;
-    border: 1px dashed rgba(40, 55, 67, 0.12);
-    border-radius: 50%;
-    content: "";
-  }
-
-  .light-hellowork-panel {
-    position: absolute;
-    border: 1px solid rgba(40, 55, 67, 0.08);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.94);
-    box-shadow: 0 18px 38px rgba(40, 55, 67, 0.08);
-    backdrop-filter: blur(10px);
-  }
-
-  .light-hellowork-panel small {
-    color: var(--color-porters-gold);
-    font-size: 0.6rem;
-    font-weight: 760;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .light-hellowork-panel strong {
-    display: block;
-    margin-top: 0.35rem;
-    color: var(--color-porters-navy);
-    font-size: 0.95rem;
-    line-height: 1.3;
-  }
-
-  .light-hellowork-panel span {
-    display: block;
-    margin-top: 0.35rem;
-    color: rgba(40, 55, 67, 0.58);
-    font-size: 0.72rem;
-    line-height: 1.5;
-  }
-
-  .light-hellowork-panel--primary {
-    top: 0;
-    right: 0;
-    width: 14rem;
-    padding: 1rem;
-    animation: hellowork-drift 6s ease-in-out infinite;
-  }
-
-  .light-hellowork-panel--floating {
-    top: 6rem;
-    left: 0;
-    width: 14rem;
-    padding: 1rem;
-    animation: hellowork-drift 6.8s ease-in-out -1.5s infinite;
-  }
-
-  .light-hellowork-tags {
-    position: absolute;
-    top: 14rem;
-    right: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 0.45rem;
-    max-width: 14rem;
-  }
-
-  .light-hellowork-tags span {
-    display: inline-flex;
-    min-height: 2rem;
-    align-items: center;
-    border: 1px solid rgba(190, 158, 88, 0.24);
-    border-radius: 999px;
-    padding-inline: 0.8rem;
-    background: rgba(255, 255, 255, 0.74);
-    color: var(--color-porters-navy);
-    font-size: 0.68rem;
-    font-weight: 720;
-    box-shadow: 0 10px 24px rgba(40, 55, 67, 0.06);
-  }
-
-  .light-follow-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.32fr);
-    gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: start;
-  }
-
-  .light-follow-copy {
-    padding-top: clamp(0.5rem, 2vw, 1.5rem);
-  }
-
-  .light-follow-copy > p {
-    margin-bottom: 1rem;
-    color: rgba(40, 55, 67, 0.58);
-    font-size: 0.72rem;
-    font-weight: 780;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
-
-  .light-follow-title {
-    display: grid;
-    grid-template-columns: auto minmax(0, 12rem);
-    gap: 1.25rem;
-    align-items: center;
-    padding-bottom: 1.25rem;
-    border-bottom: 2px solid rgba(190, 158, 88, 0.78);
-  }
-
-  .light-follow-title h2 {
-    margin: 0;
-    color: var(--color-porters-navy);
-    font-family: var(--font-mono);
-    font-size: clamp(3.5rem, 7vw, 5.5rem);
-    font-weight: 600;
-    letter-spacing: -0.07em;
-    line-height: 0.92;
-  }
-
-  .light-follow-title span {
-    color: rgba(40, 55, 67, 0.62);
-    font-size: clamp(0.92rem, 1.2vw, 1.08rem);
-    font-weight: 760;
-    line-height: 1.35;
-  }
-
-  .light-follow-copy h3 {
-    max-width: 17ch;
-    margin: clamp(1.25rem, 2.4vw, 2rem) 0 1rem;
-    color: var(--color-porters-navy);
-    font-size: clamp(2.25rem, 3.2vw, 3.25rem);
-    font-weight: 500;
-    line-height: 1.06;
-    letter-spacing: -0.04em;
-    text-wrap: balance;
-  }
-
-  .light-follow-copy h3::after {
-    display: inline-block;
-    width: min(8rem, 34vw);
-    height: 2px;
-    margin-left: 0.35rem;
-    background: var(--color-porters-gold);
-    content: "";
-    vertical-align: 0.25em;
-  }
-
-  .light-follow-copy > span {
-    display: block;
-    max-width: 34rem;
-    color: rgba(40, 55, 67, 0.64);
-    font-size: clamp(0.95rem, 1.15vw, 1.08rem);
-    line-height: 1.72;
-  }
-
-  .light-follow-people {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    margin-top: clamp(1.7rem, 3.8vw, 3rem);
-  }
-
-  .light-follow-people strong {
-    max-width: 22rem;
-    color: rgba(40, 55, 67, 0.62);
-    font-size: 0.82rem;
-    line-height: 1.35;
-  }
-
-  .light-follow-feature-stack {
-    display: grid;
-    gap: 1.2rem;
-  }
-
-  .light-follow-feature {
-    position: relative;
-    margin: 0;
-    overflow: hidden;
-    border-radius: 8px;
-    padding: clamp(1.1rem, 1.8vw, 1.45rem) clamp(1.25rem, 2vw, 1.75rem);
-    background:
-      radial-gradient(circle at 92% 14%, rgba(190, 158, 88, 0.15), transparent 20%),
-      linear-gradient(145deg, #203440 0%, #283743 100%);
-    color: #fff;
-    box-shadow: 0 18px 42px rgba(40, 55, 67, 0.14);
-  }
-
-  .light-follow-feature::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 7rem;
-    height: 3px;
-    background: var(--color-porters-gold);
-    content: "";
-  }
-
-  .light-follow-feature > span {
-    position: absolute;
-    top: 0.8rem;
-    right: 1.25rem;
-    color: rgba(216, 187, 112, 0.28);
-    font-family: Georgia, serif;
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    line-height: 1;
-  }
-
-  .light-follow-feature blockquote {
-    position: relative;
-    z-index: 1;
-    max-width: 52ch;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.92);
-    font-size: clamp(0.98rem, 1.2vw, 1.16rem);
-    font-weight: 500;
-    line-height: 1.42;
-    letter-spacing: -0.015em;
-  }
-
-  .light-follow-feature figcaption {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    gap: 0.35rem;
-    margin-top: 0.8rem;
-  }
-
-  .light-follow-feature figcaption strong {
-    color: var(--color-porters-gold);
-    font-size: 0.8rem;
-  }
-
-  .light-follow-feature figcaption span {
-    color: rgba(255, 255, 255, 0.52);
-    font-size: 0.7rem;
-  }
-
-  .light-follow-video {
-    margin: 0;
-    overflow: hidden;
-    border: 1px solid rgba(40, 55, 67, 0.1);
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 0 16px 38px rgba(40, 55, 67, 0.08);
-  }
-
-  .light-follow-video-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.2rem 1.35rem 1rem;
-  }
-
-  .light-follow-video-heading p {
-    margin: 0 0 0.35rem;
-    color: var(--color-porters-gold);
-    font-size: 0.65rem;
-    font-weight: 780;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .light-follow-video-heading h3 {
-    margin: 0;
-    color: var(--color-porters-navy);
-    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-    line-height: 1.2;
-  }
-
-  .light-follow-video-heading > span {
-    display: grid;
-    width: 2.45rem;
-    height: 2.45rem;
-    flex: 0 0 auto;
-    place-items: center;
-    border-radius: 50%;
-    background: var(--color-porters-navy);
-    color: var(--color-porters-gold);
-    font-size: 0.7rem;
-  }
-
-  .light-follow-video video {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #10202b;
-    object-fit: cover;
-  }
-
-  .light-follow-quotes {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
-    margin-top: 1rem;
-  }
-
-  .light-follow-quote {
-    min-height: 11.5rem;
-    border: 1px solid rgba(40, 55, 67, 0.08);
-    border-radius: 6px;
-    padding: clamp(1.4rem, 2vw, 2rem);
-    background: #fff;
-    box-shadow: 0 14px 36px rgba(40, 55, 67, 0.06);
-    transition:
-      transform var(--motion-medium) var(--ease-soft),
-      box-shadow var(--motion-medium) ease,
-      border-color var(--motion-fast) ease;
-  }
-
-  .light-follow-quote p {
-    margin: 0 0 1.8rem;
-    color: rgba(40, 55, 67, 0.64);
-    font-size: clamp(0.95rem, 1.15vw, 1.08rem);
-    line-height: 1.62;
-  }
-
-  .light-follow-quote strong {
-    display: block;
-    color: var(--color-porters-navy);
-    font-size: 0.92rem;
-  }
-
-  .light-follow-quote span {
-    display: block;
-    margin-top: 0.25rem;
-    color: rgba(40, 55, 67, 0.48);
-    font-size: 0.76rem;
-  }
-
-  .light-follow-quote:hover,
-  .light-follow-quote:focus-within {
-    border-color: rgba(190, 158, 88, 0.38);
-    box-shadow: 0 20px 46px rgba(40, 55, 67, 0.1);
-    transform: translateY(-5px);
-  }
-
   .light-reviews {
     background: white;
   }
-
   .light-reviews-header {
     display: flex;
     align-items: end;
@@ -1285,26 +495,21 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     gap: 2rem;
     margin-bottom: 2rem;
   }
-
   .light-reviews-header h2 {
     max-width: 38rem;
     margin: 0;
     font-size: clamp(2rem, 3.5vw, 3.25rem);
   }
-
   .light-reviews :global(.reviews-marquee__card) {
     min-height: 11rem;
     box-shadow: none;
   }
-
   .light-proximity {
     background: #f7f4ed;
   }
-
   .light-city-list {
     border-top: 1px solid rgba(40, 55, 67, 0.16);
   }
-
   .light-city-list a {
     display: grid;
     grid-template-columns: 2.5rem 1fr minmax(8rem, 0.7fr) auto;
@@ -1319,7 +524,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       border-color var(--motion-fast) ease,
       transform var(--motion-medium) var(--ease-soft);
   }
-
   .light-city-list a:hover,
   .light-city-list a:focus-visible {
     padding-inline: 0.75rem;
@@ -1328,35 +532,28 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     color: var(--color-porters-navy);
     transform: translateX(5px);
   }
-
   .light-city-list strong {
     font-family: var(--font-heading);
     font-size: 1.1rem;
   }
-
   .light-city-list small {
     color: rgba(40, 55, 67, 0.48);
     font-size: 0.7rem;
   }
-
   .light-city-list b {
     color: var(--color-porters-gold);
     transition: transform var(--motion-fast) var(--ease-soft);
   }
-
   .light-city-list a:hover b,
   .light-city-list a:focus-visible b {
     transform: translate(3px, -3px);
   }
-
   .light-faq {
     background: white;
   }
-
   .light-faq-list {
     border-top: 1px solid rgba(40, 55, 67, 0.16);
   }
-
   .light-faq-list details {
     position: relative;
     border-bottom: 1px solid rgba(40, 55, 67, 0.12);
@@ -1367,7 +564,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       transform var(--motion-medium) var(--ease-soft),
       box-shadow var(--motion-medium) ease;
   }
-
   .light-faq-list details::before {
     position: absolute;
     inset: 0 auto 0 0;
@@ -1378,7 +574,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     transform: scaleY(0.2);
     transition: opacity var(--motion-fast) ease, transform var(--motion-medium) var(--ease-soft);
   }
-
   .light-faq-list details:hover,
   .light-faq-list details[open] {
     border-color: rgba(190, 158, 88, 0.55);
@@ -1386,13 +581,11 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     box-shadow: 0 14px 34px rgba(40, 55, 67, 0.06);
     transform: translateX(5px);
   }
-
   .light-faq-list details:hover::before,
   .light-faq-list details[open]::before {
     opacity: 1;
     transform: scaleY(1);
   }
-
   .light-faq-list summary {
     display: flex;
     align-items: center;
@@ -1407,16 +600,13 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     padding-inline: 0.65rem;
     transition: color var(--motion-fast) ease, padding-inline var(--motion-medium) var(--ease-soft);
   }
-
   .light-faq-list details:hover summary,
   .light-faq-list details[open] summary {
     padding-inline: 1rem 0.65rem;
   }
-
   .light-faq-list summary::-webkit-details-marker {
     display: none;
   }
-
   .light-faq-list summary span {
     display: grid;
     width: 2rem;
@@ -1432,13 +622,11 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       background-color var(--motion-fast) ease,
       color var(--motion-fast) ease;
   }
-
   .light-faq-list details[open] summary span {
     background: var(--color-porters-gold);
     color: var(--color-porters-navy);
     transform: rotate(45deg);
   }
-
   .light-faq-list details p {
     max-width: 42rem;
     padding: 0.1rem 2rem 1.35rem 0.65rem;
@@ -1446,7 +634,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-size: 0.8rem;
     line-height: 1.7;
   }
-
   .light-faq-answer {
     display: grid;
     grid-template-rows: 0fr;
@@ -1455,24 +642,19 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       grid-template-rows var(--motion-medium) var(--ease-soft),
       opacity var(--motion-medium) ease;
   }
-
   .light-faq-list details:not([open]) > .light-faq-answer {
     display: grid;
   }
-
   .light-faq-answer > div {
     overflow: hidden;
   }
-
   .light-faq-list details[open] .light-faq-answer {
     grid-template-rows: 1fr;
     opacity: 1;
   }
-
   .light-faq-list details[open] .light-faq-answer > div {
     animation: faq-answer-in 360ms var(--ease-soft) both;
   }
-
   .light-final-cta {
     position: relative;
     overflow: hidden;
@@ -1482,27 +664,23 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       var(--color-porters-navy);
     text-align: center;
   }
-
   .light-final-cta h2 {
     max-width: 18ch;
     margin-inline: auto;
     color: white;
   }
-
   .light-final-cta > .light-container > span {
     display: block;
     max-width: 38rem;
     margin-inline: auto;
     color: rgba(255, 255, 255, 0.58);
   }
-
   .light-final-cta > .light-container > div {
     display: flex;
     justify-content: center;
     gap: 0.75rem;
     margin-top: 2rem;
   }
-
   .light-final-primary,
   .light-final-secondary {
     display: inline-flex;
@@ -1520,274 +698,124 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
       color var(--motion-fast) ease,
       box-shadow var(--motion-fast) ease;
   }
-
   .light-final-primary {
     background: var(--color-porters-gold);
     color: var(--color-porters-navy);
     box-shadow: 0 12px 30px rgba(10, 21, 29, 0.18);
   }
-
   .light-final-secondary {
     border: 1px solid rgba(255, 255, 255, 0.28);
     color: white;
   }
-
   .light-final-primary:hover,
   .light-final-secondary:hover {
     transform: translateY(-3px);
   }
-
   .light-final-primary:hover {
     background: white;
     color: var(--color-porters-navy);
     box-shadow: 0 17px 38px rgba(10, 21, 29, 0.24);
   }
-
   .light-final-secondary:hover {
     border-color: var(--color-porters-gold);
     background: rgba(255, 255, 255, 0.06);
     color: white;
   }
-
   .light-final-primary:active,
   .light-final-secondary:active {
     transform: translateY(0);
   }
 
   @keyframes offer-detail-pop {
-    from { opacity: 0.82; transform: translateY(10px) scale(0.985); }
-    to { opacity: 1; transform: none; }
-  }
+    from {opacity: 0.82; transform: translateY(10px) scale(0.985); }
+    to {opacity: 1; transform: none; }}
 
   @keyframes faq-answer-in {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: none; }
-  }
+    from {opacity: 0; transform: translateY(-6px); }
+    to {opacity: 1; transform: none; }}
 
   @keyframes hellowork-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
+    0%,
+    100% {transform: translateY(0); }
+    50% {transform: translateY(-5px); }}
 
   @keyframes hellowork-drift {
-    0%, 100% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(0, -7px, 0); }
-  }
+    0%,
+    100% {transform: translate3d(0, 0, 0); }
+    50% {transform: translate3d(0, -7px, 0); }}
 
   @media (max-width: 960px) {
-    .light-situation-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .light-situation-card:nth-child(3) {
-      border-left: 1px solid rgba(40, 55, 67, 0.12);
-    }
-
     .light-offer-layout,
-    .light-follow-layout,
     .light-proximity-layout,
     .light-faq-layout {
       grid-template-columns: 1fr;
       gap: 3rem;
     }
-
     .light-offer-copy,
-    .light-follow-copy,
     .light-proximity-copy,
     .light-faq-copy {
       max-width: 42rem;
-    }
-
-    .light-follow-feature blockquote {
-      max-width: 48ch;
-    }
-  }
+    }}
 
   @media (max-width: 700px) {
     .light-container {
       width: min(100% - 2rem, 78rem);
     }
-
     .light-section {
       padding-block: 4.5rem;
     }
-
     .light-logo-strip {
       grid-template-columns: 1fr;
     }
-
     .light-logo-intro {
       min-height: 4rem;
       border-right: 0;
       border-bottom: 1px solid rgba(40, 55, 67, 0.08);
     }
-
     .light-logo-marquee {
       padding-block: 1.25rem;
     }
-
     .light-logo-group {
       gap: 2.5rem;
       padding-right: 2.5rem;
     }
-
-    .light-situation-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .light-situation-card,
-    .light-situation-card:nth-child(3) {
-      min-height: 15rem;
-      border-left: 1px solid rgba(40, 55, 67, 0.12);
-    }
-
-    .light-situation-card h3 {
-      margin-top: 1.8rem;
-    }
-
     .light-offer-flow {
       grid-template-columns: 1fr;
       min-height: 0;
     }
-
     .light-offer-flow::before,
     .light-offer-flow::after {
       display: none;
     }
-
-
-
     .light-offer-item {
       min-height: auto;
     }
-
-    .light-hellowork-card {
-      width: 100%;
-      min-height: 0;
-      margin-left: 0;
-    }
-
-    .light-hellowork-layout {
-      grid-template-columns: 1fr;
-    }
-
-    .light-hellowork-preview {
-      min-height: 13.5rem;
-      max-width: 22rem;
-      width: 100%;
-      margin-inline: auto;
-    }
-
-    .light-follow-title {
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
-    }
-
-    .light-follow-title h2 {
-      font-size: clamp(3.2rem, 19vw, 4.6rem);
-    }
-
-    .light-follow-copy h3 {
-      max-width: 12ch;
-      font-size: clamp(2.2rem, 12vw, 3rem);
-    }
-
-    .light-follow-people {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    .light-hellowork-section {
-      padding-block: 0.75rem 2rem;
-    }
-
-    .light-hellowork-copy > div {
-      flex-direction: column;
-    }
-
-    .light-hellowork-copy a {
-      justify-content: center;
-    }
-
-    .light-hellowork-panel--primary {
-      right: 0;
-      width: min(100%, 13rem);
-    }
-
-    .light-hellowork-panel--floating {
-      left: 0;
-      width: min(100%, 12rem);
-    }
-
-    .light-follow-feature {
-      padding: 1.1rem 1.25rem;
-    }
-
-    .light-follow-feature blockquote {
-      max-width: none;
-      font-size: 1rem;
-      line-height: 1.42;
-    }
-
-    .light-follow-quotes {
-      grid-template-columns: 1fr;
-    }
-
-    .light-follow-quote {
-      min-height: auto;
-    }
-
     .light-reviews-header {
       align-items: start;
       flex-direction: column;
     }
-
     .light-city-list a {
       grid-template-columns: 2rem 1fr auto;
     }
-
     .light-city-list small {
       display: none;
     }
-
     .light-final-cta > .light-container > div {
       flex-direction: column;
     }
-
     .light-final-primary,
     .light-final-secondary {
       width: 100%;
     }
-
     .light-final-cta {
       padding-bottom: calc(7rem + env(safe-area-inset-bottom));
-    }
-  }
+    }}
 
   @media (prefers-reduced-motion: reduce) {
-    .light-situation-card,
-    .light-faq-list summary span,
-    .light-hellowork-card,
-    .light-hellowork-preview,
-    .light-hellowork-panel--primary,
-    .light-hellowork-panel--floating {
+    .light-faq-list summary span {
       transition: none;
     }
-
-    .light-situation-card:hover {
-      transform: none;
-    }
-
     .light-faq-answer {
       transition: none;
-    }
-
-    .light-hellowork-preview,
-    .light-hellowork-panel--primary,
-    .light-hellowork-panel--floating {
-      animation: none;
-    }
-  }
+    }}
 </style>

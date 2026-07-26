@@ -1,0 +1,42 @@
+---
+import sectionSource from '../../../section nos agences/section-couverture-nationale-enhanced.html?raw';
+
+const extract = (pattern: RegExp, label: string) => {
+  const match = sectionSource.match(pattern);
+  if (!match?.[1]) throw new Error(`Unable to extract ${label} from the enhanced agencies section.`);
+  return match[1].trim();
+};
+
+const standaloneStyles = extract(/<style>([\s\S]*?)<\/style>/, 'styles');
+const sectionMarkup = extract(/<body>\s*([\s\S]*?)\s*<script>/, 'markup')
+  .replace(
+    '<section class="cvg"',
+    '<section class="cvg" data-enhanced-agency-coverage'
+  );
+const interactionScript = extract(/<script>([\s\S]*?)<\/script>/, 'interaction script')
+  .replace(
+    "document.querySelector('.cvg')",
+    "document.querySelector('[data-enhanced-agency-coverage]')"
+  );
+
+// The supplied file is a standalone demo. Remove its document-level rules so
+// embedding the section cannot change the site's body background, text colour,
+// or global button styles.
+const embeddedStyles = `@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');${standaloneStyles
+  .replace(/:root\{color-scheme:light\}\s*/g, '')
+  .replace(/\*\{box-sizing:border-box\}\s*/g, '')
+  .replace(/body\{[^}]*\}\s*/g, '')
+  .replace(/button\{font:inherit\}\s*/g, '')
+  .replace(
+    '.cvg{',
+    '.cvg{font-family:"Inter Tight",var(--font-body),-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;'
+  )
+  .replace(
+    '.cvg *,.cvg *::before,.cvg *::after{box-sizing:border-box}',
+    '.cvg *,.cvg *::before,.cvg *::after{box-sizing:border-box}.cvg button{font:inherit}'
+  )}.cvg__map-card{display:none!important}`;
+
+const embeddedSection = `<style>${embeddedStyles}</style>${sectionMarkup}<script>${interactionScript}</script>`;
+---
+
+<Fragment set:html={embeddedSection} />

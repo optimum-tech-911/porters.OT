@@ -13,7 +13,7 @@
     "check": "astro check",
     "cms:discover": "astro build && node scripts/generate-cms-registry.mjs && node scripts/verify-cms-discovery.mjs",
     "cms:seed": "node scripts/generate-cms-registry.mjs",
-    "cms:check": "node scripts/verify-cms-discovery.mjs",
+    "cms:check": "node scripts/verify-cms-discovery.mjs && node scripts/verify-reveal.mjs",
     "cms:verify": "node scripts/verify-cms.mjs",
     "cms:admin": "node scripts/create-cms-admin.mjs"
   },

@@ -2,7 +2,7 @@
   {
     "route": "/",
     "name": "Accueil",
-    "contentCount": 22
+    "contentCount": 61
   },
   {
     "route": "/blog/categorie/actualites",
@@ -187,7 +187,7 @@
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 56
+    "contentCount": 66
   },
   {
     "route": "/consultants",
@@ -232,7 +232,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 459
+    "contentCount": 498
   },
   {
     "route": "/recrutement",
@@ -252,7 +252,7 @@
   {
     "route": "/simulateur",
     "name": "Simulateur de revenus consultant IT",
-    "contentCount": 63
+    "contentCount": 65
   },
   {
     "route": "/tarifs",

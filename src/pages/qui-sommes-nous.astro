@@ -1,9 +1,11 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
+import FranceAgencyMap from '../components/agencies/FranceAgencyMap.astro';
 import { pageSeo } from '../data/seo.data';
 import { aboutPage } from '../content/pages/about';
 import { expertiseSections } from '../data/expertise-sections.data';
+import { agencies } from '../data/agencies.data';
 const history = [
   { marker: '2017', title: 'Les racines de l’écosystème', text: 'L’aventure à l’origine du groupe démarre autour de THE BIG PORTERS, avec une ambition : rapprocher les entreprises de talents qualifiés sur leurs projets numériques.' },
   { marker: 'Ensuite', title: 'Deux métiers complémentaires', text: 'L’écosystème se structure autour de deux réponses distinctes : l’expertise ESN portée par KwickStart et le portage salarial proposé par The Porters.' },
@@ -170,6 +172,12 @@ const history = [
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section class="about-section coverage-section" id="couverture">
+    <div class="about-shell">
+      <FranceAgencyMap agencies={agencies} coverage compact />
     </div>
   </section>
 

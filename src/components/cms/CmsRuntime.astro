@@ -39,7 +39,30 @@
   const blockByKey = new Map<string, PublishedBlock | EditorBlock>();
   let previewState: 'draft' | 'published' = editorMode ? 'draft' : 'published';
 
-  discoverEditableText(document, pageRoute, GLOBAL_ROUTE);
+  const preMergeFragments = discoverEditableText(document, pageRoute, GLOBAL_ROUTE);
+
+  /**
+   * True when a stored value is a pre-merge fragment: it holds exactly this
+   * block's first text fragment while the block itself carries markup. Rendering
+   * it would drop the rest of the sentence along with its accent.
+   *
+   * This deliberately ignores published_version. A block published before blocks
+   * were merged stored a fragment, and that publish was not a decision to
+   * truncate — it predates the choice existing. The seed migration cannot repair
+   * those rows either, because it preserves anything a human published. So the
+   * exact-fragment match is the only signal, and it is a narrow one: the stored
+   * value must equal the first fragment character for character.
+   *
+   * The cost is that an editor cannot shorten a decorated sentence to exactly its
+   * own first fragment — any other wording applies normally. That is a better
+   * trade than silently losing words on a live page.
+   *
+   * Only consulted on the public site. In the editor an administrator must see
+   * exactly what is stored, including a value that still needs migrating.
+   */
+  function isPreMergeRow(key: string, content: string) {
+    return !editorMode && preMergeFragments.get(key) === content.trim();
+  }
 
   const formatAttributes = ['size', 'weight', 'alignment', 'color', 'line-height'] as const;
 
@@ -56,6 +79,7 @@
     document.querySelectorAll<HTMLElement>('[data-cms-key]').forEach((node) => {
       if (node.dataset.cmsKey !== key) return;
       if (node.dataset.cmsRich === 'true') {
+        if (isPreMergeRow(key, content)) return;
         // Sanitized on the way in as well as on the way out: the stored value is
         // admin-authored, but it still reaches every visitor's page.
         node.innerHTML = sanitizeInlineHtml(content);

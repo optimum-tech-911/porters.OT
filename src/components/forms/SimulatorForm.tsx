@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import NumericSliderField from './NumericSliderField';
 
 type Scenario = {
   id: string;
@@ -7,7 +8,6 @@ type Scenario = {
   description: string;
   tjm: number;
   jours: number;
-  frais: number;
 };
 
 type SimulatorMode = 'portage' | 'freelance';
@@ -20,7 +20,6 @@ const scenarios: Scenario[] = [
     description: 'Un cadre prudent pour projeter une première mission.',
     tjm: 420,
     jours: 16,
-    frais: 150,
   },
   {
     id: 'regular',
@@ -29,7 +28,6 @@ const scenarios: Scenario[] = [
     description: 'Le scénario courant pour un consultant avec une activité mensuelle suivie.',
     tjm: 550,
     jours: 18,
-    frais: 500,
   },
   {
     id: 'senior',
@@ -38,7 +36,6 @@ const scenarios: Scenario[] = [
     description: 'Une activité soutenue pour visualiser un niveau de facturation senior.',
     tjm: 750,
     jours: 19,
-    frais: 350,
   },
   {
     id: 'part-time',
@@ -47,11 +44,13 @@ const scenarios: Scenario[] = [
     description: 'Une projection pour garder de la flexibilité tout en sécurisant vos revenus.',
     tjm: 600,
     jours: 12,
-    frais: 200,
   },
 ];
 
 const SOCIAL_CHARGE_RATE = 0.45;
+
+/** Fixed hypothesis for every simulation; deliberately not user-adjustable. */
+const FRAIS_PRO_MENSUELS = 500;
 
 export default function SimulatorForm() {
   const [mode, setMode] = useState<SimulatorMode>('portage');
@@ -59,10 +58,10 @@ export default function SimulatorForm() {
   const [tjm, setTjm] = useState<number>(scenarios[1].tjm);
   const [jours, setJours] = useState<number>(scenarios[1].jours);
   const [monthlyRevenue, setMonthlyRevenue] = useState<number>(scenarios[1].tjm * scenarios[1].jours);
-  const [frais, setFrais] = useState<number>(scenarios[1].frais);
   const managementRatePercent = 10;
   const [leadSent, setLeadSent] = useState(false);
 
+  const frais = FRAIS_PRO_MENSUELS;
   const ca = mode === 'freelance' ? tjm * jours : monthlyRevenue;
   const fraisGestion = mode === 'portage' ? ca * (managementRatePercent / 100) : 0;
   const baseAvantCharges = ca - fraisGestion - frais;
@@ -80,6 +79,8 @@ export default function SimulatorForm() {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(value);
+
+  const formatDays = (value: number) => `${value} j`;
 
   const formatPercent = (value: number) =>
     new Intl.NumberFormat('fr-FR', {
@@ -185,109 +186,60 @@ export default function SimulatorForm() {
 
           <div className="space-y-7">
             {mode === 'portage' ? (
-              <>
-              <div>
-                <div className="mb-3 flex items-center justify-between gap-4">
-                  <label htmlFor="monthly-revenue" className="form-label mb-0">
-                    Chiffre d’affaires mensuel
-                  </label>
-                  <output htmlFor="monthly-revenue" className="font-heading text-xl font-bold text-porters-navy">
-                    {formatCurrency(monthlyRevenue)}
-                  </output>
-                </div>
-                <input
-                  type="range"
-                  id="monthly-revenue"
-                  className="sim-range"
-                  min="3000"
-                  max="25000"
-                  step="100"
-                  value={monthlyRevenue}
-                  onChange={(event) => setMonthlyRevenue(Number(event.target.value))}
-                />
-                <div className="mt-2 flex justify-between text-xs text-porters-black/45">
-                  <span>3 000 €</span>
-                  <span>25 000 €</span>
-                </div>
-              </div>
-              </>
+              <NumericSliderField
+                id="monthly-revenue"
+                label="Chiffre d’affaires mensuel"
+                ariaLabel="Chiffre d’affaires mensuel en euros"
+                value={monthlyRevenue}
+                min={3000}
+                max={25000}
+                step={100}
+                format={formatCurrency}
+                minLabel="3 000 €"
+                maxLabel="25 000 €"
+                onChange={setMonthlyRevenue}
+              />
             ) : (
               <>
-              <div>
-              <div className="mb-3 flex items-center justify-between gap-4">
-                <label htmlFor="tjm" className="form-label mb-0">
-                  Taux journalier moyen
-                </label>
-                <output htmlFor="tjm" className="font-heading text-xl font-bold text-porters-navy">
-                  {formatCurrency(tjm)}
-                </output>
-              </div>
-              <input
-                type="range"
-                id="tjm"
-                className="sim-range"
-                min="250"
-                max="1200"
-                step="10"
-                value={tjm}
-                onChange={(event) => setTjm(Number(event.target.value))}
-              />
-              <div className="mt-2 flex justify-between text-xs text-porters-black/45">
-                <span>250 €</span>
-                <span>1 200 €</span>
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-3 flex items-center justify-between gap-4">
-                <label htmlFor="jours" className="form-label mb-0">
-                  Jours facturés par mois
-                </label>
-                <output htmlFor="jours" className="font-heading text-xl font-bold text-porters-navy">
-                  {jours} j
-                </output>
-              </div>
-              <input
-                type="range"
-                id="jours"
-                className="sim-range"
-                min="4"
-                max="22"
-                step="1"
-                value={jours}
-                onChange={(event) => setJours(Number(event.target.value))}
-              />
-              <div className="mt-2 flex justify-between text-xs text-porters-black/45">
-                <span>4 jours</span>
-                <span>22 jours</span>
-              </div>
-            </div>
+                <NumericSliderField
+                  id="tjm"
+                  label="Taux journalier moyen"
+                  ariaLabel="Taux journalier moyen en euros"
+                  value={tjm}
+                  min={250}
+                  max={1200}
+                  step={10}
+                  format={formatCurrency}
+                  minLabel="250 €"
+                  maxLabel="1 200 €"
+                  onChange={setTjm}
+                />
+                <NumericSliderField
+                  id="jours"
+                  label="Jours facturés par mois"
+                  ariaLabel="Nombre de jours facturés par mois"
+                  value={jours}
+                  min={4}
+                  max={22}
+                  step={1}
+                  format={formatDays}
+                  minLabel="4 jours"
+                  maxLabel="22 jours"
+                  onChange={setJours}
+                />
               </>
             )}
 
-            <div>
-              <div className="mb-3 flex items-center justify-between gap-4">
-                <label htmlFor="frais" className="form-label mb-0">
-                  Frais professionnels mensuels
-                </label>
-                <output htmlFor="frais" className="font-heading text-xl font-bold text-porters-navy">
-                  {formatCurrency(frais)}
-                </output>
+            <div className="rounded-lg border border-porters-navy/10 bg-porters-navy/[0.03] p-4">
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="form-label mb-0">Frais professionnels</span>
+                <strong className="font-heading text-xl font-bold text-porters-navy">
+                  {formatCurrency(FRAIS_PRO_MENSUELS)} / mois
+                </strong>
               </div>
-              <input
-                type="range"
-                id="frais"
-                className="sim-range"
-                min="0"
-                max="1200"
-                step="25"
-                value={frais}
-                onChange={(event) => setFrais(Number(event.target.value))}
-              />
-              <div className="mt-2 flex justify-between text-xs text-porters-black/45">
-                <span>0 €</span>
-                <span>1 200 €</span>
-              </div>
+              <p className="mt-1 mb-0 text-xs text-porters-black/55">
+                Hypothèse fixe utilisée dans cette simulation.
+              </p>
             </div>
           </div>
         </div>

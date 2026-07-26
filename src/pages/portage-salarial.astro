@@ -1,9 +1,10 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
+import TripartiteDiagram from '../components/ui/TripartiteDiagram.astro';
 import { pageSeo } from '../data/seo.data';
 import portageHeroImage from '../../images/advisor-discussion.webp';
-import advisoryImage from '../../images/business-meeting.webp';
+import PresidentVideo from '../components/ui/PresidentVideo.astro';
 
 const seo = {
   title: pageSeo.portageSalarial.title,
@@ -119,45 +120,11 @@ const faqItems = [
             tout en conservant votre indépendance professionnelle.
           </p>
         </div>
-        <div class="reveal overflow-hidden rounded-lg border border-porters-navy/10 bg-white shadow-[0_18px_50px_rgba(25,43,99,0.06)]">
-          <img
-            src={advisoryImage.src}
-            width={advisoryImage.width}
-            height={advisoryImage.height}
-            alt="Documents financiers et calculatrice utilisés pour préparer une simulation de revenus."
-            class="h-full min-h-[21rem] w-full object-cover"
-          />
-        </div>
+        <PresidentVideo />
 
-        <!-- Tripartite diagram -->
-        <div class="reveal mt-12 grid grid-cols-1 gap-8 text-center md:grid-cols-3 lg:col-span-2">
-          <div class="p-6">
-            <div class="w-16 h-16 rounded-full bg-porters-navy/5 flex items-center justify-center mx-auto mb-4">
-              <SiteIcon name="user" class="h-7 w-7 text-porters-navy" />
-            </div>
-            <h3 class="text-lg font-heading font-semibold mb-2">Le consultant</h3>
-            <p class="text-sm" style="color: rgba(11, 16, 32, 0.65);">
-              Trouve ses missions, négocie ses tarifs et réalise ses prestations en toute autonomie.
-            </p>
-          </div>
-          <div class="p-6">
-            <div class="w-16 h-16 rounded-full bg-porters-navy/5 flex items-center justify-center mx-auto mb-4">
-              <SiteIcon name="briefcase" class="h-7 w-7 text-porters-navy" />
-            </div>
-            <h3 class="text-lg font-heading font-semibold mb-2">The Porters</h3>
-            <p class="text-sm" style="color: rgba(11, 16, 32, 0.65);">
-              Gère le contrat de travail, la facturation, les charges sociales et l'accompagnement.
-            </p>
-          </div>
-          <div class="p-6">
-            <div class="w-16 h-16 rounded-full bg-porters-navy/5 flex items-center justify-center mx-auto mb-4">
-              <SiteIcon name="building" class="h-7 w-7 text-porters-navy" />
-            </div>
-            <h3 class="text-lg font-heading font-semibold mb-2">L'entreprise cliente</h3>
-            <p class="text-sm" style="color: rgba(11, 16, 32, 0.65);">
-              Bénéficie de l'expertise du consultant dans un cadre juridique sécurisé.
-            </p>
-          </div>
+        <!-- Tripartite diagram: the relations between the nodes carry the information -->
+        <div class="reveal mt-12 lg:col-span-2">
+          <TripartiteDiagram />
         </div>
       </div>
     </div>

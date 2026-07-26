@@ -210,311 +210,10 @@
     "rich": true
   },
   {
-    "key": "global.header.auto.button.14nfffs",
+    "key": "global.header.auto.button.1jvacw2",
     "route": "/_global",
     "type": "button",
-    "content": "Le groupe",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.button.1lnsy28",
-    "route": "/_global",
-    "type": "button",
-    "content": "Nos offres",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.button.1xxw1fw",
-    "route": "/_global",
-    "type": "button",
-    "content": "Rendez-vous <span aria-hidden=\"true\" data-astro-cid-vwn3tmth=\"\">→</span>",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.button.b950ar",
-    "route": "/_global",
-    "type": "button",
-    "content": "Le portage salarial",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.button.by2117",
-    "route": "/_global",
-    "type": "button",
-    "content": "Ressources",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.button.zj9o8c",
-    "route": "/_global",
-    "type": "button",
-    "content": "Simulateur",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.10zpfoi",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Parcours consultant",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.13kbuvx",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Le groupe",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.140yhgz",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "FAQ portage salarial",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.18azalz",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Articles et guides",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1b6qmof",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Cadre, contrat, paie",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1ciale1",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Questions clés",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1dkpawo",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Le portage salarial",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1egl35w",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Lille",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1fp87i5",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Paris",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1gv8x8d",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Mission, expertises, histoire et points de contact The Porters.",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1h7ns55",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Aix-Marseille",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1ha5rot",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Comprendre le portage salarial",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1itciyw",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Expertises IT",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1jagt0q",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Notre mission et notre vision",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1phbtlq",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Pour consultants indépendants",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1q843a3",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Livres blancs",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1saakbi",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Consultants",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1wzttm5",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Entreprises",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.1ytjzkl",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Blog",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.2fjydy",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Guides, réponses et contenus pour avancer avec plus de clarté.",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.4hwhgl",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Des parcours distincts pour consultants, entreprises et expertises IT.",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.8gje16",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Réponses rapides",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.91qy8v",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Nos agences",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.9gl5l7",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Bordeaux",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.eklwv9",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Paris · Lyon · Montpellier · Aix-Marseille",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.elr4vk",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Ressources",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.f5wbfu",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Lyon",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.g8w8wn",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Points de contact documentés",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.h96m3m",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Indépendance cadrée",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.hdhw79",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Nos offres",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.ldwi4m",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Qui sommes-nous",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.pms3ae",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "FAQ",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.q32cjz",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Renforts experts",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.qrbf81",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Guides pratiques",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.vpy6ug",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Cyber, data, cloud",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.w6mmrk",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Montpellier",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.xrf2b9",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Agences",
-    "rich": true
-  },
-  {
-    "key": "global.header.auto.paragraph.yt6hpa",
-    "route": "/_global",
-    "type": "paragraph",
-    "content": "Comprendre le cadre, les étapes et les réponses utiles sans alourdir la navigation.",
+    "content": "Rendez-vous",
     "rich": true
   },
   {
@@ -7091,7 +6790,7 @@
     "key": "pages.confidentialite.auto.paragraph.1sve2ab",
     "route": "/confidentialite",
     "type": "paragraph",
-    "content": "Dernière mise à jour : 25/07/2026",
+    "content": "Dernière mise à jour : 26/07/2026",
     "rich": true
   },
   {
@@ -11727,108 +11426,353 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.button.1ehje76",
-    "route": "/",
-    "type": "button",
-    "content": "Le portage salarial est-il reconnu légalement ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.button.224qgj",
+    "key": "pages.home.auto.button.17fic7h",
     "route": "/",
     "type": "button",
     "content": "Quels métiers IT peuvent être portés ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
-    "key": "pages.home.auto.button.9xwuxp",
+    "key": "pages.home.auto.button.1spfzc3",
     "route": "/",
     "type": "button",
     "content": "Comment fonctionne le portage salarial ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
-    "key": "pages.home.auto.button.jgujoo",
+    "key": "pages.home.auto.button.578ly",
     "route": "/",
     "type": "button",
     "content": "Quelle différence avec la micro-entreprise ou la SASU ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
-    "key": "pages.home.auto.heading.58oik3",
+    "key": "pages.home.auto.button.pjz5lw",
+    "route": "/",
+    "type": "button",
+    "content": "Le portage salarial est-il reconnu légalement ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.heading.14fkhqz",
+    "route": "/",
+    "type": "heading",
+    "content": "Nos consultants interviennent partout en France.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.heading.wn026n",
     "route": "/",
     "type": "heading",
     "content": "Une vision du portage, au plus près des talents",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.11k0k7o",
+    "key": "pages.home.auto.list_item.5x47r7",
     "route": "/",
-    "type": "paragraph",
-    "content": "Le consultant en portage ne crée pas de société et délègue l'administratif, la paie, les déclarations et la facturation. Il conserve une couverture sociale salariée, mais reste responsable de son positionnement, de son TJM et de la recherche de ses missions.",
+    "type": "list_item",
+    "content": "<span class=\"level-pin\" aria-hidden=\"true\" data-astro-cid-lt6rlkun=\"\"></span>Agences physiques",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.14p8ram",
+    "key": "pages.home.auto.list_item.rj7i6o",
+    "route": "/",
+    "type": "list_item",
+    "content": "<span class=\"level-zone\" aria-hidden=\"true\" data-astro-cid-lt6rlkun=\"\"></span>Zone d’intervention",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.109c0w0",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Lyon",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.10qs6r3",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Île-de-France",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.12b5l1d",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Île-de-France",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.12j6miw",
     "route": "/",
     "type": "paragraph",
     "content": "Avis publié sur Google",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.186pmi7",
+    "key": "pages.home.auto.paragraph.1a356mt",
     "route": "/",
     "type": "paragraph",
-    "content": "Mylène Pernin",
+    "content": "Occitanie",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1bbs0kg",
+    "key": "pages.home.auto.paragraph.1bpzuzm",
     "route": "/",
     "type": "paragraph",
-    "content": "Avis publié sur Google",
+    "content": "Lyon",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1o22tsm",
+    "key": "pages.home.auto.paragraph.1ekuqj2",
     "route": "/",
     "type": "paragraph",
-    "content": "Le mot du président",
+    "content": "Provence-Alpes-Côte d'Azur",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1rjy9aa",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Consulter les avis vérifiés",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.1tz02q",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Safrana Chloé",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.1yidtnt",
+    "key": "pages.home.auto.paragraph.1fg918z",
     "route": "/",
     "type": "paragraph",
     "content": "Avis Google",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.mkp4l1",
+    "key": "pages.home.auto.paragraph.1gqzp7c",
+    "route": "/",
+    "type": "paragraph",
+    "content": "27 rue Marbeuf · 75008",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1hzfbks",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Montpellier",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1m6q1l6",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Marseille",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1mfpjii",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Le mot du président",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1mwhrye",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Lille",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1nlf8ai",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Le consultant en portage ne crée pas de société et délègue l'administratif, la paie, les déclarations et la facturation. Il conserve une couverture sociale salariée, mais reste responsable de son positionnement, de son TJM et de la recherche de ses missions.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1osdlpc",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Consulter les avis vérifiés",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1q0s14n",
+    "route": "/",
+    "type": "paragraph",
+    "content": "120 rue de Thor · 34000",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1qjhjmr",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Provence-Alpes-Côte d'Azur",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1t3j9nf",
     "route": "/",
     "type": "paragraph",
     "content": "Le portage salarial repose sur une relation tripartite : vous trouvez et réalisez votre mission, l'entreprise cliente contractualise avec The Porters, et The Porters vous salarie pour transformer votre chiffre d'affaires en salaire. Vous gardez votre autonomie commerciale tout en bénéficiant du cadre salarié.",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.pl3azj",
+    "key": "pages.home.auto.paragraph.1uct58x",
     "route": "/",
     "type": "paragraph",
     "content": "Avis publié sur Google",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1v7ie3i",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Présence historique à confirmer avant publication d’une page locale.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1vv4aso",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Oui. Le portage salarial est encadré par le Code du travail, notamment depuis son intégration en 2008 et l'ordonnance du 2 avril 2015. Il définit les droits et obligations du salarié porté, de l'entreprise cliente et de la société de portage.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.2bjy0f",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Montpellier",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.2cl5ny",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Occitanie",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.3jk71w",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Rendez-vous selon les modalités confirmées",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.3syt33",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Bordeaux",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.4i8ccl",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Le portage salarial est adapté aux prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT et conseil tech. Les professions réglementées et services à la personne restent exclus.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.5y0bq0",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Lille",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.7b6485",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Aix-en-Provence",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.87uciv",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Provence-Alpes-Côte d'Azur",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.8jk4r",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Paris",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.fgcaxd",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Couverture nationale",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.g1v4a2",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Agences : Paris, Lyon, Montpellier, Aix-Marseille.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.gs7yei",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Hauts-de-France",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.hacf0l",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Nouvelle-Aquitaine",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.igq5x5",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Aix-Marseille",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.jxancm",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Avis publié sur Google",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.m9lw41",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Aix-Marseille",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.nhvzk0",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Auvergne-Rhône-Alpes",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.o9wtd6",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Montpellier",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.pqxlu5",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Paris",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.pxkza5",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Mylène Pernin",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.pznrgw",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Safrana Chloé",
     "rich": true
   },
   {
@@ -11839,45 +11783,73 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.rexzd1",
+    "key": "pages.home.auto.paragraph.spf3lt",
+    "route": "/",
+    "type": "paragraph",
+    "content": "4 place Amédée Bonnet · 69002",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.ts0hy8",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Auvergne-Rhône-Alpes",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.u3o78n",
     "route": "/",
     "type": "paragraph",
     "content": "Yoann Deroux",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.s0dj8u",
+    "key": "pages.home.auto.paragraph.ueotn9",
     "route": "/",
     "type": "paragraph",
-    "content": "Oui. Le portage salarial est encadré par le Code du travail, notamment depuis son intégration en 2008 et l'ordonnance du 2 avril 2015. Il définit les droits et obligations du salarié porté, de l'entreprise cliente et de la société de portage.",
+    "content": "Paris",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.tbrknf",
+    "key": "pages.home.auto.paragraph.ui8oqz",
     "route": "/",
     "type": "paragraph",
-    "content": "Le portage salarial est adapté aux prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT et conseil tech. Les professions réglementées et services à la personne restent exclus.",
+    "content": "Présence historique à confirmer avant publication d’une page locale.",
     "rich": true
   },
   {
-    "key": "pages.home.auto.quote.d1v9f6",
+    "key": "pages.home.auto.paragraph.wpyrds",
     "route": "/",
-    "type": "quote",
-    "content": "« Un accompagnement exemplaire sur le coaching, le suivi et la partie administrative. »",
+    "type": "paragraph",
+    "content": "Lyon",
     "rich": true
   },
   {
-    "key": "pages.home.auto.quote.ij5ti4",
+    "key": "pages.home.auto.paragraph.yy7i1j",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Bordeaux",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.quote.13v73lm",
     "route": "/",
     "type": "quote",
     "content": "« Contact réactif, agréable et disponible pour accompagner les échanges. »",
     "rich": true
   },
   {
-    "key": "pages.home.auto.quote.ssfutx",
+    "key": "pages.home.auto.quote.1xtq2an",
     "route": "/",
     "type": "quote",
     "content": "« Une équipe engagée, claire et toujours disponible pour le portage salarial. »",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.quote.hjrkro",
+    "route": "/",
+    "type": "quote",
+    "content": "« Un accompagnement exemplaire sur le coaching, le suivi et la partie administrative. »",
     "rich": true
   },
   {
@@ -12462,20 +12434,6 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.heading.1qnzv6b",
-    "route": "/portage-salarial",
-    "type": "heading",
-    "content": "Le consultant",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.heading.1robrzp",
-    "route": "/portage-salarial",
-    "type": "heading",
-    "content": "L'entreprise cliente",
-    "rich": true
-  },
-  {
     "key": "pages.portage-salarial.auto.heading.1se6xc5",
     "route": "/portage-salarial",
     "type": "heading",
@@ -12525,17 +12483,17 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.heading.n1367c",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Une vision du portage, au plus près des talents",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.heading.pf0mxl",
     "route": "/portage-salarial",
     "type": "heading",
     "content": "Trois acteurs. Deux contrats. <span class=\"gold-underline\">Une mission.</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.heading.szgy2a",
-    "route": "/portage-salarial",
-    "type": "heading",
-    "content": "The Porters",
     "rich": true
   },
   {
@@ -12550,13 +12508,6 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Portage salarial consultants IT",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.13cif06",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Trouve ses missions, négocie ses tarifs et réalise ses prestations en toute autonomie.",
     "rich": true
   },
   {
@@ -12585,13 +12536,6 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Le portage salarial est une forme d'emploi encadrée qui repose sur une relation tripartite entre le <strong>consultant</strong>, la <strong>société de portage</strong> et l'<strong>entreprise cliente</strong>.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.19m3j94",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Bénéficie de l'expertise du consultant dans un cadre juridique sécurisé.",
     "rich": true
   },
   {
@@ -12630,6 +12574,20 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1fimf85",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Contrat, facturation, paie et déclarations.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1g76fpl",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Contrat de travail",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1hkia6c",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -12655,6 +12613,27 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Qu'est-ce que le portage salarial ?",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1qkqvv5",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Convention de mission",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1r4pit8",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "The Porters",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1r69p7u",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Contrat de prestation",
     "rich": true
   },
   {
@@ -12700,10 +12679,52 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.41a61h",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Le consultant",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.a58zhn",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Le mot du président",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.cnhf9n",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Mission réalisée",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.ejw44j",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "L'entreprise cliente",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.f0xscj",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Vous trouvez la mission et négociez votre TJM. The Porters organise les contrats, la facturation, les cotisations et la paie.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.fd8gzb",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Survolez un acteur ou un contrat pour le détailler.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.fnd9mk",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Trouve ses missions et réalise ses prestations.",
     "rich": true
   },
   {
@@ -12728,13 +12749,6 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.n46del",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Gère le contrat de travail, la facturation, les charges sociales et l'accompagnement.",
-    "rich": true
-  },
-  {
     "key": "pages.portage-salarial.auto.paragraph.nsgejy",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -12749,10 +12763,38 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.pbbxno",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Relation tripartite",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.qrkykr",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.tnykua",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Bénéficie de l'expertise, dans un cadre sécurisé.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.wvxuoo",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Conditions négociées entre eux",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.x2g9ia",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "CDI ou CDD",
     "rich": true
   },
   {
@@ -12767,13 +12809,6 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Comparez l’autonomie, la protection sociale, la gestion et les coûts avant de choisir.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.button.1avc626",
-    "route": "/qui-sommes-nous",
-    "type": "button",
-    "content": "Parler à un conseiller →",
     "rich": true
   },
   {
@@ -12802,6 +12837,13 @@
     "route": "/qui-sommes-nous",
     "type": "button",
     "content": "<span data-astro-cid-auz7fwxu=\"\">04</span>Responsabilité<b data-astro-cid-auz7fwxu=\"\">+</b>",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.button.u3dlrv",
+    "route": "/qui-sommes-nous",
+    "type": "button",
+    "content": "Parler à un conseiller →",
     "rich": true
   },
   {
@@ -12924,13 +12966,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.heading.1ia250k",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Votre expertise mérite un cadre à sa hauteur.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.heading.1jcjfn9",
     "route": "/qui-sommes-nous",
     "type": "heading",
@@ -13022,10 +13057,24 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.heading.1qnyctv",
+    "route": "/qui-sommes-nous",
+    "type": "heading",
+    "content": "Votre expertise mérite un cadre à sa hauteur.",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.heading.1s74t25",
     "route": "/qui-sommes-nous",
     "type": "heading",
     "content": "Missions les plus fréquentes",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.heading.1se6xc5",
+    "route": "/qui-sommes-nous",
+    "type": "heading",
+    "content": "Nos consultants interviennent partout en France.",
     "rich": true
   },
   {
@@ -13204,6 +13253,20 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.list_item.1ueuik5",
+    "route": "/qui-sommes-nous",
+    "type": "list_item",
+    "content": "<span class=\"level-pin\" aria-hidden=\"true\" data-astro-cid-lt6rlkun=\"\"></span>Agences physiques",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.list_item.tzyl7y",
+    "route": "/qui-sommes-nous",
+    "type": "list_item",
+    "content": "<span class=\"level-zone\" aria-hidden=\"true\" data-astro-cid-lt6rlkun=\"\"></span>Zone d’intervention",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.100f6yb",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13250,6 +13313,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Industrie",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.10sfb0l",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "120 rue de Thor · 34000",
     "rich": true
   },
   {
@@ -13351,6 +13421,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.13giovl",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Provence-Alpes-Côte d'Azur",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.13jvzk3",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13365,10 +13442,24 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.13ngqso",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Lille",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.13p52ow",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Gestion des aspects administratifs",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.13sl245",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Paris",
     "rich": true
   },
   {
@@ -13498,6 +13589,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.16pzzla",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Lyon",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.16s7lhv",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13593,6 +13691,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Lean Agile Consultant",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.19l1xuz",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Occitanie",
     "rich": true
   },
   {
@@ -13694,6 +13799,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1cgdbx5",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Montpellier",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1cnrw0t",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13743,6 +13855,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1dflt7a",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Rendez-vous selon les modalités confirmées",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1dhkhea",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13785,10 +13904,24 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1e8kve4",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Présence historique à confirmer avant publication d’une page locale.",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1e92gw2",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Standards de déploiement et bonnes pratiques",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1ebsd8r",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Nouvelle-Aquitaine",
     "rich": true
   },
   {
@@ -13862,6 +13995,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1fmx83s",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Hauts-de-France",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1fuvuhj",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13890,6 +14030,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1gh2ymo",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Lyon",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1gran5",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13915,6 +14062,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Transformation agile à l’échelle",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1hesiyi",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "27 rue Marbeuf · 75008",
     "rich": true
   },
   {
@@ -13967,6 +14121,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1ilii6v",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Île-de-France",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1ilko5c",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14002,6 +14163,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1jzxnyf",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Aix-Marseille",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1k4fghi",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14027,6 +14195,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "OpenTelemetry",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1klk4uq",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Auvergne-Rhône-Alpes",
     "rich": true
   },
   {
@@ -14128,6 +14303,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1ode4t0",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Marseille",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1oj6awz",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14209,6 +14391,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Entreprises réglementées",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1pwq3wc",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Occitanie",
     "rich": true
   },
   {
@@ -14422,6 +14611,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1vcu9v3",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Aix-Marseille",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1vcyynx",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14534,6 +14730,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1xvk7m6",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Montpellier",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1y5ditp",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14569,10 +14772,24 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1yse36i",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Lille",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1z0kyey",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Porters accompagne les consultants indépendants qui interviennent sur les enjeux de gouvernance, de conformité, de prévention, de détection et de réponse aux incidents de sécurité. Ces experts aident les entreprises à mieux identifier leurs risques, sécuriser leurs infrastructures, protéger leurs actifs critiques et répondre aux exigences réglementaires.",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.23j7b7",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "4 place Amédée Bonnet · 69002",
     "rich": true
   },
   {
@@ -14597,10 +14814,24 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.2pwypl",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Présence historique à confirmer avant publication d’une page locale.",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.2q8wqj",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Protection sociale du statut salarié porté",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.2xf5ns",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Agences : Paris, Lyon, Montpellier, Aix-Marseille.",
     "rich": true
   },
   {
@@ -14776,6 +15007,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Diagnostic de maturité et cartographie des risques",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.7rn96c",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Provence-Alpes-Côte d'Azur",
     "rich": true
   },
   {
@@ -15136,6 +15374,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.gdhka1",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Votre projet",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.gfyx50",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15227,6 +15472,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.ihskhn",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Paris",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.ihwokj",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15311,6 +15563,20 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.kxv2nh",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Provence-Alpes-Côte d'Azur",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.l3b41n",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Aix-en-Provence",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.lgybus",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15339,17 +15605,17 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.m29l4s",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Votre projet",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.mfcnkt",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Deep Learning",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.mlz0bu",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Auvergne-Rhône-Alpes",
     "rich": true
   },
   {
@@ -15486,6 +15752,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.ov7n8p",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Île-de-France",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.oz3lm4",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15598,6 +15871,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.r6lc4b",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Couverture nationale",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.r87tyx",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15626,6 +15906,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.rf2hxi",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Lyon",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.rhytel",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15651,6 +15938,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Design Thinking",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.rzlcrg",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Montpellier",
     "rich": true
   },
   {
@@ -15700,6 +15994,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "The Porters · Notre rôle",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.u73f6b",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Paris",
     "rich": true
   },
   {
@@ -15906,6 +16207,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.xrxbe9",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Bordeaux",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.xut6t4",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15917,6 +16225,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Gouvernance et stratégie de sécurité",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.yg7uk9",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Bordeaux",
     "rich": true
   },
   {
@@ -16731,13 +17046,6 @@
     "rich": true
   },
   {
-    "key": "pages.simulateur.auto.label.g02s81",
-    "route": "/simulateur",
-    "type": "label",
-    "content": "Frais professionnels mensuels",
-    "rich": true
-  },
-  {
     "key": "pages.simulateur.auto.label.kxm1e",
     "route": "/simulateur",
     "type": "label",
@@ -16878,6 +17186,13 @@
     "rich": true
   },
   {
+    "key": "pages.simulateur.auto.paragraph.1opqrm7",
+    "route": "/simulateur",
+    "type": "paragraph",
+    "content": "Frais professionnels",
+    "rich": true
+  },
+  {
     "key": "pages.simulateur.auto.paragraph.1pdsehd",
     "route": "/simulateur",
     "type": "paragraph",
@@ -16903,6 +17218,13 @@
     "route": "/simulateur",
     "type": "paragraph",
     "content": "Charges sociales estimatives (~45 %)",
+    "rich": true
+  },
+  {
+    "key": "pages.simulateur.auto.paragraph.1v02fp8",
+    "route": "/simulateur",
+    "type": "paragraph",
+    "content": "Hypothèse fixe utilisée dans cette simulation.",
     "rich": true
   },
   {
@@ -17015,6 +17337,13 @@
     "route": "/simulateur",
     "type": "paragraph",
     "content": "Laissez vos coordonnées pour préparer un échange précis autour de votre activité, de votre profil métier et de vos frais professionnels.",
+    "rich": true
+  },
+  {
+    "key": "pages.simulateur.auto.paragraph.mtje42",
+    "route": "/simulateur",
+    "type": "paragraph",
+    "content": "500 € / mois",
     "rich": true
   },
   {

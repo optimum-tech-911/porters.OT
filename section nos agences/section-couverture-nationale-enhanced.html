@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couverture nationale — The Porters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f1e9;color:#fff;font-family:"Inter Tight",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit}
+
+.cvg{
+  --panel:#122630;
+  --panel-2:#172d36;
+  --gold:#d4ad56;
+  --gold-soft:#f2d996;
+  --ink:#fffdf7;
+  --muted:#aebbc0;
+  --hair:rgba(212,173,86,.22);
+  --hair-strong:rgba(212,173,86,.42);
+  --card:rgba(255,255,255,.055);
+  --card-hover:rgba(255,255,255,.085);
+  padding:clamp(28px,5vw,78px);
+  background:
+    radial-gradient(circle at 82% 12%,rgba(212,173,86,.08),transparent 29%),
+    #f4f1e9;
+}
+.cvg *,.cvg *::before,.cvg *::after{box-sizing:border-box}
+
+.cvg__panel{
+  position:relative;
+  isolation:isolate;
+  max-width:1380px;
+  min-height:760px;
+  margin:0 auto;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(350px,.82fr) minmax(520px,1.18fr);
+  gap:clamp(38px,5vw,84px);
+  align-items:center;
+  padding:clamp(38px,5vw,76px);
+  border:1px solid rgba(212,173,86,.13);
+  border-radius:38px;
+  background:
+    radial-gradient(circle at 81% 50%,rgba(212,173,86,.085),transparent 34%),
+    linear-gradient(135deg,var(--panel) 0%,#0d2029 64%,#10262f 100%);
+  box-shadow:0 32px 90px rgba(15,32,39,.19);
+  transform:translateY(22px);
+  opacity:0;
+}
+.cvg.is-visible .cvg__panel{animation:cvg-panel-in .8s cubic-bezier(.22,1,.36,1) forwards}
+.cvg__panel::before{
+  content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(212,173,86,.11) .8px,transparent .9px);
+  background-size:19px 19px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 26%,#000 80%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 26%,#000 80%,transparent 100%);
+  opacity:.32;
+}
+.cvg__panel::after{
+  content:"";position:absolute;right:-14%;top:-33%;width:760px;aspect-ratio:1;border-radius:50%;z-index:-1;
+  border:1px solid rgba(212,173,86,.12);box-shadow:0 0 0 80px rgba(212,173,86,.018),0 0 0 160px rgba(212,173,86,.012);
+  pointer-events:none;
+}
+
+.cvg__copy{position:relative;z-index:3}
+.cvg__eyebrow{
+  margin:0 0 24px;display:flex;align-items:center;gap:13px;
+  color:var(--gold);font:500 11px/1 "JetBrains Mono",ui-monospace,monospace;
+  letter-spacing:.22em;text-transform:uppercase;
+}
+.cvg__eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+.cvg__status{
+  display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;padding:9px 13px;
+  border:1px solid var(--hair);border-radius:999px;background:rgba(255,255,255,.035);
+  color:#d7dedf;font:500 10px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;
+}
+.cvg__status-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(212,173,86,.12);animation:cvg-breathe 3.6s ease-in-out infinite}
+.cvg__title{margin:0;color:var(--ink);font-size:clamp(42px,4.15vw,68px);font-weight:500;line-height:.98;letter-spacing:-.046em}
+.cvg__title em{display:block;margin-top:8px;color:var(--gold-soft);font-style:normal}
+.cvg__lede{max-width:50ch;margin:25px 0 0;color:var(--muted);font-size:clamp(16px,1.15vw,18px);line-height:1.62}
+
+.cvg__metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0 0}
+.cvg__metric{min-width:0;padding:14px 14px 13px;border:1px solid rgba(255,255,255,.07);border-radius:16px;background:rgba(255,255,255,.035)}
+.cvg__metric strong{display:block;color:var(--ink);font-size:19px;font-weight:500;letter-spacing:-.02em}
+.cvg__metric span{display:block;margin-top:5px;color:var(--muted);font:400 9px/1.25 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
+
+.cvg__controls{margin-top:30px}
+.cvg__national-btn{
+  width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:13px;align-items:center;
+  padding:15px 16px;border:1px solid var(--hair-strong);border-radius:17px;background:linear-gradient(115deg,rgba(212,173,86,.14),rgba(255,255,255,.045));
+  color:var(--ink);text-align:left;cursor:pointer;transition:transform .25s ease,border-color .25s ease,background .25s ease,box-shadow .25s ease;
+}
+.cvg__national-btn:hover,.cvg__national-btn:focus-visible,.cvg__national-btn.is-active{transform:translateY(-2px);border-color:rgba(212,173,86,.68);background:linear-gradient(115deg,rgba(212,173,86,.20),rgba(255,255,255,.065));box-shadow:0 14px 30px rgba(0,0,0,.13)}
+.cvg__national-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.cvg__national-icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--hair-strong);color:var(--gold);background:rgba(212,173,86,.08)}
+.cvg__national-icon svg{width:18px;height:18px}
+.cvg__national-copy strong{display:block;font-size:15px;font-weight:500}
+.cvg__national-copy small{display:block;margin-top:4px;color:var(--muted);font:400 9.5px/1.25 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase}
+.cvg__arrow{color:var(--gold);transition:transform .25s ease}
+.cvg__national-btn:hover .cvg__arrow{transform:translateX(4px)}
+
+.cvg__list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.cvg__item{min-width:0}
+.cvg__btn{
+  width:100%;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;
+  padding:13px 14px;border:1px solid transparent;border-radius:14px;background:transparent;color:var(--ink);text-align:left;cursor:pointer;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease,color .22s ease;
+}
+.cvg__btn:hover,.cvg__btn:focus-visible,.cvg__item.is-active .cvg__btn{transform:translateX(7px);color:var(--gold-soft);border-color:rgba(212,173,86,.19);background:rgba(255,255,255,.04)}
+.cvg__btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.cvg__dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(212,173,86,.28);transition:box-shadow .25s ease,transform .25s ease}
+.cvg__item.is-active .cvg__dot,.cvg__btn:hover .cvg__dot{transform:scale(1.14);box-shadow:0 0 0 6px rgba(212,173,86,.13)}
+.cvg__city{min-width:0;font-size:16px;font-weight:500;letter-spacing:-.01em}
+.cvg__zone{color:var(--muted);font:400 9px/1.3 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase;text-align:right}
+
+.cvg__detail{
+  display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;min-height:112px;margin-top:19px;padding:18px 18px 17px;
+  border:1px solid rgba(255,255,255,.075);border-radius:18px;background:rgba(255,255,255,.035);overflow:hidden;
+}
+.cvg__detail.is-changing .cvg__detail-main{animation:cvg-detail .32s ease}
+.cvg__detail-kicker{margin:0;color:var(--gold);font:500 9px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}
+.cvg__detail-title{margin:8px 0 0;color:var(--ink);font-size:22px;font-weight:500;letter-spacing:-.025em}
+.cvg__detail-text{margin:7px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
+.cvg__detail-badge{align-self:center;white-space:nowrap;padding:9px 11px;border-radius:999px;background:rgba(212,173,86,.1);color:var(--gold-soft);font:500 9px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
+
+.cvg__map-wrap{position:relative;z-index:2;min-width:0;display:grid;place-items:center}
+.cvg__map{position:relative;width:min(100%,760px);filter:drop-shadow(0 24px 48px rgba(0,0,0,.16));transform:translateY(8px) scale(.97);opacity:0}
+.cvg.is-visible .cvg__map{animation:cvg-map-in .9s cubic-bezier(.22,1,.36,1) .17s forwards}
+.cvg__map::before{
+  content:"";position:absolute;inset:10% 7% 6% 8%;border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle,rgba(212,173,86,.09),transparent 65%);filter:blur(18px);
+}
+.cvg__map-badge{
+  position:absolute;right:1%;top:3%;z-index:5;display:flex;align-items:center;gap:10px;padding:11px 14px;
+  border:1px solid rgba(212,173,86,.27);border-radius:999px;background:rgba(11,28,36,.80);backdrop-filter:blur(12px);
+  box-shadow:0 12px 35px rgba(0,0,0,.16);color:var(--ink);font:500 10px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase;
+}
+.cvg__map-badge i{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 6px rgba(212,173,86,.12)}
+.cvg__map-card{
+  position:absolute;left:1%;bottom:5%;z-index:5;min-width:225px;max-width:285px;padding:15px 16px 14px;
+  border:1px solid rgba(212,173,86,.24);border-radius:18px;background:rgba(10,27,35,.86);backdrop-filter:blur(14px);
+  box-shadow:0 18px 44px rgba(0,0,0,.20);transition:transform .3s ease,opacity .3s ease;
+}
+.cvg__map-card.is-changing{animation:cvg-detail .32s ease}
+.cvg__map-card small{display:block;color:var(--gold);font:500 9px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}
+.cvg__map-card strong{display:block;margin-top:8px;color:var(--ink);font-size:20px;font-weight:500;letter-spacing:-.02em}
+.cvg__map-card span{display:block;margin-top:6px;color:var(--muted);font-size:12px;line-height:1.4}
+
+.cvg__svg{width:100%;height:auto;display:block;overflow:visible}
+.cvg-outline{fill:none;stroke:var(--gold);stroke-width:1.55;stroke-linejoin:round;stroke-dasharray:var(--len);stroke-dashoffset:var(--len);filter:drop-shadow(0 0 4px rgba(212,173,86,.13))}
+.cvg.is-visible .cvg-outline{animation:cvg-draw 1.55s cubic-bezier(.65,0,.35,1) .22s forwards}
+.cvg-fill{opacity:0}
+.cvg.is-visible .cvg-fill{animation:cvg-in .9s ease .95s forwards}
+.cvg-glow{opacity:0}
+.cvg.is-visible .cvg-glow{animation:cvg-in 1.15s ease 1.02s forwards}
+.cvg-zone{opacity:.22;transform-box:fill-box;transform-origin:center;transition:opacity .35s ease,transform .45s cubic-bezier(.22,1,.36,1)}
+.cvg[data-active="national"] .cvg-zone{opacity:.22}
+.cvg[data-active]:not([data-active="national"]) .cvg-zone{opacity:.08;transform:scale(.95)}
+.cvg[data-active="paris"] .cvg-zone[data-city="paris"],.cvg[data-active="lyon"] .cvg-zone[data-city="lyon"],.cvg[data-active="montpellier"] .cvg-zone[data-city="montpellier"],.cvg[data-active="aix"] .cvg-zone[data-city="aix"]{opacity:.48;transform:scale(1.09)}
+.cvg-sweep{opacity:0;pointer-events:none}
+.cvg.is-visible .cvg-sweep{opacity:1}
+.cvg-sweep__band{animation:cvg-sweep 9.5s cubic-bezier(.4,0,.2,1) 2.2s infinite}
+
+.cvg-pin{opacity:0;transform-box:fill-box;transform-origin:center;outline:none}
+.cvg.is-visible .cvg-pin{animation:cvg-pop .52s cubic-bezier(.2,1.5,.4,1) forwards}
+.cvg-pin__halo{fill:var(--gold);opacity:.12;transform:scale(1);transform-box:fill-box;transform-origin:center;transition:opacity .3s ease,transform .35s ease}
+.cvg-pin__ring{fill:none;stroke:var(--gold);stroke-width:1.4;opacity:.62;transition:opacity .3s ease,stroke-width .3s ease}
+.cvg-pin__core{fill:var(--gold)}
+.cvg-pin__label{font:500 13px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.13em;fill:#e8e4da;transition:fill .3s ease,opacity .3s ease}
+.cvg-pin.is-active .cvg-pin__halo,.cvg-pin:hover .cvg-pin__halo,.cvg-pin:focus-visible .cvg-pin__halo{opacity:.34;transform:scale(1.48)}
+.cvg-pin.is-active .cvg-pin__ring,.cvg-pin:hover .cvg-pin__ring,.cvg-pin:focus-visible .cvg-pin__ring{opacity:1;stroke-width:1.8}
+.cvg-pin.is-active .cvg-pin__label,.cvg-pin:hover .cvg-pin__label,.cvg-pin:focus-visible .cvg-pin__label{fill:var(--gold-soft)}
+.cvg-pin__hit{fill:transparent;cursor:pointer}
+.cvg-pin:focus-visible .cvg-pin__ring{filter:drop-shadow(0 0 5px rgba(212,173,86,.75))}
+
+.cvg__footer{position:absolute;right:clamp(30px,4vw,60px);bottom:23px;z-index:4;color:rgba(255,255,255,.38);font:400 9px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase}
+
+@keyframes cvg-panel-in{to{transform:none;opacity:1}}
+@keyframes cvg-map-in{to{transform:none;opacity:1}}
+@keyframes cvg-draw{to{stroke-dashoffset:0}}
+@keyframes cvg-in{to{opacity:1}}
+@keyframes cvg-pop{from{opacity:0;transform:scale(.58)}to{opacity:1;transform:scale(1)}}
+@keyframes cvg-sweep{0%,12%{transform:translateX(-70px) rotate(12deg)}45%,100%{transform:translateX(1080px) rotate(12deg)}}
+@keyframes cvg-breathe{0%,100%{box-shadow:0 0 0 4px rgba(212,173,86,.10)}50%{box-shadow:0 0 0 8px rgba(212,173,86,.02)}}
+@keyframes cvg-detail{0%{opacity:.2;transform:translateY(7px)}100%{opacity:1;transform:none}}
+
+@media (max-width:1100px){
+  .cvg__panel{grid-template-columns:minmax(310px,.9fr) minmax(430px,1.1fr);gap:32px;padding:44px}
+  .cvg__title{font-size:clamp(40px,4vw,55px)}
+  .cvg__zone{display:none}
+  .cvg__map-card{left:0;bottom:2%}
+}
+@media (max-width:860px){
+  .cvg{padding:20px}
+  .cvg__panel{min-height:0;grid-template-columns:1fr;gap:34px;padding:34px 26px 30px;border-radius:28px}
+  .cvg__copy{display:contents}
+  .cvg__intro{order:1}
+  .cvg__map-wrap{order:2}
+  .cvg__controls{order:3;margin-top:0}
+  .cvg__metrics{order:4;margin-top:0}
+  .cvg__detail{order:5;margin-top:0}
+  .cvg__map{width:min(100%,600px)}
+  .cvg__map-badge{right:2%;top:1%}
+  .cvg__map-card{left:2%;bottom:3%;max-width:230px}
+  .cvg__footer{position:static;order:6;margin-top:-8px}
+}
+@media (max-width:560px){
+  .cvg{padding:12px}
+  .cvg__panel{padding:28px 18px 22px;border-radius:24px}
+  .cvg__eyebrow{font-size:9.5px;letter-spacing:.16em}
+  .cvg__title{font-size:clamp(38px,12vw,54px);line-height:1.01}
+  .cvg__lede{font-size:15px}
+  .cvg__metrics{gap:7px}
+  .cvg__metric{padding:12px 10px}
+  .cvg__metric strong{font-size:17px}
+  .cvg__metric span{font-size:7.5px}
+  .cvg__map-badge{padding:8px 10px;font-size:8px}
+  .cvg__map-card{position:relative;left:auto;bottom:auto;min-width:0;max-width:none;margin-top:-18px}
+  .cvg__zone{display:none}
+  .cvg__btn{grid-template-columns:auto minmax(0,1fr)}
+  .cvg__detail{grid-template-columns:1fr;min-height:0}
+  .cvg__detail-badge{justify-self:start}
+  .cvg-pin__label{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cvg__panel,.cvg__map,.cvg-outline,.cvg-fill,.cvg-glow,.cvg-pin{animation:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important}
+  .cvg-sweep__band,.cvg__status-dot{animation:none!important}
+  .cvg-zone,.cvg-pin__halo,.cvg-pin__ring,.cvg-pin__label,.cvg__btn,.cvg__national-btn{transition:none!important}
+}
+</style>
+</head>
+<body>
+<section class="cvg" data-active="national" aria-labelledby="cvg-title">
+  <div class="cvg__panel">
+    <div class="cvg__copy">
+      <div class="cvg__intro">
+        <p class="cvg__eyebrow">Couverture nationale</p>
+        <div class="cvg__status"><span class="cvg__status-dot"></span>France entière · Corse comprise</div>
+        <h2 class="cvg__title" id="cvg-title">4 agences.<em>Une présence partout en France.</em></h2>
+        <p class="cvg__lede">Paris, Lyon, Montpellier et Aix-Marseille structurent notre présence terrain. Partout en France, nos équipes vous accompagnent à distance ou se déplacent selon vos besoins.</p>
+      </div>
+
+      <div class="cvg__metrics" aria-label="Chiffres clés de la couverture nationale">
+        <div class="cvg__metric"><strong>4</strong><span>Agences physiques</span></div>
+        <div class="cvg__metric"><strong>100%</strong><span>Territoire couvert</span></div>
+        <div class="cvg__metric"><strong>2 modes</strong><span>Sur site & distance</span></div>
+      </div>
+
+      <div class="cvg__controls">
+        <button class="cvg__national-btn is-active" type="button" data-city="national" aria-pressed="true">
+          <span class="cvg__national-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3.5 12h17M12 3.5a14.5 14.5 0 0 1 0 17M12 3.5a14.5 14.5 0 0 0 0 17"/><circle cx="12" cy="12" r="8.5"/></svg></span>
+          <span class="cvg__national-copy"><strong>France entière</strong><small>Accompagnement national actif</small></span>
+          <span class="cvg__arrow" aria-hidden="true">→</span>
+        </button>
+        <ul class="cvg__list" id="cvg-list">
+          <li class="cvg__item"><button class="cvg__btn" type="button" data-city="paris" aria-pressed="false"><span class="cvg__dot"></span><span class="cvg__city">Paris</span><span class="cvg__zone">Île-de-France · Nord</span></button></li>
+          <li class="cvg__item"><button class="cvg__btn" type="button" data-city="lyon" aria-pressed="false"><span class="cvg__dot"></span><span class="cvg__city">Lyon</span><span class="cvg__zone">Rhône-Alpes · Est</span></button></li>
+          <li class="cvg__item"><button class="cvg__btn" type="button" data-city="montpellier" aria-pressed="false"><span class="cvg__dot"></span><span class="cvg__city">Montpellier</span><span class="cvg__zone">Occitanie · Sud-Ouest</span></button></li>
+          <li class="cvg__item"><button class="cvg__btn" type="button" data-city="aix" aria-pressed="false"><span class="cvg__dot"></span><span class="cvg__city">Aix-Marseille</span><span class="cvg__zone">PACA · Corse</span></button></li>
+        </ul>
+      </div>
+
+      <div class="cvg__detail" aria-live="polite">
+        <div class="cvg__detail-main">
+          <p class="cvg__detail-kicker" id="cvg-detail-kicker">Réseau national</p>
+          <h3 class="cvg__detail-title" id="cvg-detail-title">Une équipe proche, où que vous soyez.</h3>
+          <p class="cvg__detail-text" id="cvg-detail-text">Les quatre agences assurent un relais local, tandis que l’accompagnement reste disponible sur tout le territoire.</p>
+        </div>
+        <span class="cvg__detail-badge" id="cvg-detail-badge">France entière</span>
+      </div>
+    </div>
+
+    <div class="cvg__map-wrap">
+      <div class="cvg__map-badge"><i></i>Couverture nationale active</div>
+      <div class="cvg__map">
+        <svg class="cvg__svg" viewBox="-12 -14 800 760" role="img" aria-label="Carte de France : intervention sur tout le territoire, agences à Paris, Lyon, Montpellier et Aix-Marseille.">
+        <defs>
+          <pattern id="cvgDots" width="11" height="11" patternUnits="userSpaceOnUse">
+            <circle cx="1.5" cy="1.5" r="1" style="fill:var(--gold)" opacity=".34"/>
+          </pattern>
+          <radialGradient id="cvgHalo">
+            <stop offset="0%" style="stop-color:var(--gold)" stop-opacity=".62"/>
+            <stop offset="48%" style="stop-color:var(--gold)" stop-opacity=".20"/>
+            <stop offset="100%" style="stop-color:var(--gold)" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="cvgSweep" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" style="stop-color:var(--gold)" stop-opacity="0"/>
+            <stop offset="50%" style="stop-color:var(--gold)" stop-opacity=".32"/>
+            <stop offset="100%" style="stop-color:var(--gold)" stop-opacity="0"/>
+          </linearGradient>
+          <clipPath id="cvgClip">
+            <path d="M602.7 266.5L595.1 267.6L596.3 270.5L590.4 278.5L597.3 276.6L599.6 279.4L593.8 283.3L594.7 286.6L582.3 299.4L583.2 301.7L568.9 311.6L570.4 323.3L553.4 338.9L555.8 341.2L551.4 351.2L557.0 354.7L555.0 363.6L547.3 366.6L546.5 372.9L555.9 371.8L564.0 365.2L564.7 362.8L560.8 361.3L564.1 354.4L568.6 356.2L574.8 351.1L590.1 351.2L588.5 354.6L593.6 359.7L590.6 370.5L596.0 371.4L595.0 377.2L598.3 375.9L604.4 386.2L599.3 392.2L592.8 393.3L592.7 401.8L603.2 407.7L603.7 418.0L613.9 425.1L609.0 439.8L603.0 440.5L599.3 446.1L592.6 444.6L585.3 449.2L588.1 455.5L591.9 455.7L592.6 463.9L607.6 469.4L606.4 472.0L611.0 480.0L604.9 480.6L605.4 485.0L599.5 492.2L605.0 499.4L602.0 500.2L602.0 504.8L609.0 514.0L628.4 522.0L645.9 516.6L648.1 525.0L637.1 540.0L639.2 546.6L629.0 552.6L628.8 555.5L627.8 553.1L619.4 557.6L618.7 565.9L616.4 564.0L609.2 566.6L603.8 576.7L597.7 576.6L596.3 582.0L589.3 587.6L595.6 588.2L593.1 595.8L588.4 594.4L578.7 598.2L577.8 602.6L568.6 600.7L566.0 607.7L562.8 607.1L563.9 603.4L553.1 600.8L550.9 602.3L554.7 605.0L548.2 606.6L546.9 601.6L540.6 599.7L540.0 597.0L535.5 598.6L531.6 594.6L520.9 595.1L522.4 588.9L519.0 584.0L504.5 587.0L499.9 579.6L495.7 581.2L493.9 577.5L494.8 580.8L491.9 579.8L494.6 582.3L492.2 583.5L497.1 583.0L493.8 586.7L482.9 585.9L477.5 583.9L479.2 581.2L477.0 578.5L456.6 577.2L453.2 575.2L453.1 571.2L446.8 571.0L426.9 583.9L419.6 592.4L414.0 591.2L407.3 594.8L397.4 606.4L393.8 616.3L392.8 635.6L394.3 647.8L399.3 649.9L401.2 655.9L396.3 656.8L393.7 653.0L388.5 652.5L373.2 658.3L373.2 663.0L365.2 663.7L349.8 655.6L336.2 662.4L331.9 654.2L320.4 651.1L323.6 644.9L320.8 641.6L307.4 638.7L304.2 642.4L299.9 633.5L289.2 634.1L284.5 627.9L276.0 627.6L264.0 621.8L260.3 627.6L261.4 634.8L247.7 634.3L244.3 631.6L240.5 635.4L234.0 630.3L223.2 633.8L218.3 630.9L215.5 624.9L207.2 620.7L202.5 624.3L196.4 621.9L192.8 625.3L184.1 616.1L183.2 610.6L172.5 611.2L161.7 606.5L152.7 601.4L155.1 597.8L150.9 599.4L150.1 604.3L145.3 602.7L143.7 599.5L149.2 592.0L149.1 586.8L141.2 583.6L137.0 586.6L136.4 582.5L130.5 582.9L127.6 576.4L138.0 573.1L147.6 557.3L161.6 489.7L165.7 481.3L175.7 482.7L167.4 472.6L161.7 483.2L170.8 419.7L174.6 413.3L180.1 412.2L167.4 402.1L167.5 396.3L173.3 395.0L171.6 390.9L174.6 390.8L177.5 384.1L174.7 379.9L177.8 380.7L178.3 377.7L174.9 370.6L169.0 367.9L176.2 358.1L171.7 356.0L171.3 359.8L166.9 355.2L166.9 357.8L164.5 353.6L158.1 353.3L155.8 348.4L140.7 340.8L138.9 331.9L125.2 315.1L124.8 309.7L134.5 299.8L128.6 292.9L121.3 291.1L125.6 288.8L125.9 281.1L119.2 283.3L115.5 279.6L112.5 280.9L106.8 278.1L109.2 275.3L106.6 271.6L113.3 269.0L110.2 263.0L114.3 263.1L108.6 260.2L103.5 261.6L107.5 258.3L105.1 259.7L105.0 256.9L101.3 262.4L94.1 262.3L89.4 256.5L98.5 258.5L101.3 251.4L99.4 254.8L96.0 250.4L90.7 255.4L86.7 248.6L88.8 256.5L84.0 253.5L80.2 255.4L78.8 252.6L80.4 262.5L77.8 261.9L78.1 254.0L74.8 248.9L80.7 243.7L78.2 243.4L79.3 241.3L75.9 241.3L77.5 244.5L74.9 244.9L74.6 248.8L67.5 245.0L71.7 245.1L67.4 243.2L72.3 237.2L68.6 240.9L66.9 234.2L68.0 241.6L63.0 244.0L59.4 238.4L59.4 231.0L58.9 238.5L51.8 236.9L49.8 234.7L54.1 233.1L49.3 234.6L48.6 231.3L48.8 235.0L43.0 235.1L42.2 229.8L37.6 225.5L37.3 229.8L31.1 228.5L29.2 224.8L32.7 223.0L31.1 219.3L31.1 222.9L27.5 224.8L30.4 228.5L27.4 230.0L27.2 226.9L25.3 227.7L27.9 230.6L26.5 232.9L16.8 232.1L17.2 222.8L10.1 215.2L12.7 213.5L8.6 216.0L0.0 212.1L16.8 208.7L22.3 210.5L24.4 205.7L22.6 201.8L15.4 198.4L10.3 203.4L11.5 197.3L7.4 194.5L10.4 194.7L12.6 190.4L12.1 194.7L14.1 192.8L13.7 195.1L25.4 195.0L25.4 198.0L33.0 199.7L32.7 201.6L33.9 198.9L24.9 196.4L29.7 195.5L22.5 193.5L26.2 190.4L16.3 191.8L26.6 183.8L3.4 190.4L0.5 190.1L0.0 183.6L4.3 179.4L1.8 175.8L5.7 172.3L15.5 175.1L10.4 172.2L11.3 170.0L17.0 173.2L12.8 170.0L14.2 168.1L21.5 168.8L19.7 167.2L25.2 166.0L26.5 169.5L35.3 165.5L38.8 167.7L43.4 163.9L43.4 172.3L45.5 168.0L48.6 173.5L50.8 165.2L59.5 167.6L58.5 170.3L62.9 169.5L62.9 161.7L67.4 157.4L72.4 160.7L81.4 156.2L81.2 162.7L83.4 158.3L89.0 155.9L85.8 164.9L88.7 160.5L91.9 160.8L89.8 163.3L95.5 166.0L94.5 168.5L106.4 186.8L106.6 183.8L109.1 184.4L116.9 175.9L120.4 177.1L125.6 173.2L127.1 175.1L124.3 178.3L128.9 176.7L130.3 182.3L131.3 179.6L132.1 182.2L134.9 180.2L133.7 177.8L138.9 177.9L142.1 185.3L140.4 189.1L143.2 182.7L139.9 177.1L144.7 173.4L149.3 173.0L147.8 178.5L152.7 181.5L173.6 180.5L171.3 178.5L172.6 176.0L169.0 178.5L163.1 171.3L161.4 164.4L164.8 157.0L164.8 159.9L165.1 150.0L167.6 150.6L165.0 149.2L164.0 151.9L163.0 149.1L163.1 135.3L165.3 135.2L163.1 133.9L162.5 135.9L158.8 127.0L160.6 126.6L154.1 123.1L151.1 111.2L153.5 104.1L148.8 99.8L149.3 95.9L164.9 103.2L172.1 99.5L182.2 100.2L183.7 107.1L179.6 111.7L187.3 126.4L196.7 123.7L231.9 133.9L238.8 133.0L249.8 125.4L260.3 123.4L249.6 120.9L247.0 117.2L254.4 102.0L273.3 92.1L303.3 84.2L315.7 74.4L320.9 65.8L327.4 68.5L320.5 60.9L321.5 54.7L325.6 55.4L321.5 51.9L323.2 41.3L326.7 43.7L322.8 38.7L323.5 16.0L336.6 8.6L349.5 7.3L351.9 3.2L369.7 0.0L373.9 10.9L372.2 18.3L378.2 21.2L381.3 27.6L386.9 30.2L389.1 25.7L398.7 22.8L404.0 29.5L405.4 42.8L409.6 45.4L414.3 42.2L415.6 45.7L420.8 44.9L425.9 59.6L427.6 55.9L435.0 57.7L441.0 55.2L446.5 62.8L447.8 60.4L450.0 61.6L446.2 72.1L449.6 72.0L451.4 76.7L446.8 80.9L449.8 85.7L462.1 86.8L474.0 82.2L473.9 75.4L480.1 68.9L483.7 71.2L478.8 84.0L483.8 88.5L482.1 97.3L489.1 96.6L497.7 104.6L502.8 104.2L505.9 107.2L505.0 110.5L510.8 111.6L512.8 118.9L527.7 113.5L541.4 121.7L550.9 116.3L566.0 121.9L576.7 141.8L581.5 142.5L581.4 137.8L585.7 136.8L591.3 139.0L592.5 144.9L594.7 141.5L604.4 144.1L611.6 138.4L621.6 147.7L636.3 146.5L651.3 152.0L645.4 165.1L633.6 178.3L630.3 202.3L622.8 218.5L625.7 229.6L621.3 250.7L625.6 259.7L616.0 271.2L608.9 272.4L605.0 270.9L606.3 267.0L602.7 266.5Z"/>
+            <path d="M753.3 685.1L753.6 701.3L748.0 705.5L753.0 705.5L748.0 710.5L749.1 714.0L745.4 719.7L747.9 719.5L743.7 723.4L738.6 721.7L740.0 718.0L737.0 718.0L737.3 715.4L728.2 715.2L720.4 710.6L720.2 704.9L726.8 700.2L719.2 699.9L718.5 696.7L712.0 697.3L718.0 691.5L719.2 684.9L716.2 682.3L708.2 685.8L707.0 680.6L715.2 673.4L712.3 668.9L704.2 666.9L706.0 665.1L702.6 660.1L711.0 657.2L702.1 650.3L708.2 646.1L710.2 633.7L714.4 635.0L715.3 631.4L726.9 627.6L732.5 620.3L737.8 619.5L743.3 622.7L742.9 599.6L747.2 597.8L749.7 599.5L752.5 613.0L750.7 623.2L756.3 632.3L760.0 658.8L753.3 685.1Z"/>
+          </clipPath>
+        </defs>
+
+        <!-- zone d'intervention : tout le territoire -->
+        <g class="cvg-fill">
+          <path d="M602.7 266.5L595.1 267.6L596.3 270.5L590.4 278.5L597.3 276.6L599.6 279.4L593.8 283.3L594.7 286.6L582.3 299.4L583.2 301.7L568.9 311.6L570.4 323.3L553.4 338.9L555.8 341.2L551.4 351.2L557.0 354.7L555.0 363.6L547.3 366.6L546.5 372.9L555.9 371.8L564.0 365.2L564.7 362.8L560.8 361.3L564.1 354.4L568.6 356.2L574.8 351.1L590.1 351.2L588.5 354.6L593.6 359.7L590.6 370.5L596.0 371.4L595.0 377.2L598.3 375.9L604.4 386.2L599.3 392.2L592.8 393.3L592.7 401.8L603.2 407.7L603.7 418.0L613.9 425.1L609.0 439.8L603.0 440.5L599.3 446.1L592.6 444.6L585.3 449.2L588.1 455.5L591.9 455.7L592.6 463.9L607.6 469.4L606.4 472.0L611.0 480.0L604.9 480.6L605.4 485.0L599.5 492.2L605.0 499.4L602.0 500.2L602.0 504.8L609.0 514.0L628.4 522.0L645.9 516.6L648.1 525.0L637.1 540.0L639.2 546.6L629.0 552.6L628.8 555.5L627.8 553.1L619.4 557.6L618.7 565.9L616.4 564.0L609.2 566.6L603.8 576.7L597.7 576.6L596.3 582.0L589.3 587.6L595.6 588.2L593.1 595.8L588.4 594.4L578.7 598.2L577.8 602.6L568.6 600.7L566.0 607.7L562.8 607.1L563.9 603.4L553.1 600.8L550.9 602.3L554.7 605.0L548.2 606.6L546.9 601.6L540.6 599.7L540.0 597.0L535.5 598.6L531.6 594.6L520.9 595.1L522.4 588.9L519.0 584.0L504.5 587.0L499.9 579.6L495.7 581.2L493.9 577.5L494.8 580.8L491.9 579.8L494.6 582.3L492.2 583.5L497.1 583.0L493.8 586.7L482.9 585.9L477.5 583.9L479.2 581.2L477.0 578.5L456.6 577.2L453.2 575.2L453.1 571.2L446.8 571.0L426.9 583.9L419.6 592.4L414.0 591.2L407.3 594.8L397.4 606.4L393.8 616.3L392.8 635.6L394.3 647.8L399.3 649.9L401.2 655.9L396.3 656.8L393.7 653.0L388.5 652.5L373.2 658.3L373.2 663.0L365.2 663.7L349.8 655.6L336.2 662.4L331.9 654.2L320.4 651.1L323.6 644.9L320.8 641.6L307.4 638.7L304.2 642.4L299.9 633.5L289.2 634.1L284.5 627.9L276.0 627.6L264.0 621.8L260.3 627.6L261.4 634.8L247.7 634.3L244.3 631.6L240.5 635.4L234.0 630.3L223.2 633.8L218.3 630.9L215.5 624.9L207.2 620.7L202.5 624.3L196.4 621.9L192.8 625.3L184.1 616.1L183.2 610.6L172.5 611.2L161.7 606.5L152.7 601.4L155.1 597.8L150.9 599.4L150.1 604.3L145.3 602.7L143.7 599.5L149.2 592.0L149.1 586.8L141.2 583.6L137.0 586.6L136.4 582.5L130.5 582.9L127.6 576.4L138.0 573.1L147.6 557.3L161.6 489.7L165.7 481.3L175.7 482.7L167.4 472.6L161.7 483.2L170.8 419.7L174.6 413.3L180.1 412.2L167.4 402.1L167.5 396.3L173.3 395.0L171.6 390.9L174.6 390.8L177.5 384.1L174.7 379.9L177.8 380.7L178.3 377.7L174.9 370.6L169.0 367.9L176.2 358.1L171.7 356.0L171.3 359.8L166.9 355.2L166.9 357.8L164.5 353.6L158.1 353.3L155.8 348.4L140.7 340.8L138.9 331.9L125.2 315.1L124.8 309.7L134.5 299.8L128.6 292.9L121.3 291.1L125.6 288.8L125.9 281.1L119.2 283.3L115.5 279.6L112.5 280.9L106.8 278.1L109.2 275.3L106.6 271.6L113.3 269.0L110.2 263.0L114.3 263.1L108.6 260.2L103.5 261.6L107.5 258.3L105.1 259.7L105.0 256.9L101.3 262.4L94.1 262.3L89.4 256.5L98.5 258.5L101.3 251.4L99.4 254.8L96.0 250.4L90.7 255.4L86.7 248.6L88.8 256.5L84.0 253.5L80.2 255.4L78.8 252.6L80.4 262.5L77.8 261.9L78.1 254.0L74.8 248.9L80.7 243.7L78.2 243.4L79.3 241.3L75.9 241.3L77.5 244.5L74.9 244.9L74.6 248.8L67.5 245.0L71.7 245.1L67.4 243.2L72.3 237.2L68.6 240.9L66.9 234.2L68.0 241.6L63.0 244.0L59.4 238.4L59.4 231.0L58.9 238.5L51.8 236.9L49.8 234.7L54.1 233.1L49.3 234.6L48.6 231.3L48.8 235.0L43.0 235.1L42.2 229.8L37.6 225.5L37.3 229.8L31.1 228.5L29.2 224.8L32.7 223.0L31.1 219.3L31.1 222.9L27.5 224.8L30.4 228.5L27.4 230.0L27.2 226.9L25.3 227.7L27.9 230.6L26.5 232.9L16.8 232.1L17.2 222.8L10.1 215.2L12.7 213.5L8.6 216.0L0.0 212.1L16.8 208.7L22.3 210.5L24.4 205.7L22.6 201.8L15.4 198.4L10.3 203.4L11.5 197.3L7.4 194.5L10.4 194.7L12.6 190.4L12.1 194.7L14.1 192.8L13.7 195.1L25.4 195.0L25.4 198.0L33.0 199.7L32.7 201.6L33.9 198.9L24.9 196.4L29.7 195.5L22.5 193.5L26.2 190.4L16.3 191.8L26.6 183.8L3.4 190.4L0.5 190.1L0.0 183.6L4.3 179.4L1.8 175.8L5.7 172.3L15.5 175.1L10.4 172.2L11.3 170.0L17.0 173.2L12.8 170.0L14.2 168.1L21.5 168.8L19.7 167.2L25.2 166.0L26.5 169.5L35.3 165.5L38.8 167.7L43.4 163.9L43.4 172.3L45.5 168.0L48.6 173.5L50.8 165.2L59.5 167.6L58.5 170.3L62.9 169.5L62.9 161.7L67.4 157.4L72.4 160.7L81.4 156.2L81.2 162.7L83.4 158.3L89.0 155.9L85.8 164.9L88.7 160.5L91.9 160.8L89.8 163.3L95.5 166.0L94.5 168.5L106.4 186.8L106.6 183.8L109.1 184.4L116.9 175.9L120.4 177.1L125.6 173.2L127.1 175.1L124.3 178.3L128.9 176.7L130.3 182.3L131.3 179.6L132.1 182.2L134.9 180.2L133.7 177.8L138.9 177.9L142.1 185.3L140.4 189.1L143.2 182.7L139.9 177.1L144.7 173.4L149.3 173.0L147.8 178.5L152.7 181.5L173.6 180.5L171.3 178.5L172.6 176.0L169.0 178.5L163.1 171.3L161.4 164.4L164.8 157.0L164.8 159.9L165.1 150.0L167.6 150.6L165.0 149.2L164.0 151.9L163.0 149.1L163.1 135.3L165.3 135.2L163.1 133.9L162.5 135.9L158.8 127.0L160.6 126.6L154.1 123.1L151.1 111.2L153.5 104.1L148.8 99.8L149.3 95.9L164.9 103.2L172.1 99.5L182.2 100.2L183.7 107.1L179.6 111.7L187.3 126.4L196.7 123.7L231.9 133.9L238.8 133.0L249.8 125.4L260.3 123.4L249.6 120.9L247.0 117.2L254.4 102.0L273.3 92.1L303.3 84.2L315.7 74.4L320.9 65.8L327.4 68.5L320.5 60.9L321.5 54.7L325.6 55.4L321.5 51.9L323.2 41.3L326.7 43.7L322.8 38.7L323.5 16.0L336.6 8.6L349.5 7.3L351.9 3.2L369.7 0.0L373.9 10.9L372.2 18.3L378.2 21.2L381.3 27.6L386.9 30.2L389.1 25.7L398.7 22.8L404.0 29.5L405.4 42.8L409.6 45.4L414.3 42.2L415.6 45.7L420.8 44.9L425.9 59.6L427.6 55.9L435.0 57.7L441.0 55.2L446.5 62.8L447.8 60.4L450.0 61.6L446.2 72.1L449.6 72.0L451.4 76.7L446.8 80.9L449.8 85.7L462.1 86.8L474.0 82.2L473.9 75.4L480.1 68.9L483.7 71.2L478.8 84.0L483.8 88.5L482.1 97.3L489.1 96.6L497.7 104.6L502.8 104.2L505.9 107.2L505.0 110.5L510.8 111.6L512.8 118.9L527.7 113.5L541.4 121.7L550.9 116.3L566.0 121.9L576.7 141.8L581.5 142.5L581.4 137.8L585.7 136.8L591.3 139.0L592.5 144.9L594.7 141.5L604.4 144.1L611.6 138.4L621.6 147.7L636.3 146.5L651.3 152.0L645.4 165.1L633.6 178.3L630.3 202.3L622.8 218.5L625.7 229.6L621.3 250.7L625.6 259.7L616.0 271.2L608.9 272.4L605.0 270.9L606.3 267.0L602.7 266.5Z" style="fill:var(--gold)" opacity=".05"/>
+          <path d="M753.3 685.1L753.6 701.3L748.0 705.5L753.0 705.5L748.0 710.5L749.1 714.0L745.4 719.7L747.9 719.5L743.7 723.4L738.6 721.7L740.0 718.0L737.0 718.0L737.3 715.4L728.2 715.2L720.4 710.6L720.2 704.9L726.8 700.2L719.2 699.9L718.5 696.7L712.0 697.3L718.0 691.5L719.2 684.9L716.2 682.3L708.2 685.8L707.0 680.6L715.2 673.4L712.3 668.9L704.2 666.9L706.0 665.1L702.6 660.1L711.0 657.2L702.1 650.3L708.2 646.1L710.2 633.7L714.4 635.0L715.3 631.4L726.9 627.6L732.5 620.3L737.8 619.5L743.3 622.7L742.9 599.6L747.2 597.8L749.7 599.5L752.5 613.0L750.7 623.2L756.3 632.3L760.0 658.8L753.3 685.1Z" style="fill:var(--gold)" opacity=".05"/>
+          <g clip-path="url(#cvgClip)">
+            <rect x="-20" y="-20" width="840" height="800" fill="url(#cvgDots)"/>
+          </g>
+        </g>
+
+        <!-- rayonnement des agences -->
+        <g class="cvg-glow" clip-path="url(#cvgClip)" aria-hidden="true">
+          <circle class="cvg-zone" data-city="paris" cx="359" cy="169" r="205" fill="url(#cvgHalo)"/>
+          <circle class="cvg-zone" data-city="lyon" cx="488" cy="402" r="185" fill="url(#cvgHalo)"/>
+          <circle class="cvg-zone" data-city="montpellier" cx="440" cy="567" r="175" fill="url(#cvgHalo)"/>
+          <circle class="cvg-zone" data-city="aix" cx="524" cy="580" r="175" fill="url(#cvgHalo)"/>
+        </g>
+
+        <g class="cvg-sweep" clip-path="url(#cvgClip)" aria-hidden="true">
+          <rect class="cvg-sweep__band" x="-230" y="-80" width="190" height="930" fill="url(#cvgSweep)" transform="rotate(12 0 0)"/>
+        </g>
+
+        <path class="cvg-outline" style="--len:3905" d="M602.7 266.5L595.1 267.6L596.3 270.5L590.4 278.5L597.3 276.6L599.6 279.4L593.8 283.3L594.7 286.6L582.3 299.4L583.2 301.7L568.9 311.6L570.4 323.3L553.4 338.9L555.8 341.2L551.4 351.2L557.0 354.7L555.0 363.6L547.3 366.6L546.5 372.9L555.9 371.8L564.0 365.2L564.7 362.8L560.8 361.3L564.1 354.4L568.6 356.2L574.8 351.1L590.1 351.2L588.5 354.6L593.6 359.7L590.6 370.5L596.0 371.4L595.0 377.2L598.3 375.9L604.4 386.2L599.3 392.2L592.8 393.3L592.7 401.8L603.2 407.7L603.7 418.0L613.9 425.1L609.0 439.8L603.0 440.5L599.3 446.1L592.6 444.6L585.3 449.2L588.1 455.5L591.9 455.7L592.6 463.9L607.6 469.4L606.4 472.0L611.0 480.0L604.9 480.6L605.4 485.0L599.5 492.2L605.0 499.4L602.0 500.2L602.0 504.8L609.0 514.0L628.4 522.0L645.9 516.6L648.1 525.0L637.1 540.0L639.2 546.6L629.0 552.6L628.8 555.5L627.8 553.1L619.4 557.6L618.7 565.9L616.4 564.0L609.2 566.6L603.8 576.7L597.7 576.6L596.3 582.0L589.3 587.6L595.6 588.2L593.1 595.8L588.4 594.4L578.7 598.2L577.8 602.6L568.6 600.7L566.0 607.7L562.8 607.1L563.9 603.4L553.1 600.8L550.9 602.3L554.7 605.0L548.2 606.6L546.9 601.6L540.6 599.7L540.0 597.0L535.5 598.6L531.6 594.6L520.9 595.1L522.4 588.9L519.0 584.0L504.5 587.0L499.9 579.6L495.7 581.2L493.9 577.5L494.8 580.8L491.9 579.8L494.6 582.3L492.2 583.5L497.1 583.0L493.8 586.7L482.9 585.9L477.5 583.9L479.2 581.2L477.0 578.5L456.6 577.2L453.2 575.2L453.1 571.2L446.8 571.0L426.9 583.9L419.6 592.4L414.0 591.2L407.3 594.8L397.4 606.4L393.8 616.3L392.8 635.6L394.3 647.8L399.3 649.9L401.2 655.9L396.3 656.8L393.7 653.0L388.5 652.5L373.2 658.3L373.2 663.0L365.2 663.7L349.8 655.6L336.2 662.4L331.9 654.2L320.4 651.1L323.6 644.9L320.8 641.6L307.4 638.7L304.2 642.4L299.9 633.5L289.2 634.1L284.5 627.9L276.0 627.6L264.0 621.8L260.3 627.6L261.4 634.8L247.7 634.3L244.3 631.6L240.5 635.4L234.0 630.3L223.2 633.8L218.3 630.9L215.5 624.9L207.2 620.7L202.5 624.3L196.4 621.9L192.8 625.3L184.1 616.1L183.2 610.6L172.5 611.2L161.7 606.5L152.7 601.4L155.1 597.8L150.9 599.4L150.1 604.3L145.3 602.7L143.7 599.5L149.2 592.0L149.1 586.8L141.2 583.6L137.0 586.6L136.4 582.5L130.5 582.9L127.6 576.4L138.0 573.1L147.6 557.3L161.6 489.7L165.7 481.3L175.7 482.7L167.4 472.6L161.7 483.2L170.8 419.7L174.6 413.3L180.1 412.2L167.4 402.1L167.5 396.3L173.3 395.0L171.6 390.9L174.6 390.8L177.5 384.1L174.7 379.9L177.8 380.7L178.3 377.7L174.9 370.6L169.0 367.9L176.2 358.1L171.7 356.0L171.3 359.8L166.9 355.2L166.9 357.8L164.5 353.6L158.1 353.3L155.8 348.4L140.7 340.8L138.9 331.9L125.2 315.1L124.8 309.7L134.5 299.8L128.6 292.9L121.3 291.1L125.6 288.8L125.9 281.1L119.2 283.3L115.5 279.6L112.5 280.9L106.8 278.1L109.2 275.3L106.6 271.6L113.3 269.0L110.2 263.0L114.3 263.1L108.6 260.2L103.5 261.6L107.5 258.3L105.1 259.7L105.0 256.9L101.3 262.4L94.1 262.3L89.4 256.5L98.5 258.5L101.3 251.4L99.4 254.8L96.0 250.4L90.7 255.4L86.7 248.6L88.8 256.5L84.0 253.5L80.2 255.4L78.8 252.6L80.4 262.5L77.8 261.9L78.1 254.0L74.8 248.9L80.7 243.7L78.2 243.4L79.3 241.3L75.9 241.3L77.5 244.5L74.9 244.9L74.6 248.8L67.5 245.0L71.7 245.1L67.4 243.2L72.3 237.2L68.6 240.9L66.9 234.2L68.0 241.6L63.0 244.0L59.4 238.4L59.4 231.0L58.9 238.5L51.8 236.9L49.8 234.7L54.1 233.1L49.3 234.6L48.6 231.3L48.8 235.0L43.0 235.1L42.2 229.8L37.6 225.5L37.3 229.8L31.1 228.5L29.2 224.8L32.7 223.0L31.1 219.3L31.1 222.9L27.5 224.8L30.4 228.5L27.4 230.0L27.2 226.9L25.3 227.7L27.9 230.6L26.5 232.9L16.8 232.1L17.2 222.8L10.1 215.2L12.7 213.5L8.6 216.0L0.0 212.1L16.8 208.7L22.3 210.5L24.4 205.7L22.6 201.8L15.4 198.4L10.3 203.4L11.5 197.3L7.4 194.5L10.4 194.7L12.6 190.4L12.1 194.7L14.1 192.8L13.7 195.1L25.4 195.0L25.4 198.0L33.0 199.7L32.7 201.6L33.9 198.9L24.9 196.4L29.7 195.5L22.5 193.5L26.2 190.4L16.3 191.8L26.6 183.8L3.4 190.4L0.5 190.1L0.0 183.6L4.3 179.4L1.8 175.8L5.7 172.3L15.5 175.1L10.4 172.2L11.3 170.0L17.0 173.2L12.8 170.0L14.2 168.1L21.5 168.8L19.7 167.2L25.2 166.0L26.5 169.5L35.3 165.5L38.8 167.7L43.4 163.9L43.4 172.3L45.5 168.0L48.6 173.5L50.8 165.2L59.5 167.6L58.5 170.3L62.9 169.5L62.9 161.7L67.4 157.4L72.4 160.7L81.4 156.2L81.2 162.7L83.4 158.3L89.0 155.9L85.8 164.9L88.7 160.5L91.9 160.8L89.8 163.3L95.5 166.0L94.5 168.5L106.4 186.8L106.6 183.8L109.1 184.4L116.9 175.9L120.4 177.1L125.6 173.2L127.1 175.1L124.3 178.3L128.9 176.7L130.3 182.3L131.3 179.6L132.1 182.2L134.9 180.2L133.7 177.8L138.9 177.9L142.1 185.3L140.4 189.1L143.2 182.7L139.9 177.1L144.7 173.4L149.3 173.0L147.8 178.5L152.7 181.5L173.6 180.5L171.3 178.5L172.6 176.0L169.0 178.5L163.1 171.3L161.4 164.4L164.8 157.0L164.8 159.9L165.1 150.0L167.6 150.6L165.0 149.2L164.0 151.9L163.0 149.1L163.1 135.3L165.3 135.2L163.1 133.9L162.5 135.9L158.8 127.0L160.6 126.6L154.1 123.1L151.1 111.2L153.5 104.1L148.8 99.8L149.3 95.9L164.9 103.2L172.1 99.5L182.2 100.2L183.7 107.1L179.6 111.7L187.3 126.4L196.7 123.7L231.9 133.9L238.8 133.0L249.8 125.4L260.3 123.4L249.6 120.9L247.0 117.2L254.4 102.0L273.3 92.1L303.3 84.2L315.7 74.4L320.9 65.8L327.4 68.5L320.5 60.9L321.5 54.7L325.6 55.4L321.5 51.9L323.2 41.3L326.7 43.7L322.8 38.7L323.5 16.0L336.6 8.6L349.5 7.3L351.9 3.2L369.7 0.0L373.9 10.9L372.2 18.3L378.2 21.2L381.3 27.6L386.9 30.2L389.1 25.7L398.7 22.8L404.0 29.5L405.4 42.8L409.6 45.4L414.3 42.2L415.6 45.7L420.8 44.9L425.9 59.6L427.6 55.9L435.0 57.7L441.0 55.2L446.5 62.8L447.8 60.4L450.0 61.6L446.2 72.1L449.6 72.0L451.4 76.7L446.8 80.9L449.8 85.7L462.1 86.8L474.0 82.2L473.9 75.4L480.1 68.9L483.7 71.2L478.8 84.0L483.8 88.5L482.1 97.3L489.1 96.6L497.7 104.6L502.8 104.2L505.9 107.2L505.0 110.5L510.8 111.6L512.8 118.9L527.7 113.5L541.4 121.7L550.9 116.3L566.0 121.9L576.7 141.8L581.5 142.5L581.4 137.8L585.7 136.8L591.3 139.0L592.5 144.9L594.7 141.5L604.4 144.1L611.6 138.4L621.6 147.7L636.3 146.5L651.3 152.0L645.4 165.1L633.6 178.3L630.3 202.3L622.8 218.5L625.7 229.6L621.3 250.7L625.6 259.7L616.0 271.2L608.9 272.4L605.0 270.9L606.3 267.0L602.7 266.5Z"/>
+        <path class="cvg-outline" style="--len:385" d="M753.3 685.1L753.6 701.3L748.0 705.5L753.0 705.5L748.0 710.5L749.1 714.0L745.4 719.7L747.9 719.5L743.7 723.4L738.6 721.7L740.0 718.0L737.0 718.0L737.3 715.4L728.2 715.2L720.4 710.6L720.2 704.9L726.8 700.2L719.2 699.9L718.5 696.7L712.0 697.3L718.0 691.5L719.2 684.9L716.2 682.3L708.2 685.8L707.0 680.6L715.2 673.4L712.3 668.9L704.2 666.9L706.0 665.1L702.6 660.1L711.0 657.2L702.1 650.3L708.2 646.1L710.2 633.7L714.4 635.0L715.3 631.4L726.9 627.6L732.5 620.3L737.8 619.5L743.3 622.7L742.9 599.6L747.2 597.8L749.7 599.5L752.5 613.0L750.7 623.2L756.3 632.3L760.0 658.8L753.3 685.1Z"/>
+
+        <!-- agences -->
+        <g class="cvg-pin" data-city="paris" role="button" tabindex="0" aria-label="Agence de Paris" style="animation-delay:1.25s">
+          <circle class="cvg-pin__halo" cx="359" cy="169" r="17"/>
+          <circle class="cvg-pin__ring" cx="359" cy="169" r="10"/>
+          <circle class="cvg-pin__core" cx="359" cy="169" r="4.6"/>
+          <text class="cvg-pin__label" x="378" y="174">PARIS</text>
+          <circle class="cvg-pin__hit" cx="359" cy="169" r="26"/>
+        </g>
+        <g class="cvg-pin" data-city="lyon" role="button" tabindex="0" aria-label="Agence de Lyon" style="animation-delay:1.37s">
+          <circle class="cvg-pin__halo" cx="488" cy="402" r="17"/>
+          <circle class="cvg-pin__ring" cx="488" cy="402" r="10"/>
+          <circle class="cvg-pin__core" cx="488" cy="402" r="4.6"/>
+          <text class="cvg-pin__label" x="507" y="407">LYON</text>
+          <circle class="cvg-pin__hit" cx="488" cy="402" r="26"/>
+        </g>
+        <g class="cvg-pin" data-city="montpellier" role="button" tabindex="0" aria-label="Agence de Montpellier" style="animation-delay:1.49s">
+          <circle class="cvg-pin__halo" cx="440" cy="567" r="17"/>
+          <circle class="cvg-pin__ring" cx="440" cy="567" r="10"/>
+          <circle class="cvg-pin__core" cx="440" cy="567" r="4.6"/>
+          <text class="cvg-pin__label" x="421" y="572" text-anchor="end">MONTPELLIER</text>
+          <circle class="cvg-pin__hit" cx="440" cy="567" r="26"/>
+        </g>
+        <g class="cvg-pin" data-city="aix" role="button" tabindex="0" aria-label="Agence Aix-Marseille" style="animation-delay:1.61s">
+          <circle class="cvg-pin__halo" cx="524" cy="580" r="17"/>
+          <circle class="cvg-pin__ring" cx="524" cy="580" r="10"/>
+          <circle class="cvg-pin__core" cx="524" cy="580" r="4.6"/>
+          <text class="cvg-pin__label" x="543" y="600">AIX-MARSEILLE</text>
+          <circle class="cvg-pin__hit" cx="524" cy="580" r="26"/>
+        </g>
+      </svg>
+        <div class="cvg__map-card" aria-hidden="true">
+          <small id="cvg-map-kicker">France entière</small>
+          <strong id="cvg-map-title">Métropole + Corse</strong>
+          <span id="cvg-map-text">Quatre points d’ancrage, un accompagnement sans frontière régionale.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cvg__footer">Agence physique · accompagnement partout en France</div>
+  </div>
+</section>
+<script>
+(function(){
+  const root = document.querySelector('.cvg');
+  if(!root) return;
+
+  const data = {
+    national: { kicker:'Réseau national', title:'Une équipe proche, où que vous soyez.', text:'Les quatre agences assurent un relais local, tandis que l’accompagnement reste disponible sur tout le territoire.', badge:'France entière', mapKicker:'France entière', mapTitle:'Métropole + Corse', mapText:'Quatre points d’ancrage, un accompagnement sans frontière régionale.' },
+    paris: { kicker:'Agence physique', title:'Paris', text:'Point d’ancrage Île-de-France et Nord, avec rendez-vous sur place ou accompagnement à distance.', badge:'Île-de-France · Nord', mapKicker:'Agence Paris', mapTitle:'Île-de-France · Nord', mapText:'Un relais local connecté à l’ensemble du réseau national.' },
+    lyon: { kicker:'Agence physique', title:'Lyon', text:'Point d’ancrage Rhône-Alpes et Est, avec rendez-vous sur place ou accompagnement à distance.', badge:'Rhône-Alpes · Est', mapKicker:'Agence Lyon', mapTitle:'Rhône-Alpes · Est', mapText:'Une présence régionale au service de missions partout en France.' },
+    montpellier: { kicker:'Agence physique', title:'Montpellier', text:'Point d’ancrage Occitanie et Sud-Ouest, avec rendez-vous sur place ou accompagnement à distance.', badge:'Occitanie · Sud-Ouest', mapKicker:'Agence Montpellier', mapTitle:'Occitanie · Sud-Ouest', mapText:'Un suivi de proximité prolongé par une couverture nationale.' },
+    aix: { kicker:'Agence physique', title:'Aix-Marseille', text:'Point d’ancrage PACA et Corse, avec rendez-vous sur place ou accompagnement à distance.', badge:'PACA · Corse', mapKicker:'Agence Aix-Marseille', mapTitle:'PACA · Corse', mapText:'Un relais méditerranéen intégré au réseau national.' }
+  };
+
+  const controls = [...root.querySelectorAll('[data-city]')].filter(el => el.matches('button,.cvg-pin'));
+  const buttons = [...root.querySelectorAll('button[data-city]')];
+  const pins = [...root.querySelectorAll('.cvg-pin[data-city]')];
+  const items = [...root.querySelectorAll('.cvg__item')];
+  const nationalButton = root.querySelector('.cvg__national-btn');
+  const detail = root.querySelector('.cvg__detail');
+  const detailMain = root.querySelector('.cvg__detail-main');
+  const mapCard = root.querySelector('.cvg__map-card');
+  let selected = 'national';
+  let hoverTimer = null;
+
+  const els = {
+    kicker: root.querySelector('#cvg-detail-kicker'),
+    title: root.querySelector('#cvg-detail-title'),
+    text: root.querySelector('#cvg-detail-text'),
+    badge: root.querySelector('#cvg-detail-badge'),
+    mapKicker: root.querySelector('#cvg-map-kicker'),
+    mapTitle: root.querySelector('#cvg-map-title'),
+    mapText: root.querySelector('#cvg-map-text')
+  };
+
+  function render(city, permanent=false){
+    const next = data[city] || data.national;
+    root.dataset.active = city;
+    if(permanent) selected = city;
+
+    items.forEach(item => {
+      const btn = item.querySelector('button[data-city]');
+      const active = btn && btn.dataset.city === city;
+      item.classList.toggle('is-active', active);
+    });
+    buttons.forEach(btn => {
+      const active = btn.dataset.city === city;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    pins.forEach(pin => pin.classList.toggle('is-active', pin.dataset.city === city));
+    nationalButton.classList.toggle('is-active', city === 'national');
+
+    detail.classList.remove('is-changing');
+    mapCard.classList.remove('is-changing');
+    void detail.offsetWidth;
+    detail.classList.add('is-changing');
+    mapCard.classList.add('is-changing');
+
+    els.kicker.textContent = next.kicker;
+    els.title.textContent = next.title;
+    els.text.textContent = next.text;
+    els.badge.textContent = next.badge;
+    els.mapKicker.textContent = next.mapKicker;
+    els.mapTitle.textContent = next.mapTitle;
+    els.mapText.textContent = next.mapText;
+  }
+
+  buttons.forEach(btn => {
+    const city = btn.dataset.city;
+    btn.addEventListener('click', () => render(city, true));
+    btn.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); render(city, false); });
+    btn.addEventListener('mouseleave', () => { hoverTimer = setTimeout(() => render(selected, false), 90); });
+    btn.addEventListener('focus', () => render(city, false));
+    btn.addEventListener('blur', () => render(selected, false));
+  });
+
+  pins.forEach(pin => {
+    const city = pin.dataset.city;
+    pin.addEventListener('click', () => render(city, true));
+    pin.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); render(city, false); });
+    pin.addEventListener('mouseleave', () => { hoverTimer = setTimeout(() => render(selected, false), 90); });
+    pin.addEventListener('focus', () => render(city, false));
+    pin.addEventListener('blur', () => render(selected, false));
+    pin.addEventListener('keydown', event => {
+      if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); render(city, true); }
+    });
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    if(entries.some(entry => entry.isIntersecting)){
+      root.classList.add('is-visible');
+      observer.disconnect();
+    }
+  }, { threshold:.18, rootMargin:'0px 0px -8% 0px' });
+  observer.observe(root);
+
+  render('national', true);
+})();
+</script>
+</body>
+</html>

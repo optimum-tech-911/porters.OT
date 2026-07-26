@@ -1,5 +1,33 @@
 ---
-import { franceMapPins, franceMapRoutes } from '../../data/france-map.data';
+import enhancedAgencySection from '../../../section nos agences/section-couverture-nationale-enhanced.html?raw';
+
+const enhancedMapMatch = enhancedAgencySection.match(
+  /<svg class="cvg__svg"[\s\S]*?<\/svg>/
+);
+
+if (!enhancedMapMatch) {
+  throw new Error('Unable to extract the enhanced France map for the navigation.');
+}
+
+const navAgencyRoutes: Record<string, string> = {
+  paris: '/agences/paris',
+  lyon: '/agences/lyon',
+  montpellier: '/agences/montpellier',
+  aix: '/agences/aix-en-provence',
+};
+
+const enhancedNavMap = enhancedMapMatch[0]
+  .replace('class="cvg__svg"', 'class="tp-enhanced-map-svg"')
+  .replace('role="img"', 'role="group"')
+  .replaceAll('cvgDots', 'tpNavCvgDots')
+  .replaceAll('cvgHalo', 'tpNavCvgHalo')
+  .replaceAll('cvgSweep', 'tpNavCvgSweep')
+  .replaceAll('cvgClip', 'tpNavCvgClip')
+  .replace(
+    /<g class="cvg-pin" data-city="([^"]+)" role="button" tabindex="0" aria-label="([^"]+)"([^>]*)>([\s\S]*?)<\/g>/g,
+    (_match, city: string, label: string, attributes: string, contents: string) =>
+      `<a href="${navAgencyRoutes[city] || '/agences'}" aria-label="${label}"><g class="cvg-pin" data-city="${city}"${attributes}>${contents}</g></a>`
+  );
 
 type NavLink = {
   label: string;
@@ -38,9 +66,6 @@ const leftNav: NavItem[] = [
       { label: 'Expertises IT', href: '/expertises', note: 'Cyber, data, cloud' },
     ],
   },
-];
-
-const rightNav: NavItem[] = [
   {
     id: 'group',
     label: 'Le groupe',
@@ -51,6 +76,9 @@ const rightNav: NavItem[] = [
       { label: 'Agences', href: '/agences', note: 'Points de contact documentés' },
     ],
   },
+];
+
+const rightNav: NavItem[] = [
   {
     id: 'resources',
     label: 'Ressources',
@@ -76,9 +104,69 @@ const active = (href: string) => {
 <header class="tp-site-header" id="site-header">
   <div class="tp-header-glow" aria-hidden="true"></div>
   <div class="tp-header-inner">
-    <nav class="tp-desktop-nav tp-desktop-nav--left" aria-label="Navigation principale gauche">
+    <nav class="tp-desktop-nav tp-desktop-nav--left" aria-label="Navigation principale gauche" data-cms-ignore>
       {leftNav.map((item) => (
-        <div class:list={['tp-nav-item', { 'is-active': active(item.href) }]} data-popover>
+        <div class:list={['tp-nav-item', `tp-nav-item--${item.id}`, { 'is-active': active(item.href) }]} data-popover>
+          <a href={item.href} class="tp-nav-link">{item.label}</a>
+          <button
+            class="tp-nav-toggle"
+            type="button"
+            aria-label={`Afficher ${item.label}`}
+            aria-controls={`tp-nav-popover-${item.id}`}
+            aria-expanded="false"
+          >
+            <span aria-hidden="true">⌄</span>
+          </button>
+          <div class:list={['tp-nav-popover', { 'tp-nav-popover--group': item.id === 'group' }]} id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
+            <div class="tp-popover-intro">
+              <span>{item.label}</span>
+              <p>{item.description}</p>
+            </div>
+            <div class="tp-popover-links">
+              {item.links.map((link) => (
+                <a href={link.href} class:list={[{ 'tp-agences-trigger': link.label === 'Agences' }]} data-agences={link.label === 'Agences' ? 'true' : undefined}>
+                  <span>
+                    <strong>{link.label}</strong>
+                    {link.note && <small>{link.note}</small>}
+                  </span>
+                  <b aria-hidden="true">↗</b>
+                </a>
+              ))}
+            </div>
+            {/* The agencies map lives with the "Le groupe" entry; move both together if that entry moves. */}
+            {item.id === 'group' && (
+              <div class="tp-france-map-panel" id="tp-france-map" aria-label="Carte des agences The Porters">
+                <div class="tp-france-map-inner">
+                  <div class="tp-france-map-container">
+                    <Fragment set:html={enhancedNavMap} />
+                  </div>
+                  <a href="/agences" class="tp-france-map-legend">
+                    <span>Couverture nationale</span>
+                    <strong>Nos agences</strong>
+                    <small>Paris · Lyon · Montpellier · Aix-Marseille</small>
+                    <em>Découvrir notre présence en France →</em>
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </nav>
+
+    <a href="/" class="tp-header-brand" aria-label="The Porters - Accueil">
+      <span class="brand-wordmark brand-wordmark-light" aria-hidden="true">
+        <span class="brand-wordmark-the">The</span>
+        <span class="brand-wordmark-porters">Porters</span>
+      </span>
+    </a>
+
+    <a href="/rendez-vous" class="tp-mobile-appointment">Rendez-vous</a>
+
+    <nav class="tp-desktop-nav tp-desktop-nav--right" aria-label="Navigation principale droite" data-cms-ignore>
+      <a href="/simulateur" class:list={['tp-nav-direct', { 'is-active': active('/simulateur') }]}>Simulateur</a>
+      {rightNav.map((item) => (
+        <div class:list={['tp-nav-item', `tp-nav-item--${item.id}`, { 'is-active': active(item.href) }]} data-popover>
           <a href={item.href} class="tp-nav-link">{item.label}</a>
           <button
             class="tp-nav-toggle"
@@ -108,78 +196,6 @@ const active = (href: string) => {
           </div>
         </div>
       ))}
-      <a href="/simulateur" class:list={['tp-nav-direct', { 'is-active': active('/simulateur') }]}>Simulateur</a>
-    </nav>
-
-    <a href="/" class="tp-header-brand" aria-label="The Porters - Accueil">
-      <span class="brand-wordmark brand-wordmark-light" aria-hidden="true">
-        <span class="brand-wordmark-the">The</span>
-        <span class="brand-wordmark-porters">Porters</span>
-      </span>
-    </a>
-
-    <nav class="tp-desktop-nav tp-desktop-nav--right" aria-label="Navigation principale droite">
-      {rightNav.map((item) => (
-        <div class:list={['tp-nav-item', `tp-nav-item--${item.id}`, { 'is-active': active(item.href) }]} data-popover>
-          <a href={item.href} class="tp-nav-link">{item.label}</a>
-          <button
-            class="tp-nav-toggle"
-            type="button"
-            aria-label={`Afficher ${item.label}`}
-            aria-controls={`tp-nav-popover-${item.id}`}
-            aria-expanded="false"
-          >
-            <span aria-hidden="true">⌄</span>
-          </button>
-          <div class:list={['tp-nav-popover', { 'tp-nav-popover--group': item.id === 'group' }]} id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
-            <div class="tp-popover-intro">
-              <span>{item.label}</span>
-              <p>{item.description}</p>
-            </div>
-            <div class="tp-popover-links">
-              {item.links.map((link) => (
-                <a href={link.href} class:list={[{ 'tp-agences-trigger': link.label === 'Agences' }]} data-agences={link.label === 'Agences' ? 'true' : undefined}>
-                  <span>
-                    <strong>{link.label}</strong>
-                    {link.note && <small>{link.note}</small>}
-                  </span>
-                  <b aria-hidden="true">↗</b>
-                </a>
-              ))}
-            </div>
-            {item.id === 'group' && (
-              <div class="tp-france-map-panel" id="tp-france-map" aria-label="Carte des agences The Porters">
-                <div class="tp-france-map-inner">
-                  <div class="tp-france-map-container">
-                    <img src="/images/france-outline-source.svg" alt="Carte de France" loading="lazy" decoding="async" class="tp-france-svg" />
-                    <svg class="tp-france-routes" viewBox="0 0 507 520" aria-hidden="true">
-                      {franceMapRoutes.map((route) => <path d={route.d} />)}
-                    </svg>
-                    {franceMapPins.map((pin, index) => (
-                      <a
-                        href={pin.href}
-                        class:list={['tp-map-pin', `label-${pin.labelSide || 'right'}`, { 'is-muted': pin.status, 'is-active': !pin.status }]}
-                        style={`--pin-x:${pin.x}%;--pin-y:${pin.y}%;--pin-delay:${index * 95}ms`}
-                        title={pin.status ? `${pin.city} — ${pin.status}` : pin.city}
-                        aria-label={pin.city}
-                      >
-                        <span class="tp-map-pin-dot"></span>
-                        <span class="tp-map-pin-pulse"></span>
-                        <span class="tp-map-pin-label">{pin.city}</span>
-                      </a>
-                    ))}
-                  </div>
-                  <div class="tp-france-map-legend">
-                    <strong>Nos agences</strong>
-                    <small>Paris · Lyon · Montpellier · Aix-Marseille</small>
-                    <em>Lille et Bordeaux — bientôt</em>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      ))}
       <a href="/contact" class="tp-contact-link" aria-label="Contacter The Porters">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M4.5 6.5h15v11h-15z"></path>
@@ -195,7 +211,7 @@ const active = (href: string) => {
     </button>
   </div>
 
-  <div class="tp-mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="tp-mobile-menu" id="mobile-menu" aria-hidden="true" data-cms-ignore>
     <nav aria-label="Navigation mobile">
       {mobileNav.map((item, index) => (
         <details class="tp-mobile-group">
@@ -590,9 +606,14 @@ const active = (href: string) => {
       transform 240ms var(--ease-soft);
   }
 
+  /*
+   * "Le groupe" is the last entry before the logo, so this panel is anchored to
+   * the entry's right edge and grows leftward. That keeps its extra width clear
+   * of the centred wordmark instead of overlapping it.
+   */
   .tp-nav-popover--group {
     left: auto;
-    right: -6rem;
+    right: 0;
     width: min(30rem, calc(100vw - 2rem));
     transform: translate3d(0, 10px, 0) scale(0.985);
   }
@@ -710,161 +731,118 @@ const active = (href: string) => {
   }
 
   .tp-france-map-inner {
+    --gold: #d4ad56;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: minmax(0, 1.35fr) minmax(9.5rem, 0.65fr);
+    gap: 0.8rem;
     align-items: center;
-    padding: 1rem;
-    border: 1px solid rgba(32, 52, 64, 0.1);
+    padding: 0.9rem;
+    border: 1px solid rgba(212, 173, 86, 0.2);
     border-radius: 16px;
-    background: linear-gradient(145deg, #10202b 0%, #1a3040 100%);
+    background:
+      radial-gradient(circle at 72% 48%, rgba(212, 173, 86, 0.1), transparent 36%),
+      linear-gradient(145deg, #102630 0%, #0d2029 68%, #10262f 100%);
     box-shadow: 0 18px 45px rgba(5, 15, 22, 0.22);
   }
 
   .tp-france-map-container {
     position: relative;
-    aspect-ratio: 507 / 520;
-    padding: 0.6rem;
+    min-width: 0;
+    aspect-ratio: 800 / 760;
+    filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.2));
   }
 
-  .tp-france-svg,
-  .tp-france-routes {
-    position: absolute;
-    inset: 0.6rem;
-    width: calc(100% - 1.2rem);
-    height: calc(100% - 1.2rem);
-  }
-
-  .tp-france-svg {
-    object-fit: contain;
-    opacity: 0.86;
-    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.2));
-  }
-
-  .tp-france-routes {
+  .tp-france-map-container :global(.tp-enhanced-map-svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
     overflow: visible;
-    pointer-events: none;
   }
 
-  .tp-france-routes path {
+  .tp-france-map-container :global(.cvg-outline) {
     fill: none;
-    stroke: rgba(216, 187, 112, 0.58);
-    stroke-width: 1.15;
-    stroke-dasharray: 5 8;
-    stroke-linecap: round;
-    animation: tp-route-flow 18s linear infinite;
+    stroke: #d4ad56;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 4px rgba(212, 173, 86, 0.16));
   }
 
-  .tp-france-routes path:nth-child(2n) {
-    animation-duration: 22s;
-  }
-
-  .tp-map-pin {
-    position: absolute;
-    left: var(--pin-x);
-    top: var(--pin-y);
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2;
-    text-decoration: none;
-    opacity: 0;
-    animation: tp-map-pin-enter 520ms var(--ease-soft) var(--pin-delay, 0ms) both;
-  }
-
-  .tp-map-pin-dot {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 50%;
-    background: #d8bb70;
-    border: 1.5px solid #10202b;
-    box-shadow: 0 0 0 3px rgba(216, 187, 112, 0.25);
-    transition: transform 240ms var(--ease-soft), box-shadow 240ms ease;
-    z-index: 2;
-  }
-
-  .tp-map-pin-pulse {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 1.4rem;
-    height: 1.4rem;
-    border-radius: 50%;
-    background: rgba(216, 187, 112, 0.25);
-    transform: translate(-50%, -50%) scale(0);
-    animation: pin-pulse 2.4s ease-in-out infinite;
-    z-index: 1;
-  }
-
-  .tp-map-pin.is-active .tp-map-pin-pulse {
-    animation: pin-pulse 2.4s ease-in-out infinite;
-  }
-
-  .tp-map-pin.is-muted .tp-map-pin-dot {
-    background: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
-  }
-
-  .tp-map-pin.is-muted .tp-map-pin-pulse {
-    animation: none;
-  }
-
-  .tp-map-pin-label {
-    position: absolute;
-    top: 50%;
-    left: calc(100% + 0.38rem);
-    transform: translateY(-50%);
-    white-space: nowrap;
-    font-size: 0.58rem;
-    font-weight: 720;
-    color: #d8bb70;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.78;
-    pointer-events: none;
-    transition: opacity 180ms ease, transform 200ms var(--ease-soft), color 180ms ease;
-  }
-
-  .tp-map-pin.label-left .tp-map-pin-label {
-    right: calc(100% + 0.42rem);
-    left: auto;
-  }
-
-  .tp-map-pin.label-top .tp-map-pin-label {
-    top: auto;
-    bottom: calc(100% + 0.42rem);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .tp-map-pin.label-bottom .tp-map-pin-label {
-    top: calc(100% + 0.42rem);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .tp-map-pin:hover .tp-map-pin-dot,
-  .tp-map-pin:focus-visible .tp-map-pin-dot {
-    transform: scale(1.4);
-    box-shadow: 0 0 0 5px rgba(216, 187, 112, 0.35);
-  }
-
-  .tp-map-pin:hover .tp-map-pin-label,
-  .tp-map-pin:focus-visible .tp-map-pin-label {
-    color: #fff;
+  .tp-france-map-container :global(.cvg-fill),
+  .tp-france-map-container :global(.cvg-glow),
+  .tp-france-map-container :global(.cvg-pin) {
     opacity: 1;
-    transform: translateY(-50%) translateX(3px);
   }
 
-  .tp-map-pin.label-left:hover .tp-map-pin-label,
-  .tp-map-pin.label-left:focus-visible .tp-map-pin-label {
-    transform: translateY(-50%) translateX(-3px);
+  .tp-france-map-container :global(.cvg-zone) {
+    opacity: 0.22;
+  }
+
+  .tp-france-map-container :global(.cvg-sweep) {
+    display: none;
+  }
+
+  .tp-france-map-container :global(.cvg-pin__halo) {
+    fill: #d4ad56;
+    opacity: 0.16;
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: opacity 220ms ease, transform 260ms var(--ease-soft);
+  }
+
+  .tp-france-map-container :global(.cvg-pin__ring) {
+    fill: none;
+    stroke: #d4ad56;
+    stroke-width: 1.7;
+    opacity: 0.72;
+  }
+
+  .tp-france-map-container :global(.cvg-pin__core) {
+    fill: #d4ad56;
+  }
+
+  .tp-france-map-container :global(.cvg-pin__label) {
+    fill: #f2d996;
+    font: 500 17px/1 var(--font-mono);
+    letter-spacing: 0.12em;
+  }
+
+  .tp-france-map-container :global(.cvg-pin__hit) {
+    fill: transparent;
+    cursor: pointer;
+  }
+
+  .tp-france-map-container :global(a:hover .cvg-pin__halo),
+  .tp-france-map-container :global(a:focus-visible .cvg-pin__halo) {
+    opacity: 0.4;
+    transform: scale(1.5);
+  }
+
+  .tp-france-map-container :global(a:focus-visible) {
+    outline: none;
   }
 
   .tp-france-map-legend {
-    padding: 0.5rem;
+    display: block;
+    padding: 0.65rem;
+    border-radius: 12px;
     color: #fff;
+    transition: background 180ms ease, transform 220ms var(--ease-soft);
+  }
+
+  .tp-france-map-legend:hover,
+  .tp-france-map-legend:focus-visible {
+    background: rgba(212, 173, 86, 0.08);
+    transform: translateX(3px);
+  }
+
+  .tp-france-map-legend > span {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: #d4ad56;
+    font: 650 0.52rem/1 var(--font-mono);
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
   }
 
   .tp-france-map-legend strong {
@@ -884,25 +862,11 @@ const active = (href: string) => {
 
   .tp-france-map-legend em {
     display: block;
-    margin-top: 0.35rem;
+    margin-top: 0.65rem;
     color: #d8bb70;
     font-size: 0.66rem;
     font-style: normal;
     font-weight: 680;
-  }
-
-  @keyframes pin-pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(0); opacity: 0.6; }
-    50% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
-  }
-
-  @keyframes tp-route-flow {
-    to { stroke-dashoffset: -160; }
-  }
-
-  @keyframes tp-map-pin-enter {
-    from { opacity: 0; transform: translate(-50%, -50%) scale(0.62); }
-    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   }
 
   .tp-contact-link {
@@ -973,6 +937,7 @@ const active = (href: string) => {
     transform: translateX(3px);
   }
 
+  .tp-mobile-appointment,
   .tp-menu-toggle,
   .tp-mobile-menu {
     display: none;
@@ -1007,8 +972,40 @@ const active = (href: string) => {
     }
 
     .tp-header-brand .brand-wordmark {
-      transform: scale(0.82);
+      transform: scale(1.08);
       transform-origin: left center;
+    }
+
+    .tp-header-brand:hover .brand-wordmark,
+    .tp-header-brand:focus-visible .brand-wordmark {
+      transform: scale(1.12);
+    }
+
+    .tp-mobile-appointment {
+      position: relative;
+      z-index: 4;
+      display: inline-flex;
+      min-height: 2.9rem;
+      align-items: center;
+      justify-content: center;
+      justify-self: end;
+      border: 1px solid rgba(255, 216, 128, 0.52);
+      border-radius: 999px;
+      padding: 0.15rem 1.15rem;
+      background: linear-gradient(110deg, #c99b43, #f1c867);
+      box-shadow: 0 10px 25px rgba(4, 16, 24, 0.2);
+      color: #10202b;
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1;
+      transition: transform 220ms var(--ease-soft), box-shadow 220ms ease;
+    }
+
+    .tp-mobile-appointment:hover,
+    .tp-mobile-appointment:focus-visible {
+      box-shadow: 0 13px 28px rgba(4, 16, 24, 0.26);
+      color: #10202b;
+      transform: translateY(-1px);
     }
 
     .tp-menu-toggle {
@@ -1197,6 +1194,18 @@ const active = (href: string) => {
   @media (max-width: 520px) {
     .tp-header-inner {
       width: min(100% - 1.5rem, 94rem);
+      gap: 0.7rem;
+    }
+
+    .tp-mobile-appointment {
+      min-height: 2.75rem;
+      padding-inline: 0.85rem;
+      font-size: 0.72rem;
+    }
+
+    .tp-menu-toggle {
+      width: 2.75rem;
+      height: 2.75rem;
     }
 
     .tp-mobile-actions {

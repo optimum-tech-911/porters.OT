@@ -97,10 +97,27 @@ function isMergeable(element: Element): boolean {
     .every((node) => INLINE_TAGS.has(node.tagName.toLowerCase()));
 }
 
-export function discoverEditableText(doc: Document, pageRoute: string, globalRoute: string): void {
+function firstDirectTextFragment(element: Element): string {
+  for (const node of Array.from(element.childNodes)) {
+    if (node.nodeType !== TEXT_NODE) continue;
+    const text = (node.textContent || '').trim();
+    if (LETTER.test(text)) return text;
+  }
+  return '';
+}
+
+/**
+ * Returns, for each merged block that carries markup, what a row written before
+ * blocks were merged would hold: that block's first text fragment alone. The
+ * runtime pairs this with published_version to ignore database rows that predate
+ * the merge, which is what lets the frontend ship before or after the seed
+ * migration without breaking a page either way.
+ */
+export function discoverEditableText(doc: Document, pageRoute: string, globalRoute: string): Map<string, string> {
   const body = doc.body;
   const elements = Array.from(body.querySelectorAll(CANDIDATE_SELECTOR));
   const fragments: Array<{ node: Text; key: string; route: string; type: string }> = [];
+  const preMergeFragments = new Map<string, string>();
 
   elements.forEach((element) => {
     if (element.matches(EXCLUDED_SELECTOR) || element.closest(EXCLUDED_SELECTOR)) return;
@@ -125,11 +142,18 @@ export function discoverEditableText(doc: Document, pageRoute: string, globalRou
     if (isMergeable(target)) {
       // Deliberately the historic first-fragment key: every block that was
       // already a single text node keeps the exact key it has in the database.
-      target.setAttribute('data-cms-key', `${scope}.auto.${type}.${hashString(`${path}|text:1`)}`);
+      const key = `${scope}.auto.${type}.${hashString(`${path}|text:1`)}`;
+      target.setAttribute('data-cms-key', key);
       target.setAttribute('data-cms-route', route);
       target.setAttribute('data-cms-element-type', type);
       target.setAttribute('data-cms-auto', 'true');
       target.setAttribute('data-cms-rich', 'true');
+
+      // Only blocks holding markup can lose anything to a plain pre-merge value.
+      // That includes markup carrying no text of its own, such as a bullet span,
+      // so this tests for child elements rather than for differing text.
+      const fragment = firstDirectTextFragment(target);
+      if (fragment && target.children.length > 0) preMergeFragments.set(key, fragment);
       return;
     }
 
@@ -160,4 +184,6 @@ export function discoverEditableText(doc: Document, pageRoute: string, globalRou
     wrapper.textContent = original;
     node.replaceWith(wrapper);
   });
+
+  return preMergeFragments;
 }
