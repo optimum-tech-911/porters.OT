@@ -2,14 +2,13 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import HomeHero from '../components/home/HomeHero.astro';
 import GoogleReviewsBadge from '../components/ui/GoogleReviewsBadge.astro';
-import FranceAgencyMap from '../components/agencies/FranceAgencyMap.astro';
+import EnhancedAgencyCoverage from '../components/agencies/EnhancedAgencyCoverage.astro';
 import PresidentVideo from '../components/ui/PresidentVideo.astro';
 import GoogleReviewsMarquee from '../components/ui/GoogleReviewsMarquee.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import { faqGroups } from '../data/faq.data';
 import { pageSeo } from '../data/seo.data';
 import { googleReviewHighlights } from '../content/pages/home';
-import { agencies } from '../data/agencies.data';
 import { cmsAttrs, cmsText } from '../cms/content';
 
 const partnerLogos = [
@@ -138,7 +137,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   <section class="light-section light-coverage reveal-fade" data-reveal>
     <div class="light-container">
       <div class="reveal-up" data-reveal>
-        <FranceAgencyMap agencies={agencies} coverage compact />
+        <EnhancedAgencyCoverage />
       </div>
     </div>
   </section>
