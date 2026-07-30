@@ -16,33 +16,37 @@ const breadcrumbs = [{ label: 'Portage salarial' }];
 const benefits = [
   {
     icon: 'shield',
-    title: 'Protection du salarié',
-    description: 'Votre activité finance les cotisations liées au statut salarié : maladie, retraite, prévoyance et mutuelle selon les conditions applicables.',
+    title: 'Protection sociale complète',
+    // F-B05 (PUBLISHABLE)
+    description: 'Régime général de la Sécurité sociale, prévoyance, cotisations retraite, congés payés, assurance chômage et mutuelle collective.',
   },
   {
     icon: 'rocket',
-    title: 'Autonomie commerciale',
-    description: 'Vous choisissez vos missions, négociez votre TJM et organisez votre intervention avec le client.',
+    title: 'Autonomie totale',
+    // F-B07 (PUBLISHABLE) — argument central
+    description: 'Vous choisissez vos missions, négociez vos tarifs et organisez votre temps de travail. Aucun lien hiérarchique, ni chez le client ni chez nous.',
+  },
+  {
+    icon: 'briefcase',
+    title: 'CDI et statut cadre',
+    // F-B03, F-B04 (PUBLISHABLE)
+    description: 'Un contrat de travail à durée indéterminée, au statut cadre — ce qui ouvre la cotisation à la retraite complémentaire.',
   },
   {
     icon: 'clipboard',
     title: 'Contrats et facturation délégués',
-    description: 'The Porters prépare le cadre contractuel, facture la prestation et traite les obligations sociales liées à votre activité portée.',
+    description: 'Nous établissons les deux contrats, facturons votre client et traitons les déclarations sociales et fiscales liées à votre activité.',
   },
   {
     icon: 'users',
-    title: 'Un interlocuteur identifié',
-    description: 'Vous savez qui contacter pour les questions de contrat, d’activité, de frais, de facturation ou de paie.',
-  },
-  {
-    icon: 'network',
-    title: 'Des ressources pour avancer',
-    description: 'Guides métier, points de contact et échanges vous aident à mieux préparer votre activité et vos prochaines décisions.',
+    title: 'Un interlocuteur unique',
+    description: 'Une seule personne connaît votre contrat, votre client et votre situation. Vous ne réexpliquez pas votre dossier à chaque appel.',
   },
   {
     icon: 'calculator',
-    title: 'Des revenus projetés clairement',
-    description: 'TJM, chiffre d’affaires, frais professionnels et hypothèses de charges sont présentés dans une simulation lisible.',
+    title: 'Un compte de trésorerie',
+    // F-B11 (PUBLISHABLE) — différenciant, mal expliqué partout ailleurs
+    description: 'Vous pouvez mettre une part de votre rémunération brute de côté pour lisser une paie, financer des congés ou provisionner une fin de contrat.',
   },
 ] as const;
 
@@ -61,7 +65,9 @@ const faqItems = [
   },
   {
     question: 'Le portage salarial est-il encadré par la loi ?',
-    answer: 'Oui, le portage salarial est encadré par le Code du travail (articles L.1254-1 et suivants) et par une convention collective nationale signée en 2017. Ce cadre légal garantit la protection des consultants portés.',
+    // F-B01 (PUBLISHABLE). La convention collective de branche de 2017 n'a pas de
+    // ligne dans fact-base.md : elle n'est donc pas citée ici.
+    answer: 'Oui. Le portage salarial est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.',
   },
   {
     question: 'Peut-on cumuler portage salarial et chômage ?',
@@ -86,13 +92,14 @@ const faqItems = [
     </div>
     <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
       <div class="max-w-2xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Portage salarial consultants IT</p>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Partie 1 · Le cadre</p>
         <h1 class="mb-6 max-w-[36rem] text-porters-white">
-          L’indépendance, avec <span class="gold-underline">les protections du salariat</span>
+          Un seul portage salarial. <span class="gold-underline">Voici comment il fonctionne.</span>
         </h1>
         <p class="mb-8 max-w-xl text-lg leading-relaxed text-porters-white/84">
-          Vous trouvez la mission et négociez votre TJM. The Porters organise les contrats,
-          la facturation, les cotisations et la paie.
+          Il n’y a pas un portage pour les salariés et un autre pour les indépendants. Il y en a un,
+          encadré par le Code du travail, et vous y êtes salarié tout en choisissant vos missions.
+          Cette page explique le mécanisme. La suivante décrit votre année, mois par mois.
         </p>
         <div class="flex flex-col gap-4 sm:flex-row">
           <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
@@ -109,15 +116,16 @@ const faqItems = [
         <div class="reveal">
           <h2 class="mb-6">Trois acteurs. Deux contrats. <span class="gold-underline">Une mission.</span></h2>
           <p class="text-lg" style="color: rgba(11, 16, 32, 0.75);">
-            Le portage salarial est une forme d'emploi encadrée qui repose sur une relation tripartite
-            entre le <strong>consultant</strong>, la <strong>société de portage</strong> et
-            l'<strong>entreprise cliente</strong>.
+            Le portage salarial est une forme d’emploi encadrée par le Code du travail, l’accord national
+            interprofessionnel de 2008 et l’ordonnance du 2&nbsp;avril 2015. Il repose sur une relation
+            tripartite entre le <strong>salarié porté</strong>, la <strong>société de portage</strong> et
+            l’<strong>entreprise cliente</strong>.
           </p>
           <p style="color: rgba(11, 16, 32, 0.75);">
-            Concrètement, vous trouvez vos missions IT et négociez vos conditions avec vos clients.
-            The Porters s'occupe de tout le reste : contrat de travail, facturation, déclarations
-            sociales, paie et accompagnement. Vous bénéficiez du statut de salarié (CDI ou CDD)
-            tout en conservant votre indépendance professionnelle.
+            Deux contrats, pas un&nbsp;: un contrat de travail entre vous et The&nbsp;Porters, un contrat de
+            prestation entre The&nbsp;Porters et votre client. Vous négociez la mission et le tarif&nbsp;;
+            nous facturons, déclarons et vous payons. Aucun lien hiérarchique&nbsp;: ni chez le client,
+            ni chez nous.
           </p>
         </div>
         <PresidentVideo />
@@ -134,9 +142,9 @@ const faqItems = [
   <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-12 reveal">
-        <h2>Ce que le portage change <span class="gold-underline">concrètement</span></h2>
+        <h2>Ce que le cadre vous garantit <span class="gold-underline">concrètement</span></h2>
         <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Vous gardez les décisions commerciales. Vous déléguez le cadre social, contractuel et administratif.
+          Vous gardez toutes les décisions commerciales. Vous déléguez le cadre social, contractuel et administratif.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -153,38 +161,35 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- How it works -->
+  <!-- Eligibility: who it is for, and who it is not for -->
   <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-12 reveal">
-        <h2>De la mission au salaire, <span class="gold-underline">étape par étape</span></h2>
+        <h2>Qui peut être porté, <span class="gold-underline">et qui ne peut pas</span></h2>
         <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Chaque étape précise ce que vous faites et ce que The Porters prend en charge.
+          Le portage couvre les prestations intellectuelles. Deux familles en sont exclues par la loi.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        <div class="text-center reveal">
-          <div class="text-5xl font-heading font-bold text-porters-gold mb-4">1</div>
-          <h3 class="text-lg font-heading font-semibold mb-3">Trouvez votre mission</h3>
-          <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">
-            Prospectez et négociez vos missions auprès de vos clients. The Porters peut vous aider
-            à clarifier votre positionnement sans promettre de missions garanties.
-          </p>
+      <div class="grid gap-10 lg:grid-cols-2 max-w-5xl mx-auto">
+        <div class="reveal">
+          <h3 class="mb-5 text-lg font-heading font-semibold">Éligible</h3>
+          <ul class="space-y-3">
+            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Cybersécurité, data, IA, cloud, DevOps, architecture</li>
+            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Product Ownership, Scrum, coaching agile, transformation</li>
+            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Chefferie de projet IT, AMOA, conseil</li>
+            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Mission en France ou à l’étranger, client français ou étranger, télétravail compris</li>
+            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Cumul avec un emploi salarié, avec l’accord de l’employeur, ou avec une retraite</li>
+          </ul>
         </div>
-        <div class="text-center reveal">
-          <div class="text-5xl font-heading font-bold text-porters-gold mb-4">2</div>
-          <h3 class="text-lg font-heading font-semibold mb-3">Signez votre contrat</h3>
-          <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">
-            The Porters établit votre contrat de travail (CDI ou CDD) et le contrat
-            de prestation avec votre client.
-          </p>
-        </div>
-        <div class="text-center reveal">
-          <div class="text-5xl font-heading font-bold text-porters-gold mb-4">3</div>
-          <h3 class="text-lg font-heading font-semibold mb-3">Travaillez en toute sérénité</h3>
-          <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">
-            Concentrez-vous sur votre expertise. Nous gérons la facturation, les charges,
-            la paie et l'administratif.
+        <div class="reveal">
+          <h3 class="mb-5 text-lg font-heading font-semibold">Exclu</h3>
+          <ul class="space-y-3">
+            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25"></span>Les professions réglementées</li>
+            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25"></span>Les services à la personne</li>
+          </ul>
+          <p class="mt-6 text-sm leading-relaxed text-porters-black/60">
+            Le cumul avec un emploi salarié est plafonné à 48&nbsp;heures de travail hebdomadaire, tous
+            employeurs confondus.
           </p>
         </div>
       </div>
@@ -244,7 +249,11 @@ const faqItems = [
             <tr class="transition-colors hover:bg-porters-navy/[0.035]">
               <td class="p-4 font-medium">Plafond de CA</td>
               <td class="p-4 text-center text-porters-navy font-semibold">Aucun</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">77 700 € / an</td>
+              {/* TODO-CLIENT: le plafond de chiffre d'affaires de la micro-entreprise
+                  est un seuil fiscal révisable. Aucune ligne de fact-base.md ne le
+                  couvre : il n'est donc pas chiffré ici. Le rétablir avec son année
+                  (« 77 700 € en 2024 ») une fois la valeur 2026 confirmée. */}
+              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Plafonné</td>
               <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Aucun</td>
             </tr>
           </tbody>
@@ -282,14 +291,15 @@ const faqItems = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-porters-white mb-4">
-          Vous avez une mission ? <span class="gold-underline">Donnez-lui le bon cadre.</span>
+          Le cadre est clair&nbsp;? <span class="gold-underline">Voyons votre année.</span>
         </h2>
         <p class="text-lg mb-8" style="color: rgba(250, 248, 243, 0.8);">
-          Rejoignez The Porters et développez votre activité en toute sérénité.
+          Entrée, premier salaire, congés, arrêt maladie, trésorerie, sortie&nbsp;: la suite du parcours,
+          mois par mois.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
-          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+          <a href="/consultants" class="btn btn-gold">Votre quotidien de salarié porté</a>
+          <a href="/simulateur" class="btn btn-white">Simuler mes revenus</a>
         </div>
       </div>
     </div>

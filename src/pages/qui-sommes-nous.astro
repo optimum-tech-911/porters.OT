@@ -118,10 +118,13 @@ const history = [
               </section>
 
               <div class="expertise-panel-columns expertise-panel-columns--compact">
-                <section class="expertise-panel-section">
-                  <div class="expertise-section-title"><SiteIcon name="building" /><h4>Secteurs concernés</h4></div>
-                  <div class="expertise-tags">{expertise.sectors.map((sector) => <span>{sector}</span>)}</div>
-                </section>
+                {/* Secteurs non publiés : fact-base F-S01 est DO_NOT_PUBLISH. */}
+                {expertise.sectors.length > 0 && (
+                  <section class="expertise-panel-section">
+                    <div class="expertise-section-title"><SiteIcon name="building" /><h4>Secteurs concernés</h4></div>
+                    <div class="expertise-tags">{expertise.sectors.map((sector) => <span>{sector}</span>)}</div>
+                  </section>
+                )}
                 <section class="expertise-panel-section expertise-why">
                   <div class="expertise-section-title"><SiteIcon name="scale" /><h4>Pourquoi le portage pour ce profil ?</h4></div>
                   <p>{expertise.whyPortage}</p>

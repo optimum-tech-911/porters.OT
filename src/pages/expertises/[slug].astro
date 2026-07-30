@@ -143,12 +143,17 @@ const { expertise } = Astro.props as { expertise: Expertise };
           ))}
         </div>
       </div>
-      <div class="mt-12 border-t border-porters-navy/10 pt-7 reveal">
-        <p class="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-porters-gold">Secteurs concernés</p>
-        <div class="flex flex-wrap gap-2">
-          {expertise.sectors.map((sector) => <span class="rounded-full border border-porters-navy/12 bg-white px-4 py-2 text-sm font-semibold text-porters-navy">{sector}</span>)}
+      {/* Les secteurs servis ne sont pas publiés : fact-base F-S01 est DO_NOT_PUBLISH
+          (les 14 secteurs listés dans les sources proviennent d'un document portant
+          sur une autre société). Le bloc réapparaît dès qu'une liste est validée. */}
+      {expertise.sectors.length > 0 && (
+        <div class="mt-12 border-t border-porters-navy/10 pt-7 reveal">
+          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-porters-gold">Secteurs concernés</p>
+          <div class="flex flex-wrap gap-2">
+            {expertise.sectors.map((sector) => <span class="rounded-full border border-porters-navy/12 bg-white px-4 py-2 text-sm font-semibold text-porters-navy">{sector}</span>)}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   </section>
 

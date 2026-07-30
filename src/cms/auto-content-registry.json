@@ -6752,6 +6752,13 @@
     "rich": true
   },
   {
+    "key": "pages.consultants.auto.button.1ur26yk",
+    "route": "/consultants",
+    "type": "button",
+    "content": "Le portage salarial",
+    "rich": true
+  },
+  {
     "key": "pages.consultants.auto.button.4nxp4q",
     "route": "/consultants",
     "type": "button",
@@ -6780,10 +6787,17 @@
     "rich": true
   },
   {
+    "key": "pages.consultants.auto.heading.1604qi4",
+    "route": "/consultants",
+    "type": "heading",
+    "content": "Un compte dédié",
+    "rich": true
+  },
+  {
     "key": "pages.consultants.auto.heading.1b4r4w",
     "route": "/consultants",
     "type": "heading",
-    "content": "Simulation",
+    "content": "Retraite complémentaire",
     "rich": true
   },
   {
@@ -6797,147 +6811,161 @@
     "key": "pages.consultants.auto.heading.1hlyx01",
     "route": "/consultants",
     "type": "heading",
-    "content": "Les six sujets à mettre au clair",
+    "content": "Six points que l’on nous demande souvent",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.1ia250k",
     "route": "/consultants",
     "type": "heading",
-    "content": "Votre mission mérite une simulation expliquée.",
+    "content": "Voyez ce que votre TJM donne en net.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.1m5oubz",
     "route": "/consultants",
     "type": "heading",
-    "content": "Frais professionnels",
+    "content": "Cumul possible",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.1nsallb",
     "route": "/consultants",
     "type": "heading",
-    "content": "Travaillez en indépendant. Restez protégé comme un salarié.",
+    "content": "Votre année en portage, mois par mois.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.1ot5ix6",
     "route": "/consultants",
     "type": "heading",
-    "content": "Nous portons le cadre",
+    "content": "Ce qui passe chez nous",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.1rmt09f",
     "route": "/consultants",
     "type": "heading",
-    "content": "Vous réalisez la prestation",
+    "content": "Le rythme",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.1sn4x2t",
     "route": "/consultants",
     "type": "heading",
-    "content": "Vous trouvez et négociez la mission",
+    "content": "Avant de signer",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.1tyyjox",
     "route": "/consultants",
     "type": "heading",
-    "content": "Salaire",
+    "content": "Aucun lien hiérarchique",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.heading.1wr7qjr",
+    "route": "/consultants",
+    "type": "heading",
+    "content": "Ce qui se passe quand vous partez",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.1xptkyn",
     "route": "/consultants",
     "type": "heading",
-    "content": "Votre parcours, de la négociation au premier salaire",
+    "content": "De votre entrée à votre sortie",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.7rpgmw",
     "route": "/consultants",
     "type": "heading",
-    "content": "Nous validons le cadre",
+    "content": "Votre premier salaire",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.f54piy",
     "route": "/consultants",
     "type": "heading",
-    "content": "Contrats",
+    "content": "France entière, et au-delà",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.heading.gvzeax",
+    "route": "/consultants",
+    "type": "heading",
+    "content": "Arrêt maladie, maternité, paternité",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.mnydpv",
     "route": "/consultants",
     "type": "heading",
-    "content": "Vous gardez les décisions",
+    "content": "Ce qui reste chez vous",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.o8p0hg",
     "route": "/consultants",
     "type": "heading",
-    "content": "Frais de gestion",
+    "content": "Vous gardez vos clients",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.pob586",
     "route": "/consultants",
     "type": "heading",
-    "content": "Nous facturons et établissons la paie",
+    "content": "2,5 jours par mois, payés chaque mois",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.heading.qk4gm5",
     "route": "/consultants",
     "type": "heading",
-    "content": "Relation client",
+    "content": "Assurance chômage",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.list_item.18knpmg",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Le choix de vos clients et missions",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>La négociation de votre TJM",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.list_item.1aqzvcy",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Facturation et suivi administratif",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Facturation de votre client et suivi des règlements",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.list_item.1nuq7e3",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Votre positionnement et votre offre",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Le choix de vos clients et de vos missions",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.list_item.1tzoiuk",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Traitement des frais professionnels validés",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Traitement des frais professionnels justifiés",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.list_item.5ofuxr",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Point de contact pendant la mission",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Responsabilité civile professionnelle",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.list_item.6ie92",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Votre organisation de travail",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Votre organisation et votre temps de travail",
     "rich": true
   },
   {
@@ -6951,14 +6979,21 @@
     "key": "pages.consultants.auto.list_item.thii28",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Contrat de travail avec le salarié porté",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Contrat de travail en CDI, statut cadre",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.list_item.ujvowh",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>La négociation de votre TJM",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Votre positionnement et votre offre",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.list_item.uqzipq",
+    "route": "/consultants",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Un interlocuteur unique pendant toute la mission",
     "rich": true
   },
   {
@@ -6972,7 +7007,7 @@
     "key": "pages.consultants.auto.list_item.x3d3np",
     "route": "/consultants",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Déclarations sociales et bulletin de paie",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Paie, déclarations sociales et fiscales",
     "rich": true
   },
   {
@@ -6986,14 +7021,35 @@
     "key": "pages.consultants.auto.paragraph.10n12s0",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Parcours consultants",
+    "content": "Partie 2 · Votre quotidien",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.10u9s5a",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Cloud, DevOps et SRE",
+    "content": "Architecture et intégration",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.15kwctg",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Les aléas",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.18ahffj",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Votre quotidien",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.18ldtpn",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Une simulation de salaire chiffrée, l’infographie des frais professionnels, le mode opératoire et une formation à LAYA, notre outil de gestion. Puis une intégration individuelle, en visioconférence ou sur place.",
     "rich": true
   },
   {
@@ -7007,84 +7063,98 @@
     "key": "pages.consultants.auto.paragraph.1b3pvb9",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "La relation repose sur votre contrat de travail avec The Porters et le contrat de prestation conclu avec le client.",
+    "content": "Mission en France ou à l’étranger, pour un client français ou étranger, en télétravail ou sur site.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1bpp3an",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Le taux et les services inclus doivent être présentés dans une simulation et confirmés avant contractualisation.",
+    "content": "Vous pouvez vous constituer votre propre clientèle et en rester pleinement responsable. Nous vous proposons aussi des missions issues de nos partenaires.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1bwi7b4",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Pour qui ?",
+    "content": "Pour qui ?",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1ca88fd",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Profils Data &amp; IA",
+    "content": "Cloud, DevOps et SRE",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1dl8w0r",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "The Porters vérifie l’éligibilité de la mission et prépare les contrats qui structurent la relation tripartite.",
+    "content": "Le 1er mois",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1e907ml",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Comment ça fonctionne",
+    "content": "Chronologie",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.1f7fpoy",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Vous acquérez 2,5 jours ouvrés de congés payés par mois. Ils vous sont versés directement sur votre bulletin, sous l’intitulé « Indemnités de congés payés » — ou provisionnés sur votre compte de trésorerie, pour partir en congés en maintenant votre rémunération.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1fctzph",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Chefs de projet, PMO et managers de transition",
+    "content": "Chefs de projet IT, PMO et AMOA",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1gx6eeu",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Vous intervenez auprès du client avec votre autonomie d’expert et rendez compte de votre activité.",
+    "content": "Chaque mois",
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.paragraph.1id3tdl",
+    "key": "pages.consultants.auto.paragraph.1jjqzp0",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Consultants",
+    "content": "Vous pouvez mettre une part de votre rémunération brute de côté sur un compte de trésorerie dédié : pour lisser une paie d’un mois sur l’autre, financer des congés, provisionner une fin de contrat ou débloquer un acompte selon vos besoins.",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.1k8zyd3",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Comme tout salarié, vous percevez des indemnités journalières de la Sécurité sociale, avec un relais de la prévoyance sur les arrêts longs. Les congés maternité et paternité s’appliquent dans les mêmes conditions que pour un salarié classique.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1kao9sa",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Ils doivent être liés à l’activité, justifiés et validés selon les règles applicables à votre situation.",
+    "content": "Avec un emploi salarié, sous réserve de l’accord de votre employeur et d’un maximum de 48 heures hebdomadaires cumulées. Ou avec une retraite.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1kx3w6b",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Consultants IT et architecture",
+    "content": "Cybersécurité, GRC et gouvernance",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1n6rins",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Vous gardez la main sur votre offre, votre client, votre TJM, votre calendrier et les conditions opérationnelles.",
+    "content": "Votre entrée",
     "rich": true
   },
   {
@@ -7098,21 +7168,35 @@
     "key": "pages.consultants.auto.paragraph.1rvb5sc",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Le chiffre d’affaires disponible finance les frais de gestion applicables, les cotisations, les éventuels frais validés et votre rémunération.",
+    "content": "Ni chez votre client, ni chez The Porters. Vous êtes salarié sur la forme, autonome sur le fond.",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.1va7ktl",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Démission, rupture de période d’essai ou rupture conventionnelle : dans tous les cas nous vous remettons le solde de tout compte, le certificat de travail, l’attestation destinée à France Travail et le reçu pour solde de tout compte. Une rupture conventionnelle suppose des fonds suffisants sur votre compte de trésorerie pour couvrir la prime et les frais associés.",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.1ydwavb",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Votre trésorerie",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.4ouu68",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Vous restez l’expert en charge de la mission. The Porters intervient sur le cadre contractuel et administratif.",
+    "content": "Vous cotisez chaque mois à l’assurance chômage et conservez vos droits, comme tout salarié.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.bq2yi8",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Experts cybersécurité",
+    "content": "Data, IA et machine learning",
     "rich": true
   },
   {
@@ -7126,28 +7210,42 @@
     "key": "pages.consultants.auto.paragraph.d84s1l",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "The Porters suit la facturation, les éléments d’activité, les frais validés et le bulletin de salaire.",
+    "content": "Vos congés",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.f0xscj",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Votre mission, votre expertise et votre TJM restent entre vos mains. Les contrats, la facturation, la paie et le suivi administratif passent entre les nôtres.",
+    "content": "La page précédente explique le cadre. Celle-ci décrit ce qui se passe réellement : votre entrée, votre premier salaire, vos congés, un arrêt maladie, votre trésorerie, et le jour où vous partez. Y compris la sortie — que personne ne documente.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.jwielf",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Le résultat est indicatif : TJM, jours facturés, frais, cotisations et conditions contractuelles influencent le net final.",
+    "content": "Le statut cadre vous permet de cotiser au régime général et à la retraite complémentaire.",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.m29l4s",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Estimez vos revenus, puis validez les hypothèses avec un conseiller.",
+    "content": "Le simulateur répond en quelques minutes. Un conseiller reprend ensuite vos hypothèses avec vous.",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.p9arsy",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Votre sortie",
+    "rich": true
+  },
+  {
+    "key": "pages.consultants.auto.paragraph.pc2pk8",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Votre contrat de travail est établi, le contrat de prestation signé avec votre client, et votre chiffre d’affaires devient un salaire.",
     "rich": true
   },
   {
@@ -7158,6 +7256,13 @@
     "rich": true
   },
   {
+    "key": "pages.consultants.auto.paragraph.qwjkxi",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Sept étapes, dans l’ordre où vous les vivrez.",
+    "rich": true
+  },
+  {
     "key": "pages.consultants.auto.paragraph.v4o23j",
     "route": "/consultants",
     "type": "paragraph",
@@ -7165,17 +7270,24 @@
     "rich": true
   },
   {
+    "key": "pages.consultants.auto.paragraph.x8100t",
+    "route": "/consultants",
+    "type": "paragraph",
+    "content": "Vous déclarez votre compte rendu d’activité et vos notes de frais. Nous facturons votre client, établissons la paie et traitons les déclarations sociales. Deux sessions de paie existent, selon la date de votre déclaration.",
+    "rich": true
+  },
+  {
     "key": "pages.consultants.auto.paragraph.xxeyen",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Avant de contractualiser",
+    "content": "À savoir",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.yorddf",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Le portage salarial s’adresse aux professionnels qualifiés capables de négocier et d’exécuter une prestation pour une entreprise cliente.",
+    "content": "Les métiers que nous portons toute l’année. Si le vôtre n’y est pas mais relève de la prestation intellectuelle, il est très probablement éligible.",
     "rich": true
   },
   {
@@ -8612,13 +8724,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.10aro8d",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Aéronautique",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.10n12s0",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
@@ -8643,7 +8748,7 @@
     "key": "pages.expertises.agilite-coaching.auto.paragraph.17ysdw7",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
-    "content": "Une démarche agile organise le travail en cycles courts, rend les priorités visibles et intègre régulièrement les retours des utilisateurs. Elle doit rester adaptée au contexte, à la maturité des équipes et aux objectifs du produit.",
+    "content": "Product Owner, Scrum Master, Agile Coach, Business Analyst, Release Train Engineer, architecte. L’agilité n’est pas un objectif en soi : c’est une manière de coordonner. Nos consultants s’alignent sur vos processus existants plutôt que d’imposer un cadre.",
     "rich": true
   },
   {
@@ -8692,7 +8797,7 @@
     "key": "pages.expertises.agilite-coaching.auto.paragraph.1hkia6c",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
-    "content": "Ces missions se prêtent au portage salarial : elles mobilisent souvent une expertise expérimentée, sur une période définie, avec un besoin fort d’indépendance et de responsabilité.",
+    "content": "Une démarche agile organise le travail en cycles courts, rend les priorités visibles et intègre régulièrement les retours des utilisateurs. Elle doit rester adaptée au contexte, à la maturité des équipes et aux objectifs du produit.",
     "rich": true
   },
   {
@@ -8700,13 +8805,6 @@
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
     "content": "Chef de projet agile",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.1keqv10",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Santé",
     "rich": true
   },
   {
@@ -8731,13 +8829,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.1s24v3b",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Retail",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.1vbfg3j",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
@@ -8752,13 +8843,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.1ycuwej",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Télécommunications",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.1ydlwa6",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
@@ -8770,20 +8854,6 @@
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
     "content": "Release Train Engineer (RTE)",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.3nxhs6",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Services publics",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.4e7zdl",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Produits numériques",
     "rich": true
   },
   {
@@ -8836,17 +8906,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.jk79ug",
+    "key": "pages.expertises.agilite-coaching.auto.paragraph.ko6uzh",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
-    "content": "Banque et assurance",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.lz28o1",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Secteurs concernés",
+    "content": "Ces missions se prêtent au portage salarial : elles mobilisent souvent une expertise expérimentée, sur une période définie, avec un besoin fort d’indépendance et de responsabilité.",
     "rich": true
   },
   {
@@ -8875,13 +8938,6 @@
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
     "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.u5zq8a",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Industrie",
     "rich": true
   },
   {
@@ -8979,7 +9035,7 @@
     "key": "pages.expertises.auto.paragraph.17znqnc",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "RSSI, consultant GRC, analyste SOC, pentester ou spécialiste cloud security : exercez votre expertise en autonomie, avec un cadre contractuel et salarié adapté à la mission.",
+    "content": "RSSI, RSSI de transition, responsable cybersécurité, chef de projet ou ingénieur sécurité : exercez votre expertise en autonomie, dans un cadre salarié adapté à la mission.",
     "rich": true
   },
   {
@@ -9056,7 +9112,7 @@
     "key": "pages.expertises.auto.paragraph.6wi0n4",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Consultant GRC",
+    "content": "Responsable cybersécurité",
     "rich": true
   },
   {
@@ -9091,7 +9147,7 @@
     "key": "pages.expertises.auto.paragraph.iug8c9",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Ingénieur cybersécurité",
+    "content": "Chef de projet cybersécurité",
     "rich": true
   },
   {
@@ -9368,13 +9424,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.10aro8d",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Assurance",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.10n12s0",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
@@ -9399,7 +9448,7 @@
     "key": "pages.expertises.cloud-devops.auto.paragraph.17ysdw7",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
-    "content": "Les missions cloud et DevOps touchent à la disponibilité, à la sécurité, aux coûts et à la vitesse de livraison. Elles demandent un périmètre clair et des responsabilités explicites entre les équipes.",
+    "content": "Architecture, migration, CI/CD, Infrastructure as Code, conteneurisation, observabilité, sécurité des environnements. Nos consultants interviennent sur des socles récents comme sur des environnements historiques encore critiques pour la production.",
     "rich": true
   },
   {
@@ -9448,7 +9497,7 @@
     "key": "pages.expertises.cloud-devops.auto.paragraph.1hkia6c",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
-    "content": "The Porters structure la relation contractuelle et administrative ; le consultant conserve son autonomie d’exécution et son rôle de conseil auprès du client.",
+    "content": "Les missions cloud et DevOps touchent à la disponibilité, à la sécurité, aux coûts et à la vitesse de livraison. Elles demandent un périmètre clair et des responsabilités explicites entre les équipes.",
     "rich": true
   },
   {
@@ -9456,13 +9505,6 @@
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "FinOps Consultant",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1keqv10",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Industrie",
     "rich": true
   },
   {
@@ -9487,24 +9529,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1s24v3b",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Aéronautique",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.1vbfg3j",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "DevOps Engineer",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1ycuwej",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Énergie",
     "rich": true
   },
   {
@@ -9519,20 +9547,6 @@
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "Platform Engineer",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.3nxhs6",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Santé",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.4e7zdl",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Services numériques",
     "rich": true
   },
   {
@@ -9578,17 +9592,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.jk79ug",
+    "key": "pages.expertises.cloud-devops.auto.paragraph.ko6uzh",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
-    "content": "Télécommunications",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.lz28o1",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Secteurs concernés",
+    "content": "The Porters structure la relation contractuelle et administrative ; le consultant conserve son autonomie d’exécution et son rôle de conseil auprès du client.",
     "rich": true
   },
   {
@@ -9617,13 +9624,6 @@
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.u5zq8a",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Finance",
     "rich": true
   },
   {
@@ -9749,21 +9749,21 @@
     "key": "pages.expertises.cybersecurite.auto.list_item.19lt70h",
     "route": "/expertises/cybersecurite",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Déploiement de solutions de protection",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Cadrage budgétaire et ressources",
     "rich": true
   },
   {
     "key": "pages.expertises.cybersecurite.auto.list_item.1aqzvcy",
     "route": "/expertises/cybersecurite",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Gouvernance et feuille de route SSI",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Analyse des risques et de la conformité",
     "rich": true
   },
   {
     "key": "pages.expertises.cybersecurite.auto.list_item.1tzoiuk",
     "route": "/expertises/cybersecurite",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Tests d’intrusion et gestion des vulnérabilités",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Assistance technique sur un périmètre défini",
     "rich": true
   },
   {
@@ -9777,7 +9777,7 @@
     "key": "pages.expertises.cybersecurite.auto.list_item.5ofuxr",
     "route": "/expertises/cybersecurite",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Sécurité des environnements cloud",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Formation et sensibilisation des équipes",
     "rich": true
   },
   {
@@ -9798,21 +9798,21 @@
     "key": "pages.expertises.cybersecurite.auto.list_item.thii28",
     "route": "/expertises/cybersecurite",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Audit et diagnostic de sécurité",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Évaluation de la gouvernance de la sécurité",
     "rich": true
   },
   {
     "key": "pages.expertises.cybersecurite.auto.list_item.uqzipq",
     "route": "/expertises/cybersecurite",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Sensibilisation et formation des équipes",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Planification et amélioration continue",
     "rich": true
   },
   {
     "key": "pages.expertises.cybersecurite.auto.list_item.vmxen7",
     "route": "/expertises/cybersecurite",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Analyse de risques et conformité",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Audit organisationnel et technique",
     "rich": true
   },
   {
@@ -9826,14 +9826,7 @@
     "key": "pages.expertises.cybersecurite.auto.list_item.x3d3np",
     "route": "/expertises/cybersecurite",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>SOC, détection et réponse à incident",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.10aro8d",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Énergie",
+    "content": "<span class=\"mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold\"></span>Conseil stratégique et gouvernance",
     "rich": true
   },
   {
@@ -9844,24 +9837,17 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.11j82hg",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Expert sécurité",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.16b4gq",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Consultant GRC",
+    "content": "Responsable cybersécurité",
     "rich": true
   },
   {
     "key": "pages.expertises.cybersecurite.auto.paragraph.17ysdw7",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Une intervention cyber engage des responsabilités techniques, réglementaires et organisationnelles. Le périmètre, les livrables, les habilitations et les conditions d’intervention doivent être explicites dès le départ.",
+    "content": "Gouvernance, audit, risques et conformité, sécurité opérationnelle, sensibilisation des équipes : un projet cyber mobilise rarement une seule compétence. Nous identifions les profils adaptés au niveau de maturité réel de votre organisation — pas au niveau visé.",
     "rich": true
   },
   {
@@ -9889,7 +9875,7 @@
     "key": "pages.expertises.cybersecurite.auto.paragraph.1dowfo0",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Analyste SOC / SIEM",
+    "content": "Ingénieur cybersécurité",
     "rich": true
   },
   {
@@ -9910,21 +9896,7 @@
     "key": "pages.expertises.cybersecurite.auto.paragraph.1hkia6c",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "The Porters prend en charge le contrat, la facturation et la paie. Vous restez responsable de l’expertise livrée et de la relation opérationnelle avec le client.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1jp9yb7",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Chef de projet sécurité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1keqv10",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Santé",
+    "content": "Une intervention cyber engage des responsabilités techniques, réglementaires et organisationnelles. Le périmètre, les livrables, les habilitations et les conditions d’intervention doivent être explicites dès le départ.",
     "rich": true
   },
   {
@@ -9949,45 +9921,17 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1s24v3b",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Services numériques",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.1vbfg3j",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Ingénieur cybersécurité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1ycuwej",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Industrie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1ydlwa6",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Cloud Security Specialist",
+    "content": "Chef de projet cybersécurité",
     "rich": true
   },
   {
     "key": "pages.expertises.cybersecurite.auto.paragraph.2cyic5",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Pentester",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.3nxhs6",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Secteur public",
+    "content": "Expert sécurité",
     "rich": true
   },
   {
@@ -10001,14 +9945,14 @@
     "key": "pages.expertises.cybersecurite.auto.paragraph.dftvvf",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Relier les exigences RGPD, ISO 27001 ou sectorielles aux pratiques et livrables réellement concernés.",
+    "content": "Traduire les exigences réglementaires de votre organisation en pratiques et livrables concrets. Nos consultants interviennent sur ces référentiels ; nous n’en détenons pas la certification.",
     "rich": true
   },
   {
     "key": "pages.expertises.cybersecurite.auto.paragraph.f0xscj",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "RSSI, consultant GRC, analyste SOC, pentester ou spécialiste cloud security : exercez votre expertise en autonomie, avec un cadre contractuel et salarié adapté à la mission.",
+    "content": "RSSI, RSSI de transition, responsable cybersécurité, chef de projet ou ingénieur sécurité : exercez votre expertise en autonomie, dans un cadre salarié adapté à la mission.",
     "rich": true
   },
   {
@@ -10033,17 +9977,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.jk79ug",
+    "key": "pages.expertises.cybersecurite.auto.paragraph.ko6uzh",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Finance et assurance",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.lz28o1",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Secteurs concernés",
+    "content": "The Porters prend en charge le contrat, la facturation et la paie. Vous restez responsable de l’expertise livrée et de la relation opérationnelle avec le client.",
     "rich": true
   },
   {
@@ -10072,13 +10009,6 @@
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
     "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.u5zq8a",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Aéronautique",
     "rich": true
   },
   {
@@ -10285,13 +10215,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.10aro8d",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Assurance",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.10n12s0",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -10306,13 +10229,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.12it71c",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Industrie",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.16b4gq",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -10323,7 +10239,7 @@
     "key": "pages.expertises.data-ia.auto.paragraph.17ysdw7",
     "route": "/expertises/data-ia",
     "type": "paragraph",
-    "content": "Une mission data ou IA ne se résume pas au choix d’un modèle ou d’un outil. Elle part d’un besoin métier, de données accessibles et gouvernées, puis se poursuit jusqu’au déploiement, au suivi et à l’adoption.",
+    "content": "Un projet data ou IA échoue rarement sur le modèle. Il échoue sur la qualité des données, l’architecture ou l’industrialisation. Nous mobilisons des profils capables d’intervenir sur ces trois étapes : cadrage, ingénierie, mise en production.",
     "rich": true
   },
   {
@@ -10372,7 +10288,7 @@
     "key": "pages.expertises.data-ia.auto.paragraph.1hkia6c",
     "route": "/expertises/data-ia",
     "type": "paragraph",
-    "content": "Le portage salarial convient aux experts mobilisés sur une phase précise ou sur un programme plus long, sans leur imposer de créer immédiatement une structure juridique.",
+    "content": "Une mission data ou IA ne se résume pas au choix d’un modèle ou d’un outil. Elle part d’un besoin métier, de données accessibles et gouvernées, puis se poursuit jusqu’au déploiement, au suivi et à l’adoption.",
     "rich": true
   },
   {
@@ -10380,13 +10296,6 @@
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Data Governance Specialist",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.1keqv10",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Automobile",
     "rich": true
   },
   {
@@ -10411,13 +10320,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.1s24v3b",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Aéronautique",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.1vbfg3j",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -10432,13 +10334,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.1ycuwej",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Énergie",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.1ydlwa6",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -10450,20 +10345,6 @@
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Machine Learning Engineer",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.3nxhs6",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Santé",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.4e7zdl",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Retail",
     "rich": true
   },
   {
@@ -10509,17 +10390,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.jk79ug",
+    "key": "pages.expertises.data-ia.auto.paragraph.ko6uzh",
     "route": "/expertises/data-ia",
     "type": "paragraph",
-    "content": "Télécommunications",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.lz28o1",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Secteurs concernés",
+    "content": "Le portage salarial convient aux experts mobilisés sur une phase précise ou sur un programme plus long, sans leur imposer de créer immédiatement une structure juridique.",
     "rich": true
   },
   {
@@ -10548,13 +10422,6 @@
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.u5zq8a",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Finance",
     "rich": true
   },
   {
@@ -10775,13 +10642,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.product-project-management.auto.paragraph.10aro8d",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Énergie",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.product-project-management.auto.paragraph.10n12s0",
     "route": "/expertises/product-project-management",
     "type": "paragraph",
@@ -10866,13 +10726,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1keqv10",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Santé",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.product-project-management.auto.paragraph.1nceca1",
     "route": "/expertises/product-project-management",
     "type": "paragraph",
@@ -10894,24 +10747,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1s24v3b",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Secteur public",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.product-project-management.auto.paragraph.1vbfg3j",
     "route": "/expertises/product-project-management",
     "type": "paragraph",
     "content": "Chef de projet IT",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1ycuwej",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Industrie",
     "rich": true
   },
   {
@@ -10926,13 +10765,6 @@
     "route": "/expertises/product-project-management",
     "type": "paragraph",
     "content": "PMO",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.3nxhs6",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Services numériques",
     "rich": true
   },
   {
@@ -10978,20 +10810,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.product-project-management.auto.paragraph.jk79ug",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Finance et assurance",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.lz28o1",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Secteurs concernés",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.product-project-management.auto.paragraph.m29l4s",
     "route": "/expertises/product-project-management",
     "type": "paragraph",
@@ -11017,13 +10835,6 @@
     "route": "/expertises/product-project-management",
     "type": "paragraph",
     "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.u5zq8a",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Aéronautique",
     "rich": true
   },
   {
@@ -12262,7 +12073,7 @@
     "key": "pages.portage-salarial.auto.button.1ex0i4z",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Simuler mes revenus",
+    "content": "Votre quotidien de salarié porté",
     "rich": true
   },
   {
@@ -12276,7 +12087,7 @@
     "key": "pages.portage-salarial.auto.button.4rilwg",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Simuler mes revenus",
     "rich": true
   },
   {
@@ -12297,21 +12108,14 @@
     "key": "pages.portage-salarial.auto.heading.116qo6j",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Des revenus projetés clairement",
+    "content": "Un compte de trésorerie",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.1b27ok",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Contrats et facturation délégués",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.heading.1e7a93p",
-    "route": "/portage-salarial",
-    "type": "heading",
-    "content": "Travaillez en toute sérénité",
+    "content": "CDI et statut cadre",
     "rich": true
   },
   {
@@ -12325,21 +12129,21 @@
     "key": "pages.portage-salarial.auto.heading.1nsallb",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "L’indépendance, avec <span class=\"gold-underline\">les protections du salariat</span>",
+    "content": "Un seul portage salarial. <span class=\"gold-underline\">Voici comment il fonctionne.</span>",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.1ot5ix6",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "De la mission au salaire, <span class=\"gold-underline\">étape par étape</span>",
+    "content": "Qui peut être porté, <span class=\"gold-underline\">et qui ne peut pas</span>",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.1qnyctv",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Vous avez une mission ? <span class=\"gold-underline\">Donnez-lui le bon cadre.</span>",
+    "content": "Le cadre est clair ? <span class=\"gold-underline\">Voyons votre année.</span>",
     "rich": true
   },
   {
@@ -12353,42 +12157,42 @@
     "key": "pages.portage-salarial.auto.heading.1szts7h",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Un interlocuteur identifié",
+    "content": "Contrats et facturation délégués",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.1vwn037",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Trouvez votre mission",
+    "content": "Éligible",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.1xptkyn",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Ce que le portage change <span class=\"gold-underline\">concrètement</span>",
+    "content": "Ce que le cadre vous garantit <span class=\"gold-underline\">concrètement</span>",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.30nn56",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Des ressources pour avancer",
+    "content": "Un interlocuteur unique",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.6bydg2",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Signez votre contrat",
+    "content": "Exclu",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.kj603j",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Autonomie commerciale",
+    "content": "Autonomie totale",
     "rich": true
   },
   {
@@ -12409,42 +12213,77 @@
     "key": "pages.portage-salarial.auto.heading.yt4j8u",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Protection du salarié",
+    "content": "Protection sociale complète",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.12zo078",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Cybersécurité, data, IA, cloud, DevOps, architecture",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1ay0vyg",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Cumul avec un emploi salarié, avec l’accord de l’employeur, ou avec une retraite",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1cwbw2k",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25\"></span>Les services à la personne",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1k5va1t",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Mission en France ou à l’étranger, client français ou étranger, télétravail compris",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1nm7a4v",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25\"></span>Les professions réglementées",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.pshzee",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Chefferie de projet IT, AMOA, conseil",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.tdy3x3",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Product Ownership, Scrum, coaching agile, transformation",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.10n12s0",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Portage salarial consultants IT",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.15v0aqg",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Concentrez-vous sur votre expertise. Nous gérons la facturation, les charges, la paie et l'administratif.",
+    "content": "Partie 1 · Le cadre",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.16b4gq",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Vous choisissez vos missions, négociez votre TJM et organisez votre intervention avec le client.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.17vqvbq",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Prospectez et négociez vos missions auprès de vos clients. The Porters peut vous aider à clarifier votre positionnement sans promettre de missions garanties.",
+    "content": "Vous choisissez vos missions, négociez vos tarifs et organisez votre temps de travail. Aucun lien hiérarchique, ni chez le client ni chez nous.",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.17ysdw7",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Le portage salarial est une forme d'emploi encadrée qui repose sur une relation tripartite entre le <strong>consultant</strong>, la <strong>société de portage</strong> et l'<strong>entreprise cliente</strong>.",
+    "content": "Le portage salarial est une forme d’emploi encadrée par le Code du travail, l’accord national interprofessionnel de 2008 et l’ordonnance du 2 avril 2015. Il repose sur une relation tripartite entre le <strong>salarié porté</strong>, la <strong>société de portage</strong> et l’<strong>entreprise cliente</strong>.",
     "rich": true
   },
   {
@@ -12465,21 +12304,21 @@
     "key": "pages.portage-salarial.auto.paragraph.1dowfo0",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Vous savez qui contacter pour les questions de contrat, d’activité, de frais, de facturation ou de paie.",
+    "content": "Nous établissons les deux contrats, facturons votre client et traitons les déclarations sociales et fiscales liées à votre activité.",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.1dttx4h",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Votre activité finance les cotisations liées au statut salarié : maladie, retraite, prévoyance et mutuelle selon les conditions applicables.",
+    "content": "Régime général de la Sécurité sociale, prévoyance, cotisations retraite, congés payés, assurance chômage et mutuelle collective.",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.1e907ml",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Vous gardez les décisions commerciales. Vous déléguez le cadre social, contractuel et administratif.",
+    "content": "Vous gardez toutes les décisions commerciales. Vous déléguez le cadre social, contractuel et administratif.",
     "rich": true
   },
   {
@@ -12500,7 +12339,7 @@
     "key": "pages.portage-salarial.auto.paragraph.1hkia6c",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Concrètement, vous trouvez vos missions IT et négociez vos conditions avec vos clients. The Porters s'occupe de tout le reste : contrat de travail, facturation, déclarations sociales, paie et accompagnement. Vous bénéficiez du statut de salarié (CDI ou CDD) tout en conservant votre indépendance professionnelle.",
+    "content": "Deux contrats, pas un : un contrat de travail entre vous et The Porters, un contrat de prestation entre The Porters et votre client. Vous négociez la mission et le tarif ; nous facturons, déclarons et vous payons. Aucun lien hiérarchique : ni chez le client, ni chez nous.",
     "rich": true
   },
   {
@@ -12514,7 +12353,7 @@
     "key": "pages.portage-salarial.auto.paragraph.1nzigs2",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Chaque étape précise ce que vous faites et ce que The Porters prend en charge.",
+    "content": "Le portage couvre les prestations intellectuelles. Deux familles en sont exclues par la loi.",
     "rich": true
   },
   {
@@ -12563,28 +12402,28 @@
     "key": "pages.portage-salarial.auto.paragraph.1rz567m",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Oui, le portage salarial est encadré par le Code du travail (articles L.1254-1 et suivants) et par une convention collective nationale signée en 2017. Ce cadre légal garantit la protection des consultants portés.",
+    "content": "Oui. Le portage salarial est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.1vbfg3j",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "The Porters prépare le cadre contractuel, facture la prestation et traite les obligations sociales liées à votre activité portée.",
+    "content": "Un contrat de travail à durée indéterminée, au statut cadre — ce qui ouvre la cotisation à la retraite complémentaire.",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.1ydlwa6",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "TJM, chiffre d’affaires, frais professionnels et hypothèses de charges sont présentés dans une simulation lisible.",
+    "content": "Vous pouvez mettre une part de votre rémunération brute de côté pour lisser une paie, financer des congés ou provisionner une fin de contrat.",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.2cyic5",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Guides métier, points de contact et échanges vous aident à mieux préparer votre activité et vos prochaines décisions.",
+    "content": "Une seule personne connaît votre contrat, votre client et votre situation. Vous ne réexpliquez pas votre dossier à chaque appel.",
     "rich": true
   },
   {
@@ -12619,7 +12458,7 @@
     "key": "pages.portage-salarial.auto.paragraph.f0xscj",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Vous trouvez la mission et négociez votre TJM. The Porters organise les contrats, la facturation, les cotisations et la paie.",
+    "content": "Il n’y a pas un portage pour les salariés et un autre pour les indépendants. Il y en a un, encadré par le Code du travail, et vous y êtes salarié tout en choisissant vos missions. Cette page explique le mécanisme. La suivante décrit votre année, mois par mois.",
     "rich": true
   },
   {
@@ -12640,7 +12479,7 @@
     "key": "pages.portage-salarial.auto.paragraph.gdhka1",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Rejoignez The Porters et développez votre activité en toute sérénité.",
+    "content": "Entrée, premier salaire, congés, arrêt maladie, trésorerie, sortie : la suite du parcours, mois par mois.",
     "rich": true
   },
   {
@@ -12710,7 +12549,7 @@
     "key": "pages.portage-salarial.auto.paragraph.x7sxdp",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "The Porters établit votre contrat de travail (CDI ou CDD) et le contrat de prestation avec votre client.",
+    "content": "Le cumul avec un emploi salarié est plafonné à 48 heures de travail hebdomadaire, tous employeurs confondus.",
     "rich": true
   },
   {
@@ -12854,24 +12693,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.heading.1elfu1d",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Pourquoi le portage pour ce profil ?",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.heading.1g2g7i6",
     "route": "/qui-sommes-nous",
     "type": "heading",
     "content": "Profils accompagnés",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.heading.1hia0hk",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Pourquoi le portage pour ce profil ?",
     "rich": true
   },
   {
@@ -12997,7 +12822,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.1txcju2",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Secteurs concernés",
+    "content": "Pourquoi le portage pour ce profil ?",
     "rich": true
   },
   {
@@ -13025,7 +12850,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.1xsb8hd",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Secteurs concernés",
+    "content": "Pourquoi le portage pour ce profil ?",
     "rich": true
   },
   {
@@ -13046,7 +12871,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.5ctzhw",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Secteurs concernés",
+    "content": "Pourquoi le portage pour ce profil ?",
     "rich": true
   },
   {
@@ -13054,13 +12879,6 @@
     "route": "/qui-sommes-nous",
     "type": "heading",
     "content": "S’adapter au contexte",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.heading.7ybdbh",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Pourquoi le portage pour ce profil ?",
     "rich": true
   },
   {
@@ -13082,13 +12900,6 @@
     "route": "/qui-sommes-nous",
     "type": "heading",
     "content": "Profils accompagnés",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.heading.el08o7",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Pourquoi le portage pour ce profil ?",
     "rich": true
   },
   {
@@ -13116,7 +12927,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.qd9ubn",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Secteurs concernés",
+    "content": "Pourquoi le portage pour ce profil ?",
     "rich": true
   },
   {
@@ -13148,17 +12959,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.heading.y0apmu",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Pourquoi le portage pour ce profil ?",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.heading.ymcgew",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Secteurs concernés",
+    "content": "Pourquoi le portage pour ce profil ?",
     "rich": true
   },
   {
@@ -13190,38 +12994,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.107h243",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Services numériques",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.10f8e6m",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Industrie",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.10gjqub",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Accompagnement des équipes de développement",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.10pyld8",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Industrie",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.10ywjkn",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Santé",
     "rich": true
   },
   {
@@ -13281,13 +13057,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.12pt5py",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Les professionnels du produit et du projet occupent fréquemment des rôles stratégiques au sein d’équipes clientes pendant plusieurs mois. Le portage salarial leur permet d’exercer en autonomie tout en bénéficiant d’un statut structuré et d’une gestion simplifiée.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.12swhtl",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13313,27 +13082,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "RSSI de transition",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.13bculq",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Grandes organisations en transformation",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.13jvzk3",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Télécommunications",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.13lg11a",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Accompagnement des équipes techniques et métiers",
     "rich": true
   },
   {
@@ -13369,13 +13117,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Mise en place de systèmes de supervision, gestion des incidents, amélioration de la disponibilité et optimisation des performances et des coûts.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.14uwieq",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Les missions en cybersécurité demandent souvent une forte expertise, une grande autonomie et une capacité à intervenir rapidement dans des contextes sensibles. Le portage salarial permet au consultant de conserver son indépendance tout en bénéficiant d’un cadre contractuel et administratif structuré.",
     "rich": true
   },
   {
@@ -13424,7 +13165,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.15dm781",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Porters accompagne les professionnels de l’agilité qui interviennent auprès des équipes, des managers et des directions pour améliorer l’organisation, la coopération et la capacité à délivrer de la valeur.",
+    "content": "The Porters porte les professionnels de l’agilité qui interviennent auprès des équipes, des managers et des directions pour améliorer l’organisation, la coopération et la capacité à délivrer de la valeur.",
     "rich": true
   },
   {
@@ -13463,10 +13204,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1690lmw",
+    "key": "pages.qui-sommes-nous.auto.paragraph.16fud5e",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Services numériques",
+    "content": "Les spécialistes Data et IA interviennent souvent sur des projets à forte valeur ajoutée nécessitant des expertises rares et des périodes d’intervention définies. Le portage salarial leur permet de multiplier les missions tout en conservant un cadre professionnel stable et structuré.",
     "rich": true
   },
   {
@@ -13501,7 +13242,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.17n7k0v",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "ISO 27005",
+    "content": "Analyse de risques",
     "rich": true
   },
   {
@@ -13516,13 +13257,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Ansible",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.17v4a10",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Marketing",
     "rich": true
   },
   {
@@ -13554,13 +13288,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.18tef5f",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Risk Management",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.199fvdh",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13589,20 +13316,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.19vn5tn",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Retail",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1a5mnta",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Security by Design",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1aar8ol",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13621,13 +13334,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "SAFe",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1azpafx",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Santé",
     "rich": true
   },
   {
@@ -13683,7 +13389,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1cnrw0t",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Analyste SOC",
+    "content": "Ingénieur cybersécurité",
     "rich": true
   },
   {
@@ -13725,14 +13431,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1dcta2m",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "EBIOS Risk Manager",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1df7w1s",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Banque",
+    "content": "Conformité réglementaire",
     "rich": true
   },
   {
@@ -13747,13 +13446,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Audit de l’existant, définition des architectures cibles, migration des applications et accompagnement de l’entreprise vers des environnements cloud adaptés.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1dwmyem",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Santé",
     "rich": true
   },
   {
@@ -13855,13 +13547,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1fuvuhj",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Transport et logistique",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1fvenq8",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13872,14 +13557,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1g61vlw",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Plans de réponse aux incidents",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1gdw6ne",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Secteur public",
+    "content": "Tableaux de bord de pilotage et indicateurs de risque",
     "rich": true
   },
   {
@@ -13887,13 +13565,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Spark",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1gtvh4h",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Énergie",
     "rich": true
   },
   {
@@ -13939,17 +13610,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1iio4p",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Transport",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1ikfcvv",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Consultant GRC",
+    "content": "Responsable cybersécurité",
     "rich": true
   },
   {
@@ -13957,13 +13621,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "SAFe Program Consultant",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ilko5c",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "SOC",
     "rich": true
   },
   {
@@ -14033,7 +13690,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1ks973l",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Sécurisation des accès et des infrastructures",
+    "content": "Conseil, assistance et sensibilisation",
     "rich": true
   },
   {
@@ -14048,20 +13705,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Paris, Lyon, Montpellier et Aix-Marseille structurent notre présence terrain. Partout en France, nos équipes vous accompagnent à distance ou se déplacent selon vos besoins.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1l45bdn",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Pentester",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1l4zwjs",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Banque et assurance",
     "rich": true
   },
   {
@@ -14083,13 +13726,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Mettre en place un cadre contractuel rigoureux qui reste simple à utiliser au quotidien.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1mg51wk",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "SIEM",
     "rich": true
   },
   {
@@ -14156,17 +13792,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1orjbr0",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "E-commerce",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1osrqcp",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "NIS2",
+    "content": "Politiques de sécurité",
     "rich": true
   },
   {
@@ -14181,13 +13810,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Découvrir le portage salarial pour les experts Data &amp; IA",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1p3o9tq",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Banque et assurance",
     "rich": true
   },
   {
@@ -14219,13 +13841,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1pqqilb",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Entreprises réglementées",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1q1ndi9",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14237,13 +13852,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Accompagner les managers et les collaborateurs dans l’évolution des rôles, des responsabilités, des méthodes de travail et des habitudes organisationnelles.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1qf2qy9",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Médias",
     "rich": true
   },
   {
@@ -14265,13 +13873,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Transformation organisationnelle",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1romiwk",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "E-commerce",
     "rich": true
   },
   {
@@ -14366,13 +13967,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1tteq1h",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Télécommunications",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1twuilp",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14398,20 +13992,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Facturation et suivi des règlements",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1u96l8",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Retail",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ujivuh",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Zero Trust",
     "rich": true
   },
   {
@@ -14509,7 +14089,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1wcxaeu",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Ingénieur sécurité",
+    "content": "Expert sécurité",
     "rich": true
   },
   {
@@ -14544,7 +14124,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1xfne3n",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "RGPD",
+    "content": "Audit technique",
     "rich": true
   },
   {
@@ -14566,13 +14146,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Accompagnement personnalisé du consultant",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1y8sm89",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Télécommunications",
     "rich": true
   },
   {
@@ -14600,14 +14173,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1z0kyey",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Porters accompagne les consultants indépendants qui interviennent sur les enjeux de gouvernance, de conformité, de prévention, de détection et de réponse aux incidents de sécurité. Ces experts aident les entreprises à mieux identifier leurs risques, sécuriser leurs infrastructures, protéger leurs actifs critiques et répondre aux exigences réglementaires.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.295ah5",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Grandes entreprises",
+    "content": "The Porters porte les consultants indépendants qui interviennent sur les enjeux de gouvernance, de conformité, de prévention, de détection et de réponse aux incidents de sécurité. Ces experts aident les entreprises à mieux identifier leurs risques, sécuriser leurs infrastructures, protéger leurs actifs critiques et répondre aux exigences réglementaires.",
     "rich": true
   },
   {
@@ -14621,7 +14187,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.2iceys",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Sécurité opérationnelle et réponse aux incidents",
+    "content": "Plan d’actions et amélioration continue",
     "rich": true
   },
   {
@@ -14646,13 +14212,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.32repm",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Télécommunications",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.38a0wx",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14670,7 +14229,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.402piz",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Porters accompagne les experts de la donnée et de l’intelligence artificielle qui interviennent sur toute la chaîne de valeur, depuis la collecte et la structuration des données jusqu’à leur analyse, leur visualisation et leur exploitation par des modèles avancés.",
+    "content": "The Porters porte les experts de la donnée et de l’intelligence artificielle qui interviennent sur toute la chaîne de valeur, depuis la collecte et la structuration des données jusqu’à leur analyse, leur visualisation et leur exploitation par des modèles avancés.",
     "rich": true
   },
   {
@@ -14723,24 +14282,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.4l4fet",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Services numériques",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.5ddvyy",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Soutien dans la relation avec le client",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.5okpui",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Consultant conformité",
     "rich": true
   },
   {
@@ -14754,7 +14299,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.66gr4",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Expert IAM",
+    "content": "Consultant conformité",
     "rich": true
   },
   {
@@ -14783,13 +14328,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Plan d’accompagnement et feuille de route",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.6k8e81",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Responsable gestion des risques",
     "rich": true
   },
   {
@@ -14863,13 +14401,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.8r9cty",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Industrie",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.8zoph6",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14919,13 +14450,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.a5ebvn",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Secteur public",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.a9833q",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14954,17 +14478,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.aexml1",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "DevSecOps",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.aiz98k",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Consultant cybersécurité",
+    "content": "Chef de projet cybersécurité",
     "rich": true
   },
   {
@@ -15024,20 +14541,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.cagj7t",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Cloud Security Engineer",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.ck4knj",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Secteur public",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.cmzqnt",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15076,7 +14579,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.dba6pp",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Supervision des événements de sécurité, amélioration des capacités de détection, investigation, gestion des incidents et mise en place de plans de remédiation.",
+    "content": "Traduction des constats d’audit en plan d’actions priorisé, déploiement de solutions de protection, planification, cadrage budgétaire et suivi dans la durée.",
     "rich": true
   },
   {
@@ -15094,24 +14597,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.dtzl87",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Santé",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.dw74za",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Documentation des pratiques et méthodes",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.e1lggg",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Énergie",
     "rich": true
   },
   {
@@ -15160,7 +14649,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.enhrr1",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "PAM",
+    "content": "Security by Design",
     "rich": true
   },
   {
@@ -15171,13 +14660,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.f55k27",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Les consultants en agilité interviennent souvent dans des environnements de transformation, sur des périodes de plusieurs mois et auprès de nombreuses parties prenantes. Le portage salarial leur offre un cadre professionnel adapté sans limiter leur autonomie dans la conduite de leurs missions.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.f9fg94",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15185,24 +14667,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.f9wuht",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Secteur public",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.fqwa0o",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Transfert de compétences vers les équipes",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.ftpi6x",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Banque et assurance",
     "rich": true
   },
   {
@@ -15262,31 +14730,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.hyqpmi",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Industrie",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.i196kp",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Les spécialistes Data et IA interviennent souvent sur des projets à forte valeur ajoutée nécessitant des expertises rares et des périodes d’intervention définies. Le portage salarial leur permet de multiplier les missions tout en conservant un cadre professionnel stable et structuré.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.i1zmcp",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Azure Data Factory",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.i43gaa",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Services numériques",
     "rich": true
   },
   {
@@ -15307,7 +14754,14 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.ihwokj",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Tableaux de bord de pilotage et indicateurs de risque",
+    "content": "Accompagnement des équipes techniques et métiers",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.ik7xy3",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Les profils Cloud et DevOps sont régulièrement sollicités pour des transformations techniques complexes, des migrations ou des phases d’industrialisation. Le portage salarial leur permet d’intervenir avec autonomie tout en déléguant la gestion administrative de leur activité.",
     "rich": true
   },
   {
@@ -15335,7 +14789,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.iruxc2",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "IAM",
+    "content": "Sensibilisation",
     "rich": true
   },
   {
@@ -15374,13 +14828,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.k6mm3m",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Start-up",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.kshgdz",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15406,13 +14853,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Gestion administrative et facturation",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.m10q64",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Incident Response",
     "rich": true
   },
   {
@@ -15472,24 +14912,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.nn8nqu",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Services numériques",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.nokkaz",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Product Discovery",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.nox2nj",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "SaaS",
     "rich": true
   },
   {
@@ -15524,7 +14950,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.o8mgfk",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "DORA",
+    "content": "Audit organisationnel",
     "rich": true
   },
   {
@@ -15549,17 +14975,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.ore3rg",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Énergie",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.oz3lm4",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "ISO 27001",
+    "content": "Gouvernance de la sécurité",
     "rich": true
   },
   {
@@ -15567,13 +14986,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Indicateurs de performance",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.p2ok43",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "E-commerce",
     "rich": true
   },
   {
@@ -15636,7 +15048,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.q425xy",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Porters accompagne les professionnels capables de transformer une ambition stratégique ou un besoin métier en produit, en service ou en projet concret.",
+    "content": "The Porters porte les professionnels capables de transformer une ambition stratégique ou un besoin métier en produit, en service ou en projet concret.",
     "rich": true
   },
   {
@@ -15661,6 +15073,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.qq817t",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Les missions en cybersécurité demandent souvent une forte expertise, une grande autonomie et une capacité à intervenir rapidement dans des contextes sensibles. Le portage salarial permet au consultant de conserver son indépendance tout en bénéficiant d’un cadre contractuel et administratif structuré.",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.qrkykr",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15675,31 +15094,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.r87tyx",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Assurance",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.r9bp69",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Note de cadrage",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.rdntd1",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "E-commerce",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.rej4wi",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Cloud Security",
     "rich": true
   },
   {
@@ -15731,10 +15129,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.s5qkl4",
+    "key": "pages.qui-sommes-nous.auto.paragraph.rv6bkt",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Les profils Cloud et DevOps sont régulièrement sollicités pour des transformations techniques complexes, des migrations ou des phases d’industrialisation. Le portage salarial leur permet d’intervenir avec autonomie tout en déléguant la gestion administrative de leur activité.",
+    "content": "Les professionnels du produit et du projet occupent fréquemment des rôles stratégiques au sein d’équipes clientes pendant plusieurs mois. Le portage salarial leur permet d’exercer en autonomie tout en bénéficiant d’un statut structuré et d’une gestion simplifiée.",
     "rich": true
   },
   {
@@ -15787,17 +15185,17 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.uezw8c",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Les consultants en agilité interviennent souvent dans des environnements de transformation, sur des périodes de plusieurs mois et auprès de nombreuses parties prenantes. Le portage salarial leur offre un cadre professionnel adapté sans limiter leur autonomie dans la conduite de leurs missions.",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.uh3pdw",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Google Cloud Platform",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.uipx36",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Télécommunications",
     "rich": true
   },
   {
@@ -15819,27 +15217,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Solutions d’intelligence artificielle intégrées",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.uznuwr",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Transport",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.uzosns",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Transport",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.uzy4ol",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Industrie",
     "rich": true
   },
   {
@@ -15878,13 +15255,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.w3pzj1",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Banque et assurance",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.w8kpns",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15913,13 +15283,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.wscq7f",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Transport",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.x69asa",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15931,13 +15294,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Auditeur sécurité",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.xb5xhy",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Énergie",
     "rich": true
   },
   {
@@ -15979,7 +15335,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.xnfv1k",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Porters accompagne les consultants qui modernisent les infrastructures, automatisent les déploiements et améliorent la disponibilité des services numériques.",
+    "content": "The Porters porte les consultants qui modernisent les infrastructures, automatisent les déploiements et améliorent la disponibilité des services numériques.",
     "rich": true
   },
   {
@@ -16028,7 +15384,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.z69vd6",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Déploiement de solutions IAM, sécurisation des environnements cloud, renforcement des architectures, gestion des identités et protection des ressources critiques.",
+    "content": "Conseil stratégique et de gouvernance, assistance technique sur un périmètre défini, formation et sensibilisation des équipes aux bonnes pratiques.",
     "rich": true
   },
   {
@@ -16064,13 +15420,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Transformation Project Manager",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.zzhg6o",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Retail",
     "rich": true
   },
   {

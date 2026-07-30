@@ -20,11 +20,13 @@ const partnerLogos = [
 ];
 
 
+// The IT specialism leads: it is the differentiator, and it used to sit last
+// (copy-plan §9.1). Order here drives both the grid and the detail panel below.
 const offerItems = [
-  { key: 'home.offer.human', title: cmsText('home.offer.human.title'), text: cmsText('home.offer.human.description'), icon: 'user' as const },
+  { key: 'home.offer.it', title: cmsText('home.offer.it.title'), text: cmsText('home.offer.it.description'), icon: 'network' as const },
   { key: 'home.offer.employee', title: cmsText('home.offer.employee.title'), text: cmsText('home.offer.employee.description'), icon: 'shield' as const },
   { key: 'home.offer.admin', title: cmsText('home.offer.admin.title'), text: cmsText('home.offer.admin.description'), icon: 'clipboard' as const },
-  { key: 'home.offer.it', title: cmsText('home.offer.it.title'), text: cmsText('home.offer.it.description'), icon: 'network' as const },
+  { key: 'home.offer.human', title: cmsText('home.offer.human.title'), text: cmsText('home.offer.human.description'), icon: 'user' as const },
 ];
 
 
@@ -87,8 +89,8 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
         </div>
         <aside class="light-offer-detail" aria-live="polite">
           <span>01</span>
-          <h3 {...cmsAttrs('home.offer.human.title')}>{offerItems[0]?.title}</h3>
-          <p {...cmsAttrs('home.offer.human.description')}>{offerItems[0]?.text}</p>
+          <h3 {...cmsAttrs('home.offer.it.title')}>{offerItems[0]?.title}</h3>
+          <p {...cmsAttrs('home.offer.it.description')}>{offerItems[0]?.text}</p>
           <a href="/rendez-vous"><span {...cmsAttrs('home.offer.advisor_cta')}>{cmsText('home.offer.advisor_cta')}</span> <b aria-hidden="true">→</b></a>
         </aside>
       </div>

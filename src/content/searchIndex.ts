@@ -74,12 +74,12 @@ const corePages: CorePageDefinition[] = [
   },
   {
     id: 'page-consultants',
-    title: 'Portage salarial pour consultants et indépendants',
+    title: 'Votre quotidien de salarié porté',
     description:
-      'Vous choisissez vos missions, vos clients et votre TJM. The Porters prend en charge le cadre contractuel, la facturation, la paie et le suivi administratif.',
+      'Entrée, premier salaire, rythme mensuel, congés payés, arrêt maladie, compte de trésorerie et sortie : ce que vit un salarié porté chez The Porters, mois par mois.',
     body: joinText(
       consultantsPage.audiences,
-      consultantsPage.process.flatMap((item) => [item.title, item.text]),
+      consultantsPage.timeline.flatMap((item) => [item.marker, item.title, item.text]),
       consultantsPage.handled,
       consultantsPage.controlled,
       consultantsPage.practicalTopics.flatMap((item) => [item.title, item.text]),

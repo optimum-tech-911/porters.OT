@@ -182,27 +182,22 @@
   {
     "route": "/expertises/cloud-devops",
     "name": "Portage salarial pour consultants Cloud & DevOps",
-    "contentCount": 66
+    "contentCount": 58
   },
   {
     "route": "/expertises/data-ia",
     "name": "Portage salarial pour consultants Data & IA",
-    "contentCount": 68
+    "contentCount": 59
   },
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 66
-  },
-  {
-    "route": "/consultants",
-    "name": "Portage salarial pour consultants IT et tech",
-    "contentCount": 62
+    "contentCount": 70
   },
   {
     "route": "/expertises/product-project-management",
     "name": "Portage salarial pour consultants Product & Project Management",
-    "contentCount": 67
+    "contentCount": 59
   },
   {
     "route": "/blog/portage-salarial-entreprises",
@@ -212,12 +207,12 @@
   {
     "route": "/expertises/cybersecurite",
     "name": "Portage salarial pour experts cybersécurité",
-    "contentCount": 65
+    "contentCount": 55
   },
   {
     "route": "/expertises/agilite-coaching",
     "name": "Portage salarial pour profils Agilité, Produit et Transformation",
-    "contentCount": 70
+    "contentCount": 62
   },
   {
     "route": "/blog/portage-salarial-product-owner-scrum-master",
@@ -237,7 +232,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 479
+    "contentCount": 409
   },
   {
     "route": "/recrutement",
@@ -268,5 +263,10 @@
     "route": "/equipe",
     "name": "Une équipe présente à chaque étape",
     "contentCount": 18
+  },
+  {
+    "route": "/consultants",
+    "name": "Votre quotidien de salarié porté",
+    "contentCount": 78
   }
 ]
