@@ -2,34 +2,79 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import workshopImage from '../../images/team-workshop.webp';
 
+// Chaque engagement ci-dessous est adossé à un fait PUBLISHABLE de fact-base.md et
+// figure dans la démarche RSE et Numérique Responsable formalisée par le groupe.
+// Aucune certification n'est revendiquée : voir la section « Ce que nous ne
+// revendiquons pas » et copy-plan §13 Q7.
 const commitments = [
   {
     number: '01',
-    title: 'Sobriété numérique',
-    text: 'Concevoir des parcours rapides, limiter les médias lourds et privilégier des outils utiles à la mission plutôt que des fonctionnalités superflues.',
+    title: 'Une charte Numérique Responsable, et un référent désigné',
+    // F-D10 (PUBLISHABLE)
+    text: 'La charte est diffusée aux collaborateurs et fixe les principes attendus en matière de sobriété numérique, d’éco-conception, d’accessibilité et de bonnes pratiques de développement. Un référent numérique responsable est désigné, avec des missions formalisées.',
   },
   {
     number: '02',
-    title: 'Inclusion et accessibilité',
-    text: "Rendre l'information compréhensible, améliorer l'accessibilité du site et traiter chaque candidature ou demande sans discrimination.",
+    title: 'Éco-conception logicielle',
+    // F-D10 (PUBLISHABLE) — référentiels nommés, jamais présentés comme certifications
+    text: 'Les équipes sont formées à l’éco-conception en s’appuyant sur le RGESN et les bonnes pratiques Green IT. En mission : optimisation du code, rationalisation des requêtes, limitation des dépendances superflues, réutilisation de briques existantes.',
   },
   {
     number: '03',
-    title: 'Proximité durable',
-    text: "Privilégier le travail à distance et les ressources locales lorsque le contexte de mission le permet, afin de limiter les déplacements inutiles.",
+    title: 'Accessibilité numérique',
+    // F-D09 (PUBLISHABLE)
+    text: 'Sur les prestations qui touchent à une interface utilisateur, les équipes s’appuient sur le RGAA et sur les recommandations WCAG, dès la phase de conception et non en correction.',
   },
   {
     number: '04',
-    title: 'Éthique et transparence',
-    text: 'Afficher les frais de gestion, expliquer les hypothèses du simulateur et ne publier que des engagements, avis et indicateurs pouvant être justifiés.',
+    title: 'Déplacements à faible impact',
+    // F-D14 (PUBLISHABLE)
+    text: 'Train en priorité sur les longues distances, transports en commun ou mobilités douces en proximité. Le télétravail est favorisé lorsqu’il est compatible avec l’organisation du client et la nature de la mission.',
+  },
+  {
+    number: '05',
+    title: 'Équipements réparés, reconditionnés, donnés',
+    // F-D15 (PUBLISHABLE)
+    text: 'Le matériel est choisi pour sa durabilité, réparé quand c’est possible, afin d’éviter un renouvellement prématuré. Le reconditionné est privilégié sur les périphériques. Recyclage et dons passent par des filières identifiées.',
+  },
+  {
+    number: '06',
+    title: 'Diversité et égalité des chances',
+    // F-D11 (PUBLISHABLE)
+    text: 'Le groupe est signataire de la Charte de la diversité. Les processus de recrutement reposent sur les compétences, l’expérience et le savoir-être — ce qui valorise notamment les profils expérimentés sur des technologies critiques.',
+  },
+];
+
+// Gouvernance : ce qui rend la démarche vérifiable plutôt que déclarative.
+const governance = [
+  {
+    label: 'Dématérialisation',
+    // F-D13 (PUBLISHABLE)
+    text: 'Gestion administrative entièrement dématérialisée : contrats, bons de commande, comptes rendus d’activité et facturation sont traités sans papier.',
+  },
+  {
+    label: 'Indicateurs',
+    // F-D16 (PUBLISHABLE)
+    text: 'Des indicateurs RSE sont suivis en comité de pilotage : niveau de dématérialisation des échanges, maîtrise des déplacements, actions de formation et de partage de connaissances.',
+  },
+  {
+    label: 'Formation',
+    // MT-LOT1 §6 (PUBLISHABLE) — ateliers, e-learning, retours d'expérience
+    text: 'Ateliers, e-learning et retours d’expérience réguliers sur la mobilité, le travail à distance, la sobriété des outils et l’éco-conception.',
+  },
+  {
+    label: 'Sous-traitance',
+    // MT-LOT1 §6 (PUBLISHABLE)
+    text: 'Lorsqu’un prestataire est mobilisé, des critères de numérique responsable entrent dans sa sélection.',
   },
 ];
 ---
 
 <PageLayout
   seo={{
-    title: 'Notre démarche RSE — The Porters',
-    description: 'Sobriété numérique, inclusion, proximité et transparence : découvrez les axes de responsabilité sociale et environnementale de The Porters.',
+    title: 'Engagements RSE et numérique responsable — The Porters',
+    description:
+      'Charte Numérique Responsable et référent désigné, éco-conception RGESN, accessibilité RGAA et WCAG, déplacements en train, matériel reconditionné, Charte de la diversité.',
     noindex: true,
   }}
   breadcrumbs={[{ label: 'Démarche RSE' }]}
@@ -39,16 +84,17 @@ const commitments = [
       src={workshopImage.src}
       width={workshopImage.width}
       height={workshopImage.height}
-      alt="Équipe réunie autour d'un atelier de travail responsable."
+      alt="Équipe réunie autour d’un atelier de travail."
       class="absolute inset-0 h-full w-full object-cover object-center"
     />
     <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.98)_0%,rgba(18,35,48,0.85)_48%,rgba(18,35,48,0.34)_100%)]"></div>
     <div class="container relative mx-auto flex min-h-[39rem] items-center px-6 py-20 lg:px-8">
       <div class="max-w-3xl reveal">
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Responsabilité sociale et environnementale</p>
-        <h1 class="max-w-3xl text-porters-white">Des intentions aux preuves.</h1>
+        <h1 class="max-w-3xl text-porters-white">Six engagements, et ce que nous ne revendiquons pas.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
-          Le mémoire technique du Groupe Porters présente des orientations liées au numérique, à l’inclusion, à la proximité et à la transparence. Les indicateurs propres à The Porters seront publiés à mesure de leur validation.
+          Une charte écrite, un référent nommé, des référentiels identifiés, des indicateurs suivis en comité
+          de pilotage. Et, plus bas, la liste de ce que nous n’avons pas encore obtenu.
         </p>
       </div>
     </div>
@@ -57,8 +103,8 @@ const commitments = [
   <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Quatre priorités</p>
-        <h2>Nos axes de travail</h2>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Nos engagements</p>
+        <h2>Ce qui est en place aujourd’hui</h2>
       </div>
       <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
         {commitments.map((commitment) => (
@@ -75,30 +121,47 @@ const commitments = [
   <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto grid gap-12 px-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:gap-20 lg:px-8">
       <div class="reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Feuille de route</p>
-        <h2>Passer des intentions aux preuves</h2>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Gouvernance</p>
+        <h2>Ce qui rend la démarche vérifiable</h2>
         <p class="mt-5 text-porters-black/66">
-          Les prochaines publications RSE associeront chaque engagement à un responsable, une échéance et un indicateur. Cette méthode évite les promesses générales impossibles à vérifier.
+          Un engagement qui n’est ni mesuré ni relu en comité reste une intention. Voici les quatre
+          mécanismes qui font que celui-ci ne l’est pas.
         </p>
       </div>
       <div class="reveal">
         <div class="grid gap-0 border-y border-porters-navy/12">
-          <div class="grid gap-2 border-b border-porters-navy/10 py-5 sm:grid-cols-[10rem_1fr]">
-            <strong class="text-porters-navy">Numérique</strong>
-            <span class="text-porters-black/64">Suivre le poids des pages et la performance des parcours essentiels.</span>
-          </div>
-          <div class="grid gap-2 border-b border-porters-navy/10 py-5 sm:grid-cols-[10rem_1fr]">
-            <strong class="text-porters-navy">Accessibilité</strong>
-            <span class="text-porters-black/64">Auditer les parcours clés et corriger les obstacles prioritaires.</span>
-          </div>
-          <div class="grid gap-2 border-b border-porters-navy/10 py-5 sm:grid-cols-[10rem_1fr]">
-            <strong class="text-porters-navy">Accompagnement</strong>
-            <span class="text-porters-black/64">Mesurer la qualité de réponse et la satisfaction après les étapes importantes.</span>
-          </div>
-          <div class="grid gap-2 py-5 sm:grid-cols-[10rem_1fr]">
-            <strong class="text-porters-navy">Transparence</strong>
-            <span class="text-porters-black/64">Publier uniquement les indicateurs et certifications officiellement validés.</span>
-          </div>
+          {governance.map((row, index) => (
+            <div class:list={['grid gap-2 py-5 sm:grid-cols-[10rem_1fr]', { 'border-b border-porters-navy/10': index < governance.length - 1 }]}>
+              <strong class="text-porters-navy">{row.label}</strong>
+              <span class="text-porters-black/64">{row.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Précision</p>
+        <h2 class="mb-6">Ce que nous ne revendiquons pas</h2>
+        <div class="space-y-5 text-porters-black/70 leading-relaxed">
+          <p>
+            Nous ne sommes pas certifiés par l’Institut du Numérique Responsable. Nous nous engageons à
+            inscrire l’organisation dans une trajectoire vers ces référentiels, et nous accompagnons la montée
+            en compétence de nos référents et de nos équipes vers ces dispositifs de reconnaissance.
+            Tant que le label n’est pas obtenu, nous écrivons «&nbsp;trajectoire&nbsp;», pas «&nbsp;certifié&nbsp;».
+          </p>
+          <p>
+            Nous nous appuyons sur le RGESN, le RGAA et les recommandations WCAG. Ce sont des référentiels
+            que nos équipes appliquent, pas des certifications que nous détenons.
+          </p>
+          <p>
+            Nous ne publions pas d’indicateur chiffré sur cette page. Les indicateurs existent et sont suivis
+            en comité de pilotage&nbsp;; ils seront publiés ici lorsqu’ils porteront sur une période close et
+            une méthode que nous pouvons décrire.
+          </p>
         </div>
       </div>
     </div>
@@ -107,10 +170,10 @@ const commitments = [
   <section class="bg-porters-navy py-16">
     <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <div class="max-w-2xl reveal">
-        <h2 class="mb-2 text-porters-white">Une question sur notre démarche ?</h2>
-        <p class="mb-0 text-porters-white/65">Échangez directement avec l'équipe The Porters.</p>
+        <h2 class="mb-2 text-porters-white">Une exigence RSE dans votre appel d’offres&nbsp;?</h2>
+        <p class="mb-0 text-porters-white/65">Dites-nous laquelle. Nous répondons sur ce que nous faisons, pas sur ce que nous visons.</p>
       </div>
-      <a href="/contact" class="btn btn-gold shrink-0">Contacter l'équipe</a>
+      <a href="/contact" class="btn btn-gold shrink-0">Contacter l’équipe</a>
     </div>
   </section>
 </PageLayout>
