@@ -7397,14 +7397,14 @@
     "key": "pages.contact.auto.heading.16lg5a8",
     "route": "/contact",
     "type": "heading",
-    "content": "Expliquez-nous où vous en êtes",
+    "content": "Où en êtes-vous ?",
     "rich": true
   },
   {
     "key": "pages.contact.auto.heading.1chrosr",
     "route": "/contact",
     "type": "heading",
-    "content": "Parlons de votre <span class=\"gold-underline\">situation</span>",
+    "content": "Décrivez le contexte. <span class=\"gold-underline\">Nous répondons précisément.</span>",
     "rich": true
   },
   {
@@ -7516,7 +7516,7 @@
     "key": "pages.contact.auto.paragraph.m7k6kn",
     "route": "/contact",
     "type": "paragraph",
-    "content": "Mission déjà trouvée, statut à comparer, simulation à relire ou besoin d’expertise : donnez-nous le contexte utile pour préparer une réponse concrète.",
+    "content": "Mission déjà trouvée, statut à comparer, simulation à relire, ou un besoin de profil à couvrir. Plus le contexte est précis, plus la réponse l’est. Nous revenons vers vous sous 24 heures ouvrées.",
     "rich": true
   },
   {
@@ -7544,7 +7544,7 @@
     "key": "pages.contact.auto.paragraph.w5nn90",
     "route": "/contact",
     "type": "paragraph",
-    "content": "Une question précise, une réponse humaine",
+    "content": "Contact",
     "rich": true
   },
   {
@@ -8300,7 +8300,7 @@
     "key": "pages.equipe.auto.heading.1167sah",
     "route": "/equipe",
     "type": "heading",
-    "content": "Vous aimez rendre les sujets complexes plus simples ?",
+    "content": "Vous voulez rejoindre l’équipe ?",
     "rich": true
   },
   {
@@ -8314,7 +8314,7 @@
     "key": "pages.equipe.auto.heading.1ozy636",
     "route": "/equipe",
     "type": "heading",
-    "content": "Une équipe présente quand la mission en a <span class=\"gold-underline\">besoin</span>",
+    "content": "Une personne connaît votre dossier. <span class=\"gold-underline\">Toujours la même.</span>",
     "rich": true
   },
   {
@@ -8349,49 +8349,49 @@
     "key": "pages.equipe.auto.paragraph.1jasppu",
     "route": "/equipe",
     "type": "paragraph",
-    "content": "Suivre les éléments d’activité, la facturation, les frais admissibles et la transformation du chiffre d’affaires en salaire.",
+    "content": "Votre compte rendu d’activité, la facture au client, vos frais, votre bulletin. Deux sessions de paie par mois.",
     "rich": true
   },
   {
     "key": "pages.equipe.auto.paragraph.1sve2ab",
     "route": "/equipe",
     "type": "paragraph",
-    "content": "Des interlocuteurs, pas une plateforme anonyme",
+    "content": "L’équipe",
     "rich": true
   },
   {
     "key": "pages.equipe.auto.paragraph.1xxwf87",
     "route": "/equipe",
     "type": "paragraph",
-    "content": "Organiser la relation tripartite et rendre lisibles les engagements du consultant, du client et de The Porters.",
+    "content": "Les deux contrats, qui s’engage sur quoi, et les contraintes de sécurité ou de confidentialité du client.",
     "rich": true
   },
   {
     "key": "pages.equipe.auto.paragraph.36ekrk",
     "route": "/equipe",
     "type": "paragraph",
-    "content": "Du premier échange au suivi administratif, chaque sujet est pris en charge par une fonction clairement identifiée.",
+    "content": "Quatre fonctions, un interlocuteur unique par consultant, et un binôme derrière lui pour qu’aucun suivi ne dépende d’une seule personne.",
     "rich": true
   },
   {
     "key": "pages.equipe.auto.paragraph.7dkowk",
     "route": "/equipe",
     "type": "paragraph",
-    "content": "Comprendre votre situation, répondre aux questions de statut et préparer un démarrage sans zone grise.",
+    "content": "Votre situation, votre statut actuel, votre TJM cible. On chiffre avant de contractualiser.",
     "rich": true
   },
   {
     "key": "pages.equipe.auto.paragraph.famhfh",
     "route": "/equipe",
     "type": "paragraph",
-    "content": "Rester disponible pendant la mission pour traiter les questions administratives et anticiper les étapes suivantes.",
+    "content": "Points d’avancement à une fréquence définie au départ, avec un relais identifié si votre interlocuteur est absent.",
     "rich": true
   },
   {
     "key": "pages.equipe.auto.paragraph.pyzpvb",
     "route": "/equipe",
     "type": "paragraph",
-    "content": "Découvrez les métiers et les opportunités publiées par The Porters.",
+    "content": "Les postes ouverts sont publiés sur notre espace HelloWork.",
     "rich": true
   },
   {
@@ -8426,21 +8426,21 @@
     "key": "pages.espace-client.auto.heading.137fo19",
     "route": "/espace-client",
     "type": "heading",
-    "content": "Créer mon espace",
+    "content": "Je n’ai pas encore d’accès",
     "rich": true
   },
   {
     "key": "pages.espace-client.auto.heading.1co03gw",
     "route": "/espace-client",
     "type": "heading",
-    "content": "Recevoir mon lien de connexion",
+    "content": "J’ai déjà un accès",
     "rich": true
   },
   {
     "key": "pages.espace-client.auto.heading.1nsallb",
     "route": "/espace-client",
     "type": "heading",
-    "content": "Votre activité. Vos documents. Un seul point d’accès.",
+    "content": "LAYA : vos bulletins, vos CRA, votre trésorerie.",
     "rich": true
   },
   {
@@ -8482,14 +8482,14 @@
     "key": "pages.espace-client.auto.paragraph.bq2yi8",
     "route": "/espace-client",
     "type": "paragraph",
-    "content": "Précisez si vous êtes consultant ou entreprise. Un conseiller active le bon parcours et vous transmet les informations de connexion.",
+    "content": "Précisez si vous êtes consultant ou entreprise. Un conseiller ouvre votre accès et vous transmet vos identifiants.",
     "rich": true
   },
   {
     "key": "pages.espace-client.auto.paragraph.f0xscj",
     "route": "/espace-client",
     "type": "paragraph",
-    "content": "Consultant ou entreprise, demandez votre accès sécurisé ou recevez de nouveau votre lien de connexion auprès de l'équipe.",
+    "content": "LAYA est notre outil de gestion. Vous y retrouvez vos bulletins de salaire, vos comptes rendus d’activité, vos notes de frais et votre compte de trésorerie. Toutes les communications internes y passent.",
     "rich": true
   },
   {
@@ -8510,7 +8510,7 @@
     "key": "pages.espace-client.auto.paragraph.yorddf",
     "route": "/espace-client",
     "type": "paragraph",
-    "content": "L'équipe vérifie votre identité et renvoie le lien d'accès associé à votre dossier.",
+    "content": "Nous vérifions votre identité et vous renvoyons le lien de connexion associé à votre dossier.",
     "rich": true
   },
   {
@@ -10869,14 +10869,14 @@
     "key": "pages.faq.auto.heading.16l9rai",
     "route": "/faq",
     "type": "heading",
-    "content": "Des réponses claires, avant de choisir votre cadre.",
+    "content": "Les réponses, avant l’appel.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.heading.1ojq1ga",
     "route": "/faq",
     "type": "heading",
-    "content": "Rendez-vous et agences",
+    "content": "Entrée et sortie",
     "rich": true
   },
   {
@@ -10890,7 +10890,7 @@
     "key": "pages.faq.auto.heading.1td4w85",
     "route": "/faq",
     "type": "heading",
-    "content": "Missions et accompagnement",
+    "content": "Missions, congés et aléas",
     "rich": true
   },
   {
@@ -10911,7 +10911,7 @@
     "key": "pages.faq.auto.heading.z1gt1c",
     "route": "/faq",
     "type": "heading",
-    "content": "Si votre cas est spécifique, parlez-en avec un conseiller.",
+    "content": "Un conseiller reprend votre situation ligne par ligne.",
     "rich": true
   },
   {
@@ -10932,21 +10932,42 @@
     "key": "pages.faq.auto.paragraph.148fmnm",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le portage salarial est adapté aux prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT et conseil tech. Les professions réglementées et services à la personne restent exclus.",
+    "content": "Non. Il n’existe qu’un seul portage salarial. Que vous veniez d’un CDI, d’une micro-entreprise ou d’une SASU, le mécanisme est identique : un contrat de travail avec nous, un contrat de prestation avec votre client. Ce qui change, c’est votre point de départ, pas le dispositif.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.194b85v",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Oui, avec un emploi salarié ou avec une retraite. Le cumul avec un emploi salarié suppose l’accord de votre employeur et un maximum de 48 heures de travail hebdomadaire, tous employeurs confondus.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.1aaihgg",
     "route": "/faq",
     "type": "paragraph",
-    "content": "2 points",
+    "content": "4 points",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.1dlom95",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Chaque mission est suivie par un binôme, avec un relais identifié. Aucun suivi ne dépend d’une seule personne.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.1fqgjsw",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le portage salarial permet de collaborer avec un expert indépendant dans un cadre contractuel structuré, sans embauche directe. C'est utile pour des besoins IT, data, cloud, cyber, projet ou transformation avec un périmètre de mission clair.",
+    "content": "Vous mobilisez un expert autonome sans créer de relation d’emploi. Un seul contrat de prestation, une seule facture, et aucune gestion de paie de votre côté. C’est adapté à un besoin IT, data, cloud, cyber, projet ou transformation sur un périmètre défini.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.1g4le6s",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Que se passe-t-il si je tombe malade ?",
     "rich": true
   },
   {
@@ -10957,10 +10978,17 @@
     "rich": true
   },
   {
+    "key": "pages.faq.auto.paragraph.1grs8xm",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Votre contrat de travail se poursuit, mais une période sans mission ne génère pas de chiffre d’affaires et donc pas de salaire. C’est précisément ce que le compte de trésorerie permet d’anticiper : lisser une période creuse avec de la réserve constituée pendant les mois facturés.",
+    "rich": true
+  },
+  {
     "key": "pages.faq.auto.paragraph.1hyccjo",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le traitement du délai de règlement client et toute éventuelle avance dépendent des conditions contractuelles proposées. Ce point doit être confirmé au cadrage de la mission.",
+    "content": "Sept prestations : l’avance de trésorerie, l’apport d’affaires, un interlocuteur unique, la gestion administrative complète, la responsabilité civile professionnelle, le financement des formations (CPF, OPCO, certifications) et la garantie financière. Le détail figure sur la page Frais et rémunération.",
     "rich": true
   },
   {
@@ -10968,6 +10996,13 @@
     "route": "/faq",
     "type": "paragraph",
     "content": "FAQ",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.1npwliw",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Puis-je cumuler le portage avec autre chose ?",
     "rich": true
   },
   {
@@ -10988,7 +11023,7 @@
     "key": "pages.faq.auto.paragraph.1p1hbfs",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Oui, le positionnement vise notamment les consultants tech expérimentés : DevOps, cloud architects, data engineers, experts IA, RSSI, Product Owners, Scrum Masters, coachs agiles et chefs de projet IT.",
+    "content": "Vous acquérez 2,5 jours ouvrés par mois, comme tout salarié. Ils vous sont versés chaque mois sur votre bulletin sous l’intitulé « Indemnités de congés payés », ou provisionnés sur votre compte de trésorerie si vous préférez maintenir votre rémunération pendant vos congés.",
     "rich": true
   },
   {
@@ -11002,14 +11037,14 @@
     "key": "pages.faq.auto.paragraph.1qf8fpa",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Quels types de rendez-vous puis-je demander ?",
+    "content": "Comment se passe mon arrivée ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.1qteiez",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Pouvez-vous m’accompagner dans la recherche de missions ?",
+    "content": "Trouvez-vous les missions à ma place ?",
     "rich": true
   },
   {
@@ -11023,91 +11058,140 @@
     "key": "pages.faq.auto.paragraph.1u629fc",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Qui signe le contrat avec l'entreprise cliente ?",
+    "content": "Qui signe le contrat avec l’entreprise cliente ?",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.1uw4r32",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Et si mon interlocuteur est absent ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.1va23mj",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Quels paramètres influencent la simulation ?",
+    "content": "Quand suis-je payé ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.1wpaaa1",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Vous pouvez demander un échange pour découvrir le portage salarial, optimiser votre salaire, passer de freelance à portage, discuter de votre mission IT ou échanger avec une agence.",
+    "content": "Vous recevez une simulation de salaire chiffrée, l’infographie des frais professionnels, un mode opératoire et une formation à LAYA, notre outil de gestion. Puis une intégration individuelle, en visioconférence ou sur place. Un interlocuteur unique suit ensuite votre dossier.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.1wppeyt",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Oui. Le principe du portage salarial est de vous laisser négocier et piloter vos missions tout en déléguant le cadre contractuel, la facturation et la paie à la société de portage.",
+    "content": "Oui. Vous vous constituez votre propre clientèle et vous en restez pleinement responsable. Vous choisissez vos missions et négociez vos tarifs, sans lien hiérarchique ni chez le client ni chez nous.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.1x729qq",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "À quoi sert le compte de trésorerie ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.1y13o4g",
     "route": "/faq",
     "type": "paragraph",
-    "content": "À quoi sert le simulateur de revenus ?",
+    "content": "Que se passe-t-il si mon client règle à 45 ou 60 jours ?",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.1yh586d",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "À mettre une part de votre rémunération brute de côté. Vous pouvez ainsi lisser une paie d’un mois sur l’autre, financer des congés en maintenant votre rémunération, provisionner une fin de contrat ou débloquer un acompte selon vos besoins.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.2b6r0c",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le portage salarial repose sur une relation tripartite : vous trouvez et réalisez votre mission, l'entreprise cliente contractualise avec The Porters, et The Porters vous salarie pour transformer votre chiffre d'affaires en salaire. Vous gardez votre autonomie commerciale tout en bénéficiant du cadre salarié.",
+    "content": "Trois acteurs et deux contrats. Vous trouvez et réalisez votre mission ; l’entreprise cliente signe un contrat de prestation avec The Porters ; The Porters vous salarie et transforme votre chiffre d’affaires en salaire. Vous gardez votre autonomie commerciale et bénéficiez du statut de salarié.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.2umxn3",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le site présente les zones et points de contact actuellement documentés. Les modalités de rendez-vous, l'adresse et la présence physique sont précisées sur chaque page locale lorsqu'elles sont confirmées.",
+    "content": "Non. Votre contrat de travail suit vos missions, et aucune durée d’engagement ne vous est imposée. Les modalités de rupture sont celles du droit du travail.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.3zhd4m",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Oui. Votre mission peut se dérouler en France ou à l’étranger, pour un client français ou étranger, sur site ou en télétravail.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.4w7xba",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Mes droits au chômage sont-ils préservés ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.5jkrsc",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Quelles agences sont mises en avant ?",
+    "content": "Suis-je engagé sur une durée minimale ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.5mx0k7",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Puis-je réserver directement un créneau en ligne ?",
+    "content": "Que se passe-t-il quand je veux partir ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.5td047",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le calendrier de paie dépend de la réception des éléments d'activité et des conditions prévues par votre convention de portage. Votre conseiller vous communique les dates applicables avant le démarrage.",
+    "content": "Le simulateur vous donne une estimation à partir de votre TJM, de vos jours facturés et de vos frais professionnels. L’écart entre chiffre d’affaires et net vient de trois postes : les frais de gestion, les cotisations sociales et les frais professionnels remboursés. Le résultat reste indicatif jusqu’à validation de votre situation.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.80f4a9",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Oui. Vous cotisez chaque mois à l’assurance chômage et vous ouvrez des droits comme tout salarié. En cas de rupture conventionnelle, vous pouvez prétendre à l’Aide au retour à l’emploi.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.86qv51",
     "route": "/faq",
     "type": "paragraph",
-    "content": "17 réponses indexées",
+    "content": "27 réponses indexées",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.8b990q",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Quelle différence avec la micro-entreprise ou la SASU ?",
+    "content": "Quels métiers IT peuvent être portés ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.956ws7",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Quels métiers IT peuvent être portés ?",
+    "content": "Y a-t-il un portage pour les salariés et un autre pour les freelances ?",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.azhjsm",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "En cinq étapes : analyse du parcours réel, évaluation sur les référentiels métiers CIGREF, SYNTEC et ROME, deux entretiens structurés — RH et technique — puis tests ou mise en situation selon le périmètre, et enfin une validation interne. Les profils vous sont transmis sous forme anonymisée.",
     "rich": true
   },
   {
@@ -11115,6 +11199,13 @@
     "route": "/faq",
     "type": "paragraph",
     "content": "FAQ",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.dm5q3p",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Comment sont gérés les frais professionnels ?",
     "rich": true
   },
   {
@@ -11128,56 +11219,63 @@
     "key": "pages.faq.auto.paragraph.dsmb7i",
     "route": "/faq",
     "type": "paragraph",
-    "content": "3 points",
+    "content": "6 points",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.e4rnal",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le schéma reste volontairement simple : chaque bloc mène à une famille de questions, sans détour inutile.",
+    "content": "Cinq familles de questions. Choisissez celle qui vous bloque.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.e6c4a7",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Oui. Le portage salarial est encadré par le Code du travail, notamment depuis son intégration en 2008 et l'ordonnance du 2 avril 2015. Il définit les droits et obligations du salarié porté, de l'entreprise cliente et de la société de portage.",
+    "content": "Oui. Il est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.f11j3g",
     "route": "/faq",
     "type": "paragraph",
-    "content": "4 points",
+    "content": "7 points",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.fae4wu",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le chiffre d’affaires, les frais professionnels, les paramètres sociaux estimatifs et votre situation influencent le résultat. La proposition personnalisée précise ensuite les éléments contractuels applicables.",
+    "content": "Chaque mois, selon la date à laquelle vous transmettez votre compte rendu d’activité. Deux sessions de paie existent ; votre conseiller vous indique les échéances applicables avant le démarrage.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.gnq14r",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le simulateur donne une première estimation de salaire net à partir de votre TJM, du nombre de jours travaillés et de vos frais professionnels. Le résultat reste indicatif et peut ensuite être affiné avec un conseiller.",
+    "content": "Votre salaire ne suit pas le calendrier de règlement de votre client. Le traitement du délai et les conditions d’avance sont précisés au cadrage de la mission.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.h7damr",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Puis-je travailler pour un client à l’étranger ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.hzhzo9",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Que se passe-t-il si mon client règle à 45 ou 60 jours ?",
+    "content": "Que couvrent les frais de gestion ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.i4i5ys",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Comment et quand suis-je payé(e) ?",
+    "content": "Combien mon TJM me laisse-t-il en net ?",
     "rich": true
   },
   {
@@ -11191,42 +11289,56 @@
     "key": "pages.faq.auto.paragraph.iqq900",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Besoin d’un échange humain ?",
+    "content": "Votre cas est particulier ?",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.j8nwm7",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Que se passe-t-il entre deux missions ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.lzme8t",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Pourquoi travailler avec un consultant en portage salarial ?",
+    "content": "Pourquoi passer par un consultant en portage salarial ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.nigrj",
     "route": "/faq",
     "type": "paragraph",
-    "content": "5 points",
+    "content": "7 points",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.o6596t",
     "route": "/faq",
     "type": "paragraph",
-    "content": "The Porters accompagne-t-il les consultants IT seniors ?",
+    "content": "Combien de congés payés ai-je ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.p4yker",
     "route": "/faq",
     "type": "paragraph",
-    "content": "L'entreprise cliente contractualise avec The Porters pour la prestation. Le consultant reste salarié porté par The Porters pendant sa mission.",
+    "content": "The Porters. Le consultant reste salarié porté par The Porters pendant toute la mission, et vous n’avez qu’un interlocuteur contractuel.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.q08akm",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Comment sont gérés les frais professionnels ?",
+    "content": "Quel est votre taux de frais de gestion ?",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.qjvio8",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Ils vous sont remboursés lorsqu’ils sont réels, justifiés et liés à votre activité : internet, téléphone, matériel, logiciels, déplacements, repas ou hébergement selon la situation. Ils ne sont pas financés par les frais de gestion — ce sont deux choses distinctes.",
     "rich": true
   },
   {
@@ -11237,17 +11349,38 @@
     "rich": true
   },
   {
+    "key": "pages.faq.auto.paragraph.s5fd6o",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Vous ne créez pas de société et vous ne produisez aucun document administratif. Vous conservez une couverture sociale de salarié — chômage et retraite complémentaire comprises — là où la micro-entreprise n’en ouvre pas. En contrepartie, des frais de gestion sont prélevés sur votre chiffre d’affaires, et vous restez responsable de votre prospection et de votre TJM.",
+    "rich": true
+  },
+  {
     "key": "pages.faq.auto.paragraph.tfnra7",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Statut, rémunération, frais, mission, rendez-vous ou entreprise cliente : partez du sujet qui vous bloque, puis ouvrez la réponse utile.",
+    "content": "Statut, rémunération, frais, congés, aléas, entrée et sortie. Chaque réponse commence par la réponse — la nuance vient après.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.u6n49f",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Comment sélectionnez-vous les profils ?",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.uhxdi5",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Le consultant en portage ne crée pas de société et délègue l'administratif, la paie, les déclarations et la facturation. Il conserve une couverture sociale salariée, mais reste responsable de son positionnement, de son TJM et de la recherche de ses missions.",
+    "content": "Toutes les prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT, AMOA et conseil. Seules les professions réglementées et les services à la personne sont exclus.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.uv5vtp",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Quelle différence avec la micro-entreprise ou la SASU ?",
     "rich": true
   },
   {
@@ -11261,7 +11394,14 @@
     "key": "pages.faq.auto.paragraph.vwhw5u",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Oui. Choisissez le motif de l'échange et indiquez vos disponibilités depuis la page Rendez-vous. L'équipe vous confirme ensuite le créneau et le bon interlocuteur par email.",
+    "content": "Vous partez quand vous voulez : démission, rupture de période d’essai ou rupture conventionnelle. Nous vous remettons le solde de tout compte, le certificat de travail, l’attestation destinée à France Travail et le reçu pour solde de tout compte. Une rupture conventionnelle suppose des fonds suffisants sur votre compte de trésorerie pour couvrir la prime et les frais associés.",
+    "rich": true
+  },
+  {
+    "key": "pages.faq.auto.paragraph.wnjcn",
+    "route": "/faq",
+    "type": "paragraph",
+    "content": "Vous percevez des indemnités journalières de la Sécurité sociale, comme tout salarié, puis la prévoyance prend le relais sur les arrêts longs. Les paramètres exacts vous sont confirmés par le service paie.",
     "rich": true
   },
   {
@@ -11275,21 +11415,21 @@
     "key": "pages.faq.auto.paragraph.ynlp6m",
     "route": "/faq",
     "type": "paragraph",
-    "content": "The Porters ne promet pas de mission garantie. L'équipe vous accompagne sur votre positionnement, la présentation de votre offre, la mobilisation de son réseau, les conseils de prospection et le cadrage de vos opportunités.",
+    "content": "Non, aucune mission n’est garantie. Nous vous proposons des missions issues de nos partenaires, et vous restez libre de trouver les vôtres. Nous intervenons aussi sur votre positionnement, la présentation de votre offre et le cadrage de vos opportunités.",
     "rich": true
   },
   {
     "key": "pages.faq.auto.paragraph.zk8xw1",
     "route": "/faq",
     "type": "paragraph",
-    "content": "Les frais liés à votre activité peuvent être pris en compte lorsqu'ils sont justifiés : internet, téléphone, matériel, logiciels, déplacements, repas ou hébergement selon la situation. Ils doivent correspondre à des dépenses professionnelles réelles et documentées.",
+    "content": "Il vous est communiqué avant la signature, jamais après, et il est prélevé sur votre chiffre d’affaires mensuel. Aucun frais de dossier, d’entrée ou de sortie ne s’y ajoute.",
     "rich": true
   },
   {
     "key": "pages.home.auto.button.17fic7h",
     "route": "/",
     "type": "button",
-    "content": "Quels métiers IT peuvent être portés ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
+    "content": "Y a-t-il un portage pour les salariés et un autre pour les freelances ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
@@ -11303,7 +11443,7 @@
     "key": "pages.home.auto.button.578ly",
     "route": "/",
     "type": "button",
-    "content": "Quelle différence avec la micro-entreprise ou la SASU ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
+    "content": "Quels métiers IT peuvent être portés ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
@@ -11394,7 +11534,7 @@
     "key": "pages.home.auto.paragraph.1nlf8ai",
     "route": "/",
     "type": "paragraph",
-    "content": "Le consultant en portage ne crée pas de société et délègue l'administratif, la paie, les déclarations et la facturation. Il conserve une couverture sociale salariée, mais reste responsable de son positionnement, de son TJM et de la recherche de ses missions.",
+    "content": "Toutes les prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT, AMOA et conseil. Seules les professions réglementées et les services à la personne sont exclus.",
     "rich": true
   },
   {
@@ -11422,7 +11562,7 @@
     "key": "pages.home.auto.paragraph.1t3j9nf",
     "route": "/",
     "type": "paragraph",
-    "content": "Le portage salarial repose sur une relation tripartite : vous trouvez et réalisez votre mission, l'entreprise cliente contractualise avec The Porters, et The Porters vous salarie pour transformer votre chiffre d'affaires en salaire. Vous gardez votre autonomie commerciale tout en bénéficiant du cadre salarié.",
+    "content": "Trois acteurs et deux contrats. Vous trouvez et réalisez votre mission ; l’entreprise cliente signe un contrat de prestation avec The Porters ; The Porters vous salarie et transforme votre chiffre d’affaires en salaire. Vous gardez votre autonomie commerciale et bénéficiez du statut de salarié.",
     "rich": true
   },
   {
@@ -11450,7 +11590,7 @@
     "key": "pages.home.auto.paragraph.1vv4aso",
     "route": "/",
     "type": "paragraph",
-    "content": "Oui. Le portage salarial est encadré par le Code du travail, notamment depuis son intégration en 2008 et l'ordonnance du 2 avril 2015. Il définit les droits et obligations du salarié porté, de l'entreprise cliente et de la société de portage.",
+    "content": "Oui. Il est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.",
     "rich": true
   },
   {
@@ -11464,7 +11604,7 @@
     "key": "pages.home.auto.paragraph.4i8ccl",
     "route": "/",
     "type": "paragraph",
-    "content": "Le portage salarial est adapté aux prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT et conseil tech. Les professions réglementées et services à la personne restent exclus.",
+    "content": "Non. Il n’existe qu’un seul portage salarial. Que vous veniez d’un CDI, d’une micro-entreprise ou d’une SASU, le mécanisme est identique : un contrat de travail avec nous, un contrat de prestation avec votre client. Ce qui change, c’est votre point de départ, pas le dispositif.",
     "rich": true
   },
   {
@@ -11954,14 +12094,14 @@
     "key": "pages.parrainage.auto.heading.164xufm",
     "route": "/parrainage",
     "type": "heading",
-    "content": "Confirmez les conditions",
+    "content": "Vous touchez la prime",
     "rich": true
   },
   {
     "key": "pages.parrainage.auto.heading.1chrosr",
     "route": "/parrainage",
     "type": "heading",
-    "content": "Une bonne expérience mérite<br><span class=\"gold-underline\">d’être partagée</span>",
+    "content": "Vous connaissez quelqu’un<br><span class=\"gold-underline\">à qui cela servirait ?</span>",
     "rich": true
   },
   {
@@ -12017,7 +12157,7 @@
     "key": "pages.parrainage.auto.paragraph.1dn64v7",
     "route": "/parrainage",
     "type": "paragraph",
-    "content": "Parlez de The Porters à une connaissance (consultant indépendant ou entreprise).",
+    "content": "Parlez de nous à un consultant indépendant ou à une entreprise.",
     "rich": true
   },
   {
@@ -12031,14 +12171,14 @@
     "key": "pages.parrainage.auto.paragraph.e0jvi5",
     "route": "/parrainage",
     "type": "paragraph",
-    "content": "L’équipe vous précise l’éligibilité et les conditions applicables avant de poursuivre.",
+    "content": "Vous et la personne cooptée recevez une prime nette d’impôts. Le montant et l’éligibilité vous sont précisés avant toute mise en relation.",
     "rich": true
   },
   {
     "key": "pages.parrainage.auto.paragraph.m7k6kn",
     "route": "/parrainage",
     "type": "paragraph",
-    "content": "Vous connaissez un consultant ou une entreprise à qui notre accompagnement peut être utile ? Faites la mise en relation, nous prenons le temps de qualifier le besoin.",
+    "content": "Un consultant qui hésite sur son statut, ou une entreprise qui cherche un profil IT. Présentez-nous la personne : nous qualifions le besoin, et vous touchez une prime nette d’impôts si la mise en relation aboutit.",
     "rich": true
   },
   {
@@ -12059,7 +12199,7 @@
     "key": "pages.parrainage.auto.paragraph.sbfhgg",
     "route": "/parrainage",
     "type": "paragraph",
-    "content": "Votre filleul nous contacte de votre part, ou vous nous transmettez ses coordonnées (avec son accord).",
+    "content": "La personne nous contacte de votre part, ou vous nous transmettez ses coordonnées — avec son accord.",
     "rich": true
   },
   {
@@ -15454,7 +15594,7 @@
     "key": "pages.recrutement.auto.heading.1ozy636",
     "route": "/recrutement",
     "type": "heading",
-    "content": "Faites avancer les projets. <span class=\"gold-underline\">Faites grandir les talents.</span>",
+    "content": "Nos postes ouverts. <span class=\"gold-underline\">Chez nous, pas en mission.</span>",
     "rich": true
   },
   {
@@ -15468,14 +15608,14 @@
     "key": "pages.recrutement.auto.heading.pbaikw",
     "route": "/recrutement",
     "type": "heading",
-    "content": "Évolution rapide",
+    "content": "Un périmètre explicite",
     "rich": true
   },
   {
     "key": "pages.recrutement.auto.heading.tsafpp",
     "route": "/recrutement",
     "type": "heading",
-    "content": "Un cadre stimulant",
+    "content": "Une structure à taille humaine",
     "rich": true
   },
   {
@@ -15489,14 +15629,14 @@
     "key": "pages.recrutement.auto.paragraph.19wi8nk",
     "route": "/recrutement",
     "type": "paragraph",
-    "content": "Rejoignez une équipe dynamique, dans des locaux modernes en plein cœur de ville. Télétravail régulier possible.",
+    "content": "Une équipe réduite, où votre périmètre est visible et vos décisions comptent. Télétravail régulier possible.",
     "rich": true
   },
   {
     "key": "pages.recrutement.auto.paragraph.1fwvrar",
     "route": "/recrutement",
     "type": "paragraph",
-    "content": "Des responsabilités explicites, des échanges directs et des possibilités d’évolution précisées pour chaque poste.",
+    "content": "Ce que vous portez, ce sur quoi vous décidez et vos perspectives sont écrits dans l’offre, pas évoqués en entretien.",
     "rich": true
   },
   {
@@ -15517,7 +15657,7 @@
     "key": "pages.recrutement.auto.paragraph.36ekrk",
     "route": "/recrutement",
     "type": "paragraph",
-    "content": "Découvrez les postes ouverts pour accompagner consultants, clients et projets numériques avec exigence et proximité.",
+    "content": "Il s’agit ici des recrutements internes de The Porters : business, recrutement, gestion. Si vous cherchez une mission en portage, c’est la page Comprendre le portage salarial.",
     "rich": true
   },
   {
@@ -15551,14 +15691,14 @@
     "key": "pages.rendez-vous.auto.heading.1b27ok",
     "route": "/rendez-vous",
     "type": "heading",
-    "content": "Une réponse personnalisée",
+    "content": "Des prochaines étapes datées",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.heading.1ozy636",
     "route": "/rendez-vous",
     "type": "heading",
-    "content": "Un échange utile commence par <span class=\"gold-underline\">la bonne question</span>",
+    "content": "Dites-nous où vous en êtes. <span class=\"gold-underline\">Nous préparons l’échange.</span>",
     "rich": true
   },
   {
@@ -15593,7 +15733,7 @@
     "key": "pages.rendez-vous.auto.heading.yt4j8u",
     "route": "/rendez-vous",
     "type": "heading",
-    "content": "Un premier échange clair",
+    "content": "Un échange préparé",
     "rich": true
   },
   {
@@ -15642,28 +15782,28 @@
     "key": "pages.rendez-vous.auto.list_item.1cdhap9",
     "route": "/rendez-vous",
     "type": "list_item",
-    "content": "Une lecture claire de votre situation et des options possibles.",
+    "content": "Une lecture chiffrée de votre situation, pas un discours.",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.list_item.53qfl3",
     "route": "/rendez-vous",
     "type": "list_item",
-    "content": "Un interlocuteur humain qui vous suit jusqu'à la prochaine étape.",
+    "content": "Le même interlocuteur ensuite, qui connaît déjà votre dossier.",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.list_item.fqn492",
     "route": "/rendez-vous",
     "type": "list_item",
-    "content": "Une estimation de revenus ou un cadrage de collaboration si besoin.",
+    "content": "Ce que votre TJM donne en net, avec vos vrais paramètres.",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.paragraph.113q7uu",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Découvrir le portage salarial",
+    "content": "Comprendre le portage salarial",
     "rich": true
   },
   {
@@ -15677,7 +15817,7 @@
     "key": "pages.rendez-vous.auto.paragraph.16b4gq",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Vous échangez avec un interlocuteur unique qui comprend votre situation et vos objectifs.",
+    "content": "La personne que vous avez au téléphone est celle qui suivra votre dossier ensuite.",
     "rich": true
   },
   {
@@ -15698,14 +15838,14 @@
     "key": "pages.rendez-vous.auto.paragraph.1dgbg55",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Cadrer une mission cyber, data, IA, DevOps, cloud, agilité ou projet IT.",
+    "content": "Une mission cyber, data, IA, cloud, DevOps, produit ou agilité déjà identifiée à cadrer.",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.paragraph.1dttx4h",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Expliquez votre situation, vos objectifs et vos questions. Nous vous orientons vers le format d’échange adapté.",
+    "content": "Nous arrivons avec votre simulation relue et les points à trancher, pas avec une présentation générique.",
     "rich": true
   },
   {
@@ -15719,7 +15859,7 @@
     "key": "pages.rendez-vous.auto.paragraph.1gqoz5m",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Échanger avec une agence",
+    "content": "Parler à quelqu’un près de moi",
     "rich": true
   },
   {
@@ -15761,14 +15901,14 @@
     "key": "pages.rendez-vous.auto.paragraph.1sve2ab",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Statut, simulation, mission IT ou besoin d’entreprise : choisissez votre sujet pour parler directement de votre situation.",
+    "content": "Choisissez le sujet, indiquez vos disponibilités. Un conseiller vous confirme le créneau et arrive avec vos chiffres, pas avec une plaquette.",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.paragraph.1vbfg3j",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Que vous soyez consultant ou entreprise, nous revenons vers vous avec des prochaines étapes concrètes.",
+    "content": "À la fin de l’échange, vous savez quoi faire, quand, et ce que nous faisons de notre côté.",
     "rich": true
   },
   {
@@ -15782,7 +15922,7 @@
     "key": "pages.rendez-vous.auto.paragraph.2k83in",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Relire votre TJM, vos jours facturés, vos frais professionnels et votre simulation.",
+    "content": "Votre TJM, vos jours facturés, vos frais réels et ce que cela donne en net.",
     "rich": true
   },
   {
@@ -15803,21 +15943,21 @@
     "key": "pages.rendez-vous.auto.paragraph.8q2xkl",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Optimiser mon salaire",
+    "content": "Relire ma simulation",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.paragraph.fdsiw4",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Choisissez le sujet, puis indiquez vos coordonnées et vos disponibilités. Un conseiller vous confirme le créneau et prépare l'échange avec les bonnes informations.",
+    "content": "Un sujet, vos coordonnées, vos disponibilités. C’est tout ce dont nous avons besoin pour préparer un échange utile.",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.paragraph.itfj4k",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Comprendre le statut, les contrats, la protection sociale et les premières étapes.",
+    "content": "Le cadre, les deux contrats, la protection sociale et ce qui change concrètement pour vous.",
     "rich": true
   },
   {
@@ -15838,21 +15978,21 @@
     "key": "pages.rendez-vous.auto.paragraph.rldv6u",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Comparer micro-entreprise, SASU/EURL et portage salarial selon votre situation.",
+    "content": "Ce que vous gagnez et ce que vous perdez en passant de micro-entreprise ou de SASU au portage.",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.paragraph.t905hv",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Le délai et le format de l’échange sont confirmés après réception de votre demande.",
+    "content": "Nous revenons vers vous sous 24 heures ouvrées pour fixer le créneau.",
     "rich": true
   },
   {
     "key": "pages.rendez-vous.auto.paragraph.w89v7s",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Préparer un échange avec un point de contact documenté ou organiser un rendez-vous à distance.",
+    "content": "Un échange sur place ou à distance, selon votre localisation et votre rythme de mission.",
     "rich": true
   },
   {
@@ -16181,21 +16321,21 @@
     "key": "pages.simulateur.auto.heading.1nsallb",
     "route": "/simulateur",
     "type": "heading",
-    "content": "Du chiffre d’affaires au salaire : <span class=\"gold-underline\">voyez ce qui change</span>",
+    "content": "Votre TJM en net, <span class=\"gold-underline\">ligne par ligne</span>",
     "rich": true
   },
   {
     "key": "pages.simulateur.auto.heading.1ot5ix6",
     "route": "/simulateur",
     "type": "heading",
-    "content": "Un chiffre ne suffit pas. <span class=\"gold-underline\">Faites-le expliquer.</span>",
+    "content": "Un chiffre sans explication ne vaut rien. <span class=\"gold-underline\">Faisons-le relire.</span>",
     "rich": true
   },
   {
     "key": "pages.simulateur.auto.heading.pf0mxl",
     "route": "/simulateur",
     "type": "heading",
-    "content": "Commencez par votre situation réelle",
+    "content": "Partez de vos vrais chiffres",
     "rich": true
   },
   {
@@ -16349,7 +16489,7 @@
     "key": "pages.simulateur.auto.paragraph.1hkia6c",
     "route": "/simulateur",
     "type": "paragraph",
-    "content": "Le parcours portage n’affiche pas le TJM. Le parcours freelance l’utilise pour calculer le chiffre d’affaires, sans présenter ce montant comme un salaire net.",
+    "content": "Le parcours portage part de votre chiffre d’affaires mensuel. Le parcours freelance part de votre TJM et de vos jours facturés. Dans les deux cas, le chiffre d’affaires n’est jamais présenté comme un net.",
     "rich": true
   },
   {
@@ -16370,7 +16510,7 @@
     "key": "pages.simulateur.auto.paragraph.1nzigs2",
     "route": "/simulateur",
     "type": "paragraph",
-    "content": "Nos conseillers peuvent affiner ces estimations en fonction de votre situation spécifique.",
+    "content": "Un conseiller reprend vos hypothèses avec vos vrais paramètres de mission et vous dit ce qui bougera.",
     "rich": true
   },
   {
@@ -16447,7 +16587,7 @@
     "key": "pages.simulateur.auto.paragraph.a8x07l",
     "route": "/simulateur",
     "type": "paragraph",
-    "content": "Détail transparent",
+    "content": "Sans créer de compte",
     "rich": true
   },
   {
@@ -16475,7 +16615,7 @@
     "key": "pages.simulateur.auto.paragraph.f0xscj",
     "route": "/simulateur",
     "type": "paragraph",
-    "content": "Testez vos hypothèses de chiffre d’affaires, de frais et de charges. Le résultat reste indicatif jusqu’à la validation de votre situation.",
+    "content": "Chiffre d’affaires, frais de gestion, frais professionnels, cotisations, net. Chaque poste est affiché, aucun n’est agrégé. Le résultat reste une estimation jusqu’à validation de votre situation.",
     "rich": true
   },
   {
@@ -16496,7 +16636,7 @@
     "key": "pages.simulateur.auto.paragraph.fxjyhs",
     "route": "/simulateur",
     "type": "paragraph",
-    "content": "Il n’existe pas de TJM universel. Le tarif dépend de votre expertise, du marché, de la durée, des frais et de votre objectif de rémunération. La simulation permet de tester plusieurs scénarios.",
+    "content": "Il n’en existe pas. Votre tarif dépend de votre expertise, de la tension sur votre métier, de la durée de la mission et de votre objectif de net. Le simulateur sert à tester plusieurs scénarios avant d’en discuter.",
     "rich": true
   },
   {

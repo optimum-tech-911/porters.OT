@@ -12,47 +12,47 @@ const breadcrumbs = [{ label: 'Parler à un conseiller' }];
 
 const meetingTypes = [
   {
-    title: 'Découvrir le portage salarial',
+    title: 'Comprendre le portage salarial',
     duration: '30 min',
-    description: 'Comprendre le statut, les contrats, la protection sociale et les premières étapes.',
+    description: 'Le cadre, les deux contrats, la protection sociale et ce qui change concrètement pour vous.',
   },
   {
-    title: 'Optimiser mon salaire',
+    title: 'Relire ma simulation',
     duration: '45 min',
-    description: 'Relire votre TJM, vos jours facturés, vos frais professionnels et votre simulation.',
+    description: 'Votre TJM, vos jours facturés, vos frais réels et ce que cela donne en net.',
   },
   {
     title: 'Passer de freelance à portage',
     duration: '45 min',
-    description: 'Comparer micro-entreprise, SASU/EURL et portage salarial selon votre situation.',
+    description: 'Ce que vous gagnez et ce que vous perdez en passant de micro-entreprise ou de SASU au portage.',
   },
   {
     title: 'Discuter de ma mission IT',
     duration: '45 min',
-    description: 'Cadrer une mission cyber, data, IA, DevOps, cloud, agilité ou projet IT.',
+    description: 'Une mission cyber, data, IA, cloud, DevOps, produit ou agilité déjà identifiée à cadrer.',
   },
   {
-    title: 'Échanger avec une agence',
+    title: 'Parler à quelqu’un près de moi',
     duration: '30 min',
-    description: 'Préparer un échange avec un point de contact documenté ou organiser un rendez-vous à distance.',
+    description: 'Un échange sur place ou à distance, selon votre localisation et votre rythme de mission.',
   },
 ];
 
 const reasons = [
   {
     icon: '30 min',
-    title: 'Un premier échange clair',
-    description: 'Expliquez votre situation, vos objectifs et vos questions. Nous vous orientons vers le format d’échange adapté.',
+    title: 'Un échange préparé',
+    description: 'Nous arrivons avec votre simulation relue et les points à trancher, pas avec une présentation générique.',
   },
   {
     icon: 'Suivi',
     title: 'Un conseiller dédié',
-    description: 'Vous échangez avec un interlocuteur unique qui comprend votre situation et vos objectifs.',
+    description: 'La personne que vous avez au téléphone est celle qui suivra votre dossier ensuite.',
   },
   {
-    icon: 'Sur-mesure',
-    title: 'Une réponse personnalisée',
-    description: 'Que vous soyez consultant ou entreprise, nous revenons vers vous avec des prochaines étapes concrètes.',
+    icon: 'Concret',
+    title: 'Des prochaines étapes datées',
+    description: 'À la fin de l’échange, vous savez quoi faire, quand, et ce que nous faisons de notre côté.',
   },
 ];
 ---
@@ -64,10 +64,10 @@ const reasons = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
         <h1 class="text-porters-white text-[1.85rem] leading-[1.06] sm:text-[3rem] mb-6 max-w-[16rem] sm:max-w-3xl mx-auto">
-          Un échange utile commence par <span class="gold-underline">la bonne question</span>
+          Dites-nous où vous en êtes. <span class="gold-underline">Nous préparons l’échange.</span>
         </h1>
         <p class="text-base sm:text-lg max-w-[18rem] sm:max-w-2xl mx-auto" style="color: rgba(250, 248, 243, 0.85);">
-          Statut, simulation, mission IT ou besoin d’entreprise : choisissez votre sujet pour parler directement de votre situation.
+          Choisissez le sujet, indiquez vos disponibilités. Un conseiller vous confirme le créneau et arrive avec vos chiffres, pas avec une plaquette.
         </p>
       </div>
     </div>
@@ -84,7 +84,7 @@ const reasons = [
                 De quoi avez-vous besoin maintenant ?
               </h2>
               <p class="text-porters-black/65 mb-0">
-                Choisissez le sujet, puis indiquez vos coordonnées et vos disponibilités. Un conseiller vous confirme le créneau et prépare l'échange avec les bonnes informations.
+                Un sujet, vos coordonnées, vos disponibilités. C’est tout ce dont nous avons besoin pour préparer un échange utile.
               </p>
             </div>
             <div class="grid gap-3 mb-8">
@@ -109,9 +109,9 @@ const reasons = [
               Ce que vous obtenez
             </p>
             <ul class="space-y-4 text-sm text-porters-white/80">
-              <li>Une lecture claire de votre situation et des options possibles.</li>
-              <li>Une estimation de revenus ou un cadrage de collaboration si besoin.</li>
-              <li>Un interlocuteur humain qui vous suit jusqu'à la prochaine étape.</li>
+              <li>Une lecture chiffrée de votre situation, pas un discours.</li>
+              <li>Ce que votre TJM donne en net, avec vos vrais paramètres.</li>
+              <li>Le même interlocuteur ensuite, qui connaît déjà votre dossier.</li>
             </ul>
           </div>
 
@@ -122,7 +122,7 @@ const reasons = [
             <div class="space-y-4 text-porters-black/70">
               <div>
                 <p class="text-sm font-medium text-porters-navy mb-1">Délai de réponse</p>
-                <p class="mb-0">Le délai et le format de l’échange sont confirmés après réception de votre demande.</p>
+                <p class="mb-0">Nous revenons vers vous sous 24&nbsp;heures ouvrées pour fixer le créneau.</p>
               </div>
               <div>
                 <p class="text-sm font-medium text-porters-navy mb-1">Par email</p>

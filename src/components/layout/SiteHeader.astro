@@ -48,10 +48,12 @@ const leftNav: NavItem[] = [
     id: 'portage',
     label: 'Le portage salarial',
     href: '/portage-salarial',
-    description: 'Comprendre le cadre, les étapes et les réponses utiles sans alourdir la navigation.',
+    description: 'Le cadre, votre quotidien, les frais et les réponses utiles.',
     links: [
+      // /consultants ne figure plus ici : c'est la partie 2 du même récit, atteinte
+      // depuis /portage-salarial. Un seul portage, une seule entrée de menu.
       { label: 'Comprendre le portage salarial', href: '/portage-salarial', note: 'Cadre, contrat, paie' },
-      { label: 'Pour consultants indépendants', href: '/consultants', note: 'Parcours consultant' },
+      { label: 'Frais et rémunération', href: '/tarifs', note: 'Ce que couvrent nos frais' },
       { label: 'FAQ portage salarial', href: '/faq', note: 'Questions clés' },
     ],
   },

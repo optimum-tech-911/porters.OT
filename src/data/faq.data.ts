@@ -1,5 +1,10 @@
 import type { FaqGroup } from '../types/faq';
 
+// copy-plan §9.10 : la réponse directe dans la première phrase, la nuance après.
+// Jamais « Cela dépend » en ouverture.
+// Faits publiables uniquement. Les paramètres datés (IJ maladie, mutuelle, délais
+// de paie, frais de rupture) sont décrits comme mécanismes, sans chiffre, tant
+// qu'ils ne sont pas reconfirmés — voir les TODO-CLIENT.
 export const faqGroups: FaqGroup[] = [
   {
     title: 'Comprendre le portage salarial',
@@ -8,22 +13,41 @@ export const faqGroups: FaqGroup[] = [
       {
         question: 'Comment fonctionne le portage salarial ?',
         answer:
-          "Le portage salarial repose sur une relation tripartite : vous trouvez et réalisez votre mission, l'entreprise cliente contractualise avec The Porters, et The Porters vous salarie pour transformer votre chiffre d'affaires en salaire. Vous gardez votre autonomie commerciale tout en bénéficiant du cadre salarié.",
+          'Trois acteurs et deux contrats. Vous trouvez et réalisez votre mission ; l’entreprise cliente signe un contrat de prestation avec The Porters ; The Porters vous salarie et transforme votre chiffre d’affaires en salaire. Vous gardez votre autonomie commerciale et bénéficiez du statut de salarié.',
       },
       {
         question: 'Le portage salarial est-il reconnu légalement ?',
+        // F-B01 (PUBLISHABLE)
         answer:
-          "Oui. Le portage salarial est encadré par le Code du travail, notamment depuis son intégration en 2008 et l'ordonnance du 2 avril 2015. Il définit les droits et obligations du salarié porté, de l'entreprise cliente et de la société de portage.",
+          'Oui. Il est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.',
+      },
+      {
+        question: 'Y a-t-il un portage pour les salariés et un autre pour les freelances ?',
+        answer:
+          'Non. Il n’existe qu’un seul portage salarial. Que vous veniez d’un CDI, d’une micro-entreprise ou d’une SASU, le mécanisme est identique : un contrat de travail avec nous, un contrat de prestation avec votre client. Ce qui change, c’est votre point de départ, pas le dispositif.',
       },
       {
         question: 'Quels métiers IT peuvent être portés ?',
+        // F-B10 (PUBLISHABLE)
         answer:
-          'Le portage salarial est adapté aux prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT et conseil tech. Les professions réglementées et services à la personne restent exclus.',
+          'Toutes les prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT, AMOA et conseil. Seules les professions réglementées et les services à la personne sont exclus.',
       },
       {
         question: 'Quelle différence avec la micro-entreprise ou la SASU ?',
         answer:
-          "Le consultant en portage ne crée pas de société et délègue l'administratif, la paie, les déclarations et la facturation. Il conserve une couverture sociale salariée, mais reste responsable de son positionnement, de son TJM et de la recherche de ses missions.",
+          'Vous ne créez pas de société et vous ne produisez aucun document administratif. Vous conservez une couverture sociale de salarié — chômage et retraite complémentaire comprises — là où la micro-entreprise n’en ouvre pas. En contrepartie, des frais de gestion sont prélevés sur votre chiffre d’affaires, et vous restez responsable de votre prospection et de votre TJM.',
+      },
+      {
+        question: 'Puis-je cumuler le portage avec autre chose ?',
+        // F-B08 (PUBLISHABLE)
+        answer:
+          'Oui, avec un emploi salarié ou avec une retraite. Le cumul avec un emploi salarié suppose l’accord de votre employeur et un maximum de 48 heures de travail hebdomadaire, tous employeurs confondus.',
+      },
+      {
+        question: 'Puis-je travailler pour un client à l’étranger ?',
+        // F-B09 (PUBLISHABLE)
+        answer:
+          'Oui. Votre mission peut se dérouler en France ou à l’étranger, pour un client français ou étranger, sur site ou en télétravail.',
       },
     ],
   },
@@ -32,71 +56,109 @@ export const faqGroups: FaqGroup[] = [
     slug: 'remuneration',
     items: [
       {
-        question: 'Comment et quand suis-je payé(e) ?',
+        question: 'Combien mon TJM me laisse-t-il en net ?',
         answer:
-          "Le calendrier de paie dépend de la réception des éléments d'activité et des conditions prévues par votre convention de portage. Votre conseiller vous communique les dates applicables avant le démarrage.",
+          'Le simulateur vous donne une estimation à partir de votre TJM, de vos jours facturés et de vos frais professionnels. L’écart entre chiffre d’affaires et net vient de trois postes : les frais de gestion, les cotisations sociales et les frais professionnels remboursés. Le résultat reste indicatif jusqu’à validation de votre situation.',
+      },
+      {
+        question: 'Que couvrent les frais de gestion ?',
+        // copy-bank CB-12 / livre blanc « PAS DE FRAIS CACHÉS »
+        answer:
+          'Sept prestations : l’avance de trésorerie, l’apport d’affaires, un interlocuteur unique, la gestion administrative complète, la responsabilité civile professionnelle, le financement des formations (CPF, OPCO, certifications) et la garantie financière. Le détail figure sur la page Frais et rémunération.',
+      },
+      {
+        question: 'Quel est votre taux de frais de gestion ?',
+        // TODO-CLIENT: F-C15 / Q5 — le client a validé la publication du taux mais ne
+        // l'a pas encore communiqué. Remplacer cette réponse par le taux réel.
+        answer:
+          'Il vous est communiqué avant la signature, jamais après, et il est prélevé sur votre chiffre d’affaires mensuel. Aucun frais de dossier, d’entrée ou de sortie ne s’y ajoute.',
+      },
+      {
+        question: 'Quand suis-je payé ?',
+        // TODO-CLIENT: F-C14 — publier les deux échéances réelles une fois confirmées.
+        answer:
+          'Chaque mois, selon la date à laquelle vous transmettez votre compte rendu d’activité. Deux sessions de paie existent ; votre conseiller vous indique les échéances applicables avant le démarrage.',
       },
       {
         question: 'Que se passe-t-il si mon client règle à 45 ou 60 jours ?',
+        // TODO-CLIENT: F-B14 — le livre blanc décrit une avance de trésorerie. À
+        // reconfirmer pour 2026 avant de l'affirmer ici.
         answer:
-          "Le traitement du délai de règlement client et toute éventuelle avance dépendent des conditions contractuelles proposées. Ce point doit être confirmé au cadrage de la mission.",
+          'Votre salaire ne suit pas le calendrier de règlement de votre client. Le traitement du délai et les conditions d’avance sont précisés au cadrage de la mission.',
       },
       {
         question: 'Comment sont gérés les frais professionnels ?',
         answer:
-          "Les frais liés à votre activité peuvent être pris en compte lorsqu'ils sont justifiés : internet, téléphone, matériel, logiciels, déplacements, repas ou hébergement selon la situation. Ils doivent correspondre à des dépenses professionnelles réelles et documentées.",
+          'Ils vous sont remboursés lorsqu’ils sont réels, justifiés et liés à votre activité : internet, téléphone, matériel, logiciels, déplacements, repas ou hébergement selon la situation. Ils ne sont pas financés par les frais de gestion — ce sont deux choses distinctes.',
       },
       {
-        question: 'Quels paramètres influencent la simulation ?',
+        question: 'À quoi sert le compte de trésorerie ?',
+        // F-B11 (PUBLISHABLE)
         answer:
-          "Le chiffre d’affaires, les frais professionnels, les paramètres sociaux estimatifs et votre situation influencent le résultat. La proposition personnalisée précise ensuite les éléments contractuels applicables.",
-      },
-      {
-        question: 'À quoi sert le simulateur de revenus ?',
-        answer:
-          "Le simulateur donne une première estimation de salaire net à partir de votre TJM, du nombre de jours travaillés et de vos frais professionnels. Le résultat reste indicatif et peut ensuite être affiné avec un conseiller.",
+          'À mettre une part de votre rémunération brute de côté. Vous pouvez ainsi lisser une paie d’un mois sur l’autre, financer des congés en maintenant votre rémunération, provisionner une fin de contrat ou débloquer un acompte selon vos besoins.',
       },
     ],
   },
   {
-    title: 'Missions et accompagnement',
+    title: 'Missions, congés et aléas',
     slug: 'missions',
     items: [
       {
-        question: 'Pouvez-vous m’accompagner dans la recherche de missions ?',
+        question: 'Trouvez-vous les missions à ma place ?',
         answer:
-          "The Porters ne promet pas de mission garantie. L'équipe vous accompagne sur votre positionnement, la présentation de votre offre, la mobilisation de son réseau, les conseils de prospection et le cadrage de vos opportunités.",
+          'Non, aucune mission n’est garantie. Nous vous proposons des missions issues de nos partenaires, et vous restez libre de trouver les vôtres. Nous intervenons aussi sur votre positionnement, la présentation de votre offre et le cadrage de vos opportunités.',
       },
       {
         question: 'Puis-je garder mes propres clients ?',
+        // F-B07 (PUBLISHABLE)
         answer:
-          "Oui. Le principe du portage salarial est de vous laisser négocier et piloter vos missions tout en déléguant le cadre contractuel, la facturation et la paie à la société de portage.",
+          'Oui. Vous vous constituez votre propre clientèle et vous en restez pleinement responsable. Vous choisissez vos missions et négociez vos tarifs, sans lien hiérarchique ni chez le client ni chez nous.',
       },
       {
-        question: 'The Porters accompagne-t-il les consultants IT seniors ?',
+        question: 'Combien de congés payés ai-je ?',
+        // F-B06 (PUBLISHABLE)
         answer:
-          'Oui, le positionnement vise notamment les consultants tech expérimentés : DevOps, cloud architects, data engineers, experts IA, RSSI, Product Owners, Scrum Masters, coachs agiles et chefs de projet IT.',
+          'Vous acquérez 2,5 jours ouvrés par mois, comme tout salarié. Ils vous sont versés chaque mois sur votre bulletin sous l’intitulé « Indemnités de congés payés », ou provisionnés sur votre compte de trésorerie si vous préférez maintenir votre rémunération pendant vos congés.',
+      },
+      {
+        question: 'Que se passe-t-il si je tombe malade ?',
+        // TODO-CLIENT: F-C09, F-C10 — taux, carence et seuil de relais prévoyance
+        // datent de 2024 et sont révisés régulièrement. Aucun chiffre publié.
+        answer:
+          'Vous percevez des indemnités journalières de la Sécurité sociale, comme tout salarié, puis la prévoyance prend le relais sur les arrêts longs. Les paramètres exacts vous sont confirmés par le service paie.',
+      },
+      {
+        question: 'Que se passe-t-il entre deux missions ?',
+        answer:
+          'Votre contrat de travail se poursuit, mais une période sans mission ne génère pas de chiffre d’affaires et donc pas de salaire. C’est précisément ce que le compte de trésorerie permet d’anticiper : lisser une période creuse avec de la réserve constituée pendant les mois facturés.',
+      },
+      {
+        question: 'Mes droits au chômage sont-ils préservés ?',
+        answer:
+          'Oui. Vous cotisez chaque mois à l’assurance chômage et vous ouvrez des droits comme tout salarié. En cas de rupture conventionnelle, vous pouvez prétendre à l’Aide au retour à l’emploi.',
       },
     ],
   },
   {
-    title: 'Rendez-vous et agences',
-    slug: 'agences-rdv',
+    title: 'Entrée et sortie',
+    slug: 'entree-sortie',
     items: [
       {
-        question: 'Quels types de rendez-vous puis-je demander ?',
+        question: 'Comment se passe mon arrivée ?',
         answer:
-          'Vous pouvez demander un échange pour découvrir le portage salarial, optimiser votre salaire, passer de freelance à portage, discuter de votre mission IT ou échanger avec une agence.',
+          'Vous recevez une simulation de salaire chiffrée, l’infographie des frais professionnels, un mode opératoire et une formation à LAYA, notre outil de gestion. Puis une intégration individuelle, en visioconférence ou sur place. Un interlocuteur unique suit ensuite votre dossier.',
       },
       {
-        question: 'Puis-je réserver directement un créneau en ligne ?',
+        question: 'Que se passe-t-il quand je veux partir ?',
+        // TODO-CLIENT: F-C07 — montant des frais de rupture conventionnelle à
+        // reconfirmer par la paie avant publication.
         answer:
-          "Oui. Choisissez le motif de l'échange et indiquez vos disponibilités depuis la page Rendez-vous. L'équipe vous confirme ensuite le créneau et le bon interlocuteur par email.",
+          'Vous partez quand vous voulez : démission, rupture de période d’essai ou rupture conventionnelle. Nous vous remettons le solde de tout compte, le certificat de travail, l’attestation destinée à France Travail et le reçu pour solde de tout compte. Une rupture conventionnelle suppose des fonds suffisants sur votre compte de trésorerie pour couvrir la prime et les frais associés.',
       },
       {
-        question: 'Quelles agences sont mises en avant ?',
+        question: 'Suis-je engagé sur une durée minimale ?',
         answer:
-          "Le site présente les zones et points de contact actuellement documentés. Les modalités de rendez-vous, l'adresse et la présence physique sont précisées sur chaque page locale lorsqu'elles sont confirmées.",
+          'Non. Votre contrat de travail suit vos missions, et aucune durée d’engagement ne vous est imposée. Les modalités de rupture sont celles du droit du travail.',
       },
     ],
   },
@@ -105,14 +167,26 @@ export const faqGroups: FaqGroup[] = [
     slug: 'entreprises',
     items: [
       {
-        question: 'Pourquoi travailler avec un consultant en portage salarial ?',
+        question: 'Pourquoi passer par un consultant en portage salarial ?',
         answer:
-          "Le portage salarial permet de collaborer avec un expert indépendant dans un cadre contractuel structuré, sans embauche directe. C'est utile pour des besoins IT, data, cloud, cyber, projet ou transformation avec un périmètre de mission clair.",
+          'Vous mobilisez un expert autonome sans créer de relation d’emploi. Un seul contrat de prestation, une seule facture, et aucune gestion de paie de votre côté. C’est adapté à un besoin IT, data, cloud, cyber, projet ou transformation sur un périmètre défini.',
       },
       {
-        question: "Qui signe le contrat avec l'entreprise cliente ?",
+        question: 'Qui signe le contrat avec l’entreprise cliente ?',
         answer:
-          "L'entreprise cliente contractualise avec The Porters pour la prestation. Le consultant reste salarié porté par The Porters pendant sa mission.",
+          'The Porters. Le consultant reste salarié porté par The Porters pendant toute la mission, et vous n’avez qu’un interlocuteur contractuel.',
+      },
+      {
+        question: 'Comment sélectionnez-vous les profils ?',
+        // F-D01, F-D02, F-D03 (PUBLISHABLE)
+        answer:
+          'En cinq étapes : analyse du parcours réel, évaluation sur les référentiels métiers CIGREF, SYNTEC et ROME, deux entretiens structurés — RH et technique — puis tests ou mise en situation selon le périmètre, et enfin une validation interne. Les profils vous sont transmis sous forme anonymisée.',
+      },
+      {
+        question: 'Et si mon interlocuteur est absent ?',
+        // F-D07 (PUBLISHABLE)
+        answer:
+          'Chaque mission est suivie par un binôme, avec un relais identifié. Aucun suivi ne dépend d’une seule personne.',
       },
     ],
   },
