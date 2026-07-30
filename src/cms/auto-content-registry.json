@@ -497,10 +497,10 @@
     "rich": true
   },
   {
-    "key": "pages.agences.auto.heading.16lg5a8",
+    "key": "pages.agences.auto.heading.1jfdc6n",
     "route": "/agences",
     "type": "heading",
-    "content": "Un contact proche,<br data-astro-cid-lt6rlkun=\"\">où que commence votre mission.",
+    "content": "Une équipe proche, où que vous soyez.",
     "rich": true
   },
   {
@@ -511,6 +511,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.auto.heading.bfaz1w",
+    "route": "/agences",
+    "type": "heading",
+    "content": "4 agences.<em>Une présence partout en France.</em>",
+    "rich": true
+  },
+  {
     "key": "pages.agences.auto.heading.nkxdze",
     "route": "/agences",
     "type": "heading",
@@ -518,80 +525,52 @@
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.10grq9e",
+    "key": "pages.agences.auto.paragraph.12rj6h1",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Île-de-France",
+    "content": "2 modes",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.15yh0jx",
+    "key": "pages.agences.auto.paragraph.13ioe35",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
+    "content": "Les quatre agences assurent un relais local, tandis que l’accompagnement reste disponible sur tout le territoire.",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.1629rfc",
+    "key": "pages.agences.auto.paragraph.144460e",
     "route": "/agences",
     "type": "paragraph",
-    "content": "4 place Amédée Bonnet · 69002",
+    "content": "Île-de-France · Nord",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.19ebmw2",
+    "key": "pages.agences.auto.paragraph.14477fu",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Présence historique à confirmer avant publication d’une page locale.",
+    "content": "Réseau national",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.19wi8nk",
+    "key": "pages.agences.auto.paragraph.167n4db",
     "route": "/agences",
     "type": "paragraph",
-    "content": "The Porters en France",
+    "content": "Paris, Lyon, Montpellier et Aix-Marseille structurent notre présence terrain. Partout en France, nos équipes vous accompagnent à distance ou se déplacent selon vos besoins.",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.1cnwgxa",
+    "key": "pages.agences.auto.paragraph.1a0wly8",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Nouvelle-Aquitaine",
+    "content": "Sur site &amp; distance",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.1d4tw50",
+    "key": "pages.agences.auto.paragraph.1i6h1st",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.1dlnjav",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Présence historique à confirmer avant publication d’une page locale.",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.1eiqfvz",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Auvergne-Rhône-Alpes",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.1fgcfb3",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Montpellier",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.1g7o0ww",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Île-de-France",
+    "content": "Rhône-Alpes · Est",
     "rich": true
   },
   {
@@ -609,38 +588,17 @@
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.1l54km5",
+    "key": "pages.agences.auto.paragraph.1kn5mp0",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Lyon",
+    "content": "France entière",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.1l9qcjc",
+    "key": "pages.agences.auto.paragraph.1r0gr6w",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Aix-en-Provence",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.1mc4rqa",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Montpellier",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.1r6gvl2",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Occitanie",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.1ry4m07",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Marseille",
+    "content": "Occitanie · Sud-Ouest",
     "rich": true
   },
   {
@@ -651,108 +609,52 @@
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.1sy7oar",
+    "key": "pages.agences.auto.paragraph.1xby7kv",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Lille",
+    "content": "Année de création",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.1yw4fis",
+    "key": "pages.agences.auto.paragraph.1xrj4kk",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Aix-Marseille",
+    "content": "Accompagnement national actif",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.6r5t93",
+    "key": "pages.agences.auto.paragraph.1yd59an",
+    "route": "/agences",
+    "type": "paragraph",
+    "content": "Paris",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.auto.paragraph.c3iy9t",
     "route": "/agences",
     "type": "paragraph",
     "content": "Montpellier",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.a7qof3",
+    "key": "pages.agences.auto.paragraph.csqoli",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Auvergne-Rhône-Alpes",
+    "content": "Aix-Marseille",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.bltnrw",
+    "key": "pages.agences.auto.paragraph.efspwn",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Bordeaux",
+    "content": "PACA · Corse",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.dysx3h",
+    "key": "pages.agences.auto.paragraph.g1of0k",
     "route": "/agences",
     "type": "paragraph",
     "content": "Lyon",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.e3imlc",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Paris",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.gbjxeq",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Paris",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.gspdcd",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Rendez-vous selon les modalités confirmées",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.hu7n0r",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Lille",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.l52u9k",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.mowzf9",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Lyon",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.oaey83",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Sélectionnez une ville pour découvrir son accompagnement, ses coordonnées confirmées et les modalités de rendez-vous.",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.pc8jb5",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "27 rue Marbeuf · 75008",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.pj5fph",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Occitanie",
     "rich": true
   },
   {
@@ -763,38 +665,24 @@
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.si7h5a",
+    "key": "pages.agences.auto.paragraph.swye4l",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Paris",
+    "content": "France entière",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.tkt081",
+    "key": "pages.agences.auto.paragraph.syjbi6",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Hauts-de-France",
+    "content": "Agences physiques",
     "rich": true
   },
   {
-    "key": "pages.agences.auto.paragraph.vy8yui",
+    "key": "pages.agences.auto.paragraph.vhrqb0",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Bordeaux",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.xxl6zi",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "120 rue de Thor · 34000",
-    "rich": true
-  },
-  {
-    "key": "pages.agences.auto.paragraph.yjta1i",
-    "route": "/agences",
-    "type": "paragraph",
-    "content": "Aix-Marseille",
+    "content": "Couverture nationale",
     "rich": true
   },
   {
@@ -6790,7 +6678,7 @@
     "key": "pages.confidentialite.auto.paragraph.1sve2ab",
     "route": "/confidentialite",
     "type": "paragraph",
-    "content": "Dernière mise à jour : 26/07/2026",
+    "content": "Dernière mise à jour : 30/07/2026",
     "rich": true
   },
   {
@@ -7555,7 +7443,7 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.button.19xalun",
+    "key": "pages.entreprises.auto.button.1ppi14y",
     "route": "/entreprises",
     "type": "button",
     "content": "Parler à l’équipe",
@@ -7576,7 +7464,7 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.button.r96nfw",
+    "key": "pages.entreprises.auto.button.wpas6h",
     "route": "/entreprises",
     "type": "button",
     "content": "Déposer un besoin",
@@ -7590,115 +7478,122 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.16zh12o",
+    "key": "pages.entreprises.auto.heading.11qm8x5",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Cadrer la mission",
+    "content": "Environnement technique",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.12yyury",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Sélection",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.18yy9md",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Vous cherchez encore le bon profil",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.heading.1b27ok",
-    "route": "/entreprises",
-    "type": "heading",
-    "content": "Une gestion à simplifier",
+    "content": "Développements en environnement IBM i / AS400",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.1b4r4w",
     "route": "/entreprises",
     "type": "heading",
-    "content": "PMO &amp; management de projet",
+    "content": "Gouvernance et sécurité",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.1d0fao7",
+    "key": "pages.entreprises.auto.heading.1blmci1",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Maîtrise des coûts",
+    "content": "Aucun suivi qui dépende d’une seule personne",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.1e7a93p",
+    "key": "pages.entreprises.auto.heading.1emokg1",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Simplicité contractuelle",
+    "content": "Démarrage",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.1eswxrm",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Niveau d’autonomie attendu",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.1hlyx01",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Des expertises pour les moments où le projet ne peut pas attendre",
+    "content": "Les besoins sur lesquels nous intervenons",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.1ia250k",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Deux modèles. <span class=\"gold-underline\">Un choix à faire dès le départ.</span>",
+    "content": "À quoi ressemblent les missions, concrètement",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.1m5oubz",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Data &amp; IA",
+    "content": "Data et intelligence artificielle",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.1nsallb",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Une expertise externe. <span class=\"gold-underline\">Un cadre maîtrisé.</span>",
+    "content": "Décrivez le contexte. <span class=\"gold-underline\">Nous revenons avec des profils.</span>",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.1ot5ix6",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Ce que votre entreprise <span class=\"gold-underline\">gagne en lisibilité</span>",
+    "content": "D’où viennent les profils, et comment ils vous arrivent",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.1qnyctv",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Du besoin à la mission, <span class=\"gold-underline\">sans zone grise</span>",
+    "content": "Deux modèles. <span class=\"gold-underline\">Un choix à faire dès le départ.</span>",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.1sjvlaj",
+    "key": "pages.entreprises.auto.heading.1qurl4c",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Identifier le bon cadre",
+    "content": "Organisation en place",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.1szts7h",
+    "key": "pages.entreprises.auto.heading.1rmt09f",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Une expertise à bien qualifier",
+    "content": "Deux entretiens structurés",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.1t6wbyi",
+    "key": "pages.entreprises.auto.heading.1rxmi8v",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Qualifier le besoin",
+    "content": "Cadrage",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.1tkoytd",
+    "key": "pages.entreprises.auto.heading.1sn4x2t",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Suivre l’exécution",
+    "content": "Analyse du parcours réel",
     "rich": true
   },
   {
@@ -7709,192 +7604,276 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.1vwn037",
+    "key": "pages.entreprises.auto.heading.1vd7m7n",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Flexibilité des ressources",
+    "content": "Des référentiels métiers, pas une impression",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.1xptkyn",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Cinq étapes, <span class=\"gold-underline\">les mêmes pour tous les profils</span>",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.3i6qhq",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Votre besoin est précis ? <span class=\"gold-underline\">Cadrons la collaboration.</span>",
+    "content": "Du besoin à la mission, <span class=\"gold-underline\">sans zone grise</span>",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.6bydg2",
+    "key": "pages.entreprises.auto.heading.3jwoig",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Sécurité juridique",
+    "content": "Des profils transmis anonymisés",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.5sizki",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Un sourcing multi-canal, pas une seule jobboard",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.74a1rq",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Vous cherchez encore le bon profil",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.7rpgmw",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Évaluation sur référentiels métiers",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.aso4e0",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Le consultant a déjà sa mission",
+    "content": "Migration d’un socle Big Data",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.cbxbsg",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Suivi",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.egnppx",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Contraintes de sécurité",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.f54piy",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Cloud &amp; DevOps",
+    "content": "Cloud et DevOps",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.kj603j",
+    "key": "pages.entreprises.auto.heading.gvzeax",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Des responsabilités à clarifier",
+    "content": "Validation finale",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.ikqj6v",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Calendrier",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.jhsy93",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Le consultant a déjà sa mission",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.jxsroy",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Reprise en main de modèles de données",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.o8p0hg",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Cybersécurité",
+    "content": "Environnements historiques",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.pf0mxl",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Cinq points cadrés <span class=\"gold-underline\">avant toute proposition</span>",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.pob586",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Tests ou mise en situation",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.heading.qk4gm5",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Transformation agile",
+    "content": "Agilité et transformation",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.so2098",
+    "key": "pages.entreprises.auto.heading.slc1qt",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Accès à l'international",
+    "content": "Un besoin précis à couvrir ? <span class=\"gold-underline\">Décrivez le contexte.</span>",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.w3t4p6",
-    "route": "/entreprises",
-    "type": "heading",
-    "content": "Une expertise externe ne doit pas créer <span class=\"gold-underline\">une complexité interne</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.heading.yt4j8u",
-    "route": "/entreprises",
-    "type": "heading",
-    "content": "Un cadre à sécuriser",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.heading.z76h1y",
-    "route": "/entreprises",
-    "type": "heading",
-    "content": "Expertises ciblées",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.list_item.11n186t",
-    "route": "/entreprises",
-    "type": "list_item",
-    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Cadre salarial sécurisé",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.list_item.11z8s9h",
-    "route": "/entreprises",
-    "type": "list_item",
-    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Choix du modèle selon le besoin",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.list_item.1dlbvuk",
-    "route": "/entreprises",
-    "type": "list_item",
-    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Suivi opérationnel cadré",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.list_item.1kjq1wu",
+    "key": "pages.entreprises.auto.list_item.1329hdf",
     "route": "/entreprises",
     "type": "list_item",
     "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Contrat, paie et facturation pris en charge",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.list_item.2otrim",
+    "key": "pages.entreprises.auto.list_item.1cufqdc",
+    "route": "/entreprises",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Cadre salarial sécurisé",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.list_item.1lh2k4h",
+    "route": "/entreprises",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Suivi opérationnel cadré",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.list_item.25pikb",
     "route": "/entreprises",
     "type": "list_item",
     "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Sourcing IT ciblé",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.list_item.j77o5r",
+    "key": "pages.entreprises.auto.list_item.df29ag",
     "route": "/entreprises",
     "type": "list_item",
-    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Interlocuteur dédié pendant la mission",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Choix du modèle selon le besoin",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.list_item.lne74i",
+    "route": "/entreprises",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Interlocuteur unique pendant la mission",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.10n12s0",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Solutions entreprises",
+    "content": "Entreprises",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.15v0aqg",
+    "key": "pages.entreprises.auto.paragraph.15kwctg",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Un seul contrat de prestation avec The Porters, sans avoir à gérer la relation employeur avec le consultant.",
+    "content": "Validation interne pilotée par les référents technique et commercial, et l’avis d’un tiers expert sur les profils stratégiques. Les profils vous sont ensuite transmis sous forme anonymisée.",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.16b4gq",
+    "key": "pages.entreprises.auto.paragraph.17ysdw7",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "L’autonomie du consultant et le rôle de chaque partie doivent être cohérents avec le fonctionnement réel de la mission.",
+    "content": "Avant le premier CV",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.16x4hx6",
+    "key": "pages.entreprises.auto.paragraph.19o2dms",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "exécution suivie",
+    "content": "Chaque mission est suivie par un binôme, avec un relais identifié. Si votre interlocuteur est absent, votre dossier ne s’arrête pas.",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.17vqvbq",
+    "key": "pages.entreprises.auto.paragraph.19swiy2",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Cadrez l’intervention d’un expert externe sur une durée et un périmètre définis, sans embauche directe.",
+    "content": "Analyste programmeur, chef de projet applicatif.",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.1b3pvb9",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Architecture, migration, CI/CD, infrastructure as code, SRE, plateforme et optimisation cloud.",
+    "content": "Architecture, migration, CI/CD, infrastructure as code, conteneurisation, observabilité, sécurité des environnements.",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.1bpp3an",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "RSSI, GRC, SOC, audit, cloud security, gestion des risques ou programme de mise en conformité.",
+    "content": "Applications métier sur socles anciens mais critiques pour la production, IBM i / AS400 compris, autant que sur des stacks récentes.",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.1dowfo0",
+    "key": "pages.entreprises.auto.paragraph.1cevmd8",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Le bon profil dépend du résultat attendu, du contexte technique, du calendrier et du niveau de responsabilité.",
+    "content": "Contractualisation, ouverture des accès, intégration aux outils et aux processus déjà en place. Les profils sont transmis sous forme anonymisée.",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.1dttx4h",
+    "key": "pages.entreprises.auto.paragraph.1cr3648",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "La mission doit préciser les responsabilités, les livrables, la durée et les conditions d’intervention de l’expert.",
+    "content": "Habilitations, charte de sécurité, confidentialité, lieux d’exécution autorisés.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1dl8w0r",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "CIGREF, SYNTEC et ROME servent de grille de lecture : compétences attendues, niveaux d’expertise, pratiques professionnelles, expérience sectorielle.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1e907ml",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Notre processus de sélection",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1gx6eeu",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Un entretien RH et motivation. Un entretien de compétences mené par un référent interne : technologies maîtrisées, méthodes de travail, sécurité du SI, problèmes rencontrés et solutions mises en œuvre. Grilles d’évaluation standardisées, pour que deux profils restent comparables.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1hkia6c",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Un profil ne se qualifie pas contre une fiche de poste, mais contre un contexte. Ces cinq points sont fixés au cadrage, par écrit.",
     "rich": true
   },
   {
@@ -7908,28 +7887,42 @@
     "key": "pages.entreprises.auto.paragraph.1k0re0f",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Le point de départ n’est pas le statut, mais votre besoin : sécuriser un consultant déjà identifié ou trouver une expertise à mobiliser.",
+    "content": "Trois exemples réels, décrits par leur contexte technique et les profils mobilisés. Les noms de clients ne sont pas publiés.",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.1kao9sa",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Stratégie data, engineering, BI, gouvernance, machine learning ou intégration de cas d’usage IA.",
+    "content": "Cadrage de cas d’usage, ingénierie et pipelines, gouvernance, industrialisation et mise en production des modèles.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1n6rins",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Nous regardons les missions effectivement réalisées, les environnements techniques réellement pratiqués et les responsabilités réellement assumées. Pas les mots-clés du CV.",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.1n85qbc",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Renfort via ESN",
+    "content": "Applications métier cœur du logement social : analyse des besoins, développements spécifiques, maintenance corrective et évolutive.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1ny7ybr",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Qui décide, qui valide, avec quelles équipes le consultant travaillera au quotidien.",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.1nzigs2",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Un contrat de prestation, une facturation centralisée et un point de contact pour le suivi administratif.",
+    "content": "Sourcing et traçabilité",
     "rich": true
   },
   {
@@ -7940,122 +7933,178 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.1ufd6bg",
+    "key": "pages.entreprises.auto.paragraph.1sprkjd",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Maintenir un contact administratif stable, suivre les éléments de mission et anticiper les points de continuité.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.1vbfg3j",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Contrats, facturation et suivi administratif ne doivent pas disperser vos équipes internes.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.1vtu0ge",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Distinguer une mission portée avec un consultant déjà identifié d’un besoin de sourcing ou de delivery relevant d’un modèle ESN.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.1wwjxiq",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Le portage salarial structure la relation avec un consultant autonome et centralise le volet contractuel et administratif.",
+    "content": "Prestation via l’ESN du groupe",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.1z017i4",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Le besoin peut être technique, fonctionnel ou organisationnel. Le point commun : une mission définie, des responsabilités lisibles et un suivi proportionné.",
+    "content": "Technique, fonctionnel ou organisationnel. Le point commun : une mission définie et des responsabilités lisibles.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.2fdx2y",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Nous qualifions le besoin : périmètre, environnement technique, contraintes de sécurité et de conformité, mode de fonctionnement attendu.",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.3h463v",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Notre écosystème de partenaires permet d’orienter le besoin vers un modèle ESN lorsque le sourcing et le pilotage du renfort priment sur le portage salarial.",
+    "content": "Profils mobilisés",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.41bvfy",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Qualifions votre besoin, le bon modèle de collaboration et les prochaines étapes.",
+    "content": "Quatre temps, et à chacun ce que nous prenons en charge.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.46k8nl",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Analyse du parcours réel, évaluation sur référentiels métiers (CIGREF, SYNTEC, ROME), entretiens structurés — RH et technique — puis tests ou mise en situation lorsque le périmètre l’exige.",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.4ouu68",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Product Ownership, Scrum, coaching, SAFe, conduite du changement et coordination multi-équipes.",
+    "content": "Product Ownership, Scrum, coaching, coordination multi-équipes, conduite du changement. Nos consultants s’alignent sur vos processus existants plutôt que d’imposer un cadre.",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.80mbrt",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Orientez le besoin vers les compétences IT, data, cyber, cloud, produit, projet ou transformation réellement nécessaires.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.b1ftph",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "mission contractualisée",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.bq2yi8",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "cadre choisi",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.f0xscj",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Faites intervenir un consultant IT, data, cyber, cloud ou transformation sans ajouter une relation d’emploi directe à gérer.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.gdhka1",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Un processus en quatre étapes pour choisir le bon cadre, contractualiser et suivre la mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.jwielf",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Cadrage, gouvernance, suivi des risques, reporting, qualité des livrables et continuité.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.k0wnv",
+    "key": "pages.entreprises.auto.paragraph.5vv7ya",
     "route": "/entreprises",
     "type": "paragraph",
     "content": "Portage salarial",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.m29l4s",
+    "key": "pages.entreprises.auto.paragraph.9f1zwi",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Deux cadres, un besoin bien orienté",
+    "content": "Le point de départ n’est pas le statut, mais votre besoin : sécuriser un consultant déjà identifié, ou trouver une expertise à mobiliser.",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.noupv9",
+    "key": "pages.entreprises.auto.paragraph.b0298z",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Préciser les objectifs, les compétences, le périmètre, le calendrier, le lieu d’intervention et les critères de réussite.",
+    "content": "Points d’avancement à une fréquence définie au cadrage, avec un relais identifié dans l’équipe pour qu’aucun suivi ne dépende d’une seule personne.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.c26d2",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Profils mobilisés",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.cuasbt",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "The Porters met en place le cadre contractuel, salarial et administratif. Vous gardez une relation opérationnelle simple, avec une facture unique.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.d84s1l",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Selon le niveau d’exigence du périmètre : tests techniques, questionnaires métier, études de cas. La disponibilité réelle est vérifiée à ce stade — délai de démarrage, durée, compatibilité géographique.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.etmf9e",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "La date de démarrage réelle, la durée, et ce qui dépend d’un jalon que vous ne maîtrisez pas.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.f0xscj",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Un besoin précis à couvrir ou une équipe projet à structurer ? Nous cadrons cinq points, puis nous sélectionnons en cinq étapes. Pas de plaquette.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.fn9v2j",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Nous revenons vers vous avec des profils, pas avec une plaquette.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.gdhka1",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Deux cadres contractuels",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.j451bx",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Cooptation, événements IT, LesJeudis, HelloWork, Meteojob, LinkedIn, Indeed, Monster, France Travail. Le vivier est organisé autour d’une cartographie métiers, pas d’une pile de CV.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.jwielf",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Gouvernance de la sécurité, audit, analyse de risques et de conformité, sensibilisation des équipes. RSSI, RSSI de transition, chef de projet et ingénieur cybersécurité.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.k0wnv",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Passage de Hortonworks à Cloudera Data Platform pour un organisme public national.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.l181hd",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Architecte système, expert Big Data, développeur senior.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.m29l4s",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Types de missions",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.noit25",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Audit de l’existant, recommandations d’outils, mise en place d’applicatifs internes chez un industriel.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.pkrtle",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "The Big Porters, l’ESN du groupe, prend le sourcing et le pilotage du renfort. Même vivier, même processus de sélection, cadre contractuel différent.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.q9609p",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Un renfort qui exécute et un expert qui arbitre ne sont pas le même profil, ni le même TJM.",
     "rich": true
   },
   {
@@ -8066,52 +8115,52 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.vdr63r",
+    "key": "pages.entreprises.auto.paragraph.qwjkxi",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Étudiez le cadre d’une mission internationale avant de valider les conditions contractuelles, sociales et administratives applicables.",
+    "content": "Structuré, homogène, traçable. C’est ce qui permet de comparer deux candidats sur la même grille plutôt que sur une impression d’entretien.",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.wa2oib",
+    "key": "pages.entreprises.auto.paragraph.sjpd3r",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Formaliser la prestation, les responsabilités, la facturation, les livrables et les conditions d’intervention.",
+    "content": "Architecte données, data scientist, développeur fullstack.",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.wnqhk2",
+    "key": "pages.entreprises.auto.paragraph.ts2z9y",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Le contrat de prestation rend visibles le tarif, le périmètre et les conditions de facturation convenues pour la mission.",
+    "content": "CIGREF, SYNTEC et ROME donnent la grille de lecture : compétences attendues, niveaux d’expertise, pratiques professionnelles, expérience sectorielle.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.v5809w",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Les socles en place, leur âge, leurs contraintes, et ce qui ne peut pas être arrêté.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.vx7sjf",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Vous recevez le parcours, les compétences et la disponibilité. L’identité vient après votre intérêt, dans le respect des règles de protection des données personnelles.",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.x1sfc",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "The Porters met en place le cadre contractuel, salarial et administratif. L’entreprise cliente garde une relation opérationnelle simple, avec une facture unique.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.x7sxdp",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Le portage salarial offre un cadre légal sécurisé, conforme à la convention collective et au Code du travail.",
+    "content": "Profils mobilisés",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.paragraph.xxeyen",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Cas d’usage",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.yorddf",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "besoin qualifié",
+    "content": "Périmètres couverts",
     "rich": true
   },
   {
@@ -11454,52 +11503,17 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.heading.14fkhqz",
+    "key": "pages.home.auto.heading.1gek2rz",
     "route": "/",
     "type": "heading",
-    "content": "Nos consultants interviennent partout en France.",
+    "content": "4 agences.<em>Une présence partout en France.</em>",
     "rich": true
   },
   {
-    "key": "pages.home.auto.heading.wn026n",
+    "key": "pages.home.auto.heading.2iz23k",
     "route": "/",
     "type": "heading",
-    "content": "Une vision du portage, au plus près des talents",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.list_item.5x47r7",
-    "route": "/",
-    "type": "list_item",
-    "content": "<span class=\"level-pin\" aria-hidden=\"true\" data-astro-cid-lt6rlkun=\"\"></span>Agences physiques",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.list_item.rj7i6o",
-    "route": "/",
-    "type": "list_item",
-    "content": "<span class=\"level-zone\" aria-hidden=\"true\" data-astro-cid-lt6rlkun=\"\"></span>Zone d’intervention",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.109c0w0",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Lyon",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.10qs6r3",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Île-de-France",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.12b5l1d",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Île-de-France",
+    "content": "Une équipe proche, où que vous soyez.",
     "rich": true
   },
   {
@@ -11510,24 +11524,38 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1a356mt",
+    "key": "pages.home.auto.paragraph.166xtsk",
     "route": "/",
     "type": "paragraph",
-    "content": "Occitanie",
+    "content": "Année de création",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1bpzuzm",
+    "key": "pages.home.auto.paragraph.19g3elh",
     "route": "/",
     "type": "paragraph",
-    "content": "Lyon",
+    "content": "Accompagnement national actif",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1ekuqj2",
+    "key": "pages.home.auto.paragraph.1a4s5io",
     "route": "/",
     "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
+    "content": "Les quatre agences assurent un relais local, tandis que l’accompagnement reste disponible sur tout le territoire.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1c8ij9a",
+    "route": "/",
+    "type": "paragraph",
+    "content": "2 modes",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.1ca723n",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Réseau national",
     "rich": true
   },
   {
@@ -11538,38 +11566,17 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1gqzp7c",
+    "key": "pages.home.auto.paragraph.1hmiagm",
     "route": "/",
     "type": "paragraph",
-    "content": "27 rue Marbeuf · 75008",
+    "content": "PACA · Corse",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1hzfbks",
+    "key": "pages.home.auto.paragraph.1l7yezb",
     "route": "/",
     "type": "paragraph",
-    "content": "Montpellier",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.1m6q1l6",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Marseille",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.1mfpjii",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Le mot du président",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.1mwhrye",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Lille",
+    "content": "Aix-Marseille",
     "rich": true
   },
   {
@@ -11587,17 +11594,17 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1q0s14n",
+    "key": "pages.home.auto.paragraph.1pxzkmr",
     "route": "/",
     "type": "paragraph",
-    "content": "120 rue de Thor · 34000",
+    "content": "Sur site &amp; distance",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1qjhjmr",
+    "key": "pages.home.auto.paragraph.1qou27",
     "route": "/",
     "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
+    "content": "Île-de-France · Nord",
     "rich": true
   },
   {
@@ -11608,6 +11615,13 @@
     "rich": true
   },
   {
+    "key": "pages.home.auto.paragraph.1t82vba",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Paris, Lyon, Montpellier et Aix-Marseille structurent notre présence terrain. Partout en France, nos équipes vous accompagnent à distance ou se déplacent selon vos besoins.",
+    "rich": true
+  },
+  {
     "key": "pages.home.auto.paragraph.1uct58x",
     "route": "/",
     "type": "paragraph",
@@ -11615,10 +11629,10 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1v7ie3i",
+    "key": "pages.home.auto.paragraph.1uw7gyd",
     "route": "/",
     "type": "paragraph",
-    "content": "Présence historique à confirmer avant publication d’une page locale.",
+    "content": "Lyon",
     "rich": true
   },
   {
@@ -11629,31 +11643,10 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.2bjy0f",
+    "key": "pages.home.auto.paragraph.1xm5bvl",
     "route": "/",
     "type": "paragraph",
-    "content": "Montpellier",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.2cl5ny",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Occitanie",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.3jk71w",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Rendez-vous selon les modalités confirmées",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.3syt33",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Bordeaux",
+    "content": "Occitanie · Sud-Ouest",
     "rich": true
   },
   {
@@ -11664,66 +11657,38 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.5y0bq0",
+    "key": "pages.home.auto.paragraph.7h6ikc",
     "route": "/",
     "type": "paragraph",
-    "content": "Lille",
+    "content": "Rhône-Alpes · Est",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.7b6485",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Aix-en-Provence",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.87uciv",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.8jk4r",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Paris",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.fgcaxd",
+    "key": "pages.home.auto.paragraph.8ee0x9",
     "route": "/",
     "type": "paragraph",
     "content": "Couverture nationale",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.g1v4a2",
+    "key": "pages.home.auto.paragraph.a12c4a",
     "route": "/",
     "type": "paragraph",
-    "content": "Agences : Paris, Lyon, Montpellier, Aix-Marseille.",
+    "content": "France entière",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.gs7yei",
+    "key": "pages.home.auto.paragraph.aykgoh",
     "route": "/",
     "type": "paragraph",
-    "content": "Hauts-de-France",
+    "content": "Agences physiques",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.hacf0l",
+    "key": "pages.home.auto.paragraph.eh05la",
     "route": "/",
     "type": "paragraph",
-    "content": "Nouvelle-Aquitaine",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.igq5x5",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Aix-Marseille",
+    "content": "Paris",
     "rich": true
   },
   {
@@ -11734,31 +11699,17 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.m9lw41",
+    "key": "pages.home.auto.paragraph.l3ut3z",
     "route": "/",
     "type": "paragraph",
-    "content": "Aix-Marseille",
+    "content": "France entière",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.nhvzk0",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Auvergne-Rhône-Alpes",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.o9wtd6",
+    "key": "pages.home.auto.paragraph.pk511k",
     "route": "/",
     "type": "paragraph",
     "content": "Montpellier",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.pqxlu5",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Paris",
     "rich": true
   },
   {
@@ -11783,52 +11734,10 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.spf3lt",
-    "route": "/",
-    "type": "paragraph",
-    "content": "4 place Amédée Bonnet · 69002",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.ts0hy8",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Auvergne-Rhône-Alpes",
-    "rich": true
-  },
-  {
     "key": "pages.home.auto.paragraph.u3o78n",
     "route": "/",
     "type": "paragraph",
     "content": "Yoann Deroux",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.ueotn9",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Paris",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.ui8oqz",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Présence historique à confirmer avant publication d’une page locale.",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.wpyrds",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Lyon",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.yy7i1j",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Bordeaux",
     "rich": true
   },
   {
@@ -12941,7 +12850,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.1dh3t4g",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Deux métiers complémentaires",
+    "content": "Une seconde façon d’intervenir",
     "rich": true
   },
   {
@@ -13071,13 +12980,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.heading.1se6xc5",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Nos consultants interviennent partout en France.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.heading.1swuvjq",
     "route": "/qui-sommes-nous",
     "type": "heading",
@@ -13172,7 +13074,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.duccx2",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Rester humain à mesure que le réseau grandit",
+    "content": "Adhérents de la FEPS",
     "rich": true
   },
   {
@@ -13193,7 +13095,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.nussxr",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Un cadre pensé pour les experts IT",
+    "content": "Deux portes, un même vivier",
     "rich": true
   },
   {
@@ -13201,6 +13103,13 @@
     "route": "/qui-sommes-nous",
     "type": "heading",
     "content": "Compétences et environnements",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.heading.pn7nsy",
+    "route": "/qui-sommes-nous",
+    "type": "heading",
+    "content": "Une équipe proche, où que vous soyez.",
     "rich": true
   },
   {
@@ -13215,6 +13124,13 @@
     "route": "/qui-sommes-nous",
     "type": "heading",
     "content": "L’accompagnement Porters",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.heading.th5rx",
+    "route": "/qui-sommes-nous",
+    "type": "heading",
+    "content": "4 agences.<em>Une présence partout en France.</em>",
     "rich": true
   },
   {
@@ -13249,21 +13165,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.yyekdd",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Les racines de l’écosystème",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.list_item.1ueuik5",
-    "route": "/qui-sommes-nous",
-    "type": "list_item",
-    "content": "<span class=\"level-pin\" aria-hidden=\"true\" data-astro-cid-lt6rlkun=\"\"></span>Agences physiques",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.list_item.tzyl7y",
-    "route": "/qui-sommes-nous",
-    "type": "list_item",
-    "content": "<span class=\"level-zone\" aria-hidden=\"true\" data-astro-cid-lt6rlkun=\"\"></span>Zone d’intervention",
+    "content": "Le portage salarial, dès l’origine",
     "rich": true
   },
   {
@@ -13313,13 +13215,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Industrie",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.10sfb0l",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "120 rue de Thor · 34000",
     "rich": true
   },
   {
@@ -13407,6 +13302,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.12wng3a",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Montpellier",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.12zr8xm",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13418,13 +13320,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Grandes organisations en transformation",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.13giovl",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
     "rich": true
   },
   {
@@ -13442,24 +13337,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.13ngqso",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Lille",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.13p52ow",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Gestion des aspects administratifs",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.13sl245",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Paris",
     "rich": true
   },
   {
@@ -13533,6 +13414,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.15d2guj",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Lyon",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.15dm781",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13586,13 +13474,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Data Engineer",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.16pzzla",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Lyon",
     "rich": true
   },
   {
@@ -13694,13 +13575,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.19l1xuz",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Occitanie",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.19o517v",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13764,6 +13638,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1brh0ur",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Couverture nationale",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1btrxxk",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13799,13 +13680,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1cgdbx5",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Montpellier",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1cnrw0t",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -13824,6 +13698,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Domaine sélectionné",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1csptjk",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Paris",
     "rich": true
   },
   {
@@ -13852,13 +13733,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Banque",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1dflt7a",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Rendez-vous selon les modalités confirmées",
     "rich": true
   },
   {
@@ -13904,24 +13778,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1e8kve4",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Présence historique à confirmer avant publication d’une page locale.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1e92gw2",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Standards de déploiement et bonnes pratiques",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ebsd8r",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Nouvelle-Aquitaine",
     "rich": true
   },
   {
@@ -13935,7 +13795,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1eqfdjd",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "La priorité reste la même : une information lisible, un interlocuteur identifiable et un accompagnement adapté à la réalité de chaque mission.",
+    "content": "The Porters adhère à la Fédération des Entreprises de Portage Salarial. Le portage y est encadré par le Code du travail, l’ANI de 2008 et l’ordonnance du 2 avril 2015.",
     "rich": true
   },
   {
@@ -13995,13 +13855,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1fmx83s",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Hauts-de-France",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1fuvuhj",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14030,13 +13883,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1gh2ymo",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Lyon",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1gran5",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14062,13 +13908,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Transformation agile à l’échelle",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1hesiyi",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "27 rue Marbeuf · 75008",
     "rich": true
   },
   {
@@ -14121,13 +13960,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ilii6v",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Île-de-France",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1ilko5c",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14163,10 +13995,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1jzxnyf",
+    "key": "pages.qui-sommes-nous.auto.paragraph.1jmrzff",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Aix-Marseille",
+    "content": "Accompagnement national actif",
     "rich": true
   },
   {
@@ -14198,13 +14030,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1klk4uq",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Auvergne-Rhône-Alpes",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1ks973l",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14216,6 +14041,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Protéger les organisations, leurs systèmes d’information, leurs données et leur continuité d’activité face à des risques toujours plus complexes.",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1l3llb4",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Paris, Lyon, Montpellier et Aix-Marseille structurent notre présence terrain. Partout en France, nos équipes vous accompagnent à distance ou se déplacent selon vos besoins.",
     "rich": true
   },
   {
@@ -14303,13 +14135,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ode4t0",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Marseille",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1oj6awz",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14342,6 +14167,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "NIS2",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1owzw09",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Île-de-France · Nord",
     "rich": true
   },
   {
@@ -14391,13 +14223,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Entreprises réglementées",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1pwq3wc",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Occitanie",
     "rich": true
   },
   {
@@ -14495,7 +14320,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1t616ab",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "L’écosystème se structure autour de deux réponses distinctes : l’expertise ESN portée par KwickStart et le portage salarial proposé par The Porters.",
+    "content": "The Big Porters rejoint le groupe. C’est une ESN spécialisée IT : là où le portage salarie un consultant qui a trouvé sa mission, l’ESN répond à une entreprise qui cherche encore son profil.",
     "rich": true
   },
   {
@@ -14517,6 +14342,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Agile",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1tafdco",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "PACA · Corse",
     "rich": true
   },
   {
@@ -14604,17 +14436,17 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1v4amtz",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Occitanie · Sud-Ouest",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1v4jsuu",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Faire évoluer les méthodes de travail, fluidifier la collaboration et aider les organisations à produire plus efficacement dans des environnements complexes.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1vcu9v3",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Aix-Marseille",
     "rich": true
   },
   {
@@ -14730,13 +14562,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1xvk7m6",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Montpellier",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1y5ditp",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -14772,24 +14597,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1yse36i",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Lille",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1z0kyey",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Porters accompagne les consultants indépendants qui interviennent sur les enjeux de gouvernance, de conformité, de prévention, de détection et de réponse aux incidents de sécurité. Ces experts aident les entreprises à mieux identifier leurs risques, sécuriser leurs infrastructures, protéger leurs actifs critiques et répondre aux exigences réglementaires.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.23j7b7",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "4 place Amédée Bonnet · 69002",
     "rich": true
   },
   {
@@ -14814,10 +14625,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.2pwypl",
+    "key": "pages.qui-sommes-nous.auto.paragraph.2m6fbd",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Présence historique à confirmer avant publication d’une page locale.",
+    "content": "Sur site &amp; distance",
     "rich": true
   },
   {
@@ -14828,10 +14639,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.2xf5ns",
+    "key": "pages.qui-sommes-nous.auto.paragraph.2w0b01",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Agences : Paris, Lyon, Montpellier, Aix-Marseille.",
+    "content": "Aix-Marseille",
     "rich": true
   },
   {
@@ -14894,7 +14705,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.49m08p",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "La suite",
+    "content": "Notre cadre",
     "rich": true
   },
   {
@@ -15010,17 +14821,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.7rn96c",
+    "key": "pages.qui-sommes-nous.auto.paragraph.7osxly",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.7s1srr",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Ensuite",
+    "content": "Les quatre agences assurent un relais local, tandis que l’accompagnement reste disponible sur tout le territoire.",
     "rich": true
   },
   {
@@ -15070,6 +14874,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Site Reliability Engineer",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.99vutp",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Réseau national",
     "rich": true
   },
   {
@@ -15276,6 +15087,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.dl9otm",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Année de création",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.dtzl87",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15301,6 +15119,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Cadre adapté aux missions de longue durée",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.e7n9vu",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Rhône-Alpes · Est",
     "rich": true
   },
   {
@@ -15336,6 +15161,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "PAM",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.errfft",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "France entière",
     "rich": true
   },
   {
@@ -15472,13 +15304,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.ihskhn",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Paris",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.ihwokj",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15563,20 +15388,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.kxv2nh",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Provence-Alpes-Côte d'Azur",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.l3b41n",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Aix-en-Provence",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.lgybus",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15612,13 +15423,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.mlz0bu",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Auvergne-Rhône-Alpes",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.mm82l4",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15643,7 +15447,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.msrbbw",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "L’aventure à l’origine du groupe démarre autour de THE BIG PORTERS, avec une ambition : rapprocher les entreprises de talents qualifiés sur leurs projets numériques.",
+    "content": "The Porters est créée pour porter l’activité de consultants indépendants : un contrat de travail, une paie, une protection sociale, et la liberté de choisir ses missions.",
     "rich": true
   },
   {
@@ -15752,13 +15556,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.ov7n8p",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Île-de-France",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.oz3lm4",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15822,6 +15619,13 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.pz1dfo",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "France entière",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.q0kvim",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15871,13 +15675,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.r6lc4b",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Couverture nationale",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.r87tyx",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15906,13 +15703,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.rf2hxi",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Lyon",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.rhytel",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -15938,13 +15728,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Design Thinking",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.rzlcrg",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Montpellier",
     "rich": true
   },
   {
@@ -15994,13 +15777,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "The Porters · Notre rôle",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.u73f6b",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Paris",
     "rich": true
   },
   {
@@ -16147,7 +15923,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.x69asa",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "The Porters accompagne des consultants et des entreprises sur des missions cyber, data, IA, cloud, DevOps, produit, projet et transformation.",
+    "content": "Consultant ou entreprise cliente, vous parlez au même groupe. Nous connaissons les métiers cyber, data, IA, cloud, DevOps, produit et agilité parce que nous les plaçons toute l’année.",
     "rich": true
   },
   {
@@ -16207,13 +15983,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.xrxbe9",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Bordeaux",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.xut6t4",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -16221,17 +15990,17 @@
     "rich": true
   },
   {
+    "key": "pages.qui-sommes-nous.auto.paragraph.y3lguj",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Agences physiques",
+    "rich": true
+  },
+  {
     "key": "pages.qui-sommes-nous.auto.paragraph.ycqb9e",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Gouvernance et stratégie de sécurité",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.yg7uk9",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Bordeaux",
     "rich": true
   },
   {
@@ -16274,6 +16043,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Roadmap",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.zm5b4o",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "2 modes",
     "rich": true
   },
   {
@@ -16731,13 +16507,6 @@
     "rich": true
   },
   {
-    "key": "pages.rse.auto.button.1unfqlc",
-    "route": "/rse",
-    "type": "button",
-    "content": "Contacter l'équipe",
-    "rich": true
-  },
-  {
     "key": "pages.rse.auto.button.4nxp4q",
     "route": "/rse",
     "type": "button",
@@ -16745,59 +16514,87 @@
     "rich": true
   },
   {
+    "key": "pages.rse.auto.button.4ug2g5",
+    "route": "/rse",
+    "type": "button",
+    "content": "Contacter l’équipe",
+    "rich": true
+  },
+  {
     "key": "pages.rse.auto.heading.1co03gw",
     "route": "/rse",
     "type": "heading",
-    "content": "Nos axes de travail",
+    "content": "Ce qui est en place aujourd’hui",
+    "rich": true
+  },
+  {
+    "key": "pages.rse.auto.heading.1hlyx01",
+    "route": "/rse",
+    "type": "heading",
+    "content": "Une exigence RSE dans votre appel d’offres ?",
+    "rich": true
+  },
+  {
+    "key": "pages.rse.auto.heading.1n526j4",
+    "route": "/rse",
+    "type": "heading",
+    "content": "Équipements réparés, reconditionnés, donnés",
     "rich": true
   },
   {
     "key": "pages.rse.auto.heading.1nsallb",
     "route": "/rse",
     "type": "heading",
-    "content": "Des intentions aux preuves.",
+    "content": "Six engagements, et ce que nous ne revendiquons pas.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.heading.1ot5ix6",
     "route": "/rse",
     "type": "heading",
-    "content": "Une question sur notre démarche ?",
+    "content": "Ce que nous ne revendiquons pas",
+    "rich": true
+  },
+  {
+    "key": "pages.rse.auto.heading.1rm23nx",
+    "route": "/rse",
+    "type": "heading",
+    "content": "Diversité et égalité des chances",
     "rich": true
   },
   {
     "key": "pages.rse.auto.heading.1tp4gpt",
     "route": "/rse",
     "type": "heading",
-    "content": "Inclusion et accessibilité",
+    "content": "Éco-conception logicielle",
     "rich": true
   },
   {
     "key": "pages.rse.auto.heading.1xptkyn",
     "route": "/rse",
     "type": "heading",
-    "content": "Passer des intentions aux preuves",
+    "content": "Ce qui rend la démarche vérifiable",
     "rich": true
   },
   {
     "key": "pages.rse.auto.heading.1yyel44",
     "route": "/rse",
     "type": "heading",
-    "content": "Sobriété numérique",
+    "content": "Une charte Numérique Responsable, et un référent désigné",
     "rich": true
   },
   {
     "key": "pages.rse.auto.heading.xfcupa",
     "route": "/rse",
     "type": "heading",
-    "content": "Proximité durable",
+    "content": "Accessibilité numérique",
     "rich": true
   },
   {
     "key": "pages.rse.auto.heading.zsyzmz",
     "route": "/rse",
     "type": "heading",
-    "content": "Éthique et transparence",
+    "content": "Déplacements à faible impact",
     "rich": true
   },
   {
@@ -16808,52 +16605,59 @@
     "rich": true
   },
   {
+    "key": "pages.rse.auto.paragraph.12l1omt",
+    "route": "/rse",
+    "type": "paragraph",
+    "content": "Nous ne sommes pas certifiés par l’Institut du Numérique Responsable. Nous nous engageons à inscrire l’organisation dans une trajectoire vers ces référentiels, et nous accompagnons la montée en compétence de nos référents et de nos équipes vers ces dispositifs de reconnaissance. Tant que le label n’est pas obtenu, nous écrivons « trajectoire », pas « certifié ».",
+    "rich": true
+  },
+  {
     "key": "pages.rse.auto.paragraph.142vmh2",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Mesurer la qualité de réponse et la satisfaction après les étapes importantes.",
+    "content": "Ateliers, e-learning et retours d’expérience réguliers sur la mobilité, le travail à distance, la sobriété des outils et l’éco-conception.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.14u2zmf",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Accompagnement",
+    "content": "Formation",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.15mtsyl",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Numérique",
+    "content": "Dématérialisation",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.166f8fg",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Accessibilité",
+    "content": "Indicateurs",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.1bwi7b4",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Quatre priorités",
+    "content": "Nos engagements",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.1e907ml",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Feuille de route",
+    "content": "Gouvernance",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.1gxatta",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Transparence",
+    "content": "Sous-traitance",
     "rich": true
   },
   {
@@ -16867,56 +16671,70 @@
     "key": "pages.rse.auto.paragraph.1nzigs2",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Échangez directement avec l'équipe The Porters.",
+    "content": "Précision",
+    "rich": true
+  },
+  {
+    "key": "pages.rse.auto.paragraph.1sqhi2r",
+    "route": "/rse",
+    "type": "paragraph",
+    "content": "Le groupe est signataire de la Charte de la diversité. Les processus de recrutement reposent sur les compétences, l’expérience et le savoir-être — ce qui valorise notamment les profils expérimentés sur des technologies critiques.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.1whq3nz",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Rendre l'information compréhensible, améliorer l'accessibilité du site et traiter chaque candidature ou demande sans discrimination.",
+    "content": "Les équipes sont formées à l’éco-conception en s’appuyant sur le RGESN et les bonnes pratiques Green IT. En mission : optimisation du code, rationalisation des requêtes, limitation des dépendances superflues, réutilisation de briques existantes.",
+    "rich": true
+  },
+  {
+    "key": "pages.rse.auto.paragraph.265ram",
+    "route": "/rse",
+    "type": "paragraph",
+    "content": "Nous nous appuyons sur le RGESN, le RGAA et les recommandations WCAG. Ce sont des référentiels que nos équipes appliquent, pas des certifications que nous détenons.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.47zzwq",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Privilégier le travail à distance et les ressources locales lorsque le contexte de mission le permet, afin de limiter les déplacements inutiles.",
+    "content": "Sur les prestations qui touchent à une interface utilisateur, les équipes s’appuient sur le RGAA et sur les recommandations WCAG, dès la phase de conception et non en correction.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.ddta9h",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Auditer les parcours clés et corriger les obstacles prioritaires.",
+    "content": "Des indicateurs RSE sont suivis en comité de pilotage : niveau de dématérialisation des échanges, maîtrise des déplacements, actions de formation et de partage de connaissances.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.f0xscj",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Le mémoire technique du Groupe Porters présente des orientations liées au numérique, à l’inclusion, à la proximité et à la transparence. Les indicateurs propres à The Porters seront publiés à mesure de leur validation.",
+    "content": "Une charte écrite, un référent nommé, des référentiels identifiés, des indicateurs suivis en comité de pilotage. Et, plus bas, la liste de ce que nous n’avons pas encore obtenu.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.go8fnn",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Publier uniquement les indicateurs et certifications officiellement validés.",
+    "content": "Lorsqu’un prestataire est mobilisé, des critères de numérique responsable entrent dans sa sélection.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.h3hdf9",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Afficher les frais de gestion, expliquer les hypothèses du simulateur et ne publier que des engagements, avis et indicateurs pouvant être justifiés.",
+    "content": "Train en priorité sur les longues distances, transports en commun ou mobilités douces en proximité. Le télétravail est favorisé lorsqu’il est compatible avec l’organisation du client et la nature de la mission.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.q3qmdo",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Concevoir des parcours rapides, limiter les médias lourds et privilégier des outils utiles à la mission plutôt que des fonctionnalités superflues.",
+    "content": "La charte est diffusée aux collaborateurs et fixe les principes attendus en matière de sobriété numérique, d’éco-conception, d’accessibilité et de bonnes pratiques de développement. Un référent numérique responsable est désigné, avec des missions formalisées.",
     "rich": true
   },
   {
@@ -16930,14 +16748,35 @@
     "key": "pages.rse.auto.paragraph.qwjkxi",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Les prochaines publications RSE associeront chaque engagement à un responsable, une échéance et un indicateur. Cette méthode évite les promesses générales impossibles à vérifier.",
+    "content": "Un engagement qui n’est ni mesuré ni relu en comité reste une intention. Voici les quatre mécanismes qui font que celui-ci ne l’est pas.",
     "rich": true
   },
   {
     "key": "pages.rse.auto.paragraph.r9fah4",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Suivre le poids des pages et la performance des parcours essentiels.",
+    "content": "Gestion administrative entièrement dématérialisée : contrats, bons de commande, comptes rendus d’activité et facturation sont traités sans papier.",
+    "rich": true
+  },
+  {
+    "key": "pages.rse.auto.paragraph.wf6ukv",
+    "route": "/rse",
+    "type": "paragraph",
+    "content": "Nous ne publions pas d’indicateur chiffré sur cette page. Les indicateurs existent et sont suivis en comité de pilotage ; ils seront publiés ici lorsqu’ils porteront sur une période close et une méthode que nous pouvons décrire.",
+    "rich": true
+  },
+  {
+    "key": "pages.rse.auto.paragraph.xxeyen",
+    "route": "/rse",
+    "type": "paragraph",
+    "content": "Dites-nous laquelle. Nous répondons sur ce que nous faisons, pas sur ce que nous visons.",
+    "rich": true
+  },
+  {
+    "key": "pages.rse.auto.paragraph.yjl340",
+    "route": "/rse",
+    "type": "paragraph",
+    "content": "Le matériel est choisi pour sa durabilité, réparé quand c’est possible, afin d’éviter un renouvellement prématuré. Le reconditionné est privilégié sur les périphériques. Recyclage et dons passent par des filières identifiées.",
     "rich": true
   },
   {
@@ -17413,7 +17252,7 @@
     "key": "pages.tarifs.auto.button.nviywh",
     "route": "/tarifs",
     "type": "button",
-    "content": "Voir ce qui est inclus",
+    "content": "Voir les sept prestations",
     "rich": true
   },
   {
@@ -17424,66 +17263,115 @@
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.heading.1kmkaa",
+    "key": "pages.tarifs.auto.heading.1b27ok",
     "route": "/tarifs",
     "type": "heading",
-    "content": "Frais professionnels réels",
+    "content": "Le calendrier de paie",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.heading.1nsallb",
     "route": "/tarifs",
     "type": "heading",
-    "content": "Des frais lisibles. Une simulation que vous pouvez questionner.",
+    "content": "Ce que nous prenons, et ce que ça paie.",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.heading.1ot5ix6",
     "route": "/tarifs",
     "type": "heading",
-    "content": "Comprendre votre projection avant de vous engager.",
+    "content": "Une question sur un chiffre ? Posez-la avant de signer.",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.heading.1rglyyg",
+    "key": "pages.tarifs.auto.heading.1xptkyn",
     "route": "/tarifs",
     "type": "heading",
-    "content": "Conditions de trésorerie",
+    "content": "Ce qui dépend de votre situation, et pas de nos frais",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.heading.2zejks",
     "route": "/tarifs",
     "type": "heading",
-    "content": "Ce que les frais de gestion doivent réellement couvrir",
+    "content": "Les sept prestations que couvrent nos frais",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.heading.9vwuhf",
+    "key": "pages.tarifs.auto.heading.kj603j",
     "route": "/tarifs",
     "type": "heading",
-    "content": "Calendrier de paie",
+    "content": "Votre mutuelle",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.heading.yt4j8u",
+    "route": "/tarifs",
+    "type": "heading",
+    "content": "Vos frais professionnels",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.paragraph.10n12s0",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Comprendre avant de signer",
+    "content": "Frais de gestion",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.12lfp1m",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Ils vous sont remboursés, ils ne sont pas financés par les frais de gestion. Seules les dépenses réelles, justifiées et liées à votre activité sont retenues. Le simulateur retient une hypothèse de 500 € par mois ; votre situation peut être très différente.",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.13esgxj",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Vous êtes couvert en cas de dommage causé chez un client.",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.16c7072",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Contrat, facturation, paie, déclarations sociales et fiscales.",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.paragraph.17ysdw7",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Frais de gestion",
+    "content": "Notre taux",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.18wklak",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Nous vous proposons des missions issues de nos partenaires ; vous restez libre de trouver les vôtres.",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.1d9g2tn",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture.",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.1e907ml",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "À valider avant de signer",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.paragraph.1hkia6c",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Selon votre mission",
+    "content": "Communiqué avant signature",
     "rich": true
   },
   {
@@ -17494,59 +17382,87 @@
     "rich": true
   },
   {
+    "key": "pages.tarifs.auto.paragraph.1m6c622",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Responsabilité civile professionnelle",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.1mm6rxo",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Interlocuteur unique",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.1n6ptt9",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Financement des formations",
+    "rich": true
+  },
+  {
     "key": "pages.tarifs.auto.paragraph.1nzigs2",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Passez du calcul indicatif à une projection adaptée à votre mission.",
+    "content": "Nous reprenons votre simulation ligne par ligne, avec vos vrais paramètres de mission.",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.paragraph.2732z3",
+    "key": "pages.tarifs.auto.paragraph.1oh6bik",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Accompagnement des frais professionnels au réel",
+    "content": "Votre date de versement dépend de la date à laquelle vous transmettez votre compte rendu d’activité. Deux sessions de paie existent ; votre conseiller vous indique les échéances applicables.",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.paragraph.3iyjwq",
+    "key": "pages.tarifs.auto.paragraph.1rc95nk",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Gestion du contrat de travail et des éléments de paie",
+    "content": "Garantie financière",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.paragraph.4epou5",
+    "key": "pages.tarifs.auto.paragraph.1sggz46",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Interlocuteur dédié pendant toute la mission",
+    "content": "Avance de trésorerie",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.paragraph.dezmhp",
+    "key": "pages.tarifs.auto.paragraph.1tqbirc",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Les dates de transmission des éléments d’activité et de versement sont expliquées dans votre convention et confirmées par votre conseiller.",
+    "content": "CPF, OPCO, certifications.",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.21ysu9",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "L’adhésion à la mutuelle collective est à votre initiative. The Porters prend en charge une partie de la cotisation, le reste figure sur votre bulletin.",
+    "rich": true
+  },
+  {
+    "key": "pages.tarifs.auto.paragraph.5n4obj",
+    "route": "/tarifs",
+    "type": "paragraph",
+    "content": "Gestion administrative complète",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.paragraph.f0xscj",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Une simulation utile distingue le chiffre d’affaires, les frais de gestion, les frais professionnels, les cotisations estimatives et le net projeté. Le taux applicable est confirmé selon votre mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.jo1p7v",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Facturation et suivi administratif de la mission",
+    "content": "Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel. Ils couvrent sept prestations, listées ci-dessous. Le taux vous est communiqué avant la signature, pas après.",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.paragraph.ko6uzh",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Le niveau de frais et les services inclus dépendent des conditions présentées dans votre simulation et des éléments contractuels validés avant le démarrage.",
+    "content": "Un seul taux, prélevé sur votre chiffre d’affaires. Il finance les sept prestations ci-contre. Aucun frais de dossier, aucun frais d’entrée, aucun frais de sortie ne s’y ajoute.",
     "rich": true
   },
   {
@@ -17560,28 +17476,28 @@
     "key": "pages.tarifs.auto.paragraph.qwjkxi",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Le simulateur propose une base de 500 € par mois. Seules les dépenses professionnelles réelles, justifiées et admissibles sont retenues.",
+    "content": "Trois éléments ne sont pas couverts par le taux : ils dépendent de votre activité réelle et se règlent au cadrage de la mission.",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.paragraph.rhj6zs",
+    "key": "pages.tarifs.auto.paragraph.say8qp",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Le traitement des délais de règlement client et toute éventuelle avance doivent être validés explicitement avant la mission.",
+    "content": "Dispositif obligatoire qui sécurise le versement de votre salaire.",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.paragraph.sv10tq",
+    "key": "pages.tarifs.auto.paragraph.wviy8p",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Accès au simulateur et lecture personnalisée du résultat",
+    "content": "Apport d’affaires",
     "rich": true
   },
   {
-    "key": "pages.tarifs.auto.paragraph.z69rd8",
+    "key": "pages.tarifs.auto.paragraph.ybppkl",
     "route": "/tarifs",
     "type": "paragraph",
-    "content": "Déclarations sociales et documents réglementaires",
+    "content": "Une seule personne suit votre dossier.",
     "rich": true
   }
 ]

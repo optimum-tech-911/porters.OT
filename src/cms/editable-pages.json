@@ -2,7 +2,7 @@
   {
     "route": "/",
     "name": "Accueil",
-    "contentCount": 61
+    "contentCount": 41
   },
   {
     "route": "/blog/categorie/actualites",
@@ -55,6 +55,11 @@
     "contentCount": 21
   },
   {
+    "route": "/rse",
+    "name": "Engagements RSE et numérique responsable",
+    "contentCount": 39
+  },
+  {
     "route": "/espace-client",
     "name": "Espace client",
     "contentCount": 16
@@ -62,7 +67,7 @@
   {
     "route": "/entreprises",
     "name": "Expertises IT externes, cadre maîtrisé",
-    "contentCount": 80
+    "contentCount": 103
   },
   {
     "route": "/expertises",
@@ -78,6 +83,11 @@
     "route": "/blog/categorie/fonctionnement",
     "name": "Fonctionnement | Blog The Porters",
     "contentCount": 52
+  },
+  {
+    "route": "/tarifs",
+    "name": "Frais de gestion du portage salarial",
+    "contentCount": 38
   },
   {
     "route": "/blog/frais-gestion-portage-salarial",
@@ -97,12 +107,7 @@
   {
     "route": "/agences",
     "name": "Nos agences de portage salarial",
-    "contentCount": 45
-  },
-  {
-    "route": "/rse",
-    "name": "Notre démarche RSE",
-    "contentCount": 30
+    "contentCount": 29
   },
   {
     "route": "/blog/optimiser-remuneration-portage-salarial",
@@ -232,7 +237,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 498
+    "contentCount": 479
   },
   {
     "route": "/recrutement",
@@ -253,11 +258,6 @@
     "route": "/simulateur",
     "name": "Simulateur de revenus consultant IT",
     "contentCount": 65
-  },
-  {
-    "route": "/tarifs",
-    "name": "Tarifs du portage salarial",
-    "contentCount": 27
   },
   {
     "route": "/blog/trouver-missions-portage-salarial",
