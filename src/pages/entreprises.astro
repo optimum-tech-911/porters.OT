@@ -2,7 +2,6 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import { pageSeo } from '../data/seo.data';
-import { enterpriseBenefits } from '../data/benefits.data';
 import enterpriseHeroImage from '../../images/team-workshop.webp';
 import collaborationImage from '../../images/business-meeting.webp';
 import { enterprisePage } from '../content/pages/entreprises';
@@ -14,34 +13,60 @@ const seo = {
 
 const breadcrumbs = [{ label: 'Entreprises' }];
 
-const painPoints = [
-  {
-    icon: 'scale',
-    title: 'Un cadre à sécuriser',
-    description: 'La mission doit préciser les responsabilités, les livrables, la durée et les conditions d’intervention de l’expert.',
-  },
-  {
-    icon: 'alert',
-    title: 'Des responsabilités à clarifier',
-    description: 'L’autonomie du consultant et le rôle de chaque partie doivent être cohérents avec le fonctionnement réel de la mission.',
-  },
-  {
-    icon: 'document',
-    title: 'Une gestion à simplifier',
-    description: 'Contrats, facturation et suivi administratif ne doivent pas disperser vos équipes internes.',
-  },
-  {
-    icon: 'search',
-    title: 'Une expertise à bien qualifier',
-    description: 'Le bon profil dépend du résultat attendu, du contexte technique, du calendrier et du niveau de responsabilité.',
-  },
+// Ce que nous cadrons avant de proposer un seul CV. Copie : copy-bank.md CB-03.
+// Fait : F-D02 (PUBLISHABLE).
+const scoping = [
+  { icon: 'network', title: 'Environnement technique', description: 'Les socles en place, leur âge, leurs contraintes, et ce qui ne peut pas être arrêté.' },
+  { icon: 'users', title: 'Organisation en place', description: 'Qui décide, qui valide, avec quelles équipes le consultant travaillera au quotidien.' },
+  { icon: 'compass', title: 'Calendrier', description: 'La date de démarrage réelle, la durée, et ce qui dépend d’un jalon que vous ne maîtrisez pas.' },
+  { icon: 'scale', title: 'Niveau d’autonomie attendu', description: 'Un renfort qui exécute et un expert qui arbitre ne sont pas le même profil, ni le même TJM.' },
+  { icon: 'shield', title: 'Contraintes de sécurité', description: 'Habilitations, charte de sécurité, confidentialité, lieux d’exécution autorisés.' },
 ] as const;
 
-const enterpriseProofs = [
-  { value: '01', label: 'besoin qualifié' },
-  { value: '02', label: 'cadre choisi' },
-  { value: '03', label: 'mission contractualisée' },
-  { value: '04', label: 'exécution suivie' },
+// Ce qui rend le sourcing crédible. Faits : F-V02, F-D01, F-D03, F-D07 (PUBLISHABLE).
+// BoondManager n'est pas nommé : F-D17 est CLIENT_APPROVAL_REQUIRED (Q16).
+const sourcing = [
+  {
+    title: 'Un sourcing multi-canal, pas une seule jobboard',
+    description:
+      'Cooptation, événements IT, LesJeudis, HelloWork, Meteojob, LinkedIn, Indeed, Monster, France Travail. Le vivier est organisé autour d’une cartographie métiers, pas d’une pile de CV.',
+  },
+  {
+    title: 'Des référentiels métiers, pas une impression',
+    description:
+      'CIGREF, SYNTEC et ROME donnent la grille de lecture : compétences attendues, niveaux d’expertise, pratiques professionnelles, expérience sectorielle.',
+  },
+  {
+    title: 'Des profils transmis anonymisés',
+    description:
+      'Vous recevez le parcours, les compétences et la disponibilité. L’identité vient après votre intérêt, dans le respect des règles de protection des données personnelles.',
+  },
+  {
+    title: 'Aucun suivi qui dépende d’une seule personne',
+    description:
+      'Chaque mission est suivie par un binôme, avec un relais identifié. Si votre interlocuteur est absent, votre dossier ne s’arrête pas.',
+  },
+];
+
+// Types de projets — formulations publiables, source confidentielle.
+// Copie : copy-bank.md CB-13, verbatim. Faits : F-P01, F-P02, F-P03 (PUBLISHABLE).
+// Jamais de nom de client, de numéro de lot, de référence CCTP ni de GIE.
+const projects = [
+  {
+    title: 'Migration d’un socle Big Data',
+    text: 'Passage de Hortonworks à Cloudera Data Platform pour un organisme public national.',
+    profiles: 'Architecte système, expert Big Data, développeur senior.',
+  },
+  {
+    title: 'Développements en environnement IBM i / AS400',
+    text: 'Applications métier cœur du logement social : analyse des besoins, développements spécifiques, maintenance corrective et évolutive.',
+    profiles: 'Analyste programmeur, chef de projet applicatif.',
+  },
+  {
+    title: 'Reprise en main de modèles de données',
+    text: 'Audit de l’existant, recommandations d’outils, mise en place d’applicatifs internes chez un industriel.',
+    profiles: 'Architecte données, data scientist, développeur fullstack.',
+  },
 ];
 
 const engagementModels = [
@@ -49,14 +74,14 @@ const engagementModels = [
     eyebrow: 'Portage salarial',
     title: 'Le consultant a déjà sa mission',
     description:
-      'The Porters met en place le cadre contractuel, salarial et administratif. L’entreprise cliente garde une relation opérationnelle simple, avec une facture unique.',
-    points: ['Cadre salarial sécurisé', 'Contrat, paie et facturation pris en charge', 'Interlocuteur dédié pendant la mission'],
+      'The Porters met en place le cadre contractuel, salarial et administratif. Vous gardez une relation opérationnelle simple, avec une facture unique.',
+    points: ['Cadre salarial sécurisé', 'Contrat, paie et facturation pris en charge', 'Interlocuteur unique pendant la mission'],
   },
   {
-    eyebrow: 'Renfort via ESN',
+    eyebrow: 'Prestation via l’ESN du groupe',
     title: 'Vous cherchez encore le bon profil',
     description:
-      'Notre écosystème de partenaires permet d’orienter le besoin vers un modèle ESN lorsque le sourcing et le pilotage du renfort priment sur le portage salarial.',
+      'The Big Porters, l’ESN du groupe, prend le sourcing et le pilotage du renfort. Même vivier, même processus de sélection, cadre contractuel différent.',
     points: ['Sourcing IT ciblé', 'Choix du modèle selon le besoin', 'Suivi opérationnel cadré'],
   },
 ];
@@ -78,12 +103,13 @@ const engagementModels = [
     </div>
     <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
       <div class="max-w-2xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Solutions entreprises</p>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Entreprises</p>
         <h1 class="mb-6 max-w-[40rem] text-porters-white">
-          Une expertise externe. <span class="gold-underline">Un cadre maîtrisé.</span>
+          Décrivez le contexte. <span class="gold-underline">Nous revenons avec des profils.</span>
         </h1>
         <p class="mb-8 max-w-xl text-lg leading-relaxed text-porters-white/84">
-          Faites intervenir un consultant IT, data, cyber, cloud ou transformation sans ajouter une relation d’emploi directe à gérer.
+          Un besoin précis à couvrir ou une équipe projet à structurer&nbsp;? Nous cadrons cinq points, puis
+          nous sélectionnons en cinq étapes. Pas de plaquette.
         </p>
         <div class="flex flex-col gap-4 sm:flex-row">
           <a href="/contact" class="btn btn-gold">Déposer un besoin</a>
@@ -93,25 +119,16 @@ const engagementModels = [
     </div>
   </section>
 
-  <section class="border-b border-porters-navy/10 bg-white">
-    <div class="container mx-auto grid grid-cols-2 px-6 lg:grid-cols-4 lg:px-8">
-      {enterpriseProofs.map((proof) => (
-        <div class="border-porters-navy/10 px-3 py-7 text-center even:border-l lg:border-l lg:first:border-l-0 lg:px-6 reveal">
-          <p class="mb-1 font-heading text-xl font-bold text-porters-navy sm:text-2xl">{proof.value}</p>
-          <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-black/50">{proof.label}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Pain points -->
+  <!-- Scoping: the five points fixed before a single CV -->
   <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 grid gap-8 lg:grid-cols-[minmax(0,0.78fr)_minmax(18rem,0.42fr)] lg:items-end">
         <div class="reveal">
-          <h2>Une expertise externe ne doit pas créer <span class="gold-underline">une complexité interne</span></h2>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Avant le premier CV</p>
+          <h2>Cinq points cadrés <span class="gold-underline">avant toute proposition</span></h2>
           <p class="mt-4 max-w-2xl" style="color: rgba(11, 16, 32, 0.7);">
-            Le portage salarial structure la relation avec un consultant autonome et centralise le volet contractuel et administratif.
+            Un profil ne se qualifie pas contre une fiche de poste, mais contre un contexte. Ces cinq points
+            sont fixés au cadrage, par écrit.
           </p>
         </div>
         <div class="reveal overflow-hidden rounded-lg border border-porters-navy/10 bg-white shadow-sm">
@@ -119,13 +136,13 @@ const engagementModels = [
             src={collaborationImage.src}
             width={collaborationImage.width}
             height={collaborationImage.height}
-            alt="Préparation financière d'une collaboration avec un consultant indépendant."
+            alt="Réunion de cadrage entre une équipe cliente et un consultant."
             class="h-48 w-full object-cover"
           />
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        {painPoints.map((point) => (
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {scoping.map((point) => (
           <div class="card reveal">
             <div class="icon-chip mb-5">
               <SiteIcon name={point.icon} />
@@ -138,32 +155,54 @@ const engagementModels = [
     </div>
   </section>
 
-  <!-- Benefits -->
+  <!-- The five-step selection process: the corpus's strongest credibility asset -->
   <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-12 reveal">
-        <h2>Ce que votre entreprise <span class="gold-underline">gagne en lisibilité</span></h2>
-        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Un contrat de prestation, une facturation centralisée et un point de contact pour le suivi administratif.
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Notre processus de sélection</p>
+        <h2>Cinq étapes, <span class="gold-underline">les mêmes pour tous les profils</span></h2>
+        <p class="mt-4" style="color: rgba(11, 16, 32, 0.7);">
+          Structuré, homogène, traçable. C’est ce qui permet de comparer deux candidats sur la même grille
+          plutôt que sur une impression d’entretien.
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {enterpriseBenefits.map((benefit) => (
-          <div class="card reveal">
-            <h3 class="text-lg font-heading font-semibold mb-2">{benefit.title}</h3>
-            <p class="text-sm mb-0" style="color: rgba(11, 16, 32, 0.7);">{benefit.description}</p>
-          </div>
+      <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {enterprisePage.selection.map((item) => (
+          <li class="border-t-2 border-porters-gold bg-white p-6 shadow-sm reveal">
+            <span class="font-mono text-sm font-semibold text-porters-gold">{item.step}</span>
+            <h3 class="mt-5 text-lg">{item.title}</h3>
+            <p class="mb-0 mt-3 text-sm leading-relaxed text-porters-black/64">{item.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Sourcing and traceability -->
+  <section class="section bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Sourcing et traçabilité</p>
+        <h2>D’où viennent les profils, et comment ils vous arrivent</h2>
+      </div>
+      <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
+        {sourcing.map((item) => (
+          <article class="border-t border-porters-navy/12 pt-6 reveal">
+            <h3 class="mb-3 text-lg">{item.title}</h3>
+            <p class="mb-0 text-porters-black/66">{item.description}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <!-- Use cases -->
+  <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mx-auto mb-12 max-w-3xl text-center reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Cas d’usage</p>
-        <h2>Des expertises pour les moments où le projet ne peut pas attendre</h2>
-        <p class="mt-4 text-porters-black/65">Le besoin peut être technique, fonctionnel ou organisationnel. Le point commun : une mission définie, des responsabilités lisibles et un suivi proportionné.</p>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Périmètres couverts</p>
+        <h2>Les besoins sur lesquels nous intervenons</h2>
+        <p class="mt-4 text-porters-black/65">Technique, fonctionnel ou organisationnel. Le point commun&nbsp;: une mission définie et des responsabilités lisibles.</p>
       </div>
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {enterprisePage.useCases.map((useCase) => (
@@ -176,14 +215,39 @@ const engagementModels = [
     </div>
   </section>
 
+  <!-- Anonymised project types -->
+  <section class="section bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Types de missions</p>
+        <h2>À quoi ressemblent les missions, concrètement</h2>
+        <p class="mt-4 text-porters-black/65">
+          Trois exemples réels, décrits par leur contexte technique et les profils mobilisés. Les noms de
+          clients ne sont pas publiés.
+        </p>
+      </div>
+      <div class="grid gap-6 lg:grid-cols-3">
+        {projects.map((project) => (
+          <article class="border-l-[3px] border-porters-gold bg-porters-navy/[0.03] p-7 reveal">
+            <h3 class="mb-3 text-lg">{project.title}</h3>
+            <p class="mb-4 text-sm leading-relaxed text-porters-black/68">{project.text}</p>
+            <p class="mb-0 text-xs font-semibold uppercase tracking-[0.1em] text-porters-navy/60">Profils mobilisés</p>
+            <p class="mb-0 mt-1 text-sm text-porters-black/64">{project.profiles}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Engagement model choice -->
   <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mx-auto mb-12 max-w-3xl text-center reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Deux cadres, un besoin bien orienté</p>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Deux cadres contractuels</p>
         <h2>Deux modèles. <span class="gold-underline">Un choix à faire dès le départ.</span></h2>
         <p class="mt-4 text-porters-black/65">
-          Le point de départ n’est pas le statut, mais votre besoin : sécuriser un consultant déjà identifié ou trouver une expertise à mobiliser.
+          Le point de départ n’est pas le statut, mais votre besoin&nbsp;: sécuriser un consultant déjà
+          identifié, ou trouver une expertise à mobiliser.
         </p>
       </div>
       <div class="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
@@ -206,13 +270,13 @@ const engagementModels = [
     </div>
   </section>
 
-  <!-- How it works -->
+  <!-- How we work: the four beats -->
   <section class="section">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="text-center mb-12 reveal">
         <h2>Du besoin à la mission, <span class="gold-underline">sans zone grise</span></h2>
         <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Un processus en quatre étapes pour choisir le bon cadre, contractualiser et suivre la mission.
+          Quatre temps, et à chacun ce que nous prenons en charge.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -227,15 +291,15 @@ const engagementModels = [
     </div>
   </section>
 
-  <!-- CTA band -->
+  <!-- CTA band — copy-bank CB-09 -->
   <section class="section bg-porters-navy text-porters-white">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-porters-white mb-4">
-          Votre besoin est précis ? <span class="gold-underline">Cadrons la collaboration.</span>
+          Un besoin précis à couvrir&nbsp;? <span class="gold-underline">Décrivez le contexte.</span>
         </h2>
         <p class="text-lg mb-8" style="color: rgba(250, 248, 243, 0.8);">
-          Qualifions votre besoin, le bon modèle de collaboration et les prochaines étapes.
+          Nous revenons vers vous avec des profils, pas avec une plaquette.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/contact" class="btn btn-gold">Déposer un besoin</a>
