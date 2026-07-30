@@ -5,11 +5,16 @@ import EnhancedAgencyCoverage from '../components/agencies/EnhancedAgencyCoverag
 import { pageSeo } from '../data/seo.data';
 import { aboutPage } from '../content/pages/about';
 import { expertiseSections } from '../data/expertise-sections.data';
+// Faits publiables uniquement : F-A01 (The Porters, portage salarial, 2016),
+// F-A02 (adhésion FEPS), F-A03 (The Big Porters, ESN IT, 2018).
+// TODO-CLIENT: Q1 / F-A04 — une troisième entité du groupe existe en Région Sud.
+// Son statut public n'est pas tranché (CLIENT_APPROVAL_REQUIRED), elle n'est donc
+// pas nommée ici. À réintégrer si le client valide la visibilité du groupe complet.
 const history = [
-  { marker: '2017', title: 'Les racines de l’écosystème', text: 'L’aventure à l’origine du groupe démarre autour de THE BIG PORTERS, avec une ambition : rapprocher les entreprises de talents qualifiés sur leurs projets numériques.' },
-  { marker: 'Ensuite', title: 'Deux métiers complémentaires', text: 'L’écosystème se structure autour de deux réponses distinctes : l’expertise ESN portée par KwickStart et le portage salarial proposé par The Porters.' },
-  { marker: 'Aujourd’hui', title: 'Un cadre pensé pour les experts IT', text: 'The Porters accompagne des consultants et des entreprises sur des missions cyber, data, IA, cloud, DevOps, produit, projet et transformation.' },
-  { marker: 'La suite', title: 'Rester humain à mesure que le réseau grandit', text: 'La priorité reste la même : une information lisible, un interlocuteur identifiable et un accompagnement adapté à la réalité de chaque mission.' },
+  { marker: '2016', title: 'Le portage salarial, dès l’origine', text: 'The Porters est créée pour porter l’activité de consultants indépendants : un contrat de travail, une paie, une protection sociale, et la liberté de choisir ses missions.' },
+  { marker: '2018', title: 'Une seconde façon d’intervenir', text: 'The Big Porters rejoint le groupe. C’est une ESN spécialisée IT : là où le portage salarie un consultant qui a trouvé sa mission, l’ESN répond à une entreprise qui cherche encore son profil.' },
+  { marker: 'Aujourd’hui', title: 'Deux portes, un même vivier', text: 'Consultant ou entreprise cliente, vous parlez au même groupe. Nous connaissons les métiers cyber, data, IA, cloud, DevOps, produit et agilité parce que nous les plaçons toute l’année.' },
+  { marker: 'Notre cadre', title: 'Adhérents de la FEPS', text: 'The Porters adhère à la Fédération des Entreprises de Portage Salarial. Le portage y est encadré par le Code du travail, l’ANI de 2008 et l’ordonnance du 2 avril 2015.' },
 ];
 ---
 
