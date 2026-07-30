@@ -101,7 +101,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
         <div class="light-hellowork-layout">
           <div class="light-hellowork-copy">
             <p {...cmsAttrs('home.jobs.eyebrow')}>{cmsText('home.jobs.eyebrow')}</p>
-            <span>01</span>
             <h2 {...cmsAttrs('home.jobs.title')}>{cmsText('home.jobs.title')}</h2>
             <strong {...cmsAttrs('home.jobs.description')}>{cmsText('home.jobs.description')}</strong>
             <ul class="light-hellowork-points" aria-label="Repères recrutement">
@@ -569,11 +568,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-weight: 760;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-  }
-  .light-hellowork-copy > span {
-    display: block;
-    color: rgba(40, 55, 67, 0.18);
-    font: 780 clamp(2.7rem, 5vw, 4.2rem)/1 var(--font-mono);
   }
   .light-hellowork-copy h2 {
     margin-top: 0.5rem;
