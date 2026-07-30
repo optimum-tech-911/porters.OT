@@ -3,7 +3,6 @@ import PageLayout from '../layouts/PageLayout.astro';
 import HomeHero from '../components/home/HomeHero.astro';
 import GoogleReviewsBadge from '../components/ui/GoogleReviewsBadge.astro';
 import EnhancedAgencyCoverage from '../components/agencies/EnhancedAgencyCoverage.astro';
-import PresidentVideo from '../components/ui/PresidentVideo.astro';
 import GoogleReviewsMarquee from '../components/ui/GoogleReviewsMarquee.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import { faqGroups } from '../data/faq.data';
@@ -96,9 +95,44 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     </div>
   </section>
 
-  <section class="light-section light-president reveal-fade" data-reveal>
-    <div class="light-container light-president-layout">
-      <PresidentVideo />
+  <section class="light-section light-hellowork-section reveal-fade" data-reveal>
+    <div class="light-container">
+      <div class="light-hellowork-card reveal-up" data-reveal>
+        <div class="light-hellowork-layout">
+          <div class="light-hellowork-copy">
+            <p {...cmsAttrs('home.jobs.eyebrow')}>{cmsText('home.jobs.eyebrow')}</p>
+            <span>01</span>
+            <h2 {...cmsAttrs('home.jobs.title')}>{cmsText('home.jobs.title')}</h2>
+            <strong {...cmsAttrs('home.jobs.description')}>{cmsText('home.jobs.description')}</strong>
+            <ul class="light-hellowork-points" aria-label="Repères recrutement">
+              <li {...cmsAttrs('home.jobs.point.current')}>{cmsText('home.jobs.point.current')}</li>
+              <li {...cmsAttrs('home.jobs.point.direct')}>{cmsText('home.jobs.point.direct')}</li>
+              <li {...cmsAttrs('home.jobs.point.full')}>{cmsText('home.jobs.point.full')}</li>
+            </ul>
+            <div>
+              <a href="https://www.hellowork.com/fr-fr/entreprises/the-porters-171310.html" target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.external_cta')}>{cmsText('home.jobs.external_cta')}</span> <b aria-hidden="true">→</b></a>
+              <a href="/recrutement"><span {...cmsAttrs('home.jobs.internal_cta')}>{cmsText('home.jobs.internal_cta')}</span> <b aria-hidden="true">→</b></a>
+            </div>
+          </div>
+          <div class="light-hellowork-preview" aria-hidden="true">
+            <div class="light-hellowork-orbit"></div>
+            <article class="light-hellowork-panel light-hellowork-panel--primary">
+              <small {...cmsAttrs('home.jobs.preview.platform')}>{cmsText('home.jobs.preview.platform')}</small>
+              <strong {...cmsAttrs('home.jobs.preview.company')}>{cmsText('home.jobs.preview.company')}</strong>
+              <span {...cmsAttrs('home.jobs.preview.status')}>{cmsText('home.jobs.preview.status')}</span>
+            </article>
+            <article class="light-hellowork-panel light-hellowork-panel--floating">
+              <small {...cmsAttrs('home.jobs.preview.focus')}>{cmsText('home.jobs.preview.focus')}</small>
+              <strong {...cmsAttrs('home.jobs.preview.profiles')}>{cmsText('home.jobs.preview.profiles')}</strong>
+            </article>
+            <div class="light-hellowork-tags">
+              <span>Rendez-vous</span>
+              <span>RH</span>
+              <span>Conseil</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -200,15 +234,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   .light-section-heading {
     max-width: 46rem;
     margin-bottom: 3rem;
-  }
-  .light-section-heading > p,
-  .light-offer-copy > p,
-  .light-reviews-header p,
-  .light-proximity-copy > p,
-  .light-faq-copy > p,
-  .light-president-layout {
-    max-width: 46rem;
-    margin-inline: auto;
   }
 
   .light-final-cta p {
@@ -483,6 +508,291 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   }
   .light-offer-detail.is-switching {
     animation: offer-detail-pop 360ms var(--ease-soft);
+  }
+  .light-hellowork-section {
+    padding-block: clamp(1rem, 2.2vw, 1.8rem) clamp(2.2rem, 4vw, 3rem);
+    background:
+      radial-gradient(circle at 70% 30%, rgba(190, 158, 88, 0.08), transparent 26%),
+      linear-gradient(180deg, #f7f4ed 0%, #fbfaf6 100%);
+  }
+  .light-hellowork-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 18rem;
+    margin-inline: auto;
+    width: min(100%, 58rem);
+    border: 1px solid rgba(40, 55, 67, 0.08);
+    border-radius: 8px;
+    padding: clamp(1.5rem, 3vw, 2.35rem);
+    background:
+      radial-gradient(circle at 84% 26%, rgba(190, 158, 88, 0.12), transparent 22%),
+      linear-gradient(135deg, #ffffff 0%, #fcfaf6 100%);
+    box-shadow: 0 24px 60px rgba(40, 55, 67, 0.08);
+    transition:
+      transform var(--motion-medium) var(--ease-soft),
+      box-shadow var(--motion-medium) ease,
+      border-color var(--motion-fast) ease;
+  }
+  .light-hellowork-card:hover,
+  .light-hellowork-card:focus-within {
+    border-color: rgba(190, 158, 88, 0.32);
+    box-shadow: 0 30px 72px rgba(40, 55, 67, 0.12);
+    transform: translateY(-4px);
+  }
+  .light-hellowork-card::after {
+    position: absolute;
+    right: -5rem;
+    bottom: -5.5rem;
+    width: 16rem;
+    aspect-ratio: 1;
+    border: 1px solid rgba(190, 158, 88, 0.22);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2.5rem rgba(190, 158, 88, 0.05);
+    content: "";
+    pointer-events: none;
+  }
+  .light-hellowork-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 43rem;
+  }
+  .light-hellowork-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(15rem, 0.72fr);
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: center;
+  }
+  .light-hellowork-copy > p {
+    margin-bottom: 0.7rem;
+    color: var(--color-porters-gold);
+    font-size: 0.7rem;
+    font-weight: 760;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .light-hellowork-copy > span {
+    display: block;
+    color: rgba(40, 55, 67, 0.18);
+    font: 780 clamp(2.7rem, 5vw, 4.2rem)/1 var(--font-mono);
+  }
+  .light-hellowork-copy h2 {
+    margin-top: 0.5rem;
+    color: var(--color-porters-navy);
+    font-size: clamp(2rem, 3.2vw, 3.15rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+  }
+  .light-hellowork-copy strong {
+    display: block;
+    max-width: 42rem;
+    margin-top: 1rem;
+    color: rgba(40, 55, 67, 0.62);
+    font-size: clamp(0.98rem, 1.28vw, 1.14rem);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+  .light-hellowork-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem 1rem;
+    margin-top: 1.15rem;
+    color: rgba(40, 55, 67, 0.56);
+    font-size: 0.76rem;
+    font-weight: 680;
+  }
+  .light-hellowork-points li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+  .light-hellowork-points li::before {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 50%;
+    background: var(--color-porters-gold);
+    box-shadow: 0 0 0 6px rgba(190, 158, 88, 0.12);
+    content: "";
+    flex: 0 0 auto;
+  }
+  .light-hellowork-copy > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.75rem;
+  }
+  .light-hellowork-copy a {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    gap: 0.7rem;
+    border-radius: 999px;
+    padding-inline: 1.2rem;
+    border: 1px solid rgba(40, 55, 67, 0.12);
+    color: var(--color-porters-navy);
+    font-size: 0.82rem;
+    font-weight: 760;
+    transition:
+      transform var(--motion-fast) var(--ease-soft),
+      border-color var(--motion-fast) ease,
+      box-shadow var(--motion-fast) ease,
+      background-color var(--motion-fast) ease;
+  }
+  .light-hellowork-copy a:first-child {
+    background: var(--color-porters-navy);
+    border-color: var(--color-porters-navy);
+    color: #fff;
+  }
+  .light-hellowork-copy a:hover,
+  .light-hellowork-copy a:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(190, 158, 88, 0.52);
+    box-shadow: 0 16px 38px rgba(40, 55, 67, 0.1);
+    outline: none;
+  }
+  .light-hellowork-copy a:first-child:hover,
+  .light-hellowork-copy a:first-child:focus-visible {
+    background: #2c4454;
+  }
+  .light-hellowork-copy b {
+    color: var(--color-porters-gold);
+    transition: transform var(--motion-fast) var(--ease-soft);
+  }
+  .light-hellowork-copy a:hover b,
+  .light-hellowork-copy a:focus-visible b {
+    transform: translateX(4px);
+  }
+  .light-hellowork-preview {
+    position: relative;
+    min-height: 17rem;
+    animation: hellowork-float 7s ease-in-out infinite;
+  }
+  .light-hellowork-orbit {
+    position: absolute;
+    inset: 1rem 0.8rem 0.6rem 1.2rem;
+    border: 1px dashed rgba(190, 158, 88, 0.34);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+  .light-hellowork-orbit::after {
+    position: absolute;
+    inset: 1rem;
+    border: 1px dashed rgba(40, 55, 67, 0.12);
+    border-radius: 50%;
+    content: "";
+  }
+  .light-hellowork-panel {
+    position: absolute;
+    border: 1px solid rgba(40, 55, 67, 0.08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 38px rgba(40, 55, 67, 0.08);
+    backdrop-filter: blur(10px);
+  }
+  .light-hellowork-panel small {
+    color: var(--color-porters-gold);
+    font-size: 0.6rem;
+    font-weight: 760;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .light-hellowork-panel strong {
+    display: block;
+    margin-top: 0.35rem;
+    color: var(--color-porters-navy);
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+  .light-hellowork-panel span {
+    display: block;
+    margin-top: 0.35rem;
+    color: rgba(40, 55, 67, 0.58);
+    font-size: 0.72rem;
+    line-height: 1.5;
+  }
+  .light-hellowork-panel--primary {
+    top: 0;
+    right: 0;
+    width: 14rem;
+    padding: 1rem;
+    animation: hellowork-drift 6s ease-in-out infinite;
+  }
+  .light-hellowork-panel--floating {
+    top: 6rem;
+    left: 0;
+    width: 14rem;
+    padding: 1rem;
+    animation: hellowork-drift 6.8s ease-in-out -1.5s infinite;
+  }
+  .light-hellowork-tags {
+    position: absolute;
+    top: 14rem;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.45rem;
+    max-width: 14rem;
+  }
+  .light-hellowork-tags span {
+    display: inline-flex;
+    min-height: 2rem;
+    align-items: center;
+    border: 1px solid rgba(190, 158, 88, 0.24);
+    border-radius: 999px;
+    padding-inline: 0.8rem;
+    background: rgba(255, 255, 255, 0.74);
+    color: var(--color-porters-navy);
+    font-size: 0.68rem;
+    font-weight: 720;
+    box-shadow: 0 10px 24px rgba(40, 55, 67, 0.06);
+  }
+  @media (max-width: 700px) {
+    .light-hellowork-card {
+      width: 100%;
+      min-height: 0;
+      margin-left: 0;
+    }
+    .light-hellowork-layout {
+      grid-template-columns: 1fr;
+    }
+    .light-hellowork-preview {
+      min-height: 13.5rem;
+      max-width: 22rem;
+      width: 100%;
+      margin-inline: auto;
+    }
+    .light-hellowork-section {
+      padding-block: 0.75rem 2rem;
+    }
+    .light-hellowork-copy > div {
+      flex-direction: column;
+    }
+    .light-hellowork-copy a {
+      justify-content: center;
+    }
+    .light-hellowork-panel--primary {
+      right: 0;
+      width: min(100%, 13rem);
+    }
+    .light-hellowork-panel--floating {
+      left: 0;
+      width: min(100%, 12rem);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .light-situation-card,
+    .light-faq-list summary span,
+    .light-hellowork-card,
+    .light-hellowork-preview,
+    .light-hellowork-panel--primary,
+    .light-hellowork-panel--floating {
+      transition: none;
+    }
+    .light-hellowork-preview,
+    .light-hellowork-panel--primary,
+    .light-hellowork-panel--floating {
+      animation: none;
+    }
   }
   .light-reviews {
     background: white;
