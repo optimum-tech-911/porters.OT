@@ -2,20 +2,47 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import calculatorImage from '../../images/financial-calculator.webp';
 
+// Les sept prestations couvertes par les frais de gestion, dans l'ordre et les
+// termes du livre blanc The Porters, page « PAS DE FRAIS CACHÉS ».
+// Copie : copy-bank.md CB-12. Faits : F-B12 (RC Pro), F-B13 (garantie financière).
 const included = [
-  'Gestion du contrat de travail et des éléments de paie',
-  'Facturation et suivi administratif de la mission',
-  'Déclarations sociales et documents réglementaires',
-  'Interlocuteur dédié pendant toute la mission',
-  'Accès au simulateur et lecture personnalisée du résultat',
-  'Accompagnement des frais professionnels au réel',
+  {
+    title: 'Avance de trésorerie',
+    // TODO-CLIENT: F-B14 — confirmer que le versement dès le premier mois, avant
+    // règlement de la première facture client, est toujours la pratique en 2026.
+    text: 'Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture.',
+  },
+  {
+    title: 'Apport d’affaires',
+    text: 'Nous vous proposons des missions issues de nos partenaires ; vous restez libre de trouver les vôtres.',
+  },
+  {
+    title: 'Interlocuteur unique',
+    text: 'Une seule personne suit votre dossier.',
+  },
+  {
+    title: 'Gestion administrative complète',
+    text: 'Contrat, facturation, paie, déclarations sociales et fiscales.',
+  },
+  {
+    title: 'Responsabilité civile professionnelle',
+    text: 'Vous êtes couvert en cas de dommage causé chez un client.',
+  },
+  {
+    title: 'Financement des formations',
+    text: 'CPF, OPCO, certifications.',
+  },
+  {
+    title: 'Garantie financière',
+    text: 'Dispositif obligatoire qui sécurise le versement de votre salaire.',
+  },
 ];
 ---
 
 <PageLayout
   seo={{
-    title: 'Tarifs du portage salarial — The Porters',
-    description: 'Comprendre les frais de gestion du portage salarial, les services inclus et les paramètres à valider dans votre simulation The Porters.',
+    title: 'Frais de gestion du portage salarial — The Porters',
+    description: 'Ce que couvrent les frais de gestion The Porters : avance de trésorerie, apport d’affaires, interlocuteur unique, gestion administrative, RC Pro, formations, garantie financière.',
   }}
   breadcrumbs={[{ label: 'Tarifs' }]}
 >
@@ -24,20 +51,21 @@ const included = [
       src={calculatorImage.src}
       width={calculatorImage.width}
       height={calculatorImage.height}
-      alt="Calcul transparent d'une rémunération en portage salarial."
+      alt="Calcul détaillé d’une rémunération en portage salarial."
       class="absolute inset-0 h-full w-full object-cover"
     />
     <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.98)_0%,rgba(18,35,48,0.9)_50%,rgba(18,35,48,0.4)_100%)]"></div>
     <div class="container relative mx-auto flex min-h-[38rem] items-center px-6 py-20 lg:px-8">
       <div class="max-w-3xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Comprendre avant de signer</p>
-        <h1 class="max-w-2xl text-porters-white">Des frais lisibles. Une simulation que vous pouvez questionner.</h1>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Frais de gestion</p>
+        <h1 class="max-w-2xl text-porters-white">Ce que nous prenons, et ce que ça paie.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
-          Une simulation utile distingue le chiffre d’affaires, les frais de gestion, les frais professionnels, les cotisations estimatives et le net projeté. Le taux applicable est confirmé selon votre mission.
+          Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel. Ils couvrent sept prestations,
+          listées ci-dessous. Le taux vous est communiqué avant la signature, pas après.
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/simulateur" class="btn btn-gold">Calculer mon revenu</a>
-          <a href="#inclus" class="btn border-white bg-transparent text-porters-white hover:bg-white hover:text-porters-navy">Voir ce qui est inclus</a>
+          <a href="#inclus" class="btn border-white bg-transparent text-porters-white hover:bg-white hover:text-porters-navy">Voir les sept prestations</a>
         </div>
       </div>
     </div>
@@ -47,21 +75,26 @@ const included = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:gap-20">
         <div class="reveal">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Frais de gestion</p>
-          <p class="font-heading text-[3rem] font-bold leading-none text-porters-navy sm:text-[4.5rem]">Selon votre mission</p>
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Notre taux</p>
+          {/* TODO-CLIENT: F-C15 — le taux de frais de gestion est validé pour publication
+              (copy-plan §13 Q5). Remplacer « Communiqué avant signature » par le taux réel
+              ou la fourchette réelle. Ne jamais estimer ce chiffre. */}
+          <p class="font-heading text-[3rem] font-bold leading-none text-porters-navy sm:text-[4.5rem]">Communiqué avant signature</p>
           <p class="mt-5 max-w-md text-lg leading-relaxed text-porters-black/66">
-            Le niveau de frais et les services inclus dépendent des conditions présentées dans votre simulation et des éléments contractuels validés avant le démarrage.
+            Un seul taux, prélevé sur votre chiffre d’affaires. Il finance les sept prestations ci-contre.
+            Aucun frais de dossier, aucun frais d’entrée, aucun frais de sortie ne s’y ajoute.
           </p>
         </div>
         <div class="reveal">
-          <h2 class="mb-8">Ce que les frais de gestion doivent réellement couvrir</h2>
+          <h2 class="mb-8">Les sept prestations que couvrent nos frais</h2>
           <div class="grid gap-x-8 gap-y-5 sm:grid-cols-2">
-            {included.map((item) => (
+            {included.map((item, index) => (
               <div class="flex items-start gap-3 border-b border-porters-navy/10 pb-5">
-                <svg class="mt-0.5 h-5 w-5 shrink-0 text-porters-gold" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <span class="text-sm font-medium leading-relaxed text-porters-navy">{item}</span>
+                <span class="mt-0.5 shrink-0 font-mono text-sm font-semibold text-porters-gold">0{index + 1}</span>
+                <span class="text-sm leading-relaxed text-porters-navy">
+                  <strong class="font-heading font-semibold">{item.title}</strong>
+                  <span class="mt-1 block text-porters-black/64">{item.text}</span>
+                </span>
               </div>
             ))}
           </div>
@@ -70,22 +103,55 @@ const included = [
     </div>
   </section>
 
+  {/*
+    Ce qui n'est PAS inclus — copy-plan §9.4 : « Une page qui ne liste que des
+    inclusions n'est pas transparente. » copy-bank.md CB-12 laisse cette section
+    en TODO-CLIENT, donc elle n'est pas rédigée ici.
+    TODO-CLIENT: arbitrer entre les deux options proposées, puis remplacer la
+    section « à valider » ci-dessous par la liste réelle des exclusions.
+  */}
   <section class="section bg-porters-navy/[0.03]">
-    <div class="container mx-auto grid gap-12 px-6 lg:grid-cols-3 lg:gap-14 lg:px-8">
-      <div class="reveal">
-        <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">01</p>
-        <h3 class="mb-3">Frais professionnels réels</h3>
-        <p class="mb-0 text-porters-black/64">Le simulateur propose une base de 500 € par mois. Seules les dépenses professionnelles réelles, justifiées et admissibles sont retenues.</p>
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">À valider avant de signer</p>
+        <h2>Ce qui dépend de votre situation, et pas de nos frais</h2>
+        <p class="mt-5 text-porters-black/66">
+          Trois éléments ne sont pas couverts par le taux&nbsp;: ils dépendent de votre activité réelle et
+          se règlent au cadrage de la mission.
+        </p>
       </div>
-      <div class="reveal">
-        <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">02</p>
-        <h3 class="mb-3">Calendrier de paie</h3>
-        <p class="mb-0 text-porters-black/64">Les dates de transmission des éléments d’activité et de versement sont expliquées dans votre convention et confirmées par votre conseiller.</p>
-      </div>
-      <div class="reveal">
-        <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">03</p>
-        <h3 class="mb-3">Conditions de trésorerie</h3>
-        <p class="mb-0 text-porters-black/64">Le traitement des délais de règlement client et toute éventuelle avance doivent être validés explicitement avant la mission.</p>
+      <div class="grid gap-12 lg:grid-cols-3 lg:gap-14">
+        <div class="reveal">
+          <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">01</p>
+          <h3 class="mb-3">Vos frais professionnels</h3>
+          <p class="mb-0 text-porters-black/64">
+            Ils vous sont remboursés, ils ne sont pas financés par les frais de gestion. Seules les dépenses
+            réelles, justifiées et liées à votre activité sont retenues. Le simulateur retient une hypothèse
+            de 500&nbsp;€ par mois&nbsp;; votre situation peut être très différente.
+          </p>
+        </div>
+        <div class="reveal">
+          <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">02</p>
+          <h3 class="mb-3">Votre mutuelle</h3>
+          <p class="mb-0 text-porters-black/64">
+            L’adhésion à la mutuelle collective est à votre initiative. The&nbsp;Porters prend en charge une
+            partie de la cotisation, le reste figure sur votre bulletin.
+            {/* TODO-CLIENT: F-C05 — coût mensuel et part employeur (41,53 € dont 20,77 € en 2024).
+                Chiffres à reconfirmer par la paie avant publication. */}
+          </p>
+        </div>
+        <div class="reveal">
+          <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">03</p>
+          <h3 class="mb-3">Le calendrier de paie</h3>
+          <p class="mb-0 text-porters-black/64">
+            Votre date de versement dépend de la date à laquelle vous transmettez votre compte rendu
+            d’activité. Deux sessions de paie existent&nbsp;; votre conseiller vous indique les échéances
+            applicables.
+            {/* TODO-CLIENT: F-C14 — publier les deux échéances réelles (CRA avant le 20 → paiement
+                entre le 1er et le 5e jour ouvré ; CRA du 20 au 31 → à partir du 10e jour ouvré).
+                Confirmer que le process est inchangé en 2026. */}
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -93,8 +159,8 @@ const included = [
   <section class="bg-porters-navy py-16">
     <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <div class="max-w-2xl reveal">
-        <h2 class="mb-2 text-porters-white">Comprendre votre projection avant de vous engager.</h2>
-        <p class="mb-0 text-porters-white/65">Passez du calcul indicatif à une projection adaptée à votre mission.</p>
+        <h2 class="mb-2 text-porters-white">Une question sur un chiffre&nbsp;? Posez-la avant de signer.</h2>
+        <p class="mb-0 text-porters-white/65">Nous reprenons votre simulation ligne par ligne, avec vos vrais paramètres de mission.</p>
       </div>
       <a href="/rendez-vous" class="btn btn-gold shrink-0">Prendre rendez-vous</a>
     </div>
