@@ -7516,7 +7516,7 @@
     "key": "pages.contact.auto.paragraph.m7k6kn",
     "route": "/contact",
     "type": "paragraph",
-    "content": "Mission déjà trouvée, statut à comparer, simulation à relire, ou un besoin de profil à couvrir. Plus le contexte est précis, plus la réponse l’est. Nous revenons vers vous sous 24 heures ouvrées.",
+    "content": "Mission déjà trouvée, statut à comparer, simulation à relire, ou un besoin de profil à couvrir. Plus le contexte est précis, plus la réponse l’est — et plus vite elle arrive.",
     "rich": true
   },
   {
@@ -12210,10 +12210,17 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.button.1ex0i4z",
+    "key": "pages.portage-salarial.auto.button.19xalun",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Votre quotidien de salarié porté",
+    "content": "Simuler mes revenus",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.1y1094w",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Voir les frais détaillés <span aria-hidden=\"true\">→</span>",
     "rich": true
   },
   {
@@ -12224,17 +12231,17 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.button.4rilwg",
-    "route": "/portage-salarial",
-    "type": "button",
-    "content": "Simuler mes revenus",
-    "rich": true
-  },
-  {
     "key": "pages.portage-salarial.auto.button.nviywh",
     "route": "/portage-salarial",
     "type": "button",
     "content": "Parler à un conseiller",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.r96nfw",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Votre quotidien de salarié porté",
     "rich": true
   },
   {
@@ -12252,6 +12259,13 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.heading.13t58hx",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Exclu",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.heading.1b27ok",
     "route": "/portage-salarial",
     "type": "heading",
@@ -12259,7 +12273,28 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.heading.1e7a93p",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Les services en plus",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.heading.1hlyx01",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Qui peut être porté, <span class=\"gold-underline\">et qui ne peut pas</span>",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.1hv1w3q",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Questions <span class=\"gold-underline\">fréquentes</span>",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.1ia250k",
     "route": "/portage-salarial",
     "type": "heading",
     "content": "Quel cadre correspond à <span class=\"gold-underline\">votre projet</span> ?",
@@ -12276,21 +12311,7 @@
     "key": "pages.portage-salarial.auto.heading.1ot5ix6",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Qui peut être porté, <span class=\"gold-underline\">et qui ne peut pas</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.heading.1qnyctv",
-    "route": "/portage-salarial",
-    "type": "heading",
-    "content": "Le cadre est clair ? <span class=\"gold-underline\">Voyons votre année.</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.heading.1se6xc5",
-    "route": "/portage-salarial",
-    "type": "heading",
-    "content": "Questions <span class=\"gold-underline\">fréquentes</span>",
+    "content": "Ce que vous obtenez <span class=\"gold-underline\">en plus du cadre</span>",
     "rich": true
   },
   {
@@ -12304,7 +12325,7 @@
     "key": "pages.portage-salarial.auto.heading.1vwn037",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Éligible",
+    "content": "Votre trésorerie",
     "rich": true
   },
   {
@@ -12322,10 +12343,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.heading.3i6qhq",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Le cadre est clair ? <span class=\"gold-underline\">Voyons votre année.</span>",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.heading.6bydg2",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Exclu",
+    "content": "Vos frais, sans zone d’ombre",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.b2ff2g",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Éligible",
     "rich": true
   },
   {
@@ -12357,52 +12392,122 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.list_item.12zo078",
-    "route": "/portage-salarial",
-    "type": "list_item",
-    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Cybersécurité, data, IA, cloud, DevOps, architecture",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.list_item.1ay0vyg",
-    "route": "/portage-salarial",
-    "type": "list_item",
-    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Cumul avec un emploi salarié, avec l’accord de l’employeur, ou avec une retraite",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.list_item.1cwbw2k",
-    "route": "/portage-salarial",
-    "type": "list_item",
-    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25\"></span>Les services à la personne",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.list_item.1k5va1t",
-    "route": "/portage-salarial",
-    "type": "list_item",
-    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Mission en France ou à l’étranger, client français ou étranger, télétravail compris",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.list_item.1nm7a4v",
+    "key": "pages.portage-salarial.auto.list_item.12l1fem",
     "route": "/portage-salarial",
     "type": "list_item",
     "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25\"></span>Les professions réglementées",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.list_item.pshzee",
+    "key": "pages.portage-salarial.auto.list_item.12zo078",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Une avance sur salaire est incluse : votre paie ne suit pas le calendrier de règlement de votre client.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1a1wsfi",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Financement de vos formations et certifications : CPF, OPCO.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1cwbw2k",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Aucun frais de dossier, d’entrée ni de sortie.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1h3lmyt",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25\"></span>Les services à la personne",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1nm7a4v",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Un seul taux de frais de gestion, communiqué avant la signature.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.1omw58p",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Cumul avec un emploi salarié, avec l’accord de l’employeur, ou avec une retraite",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.4fozgw",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Mission en France ou à l’étranger, client français ou étranger, télétravail compris",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.5p604e",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Product Ownership, Scrum, coaching agile, transformation",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.70ws6t",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Le détail des sept prestations couvertes est publié, poste par poste.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.bfonsl",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Coaching RH sur votre positionnement et la présentation de votre offre.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.c9j01r",
     "route": "/portage-salarial",
     "type": "list_item",
     "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Chefferie de projet IT, AMOA, conseil",
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.list_item.l7ye4z",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Des missions proposées par nos partenaires, sans exclusivité : vous restez libre de trouver les vôtres.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.pshzee",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Un compte de trésorerie dédié pour lisser une paie, financer des congés ou débloquer un acompte.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.list_item.tdy3x3",
     "route": "/portage-salarial",
     "type": "list_item",
-    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Product Ownership, Scrum, coaching agile, transformation",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Vos frais professionnels sont traités et remboursés, pas laissés à votre comptabilité.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.wnqnad",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Cybersécurité, data, IA, cloud, DevOps, architecture",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.list_item.xy5ty4",
+    "route": "/portage-salarial",
+    "type": "list_item",
+    "content": "<span class=\"mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold\"></span>Un réseau de consultants portés, et des tarifs préférentiels chez nos partenaires.",
     "rich": true
   },
   {
@@ -12410,6 +12515,13 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Partie 1 · Le cadre",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.13cpd3u",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "À qui s'adresse le portage salarial ?",
     "rich": true
   },
   {
@@ -12424,20 +12536,6 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Le portage salarial est une forme d’emploi encadrée par le Code du travail, l’accord national interprofessionnel de 2008 et l’ordonnance du 2 avril 2015. Il repose sur une relation tripartite entre le <strong>salarié porté</strong>, la <strong>société de portage</strong> et l’<strong>entreprise cliente</strong>.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1asucu7",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Le portage salarial est-il encadré par la loi ?",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1ddxuuo",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Le portage salarial s'adresse à tous les professionnels qui souhaitent exercer une activité de consultant ou de prestataire de services : cadres en reconversion, freelances, retraités actifs, jeunes diplômés ou salariés en quête d'indépendance.",
     "rich": true
   },
   {
@@ -12459,6 +12557,20 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Vous gardez toutes les décisions commerciales. Vous déléguez le cadre social, contractuel et administratif.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1etr6h7",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Oui. Le portage salarial est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1f14geh",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Quel est le coût du portage salarial ?",
     "rich": true
   },
   {
@@ -12490,17 +12602,17 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1nzigs2",
+    "key": "pages.portage-salarial.auto.paragraph.1musbsk",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Le portage couvre les prestations intellectuelles. Deux familles en sont exclues par la loi.",
+    "content": "Le portage salarial est-il encadré par la loi ?",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1pl5hlo",
+    "key": "pages.portage-salarial.auto.paragraph.1nzigs2",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Qu'est-ce que le portage salarial ?",
+    "content": "Notre offre",
     "rich": true
   },
   {
@@ -12525,27 +12637,6 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1reuf3",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Oui, il est possible de cumuler portage salarial et allocations chômage sous certaines conditions. En tant que salarié porté, vous cotisez également à l'assurance chômage pour vos droits futurs.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1rfopjk",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Peut-on cumuler portage salarial et chômage ?",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1rz567m",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Oui. Le portage salarial est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.",
-    "rich": true
-  },
-  {
     "key": "pages.portage-salarial.auto.paragraph.1vbfg3j",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -12567,10 +12658,45 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.2gts4d",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Vous restez maître de vos décisions, de votre planning et propriétaire de votre clientèle. Les démarches administratives, fiscales, comptables et juridiques passent chez nous.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.41a61h",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Le consultant",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.41bvfy",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Entrée, premier salaire, congés, arrêt maladie, trésorerie, sortie : la suite du parcours, mois par mois.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.48q46g",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Le cumul avec un emploi salarié est plafonné à 48 heures de travail hebdomadaire, tous employeurs confondus.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.7socgn",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Qu'est-ce que le portage salarial ?",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.88uo1f",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Peut-on cumuler portage salarial et chômage ?",
     "rich": true
   },
   {
@@ -12581,10 +12707,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.a5uuc",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Les frais de gestion couvrent l'ensemble des services d'accompagnement : gestion administrative, facturation, déclarations sociales, assurance RC Pro et suivi personnalisé. Contactez-nous pour obtenir un devis adapté à votre situation.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.cnhf9n",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Mission réalisée",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.co3quh",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Le portage salarial s'adresse à tous les professionnels qui souhaitent exercer une activité de consultant ou de prestataire de services : cadres en reconversion, freelances, retraités actifs, jeunes diplômés ou salariés en quête d'indépendance.",
     "rich": true
   },
   {
@@ -12616,38 +12756,10 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.gdhka1",
+    "key": "pages.portage-salarial.auto.paragraph.m29l4s",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Entrée, premier salaire, congés, arrêt maladie, trésorerie, sortie : la suite du parcours, mois par mois.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.ilprst",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "À qui s'adresse le portage salarial ?",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.m6eo8j",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Le portage salarial est une forme d'emploi qui permet à un professionnel indépendant de bénéficier du statut de salarié tout en exerçant son activité en toute autonomie. La société de portage gère l'ensemble des aspects administratifs, juridiques et comptables.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.nsgejy",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Quel est le coût du portage salarial ?",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.oyq3hh",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Les frais de gestion couvrent l'ensemble des services d'accompagnement : gestion administrative, facturation, déclarations sociales, assurance RC Pro et suivi personnalisé. Contactez-nous pour obtenir un devis adapté à votre situation.",
+    "content": "Comparez l’autonomie, la protection sociale, la gestion et les coûts avant de choisir.",
     "rich": true
   },
   {
@@ -12686,17 +12798,31 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.x7sxdp",
+    "key": "pages.portage-salarial.auto.paragraph.x8z63d",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Le cumul avec un emploi salarié est plafonné à 48 heures de travail hebdomadaire, tous employeurs confondus.",
+    "content": "Le cadre légal, tout le monde l’applique. Voici ce qui s’y ajoute chez nous, et que vous n’avez pas à négocier ligne par ligne.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.xpccwa",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Le portage salarial est une forme d'emploi qui permet à un professionnel indépendant de bénéficier du statut de salarié tout en exerçant son activité en toute autonomie. La société de portage gère l'ensemble des aspects administratifs, juridiques et comptables.",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.xxeyen",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Comparez l’autonomie, la protection sociale, la gestion et les coûts avant de choisir.",
+    "content": "Le portage couvre les prestations intellectuelles. Deux familles en sont exclues par la loi.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.z9qe2m",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Oui, il est possible de cumuler portage salarial et allocations chômage sous certaines conditions. En tant que salarié porté, vous cotisez également à l'assurance chômage pour vos droits futurs.",
     "rich": true
   },
   {
@@ -15985,7 +16111,7 @@
     "key": "pages.rendez-vous.auto.paragraph.t905hv",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Nous revenons vers vous sous 24 heures ouvrées pour fixer le créneau.",
+    "content": "Vous choisissez vos disponibilités ; nous confirmons le créneau et le nom de votre interlocuteur par email.",
     "rich": true
   },
   {
