@@ -6,10 +6,22 @@
     "content": "Portage salarial · Experts IT"
   },
   {
-    "key": "home.hero.editorial.title",
+    "key": "home.hero.editorial.title_line_1",
     "route": "/",
     "type": "heading",
-    "content": "Votre mission.\nVotre liberté.\nUn salaire chaque mois."
+    "content": "Votre mission."
+  },
+  {
+    "key": "home.hero.editorial.title_line_2",
+    "route": "/",
+    "type": "heading",
+    "content": "Votre liberté."
+  },
+  {
+    "key": "home.hero.editorial.title_line_3",
+    "route": "/",
+    "type": "heading",
+    "content": "Un salaire chaque mois."
   },
   {
     "key": "home.hero.editorial.description",

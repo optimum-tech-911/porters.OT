@@ -289,7 +289,7 @@ const active = (href: string) => {
 
 <style>
   .tp-site-header {
-    --tp-header-height: 5.75rem;
+    --tp-header-height: 6.5rem;
     position: fixed;
     inset: 0 0 auto;
     z-index: 80;
@@ -351,7 +351,7 @@ const active = (href: string) => {
     width: min(100% - 3rem, 105rem);
     height: var(--tp-header-height);
     align-items: center;
-    gap: clamp(1.1rem, 2.2vw, 2.5rem);
+    gap: clamp(1.6rem, 2.8vw, 3.4rem);
     margin-inline: auto;
   }
 
@@ -369,11 +369,12 @@ const active = (href: string) => {
     display: flex;
     width: max-content;
     flex: 0 0 auto;
+    margin-right: 1.2rem;
     color: #fff;
   }
 
   .tp-header-brand .brand-wordmark {
-    transform: scale(0.9);
+    transform: scale(1.32);
     transform-origin: left center;
     transition: transform 320ms var(--ease-soft), filter 220ms ease;
   }
@@ -381,7 +382,7 @@ const active = (href: string) => {
   .tp-header-brand:hover .brand-wordmark,
   .tp-header-brand:focus-visible .brand-wordmark {
     filter: drop-shadow(0 0 15px rgba(190, 158, 88, 0.3));
-    transform: scale(0.94);
+    transform: scale(1.36);
   }
 
   .tp-header-brand :global(.brand-wordmark-the),
@@ -400,7 +401,7 @@ const active = (href: string) => {
   .tp-nav-direct {
     position: relative;
     color: rgba(255, 255, 255, 0.86);
-    font-size: clamp(0.86rem, 0.92vw, 1rem);
+    font-size: clamp(0.94rem, 1vw, 1.08rem);
     font-weight: 760;
     line-height: 1;
     white-space: nowrap;
@@ -426,6 +427,12 @@ const active = (href: string) => {
     align-items: center;
     min-height: 2.9rem;
     padding-inline: 0.55rem;
+  }
+
+  .tp-desktop-nav > .tp-nav-direct:first-child {
+    min-height: 3.2rem;
+    padding-inline: 0.8rem;
+    font-size: clamp(1rem, 1.08vw, 1.16rem);
   }
 
   .tp-desktop-actions {
@@ -480,7 +487,7 @@ const active = (href: string) => {
 
   .tp-nav-popover {
     position: absolute;
-    top: 5.15rem;
+    top: 5.65rem;
     left: 50%;
     display: grid;
     width: min(22rem, calc(100vw - 2rem));
@@ -500,15 +507,11 @@ const active = (href: string) => {
       transform 240ms var(--ease-soft);
   }
 
-  /*
-   * "Le groupe" is the last entry before the logo, so this panel is anchored to
-   * the entry's right edge and grows leftward. That keeps its extra width clear
-   * of the centred wordmark instead of overlapping it.
-   */
+  /* Le groupe now sits near the left edge: the panel must grow rightward. */
   .tp-nav-popover--group {
-    left: auto;
-    right: 0;
-    width: min(30rem, calc(100vw - 2rem));
+    left: 0;
+    right: auto;
+    width: min(24rem, calc(100vw - 2rem));
     transform: translate3d(0, 10px, 0) scale(0.985);
   }
 
@@ -798,15 +801,15 @@ const active = (href: string) => {
 
   .tp-appointment-link {
     display: inline-flex;
-    min-height: 2.8rem;
+    min-height: 3.2rem;
     align-items: center;
     justify-content: center;
-    gap: 0.45rem;
+    gap: 0.58rem;
     border-radius: 999px;
-    padding-inline: 1.15rem;
+    padding-inline: 1.55rem;
     background: #be9e58;
     color: #10202b;
-    font-size: 0.78rem;
+    font-size: 0.86rem;
     font-weight: 820;
     white-space: nowrap;
     transition:
@@ -838,7 +841,7 @@ const active = (href: string) => {
   }
 
   .tp-header-spacer {
-    height: var(--tp-header-height, 5.75rem);
+    height: var(--tp-header-height, 6.5rem);
   }
 
   @media (max-width: 1240px) {
@@ -863,16 +866,17 @@ const active = (href: string) => {
 
     .tp-header-brand {
       justify-self: start;
+      margin-right: 0;
     }
 
     .tp-header-brand .brand-wordmark {
-      transform: scale(1.08);
+      transform: scale(1.22);
       transform-origin: left center;
     }
 
     .tp-header-brand:hover .brand-wordmark,
     .tp-header-brand:focus-visible .brand-wordmark {
-      transform: scale(1.12);
+      transform: scale(1.26);
     }
 
     .tp-mobile-appointment {

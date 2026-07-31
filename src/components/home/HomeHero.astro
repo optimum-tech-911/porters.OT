@@ -19,6 +19,12 @@ const trustPoints = [
     note: 'Cyber, data, cloud, produit et agilité',
   },
 ];
+
+const heroTitleLines = [
+  { key: 'home.hero.editorial.title_line_1', accent: false },
+  { key: 'home.hero.editorial.title_line_2', accent: false },
+  { key: 'home.hero.editorial.title_line_3', accent: true },
+];
 ---
 
 <section class="editorial-hero" aria-labelledby="home-hero-title">
@@ -30,10 +36,13 @@ const trustPoints = [
 
       <h1
         id="home-hero-title"
-        class="editorial-hero__title cms-preserve-lines"
-        {...cmsAttrs('home.hero.editorial.title')}
+        class="editorial-hero__title"
       >
-        {cmsText('home.hero.editorial.title')}
+        {heroTitleLines.map((line) => (
+          <span class:list={['editorial-hero__title-line', { 'is-accent': line.accent }]}>
+            <span {...cmsAttrs(line.key)}>{cmsText(line.key)}</span>
+          </span>
+        ))}
       </h1>
 
       <p class="editorial-hero__description" {...cmsAttrs('home.hero.editorial.description')}>
@@ -109,18 +118,18 @@ const trustPoints = [
   .editorial-hero__shell {
     display: grid;
     width: min(100% - 3rem, 96rem);
-    min-height: clamp(42rem, calc(100svh - 5.75rem), 56rem);
-    grid-template-columns: minmax(0, 0.82fr) minmax(31rem, 1.18fr);
+    min-height: clamp(43rem, calc(100svh - 6.5rem), 58rem);
+    grid-template-columns: minmax(0, 0.88fr) minmax(31rem, 1.12fr);
     align-items: center;
-    gap: clamp(3rem, 7vw, 8rem);
+    gap: clamp(2.8rem, 5vw, 5.5rem);
     margin-inline: auto;
-    padding-block: clamp(4.5rem, 8vw, 7rem);
+    padding-block: clamp(3rem, 5vw, 4.5rem) clamp(2.5rem, 4vw, 3.5rem);
   }
 
   .editorial-hero__copy {
     position: relative;
     z-index: 2;
-    max-width: 42rem;
+    max-width: 45rem;
   }
 
   .editorial-hero__eyebrow {
@@ -133,30 +142,32 @@ const trustPoints = [
   }
 
   .editorial-hero__title {
-    max-width: 10ch;
+    max-width: 12ch;
     margin: 0;
     color: var(--hero-ink);
     font-family: "Newsreader", "Iowan Old Style", "Baskerville", Georgia, serif;
-    font-size: clamp(4.25rem, 7vw, 7.6rem);
+    font-size: clamp(3.9rem, 4vw, 4.4rem);
     font-weight: 480;
-    letter-spacing: -0.065em;
-    line-height: 0.83;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
     text-wrap: balance;
-    white-space: pre-line;
   }
 
-  .editorial-hero__title::after {
+  .editorial-hero__title-line {
     display: block;
-    width: min(10rem, 34%);
-    height: 2px;
-    margin-top: 1.65rem;
-    background: var(--hero-gold);
-    content: "";
+  }
+
+  .editorial-hero__title-line.is-accent > span {
+    padding-inline: 0.08em;
+    background: linear-gradient(transparent 68%, rgba(198, 164, 90, 0.28) 68%);
+    box-decoration-break: clone;
+    border-bottom: 2px solid rgba(164, 127, 52, 0.78);
+    -webkit-box-decoration-break: clone;
   }
 
   .editorial-hero__description {
     max-width: 39rem;
-    margin: 1.55rem 0 0;
+    margin: 1.4rem 0 0;
     color: rgba(32, 52, 64, 0.68);
     font-size: clamp(0.95rem, 1.25vw, 1.1rem);
     line-height: 1.72;
@@ -166,7 +177,7 @@ const trustPoints = [
     display: flex;
     flex-wrap: wrap;
     gap: 0.7rem;
-    margin-top: 2rem;
+    margin-top: 1.75rem;
   }
 
   .editorial-hero__action {
@@ -223,33 +234,33 @@ const trustPoints = [
 
   .editorial-hero__visual {
     position: relative;
-    min-height: clamp(33rem, 48vw, 45rem);
+    min-height: clamp(38rem, 47vw, 48rem);
     isolation: isolate;
   }
 
   .editorial-hero__navy {
     position: absolute;
-    top: 3%;
+    top: 0;
     right: -20vw;
-    bottom: 5%;
-    left: 13%;
+    bottom: 7%;
+    left: 15%;
     z-index: -2;
     background: var(--hero-navy);
   }
 
   .editorial-hero__gold-frame {
     position: absolute;
-    top: 1%;
+    top: 4%;
     right: 2%;
-    bottom: 15%;
-    left: 3%;
+    bottom: 0;
+    left: 4%;
     z-index: -1;
     border: 1px solid rgba(198, 164, 90, 0.72);
   }
 
   .editorial-hero__visual figure {
     position: absolute;
-    inset: 8% 8% 0 12%;
+    inset: 4% 9% 4% 10%;
     margin: 0;
     overflow: hidden;
     background: #d8d3c8;
@@ -271,7 +282,7 @@ const trustPoints = [
   .editorial-hero__service-note {
     position: absolute;
     right: 0;
-    bottom: 8%;
+    bottom: 1%;
     z-index: 2;
     display: grid;
     width: min(21rem, 70%);
@@ -368,7 +379,7 @@ const trustPoints = [
     }
 
     .editorial-hero__title {
-      font-size: clamp(3.8rem, 7.5vw, 6.4rem);
+      font-size: clamp(3.7rem, 6.5vw, 4.35rem);
     }
 
     .editorial-hero__trust {
