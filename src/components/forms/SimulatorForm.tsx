@@ -1,5 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NumericSliderField from './NumericSliderField';
+import { supabase } from '../../lib/supabase';
+import {
+  defaultSimulatorSettings,
+  parseSimulatorSettings,
+  SIMULATOR_SETTINGS_KEY,
+} from '../../data/simulator-settings';
 
 type Scenario = {
   id: string;
@@ -47,25 +53,42 @@ const scenarios: Scenario[] = [
   },
 ];
 
-const SOCIAL_CHARGE_RATE = 0.45;
-
-/** Fixed hypothesis for every simulation; deliberately not user-adjustable. */
-const FRAIS_PRO_MENSUELS = 500;
-
 export default function SimulatorForm() {
+  const [settings, setSettings] = useState(defaultSimulatorSettings);
   const [mode, setMode] = useState<SimulatorMode>('portage');
   const activeScenario = scenarios[1];
-  const [tjm, setTjm] = useState<number>(scenarios[1].tjm);
-  const [jours, setJours] = useState<number>(scenarios[1].jours);
-  const [monthlyRevenue, setMonthlyRevenue] = useState<number>(scenarios[1].tjm * scenarios[1].jours);
-  const managementRatePercent = 10;
+  const [tjm, setTjm] = useState<number>(defaultSimulatorSettings.defaultTjm);
+  const [jours, setJours] = useState<number>(defaultSimulatorSettings.defaultWorkedDays);
+  const [monthlyRevenue, setMonthlyRevenue] = useState<number>(defaultSimulatorSettings.defaultMonthlyRevenue);
   const [leadSent, setLeadSent] = useState(false);
 
-  const frais = FRAIS_PRO_MENSUELS;
+  useEffect(() => {
+    let active = true;
+    void supabase
+      .from('cms_published_content')
+      .select('published_content')
+      .eq('content_key', SIMULATOR_SETTINGS_KEY)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (!active || !data?.published_content) return;
+        const next = parseSimulatorSettings(data.published_content);
+        setSettings(next);
+        setTjm(next.defaultTjm);
+        setJours(next.defaultWorkedDays);
+        setMonthlyRevenue(next.defaultMonthlyRevenue);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const managementRatePercent = settings.managementFeePercent;
+  const socialChargeRate = settings.socialChargesPercent / 100;
+  const frais = settings.monthlyExpenses;
   const ca = mode === 'freelance' ? tjm * jours : monthlyRevenue;
   const fraisGestion = mode === 'portage' ? ca * (managementRatePercent / 100) : 0;
   const baseAvantCharges = ca - fraisGestion - frais;
-  const chargesSociales = baseAvantCharges > 0 ? baseAvantCharges * SOCIAL_CHARGE_RATE : 0;
+  const chargesSociales = baseAvantCharges > 0 ? baseAvantCharges * socialChargeRate : 0;
   const netMensuel = baseAvantCharges > 0 ? baseAvantCharges - chargesSociales : 0;
   const retentionRate = ca > 0 ? (netMensuel / ca) * 100 : 0;
   const freelanceAvailable = Math.max(ca - frais, 0);
@@ -104,7 +127,7 @@ export default function SimulatorForm() {
       type: 'negative',
     },
     {
-      label: 'Charges sociales estimatives (~45 %)',
+      label: `Charges sociales estimatives (~${formatPercent(settings.socialChargesPercent)} %)`,
       value: `- ${formatCurrency(chargesSociales)}`,
       type: 'negative',
     },
@@ -146,7 +169,7 @@ export default function SimulatorForm() {
           <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">Simulateur 01</span>
           <strong className="mt-2 block font-heading text-xl">Portage salarial</strong>
           <span className={`mt-2 block text-sm leading-relaxed ${mode === 'portage' ? 'text-white/68' : 'text-porters-black/58'}`}>
-            Estimez votre salaire à partir du chiffre d’affaires mensuel. Le TJM n’est pas affiché dans ce parcours.
+            {settings.portageDescription}
           </span>
         </button>
         <button
@@ -163,7 +186,7 @@ export default function SimulatorForm() {
           <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">Simulateur 02</span>
           <strong className="mt-2 block font-heading text-xl">Activité freelance</strong>
           <span className={`mt-2 block text-sm leading-relaxed ${mode === 'freelance' ? 'text-white/68' : 'text-porters-black/58'}`}>
-            Calculez votre chiffre d’affaires avec un TJM et un nombre de jours facturés, sans l’assimiler à un salaire net.
+            {settings.freelanceDescription}
           </span>
         </button>
       </div>
@@ -234,7 +257,7 @@ export default function SimulatorForm() {
               <div className="flex items-baseline justify-between gap-4">
                 <span className="form-label mb-0">Frais professionnels</span>
                 <strong className="font-heading text-xl font-bold text-porters-navy">
-                  {formatCurrency(FRAIS_PRO_MENSUELS)} / mois
+                  {formatCurrency(settings.monthlyExpenses)} / mois
                 </strong>
               </div>
               <p className="mt-1 mb-0 text-xs text-porters-black/55">
@@ -306,7 +329,7 @@ export default function SimulatorForm() {
             <div className="mt-6 rounded-lg border border-porters-gold/30 bg-porters-gold/10 p-4">
               <p className="text-sm leading-relaxed text-porters-white/78">
                 {mode === 'portage'
-                  ? "Cette estimation donne une première lecture. Un conseiller peut ensuite affiner les paramètres de votre situation, la mutuelle et les éléments contractuels."
+                  ? settings.resultDisclaimer
                   : "Ce parcours calcule le chiffre d'affaires, pas un revenu net. Les cotisations et impôts dépendent du statut freelance choisi."}
               </p>
             </div>
@@ -442,8 +465,7 @@ export default function SimulatorForm() {
 
       <div className="flex flex-col gap-3 rounded-lg border border-porters-navy/10 bg-porters-navy/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between">
         <p className="mb-0 text-sm leading-relaxed text-porters-black/58">
-          Simulation indicative, non contractuelle. Les montants réels varient selon votre
-          situation, les paramètres sociaux et les conditions validées ensemble.
+          {settings.legalNotice}
         </p>
         <a href="/rendez-vous" className="btn btn-primary shrink-0">
           Affiner ma simulation

@@ -1,17 +1,20 @@
-/**
- * AdminCalculatorContent — Calculator formula settings + submissions table
- * TODO: Formula settings should be stored in Supabase and versioned.
- * TODO: Implement formula versioning so historical submissions reference the
- *       correct formula at the time of calculation.
- */
-import { useState, useMemo } from 'react';
+/** Administer the live simulator assumptions and review calculator leads. */
+import { useEffect, useState, useMemo } from 'react';
 import AdminPageHeader from '../AdminPageHeader';
 import AdminChartCard from '../AdminChartCard';
 import AdminFilterBar, { type FilterConfig } from '../AdminFilterBar';
 import AdminTable, { type Column } from '../AdminTable';
 import AdminStatusBadge from '../AdminStatusBadge';
-import { formulaSettings, calculatorSubmissions } from '../../../data/admin-demo.data';
+import { calculatorSubmissions } from '../../../data/admin-demo.data';
 import type { CalculatorSubmission } from '../../../types/admin';
+import { supabase } from '../../../lib/supabase';
+import {
+  defaultSimulatorSettings,
+  parseSimulatorSettings,
+  SIMULATOR_SETTINGS_KEY,
+  SIMULATOR_SETTINGS_ROUTE,
+  type SimulatorSettings,
+} from '../../../data/simulator-settings';
 
 const filters: FilterConfig[] = [
   {
@@ -41,6 +44,84 @@ function formatDate(dateStr: string): string {
 
 export default function AdminCalculatorContent() {
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
+  const [settings, setSettings] = useState<SimulatorSettings>(defaultSimulatorSettings);
+  const [settingsExist, setSettingsExist] = useState(false);
+  const [loadingSettings, setLoadingSettings] = useState(true);
+  const [savingSettings, setSavingSettings] = useState(false);
+  const [settingsNotice, setSettingsNotice] = useState('');
+  const [settingsError, setSettingsError] = useState('');
+
+  useEffect(() => {
+    let active = true;
+    void supabase
+      .from('cms_content_blocks')
+      .select('draft_content')
+      .eq('content_key', SIMULATOR_SETTINGS_KEY)
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (!active) return;
+        if (error) setSettingsError('Les paramètres du simulateur n’ont pas pu être chargés.');
+        if (data?.draft_content) {
+          setSettings(parseSimulatorSettings(data.draft_content));
+          setSettingsExist(true);
+        }
+        setLoadingSettings(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  function updateSetting<K extends keyof SimulatorSettings>(key: K, value: SimulatorSettings[K]) {
+    setSettings((current) => ({ ...current, [key]: value }));
+    setSettingsNotice('');
+    setSettingsError('');
+  }
+
+  async function saveSettings() {
+    const normalized = parseSimulatorSettings(settings);
+    setSettings(normalized);
+    setSavingSettings(true);
+    setSettingsNotice('');
+    setSettingsError('');
+    const payload = JSON.stringify(normalized);
+
+    if (!settingsExist) {
+      const { error: createError } = await supabase.rpc('cms_create_content_block', {
+        requested_key: SIMULATOR_SETTINGS_KEY,
+        requested_route: SIMULATOR_SETTINGS_ROUTE,
+        requested_element_type: 'paragraph',
+        requested_fallback: payload,
+      });
+      if (createError && createError.code !== '23505') {
+        setSavingSettings(false);
+        setSettingsError(createError.message || 'Impossible d’initialiser les paramètres.');
+        return;
+      }
+      setSettingsExist(true);
+    }
+
+    const { error: draftError } = await supabase.rpc('cms_save_draft', {
+      requested_key: SIMULATOR_SETTINGS_KEY,
+      requested_content: payload,
+      requested_format: {},
+    });
+    if (draftError) {
+      setSavingSettings(false);
+      setSettingsError(draftError.message || 'Le brouillon n’a pas pu être enregistré.');
+      return;
+    }
+
+    const { error: publishError } = await supabase.rpc('cms_publish_content', {
+      requested_key: SIMULATOR_SETTINGS_KEY,
+    });
+    setSavingSettings(false);
+    if (publishError) {
+      setSettingsError(publishError.message || 'Les paramètres n’ont pas pu être publiés.');
+      return;
+    }
+    setSettingsNotice('Paramètres publiés. Ils sont maintenant utilisés par le simulateur.');
+  }
 
   const filtered = useMemo(() => {
     return calculatorSubmissions.filter((sub) => {
@@ -111,47 +192,72 @@ export default function AdminCalculatorContent() {
         subtitle="Gestion de la formule de calcul et des soumissions"
       />
 
-      {/* Formula Settings Card */}
       <AdminChartCard
-        title="Paramètres de la formule"
-        subtitle={`Version ${formulaSettings.version} — Dernière mise à jour : ${new Date(formulaSettings.lastUpdated).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}`}
+        title="Paramètres publiés du simulateur"
+        subtitle="Ces valeurs et textes alimentent directement le simulateur public. Chaque publication est versionnée dans le CMS."
       >
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.5rem' }}>
-          <div>
-            <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', color: 'var(--admin-text-secondary)', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
-              Frais de gestion
-            </div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#192B63' }}>
-              {formulaSettings.managementFeePercent}%
-            </div>
+        <fieldset disabled={loadingSettings || savingSettings} style={{ border: 0, padding: 0, margin: 0 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
+            {([
+              ['managementFeePercent', 'Frais de gestion (%)', 0, 30, 0.1],
+              ['socialChargesPercent', 'Charges sociales (%)', 0, 70, 0.1],
+              ['monthlyExpenses', 'Frais professionnels (€)', 0, 10000, 50],
+              ['defaultMonthlyRevenue', 'CA mensuel par défaut (€)', 3000, 25000, 100],
+              ['defaultTjm', 'TJM par défaut (€)', 250, 1200, 10],
+              ['defaultWorkedDays', 'Jours facturés par défaut', 4, 22, 1],
+            ] as const).map(([key, label, min, max, step]) => (
+              <label key={key} style={{ display: 'grid', gap: '0.4rem' }}>
+                <span style={{ fontSize: '0.6875rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--admin-text-secondary)', letterSpacing: '0.05em' }}>
+                  {label}
+                </span>
+                <input
+                  type="number"
+                  min={min}
+                  max={max}
+                  step={step}
+                  value={settings[key]}
+                  onChange={(event) => updateSetting(key, Number(event.target.value))}
+                  style={{ minHeight: '2.75rem', border: '1px solid var(--admin-border)', borderRadius: '8px', padding: '0.65rem 0.75rem', color: '#192B63', background: '#fff', font: 'inherit', fontWeight: 650 }}
+                />
+              </label>
+            ))}
           </div>
-          <div>
-            <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', color: 'var(--admin-text-secondary)', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
-              Charges sociales estimées
-            </div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#192B63' }}>
-              {formulaSettings.socialChargesPercent}%
-            </div>
+
+          <div style={{ display: 'grid', gap: '1rem', marginTop: '1.5rem' }}>
+            {([
+              ['portageDescription', 'Texte du parcours portage'],
+              ['freelanceDescription', 'Texte du parcours freelance'],
+              ['resultDisclaimer', 'Précision sous le résultat'],
+              ['legalNotice', 'Mention indicative en bas de page'],
+            ] as const).map(([key, label]) => (
+              <label key={key} style={{ display: 'grid', gap: '0.4rem' }}>
+                <span style={{ fontSize: '0.6875rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--admin-text-secondary)', letterSpacing: '0.05em' }}>
+                  {label}
+                </span>
+                <textarea
+                  rows={2}
+                  maxLength={1000}
+                  value={settings[key]}
+                  onChange={(event) => updateSetting(key, event.target.value)}
+                  style={{ width: '100%', resize: 'vertical', border: '1px solid var(--admin-border)', borderRadius: '8px', padding: '0.75rem', color: '#192B63', background: '#fff', font: 'inherit', lineHeight: 1.5 }}
+                />
+              </label>
+            ))}
           </div>
-          <div>
-            <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', color: 'var(--admin-text-secondary)', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
-              Jours travaillés par défaut
-            </div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#192B63' }}>
-              {formulaSettings.defaultWorkedDays}
-            </div>
-          </div>
-          <div>
-            <div style={{ fontSize: '0.6875rem', fontWeight: 600, textTransform: 'uppercase', color: 'var(--admin-text-secondary)', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
-              Version formule
-            </div>
-            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#192B63', fontFamily: 'monospace' }}>
-              {formulaSettings.version}
-            </div>
-          </div>
+        </fieldset>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.8rem', marginTop: '1.25rem' }}>
+          <button
+            type="button"
+            onClick={() => void saveSettings()}
+            disabled={loadingSettings || savingSettings}
+            style={{ minHeight: '2.75rem', border: 0, borderRadius: '999px', padding: '0.7rem 1.2rem', background: '#192B63', color: '#fff', font: 'inherit', fontWeight: 700, cursor: loadingSettings || savingSettings ? 'wait' : 'pointer', opacity: loadingSettings || savingSettings ? 0.65 : 1 }}
+          >
+            {loadingSettings ? 'Chargement…' : savingSettings ? 'Publication…' : 'Enregistrer et publier'}
+          </button>
+          {settingsNotice && <p role="status" style={{ margin: 0, color: '#2d7a4f', fontSize: '0.82rem', fontWeight: 650 }}>{settingsNotice}</p>}
+          {settingsError && <p role="alert" style={{ margin: 0, color: '#b42318', fontSize: '0.82rem', fontWeight: 650 }}>{settingsError}</p>}
         </div>
-
-
       </AdminChartCard>
 
       {/* Submissions Table */}

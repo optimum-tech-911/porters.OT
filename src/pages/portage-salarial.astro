@@ -161,20 +161,32 @@ const faqItems = [
   <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">La répartition est simple</p>
-        <h2>Vous exercez votre métier. Nous tenons le cadre.</h2>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Vous vous concentrez sur votre activité, nous assurons le cadre administratif, juridique et social.</p>
+        <h2>Pourquoi choisir le portage salarial&nbsp;?</h2>
       </div>
-      <div class="portage-benefits">
-        {benefits.map((benefit, index) => (
-          <article class="portage-benefit reveal">
-            <span class="portage-benefit-index">0{index + 1}</span>
-            <div class="icon-chip"><SiteIcon name={benefit.icon} /></div>
-            <div>
-              <h3>{benefit.title}</h3>
-              <p>{benefit.description}</p>
-            </div>
-          </article>
-        ))}
+      <div class="portage-benefits-schema reveal">
+        <div class="portage-benefits-hub">
+          <small>Le bon équilibre</small>
+          <strong>Autonomie</strong>
+          <span>+</span>
+          <strong>Statut salarié</strong>
+        </div>
+        <div class="portage-benefits" aria-label="Quatre bénéfices du portage salarial">
+          {benefits.map((benefit, index) => (
+            <article class="portage-benefit reveal" style={`--benefit-index:${index}`}>
+              <span class="portage-benefit-index">0{index + 1}</span>
+              <div class="icon-chip"><SiteIcon name={benefit.icon} /></div>
+              <div>
+                <h3>{benefit.title}</h3>
+                <p>{benefit.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div class="portage-benefits-links">
+          <a href="/tarifs">Comprendre les frais <span aria-hidden="true">→</span></a>
+          <a href="/faq">Lire les réponses pratiques <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </div>
   </section>
@@ -182,8 +194,8 @@ const faqItems = [
   <section class="section portage-practical">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Votre quotidien</p>
-        <h2>Du contrat à la paie, <span class="gold-underline">sans page cachée</span>.</h2>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Chaque étape précise ce que vous faites et ce que The Porters prend en charge.</p>
+        <h2>De la mission au salaire, <span class="gold-underline">étape par étape</span>.</h2>
         <p class="mt-4 text-porters-black/65">Les informations essentielles du quotidien et des frais sont réunies ici.</p>
       </div>
 
@@ -231,6 +243,10 @@ const faqItems = [
             ))}
           </ol>
         </div>
+      </div>
+      <div class="portage-practical-links reveal">
+        <a href="/simulateur">Tester une hypothèse de revenu <span aria-hidden="true">→</span></a>
+        <a href="/rendez-vous">Faire relire votre situation <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -350,20 +366,43 @@ const faqItems = [
   .portage-benefits {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-top: 1px solid rgba(40, 55, 67, 0.12);
-    border-left: 1px solid rgba(40, 55, 67, 0.12);
+    gap: clamp(5.5rem, 10vw, 9rem) clamp(10rem, 19vw, 18rem);
   }
 
+  .portage-benefits-schema {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(40,55,67,.11);
+    border-radius: 1.2rem;
+    padding: clamp(2rem,5vw,4.5rem);
+    background: radial-gradient(circle at 50% 48%,rgba(198,164,90,.14),transparent 25%),linear-gradient(135deg,#fff,#f4f1ea);
+    box-shadow: 0 28px 70px rgba(32,52,64,.08);
+  }
+
+  .portage-benefits-schema::before,.portage-benefits-schema::after {
+    position:absolute;top:50%;left:50%;border:1px dashed rgba(198,164,90,.26);border-radius:50%;content:"";transform:translate(-50%,-50%);pointer-events:none;
+  }
+  .portage-benefits-schema::before { width:24rem;height:24rem; }
+  .portage-benefits-schema::after { width:17rem;height:17rem; }
+  .portage-benefits-hub { position:absolute;top:50%;left:50%;z-index:2;display:grid;width:11rem;aspect-ratio:1;place-content:center;border:1px solid rgba(198,164,90,.58);border-radius:50%;background:#102630;color:#fff;text-align:center;transform:translate(-50%,-50%);box-shadow:0 0 0 1.4rem rgba(198,164,90,.08),0 20px 50px rgba(16,38,48,.2); }
+  .portage-benefits-hub small { color:#c6a45a;font-size:.53rem;font-weight:780;letter-spacing:.13em;text-transform:uppercase; }
+  .portage-benefits-hub strong { margin-top:.38rem;font-size:.84rem; }
+  .portage-benefits-hub span { color:#c6a45a;font-size:.72rem; }
+
   .portage-benefit {
+    position:relative;
+    z-index:1;
     display: grid;
-    min-height: 11rem;
+    min-height: 10.5rem;
     grid-template-columns: auto auto minmax(0, 1fr);
     align-items: start;
     gap: 1rem;
-    border-right: 1px solid rgba(40, 55, 67, 0.12);
-    border-bottom: 1px solid rgba(40, 55, 67, 0.12);
+    border: 1px solid rgba(40, 55, 67, 0.1);
+    border-top-color:rgba(198,164,90,.55);
+    border-radius:.9rem;
     padding: clamp(1.35rem, 3vw, 2rem);
-    background: rgba(255, 255, 255, 0.58);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow:0 14px 35px rgba(32,52,64,.07);
     transition: background 180ms ease, transform 240ms var(--ease-soft);
   }
 
@@ -371,6 +410,10 @@ const faqItems = [
     background: #fff;
     transform: translateY(-3px);
   }
+
+  .portage-benefit::after { position:absolute;width:clamp(5rem,9vw,8rem);height:1px;background:linear-gradient(90deg,rgba(198,164,90,.55),transparent);content:"";top:50%;pointer-events:none; }
+  .portage-benefit:nth-child(odd)::after { right:-7rem; }
+  .portage-benefit:nth-child(even)::after { left:-7rem;transform:rotate(180deg); }
 
   .portage-benefit-index {
     padding-top: 0.65rem;
@@ -391,6 +434,10 @@ const faqItems = [
     font-size: 0.86rem;
     line-height: 1.65;
   }
+
+  .portage-benefits-links,.portage-practical-links { display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.7rem;margin-top:2rem; }
+  .portage-benefits-links a,.portage-practical-links a { display:inline-flex;align-items:center;gap:.7rem;border-bottom:1px solid rgba(32,52,64,.2);padding:.55rem .15rem;color:#203440;font-size:.7rem;font-weight:740;transition:color .2s ease,border-color .2s ease,transform .2s ease; }
+  .portage-benefits-links a:hover,.portage-practical-links a:hover { border-color:#c6a45a;color:#a47f34;transform:translateY(-2px); }
 
   .portage-practical {
     background: #fff;
@@ -614,8 +661,11 @@ const faqItems = [
   @keyframes daily-enter { from { opacity:.25;transform:translateY(9px); } }
 
   @media (max-width: 720px) {
+    .portage-benefits-schema { padding:1rem; }
+    .portage-benefits-hub,.portage-benefits-schema::before,.portage-benefits-schema::after,.portage-benefit::after { display:none; }
     .portage-benefits {
       grid-template-columns: 1fr;
+      gap:.75rem;
     }
 
     .portage-benefit {

@@ -10,7 +10,7 @@
 
 <script>
   import { supabase } from '../../lib/supabase';
-  import type { CmsFormat } from '../../cms/content';
+  import { cmsRegistry, type CmsFormat } from '../../cms/content';
   import { sanitizeInlineHtml } from '../../cms/inline-html';
   import { discoverEditableText } from '../../cms/discover';
 
@@ -126,6 +126,40 @@
     }, window.location.origin);
   }
 
+  async function createMissingRegisteredBlocks() {
+    const visibleKeys = new Set(
+      Array.from(document.querySelectorAll<HTMLElement>('[data-cms-key]'))
+        .map((node) => node.dataset.cmsKey || '')
+        .filter(Boolean),
+    );
+    const missing = cmsRegistry.filter((entry) =>
+      visibleKeys.has(entry.key)
+      && (entry.route === pageRoute || entry.route === GLOBAL_ROUTE)
+      && !blockByKey.has(entry.key),
+    );
+
+    for (const entry of missing) {
+      const { data, error } = await supabase.rpc('cms_create_content_block', {
+        requested_key: entry.key,
+        requested_route: entry.route,
+        requested_element_type: entry.type,
+        requested_fallback: entry.content,
+      });
+      if (data) {
+        blockByKey.set(entry.key, data as EditorBlock);
+        continue;
+      }
+      if (error?.code !== '23505') throw error;
+      const { data: existing, error: existingError } = await supabase
+        .from('cms_content_blocks')
+        .select('id,content_key,route_path,element_type,fallback_content,draft_content,published_content,draft_format,published_format,status,published_version,updated_at,published_at')
+        .eq('content_key', entry.key)
+        .single();
+      if (existingError) throw existingError;
+      blockByKey.set(entry.key, existing as EditorBlock);
+    }
+  }
+
   async function loadContent() {
     try {
       if (editorMode) {
@@ -139,6 +173,7 @@
           .order('content_key');
         if (error) throw error;
         (data as EditorBlock[] | null)?.forEach((block) => blockByKey.set(block.content_key, block));
+        await createMissingRegisteredBlocks();
       } else {
         const { data, error } = await supabase
           .from('cms_published_content')

@@ -27,6 +27,20 @@ const offerItems = [
   { key: 'home.offer.human', title: cmsText('home.offer.human.title'), text: cmsText('home.offer.human.description'), icon: 'user' as const },
 ];
 
+const helloWorkUrl = 'https://www.hellowork.com/fr-fr/entreprises/the-porters-171310.html';
+const helloWorkJobs = [
+  { title: 'Chef de Projet Recette – Test Manager Senior H/F', city: 'Aix-en-Provence', contract: 'CDI' },
+  { title: 'Tech Lead Java – SAP Commerce Cloud Hybris H/F', city: 'Télétravail partiel', contract: 'CDI' },
+  { title: 'UX Designer H/F', city: 'Paris', contract: 'Freelance' },
+  { title: 'Data Analyst Digital H/F', city: 'Montpellier', contract: 'Indépendant' },
+  { title: 'Expert SAP BW – Consultant SAP BI Senior H/F', city: 'Marseille', contract: 'Freelance' },
+  { title: 'Business Analyst – Ingénieur Fonctionnel MOA H/F', city: 'Aix-en-Provence', contract: 'Freelance' },
+  { title: 'Architecte Cybersécurité – Architecte Sécurité SI H/F', city: 'Strasbourg', contract: 'CDI' },
+  { title: 'Expert Observabilité – Dynatrace H/F', city: 'Montpellier', contract: 'CDI' },
+  { title: 'Chef de Projet Trésorerie H/F', city: 'Brest', contract: 'Indépendant' },
+  { title: 'Développeur Android H/F', city: 'Montpellier', contract: 'CDI' },
+];
+
 
 const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 ---
@@ -109,8 +123,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
               <li {...cmsAttrs('home.jobs.point.full')}>{cmsText('home.jobs.point.full')}</li>
             </ul>
             <div>
-              <a href="https://www.hellowork.com/fr-fr/entreprises/the-porters-171310.html" target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.external_cta')}>{cmsText('home.jobs.external_cta')}</span> <b aria-hidden="true">→</b></a>
-              <a href="/recrutement"><span {...cmsAttrs('home.jobs.internal_cta')}>{cmsText('home.jobs.internal_cta')}</span> <b aria-hidden="true">→</b></a>
+              <a href={helloWorkUrl} target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.external_cta')}>{cmsText('home.jobs.external_cta')}</span> <b aria-hidden="true">→</b></a>
             </div>
           </div>
           <div class="light-hellowork-preview" aria-hidden="true">
@@ -130,6 +143,33 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
               <span>Conseil</span>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="light-jobs-heading">
+        <div>
+          <span>Offres sélectionnées</span>
+          <p>Un aperçu des missions publiées par The Porters sur HelloWork.</p>
+        </div>
+        <dl class="light-jobs-metrics" aria-label="Repères sur la sélection d’offres">
+          <div><dt>10</dt><dd>offres visibles</dd></div>
+          <div><dt>7</dt><dd>bassins d’emploi</dd></div>
+          <div><dt>3</dt><dd>cadres de mission</dd></div>
+        </dl>
+      </div>
+      <div class="light-jobs-marquee" tabindex="0" aria-label="Aperçu défilant des offres The Porters sur HelloWork">
+        <div class="light-jobs-track">
+          {[false, true].map((duplicate) => (
+            <div class="light-jobs-group" aria-hidden={duplicate ? 'true' : undefined}>
+              {helloWorkJobs.map((job, jobIndex) => (
+                <a class="light-job-card" href={helloWorkUrl} target="_blank" rel="noopener noreferrer" tabindex={duplicate ? -1 : undefined}>
+                  <div class="light-job-card__top"><span>{job.contract}</span><b>0{jobIndex + 1}</b></div>
+                  <h3>{job.title}</h3>
+                  <p>{job.city}</p>
+                  <strong>Voir l’offre <b aria-hidden="true">↗</b></strong>
+                </a>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -732,6 +772,148 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     font-weight: 720;
     box-shadow: 0 10px 24px rgba(40, 55, 67, 0.06);
   }
+  .light-jobs-heading {
+    display: flex;
+    width: min(100%, 58rem);
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin: clamp(2.2rem, 4vw, 3rem) auto 1rem;
+  }
+  .light-jobs-heading span {
+    color: var(--color-porters-gold);
+    font-size: 0.68rem;
+    font-weight: 780;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .light-jobs-heading p {
+    margin: 0;
+    color: rgba(40, 55, 67, 0.56);
+    font-size: 0.78rem;
+  }
+  .light-jobs-metrics {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.4rem);
+    margin: 0;
+  }
+  .light-jobs-metrics div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    gap: .45rem;
+  }
+  .light-jobs-metrics dt {
+    color: var(--color-porters-navy);
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .light-jobs-metrics dd {
+    margin: 0;
+    color: rgba(40, 55, 67, 0.5);
+    font-size: .56rem;
+    line-height: 1.25;
+  }
+  .light-jobs-marquee {
+    position: relative;
+    overflow: hidden;
+    margin-inline: calc(50% - 50vw);
+    padding-block: 0.25rem 1.5rem;
+    outline: none;
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .light-jobs-track {
+    display: flex;
+    width: max-content;
+    gap: 1rem;
+    padding-left: 1rem;
+    animation: light-jobs-scroll 62s linear infinite;
+    will-change: transform;
+  }
+  .light-jobs-marquee:hover .light-jobs-track,
+  .light-jobs-marquee:focus-within .light-jobs-track {
+    animation-play-state: paused;
+  }
+  .light-jobs-group {
+    display: flex;
+    gap: 1rem;
+  }
+  .light-job-card {
+    position: relative;
+    display: grid;
+    width: 19rem;
+    min-height: 13rem;
+    grid-template-rows: auto 1fr auto auto;
+    flex: 0 0 19rem;
+    gap: 0.75rem;
+    border: 1px solid rgba(40, 55, 67, 0.1);
+    border-top-color: rgba(190, 158, 88, 0.7);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-porters-navy);
+    box-shadow: 0 16px 38px rgba(40, 55, 67, 0.06);
+    transition: transform var(--motion-fast) var(--ease-soft), border-color var(--motion-fast) ease, box-shadow var(--motion-fast) ease;
+  }
+  .light-job-card:hover,
+  .light-job-card:focus-visible {
+    border-color: rgba(190, 158, 88, 0.72);
+    box-shadow: 0 22px 46px rgba(40, 55, 67, 0.12);
+    outline: none;
+    transform: translateY(-5px);
+  }
+  .light-job-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .light-job-card__top > span {
+    color: var(--color-porters-gold);
+    font-size: 0.62rem;
+    font-weight: 780;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .light-job-card__top > b {
+    color: rgba(40, 55, 67, 0.17);
+    font: 700 1.45rem/1 var(--font-mono);
+  }
+  .light-job-card h3 {
+    margin: 0;
+    color: var(--color-porters-navy);
+    font-size: 1.02rem;
+    line-height: 1.35;
+  }
+  .light-job-card p {
+    margin: 0;
+    color: rgba(40, 55, 67, 0.55);
+    font-size: 0.75rem;
+  }
+  .light-job-card strong {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.7rem;
+    border-top: 1px solid rgba(40, 55, 67, 0.08);
+    font-size: 0.75rem;
+  }
+  .light-job-card strong b {
+    color: var(--color-porters-gold);
+    font-size: 0.9rem;
+    transition: transform var(--motion-fast) var(--ease-soft);
+  }
+  .light-job-card:hover strong b,
+  .light-job-card:focus-visible strong b {
+    transform: translate(3px, -3px);
+  }
+  @keyframes light-jobs-scroll {
+    to { transform: translateX(calc(-50% - 0.5rem)); }
+  }
   @media (max-width: 700px) {
     .light-hellowork-card {
       width: 100%;
@@ -756,6 +938,19 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     .light-hellowork-copy a {
       justify-content: center;
     }
+    .light-jobs-heading {
+      display: grid;
+      gap: 0.45rem;
+    }
+    .light-jobs-metrics {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: .8rem;
+    }
+    .light-job-card {
+      width: 17rem;
+      flex-basis: 17rem;
+    }
     .light-hellowork-panel--primary {
       right: 0;
       width: min(100%, 13rem);
@@ -778,6 +973,18 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     .light-hellowork-panel--primary,
     .light-hellowork-panel--floating {
       animation: none;
+    }
+    .light-jobs-marquee {
+      overflow-x: auto;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+    .light-jobs-track {
+      animation: none;
+      will-change: auto;
+    }
+    .light-jobs-group[aria-hidden="true"] {
+      display: none;
     }
   }
   .light-reviews {

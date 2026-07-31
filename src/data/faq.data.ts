@@ -28,18 +28,18 @@ export const faqGroups: FaqGroup[] = [
         question: 'Quels métiers IT peuvent être portés ?',
         // F-B10 (PUBLISHABLE)
         answer:
-          'Toutes les prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT, AMOA et conseil. Seules les professions réglementées et les services à la personne sont exclus.',
+          'La plupart des prestations intellectuelles autonomes : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, coaching agile, chefferie de projet IT, AMOA et conseil. L’éligibilité est validée avant contrat ; les services à la personne sont exclus du portage salarial et les professions réglementées suivent leurs propres règles.',
       },
       {
         question: 'Quelle différence avec la micro-entreprise ou la SASU ?',
         answer:
-          'Vous ne créez pas de société et vous ne produisez aucun document administratif. Vous conservez une couverture sociale de salarié — chômage et retraite complémentaire comprises — là où la micro-entreprise n’en ouvre pas. En contrepartie, des frais de gestion sont prélevés sur votre chiffre d’affaires, et vous restez responsable de votre prospection et de votre TJM.',
+          'Vous n’avez pas à créer votre propre structure pour facturer la mission : The Porters porte le contrat commercial et vous emploie. Vous relevez du régime salarié pour la protection sociale et cotisez notamment pour la retraite et l’assurance chômage ; l’ouverture et le montant de droits restent soumis aux conditions des régimes concernés. En contrepartie, des frais de gestion sont prélevés et vous restez responsable de votre prospection et de votre TJM.',
       },
       {
         question: 'Puis-je cumuler le portage avec autre chose ?',
         // F-B08 (PUBLISHABLE)
         answer:
-          'Oui, avec un emploi salarié ou avec une retraite. Le cumul avec un emploi salarié suppose l’accord de votre employeur et un maximum de 48 heures de travail hebdomadaire, tous employeurs confondus.',
+          'Oui, avec un autre emploi salarié ou une retraite, sous réserve des règles applicables à votre situation. En cas de cumul d’emplois salariés, il faut respecter les durées maximales de travail et vérifier une éventuelle clause d’exclusivité dans vos contrats.',
       },
       {
         question: 'Puis-je travailler pour un client à l’étranger ?',
@@ -71,7 +71,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: 'Quand suis-je payé ?',
         answer:
-          'Chaque mois, selon la date à laquelle vous transmettez votre compte rendu d’activité. Deux sessions de paie existent ; votre conseiller vous indique les échéances applicables avant le démarrage.',
+          'Le calendrier de paie est mensuel et dépend notamment de la transmission de votre compte rendu d’activité et des conditions prévues au contrat. Les échéances ainsi que l’effet du règlement client sont précisés avant le démarrage.',
       },
       {
         question: 'Que se passe-t-il si mon client règle à 45 ou 60 jours ?',
@@ -110,22 +110,22 @@ export const faqGroups: FaqGroup[] = [
         question: 'Combien de congés payés ai-je ?',
         // F-B06 (PUBLISHABLE)
         answer:
-          'Vous acquérez 2,5 jours ouvrés par mois, comme tout salarié. Ils vous sont versés chaque mois sur votre bulletin sous l’intitulé « Indemnités de congés payés », ou provisionnés sur votre compte de trésorerie si vous préférez maintenir votre rémunération pendant vos congés.',
+          'Vous acquérez des congés payés selon les règles applicables aux salariés. Leur acquisition, leur prise et leur traitement sur le bulletin ou dans votre réserve sont expliqués dans vos documents contractuels et par le service paie.',
       },
       {
         question: 'Que se passe-t-il si je tombe malade ?',
         answer:
-          'Vous percevez des indemnités journalières de la Sécurité sociale, comme tout salarié, puis la prévoyance prend le relais sur les arrêts longs. Les paramètres exacts vous sont confirmés par le service paie.',
+          'Votre arrêt est traité dans le cadre du régime salarié. Les indemnités de la Sécurité sociale et l’intervention éventuelle de la prévoyance dépendent de votre situation, de la durée de l’arrêt et des conditions d’ouverture de droits ; le service paie vous confirme les pièces et paramètres applicables.',
       },
       {
         question: 'Que se passe-t-il entre deux missions ?',
         answer:
-          'Votre contrat de travail se poursuit, mais une période sans mission ne génère pas de chiffre d’affaires et donc pas de salaire. C’est précisément ce que le compte de trésorerie permet d’anticiper : lisser une période creuse avec de la réserve constituée pendant les mois facturés.',
+          'L’entreprise de portage n’est pas tenue de vous fournir une mission. Les effets d’une période sans activité dépendent de votre contrat, du chiffre d’affaires disponible et de la réserve éventuellement constituée ; votre conseiller vous aide à les anticiper avant la fin de mission.',
       },
       {
         question: 'Mes droits au chômage sont-ils préservés ?',
         answer:
-          'Oui. Vous cotisez chaque mois à l’assurance chômage et vous ouvrez des droits comme tout salarié. En cas de rupture conventionnelle, vous pouvez prétendre à l’Aide au retour à l’emploi.',
+          'Vous cotisez à l’assurance chômage dans le cadre du statut salarié. Une indemnisation éventuelle dépend ensuite de votre durée d’affiliation, de la nature de la fin du contrat et des autres conditions examinées par France Travail ; elle n’est donc jamais automatique.',
       },
     ],
   },
@@ -136,17 +136,17 @@ export const faqGroups: FaqGroup[] = [
       {
         question: 'Comment se passe mon arrivée ?',
         answer:
-          'Vous recevez une simulation chiffrée, le détail des frais et le mode opératoire de votre espace de gestion. Une intégration individuelle précise ensuite les contrats, l’activité mensuelle, la paie et vos contacts.',
+          'Vous recevez une simulation chiffrée, un livre blanc, le détail des frais et le mode opératoire de votre espace de gestion. Une intégration individuelle présente ensuite les contrats, l’activité mensuelle, la paie, la formation et votre interlocuteur dédié.',
       },
       {
         question: 'Que se passe-t-il quand je veux partir ?',
         answer:
-          'Vous partez quand vous voulez : démission, rupture de période d’essai ou rupture conventionnelle. Nous vous remettons le solde de tout compte, le certificat de travail, l’attestation destinée à France Travail et le reçu pour solde de tout compte. Une rupture conventionnelle suppose des fonds suffisants sur votre compte de trésorerie pour couvrir la prime et les frais associés.',
+          'La sortie suit le mode de rupture prévu par votre contrat et le droit du travail : démission, fin ou rupture de période d’essai, terme d’un CDD ou rupture conventionnelle lorsqu’elle est possible et acceptée. The Porters prépare alors les documents de fin de contrat ; les conditions et coûts éventuels sont expliqués avant l’engagement de la procédure.',
       },
       {
         question: 'Suis-je engagé sur une durée minimale ?',
         answer:
-          'Non. Votre contrat de travail suit vos missions, et aucune durée d’engagement ne vous est imposée. Les modalités de rupture sont celles du droit du travail.',
+          'La durée et les modalités de sortie sont celles inscrites dans votre contrat de travail et prévues par le droit applicable. Elles sont relues avec vous avant signature afin d’éviter une promesse générale qui ne correspondrait pas à votre situation.',
       },
     ],
   },
@@ -157,7 +157,7 @@ export const faqGroups: FaqGroup[] = [
       {
         question: 'Pourquoi passer par un consultant en portage salarial ?',
         answer:
-          'Vous mobilisez un expert autonome sans créer de relation d’emploi. Un seul contrat de prestation, une seule facture, et aucune gestion de paie de votre côté. C’est adapté à un besoin IT, data, cloud, cyber, projet ou transformation sur un périmètre défini.',
+          'Vous mobilisez un expert autonome dans un cadre contractuel explicite : un contrat de prestation avec The Porters, une facturation centralisée et aucune paie à établir côté client. Le dispositif convient à un besoin IT, data, cloud, cyber, projet ou transformation dont le périmètre, les responsabilités et l’absence de lien de subordination sont clairement organisés.',
       },
       {
         question: 'Qui signe le contrat avec l’entreprise cliente ?',
@@ -169,6 +169,16 @@ export const faqGroups: FaqGroup[] = [
         // F-D01, F-D02, F-D03 (PUBLISHABLE)
         answer:
           'En cinq étapes : analyse du parcours réel, évaluation sur les référentiels métiers CIGREF, SYNTEC et ROME, deux entretiens structurés — RH et technique — puis tests ou mise en situation selon le périmètre, et enfin une validation interne. Les profils vous sont transmis sous forme anonymisée.',
+      },
+      {
+        question: 'Comment choisissez-vous la méthode de delivery ?',
+        answer:
+          'À partir de la stabilité du besoin, de la criticité, des dépendances et des exigences de conformité. Le cycle en V convient à un périmètre stabilisé, Scrum ou Kanban à un besoin évolutif, et une approche hybride combine des jalons fermes avec une exécution itérative.',
+      },
+      {
+        question: 'Comment sécurisez-vous la clôture d’une mission ?',
+        answer:
+          'La recette s’appuie sur des critères explicites et des livrables traçables. La clôture prévoit la documentation utile, la restitution ou la fermeture des accès, le transfert de connaissances et une revue de la prestation proportionnée à son niveau de complexité.',
       },
       {
         question: 'Et si mon interlocuteur est absent ?',

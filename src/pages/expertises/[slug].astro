@@ -72,8 +72,13 @@ const relatedExpertises = expertises
     </div>
     <div class="domain-source-strip">
       <div class="domain-shell">
-        <span>Notre lecture du domaine</span>
-        <p>{expertise.sourceSummary}</p>
+        <div><span>Notre lecture du domaine</span><p>{expertise.sourceSummary}</p></div>
+        {expertise.sectors.length > 0 && (
+          <div class="domain-sector-list" aria-label="Secteurs cités dans les supports métier">
+            <small>Secteurs couverts dans les supports</small>
+            <ul>{expertise.sectors.map((sector) => <li>{sector}</li>)}</ul>
+          </div>
+        )}
       </div>
     </div>
   </section>
@@ -359,9 +364,13 @@ const relatedExpertises = expertises
   .domain-orbit-node--3{bottom:4%;left:50%;transform:translateX(-50%)}
   .domain-orbit-node--4{top:50%;left:-2%;transform:translateY(-50%)}
   .domain-source-strip{position:relative;border-top:1px solid rgba(255,255,255,.09);background:rgba(8,25,34,.55)}
-  .domain-source-strip .domain-shell{display:grid;grid-template-columns:14rem 1fr;align-items:center;gap:2rem;padding-block:1.25rem}
+  .domain-source-strip .domain-shell{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2rem;padding-block:1.25rem}
   .domain-source-strip span{margin:0}
-  .domain-source-strip p{max-width:62rem;margin:0;color:rgba(255,255,255,.64);font-size:.82rem;line-height:1.6}
+  .domain-source-strip p{max-width:62rem;margin:.45rem 0 0;color:rgba(255,255,255,.64);font-size:.82rem;line-height:1.6}
+  .domain-sector-list{display:grid;max-width:30rem;gap:.55rem;justify-items:end}
+  .domain-sector-list small{color:rgba(255,255,255,.42);font-size:.55rem;font-weight:740;letter-spacing:.11em;text-transform:uppercase}
+  .domain-sector-list ul{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.35rem;margin:0;padding:0;list-style:none}
+  .domain-sector-list li{border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.35rem .58rem;color:rgba(255,255,255,.68);font-size:.56rem}
 
   .domain-intro{background:#f8f6f1}
   .domain-intro-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(20rem,.58fr);gap:clamp(3rem,9vw,9rem);align-items:start}
@@ -485,7 +494,9 @@ const relatedExpertises = expertises
     .domain-shell{width:min(100% - 2rem,84rem)}
     .domain-hero-grid{padding-block:3.5rem}
     .domain-hero-copy h1{font-size:clamp(2.7rem,14vw,4.5rem)}
-    .domain-source-strip .domain-shell{grid-template-columns:1fr;gap:.5rem}
+    .domain-source-strip .domain-shell{grid-template-columns:1fr;gap:1rem}
+    .domain-sector-list{justify-items:start}
+    .domain-sector-list ul{justify-content:flex-start}
     .domain-orbit{margin-top:1.5rem}
     .domain-orbit-node{min-width:7rem;padding:.65rem}
     .domain-orbit-node strong{font-size:.68rem}

@@ -30,22 +30,22 @@
     "content": "Vous gardez vos clients, votre TJM et votre autonomie. The Porters prend en charge le contrat, la facturation, les déclarations, la paie et votre protection sociale."
   },
   {
-    "key": "home.hero.primary_cta",
+    "key": "home.hero.editorial_v2.action.simulator",
     "route": "/",
     "type": "button",
     "content": "Simuler mes revenus"
   },
   {
-    "key": "home.hero.editorial.secondary_cta",
+    "key": "home.hero.editorial_v2.action.advisor",
     "route": "/",
     "type": "button",
     "content": "Parler à un conseiller"
   },
   {
-    "key": "home.hero.enterprise_cta",
+    "key": "home.hero.editorial_v2.action.enterprise",
     "route": "/",
     "type": "button",
-    "content": "Trouver un expert IT"
+    "content": "Nos solutions entreprises"
   },
   {
     "key": "home.hero.trust.interlocutors",
@@ -196,12 +196,6 @@
     "route": "/",
     "type": "button",
     "content": "Voir les offres sur HelloWork"
-  },
-  {
-    "key": "home.jobs.internal_cta",
-    "route": "/",
-    "type": "button",
-    "content": "Découvrir le recrutement"
   },
   {
     "key": "home.jobs.preview.platform",

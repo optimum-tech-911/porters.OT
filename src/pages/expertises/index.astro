@@ -100,7 +100,12 @@ const commonJourney = [
                   <p>{expertise.eyebrow}</p>
                   <h3>{expertise.introTitle}</h3>
                 </div>
-                <span class="expertise-panel-index">0{index + 1}</span>
+                <div class="expertise-panel-actions">
+                  <span class="expertise-panel-index">0{index + 1}</span>
+                  <a class="expertise-panel-cta" href={`/expertises/${expertise.slug}`}>
+                    Voir le domaine en détail <span aria-hidden="true">↗</span>
+                  </a>
+                </div>
               </div>
               <p class="expertise-summary">{expertise.summary}</p>
 
@@ -133,9 +138,6 @@ const commonJourney = [
                 </div>
               </section>
 
-              <a class="expertise-panel-cta" href={`/expertises/${expertise.slug}`}>
-                Voir le domaine en détail <span aria-hidden="true">↗</span>
-              </a>
             </article>
           ))}
         </div>
@@ -566,6 +568,8 @@ const commonJourney = [
     line-height: .8;
   }
 
+  .expertise-panel-actions { display:grid;justify-items:end;gap:.8rem;flex:0 0 auto; }
+
   .expertise-summary {
     max-width: 48rem;
     margin: 1.3rem 0 0;
@@ -666,10 +670,17 @@ const commonJourney = [
     display: inline-flex;
     align-items: center;
     gap: .7rem;
-    margin-top: 2rem;
+    min-height:2.9rem;
+    margin-top:0;
+    border:1px solid rgba(32,52,64,.16);
+    border-radius:999px;
+    padding:.7rem 1rem;
+    background:#fff;
     color: var(--color-porters-navy);
-    font-size: .8rem;
+    font-size: .68rem;
     font-weight: 760;
+    box-shadow:0 10px 28px rgba(32,52,64,.08);
+    transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
   }
 
   .expertise-panel-cta span {
@@ -680,6 +691,8 @@ const commonJourney = [
   .expertise-panel-cta:hover span {
     transform: translate(3px,-3px);
   }
+
+  .expertise-panel-cta:hover { border-color:#102630;background:#102630;color:#fff;transform:translateY(-2px); }
 
   .expertise-journey {
     overflow: hidden;
@@ -819,6 +832,10 @@ const commonJourney = [
     .journey-track {
       grid-template-columns: 1fr;
     }
+
+    .expertise-panel-top { align-items:stretch;flex-direction:column; }
+    .expertise-panel-actions { justify-items:start; }
+    .expertise-panel-index { display:none; }
 
     .journey-line {
       top: 0;

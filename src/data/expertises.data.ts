@@ -43,6 +43,7 @@ export const expertises: Expertise[] = [
       'Chef de projet cybersécurité',
       'Ingénieur cybersécurité',
       'Expert sécurité',
+      'Manager cybersécurité',
     ],
     missionTypes: [
       'Évaluation de la gouvernance de la sécurité',
@@ -77,7 +78,7 @@ export const expertises: Expertise[] = [
       text: 'KwickStart est présentée dans les supports du groupe comme une ESN à approche humaine, orientée conseil et engagement de service. Son offre cyber relie diagnostic, gouvernance, audit, assistance et plan d’actions.',
       pillars: ['Conseil sur mesure', 'Continuité de service', 'Suivi des consultants'],
     },
-    sectors: [],
+    sectors: ['Télécommunications', 'Énergie', 'Finance', 'Assurance', 'Automobile', 'Aéronautique', 'Santé'],
     support: [
       'Cadrage du périmètre, du TJM et du calendrier',
       'Contrat de travail et contrat de prestation',
@@ -145,7 +146,7 @@ export const expertises: Expertise[] = [
       text: 'KwickStart concentre son accompagnement sur la Data, l’IA et le Cloud avec une double lecture technique et métier : stratégie, architecture, déploiement et maintien en conditions opérationnelles.',
       pillars: ['Data utile à la décision', 'IA intégrée aux usages', 'Solutions durables'],
     },
-    sectors: [],
+    sectors: ['Télécommunications', 'Énergie', 'Finance', 'Assurance', 'Industrie', 'Retail', 'Automobile', 'Aéronautique', 'Santé'],
     support: [
       'Lecture du TJM, de la durée et des conditions de mission',
       'Cadre contractuel avec l’entreprise cliente',
@@ -169,7 +170,7 @@ export const expertises: Expertise[] = [
       'Les missions cloud et DevOps touchent à la disponibilité, à la sécurité, aux coûts et à la vitesse de livraison. Elles demandent un périmètre clair et des responsabilités explicites entre les équipes.',
       'The Porters structure la relation contractuelle et administrative ; le consultant conserve son autonomie d’exécution et son rôle de conseil auprès du client.',
     ],
-    roles: ['Cloud Architect', 'Cloud Engineer', 'DevOps Engineer', 'Site Reliability Engineer', 'Platform Engineer', 'Cloud Security Specialist', 'FinOps Consultant', 'Release Manager'],
+    roles: ['Cloud Architect', 'Cloud Engineer', 'Cloud Operations Manager', 'Cloud Consultant', 'DevOps Engineer', 'Site Reliability Engineer', 'Platform Engineer', 'Cloud Security Specialist', 'FinOps Consultant', 'Release Manager'],
     missionTypes: [
       'Architecture et trajectoire cloud',
       'Migration et modernisation des applications',
@@ -203,7 +204,7 @@ export const expertises: Expertise[] = [
       text: 'L’approche KwickStart associe conseil Cloud sur mesure, intégration flexible et optimisation des infrastructures afin de soutenir une transformation réellement exploitable.',
       pillars: ['Architecture adaptée', 'Intégration progressive', 'Performance suivie'],
     },
-    sectors: [],
+    sectors: ['Télécommunications', 'Énergie', 'Finance', 'Assurance', 'Automobile', 'Aéronautique', 'Santé'],
     support: ['Cadrage contractuel de la mission', 'Lecture du TJM et des frais liés à l’intervention', 'Facturation et paie', 'Suivi administratif du démarrage à la clôture'],
     seoDescription:
       'Portage salarial Cloud et DevOps : architecture cloud, migration, CI/CD, IaC, SRE, platform engineering, FinOps et cloud security.',
@@ -222,7 +223,7 @@ export const expertises: Expertise[] = [
       'Une démarche agile organise le travail en cycles courts, rend les priorités visibles et intègre régulièrement les retours des utilisateurs. Elle doit rester adaptée au contexte, à la maturité des équipes et aux objectifs du produit.',
       'Ces missions se prêtent au portage salarial : elles mobilisent souvent une expertise expérimentée, sur une période définie, avec un besoin fort d’indépendance et de responsabilité.',
     ],
-    roles: ['Product Owner', 'Scrum Master', 'Agile Coach', 'Change Manager', 'Release Train Engineer (RTE)', 'Business Analyst', 'Chef de projet agile', 'Programme Manager', 'UX/UI Designer Agile', 'Architecte Agile'],
+    roles: ['Product Owner', 'Scrum Master', 'Agile Coach', 'Change Manager', 'Release Train Engineer (RTE)', 'Business Analyst', 'Chef de projet agile', 'Programme Manager', 'UX/UI Designer Agile', 'Architecte Agile', 'Coordinateur technique', 'DSI / RSSI de transition', 'DevOps', 'Développeur agile'],
     missionTypes: [
       'Transformation agile et diagnostic de maturité',
       'Coaching d’équipe et accompagnement des managers',
@@ -245,7 +246,7 @@ export const expertises: Expertise[] = [
       { title: 'Boucles de retour courtes', text: 'Tester, apprendre et ajuster avant que les écarts ne deviennent coûteux.' },
       { title: 'Transformation accompagnée', text: 'Faire évoluer l’organisation avec les équipes, en traitant les résistances et les dépendances.' },
     ],
-    sectors: [],
+    sectors: ['Banque & assurance', 'Industrie', 'Télécommunications', 'Énergie', 'Services numériques', 'Secteur public'],
     support: ['Comparaison des statuts', 'Cadrage du périmètre, du TJM et du calendrier', 'Contrat, facturation et paie', 'Suivi administratif pendant la mission'],
     seoDescription:
       'Portage salarial pour Product Owners, Scrum Masters, Agile Coaches, RTE, Business Analysts, Change Managers et chefs de projet transformation.',
@@ -264,20 +265,20 @@ export const expertises: Expertise[] = [
       'Le portage salarial permet d’intervenir sur une transformation, un lancement produit ou un programme critique sans créer immédiatement sa propre société.',
     ],
     roles: ['Product Manager', 'Product Owner', 'Chef de projet IT', 'Directeur de programme', 'PMO', 'Business Analyst', 'Delivery Manager', 'Change Manager'],
-    missionTypes: ['Vision et stratégie produit', 'Cadrage et priorisation', 'Pilotage de projet IT', 'Gouvernance de programme', 'PMO et reporting', 'Coordination métier / IT', 'Gestion des risques et dépendances', 'Conduite du changement'],
+    missionTypes: ['Vision et stratégie produit', 'Cadrage et priorisation', 'Pilotage de projet IT', 'Gouvernance de programme', 'PMO et reporting traçable', 'Coordination métier / IT', 'Gestion des risques, dépendances et habilitations', 'Recette, clôture et transfert de connaissances', 'Conduite du changement'],
     methods: ['Discovery produit', 'Roadmap et backlog', 'Cycle en V, agile ou hybride', 'Comitologie proportionnée', 'Reporting et indicateurs', 'Capitalisation et transfert de connaissances'],
     methodStages: [
-      { number: '01', title: 'Cadrage', text: 'Clarifier le besoin, le périmètre, les livrables, les contraintes et le mode opératoire.' },
-      { number: '02', title: 'Exécution', text: 'Suivre les actions, arbitrer les priorités et rendre les risques visibles sans surcharger le projet.' },
-      { number: '03', title: 'Recette', text: 'Valider le résultat avec des critères explicites et sécuriser la mise en production.' },
-      { number: '04', title: 'Capitalisation', text: 'Documenter les décisions et transférer les connaissances pour préserver la continuité.' },
+      { number: '01', title: 'Cadrage', text: 'Clarifier contexte, périmètre, livrables, contraintes, dépendances, accès, sécurité et conformité.' },
+      { number: '02', title: 'Exécution', text: 'Tracer actions et livrables, arbitrer les priorités et rendre les risques visibles sans surcharger le projet.' },
+      { number: '03', title: 'Recette', text: 'Valider le résultat avec des critères explicites, documenter les écarts et sécuriser la clôture des accès.' },
+      { number: '04', title: 'Capitalisation', text: 'Documenter les décisions, restituer les éléments utiles et transférer les connaissances pour préserver la continuité.' },
     ],
     businessValue: [
       { title: 'Décisions explicites', text: 'Clarifier les arbitrages, les responsabilités et les critères de réussite.' },
       { title: 'Exécution maîtrisée', text: 'Suivre les jalons, les risques, les dépendances et les livrables sans alourdir le projet.' },
       { title: 'Continuité', text: 'Documenter les décisions et organiser le transfert de connaissances pour sécuriser la durée.' },
     ],
-    sectors: [],
+    sectors: ['Banque & assurance', 'Industrie', 'Télécommunications', 'Énergie', 'Services numériques', 'Secteur public'],
     support: ['Cadrage du TJM et du périmètre', 'Contrats et facturation', 'Paie et frais professionnels validés', 'Interlocuteur administratif pendant la mission'],
     seoDescription:
       'Portage salarial pour Product Managers, Product Owners, PMO, chefs de projet IT, Business Analysts et directeurs de programme.',

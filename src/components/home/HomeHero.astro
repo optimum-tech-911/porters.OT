@@ -51,22 +51,23 @@ const heroTitleLines = [
 
       <div class="editorial-hero__actions">
         <a class="editorial-hero__action editorial-hero__action--primary" href="/simulateur">
-          <span {...cmsAttrs('home.hero.primary_cta')}>{cmsText('home.hero.primary_cta')}</span>
+          <span {...cmsAttrs('home.hero.editorial_v2.action.simulator')}>{cmsText('home.hero.editorial_v2.action.simulator')}</span>
           <b aria-hidden="true">→</b>
         </a>
         <a class="editorial-hero__action editorial-hero__action--secondary" href="/rendez-vous">
-          <span {...cmsAttrs('home.hero.editorial.secondary_cta')}>{cmsText('home.hero.editorial.secondary_cta')}</span>
+          <span {...cmsAttrs('home.hero.editorial_v2.action.advisor')}>{cmsText('home.hero.editorial_v2.action.advisor')}</span>
           <b aria-hidden="true">→</b>
         </a>
       </div>
 
       <a class="editorial-hero__enterprise" href="/entreprises">
-        <span {...cmsAttrs('home.hero.enterprise_cta')}>{cmsText('home.hero.enterprise_cta')}</span>
+        <span {...cmsAttrs('home.hero.editorial_v2.action.enterprise')}>{cmsText('home.hero.editorial_v2.action.enterprise')}</span>
         <b aria-hidden="true">↗</b>
       </a>
     </div>
 
     <div class="editorial-hero__visual" aria-label="Les services The Porters">
+      <div class="editorial-hero__stone" aria-hidden="true"></div>
       <div class="editorial-hero__navy" aria-hidden="true"></div>
       <div class="editorial-hero__gold-frame" aria-hidden="true"></div>
       <figure>
@@ -83,6 +84,7 @@ const heroTitleLines = [
         <span>Ce que nous prenons en charge</span>
         <strong>Contrat · Facturation · Paie · Suivi</strong>
       </div>
+      <span class="editorial-hero__rail" aria-hidden="true">Contrat · Facturation · Paie · Protection</span>
     </div>
   </div>
 
@@ -116,20 +118,18 @@ const heroTitleLines = [
   }
 
   .editorial-hero__shell {
-    display: grid;
-    width: min(100% - 3rem, 96rem);
-    min-height: clamp(43rem, calc(100svh - 6.5rem), 58rem);
-    grid-template-columns: minmax(0, 0.88fr) minmax(31rem, 1.12fr);
-    align-items: center;
-    gap: clamp(2.8rem, 5vw, 5.5rem);
-    margin-inline: auto;
-    padding-block: clamp(3rem, 5vw, 4.5rem) clamp(2.5rem, 4vw, 3.5rem);
+    position: relative;
+    width: 100%;
+    height: clamp(45rem, calc(100svh - 14.25rem), 53.25rem);
+    min-height: 45rem;
   }
 
   .editorial-hero__copy {
-    position: relative;
+    position: absolute;
+    top: clamp(7rem, 15.2vh, 10.25rem);
+    left: clamp(2rem, 4.58vw, 5.5rem);
     z-index: 2;
-    max-width: 45rem;
+    width: min(41.5%, 50rem);
   }
 
   .editorial-hero__eyebrow {
@@ -142,11 +142,11 @@ const heroTitleLines = [
   }
 
   .editorial-hero__title {
-    max-width: 12ch;
+    max-width: none;
     margin: 0;
     color: var(--hero-ink);
     font-family: "Newsreader", "Iowan Old Style", "Baskerville", Georgia, serif;
-    font-size: clamp(3.9rem, 4vw, 4.4rem);
+    font-size: clamp(3.65rem, 3.65vw, 4.4rem);
     font-weight: 480;
     letter-spacing: -0.035em;
     line-height: 1.06;
@@ -166,8 +166,8 @@ const heroTitleLines = [
   }
 
   .editorial-hero__description {
-    max-width: 39rem;
-    margin: 1.4rem 0 0;
+    max-width: 33rem;
+    margin: 2.2rem 0 0;
     color: rgba(32, 52, 64, 0.68);
     font-size: clamp(0.95rem, 1.25vw, 1.1rem);
     line-height: 1.72;
@@ -177,7 +177,7 @@ const heroTitleLines = [
     display: flex;
     flex-wrap: wrap;
     gap: 0.7rem;
-    margin-top: 1.75rem;
+    margin-top: 2.7rem;
   }
 
   .editorial-hero__action {
@@ -233,34 +233,50 @@ const heroTitleLines = [
   }
 
   .editorial-hero__visual {
-    position: relative;
-    min-height: clamp(38rem, 47vw, 48rem);
+    position: absolute;
+    top: .75rem;
+    right: 0;
+    bottom: 0;
+    left: 44.58%;
     isolation: isolate;
+  }
+
+  .editorial-hero__stone {
+    position: absolute;
+    top: 14.2%;
+    bottom: 0;
+    left: 0;
+    width: 38.7%;
+    z-index: -3;
+    background: #e8e1d5;
   }
 
   .editorial-hero__navy {
     position: absolute;
     top: 0;
-    right: -20vw;
-    bottom: 7%;
-    left: 15%;
+    right: 0;
+    bottom: 10.8%;
+    left: 21.05%;
     z-index: -2;
     background: var(--hero-navy);
   }
 
   .editorial-hero__gold-frame {
     position: absolute;
-    top: 4%;
-    right: 2%;
-    bottom: 0;
-    left: 4%;
+    top: 7.1%;
+    bottom: 2.2%;
+    left: 9.2%;
+    width: 55.65%;
     z-index: -1;
     border: 1px solid rgba(198, 164, 90, 0.72);
   }
 
   .editorial-hero__visual figure {
     position: absolute;
-    inset: 4% 9% 4% 10%;
+    top: 3.9%;
+    bottom: 5.4%;
+    left: 6.77%;
+    width: 55.65%;
     margin: 0;
     overflow: hidden;
     background: #d8d3c8;
@@ -282,7 +298,7 @@ const heroTitleLines = [
   .editorial-hero__service-note {
     position: absolute;
     right: 0;
-    bottom: 1%;
+    bottom: 3.2%;
     z-index: 2;
     display: grid;
     width: min(21rem, 70%);
@@ -291,6 +307,18 @@ const heroTitleLines = [
     padding: 1rem 1.2rem;
     background: rgba(244, 240, 232, 0.96);
     box-shadow: 0 16px 34px rgba(16, 38, 48, 0.13);
+  }
+
+  .editorial-hero__rail {
+    position: absolute;
+    top: 24%;
+    right: 5.5%;
+    color: rgba(255,255,255,.38);
+    font-size: .56rem;
+    font-weight: 700;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
   }
 
   .editorial-hero__service-note span {
@@ -309,6 +337,7 @@ const heroTitleLines = [
 
   .editorial-hero__trust {
     display: grid;
+    min-height: 7.75rem;
     grid-template-columns: minmax(14rem, 0.32fr) minmax(0, 1fr);
     border-top: 1px solid rgba(32, 52, 64, 0.11);
     background: #fff;
@@ -372,14 +401,13 @@ const heroTitleLines = [
     line-height: 1.35;
   }
 
-  @media (max-width: 1080px) {
+  @media (max-width: 1180px) and (min-width: 801px) {
     .editorial-hero__shell {
-      grid-template-columns: minmax(0, 0.9fr) minmax(25rem, 1.1fr);
-      gap: 2.5rem;
+      height: 45rem;
     }
 
     .editorial-hero__title {
-      font-size: clamp(3.7rem, 6.5vw, 4.35rem);
+      font-size: clamp(3.3rem, 5.4vw, 4rem);
     }
 
     .editorial-hero__trust {
@@ -391,15 +419,29 @@ const heroTitleLines = [
     }
   }
 
+  @media (min-width: 1181px) {
+    .editorial-hero__title-line.is-accent {
+      white-space: nowrap;
+    }
+  }
+
   @media (max-width: 800px) {
     .editorial-hero__shell {
+      display: grid;
       grid-template-columns: 1fr;
+      height: auto;
       min-height: 0;
       gap: 3.25rem;
+      width: min(100% - 3rem, 44rem);
+      margin-inline: auto;
       padding-block: 4.5rem 3rem;
     }
 
     .editorial-hero__copy {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: auto;
       max-width: 44rem;
     }
 
@@ -409,13 +451,19 @@ const heroTitleLines = [
     }
 
     .editorial-hero__visual {
+      position: relative;
+      inset: auto;
       min-height: clamp(31rem, 110vw, 42rem);
     }
 
     .editorial-hero__navy {
-      right: -10vw;
+      right: -20vw;
       left: 10%;
     }
+
+    .editorial-hero__gold-frame { right:2%;bottom:0;left:4%;width:auto; }
+    .editorial-hero__visual figure { inset:5% 9% 4% 10%;width:auto; }
+    .editorial-hero__stone,.editorial-hero__rail { display:none; }
 
     .editorial-hero__trust-list {
       grid-template-columns: repeat(2, minmax(0, 1fr));

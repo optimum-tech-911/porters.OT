@@ -1,34 +1,44 @@
 ---
 const footerColumns = [
   {
-    title: 'Le portage',
+    title: 'Le portage salarial',
+    note: 'Comprendre le cadre et préparer votre mission.',
     links: [
-      { label: 'Comprendre le portage', href: '/portage-salarial' },
+      { label: 'Comment fonctionne le portage', href: '/portage-salarial' },
+      { label: 'Frais et rémunération', href: '/tarifs' },
       { label: 'Simuler mes revenus', href: '/simulateur' },
+      { label: 'Questions fréquentes', href: '/faq' },
     ],
   },
   {
     title: 'Entreprises',
+    note: 'Cadrer un besoin et identifier la bonne expertise.',
     links: [
-      { label: 'Trouver une expertise', href: '/entreprises' },
+      { label: 'Notre offre entreprises', href: '/entreprises' },
+      { label: 'Nos expertises IT', href: '/expertises' },
+      { label: 'Prendre rendez-vous', href: '/rendez-vous' },
       { label: 'Nous contacter', href: '/contact' },
     ],
   },
   {
-    title: 'Le groupe',
+    title: 'Domaines',
+    note: 'Des pages détaillées, organisées par résultat de mission.',
     links: [
-      { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
-      { label: 'Nos agences', href: '/agences' },
+      { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
+      { label: 'Data & IA', href: '/expertises/data-ia' },
+      { label: 'Cloud & DevOps', href: '/expertises/cloud-devops' },
+      { label: 'Agilité & transformation', href: '/expertises/agilite-coaching' },
+      { label: 'Product & Project', href: '/expertises/product-project-management' },
     ],
   },
   {
-    title: 'Ressources',
+    title: 'Le groupe',
+    note: 'The Porters, ses implantations et ses ressources.',
     links: [
-      { label: 'Questions fréquentes', href: '/faq' },
-      { label: 'Blog', href: '/blog' },
+      { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
+      { label: 'Nos agences', href: '/agences' },
       { label: 'Livres blancs', href: '/livres-blancs' },
-      { label: 'Parrainage', href: '/parrainage' },
-      { label: 'Prendre rendez-vous', href: '/rendez-vous' },
+      { label: 'Blog', href: '/blog' },
       { label: 'Espace client', href: '/espace-client' },
     ],
   },
@@ -37,63 +47,86 @@ const footerColumns = [
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-porters-navy text-porters-white/80">
-  <!-- Gold separator -->
-  <div class="h-[3px] bg-porters-gold"></div>
+<footer class="site-footer">
+  <div class="site-footer__accent" aria-hidden="true"></div>
+  <div class="site-footer__cta">
+    <div>
+      <p>Votre prochaine étape</p>
+      <h2>Une question précise mérite une réponse claire.</h2>
+    </div>
+    <div class="site-footer__cta-actions">
+      <a href="/rendez-vous">Parler à un conseiller <span aria-hidden="true">→</span></a>
+      <a href="/simulateur">Simuler mes revenus <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
 
-  <div class="container mx-auto px-6 lg:px-8 pt-16 pb-8">
-    <!-- Top section: Logo + columns -->
-    <div class="grid grid-cols-1 lg:grid-cols-6 gap-12 lg:gap-8 mb-16">
-      <!-- Logo & tagline -->
-      <div class="lg:col-span-2">
-        <a href="/" class="inline-block mb-4" aria-label="The Porters — Accueil">
-          <span class="brand-lockup" aria-hidden="true">
-            <span class="brand-wordmark brand-wordmark-light brand-wordmark-footer">
-              <span class="brand-wordmark-the">The</span>
-              <span class="brand-wordmark-porters">Porters</span>
-            </span>
-          </span>
-        </a>
-        <p class="text-sm text-porters-white/60 leading-relaxed max-w-xs mb-6">
-          Portage salarial et expertises IT pour consultants autonomes et entreprises exigeantes.
-        </p>
-      </div>
-
-      <!-- Navigation columns -->
-      {footerColumns.map((column) => (
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-4">
-            {column.title}
-          </p>
-          <ul class="space-y-2.5">
-            {column.links.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-sm text-porters-white/60 hover:text-porters-white transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+  <div class="site-footer__main">
+    <div class="site-footer__identity">
+      <a href="/" aria-label="The Porters — Accueil">
+        <span class="brand-wordmark brand-wordmark-light brand-wordmark-footer" aria-hidden="true">
+          <span class="brand-wordmark-the">The</span>
+          <span class="brand-wordmark-porters">Porters</span>
+        </span>
+      </a>
+      <p>Portage salarial et expertises IT pour consultants autonomes et entreprises exigeantes.</p>
+      <a class="site-footer__contact" href="/contact">contact@theporters.fr <span aria-hidden="true">↗</span></a>
     </div>
 
-    <!-- Bottom bar -->
-    <div class="border-t border-porters-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-xs text-porters-white/40">
-        © {currentYear} The Porters. Tous droits réservés.
-      </p>
-      <div class="flex items-center gap-6">
-        <a href="/mentions-legales" class="text-xs text-porters-white/40 hover:text-porters-white/70 transition-colors">
-          Mentions légales
-        </a>
-        <a href="/confidentialite" class="text-xs text-porters-white/40 hover:text-porters-white/70 transition-colors">
-          Politique de confidentialité
-        </a>
-      </div>
+    <nav class="site-footer__nav" aria-label="Navigation de pied de page">
+      {footerColumns.map((column, columnIndex) => (
+        <section>
+          <span class="site-footer__number">0{columnIndex + 1}</span>
+          <h3>{column.title}</h3>
+          <p>{column.note}</p>
+          <ul>
+            {column.links.map((link) => (
+              <li><a href={link.href}>{link.label}<span aria-hidden="true">↗</span></a></li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </nav>
+  </div>
+
+  <div class="site-footer__bottom">
+    <p>© {currentYear} The Porters. Tous droits réservés.</p>
+    <div>
+      <a href="/mentions-legales">Mentions légales</a>
+      <a href="/confidentialite">Politique de confidentialité</a>
     </div>
   </div>
 </footer>
+
+<style>
+  .site-footer{position:relative;background:#102630;color:rgba(255,255,255,.72)}
+  .site-footer__accent{height:3px;background:#c6a45a}
+  .site-footer__cta,.site-footer__main,.site-footer__bottom{width:min(100% - 3rem,112rem);margin-inline:auto}
+  .site-footer__cta{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding-block:clamp(2.2rem,5vw,4rem);border-bottom:1px solid rgba(255,255,255,.12)}
+  .site-footer__cta p{margin:0 0 .6rem;color:#c6a45a;font-size:.62rem;font-weight:780;letter-spacing:.16em;text-transform:uppercase}
+  .site-footer__cta h2{max-width:19ch;margin:0;color:#fff;font-size:clamp(1.65rem,3vw,2.8rem);line-height:1.08}
+  .site-footer__cta-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.65rem}
+  .site-footer__cta-actions a{display:inline-flex;min-height:3.15rem;align-items:center;gap:.85rem;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:.75rem 1.25rem;color:#fff;font-size:.76rem;font-weight:760;transition:transform .2s ease,background .2s ease,color .2s ease}
+  .site-footer__cta-actions a:last-child{border-color:#c6a45a;background:#c6a45a;color:#102630}
+  .site-footer__cta-actions a:hover{background:#fff;color:#102630;transform:translateY(-2px)}
+  .site-footer__main{display:grid;grid-template-columns:minmax(14rem,.26fr) minmax(0,.74fr);gap:clamp(3rem,7vw,7rem);padding-block:clamp(3.2rem,7vw,6rem)}
+  .site-footer__identity>a:first-child{display:inline-block;margin-bottom:1.35rem}
+  .site-footer__identity>p{max-width:19rem;margin:0;color:rgba(255,255,255,.55);font-size:.78rem;line-height:1.7}
+  .site-footer__contact{display:inline-flex;gap:.55rem;margin-top:1.5rem;color:#fff;font-size:.74rem;font-weight:700}
+  .site-footer__nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1.4rem,3vw,3rem)}
+  .site-footer__nav section{min-width:0}
+  .site-footer__number{color:#c6a45a;font:700 .55rem/1 var(--font-mono)}
+  .site-footer__nav h3{margin:.8rem 0 .55rem;color:#fff;font-size:.88rem}
+  .site-footer__nav section>p{min-height:3.2rem;margin:0 0 1.2rem;color:rgba(255,255,255,.42);font-size:.65rem;line-height:1.55}
+  .site-footer__nav ul{display:grid;gap:.15rem;margin:0;padding:0;list-style:none}
+  .site-footer__nav li a{display:flex;min-height:2.2rem;align-items:center;justify-content:space-between;gap:.7rem;border-bottom:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.66);font-size:.68rem;transition:padding .2s ease,color .2s ease,border-color .2s ease}
+  .site-footer__nav li a span{color:#c6a45a;opacity:0;transform:translate(-4px,4px);transition:opacity .2s ease,transform .2s ease}
+  .site-footer__nav li a:hover{padding-left:.3rem;border-color:rgba(198,164,90,.4);color:#fff}
+  .site-footer__nav li a:hover span{opacity:1;transform:none}
+  .site-footer__bottom{display:flex;align-items:center;justify-content:space-between;gap:1rem;border-top:1px solid rgba(255,255,255,.1);padding-block:1.35rem;color:rgba(255,255,255,.36);font-size:.62rem}
+  .site-footer__bottom p{margin:0}
+  .site-footer__bottom div{display:flex;flex-wrap:wrap;gap:1.4rem}
+  .site-footer__bottom a:hover{color:#fff}
+  @media(max-width:1000px){.site-footer__main{grid-template-columns:1fr}.site-footer__nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:650px){.site-footer__cta{align-items:flex-start;flex-direction:column}.site-footer__cta-actions{width:100%;justify-content:flex-start}.site-footer__cta-actions a{width:100%;justify-content:space-between}.site-footer__nav{grid-template-columns:1fr}.site-footer__nav section>p{min-height:0}.site-footer__bottom{align-items:flex-start;flex-direction:column}}
+  @media(prefers-reduced-motion:reduce){.site-footer a,.site-footer a span{transition:none}}
+</style>

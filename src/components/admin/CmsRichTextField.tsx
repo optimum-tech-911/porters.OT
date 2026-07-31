@@ -56,11 +56,55 @@ export default function CmsRichTextField({ value, syncToken, onChange }: Props) 
     element.replaceWith(...Array.from(element.childNodes));
   }
 
-  function runCommand(command: string) {
-    fieldRef.current?.focus();
-    // Tags rather than inline styles: the sanitizer drops style attributes.
-    document.execCommand('styleWithCSS', false, 'false');
-    document.execCommand(command);
+  function selectRange(range: Range) {
+    const selection = window.getSelection();
+    if (!selection) return;
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+
+  function toggleInline(tagName: 'strong' | 'em') {
+    const range = rangeInField();
+    if (!range) return;
+    const existing = closestInField(range.commonAncestorContainer, (element) => element.tagName === tagName.toUpperCase());
+    if (existing) {
+      unwrap(existing);
+    } else if (!range.collapsed) {
+      const wrapper = document.createElement(tagName);
+      wrapper.appendChild(range.extractContents());
+      range.insertNode(wrapper);
+      range.selectNodeContents(wrapper);
+      selectRange(range);
+    }
+    emit();
+  }
+
+  function insertLineBreak() {
+    const range = rangeInField();
+    if (!range) return;
+    range.deleteContents();
+    const br = document.createElement('br');
+    range.insertNode(br);
+    range.setStartAfter(br);
+    range.collapse(true);
+    selectRange(range);
+    emit();
+  }
+
+  function insertPlainText(text: string) {
+    const range = rangeInField();
+    if (!range) return;
+    range.deleteContents();
+    const fragment = document.createDocumentFragment();
+    text.split('\n').forEach((line, index) => {
+      if (index > 0) fragment.appendChild(document.createElement('br'));
+      fragment.appendChild(document.createTextNode(line));
+    });
+    const lastNode = fragment.lastChild;
+    range.insertNode(fragment);
+    if (lastNode) range.setStartAfter(lastNode);
+    range.collapse(true);
+    selectRange(range);
     emit();
   }
 
@@ -119,14 +163,14 @@ export default function CmsRichTextField({ value, syncToken, onChange }: Props) 
 
   return (
     <div className="cms-rich-field">
-      <div className="cms-rich-toolbar" role="toolbar" aria-label="Mise en forme du texte">
-        <button type="button" onClick={() => runCommand('bold')} title="Gras"><b>B</b></button>
-        <button type="button" onClick={() => runCommand('italic')} title="Italique"><i>I</i></button>
+      <div className="cms-rich-toolbar" role="toolbar" aria-label="Mise en forme du texte" onMouseDown={(event) => event.preventDefault()}>
+        <button type="button" onClick={() => toggleInline('strong')} title="Gras"><b>B</b></button>
+        <button type="button" onClick={() => toggleInline('em')} title="Italique"><i>I</i></button>
         <button type="button" className="cms-rich-accent" onClick={toggleAccent} title="Souligné doré">
           <span>A</span>
         </button>
         <button type="button" onClick={applyLink} title="Lien">🔗</button>
-        <button type="button" onClick={() => runCommand('insertLineBreak')} title="Retour à la ligne">↵</button>
+        <button type="button" onClick={insertLineBreak} title="Retour à la ligne">↵</button>
         <button type="button" onClick={clearFormatting} title="Supprimer la mise en forme">✕</button>
       </div>
 
@@ -145,14 +189,13 @@ export default function CmsRichTextField({ value, syncToken, onChange }: Props) 
           // Browsers would otherwise split the block into divs or paragraphs,
           // which this field has no way to represent.
           event.preventDefault();
-          runCommand('insertLineBreak');
+          insertLineBreak();
         }}
         onPaste={(event) => {
           // Pasted markup from another site would be stripped anyway; taking the
           // plain text keeps what lands in the field and what gets saved identical.
           event.preventDefault();
-          document.execCommand('insertText', false, event.clipboardData.getData('text/plain'));
-          emit();
+          insertPlainText(event.clipboardData.getData('text/plain'));
         }}
       />
     </div>
