@@ -470,9 +470,16 @@ const heroTitleLines = [
       max-width: 44rem;
     }
 
+    /*
+      15vw resolved to ~115px at 768px, so the headline filled the viewport and
+      pushed the lead and both CTAs below the fold. It also forced accent lines to
+      wrap mid-phrase, which split the gold highlight into two misaligned bars:
+      box-decoration-break was already correct, the wrap was the real cause.
+      8.5vw keeps the editorial scale without either problem.
+    */
     .editorial-hero__title {
-      max-width: 11ch;
-      font-size: clamp(3.8rem, 15vw, 6rem);
+      max-width: 14ch;
+      font-size: clamp(3rem, 8.5vw, 4.6rem);
     }
 
     .editorial-hero__visual {
@@ -501,8 +508,10 @@ const heroTitleLines = [
       padding-top: 3.6rem;
     }
 
+    /* 17vw was ~66px on a 390px screen: "À chaque étape." could not hold one line. */
     .editorial-hero__title {
-      font-size: clamp(3.25rem, 17vw, 4.65rem);
+      max-width: 15ch;
+      font-size: clamp(2.35rem, 10.5vw, 3.3rem);
     }
 
     .editorial-hero__actions {

@@ -976,8 +976,16 @@ const active = (href: string) => {
       transform: none;
     }
 
+    /*
+      The panel is full height, so a short menu left most of the screen empty.
+      A flex column that fills the panel lets .tp-mobile-actions take
+      `margin-top: auto` and sit against the bottom edge, within thumb reach,
+      instead of leaving a void beneath it.
+    */
     .tp-mobile-menu nav {
-      display: grid;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
       max-width: 42rem;
       gap: 0.55rem;
       margin-inline: auto;
@@ -1076,29 +1084,45 @@ const active = (href: string) => {
       background: rgba(190, 158, 88, 0.08);
     }
 
+    /*
+      Five links in three equal columns left a ragged 3 + 2 grid and forced the
+      two longest labels onto two lines each. Two columns, with the primary CTA
+      pulled out full width, fits every label on one line and puts the action we
+      actually want first. Order is CSS-only: the markup is untouched, so the
+      desktop nav and the DOM are unaffected.
+    */
     .tp-mobile-actions {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 0.7rem;
-      margin-top: 0.9rem;
+      margin-top: auto;
+      padding-top: 1.4rem;
     }
 
     .tp-mobile-actions a {
       display: grid;
-      min-height: 3rem;
+      min-height: 3.25rem;
       place-items: center;
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 999px;
-      padding: 0.85rem;
+      padding: 0.85rem 1rem;
       color: #fff;
       font-size: 0.82rem;
       font-weight: 760;
+      line-height: 1.25;
+      text-align: center;
+      text-wrap: balance;
     }
 
+    /* « Simuler mes revenus » — primary action, promoted to the top and full width. */
     .tp-mobile-actions a:nth-child(3) {
+      order: -1;
+      grid-column: 1 / -1;
+      min-height: 3.5rem;
       border-color: #be9e58;
       background: #be9e58;
       color: #10202b;
+      font-size: 0.9rem;
     }
   }
 
@@ -1119,8 +1143,9 @@ const active = (href: string) => {
       height: 2.75rem;
     }
 
-    .tp-mobile-actions {
-      grid-template-columns: 1fr;
+    /* Two columns still fit at this width now that the primary CTA spans both. */
+    .tp-mobile-actions a {
+      font-size: 0.78rem;
     }
   }
 
