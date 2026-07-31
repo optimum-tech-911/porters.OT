@@ -18,6 +18,7 @@ with aligned_blocks as (
       last_editor = null,
       published_at = now()
   where content_key in (
+    'home.ecosystem.label',
     'home.faq.cta',
     'home.faq.title',
     'home.final_cta.description',

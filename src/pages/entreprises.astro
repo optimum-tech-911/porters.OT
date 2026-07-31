@@ -1,45 +1,51 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import SiteIcon from '../components/ui/SiteIcon.astro';
 import { pageSeo } from '../data/seo.data';
 import enterpriseHeroImage from '../../images/team-workshop.webp';
 import { enterprisePage } from '../content/pages/entreprises';
 
 const scoping = [
-  'Environnement technique',
-  'Organisation en place',
-  'Calendrier réel',
-  'Niveau d’autonomie',
-  'Contraintes de sécurité',
+  { label: 'Technique', detail: 'Stack et environnement' },
+  { label: 'Organisation', detail: 'Équipe et interfaces' },
+  { label: 'Calendrier', detail: 'Démarrage et durée' },
+  { label: 'Autonomie', detail: 'Rôle et responsabilités' },
+  { label: 'Sécurité', detail: 'Accès et contraintes' },
 ];
 
 const projects = [
   {
     title: 'Migration d’un socle Big Data',
-    text: 'Passage de Hortonworks à Cloudera Data Platform pour un organisme public national.',
-    profiles: 'Architecture système · Big Data · Développement senior',
+    context: 'Organisme public national',
+    text: 'Passage de Hortonworks à Cloudera Data Platform, avec reprise de l’architecture et sécurisation de la trajectoire.',
+    profiles: ['Architecture système', 'Big Data', 'Développement senior'],
   },
   {
     title: 'Applications critiques IBM i / AS400',
-    text: 'Analyse, développement spécifique et maintenance d’applications métier historiques.',
-    profiles: 'Analyse-programmation · Pilotage applicatif',
+    context: 'Environnement métier historique',
+    text: 'Analyse, développement spécifique et maintenance d’applications centrales, sans fragiliser la continuité de service.',
+    profiles: ['Analyse-programmation', 'Pilotage applicatif', 'Maintenance évolutive'],
   },
   {
     title: 'Reprise de modèles de données',
-    text: 'Audit de l’existant, recommandations d’outils et mise en place d’applicatifs internes.',
-    profiles: 'Architecture data · Data science · Fullstack',
+    context: 'Contexte industriel',
+    text: 'Audit de l’existant, recommandations d’outils et construction d’applicatifs internes autour de données fiabilisées.',
+    profiles: ['Architecture data', 'Data science', 'Fullstack'],
   },
 ];
 
 const models = [
   {
-    label: 'Portage salarial',
-    title: 'Vous avez déjà identifié le consultant',
+    label: 'Consultant déjà identifié',
+    title: 'Portage salarial',
     text: 'The Porters met en place le contrat de prestation et porte le cadre salarial, la facturation et la paie.',
+    icon: 'shield' as const,
   },
   {
-    label: 'ESN du groupe',
-    title: 'Vous cherchez encore le bon profil',
-    text: 'The Big Porters cadre le besoin, source et évalue les profils, puis suit la mission.',
+    label: 'Expertise encore à trouver',
+    title: 'The Big Porters',
+    text: 'L’ESN du groupe cadre le besoin, source et évalue les profils, puis suit la mission.',
+    icon: 'network' as const,
   },
 ];
 ---
@@ -48,91 +54,177 @@ const models = [
   seo={{ title: pageSeo.entreprises.title, description: pageSeo.entreprises.description }}
   breadcrumbs={[{ label: 'Entreprises' }]}
 >
-  <section class="relative overflow-hidden bg-porters-navy text-porters-white">
+  <section class="enterprise-hero">
     <img
       src={enterpriseHeroImage.src}
       width={enterpriseHeroImage.width}
       height={enterpriseHeroImage.height}
       alt=""
-      class="absolute inset-0 h-full w-full object-cover object-center"
+      class="enterprise-hero-image"
     />
-    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,43,99,0.97)_0%,rgba(25,43,99,0.86)_48%,rgba(25,43,99,0.3)_100%)]"></div>
-    <div class="container relative mx-auto px-6 py-24 lg:px-8 lg:py-32">
-      <div class="max-w-2xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Entreprises</p>
-        <h1 class="text-porters-white">Un besoin IT précis. Des profils évalués sur le réel.</h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-porters-white/80">
-          Nous cadrons le contexte, évaluons les compétences et proposons le bon mode d’intervention.
-          Vous recevez des profils qualifiés, pas une pile de CV.
-        </p>
-        <div class="mt-9">
-          <a href="/contact" class="btn btn-gold">Décrire mon besoin</a>
-        </div>
+    <div class="enterprise-hero-overlay"></div>
+    <div class="enterprise-shell enterprise-hero-grid">
+      <div class="enterprise-hero-copy reveal">
+        <p>Entreprises</p>
+        <h1>Un besoin IT précis.<br /><span>Un profil évalué sur le réel.</span></h1>
+        <strong>
+          Nous cadrons le contexte, comparons les compétences sur une même grille et proposons
+          le mode d’intervention adapté. Pas une pile de CV.
+        </strong>
+        <a href="/contact">Décrire mon besoin <span aria-hidden="true">→</span></a>
       </div>
-    </div>
-  </section>
 
-  <section class="section bg-white">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.68fr)_minmax(18rem,0.52fr)] lg:items-end">
-        <div class="reveal">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Avant le premier profil</p>
-          <h2>Le contexte d’abord. Le CV ensuite.</h2>
-          <p class="mt-5 max-w-2xl text-porters-black/66">
-            Une compétence ne se juge pas hors sol. Nous cadrons cinq points avant de lancer la recherche.
-          </p>
-        </div>
-        <ul class="grid gap-3 sm:grid-cols-2 reveal">
+      <div class="enterprise-signal reveal" aria-label="Du besoin au profil qualifié">
+        <svg viewBox="0 0 760 560" aria-hidden="true">
+          <defs>
+            <linearGradient id="signal-gold" x1="0" x2="1">
+              <stop offset="0" stop-color="#d5b668" stop-opacity=".2" />
+              <stop offset=".5" stop-color="#d5b668" />
+              <stop offset="1" stop-color="#d5b668" stop-opacity=".2" />
+            </linearGradient>
+          </defs>
+          <path d="M126 92C240 92 252 280 366 280" />
+          <path d="M126 186C238 186 254 280 366 280" />
+          <path d="M126 280H366" />
+          <path d="M126 374C238 374 254 280 366 280" />
+          <path d="M126 468C240 468 252 280 366 280" />
+          <path class="signal-output-line" d="M438 280H650" />
+        </svg>
+        <div class="enterprise-inputs">
           {scoping.map((item, index) => (
-            <li class="flex items-center gap-3 border-b border-porters-navy/10 py-3 text-sm font-semibold text-porters-navy">
-              <span class="font-mono text-xs text-porters-gold">0{index + 1}</span>{item}
-            </li>
+            <div class={`enterprise-input input-${index + 1}`}>
+              <span>0{index + 1}</span>
+              <strong>{item.label}</strong>
+              <small>{item.detail}</small>
+            </div>
           ))}
-        </ul>
+        </div>
+        <div class="enterprise-core">
+          <span>Analyse</span>
+          <strong>Besoin cadré</strong>
+          <small>Une grille commune</small>
+        </div>
+        <div class="enterprise-output">
+          <span aria-hidden="true"><SiteIcon name="check" /></span>
+          <strong>Profil qualifié</strong>
+          <small>Compétences · disponibilité · contexte</small>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section bg-porters-navy/[0.03]" id="processus">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-10 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Sélection</p>
-        <h2>Cinq étapes, une grille commune</h2>
-        <p class="mt-4 text-porters-black/65">
-          Un même parcours pour rendre les profils comparables. Sélectionnez une étape pour voir ce que nous vérifions.
-        </p>
-      </div>
-      <div class="selection-process reveal" data-selection-process>
-        <div class="selection-tabs" role="tablist" aria-label="Étapes de sélection">
+  <section class="enterprise-process" id="processus">
+    <div class="enterprise-shell">
+      <header class="enterprise-heading reveal">
+        <p>Notre processus de sélection</p>
+        <h2>Cinq étapes. <span class="gold-underline">Une seule grille.</span></h2>
+        <strong>Le détail apparaît au bon moment pendant votre lecture, sans afficher cinq blocs de texte en parallèle.</strong>
+      </header>
+
+      <div class="enterprise-scroll-system" data-enterprise-process>
+        <aside class="process-stage">
+          <div class="process-stage-grid" aria-hidden="true"></div>
+          <div class="process-stage-ring">
+            <span data-process-number>01</span>
+            <small>Étape active</small>
+          </div>
+          <div class="process-stage-copy" aria-live="polite">
+            <p data-process-kicker>Sélection</p>
+            <h3 data-process-title>{enterprisePage.selection[0]?.title}</h3>
+            <span data-process-text>{enterprisePage.selection[0]?.text}</span>
+          </div>
+          <div class="process-progress" aria-hidden="true">
+            <span data-process-progress style="--process-progress:20%"></span>
+          </div>
+        </aside>
+
+        <ol class="process-steps">
           {enterprisePage.selection.map((item, index) => (
-            <button
-              type="button"
-              id={`selection-tab-${index}`}
-              class:list={['selection-tab', { 'is-active': index === 0 }]}
-              role="tab"
-              aria-selected={index === 0 ? 'true' : 'false'}
-              aria-controls={`selection-panel-${index}`}
-              tabindex={index === 0 ? 0 : -1}
-              data-selection-tab
+            <li
+              class:list={['process-step', { 'is-active': index === 0 }]}
+              data-process-step
+              data-number={item.step}
+              data-title={item.title}
+              data-text={item.text}
+              tabindex="0"
             >
               <span>{item.step}</span>
-              <strong>{item.title}</strong>
+              <div>
+                <small>{index === 0 ? 'Point de départ' : index === enterprisePage.selection.length - 1 ? 'Sortie' : 'Vérification'}</small>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="enterprise-perimeters">
+    <div class="enterprise-shell">
+      <header class="enterprise-heading enterprise-heading--compact reveal">
+        <p>Périmètres mobilisables</p>
+        <h2>Du socle historique à l’IA.</h2>
+      </header>
+      <div class="perimeter-map reveal">
+        <div class="perimeter-core">
+          <small>Votre contexte</small>
+          <strong>Une mission définie</strong>
+        </div>
+        {enterprisePage.useCases.map((useCase, index) => (
+          <article class={`perimeter-node perimeter-${index + 1}`}>
+            <span>0{index + 1}</span>
+            <h3>{useCase.title}</h3>
+            <p>{useCase.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="enterprise-projects">
+    <div class="enterprise-shell">
+      <header class="enterprise-heading reveal">
+        <p>Expérience mobilisable</p>
+        <h2>Des projets décrits <span class="gold-underline">par les faits</span>.</h2>
+      </header>
+
+      <div class="project-lab reveal" data-project-lab>
+        <div class="project-tabs" role="tablist" aria-label="Exemples de projets">
+          {projects.map((project, index) => (
+            <button
+              type="button"
+              role="tab"
+              id={`project-tab-${index}`}
+              aria-selected={index === 0 ? 'true' : 'false'}
+              aria-controls={`project-panel-${index}`}
+              tabindex={index === 0 ? 0 : -1}
+              class:list={['project-tab', { 'is-active': index === 0 }]}
+              data-project-tab
+            >
+              <span>0{index + 1}</span>
+              <strong>{project.title}</strong>
             </button>
           ))}
         </div>
-        <div class="selection-panels">
-          {enterprisePage.selection.map((item, index) => (
+        <div class="project-panels">
+          {projects.map((project, index) => (
             <article
-              id={`selection-panel-${index}`}
-              class="selection-panel"
+              id={`project-panel-${index}`}
               role="tabpanel"
-              aria-labelledby={`selection-tab-${index}`}
+              aria-labelledby={`project-tab-${index}`}
+              class="project-panel"
               hidden={index !== 0}
-              data-selection-panel
+              data-project-panel
             >
-              <span class="selection-panel-step">Étape {item.step}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              <div class="project-panel-index">0{index + 1}</div>
+              <div>
+                <p>{project.context}</p>
+                <h3>{project.title}</h3>
+                <strong>{project.text}</strong>
+                <div>{project.profiles.map((profile) => <span>{profile}</span>)}</div>
+              </div>
             </article>
           ))}
         </div>
@@ -140,234 +232,1037 @@ const models = [
     </div>
   </section>
 
-  <section class="section bg-white">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Expérience mobilisable</p>
-        <h2>Des projets décrits par les faits</h2>
-        <p class="mt-4 text-porters-black/65">Trois contextes techniques réels, présentés sans exposer le nom des clients.</p>
-      </div>
-      <div class="grid gap-6 lg:grid-cols-3">
-        {projects.map((project) => (
-          <article class="border-l-[3px] border-porters-gold bg-porters-navy/[0.03] p-7 reveal">
-            <h3 class="text-lg">{project.title}</h3>
-            <p class="mt-3 text-sm leading-relaxed text-porters-black/66">{project.text}</p>
-            <p class="mb-0 mt-5 text-xs font-semibold uppercase tracking-[0.1em] text-porters-navy/55">{project.profiles}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-porters-navy/[0.03]">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mx-auto mb-10 max-w-3xl text-center reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Deux cadres</p>
-        <h2>Le modèle dépend de votre point de départ</h2>
-      </div>
-      <div class="mx-auto grid max-w-5xl gap-6 md:grid-cols-2">
-        {models.map((model) => (
-          <article class="card reveal p-7 lg:p-9">
-            <p class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-porters-gold">{model.label}</p>
-            <h3 class="text-xl">{model.title}</h3>
-            <p class="mb-0 mt-4 text-sm leading-relaxed text-porters-black/65">{model.text}</p>
-          </article>
-        ))}
+  <section class="enterprise-choice">
+    <div class="enterprise-shell">
+      <header class="enterprise-heading enterprise-heading--center reveal">
+        <p>Le bon cadre</p>
+        <h2>Partez de votre point de départ.</h2>
+      </header>
+      <div class="choice-schema reveal">
+        <div class="choice-question">
+          <span>01</span>
+          <strong>Le consultant est-il déjà identifié&nbsp;?</strong>
+        </div>
+        <div class="choice-branch" aria-hidden="true"><span>Oui</span><i></i><span>Non</span></div>
+        <div class="choice-models">
+          {models.map((model) => (
+            <article>
+              <div class="icon-chip"><SiteIcon name={model.icon} /></div>
+              <p>{model.label}</p>
+              <h3>{model.title}</h3>
+              <strong>{model.text}</strong>
+            </article>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-porters-navy py-16 text-porters-white">
-    <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-      <div class="max-w-2xl reveal">
-        <h2 class="mb-2 text-porters-white">Décrivez le contexte. Nous cadrons la suite.</h2>
-        <p class="mb-0 text-porters-white/65">Technologies, organisation, délai, autonomie et sécurité&nbsp;: cinq informations suffisent pour commencer.</p>
+  <section class="enterprise-cta">
+    <div class="enterprise-shell">
+      <div class="reveal">
+        <p>Votre besoin</p>
+        <h2>Décrivez le contexte. Nous cadrons la suite.</h2>
+        <strong>Technologies, organisation, délai, autonomie et sécurité&nbsp;: cinq informations suffisent pour commencer.</strong>
       </div>
-      <a href="/contact" class="btn btn-gold shrink-0">Décrire mon besoin</a>
+      <a href="/contact">Décrire mon besoin <span aria-hidden="true">→</span></a>
     </div>
   </section>
 </PageLayout>
 
 <script>
-  document.querySelectorAll<HTMLElement>('[data-selection-process]').forEach((process) => {
-    const tabs = Array.from(process.querySelectorAll<HTMLButtonElement>('[data-selection-tab]'));
-    const panels = Array.from(process.querySelectorAll<HTMLElement>('[data-selection-panel]'));
+  document.querySelectorAll<HTMLElement>('[data-enterprise-process]').forEach((system) => {
+    const steps = Array.from(system.querySelectorAll<HTMLElement>('[data-process-step]'));
+    const number = system.querySelector<HTMLElement>('[data-process-number]');
+    const title = system.querySelector<HTMLElement>('[data-process-title]');
+    const text = system.querySelector<HTMLElement>('[data-process-text]');
+    const progress = system.querySelector<HTMLElement>('[data-process-progress]');
 
-    const select = (nextIndex: number, moveFocus = false) => {
-      tabs.forEach((tab, index) => {
-        const active = index === nextIndex;
+    const select = (step: HTMLElement) => {
+      const index = steps.indexOf(step);
+      steps.forEach((item) => item.classList.toggle('is-active', item === step));
+      if (number) number.textContent = step.dataset.number || '';
+      if (title) title.textContent = step.dataset.title || '';
+      if (text) text.textContent = step.dataset.text || '';
+      if (progress) progress.style.setProperty('--process-progress', `${((index + 1) / steps.length) * 100}%`);
+    };
+
+    steps.forEach((step) => {
+      step.addEventListener('focus', () => select(step));
+      step.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse') select(step);
+      });
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) select(entry.target as HTMLElement);
+        });
+      }, { rootMargin: '-35% 0px -48% 0px', threshold: 0.35 });
+      steps.forEach((step) => observer.observe(step));
+    }
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-project-lab]').forEach((lab) => {
+    const tabs = Array.from(lab.querySelectorAll<HTMLButtonElement>('[data-project-tab]'));
+    const panels = Array.from(lab.querySelectorAll<HTMLElement>('[data-project-panel]'));
+    const select = (nextIndex: number, focus = false) => {
+      const index = (nextIndex + tabs.length) % tabs.length;
+      tabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === index;
         tab.classList.toggle('is-active', active);
         tab.setAttribute('aria-selected', String(active));
         tab.tabIndex = active ? 0 : -1;
-        if (active && moveFocus) tab.focus();
+        if (active && focus) tab.focus();
       });
-
-      panels.forEach((panel, index) => {
-        panel.hidden = index !== nextIndex;
-        if (index === nextIndex) {
-          panel.classList.remove('is-entering');
-          requestAnimationFrame(() => panel.classList.add('is-entering'));
-        }
+      panels.forEach((panel, panelIndex) => {
+        panel.hidden = panelIndex !== index;
+        panel.classList.remove('is-entering');
+        if (panelIndex === index) requestAnimationFrame(() => panel.classList.add('is-entering'));
       });
     };
-
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => select(index));
       tab.addEventListener('keydown', (event) => {
         if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
         event.preventDefault();
-        const nextIndex = event.key === 'Home'
-          ? 0
-          : event.key === 'End'
-            ? tabs.length - 1
-            : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
-        select(nextIndex, true);
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : index + (event.key === 'ArrowRight' ? 1 : -1);
+        select(next, true);
       });
     });
   });
 </script>
 
 <style>
-  .selection-process {
+  .enterprise-shell {
+    width: min(100% - 3rem, 84rem);
+    margin-inline: auto;
+  }
+
+  .enterprise-hero {
+    position: relative;
+    min-height: 44rem;
     overflow: hidden;
-    border: 1px solid rgba(40, 55, 67, 0.1);
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 22px 60px rgba(40, 55, 67, 0.07);
+    background: #102630;
+    color: #fff;
   }
 
-  .selection-tabs {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    border-bottom: 1px solid rgba(40, 55, 67, 0.1);
+  .enterprise-hero-image,
+  .enterprise-hero-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
   }
 
-  .selection-tab {
+  .enterprise-hero-image {
+    object-fit: cover;
+    opacity: .42;
+  }
+
+  .enterprise-hero-overlay {
+    background:
+      linear-gradient(90deg, rgba(16,38,48,.98), rgba(16,38,48,.91) 48%, rgba(16,38,48,.68)),
+      radial-gradient(circle at 75% 50%, rgba(213,182,104,.2), transparent 34%);
+  }
+
+  .enterprise-hero-grid {
     position: relative;
     display: grid;
-    min-height: 7.5rem;
-    align-content: start;
-    gap: 0.65rem;
+    min-height: 44rem;
+    grid-template-columns: minmax(0,.72fr) minmax(32rem,1.05fr);
+    align-items: center;
+    gap: clamp(3rem,6vw,6rem);
+    padding-block: 5rem;
+  }
+
+  .enterprise-hero-copy > p,
+  .enterprise-heading > p,
+  .enterprise-cta p {
+    margin: 0 0 1rem;
+    color: #d5b668;
+    font-size: .7rem;
+    font-weight: 760;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .enterprise-hero-copy h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(3rem,5vw,5.5rem);
+    line-height: .98;
+    letter-spacing: -.055em;
+  }
+
+  .enterprise-hero-copy h1 span {
+    color: #d5b668;
+  }
+
+  .enterprise-hero-copy > strong {
+    display: block;
+    max-width: 39rem;
+    margin-top: 1.6rem;
+    color: rgba(255,255,255,.7);
+    font-size: clamp(.98rem,1.4vw,1.14rem);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  .enterprise-hero-copy > a,
+  .enterprise-cta a {
+    display: inline-flex;
+    min-height: 3.3rem;
+    align-items: center;
+    gap: .75rem;
+    margin-top: 2rem;
+    border-radius: 999px;
+    padding-inline: 1.4rem;
+    background: #d5b668;
+    color: #102630;
+    font-size: .82rem;
+    font-weight: 780;
+    transition: transform 220ms var(--ease-soft), box-shadow 220ms ease;
+  }
+
+  .enterprise-hero-copy > a:hover,
+  .enterprise-cta a:hover {
+    box-shadow: 0 16px 38px rgba(0,0,0,.2);
+    transform: translateY(-3px);
+  }
+
+  .enterprise-signal {
+    position: relative;
+    min-height: 35rem;
+  }
+
+  .enterprise-signal > svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .enterprise-signal path {
+    fill: none;
+    stroke: url(#signal-gold);
+    stroke-width: 1.5;
+    stroke-dasharray: 5 10;
+    animation: enterprise-flow 3s linear infinite;
+  }
+
+  .signal-output-line {
+    stroke-width: 2.5 !important;
+  }
+
+  .enterprise-input {
+    position: absolute;
+    left: 0;
+    display: grid;
+    width: 10.6rem;
+    grid-template-columns: auto 1fr;
+    gap: .14rem .65rem;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 11px;
+    padding: .68rem .78rem;
+    background: rgba(255,255,255,.08);
+    box-shadow: 0 14px 32px rgba(0,0,0,.14);
+    backdrop-filter: blur(10px);
+    animation: input-float 5s ease-in-out infinite;
+  }
+
+  .enterprise-input span {
+    grid-row: span 2;
+    color: #d5b668;
+    font-family: var(--font-mono);
+    font-size: .58rem;
+  }
+
+  .enterprise-input strong {
+    color: #fff;
+    font-size: .72rem;
+  }
+
+  .enterprise-input small {
+    grid-column: 2;
+    color: rgba(255,255,255,.48);
+    font-size: .58rem;
+  }
+
+  .input-1 { top: 4%; animation-delay: -1s; }
+  .input-2 { top: 21%; animation-delay: -2s; }
+  .input-3 { top: 43%; animation-delay: -3s; }
+  .input-4 { top: 65%; animation-delay: -4s; }
+  .input-5 { top: 82%; animation-delay: -5s; }
+
+  .enterprise-core,
+  .enterprise-output {
+    position: absolute;
+    display: grid;
+    place-content: center;
+    text-align: center;
+  }
+
+  .enterprise-core {
+    top: 50%;
+    left: 52%;
+    width: 9rem;
+    aspect-ratio: 1;
+    border: 1px solid rgba(213,182,104,.55);
+    border-radius: 50%;
+    background: rgba(16,38,48,.92);
+    box-shadow: 0 0 0 2rem rgba(213,182,104,.05);
+    transform: translate(-50%,-50%);
+  }
+
+  .enterprise-core span,
+  .enterprise-core small,
+  .enterprise-output small {
+    color: rgba(255,255,255,.5);
+    font-size: .58rem;
+  }
+
+  .enterprise-core strong,
+  .enterprise-output strong {
+    margin-block: .3rem;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+  }
+
+  .enterprise-output {
+    top: 50%;
+    right: 0;
+    min-width: 13rem;
+    min-height: 8rem;
+    border: 1px solid rgba(213,182,104,.4);
+    border-radius: 14px;
+    padding: 1rem;
+    background: rgba(213,182,104,.13);
+    transform: translateY(-50%);
+    backdrop-filter: blur(12px);
+  }
+
+  .enterprise-output > span {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    margin: 0 auto .4rem;
+    border-radius: 50%;
+    background: #d5b668;
+    color: #102630;
+  }
+
+  .enterprise-process,
+  .enterprise-projects,
+  .enterprise-choice {
+    padding-block: clamp(5rem,9vw,8rem);
+  }
+
+  .enterprise-process {
+    background: #f7f5ef;
+  }
+
+  .enterprise-heading {
+    max-width: 52rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .enterprise-heading h2 {
+    margin: 0;
+    font-size: clamp(2.5rem,4.8vw,4.7rem);
+    line-height: 1.02;
+    letter-spacing: -.045em;
+  }
+
+  .enterprise-heading > strong {
+    display: block;
+    max-width: 42rem;
+    margin-top: 1rem;
+    color: rgba(40,55,67,.62);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  .enterprise-heading--compact {
+    max-width: 45rem;
+  }
+
+  .enterprise-heading--center {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .enterprise-scroll-system {
+    display: grid;
+    grid-template-columns: minmax(22rem,.8fr) minmax(0,1.2fr);
+    align-items: start;
+    gap: clamp(2.5rem,6vw,6rem);
+  }
+
+  .process-stage {
+    position: sticky;
+    top: 8rem;
+    overflow: hidden;
+    min-height: 31rem;
+    border: 1px solid rgba(40,55,67,.1);
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at 50% 28%, rgba(213,182,104,.16), transparent 31%),
+      #fff;
+    box-shadow: 0 24px 65px rgba(40,55,67,.08);
+  }
+
+  .process-stage-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(40,55,67,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(40,55,67,.035) 1px,transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(#000,transparent 80%);
+  }
+
+  .process-stage-ring {
+    position: relative;
+    display: grid;
+    width: 9.5rem;
+    aspect-ratio: 1;
+    place-content: center;
+    margin: 3rem auto 0;
+    border: 1px solid rgba(213,182,104,.5);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1.7rem rgba(213,182,104,.06), 0 0 0 3.4rem rgba(213,182,104,.025);
+    text-align: center;
+  }
+
+  .process-stage-ring span {
+    color: var(--color-porters-navy);
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .process-stage-ring small {
+    margin-top: .3rem;
+    color: #a47f34;
+    font-size: .58rem;
+    font-weight: 760;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .process-stage-copy {
+    position: relative;
+    padding: 3rem 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .process-stage-copy > p {
+    margin: 0;
+    color: #a47f34;
+    font-size: .62rem;
+    font-weight: 760;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+
+  .process-stage-copy h3 {
+    margin: .6rem 0 0;
+    font-size: clamp(1.5rem,2.8vw,2.25rem);
+  }
+
+  .process-stage-copy > span {
+    display: block;
+    margin-top: .7rem;
+    color: rgba(40,55,67,.6);
+    font-size: .82rem;
+    line-height: 1.6;
+  }
+
+  .process-progress {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(40,55,67,.08);
+  }
+
+  .process-progress span {
+    display: block;
+    width: var(--process-progress);
+    height: 100%;
+    background: #d5b668;
+    transition: width 420ms var(--ease-soft);
+  }
+
+  .process-steps {
+    display: grid;
+    gap: 1.2rem;
+    padding-block: 7rem 12rem;
+  }
+
+  .process-step {
+    display: grid;
+    min-height: 15rem;
+    grid-template-columns: auto 1fr;
+    align-content: center;
+    gap: 1.3rem;
+    border: 1px solid rgba(40,55,67,.09);
+    border-radius: 14px;
+    padding: clamp(1.5rem,3vw,2.4rem);
+    background: rgba(255,255,255,.58);
+    opacity: .42;
+    transform: translateX(18px) scale(.98);
+    transition: opacity 320ms ease,transform 420ms var(--ease-soft),background 240ms ease,box-shadow 240ms ease;
+  }
+
+  .process-step.is-active,
+  .process-step:focus-visible {
+    background: #fff;
+    box-shadow: 0 22px 55px rgba(40,55,67,.1);
+    opacity: 1;
+    outline: none;
+    transform: none;
+  }
+
+  .process-step > span {
+    color: #d5b668;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  .process-step small {
+    color: #a47f34;
+    font-size: .58rem;
+    font-weight: 760;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .process-step h3 {
+    margin: .4rem 0 0;
+    font-size: 1.4rem;
+  }
+
+  .process-step p {
+    max-width: 40rem;
+    margin: .65rem 0 0;
+    color: rgba(40,55,67,.62);
+    font-size: .84rem;
+    line-height: 1.65;
+  }
+
+  .enterprise-perimeters {
+    overflow: hidden;
+    padding-block: clamp(5rem,9vw,8rem);
+    background: #142b37;
+    color: #fff;
+  }
+
+  .enterprise-perimeters .enterprise-heading h2 {
+    color: #fff;
+  }
+
+  .perimeter-map {
+    position: relative;
+    min-height: 40rem;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(213,182,104,.12), transparent 30%),
+      linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size: auto,42px 42px,42px 42px;
+  }
+
+  .perimeter-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 12rem;
+    aspect-ratio: 1;
+    place-content: center;
+    border: 1px solid rgba(213,182,104,.5);
+    border-radius: 50%;
+    background: #142b37;
+    box-shadow: 0 0 0 2.4rem rgba(213,182,104,.04);
+    text-align: center;
+    transform: translate(-50%,-50%);
+  }
+
+  .perimeter-core small {
+    color: #d5b668;
+    font-size: .58rem;
+    text-transform: uppercase;
+  }
+
+  .perimeter-core strong {
+    margin-top: .4rem;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+  }
+
+  .perimeter-node {
+    position: absolute;
+    width: min(18rem,29%);
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 13px;
+    padding: 1rem;
+    background: rgba(255,255,255,.065);
+    backdrop-filter: blur(10px);
+    transition: border-color 180ms ease,background 180ms ease,transform 240ms var(--ease-soft);
+  }
+
+  .perimeter-node:hover {
+    border-color: rgba(213,182,104,.6);
+    background: rgba(213,182,104,.11);
+    transform: translateY(-4px);
+  }
+
+  .perimeter-node > span {
+    color: #d5b668;
+    font-family: var(--font-mono);
+    font-size: .58rem;
+  }
+
+  .perimeter-node h3 {
+    margin: .45rem 0 0;
+    color: #fff;
+    font-size: .86rem;
+  }
+
+  .perimeter-node p {
+    margin: .45rem 0 0;
+    color: rgba(255,255,255,.52);
+    font-size: .66rem;
+    line-height: 1.5;
+  }
+
+  .perimeter-1 { top: 6%; left: 7%; }
+  .perimeter-2 { top: 6%; right: 7%; }
+  .perimeter-3 { top: 38%; left: 3%; }
+  .perimeter-4 { top: 38%; right: 3%; }
+  .perimeter-5 { bottom: 5%; left: 14%; }
+  .perimeter-6 { right: 14%; bottom: 5%; }
+
+  .enterprise-projects {
+    background: #fff;
+  }
+
+  .project-lab {
+    display: grid;
+    grid-template-columns: minmax(14rem,.32fr) minmax(0,1fr);
+    overflow: hidden;
+    border: 1px solid rgba(40,55,67,.1);
+    border-radius: 18px;
+    box-shadow: 0 26px 70px rgba(40,55,67,.08);
+  }
+
+  .project-tabs {
+    background: #f4f2ec;
+  }
+
+  .project-tab {
+    position: relative;
+    display: grid;
+    width: 100%;
+    min-height: 8rem;
+    grid-template-columns: auto 1fr;
+    align-content: center;
+    gap: .8rem;
     border: 0;
-    border-right: 1px solid rgba(40, 55, 67, 0.09);
+    border-bottom: 1px solid rgba(40,55,67,.09);
     padding: 1.2rem;
     background: transparent;
     color: var(--color-porters-navy);
     cursor: pointer;
     font: inherit;
     text-align: left;
-    transition: background 180ms ease, color 180ms ease;
+    transition: background 180ms ease,padding 220ms var(--ease-soft);
   }
 
-  .selection-tab:last-child {
-    border-right: 0;
-  }
-
-  .selection-tab::after {
-    position: absolute;
-    right: 0;
-    bottom: -1px;
-    left: 0;
-    height: 3px;
-    background: var(--color-porters-gold);
-    content: "";
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 240ms var(--ease-soft);
-  }
-
-  .selection-tab:hover,
-  .selection-tab:focus-visible,
-  .selection-tab.is-active {
-    background: rgba(190, 158, 88, 0.09);
+  .project-tab:hover,
+  .project-tab:focus-visible,
+  .project-tab.is-active {
+    background: #fff;
     outline: none;
+    padding-left: 1.45rem;
   }
 
-  .selection-tab.is-active::after {
-    transform: scaleX(1);
+  .project-tab::after {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: #d5b668;
+    content: "";
+    transform: scaleY(0);
+    transition: transform 220ms var(--ease-soft);
   }
 
-  .selection-tab > span {
-    color: var(--color-porters-gold);
+  .project-tab.is-active::after {
+    transform: scaleY(1);
+  }
+
+  .project-tab span {
+    color: #a47f34;
     font-family: var(--font-mono);
-    font-size: 0.66rem;
-    font-weight: 700;
+    font-size: .62rem;
   }
 
-  .selection-tab > strong {
-    font-family: var(--font-heading);
-    font-size: clamp(0.78rem, 1.2vw, 0.96rem);
-    line-height: 1.35;
+  .project-tab strong {
+    font-size: .78rem;
+    line-height: 1.4;
   }
 
-  .selection-panels {
-    min-height: 13rem;
-    padding: clamp(1.8rem, 4vw, 3.2rem);
+  .project-panels {
+    min-height: 27rem;
+  }
+
+  .project-panel {
+    position: relative;
+    display: grid;
+    min-height: 27rem;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 2rem;
+    overflow: hidden;
+    padding: clamp(2rem,5vw,4.5rem);
     background:
-      radial-gradient(circle at 92% 30%, rgba(190, 158, 88, 0.12), transparent 25%),
+      radial-gradient(circle at 90% 15%,rgba(213,182,104,.15),transparent 25%),
       #fff;
   }
 
-  .selection-panel {
-    max-width: 52rem;
-  }
-
-  .selection-panel[hidden] {
+  .project-panel[hidden] {
     display: none;
   }
 
-  .selection-panel.is-entering {
-    animation: selection-enter 360ms var(--ease-soft);
+  .project-panel.is-entering {
+    animation: project-enter 400ms var(--ease-soft);
   }
 
-  .selection-panel-step {
-    color: var(--color-porters-gold);
-    font-size: 0.66rem;
+  .project-panel-index {
+    color: rgba(40,55,67,.1);
+    font-family: var(--font-heading);
+    font-size: clamp(4rem,10vw,9rem);
+    font-weight: 700;
+    line-height: .8;
+  }
+
+  .project-panel p {
+    margin: 0;
+    color: #a47f34;
+    font-size: .66rem;
     font-weight: 760;
-    letter-spacing: 0.14em;
+    letter-spacing: .13em;
     text-transform: uppercase;
   }
 
-  .selection-panel h3 {
-    margin: 0.65rem 0 0;
-    font-size: clamp(1.6rem, 3vw, 2.35rem);
+  .project-panel h3 {
+    max-width: 18ch;
+    margin: .65rem 0 0;
+    font-size: clamp(1.8rem,3.6vw,3.2rem);
+    line-height: 1.03;
   }
 
-  .selection-panel p {
-    max-width: 47rem;
-    margin: 1rem 0 0;
-    color: rgba(40, 55, 67, 0.66);
-    font-size: clamp(0.92rem, 1.4vw, 1.05rem);
+  .project-panel > div:last-child > strong {
+    display: block;
+    max-width: 42rem;
+    margin-top: 1rem;
+    color: rgba(40,55,67,.62);
+    font-size: .9rem;
+    font-weight: 500;
     line-height: 1.7;
   }
 
-  @keyframes selection-enter {
-    from {
-      opacity: 0.25;
-      transform: translateY(8px);
+  .project-panel > div:last-child > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-top: 1.5rem;
+  }
+
+  .project-panel > div:last-child > div span {
+    border-radius: 999px;
+    padding: .45rem .75rem;
+    background: rgba(40,55,67,.055);
+    color: rgba(40,55,67,.65);
+    font-size: .66rem;
+  }
+
+  .enterprise-choice {
+    background: #f7f5ef;
+  }
+
+  .choice-schema {
+    max-width: 64rem;
+    margin-inline: auto;
+  }
+
+  .choice-question {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 1rem;
+    margin-inline: auto;
+    border: 1px solid rgba(40,55,67,.1);
+    border-radius: 999px;
+    padding: .9rem 1.3rem;
+    background: #fff;
+    box-shadow: 0 14px 35px rgba(40,55,67,.07);
+  }
+
+  .choice-question span {
+    color: #a47f34;
+    font-family: var(--font-mono);
+    font-size: .62rem;
+  }
+
+  .choice-question strong {
+    color: var(--color-porters-navy);
+    font-size: .82rem;
+  }
+
+  .choice-branch {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    max-width: 36rem;
+    margin: 1.4rem auto;
+    color: #a47f34;
+    font-size: .64rem;
+    font-weight: 760;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .choice-branch i {
+    width: 1px;
+    height: 3rem;
+    background: #d5b668;
+  }
+
+  .choice-models {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 1rem;
+  }
+
+  .choice-models article {
+    border: 1px solid rgba(40,55,67,.1);
+    border-top: 2px solid #d5b668;
+    border-radius: 0 0 14px 14px;
+    padding: 2rem;
+    background: #fff;
+    transition: transform 240ms var(--ease-soft),box-shadow 240ms ease;
+  }
+
+  .choice-models article:hover {
+    box-shadow: 0 20px 50px rgba(40,55,67,.1);
+    transform: translateY(-5px);
+  }
+
+  .choice-models p {
+    margin: 1.2rem 0 .4rem;
+    color: #a47f34;
+    font-size: .62rem;
+    font-weight: 760;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .choice-models h3 {
+    margin: 0;
+    font-size: 1.45rem;
+  }
+
+  .choice-models > article > strong {
+    display: block;
+    margin-top: .7rem;
+    color: rgba(40,55,67,.62);
+    font-size: .8rem;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .enterprise-cta {
+    padding-block: 4rem;
+    background: #142b37;
+    color: #fff;
+  }
+
+  .enterprise-cta .enterprise-shell {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .enterprise-cta h2 {
+    max-width: 34rem;
+    margin: 0;
+    color: #fff;
+  }
+
+  .enterprise-cta strong {
+    display: block;
+    max-width: 42rem;
+    margin-top: .7rem;
+    color: rgba(255,255,255,.58);
+    font-size: .82rem;
+    font-weight: 500;
+  }
+
+  .enterprise-cta a {
+    flex: 0 0 auto;
+    margin-top: 0;
+  }
+
+  @keyframes enterprise-flow { to { stroke-dashoffset: -45; } }
+  @keyframes input-float { 50% { transform: translateY(-5px); } }
+  @keyframes project-enter { from { opacity:.25; transform:translateY(12px); } }
+
+  @media (max-width: 1050px) {
+    .enterprise-hero-grid,
+    .enterprise-scroll-system {
+      grid-template-columns: 1fr;
+    }
+
+    .enterprise-signal {
+      width: min(100%,46rem);
+      margin-inline: auto;
+    }
+
+    .process-stage {
+      position: relative;
+      top: auto;
+    }
+
+    .process-steps {
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      padding-block: 0;
+    }
+
+    .process-step {
+      min-height: 13rem;
+      opacity: 1;
+      transform: none;
     }
   }
 
-  @media (max-width: 820px) {
-    .selection-tabs {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
+  @media (max-width: 760px) {
+    .enterprise-shell {
+      width: min(100% - 2rem,84rem);
     }
 
-    .selection-tab {
-      min-width: 11rem;
-      scroll-snap-align: start;
+    .enterprise-hero-grid {
+      min-height: auto;
+    }
+
+    .enterprise-signal {
+      display: grid;
+      min-height: 0;
+      gap: .5rem;
+    }
+
+    .enterprise-signal > svg,
+    .enterprise-core,
+    .enterprise-output {
+      display: none;
+    }
+
+    .enterprise-input,
+    .input-1,
+    .input-2,
+    .input-3,
+    .input-4,
+    .input-5 {
+      position: static;
+      width: auto;
+      animation: none;
+    }
+
+    .process-steps,
+    .choice-models {
+      grid-template-columns: 1fr;
+    }
+
+    .process-step {
+      min-height: 0;
+    }
+
+    .perimeter-map {
+      display: grid;
+      min-height: 0;
+      gap: .65rem;
+      border: 0;
+      background: none;
+    }
+
+    .perimeter-core {
+      display: none;
+    }
+
+    .perimeter-node,
+    .perimeter-1,
+    .perimeter-2,
+    .perimeter-3,
+    .perimeter-4,
+    .perimeter-5,
+    .perimeter-6 {
+      position: static;
+      width: auto;
+    }
+
+    .project-lab {
+      grid-template-columns: 1fr;
+    }
+
+    .project-tabs {
+      display: flex;
+      overflow-x: auto;
+    }
+
+    .project-tab {
+      min-width: 13rem;
+      border-right: 1px solid rgba(40,55,67,.09);
+      border-bottom: 0;
+    }
+
+    .project-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .project-panel-index {
+      display: none;
+    }
+
+    .enterprise-cta .enterprise-shell {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .selection-panel.is-entering {
+    .enterprise-signal path,
+    .enterprise-input,
+    .project-panel.is-entering {
       animation: none;
     }
 
-    .selection-tab,
-    .selection-tab::after {
+    .process-step,
+    .process-progress span,
+    .perimeter-node,
+    .project-tab,
+    .choice-models article {
       transition: none;
     }
   }

@@ -31,28 +31,72 @@ const benefits = [
 
 const comparisonRows = [
   {
-    criterion: 'Autonomie commerciale',
-    portage: 'Vous choisissez vos missions et votre TJM',
-    micro: 'Vous choisissez vos missions et vos tarifs',
-    company: 'Vous choisissez vos missions et vos tarifs',
-  },
-  {
     criterion: 'Protection sociale',
     portage: 'Statut salarié',
     micro: 'Régime du travailleur indépendant',
     company: 'Selon le statut du dirigeant',
   },
   {
-    criterion: 'Administration',
-    portage: 'Déléguée à The Porters',
-    micro: 'Gérée par vous',
-    company: 'Gérée par la société',
+    criterion: 'Responsabilité contractuelle',
+    portage: 'Cadre porté par The Porters',
+    micro: 'Engagée par l’entrepreneur',
+    company: 'Engagée par la société',
   },
   {
-    criterion: 'Facturation et rémunération',
-    portage: 'The Porters facture et établit la paie',
-    micro: 'Vous facturez votre client',
-    company: 'La société facture et organise la rémunération',
+    criterion: 'Gestion administrative',
+    portage: 'Déléguée',
+    micro: 'Gérée par vous',
+    company: 'Gérée par vous ou un prestataire',
+  },
+  {
+    criterion: 'Assurance chômage',
+    portage: 'Selon les conditions du régime salarié',
+    micro: 'Non ouverte par la seule micro-entreprise',
+    company: 'Selon le statut et les conditions',
+  },
+  {
+    criterion: 'Retraite',
+    portage: 'Régime général',
+    micro: 'Régime des indépendants',
+    company: 'Selon le statut du dirigeant',
+  },
+  {
+    criterion: 'Plafond de chiffre d’affaires',
+    portage: 'Aucun plafond propre au portage',
+    micro: 'Plafond du régime micro',
+    company: 'Aucun plafond propre à la société',
+  },
+];
+
+const dailyJourney = [
+  { marker: 'Avant la mission', title: 'Cadrage et contrats', text: 'Mission, TJM, calendrier et responsabilités sont relus avant la signature.' },
+  { marker: 'Chaque mois', title: 'Activité, facture et paie', text: 'Vous déclarez l’activité réalisée. The Porters facture le client et établit la paie.' },
+  { marker: 'Pendant la mission', title: 'Frais et événements', text: 'Les frais justifiés, congés et événements du contrat sont traités avec votre interlocuteur.' },
+  { marker: 'À la sortie', title: 'Clôture lisible', text: 'Fin de mission, dernière activité, documents et solde sont organisés dans le même dossier.' },
+];
+
+const includedServices = [
+  'Gestion de trésorerie',
+  'Apport d’affaires',
+  'Interlocuteur unique',
+  'Gestion administrative',
+  'Responsabilité civile professionnelle',
+  'Orientation formation',
+  'Garantie financière',
+];
+
+const faqItems = [
+  {
+    question: 'Qui trouve la mission ?',
+    answer: 'Vous gardez votre autonomie commerciale : vous choisissez vos clients, négociez votre TJM et organisez votre intervention.',
+  },
+  {
+    question: 'Comment le chiffre d’affaires devient-il un salaire ?',
+    answer: 'The Porters facture l’entreprise cliente. Le montant disponible, après les éléments applicables à votre situation, finance votre rémunération et les charges associées.',
+  },
+  {
+    question: 'Que couvrent les frais de gestion ?',
+    answer: 'Ils couvrent notamment le cadre contractuel, la facturation, la paie, le suivi administratif, la responsabilité civile professionnelle et la garantie financière.',
   },
 ];
 ---
@@ -135,13 +179,68 @@ const comparisonRows = [
     </div>
   </section>
 
-  <section class="section bg-white">
+  <section class="section portage-practical">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-10 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Choisir son cadre</p>
-        <h2>Quel cadre correspond à votre projet&nbsp;?</h2>
-        <p class="mt-4 text-porters-black/65">
-          Trois façons d’exercer en autonomie. La différence se joue surtout dans le statut et dans la gestion.
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Votre quotidien</p>
+        <h2>Du contrat à la paie, <span class="gold-underline">sans page cachée</span>.</h2>
+        <p class="mt-4 text-porters-black/65">Les informations essentielles du quotidien et des frais sont réunies ici.</p>
+      </div>
+
+      <div class="portage-practical-grid">
+        <div class="daily-lab reveal" data-daily-lab>
+          <div class="daily-tabs" role="tablist" aria-label="Étapes du quotidien en portage">
+            {dailyJourney.map((step, index) => (
+              <button
+                type="button"
+                role="tab"
+                id={`daily-tab-${index}`}
+                aria-selected={index === 0 ? 'true' : 'false'}
+                aria-controls={`daily-panel-${index}`}
+                tabindex={index === 0 ? 0 : -1}
+                class:list={['daily-tab', { 'is-active': index === 0 }]}
+                data-daily-tab
+              >
+                <span>0{index + 1}</span>
+                <strong>{step.marker}</strong>
+              </button>
+            ))}
+          </div>
+          <div class="daily-panels">
+            {dailyJourney.map((step, index) => (
+              <article
+                id={`daily-panel-${index}`}
+                role="tabpanel"
+                aria-labelledby={`daily-tab-${index}`}
+                class="daily-panel"
+                hidden={index !== 0}
+                data-daily-panel
+              >
+                <span>0{index + 1}</span>
+                <div><p>{step.marker}</p><h3>{step.title}</h3><strong>{step.text}</strong></div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="fee-system reveal" aria-label="Prestations couvertes par les frais de gestion">
+          <div class="fee-core"><small>Frais de gestion</small><strong>7 services</strong><span>annoncés avant signature</span></div>
+          <ol>
+            {includedServices.map((service, index) => (
+              <li class={`fee-${index + 1}`}><span>0{index + 1}</span>{service}</li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section portage-comparison">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mx-auto mb-12 max-w-3xl text-center reveal">
+        <h2>Quel cadre correspond à <span class="gold-underline">votre projet</span>&nbsp;?</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-porters-black/65">
+          Comparez l’autonomie, la protection sociale, la gestion et les coûts avant de choisir.
         </p>
       </div>
       <div class="portage-table-wrap reveal">
@@ -150,8 +249,8 @@ const comparisonRows = [
             <tr>
               <th scope="col">Critère</th>
               <th scope="col" class="is-portage">Portage salarial</th>
-              <th scope="col">Micro-entreprise</th>
-              <th scope="col">Société</th>
+              <th scope="col">Auto-entrepreneur</th>
+              <th scope="col">Création de société</th>
             </tr>
           </thead>
           <tbody>
@@ -169,6 +268,22 @@ const comparisonRows = [
     </div>
   </section>
 
+  <section class="section portage-faq">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mx-auto mb-10 max-w-3xl text-center reveal">
+        <h2><span class="gold-underline">Questions fréquentes</span></h2>
+      </div>
+      <div class="portage-faq-list reveal">
+        {faqItems.map((item) => (
+          <details>
+            <summary>{item.question}<span aria-hidden="true">+</span></summary>
+            <div><p>{item.answer}</p></div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="bg-porters-navy py-16 text-porters-white">
     <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <div class="max-w-2xl reveal">
@@ -180,6 +295,37 @@ const comparisonRows = [
     </div>
   </section>
 </PageLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-daily-lab]').forEach((lab) => {
+    const tabs = Array.from(lab.querySelectorAll<HTMLButtonElement>('[data-daily-tab]'));
+    const panels = Array.from(lab.querySelectorAll<HTMLElement>('[data-daily-panel]'));
+    const select = (nextIndex: number, focus = false) => {
+      const index = (nextIndex + tabs.length) % tabs.length;
+      tabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === index;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && focus) tab.focus();
+      });
+      panels.forEach((panel, panelIndex) => {
+        panel.hidden = panelIndex !== index;
+        panel.classList.remove('is-entering');
+        if (panelIndex === index) requestAnimationFrame(() => panel.classList.add('is-entering'));
+      });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(index));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : index + (event.key === 'ArrowRight' ? 1 : -1);
+        select(next, true);
+      });
+    });
+  });
+</script>
 
 <style>
   .portage-anchor {
@@ -246,12 +392,149 @@ const comparisonRows = [
     line-height: 1.65;
   }
 
+  .portage-practical {
+    background: #fff;
+  }
+
+  .portage-practical-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(24rem, .95fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: stretch;
+  }
+
+  .daily-lab {
+    overflow: hidden;
+    border: 1px solid rgba(40,55,67,.1);
+    border-radius: 14px;
+    box-shadow: 0 22px 58px rgba(40,55,67,.07);
+  }
+
+  .daily-tabs {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    border-bottom: 1px solid rgba(40,55,67,.1);
+    background: #f4f2ec;
+  }
+
+  .daily-tab {
+    position: relative;
+    display: grid;
+    min-height: 6.5rem;
+    align-content: center;
+    gap: .45rem;
+    border: 0;
+    border-right: 1px solid rgba(40,55,67,.09);
+    padding: .9rem;
+    background: transparent;
+    color: var(--color-porters-navy);
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    transition: background 180ms ease;
+  }
+
+  .daily-tab:last-child { border-right: 0; }
+
+  .daily-tab::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 3px;
+    background: var(--color-porters-gold);
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms var(--ease-soft);
+  }
+
+  .daily-tab:hover,
+  .daily-tab:focus-visible,
+  .daily-tab.is-active {
+    background: #fff;
+    outline: none;
+  }
+
+  .daily-tab.is-active::after { transform: scaleX(1); }
+  .daily-tab span { color:#a47f34;font-family:var(--font-mono);font-size:.58rem; }
+  .daily-tab strong { font-size:.68rem;line-height:1.35; }
+
+  .daily-panels {
+    min-height: 18rem;
+    background: radial-gradient(circle at 90% 20%,rgba(190,158,88,.14),transparent 26%),#fff;
+  }
+
+  .daily-panel {
+    display: grid;
+    min-height: 18rem;
+    grid-template-columns: auto 1fr;
+    align-content: center;
+    gap: 1.4rem;
+    padding: clamp(1.5rem,4vw,3rem);
+  }
+
+  .daily-panel[hidden] { display:none; }
+  .daily-panel.is-entering { animation:daily-enter 360ms var(--ease-soft); }
+  .daily-panel>span { color:rgba(40,55,67,.12);font-family:var(--font-heading);font-size:clamp(3rem,7vw,5.5rem);font-weight:700;line-height:.8; }
+  .daily-panel p { margin:0;color:#a47f34;font-size:.62rem;font-weight:760;letter-spacing:.13em;text-transform:uppercase; }
+  .daily-panel h3 { margin:.5rem 0 0;font-size:clamp(1.5rem,3vw,2.4rem); }
+  .daily-panel strong { display:block;max-width:37rem;margin-top:.7rem;color:rgba(40,55,67,.62);font-size:.82rem;font-weight:500;line-height:1.65; }
+
+  .fee-system {
+    position: relative;
+    min-height: 24.5rem;
+    border: 1px solid rgba(40,55,67,.1);
+    border-radius: 14px;
+    background: radial-gradient(circle at 50% 50%,rgba(190,158,88,.14),transparent 32%),linear-gradient(rgba(40,55,67,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(40,55,67,.025) 1px,transparent 1px),#f7f5ef;
+    background-size: auto,30px 30px,30px 30px,auto;
+  }
+
+  .fee-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 9.5rem;
+    aspect-ratio: 1;
+    place-content: center;
+    border: 1px solid rgba(190,158,88,.55);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 1.5rem rgba(190,158,88,.06);
+    text-align: center;
+    transform: translate(-50%,-50%);
+  }
+
+  .fee-core small { color:#a47f34;font-size:.56rem;font-weight:760;text-transform:uppercase; }
+  .fee-core strong { margin-top:.35rem;color:var(--color-porters-navy);font-family:var(--font-heading);font-size:1.15rem; }
+  .fee-core span { margin-top:.25rem;color:rgba(40,55,67,.46);font-size:.56rem; }
+
+  .fee-system li {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    max-width: 10rem;
+    border: 1px solid rgba(40,55,67,.1);
+    border-radius: 999px;
+    padding: .55rem .75rem;
+    background: rgba(255,255,255,.88);
+    color: rgba(40,55,67,.7);
+    font-size: .6rem;
+    box-shadow: 0 9px 22px rgba(40,55,67,.06);
+    transition: border-color 180ms ease,transform 220ms var(--ease-soft);
+  }
+
+  .fee-system li:hover { border-color:rgba(190,158,88,.5);transform:translateY(-3px); }
+  .fee-system li span { color:#a47f34;font-family:var(--font-mono);font-size:.54rem; }
+  .fee-1 { top:7%;left:7%; }.fee-2 { top:7%;right:7%; }.fee-3 { top:39%;left:2%; }.fee-4 { top:39%;right:2%; }
+  .fee-5 { bottom:7%;left:4%; }.fee-6 { right:4%;bottom:7%; }.fee-7 { bottom:1%;left:50%;transform:translateX(-50%); }
+  .fee-7:hover { transform:translate(-50%,-3px); }
+
   .portage-table-wrap {
     overflow-x: auto;
-    border: 1px solid rgba(40, 55, 67, 0.12);
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 20px 55px rgba(40, 55, 67, 0.07);
+    border-radius: 12px 12px 0 0;
   }
 
   .portage-table {
@@ -265,7 +548,7 @@ const comparisonRows = [
   .portage-table td {
     width: 25%;
     border-bottom: 1px solid rgba(40, 55, 67, 0.1);
-    padding: 1.15rem 1.25rem;
+    padding: 1.2rem 1.25rem;
     color: rgba(40, 55, 67, 0.7);
     font-size: 0.84rem;
     line-height: 1.5;
@@ -273,11 +556,19 @@ const comparisonRows = [
   }
 
   .portage-table thead th {
-    background: rgba(40, 55, 67, 0.04);
-    color: var(--color-porters-navy);
-    font-size: 0.76rem;
+    background: var(--color-porters-navy);
+    color: #fff;
+    font-size: 0.8rem;
     font-weight: 760;
     letter-spacing: 0.04em;
+  }
+
+  .portage-table thead th:first-child {
+    border-radius: 12px 0 0;
+  }
+
+  .portage-table thead th:last-child {
+    border-radius: 0 12px 0 0;
   }
 
   .portage-table tbody th {
@@ -285,17 +576,43 @@ const comparisonRows = [
     font-weight: 700;
   }
 
-  .portage-table .is-portage {
-    border-inline: 1px solid rgba(190, 158, 88, 0.3);
-    background: rgba(190, 158, 88, 0.1);
+  .portage-table tbody .is-portage {
     color: var(--color-porters-navy);
     font-weight: 700;
+  }
+
+  .portage-table tbody tr:nth-child(even) {
+    background: rgba(40, 55, 67, 0.025);
+  }
+
+  .portage-table tbody tr {
+    transition: background-color 180ms ease;
+  }
+
+  .portage-table tbody tr:hover {
+    background: rgba(190, 158, 88, 0.08);
   }
 
   .portage-table tbody tr:last-child th,
   .portage-table tbody tr:last-child td {
     border-bottom: 0;
   }
+
+  .portage-comparison {
+    background: rgba(40, 55, 67, 0.03);
+  }
+
+  .portage-faq { background:#fff; }
+  .portage-faq-list { max-width:55rem;margin-inline:auto;border-top:1px solid rgba(40,55,67,.12); }
+  .portage-faq-list details { border-bottom:1px solid rgba(40,55,67,.12); }
+  .portage-faq-list summary { display:flex;min-height:4.8rem;align-items:center;justify-content:space-between;gap:1rem;color:var(--color-porters-navy);cursor:pointer;font-family:var(--font-heading);font-size:1rem;font-weight:700;list-style:none; }
+  .portage-faq-list summary::-webkit-details-marker { display:none; }
+  .portage-faq-list summary span { color:#a47f34;font-size:1.5rem;transition:transform 220ms var(--ease-soft); }
+  .portage-faq-list details[open] summary span { transform:rotate(45deg); }
+  .portage-faq-list details>div { max-width:46rem;padding-bottom:1.5rem; }
+  .portage-faq-list p { margin:0;color:rgba(40,55,67,.62);font-size:.84rem;line-height:1.7; }
+
+  @keyframes daily-enter { from { opacity:.25;transform:translateY(9px); } }
 
   @media (max-width: 720px) {
     .portage-benefits {
@@ -309,5 +626,21 @@ const comparisonRows = [
     .portage-benefit-index {
       display: none;
     }
+
+    .portage-practical-grid { grid-template-columns:1fr; }
+    .daily-tabs { display:flex;overflow-x:auto; }
+    .daily-tab { min-width:8.5rem; }
+    .daily-panel { grid-template-columns:1fr; }
+    .daily-panel>span { display:none; }
+    .fee-system { display:grid;min-height:0;gap:.5rem;border:0;background:none; }
+    .fee-core { position:static;width:auto;aspect-ratio:auto;border-radius:12px;padding:1.2rem;transform:none; }
+    .fee-system ol { display:grid;gap:.45rem;margin-top:.8rem; }
+    .fee-system li,
+    .fee-1,.fee-2,.fee-3,.fee-4,.fee-5,.fee-6,.fee-7 { position:static;max-width:none;transform:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .daily-panel.is-entering { animation:none; }
+    .daily-tab,.daily-tab::after,.fee-system li,.portage-faq-list summary span { transition:none; }
   }
 </style>

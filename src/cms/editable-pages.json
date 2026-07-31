@@ -67,12 +67,12 @@
   {
     "route": "/entreprises",
     "name": "Expertises IT externes, cadre maîtrisé",
-    "contentCount": 61
+    "contentCount": 96
   },
   {
     "route": "/expertises",
     "name": "Expertises IT, data, cyber, cloud et produit",
-    "contentCount": 40
+    "contentCount": 152
   },
   {
     "route": "/faq",
@@ -192,7 +192,7 @@
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 45
+    "contentCount": 80
   },
   {
     "route": "/expertises/product-project-management",
@@ -232,7 +232,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 30
+    "contentCount": 409
   },
   {
     "route": "/recrutement",

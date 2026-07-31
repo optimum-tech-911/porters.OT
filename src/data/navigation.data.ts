@@ -18,10 +18,7 @@ export const navigation: Navigation = {
       label: 'Le groupe',
       items: [
         { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
-        { label: 'L’équipe', href: '/equipe' },
         { label: 'Nos agences', href: '/agences' },
-        { label: 'Engagements RSE', href: '/rse' },
-        { label: 'Nous rejoindre', href: '/recrutement' },
       ],
     },
   ],
@@ -34,18 +31,14 @@ export const navigation: Navigation = {
       {
         title: 'Le portage salarial',
         links: [
-          { label: 'Comment ça marche', href: '/portage-salarial' },
-          { label: 'Votre quotidien', href: '/consultants' },
-          { label: 'Frais et rémunération', href: '/tarifs' },
+          { label: 'Comprendre le portage', href: '/portage-salarial' },
           { label: 'Simuler mes revenus', href: '/simulateur' },
-          { label: 'Questions fréquentes', href: '/faq' },
         ],
       },
       {
         title: 'Entreprises',
         links: [
-          { label: 'Trouver un expert IT', href: '/entreprises' },
-          { label: 'Voir les expertises', href: '/expertises' },
+          { label: 'Trouver une expertise', href: '/entreprises' },
           { label: 'Nous contacter', href: '/contact' },
         ],
       },
@@ -53,10 +46,7 @@ export const navigation: Navigation = {
         title: 'Le groupe',
         links: [
           { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
-          { label: 'L’équipe', href: '/equipe' },
           { label: 'Nos agences', href: '/agences' },
-          { label: 'Engagements RSE', href: '/rse' },
-          { label: 'Nous rejoindre', href: '/recrutement' },
         ],
       },
       {

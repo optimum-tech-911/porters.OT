@@ -60,6 +60,12 @@
     "content": "Spécialistes IT"
   },
   {
+    "key": "home.ecosystem.label",
+    "route": "/",
+    "type": "label",
+    "content": "Un écosystème habitué aux projets exigeants"
+  },
+  {
     "key": "home.offer.eyebrow",
     "route": "/",
     "type": "label",

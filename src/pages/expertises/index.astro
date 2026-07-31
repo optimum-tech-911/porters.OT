@@ -1,55 +1,851 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
+import SiteIcon from '../../components/ui/SiteIcon.astro';
 import { expertises } from '../../data/expertises.data';
 
 const seo = {
   title: 'Expertises IT, data, cyber, cloud et produit — The Porters',
   description:
-    'Découvrez les expertises accompagnées par The Porters : cybersécurité, Data & IA, Cloud & DevOps, Agilité & Coaching, Product & Project Management.',
+    'Explorez les expertises accompagnées par The Porters : cybersécurité, Data & IA, Cloud & DevOps, Agilité, Produit et pilotage de projet.',
 };
+
+const commonJourney = [
+  { number: '01', title: 'Cadrer', text: 'Contexte, résultat attendu, responsabilités et contraintes.' },
+  { number: '02', title: 'Choisir', text: 'Le domaine et le niveau d’expertise réellement nécessaires.' },
+  { number: '03', title: 'Intervenir', text: 'Une mission autonome, avec des livrables et des points de passage lisibles.' },
+  { number: '04', title: 'Transmettre', text: 'Décisions, documentation et connaissances restent dans l’organisation.' },
+];
 ---
 
 <PageLayout seo={seo} breadcrumbs={[{ label: 'Expertises' }]}>
-  <section class="section pt-8 lg:pt-16 pb-20">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mx-auto mb-16 max-w-3xl text-center reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-wider text-porters-gold">Nos expertises</p>
-        <h1 class="mb-5">Une expertise pour chaque étape de votre <span class="gold-underline">transformation</span></h1>
-        <p class="mx-auto max-w-2xl text-lg leading-relaxed text-porters-black/60">
-          Identifiez votre domaine, les profils concernés et les missions où cette expertise apporte une valeur concrète.
-        </p>
+  <section class="expertise-hero">
+    <div class="expertise-shell expertise-hero-grid">
+      <div class="expertise-hero-copy reveal">
+        <p>Expertises IT</p>
+        <h1>Partez du problème.<br /><span>Activez la bonne expertise.</span></h1>
+        <strong>
+          Cyber, data, IA, cloud, DevOps, produit ou transformation&nbsp;: chaque mission commence
+          par un contexte précis, jamais par une étiquette.
+        </strong>
+        <a href="#explorer">Explorer les domaines <span aria-hidden="true">↓</span></a>
       </div>
 
-      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div class="expertise-constellation reveal" data-expertise-constellation aria-label="Carte des expertises The Porters">
+        <svg viewBox="0 0 620 620" aria-hidden="true">
+          <circle cx="310" cy="310" r="205" />
+          <circle cx="310" cy="310" r="118" />
+          <path d="M310 62V558M62 310H558M134 134 486 486M486 134 134 486" />
+        </svg>
+        <div class="expertise-core">
+          <small>Point de départ</small>
+          <strong>Votre mission</strong>
+          <span>Contexte · résultat · contraintes</span>
+        </div>
         {expertises.map((expertise, index) => (
           <a
-            href={`/expertises/${expertise.slug}`}
-            class="group card flex min-h-[22rem] flex-col p-7 reveal hover:-translate-y-1 hover:border-porters-gold/45"
+            href={`#expertise-${expertise.slug}`}
+            class={`constellation-node node-${index + 1}`}
+            data-constellation-node
           >
-            <div class="mb-8 flex items-center justify-between">
-              <span class="font-mono text-xs font-semibold text-porters-gold">0{index + 1}</span>
-              <span class="grid h-9 w-9 place-items-center rounded-full border border-porters-navy/10 text-porters-navy transition-colors group-hover:border-porters-gold group-hover:bg-porters-gold" aria-hidden="true">↗</span>
-            </div>
-            <p class="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-porters-gold">{expertise.eyebrow}</p>
-            <h2 class="mb-4 text-2xl leading-tight">{expertise.introTitle}</h2>
-            <p class="mb-6 text-sm leading-relaxed text-porters-black/60">{expertise.summary}</p>
-            <div class="mt-auto flex flex-wrap gap-2">
-              {expertise.roles.slice(0, 3).map((role) => (
-                <span class="rounded-full bg-porters-navy/[0.055] px-3 py-1.5 text-xs text-porters-navy/70">{role}</span>
-              ))}
-            </div>
+            <span>0{index + 1}</span>
+            <strong>{expertise.eyebrow}</strong>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="bg-porters-navy py-16 text-center">
-    <div class="container mx-auto px-6 lg:px-8 reveal">
-      <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-porters-gold">Votre profil n’entre pas dans une case ?</p>
-      <h2 class="mb-5 text-porters-white">Partons de votre mission, pas d’une étiquette.</h2>
-      <p class="mx-auto mb-8 max-w-xl text-porters-white/65">Expliquez-nous votre spécialité, votre contexte et le résultat attendu.</p>
-      <a href="/contact" class="btn btn-gold">Parler de mon expertise</a>
+  <section class="expertise-explorer" id="explorer">
+    <div class="expertise-shell">
+      <header class="expertise-heading reveal">
+        <p>La carte des domaines</p>
+        <h2>Une vue claire, <span class="gold-underline">un domaine à la fois</span>.</h2>
+        <strong>Sélectionnez une expertise pour voir les profils, les missions et la valeur attendue.</strong>
+      </header>
+
+      <div class="expertise-workbench reveal" data-expertise-workbench>
+        <div class="expertise-selector" role="tablist" aria-label="Domaines d’expertise">
+          {expertises.map((expertise, index) => (
+            <button
+              type="button"
+              id={`expertise-tab-${expertise.slug}`}
+              role="tab"
+              aria-selected={index === 0 ? 'true' : 'false'}
+              aria-controls={`expertise-panel-${expertise.slug}`}
+              tabindex={index === 0 ? 0 : -1}
+              class:list={['expertise-selector-button', { 'is-active': index === 0 }]}
+              data-expertise-tab
+            >
+              <span>0{index + 1}</span>
+              <strong>{expertise.eyebrow}</strong>
+              <small>{expertise.roles.slice(0, 2).join(' · ')}</small>
+              <b aria-hidden="true">→</b>
+            </button>
+          ))}
+        </div>
+
+        <div class="expertise-panels">
+          {expertises.map((expertise, index) => (
+            <article
+              id={`expertise-panel-${expertise.slug}`}
+              class="expertise-panel"
+              role="tabpanel"
+              aria-labelledby={`expertise-tab-${expertise.slug}`}
+              hidden={index !== 0}
+              data-expertise-panel
+              data-expertise-slug={expertise.slug}
+            >
+              <div class="expertise-panel-top">
+                <div>
+                  <p>{expertise.eyebrow}</p>
+                  <h3>{expertise.introTitle}</h3>
+                </div>
+                <span class="expertise-panel-index">0{index + 1}</span>
+              </div>
+              <p class="expertise-summary">{expertise.summary}</p>
+
+              <div class="expertise-panel-grid">
+                <section>
+                  <div class="expertise-section-title"><SiteIcon name="users" /><h4>Profils</h4></div>
+                  <div class="expertise-tags">
+                    {expertise.roles.slice(0, 6).map((role) => <span>{role}</span>)}
+                  </div>
+                </section>
+                <section>
+                  <div class="expertise-section-title"><SiteIcon name="compass" /><h4>Missions</h4></div>
+                  <ol class="expertise-missions">
+                    {expertise.missionTypes.slice(0, 4).map((mission, missionIndex) => (
+                      <li><span>0{missionIndex + 1}</span>{mission}</li>
+                    ))}
+                  </ol>
+                </section>
+              </div>
+
+              <section class="expertise-value">
+                <div class="expertise-section-title"><SiteIcon name="spark" /><h4>Valeur concrète</h4></div>
+                <div>
+                  {expertise.businessValue.map((value) => (
+                    <article>
+                      <strong>{value.title}</strong>
+                      <p>{value.text}</p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+
+              <a class="expertise-panel-cta" href={`/expertises/${expertise.slug}`}>
+                Voir le domaine en détail <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="expertise-journey" data-expertise-journey>
+    <div class="expertise-shell">
+      <header class="expertise-heading expertise-heading--light reveal">
+        <p>Une méthode commune</p>
+        <h2>De la question au résultat.</h2>
+      </header>
+      <div class="journey-track" aria-label="Déroulement commun d’une mission">
+        <div class="journey-line" aria-hidden="true"><span data-journey-progress></span></div>
+        {commonJourney.map((step, index) => (
+          <article class="journey-step reveal" data-journey-step style={`--journey-index:${index}`}>
+            <span>{step.number}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 </PageLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-expertise-workbench]').forEach((workbench) => {
+    const tabs = Array.from(workbench.querySelectorAll<HTMLButtonElement>('[data-expertise-tab]'));
+    const panels = Array.from(workbench.querySelectorAll<HTMLElement>('[data-expertise-panel]'));
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const select = (nextIndex: number, focus = false, updateHash = true) => {
+      const index = (nextIndex + tabs.length) % tabs.length;
+      tabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === index;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && focus) tab.focus();
+      });
+      panels.forEach((panel, panelIndex) => {
+        const active = panelIndex === index;
+        panel.hidden = !active;
+        panel.classList.remove('is-entering');
+        if (active && !reducedMotion) requestAnimationFrame(() => panel.classList.add('is-entering'));
+      });
+      if (updateHash) history.replaceState(null, '', `#expertise-${panels[index]?.dataset.expertiseSlug}`);
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(index));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home'
+          ? 0
+          : event.key === 'End'
+            ? tabs.length - 1
+            : index + (event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 1);
+        select(next, true);
+      });
+    });
+
+    const requested = location.hash.replace('#expertise-', '');
+    const requestedIndex = panels.findIndex((panel) => panel.dataset.expertiseSlug === requested);
+    if (requestedIndex >= 0) select(requestedIndex, false, false);
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-expertise-constellation]').forEach((constellation) => {
+    const nodes = Array.from(constellation.querySelectorAll<HTMLElement>('[data-constellation-node]'));
+    nodes.forEach((node, index) => {
+      node.addEventListener('pointerenter', () => {
+        nodes.forEach((item, itemIndex) => item.classList.toggle('is-related', itemIndex === index));
+        constellation.style.setProperty('--active-angle', `${index * 72}deg`);
+      });
+      node.addEventListener('pointerleave', () => node.classList.remove('is-related'));
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-expertise-journey]').forEach((journey) => {
+    const steps = Array.from(journey.querySelectorAll<HTMLElement>('[data-journey-step]'));
+    const progress = journey.querySelector<HTMLElement>('[data-journey-progress]');
+    if (!('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const index = steps.indexOf(entry.target as HTMLElement);
+        steps.forEach((step, stepIndex) => step.classList.toggle('is-active', stepIndex <= index));
+        if (progress) progress.style.width = `${(index / Math.max(steps.length - 1, 1)) * 100}%`;
+      });
+    }, { rootMargin: '-30% 0px -45% 0px', threshold: 0.25 });
+    steps.forEach((step) => observer.observe(step));
+  });
+</script>
+
+<style>
+  .expertise-shell {
+    width: min(100% - 3rem, 84rem);
+    margin-inline: auto;
+  }
+
+  .expertise-hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(4.5rem, 9vw, 8rem);
+    background:
+      radial-gradient(circle at 75% 40%, rgba(190, 158, 88, 0.16), transparent 32%),
+      linear-gradient(145deg, #102630, #172f3d 68%, #102630);
+    color: #fff;
+  }
+
+  .expertise-hero::before {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 54px 54px;
+    content: "";
+    mask-image: linear-gradient(90deg, transparent, #000 35%, #000);
+  }
+
+  .expertise-hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(29rem, 1.05fr);
+    align-items: center;
+    gap: clamp(3rem, 7vw, 7rem);
+  }
+
+  .expertise-hero-copy > p,
+  .expertise-heading > p,
+  .expertise-panel-top p {
+    margin: 0 0 1rem;
+    color: var(--color-porters-gold);
+    font-size: 0.7rem;
+    font-weight: 760;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .expertise-hero-copy h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(3rem, 5.3vw, 5.8rem);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .expertise-hero-copy h1 span {
+    color: #d5b668;
+  }
+
+  .expertise-hero-copy > strong {
+    display: block;
+    max-width: 40rem;
+    margin-top: 1.7rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: clamp(1rem, 1.45vw, 1.16rem);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  .expertise-hero-copy > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 2rem;
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 760;
+  }
+
+  .expertise-constellation {
+    position: relative;
+    width: min(100%, 37rem);
+    aspect-ratio: 1;
+    margin-inline: auto;
+  }
+
+  .expertise-constellation > svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: constellation-spin 58s linear infinite;
+  }
+
+  .expertise-constellation svg circle,
+  .expertise-constellation svg path {
+    fill: none;
+    stroke: rgba(213, 182, 104, 0.24);
+    stroke-width: 1;
+    stroke-dasharray: 6 10;
+  }
+
+  .expertise-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 12.5rem;
+    aspect-ratio: 1;
+    place-content: center;
+    border: 1px solid rgba(213, 182, 104, 0.45);
+    border-radius: 50%;
+    background: rgba(16, 38, 48, 0.84);
+    box-shadow: 0 0 0 2rem rgba(213, 182, 104, 0.04), 0 24px 70px rgba(0,0,0,.25);
+    text-align: center;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(12px);
+  }
+
+  .expertise-core small {
+    color: #d5b668;
+    font-size: 0.58rem;
+    font-weight: 760;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .expertise-core strong {
+    margin-top: 0.45rem;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+  }
+
+  .expertise-core span {
+    margin-top: 0.35rem;
+    color: rgba(255,255,255,.52);
+    font-size: 0.62rem;
+  }
+
+  .constellation-node {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    min-width: 9.5rem;
+    gap: 0.18rem;
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 12px;
+    padding: 0.75rem 0.9rem;
+    background: rgba(255,255,255,.075);
+    color: #fff;
+    box-shadow: 0 14px 32px rgba(0,0,0,.16);
+    backdrop-filter: blur(12px);
+    transition: border-color 180ms ease, background 180ms ease, transform 240ms var(--ease-soft);
+  }
+
+  .constellation-node:hover,
+  .constellation-node:focus-visible,
+  .constellation-node.is-related {
+    border-color: rgba(213, 182, 104, 0.75);
+    background: rgba(213, 182, 104, 0.14);
+    outline: none;
+    transform: translateY(-4px);
+  }
+
+  .constellation-node span {
+    color: #d5b668;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+  }
+
+  .constellation-node strong {
+    font-size: 0.74rem;
+  }
+
+  .node-1 { top: 4%; left: 50%; transform: translateX(-50%); }
+  .node-1:hover, .node-1:focus-visible { transform: translate(-50%, -4px); }
+  .node-2 { top: 31%; right: 0; }
+  .node-3 { right: 10%; bottom: 10%; }
+  .node-4 { bottom: 10%; left: 7%; }
+  .node-5 { top: 31%; left: 0; }
+
+  .expertise-explorer {
+    padding-block: clamp(5rem, 9vw, 8rem);
+    background: #f7f5ef;
+  }
+
+  .expertise-heading {
+    max-width: 52rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .expertise-heading h2 {
+    margin: 0;
+    font-size: clamp(2.5rem, 4.8vw, 4.7rem);
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+  }
+
+  .expertise-heading > strong {
+    display: block;
+    max-width: 42rem;
+    margin-top: 1rem;
+    color: rgba(40,55,67,.62);
+    font-weight: 500;
+    line-height: 1.7;
+  }
+
+  .expertise-workbench {
+    display: grid;
+    grid-template-columns: minmax(15rem, .35fr) minmax(0, 1fr);
+    overflow: hidden;
+    border: 1px solid rgba(40,55,67,.1);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 28px 75px rgba(40,55,67,.09);
+  }
+
+  .expertise-selector {
+    border-right: 1px solid rgba(40,55,67,.1);
+    background: #142b37;
+  }
+
+  .expertise-selector-button {
+    position: relative;
+    display: grid;
+    width: 100%;
+    min-height: 7rem;
+    grid-template-columns: auto 1fr auto;
+    align-content: center;
+    gap: .28rem .8rem;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.09);
+    padding: 1.1rem 1.25rem;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    transition: background 180ms ease, padding 240ms var(--ease-soft);
+  }
+
+  .expertise-selector-button::before {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: #d5b668;
+    content: "";
+    transform: scaleY(0);
+    transition: transform 220ms var(--ease-soft);
+  }
+
+  .expertise-selector-button:hover,
+  .expertise-selector-button:focus-visible,
+  .expertise-selector-button.is-active {
+    background: rgba(213,182,104,.12);
+    outline: none;
+    padding-left: 1.5rem;
+  }
+
+  .expertise-selector-button.is-active::before {
+    transform: scaleY(1);
+  }
+
+  .expertise-selector-button > span {
+    grid-row: span 2;
+    color: #d5b668;
+    font-family: var(--font-mono);
+    font-size: .6rem;
+  }
+
+  .expertise-selector-button > strong {
+    font-size: .86rem;
+  }
+
+  .expertise-selector-button > small {
+    grid-column: 2;
+    overflow: hidden;
+    color: rgba(255,255,255,.46);
+    font-size: .62rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .expertise-selector-button > b {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+    color: #d5b668;
+  }
+
+  .expertise-panels {
+    min-width: 0;
+    min-height: 48rem;
+  }
+
+  .expertise-panel {
+    padding: clamp(1.7rem, 4vw, 3.5rem);
+  }
+
+  .expertise-panel[hidden] {
+    display: none;
+  }
+
+  .expertise-panel.is-entering {
+    animation: panel-enter 420ms var(--ease-soft);
+  }
+
+  .expertise-panel-top {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .expertise-panel-top h3 {
+    max-width: 17ch;
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.03;
+    letter-spacing: -.04em;
+  }
+
+  .expertise-panel-index {
+    color: rgba(40,55,67,.12);
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    line-height: .8;
+  }
+
+  .expertise-summary {
+    max-width: 48rem;
+    margin: 1.3rem 0 0;
+    color: rgba(40,55,67,.66);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .expertise-panel-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    border-top: 1px solid rgba(40,55,67,.1);
+    padding-top: 2rem;
+  }
+
+  .expertise-section-title {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin-bottom: 1rem;
+    color: #a47f34;
+  }
+
+  .expertise-section-title h4 {
+    margin: 0;
+    color: var(--color-porters-navy);
+    font-size: .82rem;
+  }
+
+  .expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem;
+  }
+
+  .expertise-tags span {
+    border: 1px solid rgba(40,55,67,.1);
+    border-radius: 999px;
+    padding: .43rem .7rem;
+    background: rgba(40,55,67,.035);
+    color: rgba(40,55,67,.68);
+    font-size: .66rem;
+  }
+
+  .expertise-missions {
+    display: grid;
+    gap: .72rem;
+  }
+
+  .expertise-missions li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .7rem;
+    color: rgba(40,55,67,.7);
+    font-size: .76rem;
+    line-height: 1.45;
+  }
+
+  .expertise-missions span {
+    color: #a47f34;
+    font-family: var(--font-mono);
+    font-size: .6rem;
+  }
+
+  .expertise-value {
+    margin-top: 2rem;
+    border-top: 1px solid rgba(40,55,67,.1);
+    padding-top: 2rem;
+  }
+
+  .expertise-value > div:last-child {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: .75rem;
+  }
+
+  .expertise-value article {
+    border-left: 2px solid #d5b668;
+    padding: .75rem .9rem;
+    background: rgba(213,182,104,.07);
+  }
+
+  .expertise-value strong {
+    color: var(--color-porters-navy);
+    font-size: .74rem;
+  }
+
+  .expertise-value p {
+    margin: .4rem 0 0;
+    color: rgba(40,55,67,.58);
+    font-size: .66rem;
+    line-height: 1.5;
+  }
+
+  .expertise-panel-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    margin-top: 2rem;
+    color: var(--color-porters-navy);
+    font-size: .8rem;
+    font-weight: 760;
+  }
+
+  .expertise-panel-cta span {
+    color: #a47f34;
+    transition: transform 180ms ease;
+  }
+
+  .expertise-panel-cta:hover span {
+    transform: translate(3px,-3px);
+  }
+
+  .expertise-journey {
+    overflow: hidden;
+    padding-block: clamp(5rem, 9vw, 8rem);
+    background: #142b37;
+    color: #fff;
+  }
+
+  .expertise-heading--light h2 {
+    color: #fff;
+  }
+
+  .journey-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 1.3rem;
+    padding-top: 2rem;
+  }
+
+  .journey-line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: rgba(255,255,255,.12);
+  }
+
+  .journey-line span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: #d5b668;
+    transition: width 500ms var(--ease-soft);
+  }
+
+  .journey-step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    opacity: .42;
+    transform: translateY(14px);
+    transition: opacity 320ms ease, transform 420ms var(--ease-soft);
+  }
+
+  .journey-step.is-active {
+    opacity: 1;
+    transform: none;
+  }
+
+  .journey-step > span {
+    color: #d5b668;
+    font-family: var(--font-mono);
+    font-size: .64rem;
+  }
+
+  .journey-step h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  .journey-step p {
+    margin: .55rem 0 0;
+    color: rgba(255,255,255,.58);
+    font-size: .76rem;
+    line-height: 1.55;
+  }
+
+  @keyframes constellation-spin { to { transform: rotate(1turn); } }
+  @keyframes panel-enter { from { opacity: .25; transform: translateY(12px); } }
+
+  @media (max-width: 1000px) {
+    .expertise-hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .expertise-constellation {
+      width: min(100%, 32rem);
+    }
+
+    .expertise-workbench {
+      grid-template-columns: 1fr;
+    }
+
+    .expertise-selector {
+      display: flex;
+      overflow-x: auto;
+      border-right: 0;
+      border-bottom: 1px solid rgba(40,55,67,.1);
+    }
+
+    .expertise-selector-button {
+      min-width: 13rem;
+      border-right: 1px solid rgba(255,255,255,.09);
+      border-bottom: 0;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .expertise-shell {
+      width: min(100% - 2rem, 84rem);
+    }
+
+    .expertise-constellation {
+      display: grid;
+      aspect-ratio: auto;
+      gap: .5rem;
+    }
+
+    .expertise-constellation > svg,
+    .expertise-core {
+      display: none;
+    }
+
+    .constellation-node,
+    .node-1,
+    .node-2,
+    .node-3,
+    .node-4,
+    .node-5 {
+      position: static;
+      min-width: 0;
+      transform: none;
+    }
+
+    .constellation-node:hover,
+    .constellation-node:focus-visible,
+    .node-1:hover,
+    .node-1:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .expertise-panel-grid,
+    .expertise-value > div:last-child,
+    .journey-track {
+      grid-template-columns: 1fr;
+    }
+
+    .journey-line {
+      top: 0;
+      bottom: 0;
+      left: .2rem;
+      width: 2px;
+      height: auto;
+    }
+
+    .journey-line span {
+      width: 100% !important;
+      height: 100%;
+    }
+
+    .journey-step {
+      padding-left: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .expertise-constellation > svg,
+    .expertise-panel.is-entering {
+      animation: none;
+    }
+
+    .constellation-node,
+    .expertise-selector-button,
+    .journey-step,
+    .journey-line span {
+      transition: none;
+    }
+  }
+</style>

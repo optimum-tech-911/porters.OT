@@ -9,6 +9,15 @@ import { pageSeo } from '../data/seo.data';
 import { googleReviewHighlights } from '../content/pages/home';
 import { cmsAttrs, cmsText } from '../cms/content';
 
+const partnerLogos = [
+  { name: 'BPCE', url: '/images/logos/partners/partner-1.png' },
+  { name: 'Groupama', url: '/images/logos/partners/partner-2.png' },
+  { name: 'Airbus', url: '/images/logos/partners/partner-3.png' },
+  { name: 'Safran', url: '/images/logos/partners/partner-4.png' },
+  { name: 'Thales', url: '/images/logos/partners/partner-5.png' },
+  { name: 'Capgemini', url: '/images/logos/partners/capgemini.svg' },
+];
+
 // The IT specialism leads: it is the differentiator, and it used to sit last
 // (copy-plan §9.1). Order here drives both the grid and the detail panel below.
 const offerItems = [
@@ -24,6 +33,26 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 
 <PageLayout seo={pageSeo.home} noBreadcrumbs>
   <HomeHero />
+
+  <section class="light-logo-strip" aria-label="Écosystème professionnel" data-reveal>
+    <div class="light-logo-intro">
+      <span {...cmsAttrs('home.ecosystem.label')}>{cmsText('home.ecosystem.label')}</span>
+    </div>
+    <div class="light-logo-marquee auto-marquee" tabindex="0">
+      <div class="light-logo-track auto-marquee-track">
+        <div class="light-logo-group">
+          {partnerLogos.map((logo) => (
+            <img src={logo.url} alt={logo.name} loading="lazy" decoding="async" />
+          ))}
+        </div>
+        <div class="light-logo-group" aria-hidden="true">
+          {partnerLogos.map((logo) => (
+            <img src={logo.url} alt="" loading="lazy" decoding="async" />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="light-section light-offer-section reveal-fade" data-reveal>
     <div class="light-container light-offer-layout">
