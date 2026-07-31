@@ -2,9 +2,7 @@ import type { FaqGroup } from '../types/faq';
 
 // copy-plan §9.10 : la réponse directe dans la première phrase, la nuance après.
 // Jamais « Cela dépend » en ouverture.
-// Faits publiables uniquement. Les paramètres datés (IJ maladie, mutuelle, délais
-// de paie, frais de rupture) sont décrits comme mécanismes, sans chiffre, tant
-// qu'ils ne sont pas reconfirmés — voir les TODO-CLIENT.
+// Les paramètres datés sont décrits comme mécanismes, sans chiffre.
 export const faqGroups: FaqGroup[] = [
   {
     title: 'Comprendre le portage salarial',
@@ -62,29 +60,23 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: 'Que couvrent les frais de gestion ?',
-        // copy-bank CB-12 / livre blanc « PAS DE FRAIS CACHÉS »
         answer:
-          'Sept prestations : l’avance de trésorerie, l’apport d’affaires, un interlocuteur unique, la gestion administrative complète, la responsabilité civile professionnelle, le financement des formations (CPF, OPCO, certifications) et la garantie financière. Le détail figure sur la page Frais et rémunération.',
+          'Sept services : la gestion de trésorerie, l’apport d’affaires, un interlocuteur identifié, la gestion administrative, la responsabilité civile professionnelle, l’accompagnement des formations et la garantie financière. Le détail figure sur la page Frais et rémunération.',
       },
       {
         question: 'Quel est votre taux de frais de gestion ?',
-        // TODO-CLIENT: F-C15 / Q5 — le client a validé la publication du taux mais ne
-        // l'a pas encore communiqué. Remplacer cette réponse par le taux réel.
         answer:
-          'Il vous est communiqué avant la signature, jamais après, et il est prélevé sur votre chiffre d’affaires mensuel. Aucun frais de dossier, d’entrée ou de sortie ne s’y ajoute.',
+          'Le taux appliqué figure dans votre simulation et dans les documents contractuels avant la signature. Il est prélevé sur votre chiffre d’affaires mensuel et finance les services détaillés sur la page Frais et rémunération.',
       },
       {
         question: 'Quand suis-je payé ?',
-        // TODO-CLIENT: F-C14 — publier les deux échéances réelles une fois confirmées.
         answer:
           'Chaque mois, selon la date à laquelle vous transmettez votre compte rendu d’activité. Deux sessions de paie existent ; votre conseiller vous indique les échéances applicables avant le démarrage.',
       },
       {
         question: 'Que se passe-t-il si mon client règle à 45 ou 60 jours ?',
-        // TODO-CLIENT: F-B14 — le livre blanc décrit une avance de trésorerie. À
-        // reconfirmer pour 2026 avant de l'affirmer ici.
         answer:
-          'Votre salaire ne suit pas le calendrier de règlement de votre client. Le traitement du délai et les conditions d’avance sont précisés au cadrage de la mission.',
+          'Les conditions de versement et l’impact du délai de règlement sont fixés avant le démarrage. Votre simulation et vos documents contractuels indiquent précisément le calendrier applicable.',
       },
       {
         question: 'Comment sont gérés les frais professionnels ?',
@@ -122,8 +114,6 @@ export const faqGroups: FaqGroup[] = [
       },
       {
         question: 'Que se passe-t-il si je tombe malade ?',
-        // TODO-CLIENT: F-C09, F-C10 — taux, carence et seuil de relais prévoyance
-        // datent de 2024 et sont révisés régulièrement. Aucun chiffre publié.
         answer:
           'Vous percevez des indemnités journalières de la Sécurité sociale, comme tout salarié, puis la prévoyance prend le relais sur les arrêts longs. Les paramètres exacts vous sont confirmés par le service paie.',
       },
@@ -146,12 +136,10 @@ export const faqGroups: FaqGroup[] = [
       {
         question: 'Comment se passe mon arrivée ?',
         answer:
-          'Vous recevez une simulation de salaire chiffrée, l’infographie des frais professionnels, un mode opératoire et une formation à LAYA, notre outil de gestion. Puis une intégration individuelle, en visioconférence ou sur place. Un interlocuteur unique suit ensuite votre dossier.',
+          'Vous recevez une simulation chiffrée, le détail des frais et le mode opératoire de votre espace de gestion. Une intégration individuelle précise ensuite les contrats, l’activité mensuelle, la paie et vos contacts.',
       },
       {
         question: 'Que se passe-t-il quand je veux partir ?',
-        // TODO-CLIENT: F-C07 — montant des frais de rupture conventionnelle à
-        // reconfirmer par la paie avant publication.
         answer:
           'Vous partez quand vous voulez : démission, rupture de période d’essai ou rupture conventionnelle. Nous vous remettons le solde de tout compte, le certificat de travail, l’attestation destinée à France Travail et le reçu pour solde de tout compte. Une rupture conventionnelle suppose des fonds suffisants sur votre compte de trésorerie pour couvrir la prime et les frais associés.',
       },

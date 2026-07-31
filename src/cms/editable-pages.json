@@ -2,7 +2,7 @@
   {
     "route": "/",
     "name": "Accueil",
-    "contentCount": 41
+    "contentCount": 20
   },
   {
     "route": "/blog/categorie/actualites",
@@ -57,7 +57,7 @@
   {
     "route": "/rse",
     "name": "Engagements RSE et numérique responsable",
-    "contentCount": 39
+    "contentCount": 34
   },
   {
     "route": "/espace-client",
@@ -67,7 +67,7 @@
   {
     "route": "/entreprises",
     "name": "Expertises IT externes, cadre maîtrisé",
-    "contentCount": 103
+    "contentCount": 52
   },
   {
     "route": "/expertises",
@@ -192,7 +192,7 @@
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 88
+    "contentCount": 49
   },
   {
     "route": "/expertises/product-project-management",
@@ -232,7 +232,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 409
+    "contentCount": 30
   },
   {
     "route": "/recrutement",
@@ -267,6 +267,6 @@
   {
     "route": "/consultants",
     "name": "Votre quotidien de salarié porté",
-    "contentCount": 78
+    "contentCount": 72
   }
 ]

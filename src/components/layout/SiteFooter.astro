@@ -1,30 +1,31 @@
 ---
 const footerColumns = [
   {
-    title: 'Consultants',
+    title: 'Le portage',
     links: [
-      { label: 'Le portage salarial', href: '/portage-salarial' },
-      { label: 'Nos expertises', href: '/expertises' },
-      { label: 'Comprendre les frais', href: '/tarifs' },
-      { label: 'Simulateur de revenus', href: '/simulateur' },
-      { label: 'Parler à un conseiller', href: '/rendez-vous' },
+      { label: 'Comment ça marche', href: '/portage-salarial' },
+      { label: 'Votre quotidien', href: '/consultants' },
+      { label: 'Frais et rémunération', href: '/tarifs' },
+      { label: 'Simuler mes revenus', href: '/simulateur' },
+      { label: 'Questions fréquentes', href: '/faq' },
     ],
   },
   {
     title: 'Entreprises',
     links: [
-      { label: 'Portage pour entreprises', href: '/entreprises' },
+      { label: 'Trouver un expert IT', href: '/entreprises' },
+      { label: 'Voir les expertises', href: '/expertises' },
+      { label: 'Nous contacter', href: '/contact' },
     ],
   },
   {
-    title: 'The Porters',
+    title: 'Le groupe',
     links: [
       { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
-      { label: 'Notre équipe', href: '/equipe' },
+      { label: 'L’équipe', href: '/equipe' },
       { label: 'Nos agences', href: '/agences' },
-      { label: 'Démarche RSE', href: '/rse' },
-      { label: 'Recrutement', href: '/recrutement' },
-      { label: 'Parrainage', href: '/parrainage' },
+      { label: 'Engagements RSE', href: '/rse' },
+      { label: 'Nous rejoindre', href: '/recrutement' },
     ],
   },
   {
@@ -32,18 +33,11 @@ const footerColumns = [
     links: [
       { label: 'Blog', href: '/blog' },
       { label: 'Livres blancs', href: '/livres-blancs' },
-      { label: 'FAQ', href: '/faq' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'Parrainage', href: '/parrainage' },
+      { label: 'Prendre rendez-vous', href: '/rendez-vous' },
       { label: 'Espace client', href: '/espace-client' },
     ],
   },
-];
-
-const agencies = [
-  { city: 'Montpellier', href: '/agences/montpellier' },
-  { city: 'Paris', href: '/agences/paris' },
-  { city: 'Lyon', href: '/agences/lyon' },
-  { city: 'Aix-en-Provence', href: '/agences/aix-en-provence' },
 ];
 
 const currentYear = new Date().getFullYear();
@@ -67,23 +61,8 @@ const currentYear = new Date().getFullYear();
           </span>
         </a>
         <p class="text-sm text-porters-white/60 leading-relaxed max-w-xs mb-6">
-          Société de portage salarial pour consultants et entreprises, avec accompagnement local ou à distance selon les modalités confirmées.
+          Portage salarial et expertises IT pour consultants autonomes et entreprises exigeantes.
         </p>
-
-        <!-- Agencies -->
-        <div class="space-y-2">
-          <p class="text-xs font-semibold uppercase tracking-wider text-porters-gold mb-2">
-            Nos agences
-          </p>
-          {agencies.map((agency) => (
-            <a
-              href={agency.href}
-              class="block text-sm text-porters-white/60 hover:text-porters-gold transition-colors"
-            >
-              {agency.city}
-            </a>
-          ))}
-        </div>
       </div>
 
       <!-- Navigation columns -->

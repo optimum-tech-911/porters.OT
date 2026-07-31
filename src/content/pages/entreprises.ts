@@ -35,27 +35,27 @@ export const enterprisePage = {
     {
       step: '01',
       title: 'Analyse du parcours réel',
-      text: 'Nous regardons les missions effectivement réalisées, les environnements techniques réellement pratiqués et les responsabilités réellement assumées. Pas les mots-clés du CV.',
+      text: 'Missions réalisées, environnements pratiqués et responsabilités assumées — au-delà des mots-clés du CV.',
     },
     {
       step: '02',
       title: 'Évaluation sur référentiels métiers',
-      text: 'CIGREF, SYNTEC et ROME servent de grille de lecture : compétences attendues, niveaux d’expertise, pratiques professionnelles, expérience sectorielle.',
+      text: 'CIGREF, SYNTEC et ROME servent de grille commune pour situer le métier et le niveau d’expertise.',
     },
     {
       step: '03',
       title: 'Deux entretiens structurés',
-      text: 'Un entretien RH et motivation. Un entretien de compétences mené par un référent interne : technologies maîtrisées, méthodes de travail, sécurité du SI, problèmes rencontrés et solutions mises en œuvre. Grilles d’évaluation standardisées, pour que deux profils restent comparables.',
+      text: 'Un entretien RH et un entretien technique structurés rendent les profils comparables.',
     },
     {
       step: '04',
       title: 'Tests ou mise en situation',
-      text: 'Selon le niveau d’exigence du périmètre : tests techniques, questionnaires métier, études de cas. La disponibilité réelle est vérifiée à ce stade — délai de démarrage, durée, compatibilité géographique.',
+      text: 'Tests techniques, questionnaire métier ou étude de cas selon le périmètre. Disponibilité vérifiée.',
     },
     {
       step: '05',
       title: 'Validation finale',
-      text: 'Validation interne pilotée par les référents technique et commercial, et l’avis d’un tiers expert sur les profils stratégiques. Les profils vous sont ensuite transmis sous forme anonymisée.',
+      text: 'Validation interne, puis transmission d’un profil anonymisé avec compétences et disponibilité.',
     },
   ],
 

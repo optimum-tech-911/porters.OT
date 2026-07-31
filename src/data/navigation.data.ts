@@ -3,39 +3,35 @@ import type { Navigation } from '../types/navigation';
 export const navigation: Navigation = {
   main: [
     {
-      label: 'Consultants',
+      label: 'Le portage salarial',
       items: [
-        { label: 'Parcours consultants', href: '/consultants' },
-        { label: 'Le portage salarial', href: '/portage-salarial' },
-        { label: 'Toutes les expertises', href: '/expertises' },
-        { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
-        { label: 'Data & IA', href: '/expertises/data-ia' },
-        { label: 'Cloud & DevOps', href: '/expertises/cloud-devops' },
-        { label: 'Agilité & Coaching', href: '/expertises/agilite-coaching' },
-        { label: 'Simulateur de revenus', href: '/simulateur' },
-        { label: 'Parler à un conseiller', href: '/rendez-vous' },
+        { label: 'Comment ça marche', href: '/portage-salarial' },
+        { label: 'Votre quotidien', href: '/consultants' },
+        { label: 'Frais et rémunération', href: '/tarifs' },
+        { label: 'Simuler mes revenus', href: '/simulateur' },
+        { label: 'Questions fréquentes', href: '/faq' },
       ],
     },
     {
       label: 'Entreprises',
-      href: '/entreprises',
-    },
-    {
-      label: 'The Porters',
       items: [
-        { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
-        { label: 'Notre équipe', href: '/equipe' },
-        { label: 'Nos agences', href: '/agences' },
-        { label: 'Recrutement', href: '/recrutement' },
-        { label: 'Parrainage', href: '/parrainage' },
+        { label: 'Trouver un expert IT', href: '/entreprises' },
+        { label: 'Voir les expertises', href: '/expertises' },
+        { label: 'Nous contacter', href: '/contact' },
       ],
     },
     {
-      label: 'Ressources',
+      label: 'Expertises',
+      href: '/expertises',
+    },
+    {
+      label: 'Le groupe',
       items: [
-        { label: 'Blog', href: '/blog' },
-        { label: 'Livres blancs', href: '/livres-blancs' },
-        { label: 'FAQ', href: '/faq' },
+        { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
+        { label: 'L’équipe', href: '/equipe' },
+        { label: 'Nos agences', href: '/agences' },
+        { label: 'Engagements RSE', href: '/rse' },
+        { label: 'Nous rejoindre', href: '/recrutement' },
       ],
     },
   ],
@@ -46,29 +42,31 @@ export const navigation: Navigation = {
   footer: {
     columns: [
       {
-        title: 'Consultants',
+        title: 'Le portage salarial',
         links: [
-          { label: 'Parcours consultants', href: '/consultants' },
-          { label: 'Le portage salarial', href: '/portage-salarial' },
-          { label: 'Nos expertises', href: '/expertises' },
-          { label: 'Simulateur de revenus', href: '/simulateur' },
-          { label: 'Parler à un conseiller', href: '/rendez-vous' },
+          { label: 'Comment ça marche', href: '/portage-salarial' },
+          { label: 'Votre quotidien', href: '/consultants' },
+          { label: 'Frais et rémunération', href: '/tarifs' },
+          { label: 'Simuler mes revenus', href: '/simulateur' },
+          { label: 'Questions fréquentes', href: '/faq' },
         ],
       },
       {
         title: 'Entreprises',
         links: [
-          { label: 'Entreprises', href: '/entreprises' },
+          { label: 'Trouver un expert IT', href: '/entreprises' },
+          { label: 'Voir les expertises', href: '/expertises' },
+          { label: 'Nous contacter', href: '/contact' },
         ],
       },
       {
-        title: 'The Porters',
+        title: 'Le groupe',
         links: [
           { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
-          { label: 'Notre équipe', href: '/equipe' },
+          { label: 'L’équipe', href: '/equipe' },
           { label: 'Nos agences', href: '/agences' },
-          { label: 'Recrutement', href: '/recrutement' },
-          { label: 'Parrainage', href: '/parrainage' },
+          { label: 'Engagements RSE', href: '/rse' },
+          { label: 'Nous rejoindre', href: '/recrutement' },
         ],
       },
       {
@@ -76,7 +74,8 @@ export const navigation: Navigation = {
         links: [
           { label: 'Blog', href: '/blog' },
           { label: 'Livres blancs', href: '/livres-blancs' },
-          { label: 'FAQ', href: '/faq' },
+          { label: 'Parrainage', href: '/parrainage' },
+          { label: 'Prendre rendez-vous', href: '/rendez-vous' },
         ],
       },
     ],

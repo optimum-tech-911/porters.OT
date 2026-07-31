@@ -2,23 +2,12 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import HomeHero from '../components/home/HomeHero.astro';
 import GoogleReviewsBadge from '../components/ui/GoogleReviewsBadge.astro';
-import EnhancedAgencyCoverage from '../components/agencies/EnhancedAgencyCoverage.astro';
 import GoogleReviewsMarquee from '../components/ui/GoogleReviewsMarquee.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import { faqGroups } from '../data/faq.data';
 import { pageSeo } from '../data/seo.data';
 import { googleReviewHighlights } from '../content/pages/home';
 import { cmsAttrs, cmsText } from '../cms/content';
-
-const partnerLogos = [
-  { name: 'BPCE', url: '/images/logos/partners/partner-1.png' },
-  { name: 'Groupama', url: '/images/logos/partners/partner-2.png' },
-  { name: 'Airbus', url: '/images/logos/partners/partner-3.png' },
-  { name: 'Safran', url: '/images/logos/partners/partner-4.png' },
-  { name: 'Thales', url: '/images/logos/partners/partner-5.png' },
-  { name: 'Capgemini', url: '/images/logos/partners/capgemini.svg' },
-];
-
 
 // The IT specialism leads: it is the differentiator, and it used to sit last
 // (copy-plan §9.1). Order here drives both the grid and the detail panel below.
@@ -35,26 +24,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
 
 <PageLayout seo={pageSeo.home} noBreadcrumbs>
   <HomeHero />
-
-  <section class="light-logo-strip" aria-label="Écosystème professionnel" data-reveal>
-    <div class="light-logo-intro">
-      <span {...cmsAttrs('home.ecosystem.label')}>{cmsText('home.ecosystem.label')}</span>
-    </div>
-    <div class="light-logo-marquee auto-marquee" tabindex="0">
-      <div class="light-logo-track auto-marquee-track">
-        <div class="light-logo-group">
-          {partnerLogos.map((logo) => (
-            <img src={logo.url} alt={logo.name} loading="lazy" decoding="async" />
-          ))}
-        </div>
-        <div class="light-logo-group" aria-hidden="true">
-          {partnerLogos.map((logo) => (
-            <img src={logo.url} alt="" loading="lazy" decoding="async" />
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section class="light-section light-offer-section reveal-fade" data-reveal>
     <div class="light-container light-offer-layout">
@@ -97,46 +66,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     </div>
   </section>
 
-  <section class="light-section light-hellowork-section reveal-fade" data-reveal>
-    <div class="light-container">
-      <div class="light-hellowork-card reveal-up" data-reveal>
-        <div class="light-hellowork-layout">
-          <div class="light-hellowork-copy">
-            <p {...cmsAttrs('home.jobs.eyebrow')}>{cmsText('home.jobs.eyebrow')}</p>
-            <h2 {...cmsAttrs('home.jobs.title')}>{cmsText('home.jobs.title')}</h2>
-            <strong {...cmsAttrs('home.jobs.description')}>{cmsText('home.jobs.description')}</strong>
-            <ul class="light-hellowork-points" aria-label="Repères recrutement">
-              <li {...cmsAttrs('home.jobs.point.current')}>{cmsText('home.jobs.point.current')}</li>
-              <li {...cmsAttrs('home.jobs.point.direct')}>{cmsText('home.jobs.point.direct')}</li>
-              <li {...cmsAttrs('home.jobs.point.full')}>{cmsText('home.jobs.point.full')}</li>
-            </ul>
-            <div>
-              <a href="https://www.hellowork.com/fr-fr/entreprises/the-porters-171310.html" target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.external_cta')}>{cmsText('home.jobs.external_cta')}</span> <b aria-hidden="true">→</b></a>
-              <a href="/recrutement"><span {...cmsAttrs('home.jobs.internal_cta')}>{cmsText('home.jobs.internal_cta')}</span> <b aria-hidden="true">→</b></a>
-            </div>
-          </div>
-          <div class="light-hellowork-preview" aria-hidden="true">
-            <div class="light-hellowork-orbit"></div>
-            <article class="light-hellowork-panel light-hellowork-panel--primary">
-              <small {...cmsAttrs('home.jobs.preview.platform')}>{cmsText('home.jobs.preview.platform')}</small>
-              <strong {...cmsAttrs('home.jobs.preview.company')}>{cmsText('home.jobs.preview.company')}</strong>
-              <span {...cmsAttrs('home.jobs.preview.status')}>{cmsText('home.jobs.preview.status')}</span>
-            </article>
-            <article class="light-hellowork-panel light-hellowork-panel--floating">
-              <small {...cmsAttrs('home.jobs.preview.focus')}>{cmsText('home.jobs.preview.focus')}</small>
-              <strong {...cmsAttrs('home.jobs.preview.profiles')}>{cmsText('home.jobs.preview.profiles')}</strong>
-            </article>
-            <div class="light-hellowork-tags">
-              <span>Rendez-vous</span>
-              <span>RH</span>
-              <span>Conseil</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="light-section light-reviews reveal-fade" data-reveal>
     <div class="light-container">
       <div class="light-reviews-header reveal-up" data-reveal>
@@ -165,14 +94,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
             <div class="light-faq-answer"><div><p>{faq.answer}</p></div></div>
           </details>
         ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="light-section light-coverage reveal-fade" data-reveal>
-    <div class="light-container">
-      <div class="reveal-up" data-reveal>
-        <EnhancedAgencyCoverage />
       </div>
     </div>
   </section>

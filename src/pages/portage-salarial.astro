@@ -4,337 +4,135 @@ import SiteIcon from '../components/ui/SiteIcon.astro';
 import TripartiteDiagram from '../components/ui/TripartiteDiagram.astro';
 import { pageSeo } from '../data/seo.data';
 import portageHeroImage from '../../images/advisor-discussion.webp';
-import PresidentVideo from '../components/ui/PresidentVideo.astro';
-
-const seo = {
-  title: pageSeo.portageSalarial.title,
-  description: pageSeo.portageSalarial.description,
-};
-
-const breadcrumbs = [{ label: 'Portage salarial' }];
 
 const benefits = [
   {
-    icon: 'shield',
-    title: 'Protection sociale complète',
-    // F-B05 (PUBLISHABLE)
-    description: 'Régime général de la Sécurité sociale, prévoyance, cotisations retraite, congés payés, assurance chômage et mutuelle collective.',
-  },
-  {
     icon: 'rocket',
-    title: 'Autonomie totale',
-    // F-B07 (PUBLISHABLE) — argument central
-    description: 'Vous choisissez vos missions, négociez vos tarifs et organisez votre temps de travail. Aucun lien hiérarchique, ni chez le client ni chez nous.',
+    title: 'Votre autonomie',
+    description: 'Vous choisissez vos missions, négociez votre TJM et organisez votre intervention.',
   },
   {
-    icon: 'briefcase',
-    title: 'CDI et statut cadre',
-    // F-B03, F-B04 (PUBLISHABLE)
-    description: 'Un contrat de travail à durée indéterminée, au statut cadre — ce qui ouvre la cotisation à la retraite complémentaire.',
+    icon: 'shield',
+    title: 'Votre protection sociale',
+    description: 'Régime général, prévoyance, retraite, congés payés, assurance chômage et mutuelle collective.',
   },
   {
     icon: 'clipboard',
-    title: 'Contrats et facturation délégués',
-    description: 'Nous établissons les deux contrats, facturons votre client et traitons les déclarations sociales et fiscales liées à votre activité.',
-  },
-  {
-    icon: 'users',
-    title: 'Un interlocuteur unique',
-    description: 'Une seule personne connaît votre contrat, votre client et votre situation. Vous ne réexpliquez pas votre dossier à chaque appel.',
+    title: 'Votre gestion déléguée',
+    description: 'Contrats, facturation, paie et déclarations sociales sont pris en charge.',
   },
   {
     icon: 'calculator',
-    title: 'Un compte de trésorerie',
-    // F-B11 (PUBLISHABLE) — différenciant, mal expliqué partout ailleurs
-    description: 'Vous pouvez mettre une part de votre rémunération brute de côté pour lisser une paie, financer des congés ou provisionner une fin de contrat.',
+    title: 'Votre trésorerie',
+    description: 'Un compte dédié peut servir à lisser une paie, financer des congés ou préparer une fin de contrat.',
   },
 ] as const;
 
 const faqItems = [
   {
-    question: 'Qu\'est-ce que le portage salarial ?',
-    answer: 'Le portage salarial est une forme d\'emploi qui permet à un professionnel indépendant de bénéficier du statut de salarié tout en exerçant son activité en toute autonomie. La société de portage gère l\'ensemble des aspects administratifs, juridiques et comptables.',
+    question: 'À qui s’adresse le portage salarial ?',
+    answer: 'Aux professionnels autonomes qui réalisent des prestations intellectuelles et négocient eux-mêmes leurs missions. Les professions réglementées et les services à la personne en sont exclus.',
   },
   {
-    question: 'À qui s\'adresse le portage salarial ?',
-    answer: 'Le portage salarial s\'adresse à tous les professionnels qui souhaitent exercer une activité de consultant ou de prestataire de services : cadres en reconversion, freelances, retraités actifs, jeunes diplômés ou salariés en quête d\'indépendance.',
+    question: 'Qui signe quoi ?',
+    answer: 'Vous signez un contrat de travail avec The Porters. L’entreprise cliente signe un contrat de prestation avec The Porters. Vous conservez la relation opérationnelle avec le client.',
   },
   {
-    question: 'Quel est le coût du portage salarial ?',
-    answer: 'Les frais de gestion couvrent l\'ensemble des services d\'accompagnement : gestion administrative, facturation, déclarations sociales, assurance RC Pro et suivi personnalisé. Contactez-nous pour obtenir un devis adapté à votre situation.',
+    question: 'Comment mon chiffre d’affaires devient-il un salaire ?',
+    answer: 'The Porters facture votre client. Après déduction des frais de gestion, des cotisations et des éléments applicables à votre situation, le solde finance votre rémunération.',
   },
   {
-    question: 'Le portage salarial est-il encadré par la loi ?',
-    // F-B01 (PUBLISHABLE). La convention collective de branche de 2017 n'a pas de
-    // ligne dans fact-base.md : elle n'est donc pas citée ici.
-    answer: 'Oui. Le portage salarial est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.',
-  },
-  {
-    question: 'Peut-on cumuler portage salarial et chômage ?',
-    answer: 'Oui, il est possible de cumuler portage salarial et allocations chômage sous certaines conditions. En tant que salarié porté, vous cotisez également à l\'assurance chômage pour vos droits futurs.',
+    question: 'Puis-je travailler en France ou à l’étranger ?',
+    answer: 'Oui. La mission peut être réalisée en France ou à l’étranger, pour un client français ou étranger, sur site ou à distance.',
   },
 ];
 ---
 
-<PageLayout seo={seo} breadcrumbs={breadcrumbs}>
-
-  <!-- Hero -->
+<PageLayout
+  seo={{
+    title: pageSeo.portageSalarial.title,
+    description: pageSeo.portageSalarial.description,
+  }}
+  breadcrumbs={[{ label: 'Portage salarial' }]}
+>
   <section class="relative overflow-hidden bg-porters-navy text-porters-white">
-    <div class="absolute inset-0">
-      <img
-        src={portageHeroImage.src}
-        width={portageHeroImage.width}
-        height={portageHeroImage.height}
-        alt=""
-        class="h-full w-full object-cover"
-      />
-      <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,43,99,0.96)_0%,rgba(25,43,99,0.86)_42%,rgba(25,43,99,0.42)_74%,rgba(25,43,99,0.12)_100%)]"></div>
-    </div>
-    <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
+    <img
+      src={portageHeroImage.src}
+      width={portageHeroImage.width}
+      height={portageHeroImage.height}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,43,99,0.97)_0%,rgba(25,43,99,0.88)_46%,rgba(25,43,99,0.3)_100%)]"></div>
+    <div class="container relative mx-auto px-6 py-24 lg:px-8 lg:py-32">
       <div class="max-w-2xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Partie 1 · Le cadre</p>
-        <h1 class="mb-6 max-w-[36rem] text-porters-white">
-          Un seul portage salarial. <span class="gold-underline">Voici comment il fonctionne.</span>
-        </h1>
-        <p class="mb-8 max-w-xl text-lg leading-relaxed text-porters-white/84">
-          Il n’y a pas un portage pour les salariés et un autre pour les indépendants. Il y en a un,
-          encadré par le Code du travail, et vous y êtes salarié tout en choisissant vos missions.
-          Cette page explique le mécanisme. La suivante décrit votre année, mois par mois.
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Le portage salarial</p>
+        <h1 class="text-porters-white">Libre dans la mission. Salarié dans le cadre.</h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-porters-white/80">
+          Vous trouvez vos clients et négociez votre TJM. The Porters met en place les contrats,
+          facture la mission et transforme votre chiffre d’affaires en salaire.
         </p>
-        <div class="flex flex-col gap-4 sm:flex-row">
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
-          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+          <a href="/consultants" class="btn btn-white">Voir mon quotidien</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What is portage salarial -->
-  <section class="section">
+  <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(18rem,0.65fr)] lg:items-center">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(18rem,0.55fr)] lg:items-center">
         <div class="reveal">
-          <h2 class="mb-6">Trois acteurs. Deux contrats. <span class="gold-underline">Une mission.</span></h2>
-          <p class="text-lg" style="color: rgba(11, 16, 32, 0.75);">
-            Le portage salarial est une forme d’emploi encadrée par le Code du travail, l’accord national
-            interprofessionnel de 2008 et l’ordonnance du 2&nbsp;avril 2015. Il repose sur une relation
-            tripartite entre le <strong>salarié porté</strong>, la <strong>société de portage</strong> et
-            l’<strong>entreprise cliente</strong>.
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Le mécanisme</p>
+          <h2>Trois acteurs. Deux contrats. Une mission.</h2>
+          <p class="mt-5 text-lg leading-relaxed text-porters-black/70">
+            Le portage salarial relie le consultant, l’entreprise cliente et The Porters. Vous pilotez
+            la mission. Nous portons le cadre salarial, contractuel et administratif.
           </p>
-          <p style="color: rgba(11, 16, 32, 0.75);">
-            Deux contrats, pas un&nbsp;: un contrat de travail entre vous et The&nbsp;Porters, un contrat de
-            prestation entre The&nbsp;Porters et votre client. Vous négociez la mission et le tarif&nbsp;;
-            nous facturons, déclarons et vous payons. Aucun lien hiérarchique&nbsp;: ni chez le client,
-            ni chez nous.
+          <p class="text-porters-black/65">
+            Le dispositif est encadré par le Code du travail, l’accord national interprofessionnel de 2008
+            et l’ordonnance du 2&nbsp;avril&nbsp;2015.
           </p>
         </div>
-        <PresidentVideo />
-
-        <!-- Tripartite diagram: the relations between the nodes carry the information -->
-        <div class="reveal mt-12 lg:col-span-2">
-          <TripartiteDiagram />
-        </div>
+        <div class="reveal"><TripartiteDiagram /></div>
       </div>
     </div>
   </section>
 
-  <!-- Benefits grid -->
-  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
+  <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-12 reveal">
-        <h2>Ce que le cadre vous garantit <span class="gold-underline">concrètement</span></h2>
-        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Vous gardez toutes les décisions commerciales. Vous déléguez le cadre social, contractuel et administratif.
-        </p>
+      <div class="mb-12 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Ce que chacun garde</p>
+        <h2>L’autonomie d’un indépendant, le cadre d’un salarié</h2>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {benefits.map((benefit) => (
-          <div class="card reveal">
-            <div class="icon-chip mb-5">
-              <SiteIcon name={benefit.icon} />
-            </div>
-            <h3 class="text-lg font-heading font-semibold mb-2">{benefit.title}</h3>
-            <p class="text-sm" style="color: rgba(11, 16, 32, 0.7);">{benefit.description}</p>
-          </div>
+          <article class="card reveal">
+            <div class="icon-chip mb-5"><SiteIcon name={benefit.icon} /></div>
+            <h3 class="mb-2 text-lg">{benefit.title}</h3>
+            <p class="mb-0 text-sm leading-relaxed text-porters-black/65">{benefit.description}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!--
-    Notre offre — reprend la structure « PACK PURE » du site actuel porters.fr,
-    en trois piliers. Ne reprend PAS ce que la grille d'avantages ci-dessus couvre
-    déjà (protection sociale, CDI, RC Pro, autonomie, trésorerie).
-    Source : SITE-LIVE. Les chiffres de cette page (+1,5 % sur les frais
-    professionnels, démarrage en 24 h ouvrées, versement en fin de mois) sont
-    ajoutés à fact-base.md en VERIFY_BEFORE_USE et NE SONT PAS publiés ici.
-  -->
-  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
+  <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Notre offre</p>
-        <h2>Ce que vous obtenez <span class="gold-underline">en plus du cadre</span></h2>
-        <p class="mt-4" style="color: rgba(11, 16, 32, 0.7);">
-          Le cadre légal, tout le monde l’applique. Voici ce qui s’y ajoute chez nous, et que vous
-          n’avez pas à négocier ligne par ligne.
-        </p>
-      </div>
-      <div class="grid gap-8 lg:grid-cols-3 lg:gap-12">
-        <div class="reveal">
-          <p class="mb-4 font-mono text-2xl font-bold text-porters-gold">01</p>
-          <h3 class="mb-4 text-lg">Votre trésorerie</h3>
-          <ul class="space-y-3 text-sm leading-relaxed text-porters-black/68">
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Une avance sur salaire est incluse&nbsp;: votre paie ne suit pas le calendrier de règlement de votre client.</li>
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Vos frais professionnels sont traités et remboursés, pas laissés à votre comptabilité.</li>
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Un compte de trésorerie dédié pour lisser une paie, financer des congés ou débloquer un acompte.</li>
-          </ul>
-        </div>
-        <div class="reveal">
-          <p class="mb-4 font-mono text-2xl font-bold text-porters-gold">02</p>
-          <h3 class="mb-4 text-lg">Vos frais, sans zone d’ombre</h3>
-          <ul class="space-y-3 text-sm leading-relaxed text-porters-black/68">
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Un seul taux de frais de gestion, communiqué avant la signature.</li>
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Aucun frais de dossier, d’entrée ni de sortie.</li>
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Le détail des sept prestations couvertes est publié, poste par poste.</li>
-          </ul>
-          <a href="/tarifs" class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-porters-navy">Voir les frais détaillés <span aria-hidden="true">→</span></a>
-        </div>
-        <div class="reveal">
-          <p class="mb-4 font-mono text-2xl font-bold text-porters-gold">03</p>
-          <h3 class="mb-4 text-lg">Les services en plus</h3>
-          <ul class="space-y-3 text-sm leading-relaxed text-porters-black/68">
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Financement de vos formations et certifications&nbsp;: CPF, OPCO.</li>
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Coaching RH sur votre positionnement et la présentation de votre offre.</li>
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Un réseau de consultants portés, et des tarifs préférentiels chez nos partenaires.</li>
-            <li class="flex gap-3"><span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Des missions proposées par nos partenaires, sans exclusivité&nbsp;: vous restez libre de trouver les vôtres.</li>
-          </ul>
-        </div>
-      </div>
-      <p class="mt-10 max-w-3xl text-sm leading-relaxed text-porters-black/60 reveal">
-        Vous restez maître de vos décisions, de votre planning et propriétaire de votre clientèle.
-        Les démarches administratives, fiscales, comptables et juridiques passent chez nous.
-      </p>
-    </div>
-  </section>
-
-  <!-- Eligibility: who it is for, and who it is not for -->
-  <section class="section">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-12 reveal">
-        <h2>Qui peut être porté, <span class="gold-underline">et qui ne peut pas</span></h2>
-        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Le portage couvre les prestations intellectuelles. Deux familles en sont exclues par la loi.
-        </p>
-      </div>
-      <div class="grid gap-10 lg:grid-cols-2 max-w-5xl mx-auto">
-        <div class="reveal">
-          <h3 class="mb-5 text-lg font-heading font-semibold">Éligible</h3>
-          <ul class="space-y-3">
-            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Cybersécurité, data, IA, cloud, DevOps, architecture</li>
-            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Product Ownership, Scrum, coaching agile, transformation</li>
-            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Chefferie de projet IT, AMOA, conseil</li>
-            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Mission en France ou à l’étranger, client français ou étranger, télétravail compris</li>
-            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>Cumul avec un emploi salarié, avec l’accord de l’employeur, ou avec une retraite</li>
-          </ul>
-        </div>
-        <div class="reveal">
-          <h3 class="mb-5 text-lg font-heading font-semibold">Exclu</h3>
-          <ul class="space-y-3">
-            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25"></span>Les professions réglementées</li>
-            <li class="flex gap-3 text-porters-black/72"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-navy/25"></span>Les services à la personne</li>
-          </ul>
-          <p class="mt-6 text-sm leading-relaxed text-porters-black/60">
-            Le cumul avec un emploi salarié est plafonné à 48&nbsp;heures de travail hebdomadaire, tous
-            employeurs confondus.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison table -->
-  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-12 reveal">
-        <h2>Quel cadre correspond à <span class="gold-underline">votre projet</span> ?</h2>
-        <p class="mt-4 max-w-2xl mx-auto" style="color: rgba(11, 16, 32, 0.7);">
-          Comparez l’autonomie, la protection sociale, la gestion et les coûts avant de choisir.
-        </p>
-      </div>
-      <div class="overflow-x-auto reveal">
-        <table class="w-full text-sm border-collapse" style="min-width: 600px;">
-          <thead>
-            <tr class="bg-porters-navy text-porters-white">
-              <th class="text-left p-4 font-heading font-semibold rounded-tl-lg">Critère</th>
-              <th class="text-center p-4 font-heading font-semibold">Portage salarial</th>
-              <th class="text-center p-4 font-heading font-semibold">Auto-entrepreneur</th>
-              <th class="text-center p-4 font-heading font-semibold rounded-tr-lg">Création de société</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="transition-colors hover:bg-porters-navy/[0.035]" style="border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
-              <td class="p-4 font-medium">Protection sociale</td>
-              <td class="p-4 text-center text-porters-navy font-semibold">Complète (salarié)</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Minimale</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Variable selon statut</td>
-            </tr>
-            <tr class="transition-colors hover:bg-porters-navy/[0.055]" style="background-color: rgba(25, 43, 99, 0.02); border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
-              <td class="p-4 font-medium">Responsabilité</td>
-              <td class="p-4 text-center text-porters-navy font-semibold">Portée par la société</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Personnelle</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Limitée au capital</td>
-            </tr>
-            <tr class="transition-colors hover:bg-porters-navy/[0.035]" style="border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
-              <td class="p-4 font-medium">Gestion administrative</td>
-              <td class="p-4 text-center text-porters-navy font-semibold">Déléguée</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Simplifiée</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Complexe</td>
-            </tr>
-            <tr class="transition-colors hover:bg-porters-navy/[0.055]" style="background-color: rgba(25, 43, 99, 0.02); border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
-              <td class="p-4 font-medium">Assurance chômage</td>
-              <td class="p-4 text-center text-porters-navy font-semibold">Oui</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Non</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Non (sauf dirigeant salarié)</td>
-            </tr>
-            <tr class="transition-colors hover:bg-porters-navy/[0.035]" style="border-bottom: 1px solid rgba(25, 43, 99, 0.08);">
-              <td class="p-4 font-medium">Retraite</td>
-              <td class="p-4 text-center text-porters-navy font-semibold">Régime général</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Régime micro</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Selon statut</td>
-            </tr>
-            <tr class="transition-colors hover:bg-porters-navy/[0.035]">
-              <td class="p-4 font-medium">Plafond de CA</td>
-              <td class="p-4 text-center text-porters-navy font-semibold">Aucun</td>
-              {/* TODO-CLIENT: le plafond de chiffre d'affaires de la micro-entreprise
-                  est un seuil fiscal révisable. Aucune ligne de fact-base.md ne le
-                  couvre : il n'est donc pas chiffré ici. Le rétablir avec son année
-                  (« 77 700 € en 2024 ») une fois la valeur 2026 confirmée. */}
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Plafonné</td>
-              <td class="p-4 text-center" style="color: rgba(11, 16, 32, 0.65);">Aucun</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-12 reveal">
-          <h2>Questions <span class="gold-underline">fréquentes</span></h2>
+      <div class="mx-auto max-w-3xl">
+        <div class="mb-10 text-center reveal">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">En pratique</p>
+          <h2>Les quatre réponses utiles avant de choisir</h2>
         </div>
         <div class="space-y-4 reveal">
           {faqItems.map((faq) => (
-            <details class="group border rounded-lg" style="border-color: rgba(25, 43, 99, 0.1);">
-              <summary class="flex items-center justify-between p-5 cursor-pointer font-heading font-semibold text-porters-navy hover:text-porters-gold transition-colors">
+            <details class="group rounded-lg border border-porters-navy/10">
+              <summary class="flex cursor-pointer items-center justify-between p-5 font-heading font-semibold text-porters-navy">
                 <span>{faq.question}</span>
-                <span class="ml-4 shrink-0 transition-transform group-open:rotate-45 text-porters-gold text-xl">+</span>
+                <span class="ml-4 text-xl text-porters-gold transition-transform group-open:rotate-45">+</span>
               </summary>
-              <div class="px-5 pb-5" style="color: rgba(11, 16, 32, 0.7);">
-                <p class="mb-0">{faq.answer}</p>
-              </div>
+              <div class="px-5 pb-5 text-porters-black/68"><p class="mb-0">{faq.answer}</p></div>
             </details>
           ))}
         </div>
@@ -342,23 +140,13 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- CTA band -->
-  <section class="section bg-porters-navy text-porters-white">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-porters-white mb-4">
-          Le cadre est clair&nbsp;? <span class="gold-underline">Voyons votre année.</span>
-        </h2>
-        <p class="text-lg mb-8" style="color: rgba(250, 248, 243, 0.8);">
-          Entrée, premier salaire, congés, arrêt maladie, trésorerie, sortie&nbsp;: la suite du parcours,
-          mois par mois.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/consultants" class="btn btn-gold">Votre quotidien de salarié porté</a>
-          <a href="/simulateur" class="btn btn-white">Simuler mes revenus</a>
-        </div>
+  <section class="bg-porters-navy py-16 text-porters-white">
+    <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <div class="max-w-2xl reveal">
+        <h2 class="mb-2 text-porters-white">Votre mission est prête&nbsp;? Chiffrons le cadre.</h2>
+        <p class="mb-0 text-porters-white/65">Partez de votre TJM et de vos jours facturés pour obtenir une première estimation.</p>
       </div>
+      <a href="/simulateur" class="btn btn-gold shrink-0">Simuler mes revenus</a>
     </div>
   </section>
-
 </PageLayout>

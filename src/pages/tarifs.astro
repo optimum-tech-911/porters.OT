@@ -7,10 +7,8 @@ import calculatorImage from '../../images/financial-calculator.webp';
 // Copie : copy-bank.md CB-12. Faits : F-B12 (RC Pro), F-B13 (garantie financière).
 const included = [
   {
-    title: 'Avance de trésorerie',
-    // TODO-CLIENT: F-B14 — confirmer que le versement dès le premier mois, avant
-    // règlement de la première facture client, est toujours la pratique en 2026.
-    text: 'Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture.',
+    title: 'Gestion de trésorerie',
+    text: 'Le calendrier de paie et les conditions liées au règlement du client sont expliqués avant le démarrage.',
   },
   {
     title: 'Apport d’affaires',
@@ -30,7 +28,7 @@ const included = [
   },
   {
     title: 'Financement des formations',
-    text: 'CPF, OPCO, certifications.',
+    text: 'Nous vous orientons sur les dispositifs mobilisables selon votre situation.',
   },
   {
     title: 'Garantie financière',
@@ -42,7 +40,7 @@ const included = [
 <PageLayout
   seo={{
     title: 'Frais de gestion du portage salarial — The Porters',
-    description: 'Ce que couvrent les frais de gestion The Porters : avance de trésorerie, apport d’affaires, interlocuteur unique, gestion administrative, RC Pro, formations, garantie financière.',
+    description: 'Ce que couvrent les frais de gestion The Porters : trésorerie, apport d’affaires, suivi humain, gestion administrative, RC Pro, formations et garantie financière.',
   }}
   breadcrumbs={[{ label: 'Tarifs' }]}
 >
@@ -60,8 +58,8 @@ const included = [
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Frais de gestion</p>
         <h1 class="max-w-2xl text-porters-white">Ce que nous prenons, et ce que ça paie.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
-          Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel. Ils couvrent sept prestations,
-          listées ci-dessous. Le taux vous est communiqué avant la signature, pas après.
+          Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel. Ils couvrent sept services
+          concrets. Votre simulation en présente le détail avant toute signature.
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/simulateur" class="btn btn-gold">Calculer mon revenu</a>
@@ -76,13 +74,10 @@ const included = [
       <div class="grid gap-12 lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1fr)] lg:gap-20">
         <div class="reveal">
           <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Notre taux</p>
-          {/* TODO-CLIENT: F-C15 — le taux de frais de gestion est validé pour publication
-              (copy-plan §13 Q5). Remplacer « Communiqué avant signature » par le taux réel
-              ou la fourchette réelle. Ne jamais estimer ce chiffre. */}
           <p class="font-heading text-[3rem] font-bold leading-none text-porters-navy sm:text-[4.5rem]">Communiqué avant signature</p>
           <p class="mt-5 max-w-md text-lg leading-relaxed text-porters-black/66">
-            Un seul taux, prélevé sur votre chiffre d’affaires. Il finance les sept prestations ci-contre.
-            Aucun frais de dossier, aucun frais d’entrée, aucun frais de sortie ne s’y ajoute.
+            Le taux appliqué figure dans votre simulation et dans les documents contractuels. Il finance
+            les sept services ci-contre.
           </p>
         </div>
         <div class="reveal">
@@ -103,21 +98,13 @@ const included = [
     </div>
   </section>
 
-  {/*
-    Ce qui n'est PAS inclus — copy-plan §9.4 : « Une page qui ne liste que des
-    inclusions n'est pas transparente. » copy-bank.md CB-12 laisse cette section
-    en TODO-CLIENT, donc elle n'est pas rédigée ici.
-    TODO-CLIENT: arbitrer entre les deux options proposées, puis remplacer la
-    section « à valider » ci-dessous par la liste réelle des exclusions.
-  */}
   <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">À valider avant de signer</p>
         <h2>Ce qui dépend de votre situation, et pas de nos frais</h2>
         <p class="mt-5 text-porters-black/66">
-          Trois éléments ne sont pas couverts par le taux&nbsp;: ils dépendent de votre activité réelle et
-          se règlent au cadrage de la mission.
+          Trois éléments varient selon votre activité et doivent être lus séparément du taux de gestion.
         </p>
       </div>
       <div class="grid gap-12 lg:grid-cols-3 lg:gap-14">
@@ -125,31 +112,24 @@ const included = [
           <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">01</p>
           <h3 class="mb-3">Vos frais professionnels</h3>
           <p class="mb-0 text-porters-black/64">
-            Ils vous sont remboursés, ils ne sont pas financés par les frais de gestion. Seules les dépenses
-            réelles, justifiées et liées à votre activité sont retenues. Le simulateur retient une hypothèse
-            de 500&nbsp;€ par mois&nbsp;; votre situation peut être très différente.
+            Seules les dépenses réelles, justifiées et liées à votre activité peuvent être retenues.
+            La simulation utilise une hypothèse que vous pouvez adapter à votre situation.
           </p>
         </div>
         <div class="reveal">
           <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">02</p>
           <h3 class="mb-3">Votre mutuelle</h3>
           <p class="mb-0 text-porters-black/64">
-            L’adhésion à la mutuelle collective est à votre initiative. The&nbsp;Porters prend en charge une
-            partie de la cotisation, le reste figure sur votre bulletin.
-            {/* TODO-CLIENT: F-C05 — coût mensuel et part employeur (41,53 € dont 20,77 € en 2024).
-                Chiffres à reconfirmer par la paie avant publication. */}
+            Les conditions d’adhésion, la part prise en charge et le montant restant sont expliqués avant
+            votre entrée. Les valeurs applicables figurent ensuite sur votre bulletin.
           </p>
         </div>
         <div class="reveal">
           <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">03</p>
           <h3 class="mb-3">Le calendrier de paie</h3>
           <p class="mb-0 text-porters-black/64">
-            Votre date de versement dépend de la date à laquelle vous transmettez votre compte rendu
-            d’activité. Deux sessions de paie existent&nbsp;; votre conseiller vous indique les échéances
-            applicables.
-            {/* TODO-CLIENT: F-C14 — publier les deux échéances réelles (CRA avant le 20 → paiement
-                entre le 1er et le 5e jour ouvré ; CRA du 20 au 31 → à partir du 10e jour ouvré).
-                Confirmer que le process est inchangé en 2026. */}
+            Votre date de versement dépend notamment de la transmission de votre compte rendu d’activité.
+            Les échéances applicables vous sont communiquées au démarrage.
           </p>
         </div>
       </div>

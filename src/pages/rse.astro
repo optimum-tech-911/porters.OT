@@ -2,46 +2,42 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import workshopImage from '../../images/team-workshop.webp';
 
-// Chaque engagement ci-dessous est adossé à un fait PUBLISHABLE de fact-base.md et
-// figure dans la démarche RSE et Numérique Responsable formalisée par le groupe.
-// Aucune certification n'est revendiquée : voir la section « Ce que nous ne
-// revendiquons pas » et copy-plan §13 Q7.
 const commitments = [
   {
     number: '01',
     title: 'Une charte Numérique Responsable, et un référent désigné',
     // F-D10 (PUBLISHABLE)
-    text: 'La charte est diffusée aux collaborateurs et fixe les principes attendus en matière de sobriété numérique, d’éco-conception, d’accessibilité et de bonnes pratiques de développement. Un référent numérique responsable est désigné, avec des missions formalisées.',
+    text: 'Une charte fixe les principes de sobriété, d’éco-conception et d’accessibilité. Un référent Numérique Responsable est désigné.',
   },
   {
     number: '02',
     title: 'Éco-conception logicielle',
     // F-D10 (PUBLISHABLE) — référentiels nommés, jamais présentés comme certifications
-    text: 'Les équipes sont formées à l’éco-conception en s’appuyant sur le RGESN et les bonnes pratiques Green IT. En mission : optimisation du code, rationalisation des requêtes, limitation des dépendances superflues, réutilisation de briques existantes.',
+    text: 'Les équipes s’appuient sur le RGESN et les pratiques Green IT pour réduire le poids du code, des requêtes et des dépendances.',
   },
   {
     number: '03',
     title: 'Accessibilité numérique',
     // F-D09 (PUBLISHABLE)
-    text: 'Sur les prestations qui touchent à une interface utilisateur, les équipes s’appuient sur le RGAA et sur les recommandations WCAG, dès la phase de conception et non en correction.',
+    text: 'Les prestations qui touchent à une interface s’appuient sur le RGAA et les recommandations WCAG dès la conception.',
   },
   {
     number: '04',
     title: 'Déplacements à faible impact',
     // F-D14 (PUBLISHABLE)
-    text: 'Train en priorité sur les longues distances, transports en commun ou mobilités douces en proximité. Le télétravail est favorisé lorsqu’il est compatible avec l’organisation du client et la nature de la mission.',
+    text: 'Train en priorité sur les longues distances, transports en commun ou mobilités douces en proximité.',
   },
   {
     number: '05',
     title: 'Équipements réparés, reconditionnés, donnés',
     // F-D15 (PUBLISHABLE)
-    text: 'Le matériel est choisi pour sa durabilité, réparé quand c’est possible, afin d’éviter un renouvellement prématuré. Le reconditionné est privilégié sur les périphériques. Recyclage et dons passent par des filières identifiées.',
+    text: 'Réparation quand elle est possible, périphériques reconditionnés, recyclage et dons par des filières identifiées.',
   },
   {
     number: '06',
     title: 'Diversité et égalité des chances',
     // F-D11 (PUBLISHABLE)
-    text: 'Le groupe est signataire de la Charte de la diversité. Les processus de recrutement reposent sur les compétences, l’expérience et le savoir-être — ce qui valorise notamment les profils expérimentés sur des technologies critiques.',
+    text: 'Le groupe est signataire de la Charte de la diversité. Le recrutement repose sur les compétences, l’expérience et le savoir-être.',
   },
 ];
 
@@ -75,7 +71,6 @@ const governance = [
     title: 'Engagements RSE et numérique responsable — The Porters',
     description:
       'Charte Numérique Responsable et référent désigné, éco-conception RGESN, accessibilité RGAA et WCAG, déplacements en train, matériel reconditionné, Charte de la diversité.',
-    noindex: true,
   }}
   breadcrumbs={[{ label: 'Démarche RSE' }]}
 >
@@ -91,10 +86,9 @@ const governance = [
     <div class="container relative mx-auto flex min-h-[39rem] items-center px-6 py-20 lg:px-8">
       <div class="max-w-3xl reveal">
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Responsabilité sociale et environnementale</p>
-        <h1 class="max-w-3xl text-porters-white">Six engagements, et ce que nous ne revendiquons pas.</h1>
+        <h1 class="max-w-3xl text-porters-white">Six engagements concrets, pas une déclaration d’intention.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
-          Une charte écrite, un référent nommé, des référentiels identifiés, des indicateurs suivis en comité
-          de pilotage. Et, plus bas, la liste de ce que nous n’avons pas encore obtenu.
+          Une charte, un référent, des pratiques identifiées et des indicateurs suivis en comité de pilotage.
         </p>
       </div>
     </div>
@@ -136,32 +130,6 @@ const governance = [
               <span class="text-porters-black/64">{row.text}</span>
             </div>
           ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-white">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Précision</p>
-        <h2 class="mb-6">Ce que nous ne revendiquons pas</h2>
-        <div class="space-y-5 text-porters-black/70 leading-relaxed">
-          <p>
-            Nous ne sommes pas certifiés par l’Institut du Numérique Responsable. Nous nous engageons à
-            inscrire l’organisation dans une trajectoire vers ces référentiels, et nous accompagnons la montée
-            en compétence de nos référents et de nos équipes vers ces dispositifs de reconnaissance.
-            Tant que le label n’est pas obtenu, nous écrivons «&nbsp;trajectoire&nbsp;», pas «&nbsp;certifié&nbsp;».
-          </p>
-          <p>
-            Nous nous appuyons sur le RGESN, le RGAA et les recommandations WCAG. Ce sont des référentiels
-            que nos équipes appliquent, pas des certifications que nous détenons.
-          </p>
-          <p>
-            Nous ne publions pas d’indicateur chiffré sur cette page. Les indicateurs existent et sont suivis
-            en comité de pilotage&nbsp;; ils seront publiés ici lorsqu’ils porteront sur une période close et
-            une méthode que nous pouvons décrire.
-          </p>
         </div>
       </div>
     </div>

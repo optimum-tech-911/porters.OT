@@ -94,7 +94,7 @@ export default function SimulatorForm() {
       type: 'positive',
     },
     {
-      label: 'Services de portage estimés',
+      label: `Services de portage estimés (${managementRatePercent} % – hypothèse)`,
       value: `- ${formatCurrency(fraisGestion)}`,
       type: 'negative',
     },

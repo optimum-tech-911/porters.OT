@@ -1,33 +1,4 @@
 ---
-import enhancedAgencySection from '../../../section nos agences/section-couverture-nationale-enhanced.html?raw';
-
-const enhancedMapMatch = enhancedAgencySection.match(
-  /<svg class="cvg__svg"[\s\S]*?<\/svg>/
-);
-
-if (!enhancedMapMatch) {
-  throw new Error('Unable to extract the enhanced France map for the navigation.');
-}
-
-const navAgencyRoutes: Record<string, string> = {
-  paris: '/agences/paris',
-  lyon: '/agences/lyon',
-  montpellier: '/agences/montpellier',
-  aix: '/agences/aix-en-provence',
-};
-
-const enhancedNavMap = enhancedMapMatch[0]
-  .replace('class="cvg__svg"', 'class="tp-enhanced-map-svg"')
-  .replace('role="img"', 'role="group"')
-  .replaceAll('cvgDots', 'tpNavCvgDots')
-  .replaceAll('cvgHalo', 'tpNavCvgHalo')
-  .replaceAll('cvgSweep', 'tpNavCvgSweep')
-  .replaceAll('cvgClip', 'tpNavCvgClip')
-  .replace(
-    /<g class="cvg-pin" data-city="([^"]+)" role="button" tabindex="0" aria-label="([^"]+)"([^>]*)>([\s\S]*?)<\/g>/g,
-    (_match, city: string, label: string, attributes: string, contents: string) =>
-      `<a href="${navAgencyRoutes[city] || '/agences'}" aria-label="${label}"><g class="cvg-pin" data-city="${city}"${attributes}>${contents}</g></a>`
-  );
 
 type NavLink = {
   label: string;
@@ -50,46 +21,36 @@ const leftNav: NavItem[] = [
     href: '/portage-salarial',
     description: 'Le cadre, votre quotidien, les frais et les réponses utiles.',
     links: [
-      // /consultants ne figure plus ici : c'est la partie 2 du même récit, atteinte
-      // depuis /portage-salarial. Un seul portage, une seule entrée de menu.
-      { label: 'Comprendre le portage salarial', href: '/portage-salarial', note: 'Cadre, contrat, paie' },
-      { label: 'Frais et rémunération', href: '/tarifs', note: 'Ce que couvrent nos frais' },
-      { label: 'FAQ portage salarial', href: '/faq', note: 'Questions clés' },
+      { label: 'Comment ça marche', href: '/portage-salarial', note: 'Cadre, contrats, paie' },
+      { label: 'Votre quotidien', href: '/consultants', note: 'De l’entrée à la sortie' },
+      { label: 'Frais et rémunération', href: '/tarifs', note: 'Services et simulation' },
+      { label: 'Questions fréquentes', href: '/faq', note: 'Réponses pratiques' },
     ],
   },
   {
-    id: 'offers',
-    label: 'Nos offres',
-    href: '/consultants',
-    description: 'Des parcours distincts pour consultants, entreprises et expertises IT.',
+    id: 'enterprises',
+    label: 'Entreprises',
+    href: '/entreprises',
+    description: 'Cadrage du besoin, sélection des profils et suivi de mission.',
     links: [
-      { label: 'Consultants', href: '/consultants', note: 'Indépendance cadrée' },
-      { label: 'Entreprises', href: '/entreprises', note: 'Renforts experts' },
-      { label: 'Expertises IT', href: '/expertises', note: 'Cyber, data, cloud' },
-    ],
-  },
-  {
-    id: 'group',
-    label: 'Le groupe',
-    href: '/qui-sommes-nous',
-    description: 'Mission, expertises, histoire et points de contact The Porters.',
-    links: [
-      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'Notre mission et notre vision' },
-      { label: 'Agences', href: '/agences', note: 'Points de contact documentés' },
+      { label: 'Trouver un expert IT', href: '/entreprises', note: 'Notre méthode de sélection' },
+      { label: 'Voir les expertises', href: '/expertises', note: 'Cyber, data, cloud, agilité' },
+      { label: 'Nous contacter', href: '/contact', note: 'Décrire le contexte' },
     ],
   },
 ];
 
 const rightNav: NavItem[] = [
   {
-    id: 'resources',
-    label: 'Ressources',
-    href: '/blog',
-    description: 'Guides, réponses et contenus pour avancer avec plus de clarté.',
+    id: 'group',
+    label: 'Le groupe',
+    href: '/qui-sommes-nous',
+    description: 'Deux métiers complémentaires autour des missions IT.',
     links: [
-      { label: 'Blog', href: '/blog', note: 'Articles et guides' },
-      { label: 'FAQ', href: '/faq', note: 'Réponses rapides' },
-      { label: 'Livres blancs', href: '/livres-blancs', note: 'Guides pratiques' },
+      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'The Porters et The Big Porters' },
+      { label: 'L’équipe', href: '/equipe', note: 'Vos interlocuteurs' },
+      { label: 'Nos agences', href: '/agences', note: 'Points de contact' },
+      { label: 'Engagements RSE', href: '/rse', note: 'Nos pratiques' },
     ],
   },
 ];
@@ -119,14 +80,14 @@ const active = (href: string) => {
           >
             <span aria-hidden="true">⌄</span>
           </button>
-          <div class:list={['tp-nav-popover', { 'tp-nav-popover--group': item.id === 'group' }]} id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
+          <div class="tp-nav-popover" id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
             <div class="tp-popover-intro">
               <span>{item.label}</span>
               <p>{item.description}</p>
             </div>
             <div class="tp-popover-links">
               {item.links.map((link) => (
-                <a href={link.href} class:list={[{ 'tp-agences-trigger': link.label === 'Agences' }]} data-agences={link.label === 'Agences' ? 'true' : undefined}>
+                <a href={link.href}>
                   <span>
                     <strong>{link.label}</strong>
                     {link.note && <small>{link.note}</small>}
@@ -135,22 +96,6 @@ const active = (href: string) => {
                 </a>
               ))}
             </div>
-            {/* The agencies map lives with the "Le groupe" entry; move both together if that entry moves. */}
-            {item.id === 'group' && (
-              <div class="tp-france-map-panel" id="tp-france-map" aria-label="Carte des agences The Porters">
-                <div class="tp-france-map-inner">
-                  <div class="tp-france-map-container">
-                    <Fragment set:html={enhancedNavMap} />
-                  </div>
-                  <a href="/agences" class="tp-france-map-legend">
-                    <span>Couverture nationale</span>
-                    <strong>Nos agences</strong>
-                    <small>Paris · Lyon · Montpellier · Aix-Marseille</small>
-                    <em>Découvrir notre présence en France →</em>
-                  </a>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       ))}
@@ -163,10 +108,10 @@ const active = (href: string) => {
       </span>
     </a>
 
-    <a href="/rendez-vous" class="tp-mobile-appointment">Rendez-vous</a>
+    <a href="/simulateur" class="tp-mobile-appointment">Simuler</a>
 
     <nav class="tp-desktop-nav tp-desktop-nav--right" aria-label="Navigation principale droite" data-cms-ignore>
-      <a href="/simulateur" class:list={['tp-nav-direct', { 'is-active': active('/simulateur') }]}>Simulateur</a>
+      <a href="/expertises" class:list={['tp-nav-direct', { 'is-active': active('/expertises') }]}>Expertises</a>
       {rightNav.map((item) => (
         <div class:list={['tp-nav-item', `tp-nav-item--${item.id}`, { 'is-active': active(item.href) }]} data-popover>
           <a href={item.href} class="tp-nav-link">{item.label}</a>
@@ -204,7 +149,7 @@ const active = (href: string) => {
           <path d="m5 7 7 6 7-6"></path>
         </svg>
       </a>
-      <a href="/rendez-vous" class="tp-appointment-link">Rendez-vous <span aria-hidden="true">→</span></a>
+      <a href="/simulateur" class="tp-appointment-link">Simuler mes revenus <span aria-hidden="true">→</span></a>
     </nav>
 
     <button class="tp-menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
@@ -240,7 +185,8 @@ const active = (href: string) => {
         </details>
       ))}
       <div class="tp-mobile-actions">
-        <a href="/simulateur">Simulateur</a>
+        <a href="/expertises">Expertises</a>
+        <a href="/simulateur">Simuler mes revenus</a>
         <a href="/rendez-vous">Prendre rendez-vous</a>
         <a href="/contact">Contact</a>
       </div>

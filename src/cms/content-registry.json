@@ -3,7 +3,7 @@
     "key": "home.hero.eyebrow",
     "route": "/",
     "type": "label",
-    "content": "Portage salarial • Experts IT • Entreprises"
+    "content": "Portage salarial & expertises IT"
   },
   {
     "key": "home.hero.title",
@@ -15,13 +15,13 @@
     "key": "home.hero.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Contrat de travail, facturation, paie, déclarations sociales, protection sociale. Vous restez indépendant sur le fond, salarié sur la forme."
+    "content": "Vous gardez vos missions, votre TJM et votre autonomie. Nous prenons en charge le contrat, la facturation, la paie et le suivi administratif."
   },
   {
     "key": "home.hero.primary_cta",
     "route": "/",
     "type": "button",
-    "content": "Parler à un conseiller"
+    "content": "Simuler mes revenus"
   },
   {
     "key": "home.hero.secondary_cta",
@@ -33,25 +33,25 @@
     "key": "home.hero.enterprise_cta",
     "route": "/",
     "type": "button",
-    "content": "Je recrute un expert IT"
+    "content": "Trouver un expert IT"
   },
   {
     "key": "home.hero.trust.interlocutors",
     "route": "/",
     "type": "list_item",
-    "content": "Interlocuteur unique"
+    "content": "Suivi humain"
   },
   {
     "key": "home.hero.trust.secured_missions",
     "route": "/",
     "type": "list_item",
-    "content": "CDI, statut cadre"
+    "content": "Contrat salarié"
   },
   {
     "key": "home.hero.trust.employee_framework",
     "route": "/",
     "type": "list_item",
-    "content": "Autonomie totale"
+    "content": "Mission libre"
   },
   {
     "key": "home.hero.trust.it_expertise",
@@ -297,19 +297,19 @@
     "key": "home.offer.human.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Une même personne suit votre dossier du premier échange à la fin de mission. Vous ne réexpliquez jamais votre situation."
+    "content": "Un interlocuteur identifiable suit les sujets contractuels, administratifs et de paie pendant votre mission."
   },
   {
     "key": "home.offer.employee.title",
     "route": "/",
     "type": "heading",
-    "content": "CDI, statut cadre"
+    "content": "Statut salarié, cadre"
   },
   {
     "key": "home.offer.employee.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Contrat de travail en CDI, statut cadre, régime général, prévoyance, retraite complémentaire, congés payés, assurance chômage."
+    "content": "Contrat de travail, statut cadre, régime général, prévoyance, retraite complémentaire, congés payés et assurance chômage."
   },
   {
     "key": "home.offer.admin.title",
@@ -333,7 +333,7 @@
     "key": "home.offer.it.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Cyber, data, IA, cloud, DevOps, produit, agilité. Nous plaçons ces métiers toute l’année — sur des socles récents comme sur des environnements historiques encore critiques."
+    "content": "Cyber, data, IA, cloud, DevOps, produit et agilité, sur des socles récents comme sur des environnements historiques critiques."
   },
   {
     "key": "home.offer.advisor_cta",
