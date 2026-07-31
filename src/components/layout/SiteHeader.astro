@@ -19,9 +19,9 @@ const rightNav: NavItem[] = [
     id: 'group',
     label: 'Le groupe',
     href: '/qui-sommes-nous',
-    description: 'Deux métiers complémentaires autour des missions IT.',
+    description: 'Portage, talents et transformation numérique.',
     links: [
-      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'The Porters et The Big Porters' },
+      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'L’écosystème Porters' },
       { label: 'Nos agences', href: '/agences', note: 'Points de contact' },
     ],
   },
@@ -55,6 +55,7 @@ const active = (href: string) => {
 
     <nav class="tp-desktop-nav tp-desktop-nav--right" aria-label="Navigation principale droite" data-cms-ignore>
       <a href="/expertises" class:list={['tp-nav-direct', { 'is-active': active('/expertises') }]}>Expertises</a>
+      <a href="/faq" class:list={['tp-nav-direct', 'tp-nav-direct--compact', { 'is-active': active('/faq') }]}>FAQ</a>
       {rightNav.map((item) => (
         <div class:list={['tp-nav-item', `tp-nav-item--${item.id}`, { 'is-active': active(item.href) }]} data-popover>
           <a href={item.href} class="tp-nav-link">{item.label}</a>
@@ -131,6 +132,7 @@ const active = (href: string) => {
         <a href="/portage-salarial">Le portage salarial</a>
         <a href="/entreprises">Entreprises</a>
         <a href="/expertises">Expertises</a>
+        <a href="/faq">Questions fréquentes</a>
         <a href="/simulateur">Simuler mes revenus</a>
         <a href="/rendez-vous">Prendre rendez-vous</a>
         <a href="/contact">Contact</a>
@@ -432,6 +434,11 @@ const active = (href: string) => {
     align-items: center;
     min-height: 2.9rem;
     padding-inline: 0.55rem;
+  }
+
+  .tp-nav-direct--compact {
+    padding-inline: 0.25rem;
+    font-size: 0.88rem;
   }
 
   .tp-nav-item:hover .tp-nav-link,

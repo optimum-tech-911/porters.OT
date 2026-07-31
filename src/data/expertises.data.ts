@@ -3,12 +3,20 @@ export type Expertise = {
   eyebrow: string;
   title: string;
   summary: string;
+  sourceSummary: string;
   introTitle: string;
   introParagraphs: string[];
   roles: string[];
   missionTypes: string[];
   methods: string[];
+  methodStages: { number: string; title: string; text: string }[];
   businessValue: { title: string; text: string }[];
+  ecosystem?: {
+    name: string;
+    eyebrow: string;
+    text: string;
+    pillars: string[];
+  };
   sectors: string[];
   support: string[];
   seoDescription: string;
@@ -21,6 +29,8 @@ export const expertises: Expertise[] = [
     title: 'Portage salarial pour experts cybersécurité',
     summary:
       'RSSI, RSSI de transition, responsable cybersécurité, chef de projet ou ingénieur sécurité : exercez votre expertise en autonomie, dans un cadre salarié adapté à la mission.',
+    sourceSummary:
+      'L’approche présentée par le groupe relie quatre dimensions : comprendre le risque, conseiller les décideurs, vérifier l’existant et piloter la remédiation.',
     introTitle: 'La sécurité exige une mission précisément cadrée',
     introParagraphs: [
       'Gouvernance, audit, risques et conformité, sécurité opérationnelle, sensibilisation des équipes : un projet cyber mobilise rarement une seule compétence. Nous identifions les profils adaptés au niveau de maturité réel de votre organisation — pas au niveau visé.',
@@ -50,11 +60,23 @@ export const expertises: Expertise[] = [
       'Plan d’actions proportionné aux enjeux',
       'Suivi des mesures, du budget et des responsabilités',
     ],
+    methodStages: [
+      { number: '01', title: 'Diagnostic', text: 'Qualifier les actifs, les usages, la gouvernance et les risques avant de proposer une réponse.' },
+      { number: '02', title: 'Conseil & assistance', text: 'Traduire les constats en décisions, en responsabilités et en mesures applicables.' },
+      { number: '03', title: 'Audit', text: 'Éprouver l’organisation et les dispositifs techniques, puis documenter les écarts.' },
+      { number: '04', title: 'Plan d’actions', text: 'Prioriser la remédiation, les ressources, le budget et l’amélioration continue.' },
+    ],
     businessValue: [
       { title: 'Décider sur des risques qualifiés', text: 'Transformer les constats techniques en arbitrages compréhensibles par les équipes métiers et la direction.' },
       { title: 'Rendre la conformité opérationnelle', text: 'Traduire les exigences réglementaires de votre organisation en pratiques et livrables concrets. Nos consultants interviennent sur ces référentiels ; nous n’en détenons pas la certification.' },
       { title: 'Faire progresser la sécurité', text: 'Passer du diagnostic à une feuille de route suivie, avec des priorités, des responsables et des jalons.' },
     ],
+    ecosystem: {
+      name: 'KwickStart',
+      eyebrow: 'Une expertise de l’écosystème Porters',
+      text: 'KwickStart est présentée dans les supports du groupe comme une ESN à approche humaine, orientée conseil et engagement de service. Son offre cyber relie diagnostic, gouvernance, audit, assistance et plan d’actions.',
+      pillars: ['Conseil sur mesure', 'Continuité de service', 'Suivi des consultants'],
+    },
     sectors: [],
     support: [
       'Cadrage du périmètre, du TJM et du calendrier',
@@ -71,6 +93,8 @@ export const expertises: Expertise[] = [
     title: 'Portage salarial pour consultants Data & IA',
     summary:
       'Data engineers, data scientists, consultants BI, ML engineers et architectes IA conservent leur autonomie commerciale tout en déléguant le cadre contractuel, la facturation et la paie.',
+    sourceSummary:
+      'Les supports KwickStart posent une chaîne simple : partir du besoin métier, fiabiliser la donnée, expérimenter avec les utilisateurs, puis déployer et maintenir la solution.',
     introTitle: 'Relier la donnée à un résultat métier mesurable',
     introParagraphs: [
       'Un projet data ou IA échoue rarement sur le modèle. Il échoue sur la qualité des données, l’architecture ou l’industrialisation. Nous mobilisons des profils capables d’intervenir sur ces trois étapes : cadrage, ingénierie, mise en production.',
@@ -104,11 +128,23 @@ export const expertises: Expertise[] = [
       'Prototypage puis validation avec les utilisateurs',
       'Industrialisation, gouvernance et amélioration continue',
     ],
+    methodStages: [
+      { number: '01', title: 'Cadrer la valeur', text: 'Relier le cas d’usage à une décision, une automatisation ou un indicateur métier mesurable.' },
+      { number: '02', title: 'Fiabiliser la donnée', text: 'Qualifier les sources, les flux, la qualité, la sécurité et les règles de gouvernance.' },
+      { number: '03', title: 'Expérimenter', text: 'Prototyper avec les utilisateurs, mesurer la pertinence et documenter les limites.' },
+      { number: '04', title: 'Industrialiser', text: 'Déployer, superviser et maintenir la solution pour qu’elle reste utile dans le temps.' },
+    ],
     businessValue: [
       { title: 'Mieux décider', text: 'Produire des données fiables et des analyses lisibles pour soutenir les arbitrages opérationnels.' },
       { title: 'Automatiser avec discernement', text: 'Identifier les tâches où l’IA apporte un gain réel, puis mesurer sa qualité et ses limites.' },
       { title: 'Construire pour durer', text: 'Documenter les flux, la gouvernance et les responsabilités afin de pérenniser les solutions au-delà du prototype.' },
     ],
+    ecosystem: {
+      name: 'KwickStart',
+      eyebrow: 'Une expertise de l’écosystème Porters',
+      text: 'KwickStart concentre son accompagnement sur la Data, l’IA et le Cloud avec une double lecture technique et métier : stratégie, architecture, déploiement et maintien en conditions opérationnelles.',
+      pillars: ['Data utile à la décision', 'IA intégrée aux usages', 'Solutions durables'],
+    },
     sectors: [],
     support: [
       'Lecture du TJM, de la durée et des conditions de mission',
@@ -125,6 +161,8 @@ export const expertises: Expertise[] = [
     title: 'Portage salarial pour consultants Cloud & DevOps',
     summary:
       'Architectes cloud, DevOps engineers, SRE, platform engineers et spécialistes cloud security : sécurisez le cadre de votre mission tout en gardant la maîtrise technique de l’intervention.',
+    sourceSummary:
+      'Dans les supports du groupe, le Cloud est traité comme une trajectoire complète : choix de la cible, intégration progressive, automatisation, sécurité et performance durable.',
     introTitle: 'Accélérer les livraisons sans fragiliser la plateforme',
     introParagraphs: [
       'Architecture, migration, CI/CD, Infrastructure as Code, conteneurisation, observabilité, sécurité des environnements. Nos consultants interviennent sur des socles récents comme sur des environnements historiques encore critiques pour la production.',
@@ -148,11 +186,23 @@ export const expertises: Expertise[] = [
       'Automatiser les environnements, tests et déploiements',
       'Mesurer la fiabilité, la performance, la sécurité et les coûts',
     ],
+    methodStages: [
+      { number: '01', title: 'Évaluer', text: 'Lire l’existant, les dépendances, les contraintes de sécurité et les niveaux de service.' },
+      { number: '02', title: 'Concevoir', text: 'Définir une architecture cible et une trajectoire compatible avec l’activité.' },
+      { number: '03', title: 'Automatiser', text: 'Industrialiser les environnements, les contrôles et les déploiements.' },
+      { number: '04', title: 'Opérer', text: 'Suivre disponibilité, performance, sécurité, résilience et maîtrise des coûts.' },
+    ],
     businessValue: [
       { title: 'Livraisons plus fiables', text: 'Réduire les manipulations manuelles et rendre les déploiements reproductibles.' },
       { title: 'Plateforme observable', text: 'Donner aux équipes les signaux nécessaires pour comprendre les incidents et la performance.' },
       { title: 'Cloud gouverné', text: 'Concilier autonomie des équipes, sécurité, maîtrise des coûts et exigences d’exploitation.' },
     ],
+    ecosystem: {
+      name: 'KwickStart',
+      eyebrow: 'Une expertise de l’écosystème Porters',
+      text: 'L’approche KwickStart associe conseil Cloud sur mesure, intégration flexible et optimisation des infrastructures afin de soutenir une transformation réellement exploitable.',
+      pillars: ['Architecture adaptée', 'Intégration progressive', 'Performance suivie'],
+    },
     sectors: [],
     support: ['Cadrage contractuel de la mission', 'Lecture du TJM et des frais liés à l’intervention', 'Facturation et paie', 'Suivi administratif du démarrage à la clôture'],
     seoDescription:
@@ -164,6 +214,8 @@ export const expertises: Expertise[] = [
     title: 'Portage salarial pour profils Agilité, Produit et Transformation',
     summary:
       'Product Owners, Scrum Masters, Agile Coaches, RTE, Business Analysts et Change Managers interviennent avec autonomie, dans un cadre salarié adapté aux missions de transformation.',
+    sourceSummary:
+      'Les dossiers Agilité du groupe ne réduisent pas le sujet à Scrum : ils relient les rôles, les méthodes et les boucles de feedback à un objectif commun, livrer de la valeur sans figer l’organisation.',
     introTitle: 'L’agilité sert la valeur, pas les rituels',
     introParagraphs: [
       'Product Owner, Scrum Master, Agile Coach, Business Analyst, Release Train Engineer, architecte. L’agilité n’est pas un objectif en soi : c’est une manière de coordonner. Nos consultants s’alignent sur vos processus existants plutôt que d’imposer un cadre.',
@@ -182,6 +234,12 @@ export const expertises: Expertise[] = [
       'Conception centrée utilisateur et tests continus',
     ],
     methods: ['Scrum', 'Kanban', 'Extreme Programming (XP)', 'Lean', 'SAFe', 'Design Thinking'],
+    methodStages: [
+      { number: '01', title: 'Observer', text: 'Comprendre le produit, les parties prenantes, les flux et les points de friction réels.' },
+      { number: '02', title: 'Prioriser', text: 'Rendre visibles les objectifs, le backlog, les dépendances et les responsabilités.' },
+      { number: '03', title: 'Itérer', text: 'Travailler en cycles courts, produire un résultat testable et intégrer les retours.' },
+      { number: '04', title: 'Améliorer', text: 'Mesurer la progression, traiter les blocages et transmettre les pratiques aux équipes.' },
+    ],
     businessValue: [
       { title: 'Priorités partagées', text: 'Relier la roadmap, le backlog et les décisions quotidiennes à des objectifs compréhensibles.' },
       { title: 'Boucles de retour courtes', text: 'Tester, apprendre et ajuster avant que les écarts ne deviennent coûteux.' },
@@ -198,6 +256,8 @@ export const expertises: Expertise[] = [
     title: 'Portage salarial pour consultants Product & Project Management',
     summary:
       'Cadrez vos missions de pilotage produit, projet ou programme avec un statut salarié, tout en conservant votre autonomie de conseil et votre relation client.',
+    sourceSummary:
+      'Le mémoire technique du groupe formalise un cycle de delivery lisible : cadrage, exécution proportionnée, recette, puis capitalisation et transfert de connaissances.',
     introTitle: 'Donner une direction claire aux projets complexes',
     introParagraphs: [
       'Les profils produit et projet relient la stratégie, les besoins métiers, les équipes techniques et les contraintes de delivery. Leur valeur tient autant à la décision qu’à la coordination et à la qualité du suivi.',
@@ -206,6 +266,12 @@ export const expertises: Expertise[] = [
     roles: ['Product Manager', 'Product Owner', 'Chef de projet IT', 'Directeur de programme', 'PMO', 'Business Analyst', 'Delivery Manager', 'Change Manager'],
     missionTypes: ['Vision et stratégie produit', 'Cadrage et priorisation', 'Pilotage de projet IT', 'Gouvernance de programme', 'PMO et reporting', 'Coordination métier / IT', 'Gestion des risques et dépendances', 'Conduite du changement'],
     methods: ['Discovery produit', 'Roadmap et backlog', 'Cycle en V, agile ou hybride', 'Comitologie proportionnée', 'Reporting et indicateurs', 'Capitalisation et transfert de connaissances'],
+    methodStages: [
+      { number: '01', title: 'Cadrage', text: 'Clarifier le besoin, le périmètre, les livrables, les contraintes et le mode opératoire.' },
+      { number: '02', title: 'Exécution', text: 'Suivre les actions, arbitrer les priorités et rendre les risques visibles sans surcharger le projet.' },
+      { number: '03', title: 'Recette', text: 'Valider le résultat avec des critères explicites et sécuriser la mise en production.' },
+      { number: '04', title: 'Capitalisation', text: 'Documenter les décisions et transférer les connaissances pour préserver la continuité.' },
+    ],
     businessValue: [
       { title: 'Décisions explicites', text: 'Clarifier les arbitrages, les responsabilités et les critères de réussite.' },
       { title: 'Exécution maîtrisée', text: 'Suivre les jalons, les risques, les dépendances et les livrables sans alourdir le projet.' },

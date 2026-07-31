@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import expertiseHero from '../../../images/consultant-tech.webp';
+import SiteIcon from '../../components/ui/SiteIcon.astro';
 import { expertises, type Expertise } from '../../data/expertises.data';
 
 export function getStaticPaths() {
@@ -11,6 +11,10 @@ export function getStaticPaths() {
 }
 
 const { expertise } = Astro.props as { expertise: Expertise };
+const expertiseIndex = expertises.findIndex((item) => item.slug === expertise.slug);
+const relatedExpertises = expertises
+  .filter((item) => item.slug !== expertise.slug)
+  .slice(0, 2);
 ---
 
 <PageLayout
@@ -27,143 +31,496 @@ const { expertise } = Astro.props as { expertise: Expertise };
     },
   }}
   breadcrumbs={[
-    { label: 'Consultants', href: '/portage-salarial' },
+    { label: 'Expertises', href: '/expertises' },
     { label: expertise.eyebrow },
   ]}
 >
-  <section class="relative min-h-[38rem] overflow-hidden bg-porters-navy text-porters-white lg:min-h-[44rem]">
-    <img
-      src={expertiseHero.src}
-      width={expertiseHero.width}
-      height={expertiseHero.height}
-      alt="Consultant IT travaillant sur une mission dans un bureau contemporain."
-      class="absolute inset-0 h-full w-full object-cover object-center"
-    />
-    <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.97)_0%,rgba(18,35,48,0.82)_45%,rgba(18,35,48,0.22)_100%)]"></div>
-    <div class="container relative mx-auto flex min-h-[38rem] items-center px-6 py-20 lg:min-h-[44rem] lg:px-8">
-      <div class="max-w-3xl reveal">
-        <p class="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">{expertise.eyebrow} · Consultants IT</p>
-        <h1 class="max-w-3xl text-porters-white">{expertise.title}</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">{expertise.summary}</p>
-        <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-          <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
-          <a href="/rendez-vous" class="btn border-white bg-transparent text-porters-white hover:bg-white hover:text-porters-navy">Parler à un conseiller</a>
+  <section class="domain-hero">
+    <div class="domain-shell domain-hero-grid">
+      <div class="domain-hero-copy reveal">
+        <p>Expertise 0{expertiseIndex + 1} · {expertise.eyebrow}</p>
+        <h1>{expertise.title}</h1>
+        <strong>{expertise.summary}</strong>
+        <div class="domain-hero-actions">
+          <a href="/simulateur">Simuler mes revenus <span aria-hidden="true">→</span></a>
+          <a href="/rendez-vous">Parler de la mission</a>
         </div>
+      </div>
+
+      <div class="domain-orbit reveal" aria-label={`Cycle d’intervention ${expertise.eyebrow}`}>
+        <svg viewBox="0 0 600 600" aria-hidden="true">
+          <circle cx="300" cy="300" r="206"></circle>
+          <circle cx="300" cy="300" r="132"></circle>
+          <path d="M300 54V546M54 300H546"></path>
+        </svg>
+        <div class="domain-orbit-core">
+          <small>Point de départ</small>
+          <strong>La mission</strong>
+          <span>Besoin · résultat · contraintes</span>
+        </div>
+        {expertise.methodStages.map((stage, index) => (
+          <a
+            href={`#methode-${stage.number}`}
+            class={`domain-orbit-node domain-orbit-node--${index + 1}`}
+            style={`--node-delay:${index * 0.7}s`}
+          >
+            <span>{stage.number}</span>
+            <strong>{stage.title}</strong>
+          </a>
+        ))}
+      </div>
+    </div>
+    <div class="domain-source-strip">
+      <div class="domain-shell">
+        <span>Notre lecture du domaine</span>
+        <p>{expertise.sourceSummary}</p>
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
-    <div class="container mx-auto grid gap-10 px-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.38fr)] lg:gap-20 lg:px-8">
-      <div class="reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Enjeux de mission</p>
+  <section class="domain-section domain-intro">
+    <div class="domain-shell domain-intro-grid">
+      <header class="domain-heading reveal">
+        <p>Enjeu de mission</p>
         <h2>{expertise.introTitle}</h2>
-        <div class="mt-6 space-y-4 text-porters-black/68 leading-relaxed">
-          {expertise.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
-        </div>
+      </header>
+      <div class="domain-intro-copy reveal">
+        {expertise.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <aside>
+          <SiteIcon name="shield" />
+          <p><strong>Le cadre The Porters</strong> Vous gardez la maîtrise de l’expertise et de la relation opérationnelle. Nous structurons le cadre salarial, contractuel et administratif.</p>
+        </aside>
       </div>
-      <aside class="reveal border-l-2 border-porters-gold bg-porters-navy/[0.03] p-7">
-        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-porters-gold">Le cadre The Porters</p>
-        <p class="mb-0 text-porters-black/68 leading-relaxed">
-          Vous pilotez l’expertise et la relation opérationnelle. The Porters porte le cadre salarial, contractuel et administratif.
-        </p>
-      </aside>
     </div>
   </section>
 
-  <section class="section bg-porters-navy/[0.03]">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Profils accompagnés</p>
-        <h2>Des profils reconnus pour ce qu’ils apportent au projet</h2>
+  <section class="domain-section method-section" id="methode" data-method-lab>
+    <div class="domain-shell">
+      <header class="domain-heading domain-heading--light reveal">
+        <p>Le système d’intervention</p>
+        <h2>Quatre passages.<br />Un résultat qui reste lisible.</h2>
+        <strong>Sélectionnez une étape pour comprendre ce qui doit être clarifié avant de passer à la suivante.</strong>
+      </header>
+
+      <div class="method-lab reveal">
+        <div class="method-tabs" role="tablist" aria-label={`Méthode ${expertise.eyebrow}`}>
+          {expertise.methodStages.map((stage, index) => (
+            <button
+              type="button"
+              id={`method-tab-${stage.number}`}
+              role="tab"
+              aria-selected={index === 0}
+              aria-controls={`method-panel-${stage.number}`}
+              tabindex={index === 0 ? 0 : -1}
+              class:list={{ 'is-active': index === 0 }}
+              data-method-tab
+            >
+              <span>{stage.number}</span>
+              <strong>{stage.title}</strong>
+              <b aria-hidden="true">↗</b>
+            </button>
+          ))}
+        </div>
+
+        <div class="method-stage">
+          <div class="method-progress" aria-hidden="true"><span data-method-progress></span></div>
+          {expertise.methodStages.map((stage, index) => (
+            <article
+              id={`method-panel-${stage.number}`}
+              role="tabpanel"
+              aria-labelledby={`method-tab-${stage.number}`}
+              hidden={index !== 0}
+              data-method-panel
+            >
+              <span>{stage.number}</span>
+              <p>Étape {index + 1} sur {expertise.methodStages.length}</p>
+              <h3>{stage.title}</h3>
+              <strong>{stage.text}</strong>
+              <div class="method-stage-output">
+                <small>Repère de sortie</small>
+                <p>{expertise.methods[index] ?? expertise.methods[0]}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {expertise.roles.map((role) => (
-          <div class="border-l-[3px] border-porters-gold bg-porters-navy/[0.03] px-5 py-4 reveal">
-            <p class="mb-0 font-heading font-semibold text-porters-navy">{role}</p>
-          </div>
+    </div>
+  </section>
+
+  <section class="domain-section roles-section">
+    <div class="domain-shell">
+      <header class="domain-heading reveal">
+        <p>Profils accompagnés</p>
+        <h2>Le bon rôle au bon moment.</h2>
+        <strong>Les intitulés comptent moins que la responsabilité réelle dans le dispositif.</strong>
+      </header>
+      <div class="role-map reveal">
+        <div class="role-map-core">
+          <span>Votre besoin</span>
+          <strong>{expertise.eyebrow}</strong>
+        </div>
+        <div class="role-grid">
+          {expertise.roles.map((role, index) => (
+            <article style={`--role-index:${index}`}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{role}</h3>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="domain-section mission-section">
+    <div class="domain-shell mission-grid">
+      <header class="domain-heading reveal">
+        <p>Périmètres fréquents</p>
+        <h2>Des missions définies par ce qu’elles doivent produire.</h2>
+        <strong>Ouvrez un périmètre pour voir comment il s’inscrit dans la mission.</strong>
+      </header>
+      <div class="mission-accordion reveal">
+        {expertise.missionTypes.map((mission, index) => (
+          <details open={index === 0}>
+            <summary>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <strong>{mission}</strong>
+              <b aria-hidden="true">+</b>
+            </summary>
+            <p>
+              Cette intervention est cadrée par un résultat attendu, des responsabilités explicites,
+              des accès adaptés et un point de passage vers l’étape suivante.
+            </p>
+          </details>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
-    <div class="container mx-auto grid gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
-      <div class="reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Missions</p>
-        <h2 class="mb-7">Des missions où votre expertise fait la différence</h2>
-        <ul class="space-y-4">
-          {expertise.missionTypes.map((mission) => (
-            <li class="flex items-start gap-3 text-porters-black/72">
-              <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-porters-gold"></span>
-              {mission}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div class="reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Accompagnement</p>
-        <h2 class="mb-7">Ce que The Porters prend en charge</h2>
-        <ol class="space-y-5">
-          {expertise.support.map((item, index) => (
-            <li class="flex items-start gap-4 border-b border-porters-navy/10 pb-5 last:border-0">
-              <span class="font-mono text-sm font-semibold text-porters-gold">0{index + 1}</span>
-              <span class="font-medium text-porters-navy">{item}</span>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-porters-navy/[0.03]">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Méthode et impact</p>
-        <h2>Une méthode visible. Une valeur compréhensible.</h2>
-      </div>
-      <div class="grid gap-8 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]">
-        <div class="reveal">
-          <h3 class="mb-5 text-xl">Repères de méthode</h3>
-          <ul class="space-y-3">
-            {expertise.methods.map((method) => (
-              <li class="flex items-start gap-3 text-sm text-porters-black/70">
-                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-porters-gold"></span>
-                {method}
-              </li>
-            ))}
-          </ul>
+  {expertise.ecosystem && (
+    <section class="ecosystem-focus">
+      <div class="domain-shell ecosystem-focus-grid">
+        <div class="ecosystem-signature reveal">
+          <span>{expertise.ecosystem.eyebrow}</span>
+          <strong>{expertise.ecosystem.name}</strong>
+          <i aria-hidden="true"></i>
         </div>
-        <div class="grid gap-4 md:grid-cols-3 reveal">
-          {expertise.businessValue.map((value) => (
-            <article class="border-t-2 border-porters-gold bg-white p-5 shadow-sm">
-              <h3 class="mb-3 text-lg">{value.title}</h3>
-              <p class="mb-0 text-sm leading-relaxed text-porters-black/64">{value.text}</p>
+        <div class="ecosystem-copy reveal">
+          <p>{expertise.ecosystem.text}</p>
+          <div>
+            {expertise.ecosystem.pillars.map((pillar, index) => (
+              <span><b>0{index + 1}</b>{pillar}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="domain-section impact-section">
+    <div class="domain-shell impact-grid">
+      <div>
+        <header class="domain-heading reveal">
+          <p>Valeur concrète</p>
+          <h2>Ce que la mission doit rendre possible.</h2>
+        </header>
+        <div class="impact-cards">
+          {expertise.businessValue.map((value, index) => (
+            <article class="reveal" style={`--impact-index:${index}`}>
+              <span>0{index + 1}</span>
+              <h3>{value.title}</h3>
+              <p>{value.text}</p>
             </article>
           ))}
         </div>
       </div>
-      {/* Les secteurs servis ne sont pas publiés : fact-base F-S01 est DO_NOT_PUBLISH
-          (les 14 secteurs listés dans les sources proviennent d'un document portant
-          sur une autre société). Le bloc réapparaît dès qu'une liste est validée. */}
-      {expertise.sectors.length > 0 && (
-        <div class="mt-12 border-t border-porters-navy/10 pt-7 reveal">
-          <p class="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-porters-gold">Secteurs concernés</p>
-          <div class="flex flex-wrap gap-2">
-            {expertise.sectors.map((sector) => <span class="rounded-full border border-porters-navy/12 bg-white px-4 py-2 text-sm font-semibold text-porters-navy">{sector}</span>)}
-          </div>
-        </div>
-      )}
+      <aside class="support-card reveal">
+        <p>Ce que The Porters prend en charge</p>
+        <h2>Le cadre, sans prendre la main sur votre expertise.</h2>
+        <ol>
+          {expertise.support.map((item, index) => (
+            <li><span>0{index + 1}</span>{item}</li>
+          ))}
+        </ol>
+        <a href="/simulateur">Faire une simulation <span aria-hidden="true">→</span></a>
+      </aside>
     </div>
   </section>
 
-  <section class="bg-porters-navy py-14 lg:py-18">
-    <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-      <div class="max-w-2xl reveal">
-        <p class="mb-2 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Prochaine étape</p>
-        <h2 class="mb-0 text-porters-white">Votre prochaine mission commence par un cadre clair.</h2>
+  <section class="domain-next">
+    <div class="domain-shell">
+      <header class="domain-heading domain-heading--light reveal">
+        <p>Continuer l’exploration</p>
+        <h2>Une mission peut mobiliser plusieurs domaines.</h2>
+      </header>
+      <div class="domain-next-grid reveal">
+        {relatedExpertises.map((related) => (
+          <a href={`/expertises/${related.slug}`}>
+            <span>{related.eyebrow}</span>
+            <strong>{related.introTitle}</strong>
+            <b aria-hidden="true">↗</b>
+          </a>
+        ))}
+        <a href="/expertises">
+          <span>Toutes les expertises</span>
+          <strong>Revenir à la carte des domaines</strong>
+          <b aria-hidden="true">→</b>
+        </a>
       </div>
-      <a href="/rendez-vous" class="btn btn-gold shrink-0">Prendre rendez-vous</a>
     </div>
   </section>
 </PageLayout>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-method-lab]').forEach((lab) => {
+    const tabs = Array.from(lab.querySelectorAll<HTMLButtonElement>('[data-method-tab]'));
+    const panels = Array.from(lab.querySelectorAll<HTMLElement>('[data-method-panel]'));
+    const progress = lab.querySelector<HTMLElement>('[data-method-progress]');
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const select = (nextIndex: number, focus = false) => {
+      const index = (nextIndex + tabs.length) % tabs.length;
+      tabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === index;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && focus) tab.focus();
+      });
+      panels.forEach((panel, panelIndex) => {
+        const active = panelIndex === index;
+        panel.hidden = !active;
+        panel.classList.remove('is-entering');
+        if (active && !reducedMotion) requestAnimationFrame(() => panel.classList.add('is-entering'));
+      });
+      if (progress) progress.style.setProperty('--progress', `${((index + 1) / tabs.length) * 100}%`);
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(index));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home'
+          ? 0
+          : event.key === 'End'
+            ? tabs.length - 1
+            : index + (event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 1);
+        select(next, true);
+      });
+    });
+
+    select(0);
+  });
+
+  document.querySelectorAll<HTMLDetailsElement>('.mission-accordion details').forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+      if (!detail.open) return;
+      detail.parentElement?.querySelectorAll<HTMLDetailsElement>('details').forEach((other) => {
+        if (other !== detail) other.open = false;
+      });
+    });
+  });
+</script>
+
+<style>
+  .domain-shell{width:min(100% - 3rem,84rem);margin-inline:auto}
+  .domain-section{padding-block:clamp(5rem,9vw,8rem)}
+  .domain-heading{max-width:52rem}
+  .domain-heading>p,.domain-hero-copy>p,.domain-source-strip span,.ecosystem-signature>span{margin:0 0 1rem;color:#b79245;font-size:.68rem;font-weight:780;letter-spacing:.15em;text-transform:uppercase}
+  .domain-heading h2{margin:0;color:#203440;font-size:clamp(2.45rem,5vw,5rem);line-height:1;letter-spacing:-.055em}
+  .domain-heading>strong{display:block;max-width:40rem;margin-top:1.25rem;color:rgba(32,52,64,.58);font-size:.92rem;font-weight:520;line-height:1.7}
+  .domain-heading--light h2{color:#fff}
+  .domain-heading--light>strong{color:rgba(255,255,255,.58)}
+
+  .domain-hero{position:relative;overflow:hidden;background:linear-gradient(145deg,#0d222d,#173440 68%,#102630);color:#fff}
+  .domain-hero:before{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:54px 54px;content:"";mask-image:linear-gradient(90deg,transparent,#000 50%)}
+  .domain-hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(28rem,.82fr);align-items:center;gap:clamp(2rem,7vw,7rem);min-height:44rem;padding-block:clamp(4rem,8vw,7rem)}
+  .domain-hero-copy h1{max-width:12ch;margin:0;color:#fff;font-size:clamp(3.1rem,6.6vw,6.7rem);line-height:.93;letter-spacing:-.065em}
+  .domain-hero-copy>strong{display:block;max-width:42rem;margin-top:1.65rem;color:rgba(255,255,255,.68);font-size:clamp(1rem,1.4vw,1.18rem);font-weight:500;line-height:1.72}
+  .domain-hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+  .domain-hero-actions a{display:inline-flex;min-height:3.2rem;align-items:center;justify-content:center;gap:.8rem;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:.8rem 1.35rem;color:#fff;font-size:.78rem;font-weight:760;text-decoration:none;transition:transform .22s ease,background-color .22s ease,border-color .22s ease}
+  .domain-hero-actions a:first-child{border-color:#c6a45a;background:#c6a45a;color:#102630}
+  .domain-hero-actions a:hover{border-color:#fff;background:#fff;color:#102630;transform:translateY(-3px)}
+
+  .domain-orbit{position:relative;aspect-ratio:1;min-width:0}
+  .domain-orbit svg{width:100%;height:100%;overflow:visible;animation:orbit-turn 34s linear infinite}
+  .domain-orbit svg circle,.domain-orbit svg path{fill:none;stroke:rgba(198,164,90,.2);stroke-width:1}
+  .domain-orbit svg path{stroke:rgba(255,255,255,.07);stroke-dasharray:5 9}
+  .domain-orbit-core{position:absolute;top:50%;left:50%;display:grid;width:12.5rem;height:12.5rem;place-content:center;border:1px solid rgba(198,164,90,.45);border-radius:50%;background:rgba(13,34,45,.88);text-align:center;transform:translate(-50%,-50%);box-shadow:0 0 0 2rem rgba(198,164,90,.04),0 20px 60px rgba(0,0,0,.28)}
+  .domain-orbit-core small{color:#c6a45a;font-size:.58rem;font-weight:760;letter-spacing:.13em;text-transform:uppercase}
+  .domain-orbit-core strong{margin:.5rem 0;color:#fff;font-size:1.45rem}
+  .domain-orbit-core span{color:rgba(255,255,255,.45);font-size:.65rem}
+  .domain-orbit-node{position:absolute;display:grid;min-width:9.5rem;gap:.25rem;border:1px solid rgba(255,255,255,.13);border-radius:.75rem;padding:.85rem 1rem;background:rgba(18,44,56,.88);color:#fff;text-decoration:none;box-shadow:0 14px 36px rgba(0,0,0,.2);animation:node-float 4.5s ease-in-out var(--node-delay) infinite;transition:border-color .2s ease,background-color .2s ease}
+  .domain-orbit-node span{color:#c6a45a;font:700 .6rem var(--font-mono)}
+  .domain-orbit-node strong{font-size:.78rem}
+  .domain-orbit-node:hover{border-color:#c6a45a;background:#203d49}
+  .domain-orbit-node--1{top:4%;left:50%;transform:translateX(-50%)}
+  .domain-orbit-node--2{top:50%;right:-2%;transform:translateY(-50%)}
+  .domain-orbit-node--3{bottom:4%;left:50%;transform:translateX(-50%)}
+  .domain-orbit-node--4{top:50%;left:-2%;transform:translateY(-50%)}
+  .domain-source-strip{position:relative;border-top:1px solid rgba(255,255,255,.09);background:rgba(8,25,34,.55)}
+  .domain-source-strip .domain-shell{display:grid;grid-template-columns:14rem 1fr;align-items:center;gap:2rem;padding-block:1.25rem}
+  .domain-source-strip span{margin:0}
+  .domain-source-strip p{max-width:62rem;margin:0;color:rgba(255,255,255,.64);font-size:.82rem;line-height:1.6}
+
+  .domain-intro{background:#f8f6f1}
+  .domain-intro-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(20rem,.58fr);gap:clamp(3rem,9vw,9rem);align-items:start}
+  .domain-intro-copy{display:grid;gap:1rem;color:rgba(32,52,64,.67);font-size:.94rem;line-height:1.75}
+  .domain-intro-copy>p{margin:0}
+  .domain-intro-copy aside{display:grid;grid-template-columns:auto 1fr;gap:.85rem;margin-top:1rem;padding:1.2rem;border:1px solid rgba(198,164,90,.26);border-radius:.75rem;background:#fff}
+  .domain-intro-copy aside svg{width:1.2rem;color:#b79245}
+  .domain-intro-copy aside p{margin:0;font-size:.79rem;line-height:1.65}
+  .domain-intro-copy aside strong{display:block;color:#203440}
+
+  .method-section{overflow:hidden;background:#102630}
+  .method-section:before{position:absolute}
+  .method-section .domain-heading{display:grid;grid-template-columns:minmax(0,1fr) minmax(14rem,.4fr);column-gap:clamp(2rem,8vw,8rem);max-width:none;align-items:end}
+  .method-section .domain-heading>p{grid-column:1/-1}
+  .method-section .domain-heading>strong{padding-bottom:.5rem}
+  .method-lab{display:grid;grid-template-columns:minmax(17rem,.36fr) minmax(0,.64fr);gap:1rem;margin-top:4rem;padding:1rem;border:1px solid rgba(255,255,255,.1);border-radius:1.25rem;background:rgba(255,255,255,.025)}
+  .method-tabs{display:grid;align-content:start;gap:.6rem}
+  .method-tabs button{display:grid;grid-template-columns:2.2rem 1fr auto;align-items:center;gap:.75rem;min-height:4.8rem;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:.8rem 1rem;background:transparent;color:#fff;cursor:pointer;text-align:left;transition:border-color .22s ease,background-color .22s ease,transform .22s ease}
+  .method-tabs button span{display:grid;width:2rem;height:2rem;place-items:center;border-radius:50%;background:rgba(198,164,90,.1);color:#c6a45a;font:700 .6rem var(--font-mono)}
+  .method-tabs button strong{font-size:.84rem}
+  .method-tabs button b{color:#c6a45a}
+  .method-tabs button:hover,.method-tabs button.is-active{border-color:rgba(198,164,90,.65);background:rgba(198,164,90,.1);transform:translateX(.35rem)}
+  .method-tabs button.is-active span{background:#c6a45a;color:#102630}
+  .method-stage{position:relative;min-height:26rem;overflow:hidden;border-radius:.85rem;background:#f8f4ec;color:#203440}
+  .method-progress{height:3px;background:rgba(32,52,64,.1)}
+  .method-progress span{display:block;width:var(--progress,25%);height:100%;background:#c6a45a;transition:width .45s cubic-bezier(.2,.8,.2,1)}
+  .method-stage article{position:relative;min-height:calc(26rem - 3px);padding:clamp(2rem,5vw,4.5rem)}
+  .method-stage article>span{position:absolute;right:clamp(1.5rem,4vw,3rem);top:clamp(1.5rem,4vw,3rem);color:rgba(32,52,64,.12);font:750 clamp(4rem,9vw,8rem)/1 var(--font-mono)}
+  .method-stage article>p{margin:0 0 1rem;color:#b79245;font-size:.63rem;font-weight:760;letter-spacing:.14em;text-transform:uppercase}
+  .method-stage h3{max-width:12ch;margin:0;color:#203440;font-size:clamp(2.5rem,5vw,5.2rem);line-height:.95;letter-spacing:-.06em}
+  .method-stage article>strong{display:block;max-width:38rem;margin-top:1.6rem;color:rgba(32,52,64,.68);font-size:1rem;line-height:1.75}
+  .method-stage-output{max-width:34rem;margin-top:2.2rem;padding-top:1.25rem;border-top:1px solid rgba(32,52,64,.12)}
+  .method-stage-output small{color:#b79245;font-size:.58rem;font-weight:760;letter-spacing:.13em;text-transform:uppercase}
+  .method-stage-output p{margin:.45rem 0 0;color:#203440;font-size:.82rem;font-weight:650}
+  .method-stage article.is-entering{animation:stage-enter .38s cubic-bezier(.2,.8,.2,1) both}
+
+  .roles-section{background:#fff}
+  .roles-section .domain-heading{display:grid;grid-template-columns:1fr .45fr;column-gap:clamp(2rem,8vw,8rem);max-width:none;align-items:end}
+  .roles-section .domain-heading>p{grid-column:1/-1}
+  .roles-section .domain-heading>strong{padding-bottom:.4rem}
+  .role-map{display:grid;grid-template-columns:15rem 1fr;gap:1rem;margin-top:4rem}
+  .role-map-core{display:grid;min-height:100%;place-content:center;border-radius:1rem;background:#203440;color:#fff;text-align:center}
+  .role-map-core span{color:#c6a45a;font-size:.6rem;font-weight:760;letter-spacing:.13em;text-transform:uppercase}
+  .role-map-core strong{max-width:10rem;margin-top:.6rem;font-size:1.35rem}
+  .role-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(32,52,64,.12)}
+  .role-grid article{position:relative;min-height:8.3rem;padding:1.4rem;background:#f8f6f1;transition:background-color .24s ease,transform .24s ease}
+  .role-grid article:hover{z-index:1;background:#fff;box-shadow:0 16px 40px rgba(32,52,64,.12);transform:translateY(-.35rem)}
+  .role-grid span{color:#b79245;font:700 .6rem var(--font-mono)}
+  .role-grid h3{margin:1.25rem 0 0;color:#203440;font-size:1rem;line-height:1.35}
+
+  .mission-section{background:#f4f1ea}
+  .mission-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(20rem,.58fr);gap:clamp(3rem,9vw,9rem)}
+  .mission-accordion{display:grid;align-content:start;gap:.65rem}
+  .mission-accordion details{overflow:hidden;border:1px solid rgba(32,52,64,.12);border-radius:.75rem;background:rgba(255,255,255,.6);transition:border-color .22s ease,background-color .22s ease,transform .22s ease}
+  .mission-accordion details[open]{border-color:rgba(198,164,90,.55);background:#fff;transform:translateX(-.4rem)}
+  .mission-accordion summary{display:grid;grid-template-columns:2rem 1fr auto;align-items:center;gap:.75rem;min-height:4.6rem;padding:.8rem 1rem;color:#203440;cursor:pointer;list-style:none}
+  .mission-accordion summary::-webkit-details-marker{display:none}
+  .mission-accordion summary>span{color:#b79245;font:700 .6rem var(--font-mono)}
+  .mission-accordion summary strong{font-size:.8rem;line-height:1.35}
+  .mission-accordion summary b{display:grid;width:1.8rem;height:1.8rem;place-items:center;border-radius:50%;color:#b79245;font-size:1rem;transition:transform .22s ease,background-color .22s ease}
+  .mission-accordion details[open] summary b{background:#c6a45a;color:#203440;transform:rotate(45deg)}
+  .mission-accordion details>p{margin:0;padding:0 3.6rem 1.3rem;color:rgba(32,52,64,.62);font-size:.76rem;line-height:1.65;animation:stage-enter .3s ease both}
+
+  .ecosystem-focus{overflow:hidden;padding-block:clamp(4rem,8vw,7rem);background:#c6a45a;color:#102630}
+  .ecosystem-focus-grid{display:grid;grid-template-columns:minmax(16rem,.38fr) minmax(0,.62fr);gap:clamp(3rem,9vw,9rem);align-items:center}
+  .ecosystem-signature{position:relative;display:grid;min-height:18rem;place-content:center;border:1px solid rgba(16,38,48,.3);border-radius:50%;text-align:center}
+  .ecosystem-signature:before,.ecosystem-signature:after{position:absolute;inset:1.4rem;border:1px dashed rgba(16,38,48,.2);border-radius:50%;content:"";animation:orbit-turn 20s linear infinite}
+  .ecosystem-signature:after{inset:3.2rem;animation-direction:reverse}
+  .ecosystem-signature>span{position:relative;z-index:1;margin-bottom:.6rem;color:rgba(16,38,48,.65)}
+  .ecosystem-signature>strong{position:relative;z-index:1;font-size:clamp(2rem,4vw,4rem);letter-spacing:-.05em}
+  .ecosystem-copy>p{max-width:46rem;margin:0;color:#102630;font-size:clamp(1.15rem,2vw,1.65rem);font-weight:650;line-height:1.5}
+  .ecosystem-copy>div{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2.2rem;background:rgba(16,38,48,.25)}
+  .ecosystem-copy>div span{display:grid;gap:.8rem;padding:1.15rem;background:#c6a45a;font-size:.72rem;font-weight:650}
+  .ecosystem-copy>div b{font:700 .6rem var(--font-mono)}
+
+  .impact-section{background:#fff}
+  .impact-grid{display:grid;grid-template-columns:minmax(0,.62fr) minmax(20rem,.38fr);gap:clamp(3rem,7vw,7rem);align-items:start}
+  .impact-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:3rem;background:rgba(32,52,64,.12)}
+  .impact-cards article{min-height:18rem;padding:1.5rem;background:#f8f6f1;transition:background-color .22s ease,transform .22s ease}
+  .impact-cards article:hover{z-index:1;background:#fff;box-shadow:0 16px 40px rgba(32,52,64,.11);transform:translateY(-.4rem)}
+  .impact-cards span{color:#b79245;font:700 .6rem var(--font-mono)}
+  .impact-cards h3{margin:2.5rem 0 1rem;color:#203440;font-size:1.2rem}
+  .impact-cards p{margin:0;color:rgba(32,52,64,.62);font-size:.78rem;line-height:1.68}
+  .support-card{position:sticky;top:8rem;border-radius:1rem;padding:clamp(1.8rem,4vw,3rem);background:#203440;color:#fff}
+  .support-card>p{margin:0;color:#c6a45a;font-size:.62rem;font-weight:760;letter-spacing:.13em;text-transform:uppercase}
+  .support-card h2{margin:1rem 0 2rem;color:#fff;font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.05;letter-spacing:-.045em}
+  .support-card ol{display:grid;gap:0;margin:0;padding:0;list-style:none}
+  .support-card li{display:grid;grid-template-columns:2rem 1fr;gap:.7rem;padding:.9rem 0;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.68);font-size:.75rem;line-height:1.45}
+  .support-card li span{color:#c6a45a;font:700 .6rem var(--font-mono)}
+  .support-card>a{display:flex;align-items:center;justify-content:space-between;margin-top:1.8rem;border-radius:999px;padding:.9rem 1.1rem;background:#c6a45a;color:#102630;font-size:.74rem;font-weight:760;text-decoration:none;transition:transform .22s ease,background-color .22s ease}
+  .support-card>a:hover{background:#fff;transform:translateY(-3px)}
+
+  .domain-next{padding-block:clamp(4rem,8vw,7rem);background:#102630}
+  .domain-next-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:3rem;background:rgba(255,255,255,.12)}
+  .domain-next-grid a{position:relative;display:grid;min-height:13rem;align-content:space-between;padding:1.5rem;background:#102630;color:#fff;text-decoration:none;transition:background-color .22s ease,transform .22s ease}
+  .domain-next-grid a:hover{z-index:1;background:#183643;transform:translateY(-.4rem)}
+  .domain-next-grid span{color:#c6a45a;font-size:.62rem;font-weight:760;letter-spacing:.12em;text-transform:uppercase}
+  .domain-next-grid strong{max-width:18rem;font-size:1.05rem;line-height:1.4}
+  .domain-next-grid b{position:absolute;right:1.5rem;top:1.5rem;color:#c6a45a}
+
+  @keyframes orbit-turn{to{transform:rotate(360deg)}}
+  @keyframes node-float{0%,100%{margin-top:0}50%{margin-top:-.45rem}}
+  @keyframes stage-enter{from{opacity:0;transform:translateY(1rem)}to{opacity:1;transform:none}}
+
+  @media(max-width:1050px){
+    .domain-hero-grid{grid-template-columns:1fr;min-height:0}
+    .domain-hero-copy{padding-top:2rem}
+    .domain-orbit{width:min(100%,37rem);margin-inline:auto}
+    .domain-intro-grid,.mission-grid,.impact-grid{grid-template-columns:1fr}
+    .support-card{position:relative;top:auto}
+    .method-section .domain-heading,.roles-section .domain-heading{grid-template-columns:1fr}
+    .method-section .domain-heading>p,.roles-section .domain-heading>p{grid-column:auto}
+    .method-lab{grid-template-columns:1fr}
+    .method-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .method-tabs button{grid-template-columns:1fr;justify-items:start}
+    .method-tabs button b{display:none}
+    .method-tabs button:hover,.method-tabs button.is-active{transform:translateY(-.25rem)}
+  }
+
+  @media(max-width:760px){
+    .domain-shell{width:min(100% - 2rem,84rem)}
+    .domain-hero-grid{padding-block:3.5rem}
+    .domain-hero-copy h1{font-size:clamp(2.7rem,14vw,4.5rem)}
+    .domain-source-strip .domain-shell{grid-template-columns:1fr;gap:.5rem}
+    .domain-orbit{margin-top:1.5rem}
+    .domain-orbit-node{min-width:7rem;padding:.65rem}
+    .domain-orbit-node strong{font-size:.68rem}
+    .domain-orbit-node--2{right:-1%}
+    .domain-orbit-node--4{left:-1%}
+    .method-tabs{grid-template-columns:1fr 1fr}
+    .method-tabs button{min-height:4rem}
+    .method-stage{min-height:24rem}
+    .method-stage article{min-height:calc(24rem - 3px)}
+    .role-map{grid-template-columns:1fr}
+    .role-map-core{min-height:10rem}
+    .role-grid{grid-template-columns:1fr 1fr}
+    .ecosystem-focus-grid{grid-template-columns:1fr}
+    .ecosystem-signature{max-width:22rem;min-height:22rem;margin-inline:auto}
+    .ecosystem-copy>div{grid-template-columns:1fr}
+    .impact-cards,.domain-next-grid{grid-template-columns:1fr}
+    .impact-cards article{min-height:0}
+    .domain-next-grid a{min-height:10rem}
+  }
+
+  @media(max-width:480px){
+    .domain-hero-actions{display:grid}
+    .domain-hero-actions a{width:100%}
+    .domain-orbit-core{width:9rem;height:9rem}
+    .domain-orbit-node{min-width:6.2rem}
+    .domain-orbit-node strong{font-size:.6rem}
+    .method-tabs{grid-template-columns:1fr}
+    .method-tabs button{grid-template-columns:2rem 1fr}
+    .method-stage article{padding:1.5rem}
+    .method-stage article>span{font-size:3.5rem}
+    .role-grid{grid-template-columns:1fr}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .domain-orbit svg,.domain-orbit-node,.ecosystem-signature:before,.ecosystem-signature:after{animation:none}
+    .method-stage article.is-entering{animation:none}
+  }
+</style>

@@ -9,6 +9,7 @@ export type ExpertiseSection = {
   title: string;
   shortSubtitle: string;
   introduction: string;
+  sourceSummary: string;
   description: string[];
   profiles: string[];
   missions: ExpertiseMission[];
@@ -28,6 +29,7 @@ export const expertiseSections: ExpertiseSection[] = [
     title: 'Cybersécurité',
     shortSubtitle: 'Risques, conformité et protection des systèmes',
     introduction: 'Protéger les organisations, leurs systèmes d’information, leurs données et leur continuité d’activité face à des risques toujours plus complexes.',
+    sourceSummary: 'La méthode présentée par KwickStart relie diagnostic, conseil et assistance, audit, puis plan d’actions. Elle évite de dissocier la gouvernance de l’exécution.',
     description: [
       'The Porters porte les consultants indépendants qui interviennent sur les enjeux de gouvernance, de conformité, de prévention, de détection et de réponse aux incidents de sécurité. Ces experts aident les entreprises à mieux identifier leurs risques, sécuriser leurs infrastructures, protéger leurs actifs critiques et répondre aux exigences réglementaires.',
       'Les missions peuvent concerner aussi bien la définition d’une stratégie de cybersécurité que la sécurisation opérationnelle des environnements cloud, des identités, des applications, des réseaux ou des données sensibles.',
@@ -44,7 +46,7 @@ export const expertiseSections: ExpertiseSection[] = [
     sectors: [],
     whyPortage: 'Les missions en cybersécurité demandent souvent une forte expertise, une grande autonomie et une capacité à intervenir rapidement dans des contextes sensibles. Le portage salarial permet au consultant de conserver son indépendance tout en bénéficiant d’un cadre contractuel et administratif structuré.',
     portersSupport: ['Sécurisation du cadre contractuel', 'Gestion administrative de l’activité', 'Accompagnement personnalisé du consultant', 'Suivi des contrats, missions et facturations', 'Protection sociale du statut salarié porté', 'Soutien dans la relation avec le client'],
-    ctaLabel: 'Découvrir le portage salarial en cybersécurité',
+    ctaLabel: 'Plus de détails sur la cybersécurité',
     ctaHref: '/expertises/cybersecurite',
   },
   {
@@ -53,6 +55,7 @@ export const expertiseSections: ExpertiseSection[] = [
     title: 'Data & IA',
     shortSubtitle: 'Données, modèles et intelligence artificielle',
     introduction: 'Transformer les données en décisions, en automatisations et en produits intelligents capables de créer une valeur concrète pour l’entreprise.',
+    sourceSummary: 'Les supports KwickStart relient stratégie, architecture, usages et maintien en conditions opérationnelles : la valeur ne s’arrête pas au prototype.',
     description: [
       'The Porters porte les experts de la donnée et de l’intelligence artificielle qui interviennent sur toute la chaîne de valeur, depuis la collecte et la structuration des données jusqu’à leur analyse, leur visualisation et leur exploitation par des modèles avancés.',
       'Ces consultants aident les organisations à fiabiliser leurs données, industrialiser leurs infrastructures, améliorer leur prise de décision et intégrer des solutions d’intelligence artificielle dans leurs processus, leurs produits et leurs outils internes.',
@@ -69,7 +72,7 @@ export const expertiseSections: ExpertiseSection[] = [
     sectors: [],
     whyPortage: 'Les spécialistes Data et IA interviennent souvent sur des projets à forte valeur ajoutée nécessitant des expertises rares et des périodes d’intervention définies. Le portage salarial leur permet de multiplier les missions tout en conservant un cadre professionnel stable et structuré.',
     portersSupport: ['Gestion des contrats de prestation', 'Prise en charge de la facturation', 'Gestion administrative et sociale', 'Accompagnement dans le suivi de mission', 'Cadre adapté aux missions longues ou ponctuelles', 'Soutien dans la relation avec les clients'],
-    ctaLabel: 'Découvrir le portage salarial pour les experts Data & IA',
+    ctaLabel: 'Plus de détails sur la Data & l’IA',
     ctaHref: '/expertises/data-ia',
   },
   {
@@ -78,6 +81,7 @@ export const expertiseSections: ExpertiseSection[] = [
     title: 'Cloud & DevOps',
     shortSubtitle: 'Infrastructure, automatisation et fiabilité',
     introduction: 'Concevoir des infrastructures plus agiles, plus fiables et plus performantes pour accélérer la transformation technologique des organisations.',
+    sourceSummary: 'L’approche KwickStart traite le Cloud comme une trajectoire : conseil sur mesure, intégration flexible, optimisation des infrastructures et suivi de la performance.',
     description: [
       'The Porters porte les consultants qui modernisent les infrastructures, automatisent les déploiements et améliorent la disponibilité des services numériques.',
       'Leurs missions couvrent les environnements cloud publics, privés ou hybrides, les chaînes d’intégration et de déploiement continus, la conteneurisation, l’observabilité, la résilience, la sécurité et l’optimisation des coûts d’infrastructure.',
@@ -94,7 +98,7 @@ export const expertiseSections: ExpertiseSection[] = [
     sectors: [],
     whyPortage: 'Les profils Cloud et DevOps sont régulièrement sollicités pour des transformations techniques complexes, des migrations ou des phases d’industrialisation. Le portage salarial leur permet d’intervenir avec autonomie tout en déléguant la gestion administrative de leur activité.',
     portersSupport: ['Cadre contractuel adapté aux projets techniques', 'Gestion administrative et facturation', 'Accompagnement pendant toute la durée de la mission', 'Suivi des échanges contractuels avec le client', 'Protection sociale du salarié porté', 'Soutien pour les missions longues et stratégiques'],
-    ctaLabel: 'Découvrir le portage salarial Cloud & DevOps',
+    ctaLabel: 'Plus de détails sur le Cloud & DevOps',
     ctaHref: '/expertises/cloud-devops',
   },
   {
@@ -103,6 +107,7 @@ export const expertiseSections: ExpertiseSection[] = [
     title: 'Agilité',
     shortSubtitle: 'Transformation, coaching et collaboration',
     introduction: 'Faire évoluer les méthodes de travail, fluidifier la collaboration et aider les organisations à produire plus efficacement dans des environnements complexes.',
+    sourceSummary: 'Les dossiers Agilité du groupe articulent Scrum, Kanban, XP, Lean et SAFe avec les rôles qui les rendent utiles : PO, Scrum Master, RTE, Change Manager, Agile Coach et équipes de delivery.',
     description: [
       'The Porters porte les professionnels de l’agilité qui interviennent auprès des équipes, des managers et des directions pour améliorer l’organisation, la coopération et la capacité à délivrer de la valeur.',
       'Leurs missions ne se limitent pas à l’application d’une méthode. Elles consistent également à accompagner le changement, faire évoluer les pratiques managériales, résoudre les blocages organisationnels et créer une dynamique d’amélioration continue.',
@@ -119,7 +124,7 @@ export const expertiseSections: ExpertiseSection[] = [
     sectors: [],
     whyPortage: 'Les consultants en agilité interviennent souvent dans des environnements de transformation, sur des périodes de plusieurs mois et auprès de nombreuses parties prenantes. Le portage salarial leur offre un cadre professionnel adapté sans limiter leur autonomie dans la conduite de leurs missions.',
     portersSupport: ['Gestion des aspects administratifs', 'Encadrement contractuel des missions', 'Facturation et suivi des règlements', 'Accompagnement humain et personnalisé', 'Continuité entre plusieurs missions', 'Soutien dans la relation commerciale et contractuelle'],
-    ctaLabel: 'Découvrir le portage salarial pour les experts Agilité',
+    ctaLabel: 'Plus de détails sur l’Agilité',
     ctaHref: '/expertises/agilite-coaching',
   },
   {
@@ -128,6 +133,7 @@ export const expertiseSections: ExpertiseSection[] = [
     title: 'Produit & projet',
     shortSubtitle: 'Stratégie, pilotage et delivery',
     introduction: 'Cadrer les besoins, aligner les équipes et piloter la réalisation de produits et de projets numériques à forte valeur métier.',
+    sourceSummary: 'Le mémoire technique du groupe formalise une continuité de bout en bout : cadrage, exécution, recette, capitalisation et transfert de connaissances.',
     description: [
       'The Porters porte les professionnels capables de transformer une ambition stratégique ou un besoin métier en produit, en service ou en projet concret.',
       'Ces experts assurent la coordination entre les directions, les utilisateurs, les équipes techniques et les partenaires. Ils structurent les priorités, définissent les objectifs, sécurisent les délais et veillent à la qualité de l’exécution.',
@@ -144,7 +150,7 @@ export const expertiseSections: ExpertiseSection[] = [
     sectors: [],
     whyPortage: 'Les professionnels du produit et du projet occupent fréquemment des rôles stratégiques au sein d’équipes clientes pendant plusieurs mois. Le portage salarial leur permet d’exercer en autonomie tout en bénéficiant d’un statut structuré et d’une gestion simplifiée.',
     portersSupport: ['Gestion des contrats et avenants', 'Prise en charge de la facturation', 'Suivi administratif de la mission', 'Accompagnement humain et disponible', 'Protection sociale du salarié porté', 'Soutien dans les échanges avec le client', 'Continuité entre plusieurs projets', 'Cadre adapté aux missions de longue durée'],
-    ctaLabel: 'Découvrir le portage salarial pour les experts Produit & Projet',
+    ctaLabel: 'Plus de détails sur Produit & Projet',
     ctaHref: '/expertises/product-project-management',
   },
 ];
