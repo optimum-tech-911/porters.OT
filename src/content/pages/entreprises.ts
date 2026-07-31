@@ -63,30 +63,36 @@ export const enterprisePage = {
     {
       title: 'Renfort de projet IT',
       text: 'Développement, architecture, intégration, tests, infrastructure ou pilotage sur un périmètre défini.',
+      href: '/expertises/developpement-integration',
     },
     {
       title: 'Environnements historiques',
       // F-D08 (PUBLISHABLE) — différenciant réel : la plupart des ESN ne vendent que du greenfield
       text: 'Applications métier sur socles anciens mais critiques pour la production, IBM i / AS400 compris, autant que sur des stacks récentes.',
+      href: '/expertises/developpement-integration',
     },
     {
       title: 'Data et intelligence artificielle',
       text: 'Cadrage de cas d’usage, ingénierie et pipelines, gouvernance, industrialisation et mise en production des modèles.',
+      href: '/expertises/data-ia',
     },
     {
       title: 'Cloud et DevOps',
       text: 'Architecture, migration, CI/CD, infrastructure as code, conteneurisation, observabilité, sécurité des environnements.',
+      href: '/expertises/cloud-devops',
     },
     {
       title: 'Agilité et transformation',
       // F-D05 (PUBLISHABLE) — s'aligner sur les processus du client plutôt que d'imposer un cadre
       text: 'Product Ownership, Scrum, coaching, coordination multi-équipes, conduite du changement. Nos consultants s’alignent sur vos processus existants plutôt que d’imposer un cadre.',
+      href: '/expertises/agilite-coaching',
     },
     {
       title: 'Gouvernance et sécurité',
       // Périmètre volontairement limité au documenté : gouvernance, audit, risques, conformité.
       // Pas de SOC, pas de pentest, pas de réponse à incident — voir fact-base R3.
       text: 'Gouvernance de la sécurité, audit, analyse de risques et de conformité, sensibilisation des équipes. RSSI, RSSI de transition, chef de projet et ingénieur cybersécurité.',
+      href: '/expertises/cybersecurite',
     },
   ],
 };

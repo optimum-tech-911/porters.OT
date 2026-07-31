@@ -215,7 +215,7 @@ const commonJourney = [
     nodes.forEach((node, index) => {
       node.addEventListener('pointerenter', () => {
         nodes.forEach((item, itemIndex) => item.classList.toggle('is-related', itemIndex === index));
-        constellation.style.setProperty('--active-angle', `${index * 72}deg`);
+        constellation.style.setProperty('--active-angle', `${index * (360 / nodes.length)}deg`);
       });
       node.addEventListener('pointerleave', () => node.classList.remove('is-related'));
     });
@@ -412,12 +412,14 @@ const commonJourney = [
     font-size: 0.74rem;
   }
 
-  .node-1 { top: 4%; left: 50%; transform: translateX(-50%); }
+  .node-1 { top: 2%; left: 50%; transform: translateX(-50%); }
   .node-1:hover, .node-1:focus-visible { transform: translate(-50%, -4px); }
-  .node-2 { top: 31%; right: 0; }
-  .node-3 { right: 10%; bottom: 10%; }
-  .node-4 { bottom: 10%; left: 7%; }
-  .node-5 { top: 31%; left: 0; }
+  .node-2 { top: 25%; right: 0; }
+  .node-3 { right: 7%; bottom: 13%; }
+  .node-4 { bottom: 2%; left: 50%; transform: translateX(-50%); }
+  .node-4:hover, .node-4:focus-visible { transform: translate(-50%, -4px); }
+  .node-5 { bottom: 13%; left: 7%; }
+  .node-6 { top: 25%; left: 0; }
 
   .expertise-explorer {
     padding-block: clamp(5rem, 9vw, 8rem);
@@ -814,7 +816,8 @@ const commonJourney = [
     .node-2,
     .node-3,
     .node-4,
-    .node-5 {
+    .node-5,
+    .node-6 {
       position: static;
       min-width: 0;
       transform: none;
@@ -823,7 +826,9 @@ const commonJourney = [
     .constellation-node:hover,
     .constellation-node:focus-visible,
     .node-1:hover,
-    .node-1:focus-visible {
+    .node-1:focus-visible,
+    .node-4:hover,
+    .node-4:focus-visible {
       transform: translateY(-2px);
     }
 

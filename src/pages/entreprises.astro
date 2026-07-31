@@ -173,11 +173,16 @@ const models = [
           <strong>Une mission définie</strong>
         </div>
         {enterprisePage.useCases.map((useCase, index) => (
-          <article class={`perimeter-node perimeter-${index + 1}`}>
+          <a
+            class={`perimeter-node perimeter-${index + 1}`}
+            href={useCase.href}
+            aria-label={`${useCase.title} — voir le domaine en détail`}
+          >
             <span>0{index + 1}</span>
             <h3>{useCase.title}</h3>
             <p>{useCase.text}</p>
-          </article>
+            <b aria-hidden="true">↗</b>
+          </a>
         ))}
       </div>
     </div>
@@ -813,14 +818,32 @@ const models = [
     border-radius: 13px;
     padding: 1rem;
     background: rgba(255,255,255,.065);
+    color: inherit;
+    text-decoration: none;
     backdrop-filter: blur(10px);
     transition: border-color 180ms ease,background 180ms ease,transform 240ms var(--ease-soft);
   }
 
-  .perimeter-node:hover {
+  .perimeter-node:hover,
+  .perimeter-node:focus-visible {
     border-color: rgba(213,182,104,.6);
     background: rgba(213,182,104,.11);
+    outline: none;
     transform: translateY(-4px);
+  }
+
+  .perimeter-node > b {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #d5b668;
+    font-size: .78rem;
+    transition: transform 180ms ease;
+  }
+
+  .perimeter-node:hover > b,
+  .perimeter-node:focus-visible > b {
+    transform: translate(3px,-3px);
   }
 
   .perimeter-node > span {

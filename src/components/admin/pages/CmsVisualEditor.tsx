@@ -15,9 +15,11 @@ const defaults: Required<CmsFormat> = {
 };
 
 const versionDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
+const formatKeys = Object.keys(defaults) as Array<keyof CmsFormat>;
 
 export default function CmsVisualEditor() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const versionsRequestRef = useRef(0);
   const [route, setRoute] = useState('/');
   const [iframeRoute, setIframeRoute] = useState('/');
   const [mounted, setMounted] = useState(false);
@@ -50,7 +52,9 @@ export default function CmsVisualEditor() {
 
   const dirty = useMemo(() => {
     if (!selected) return false;
-    if (JSON.stringify(format || {}) !== JSON.stringify(selected.draft_format || {})) return true;
+    const formatChanged = formatKeys.some((key) =>
+      (format?.[key] || 'default') !== (selected.draft_format?.[key] || 'default'));
+    if (formatChanged) return true;
     // A merged block round-trips through the browser's HTML parser, which may
     // reorder attributes or requote them. Comparing the normalized forms keeps
     // simply opening a block from looking like an unsaved change.
@@ -77,6 +81,13 @@ export default function CmsVisualEditor() {
     window.history.replaceState({}, '', url);
   }, []);
 
+  const updateSelectedKey = useCallback((key: string | null) => {
+    const url = new URL(window.location.href);
+    if (key) url.searchParams.set('key', key);
+    else url.searchParams.delete('key');
+    window.history.replaceState({}, '', url);
+  }, []);
+
   const prepareNavigation = useCallback((nextRoute: string) => {
     setLoadingFrame(true);
     setFrameError('');
@@ -86,15 +97,18 @@ export default function CmsVisualEditor() {
     setVersions([]);
     setBlocks([]);
     setRoute(nextRoute);
+    versionsRequestRef.current += 1;
   }, []);
 
   const approveNavigation = useCallback((nextRoute: string, url: string) => {
+    if (busy) return;
     if (dirty && !window.confirm('Vous avez des modifications non enregistrées. Quitter cette page sans les enregistrer ?')) return;
     prepareNavigation(nextRoute);
     post({ type: 'cms:navigate-approved', url });
-  }, [dirty, post, prepareNavigation]);
+  }, [busy, dirty, post, prepareNavigation]);
 
   const openPage = useCallback((nextRoute: string) => {
+    if (busy) return;
     if (nextRoute === route) {
       setPageMenuOpen(false);
       return;
@@ -105,7 +119,7 @@ export default function CmsVisualEditor() {
     setIframeKey((current) => current + 1);
     setPageMenuOpen(false);
     updateEditorUrl(nextRoute);
-  }, [dirty, prepareNavigation, route, updateEditorUrl]);
+  }, [busy, dirty, prepareNavigation, route, updateEditorUrl]);
 
   const retryFrame = useCallback(() => {
     prepareNavigation(route);
@@ -114,11 +128,14 @@ export default function CmsVisualEditor() {
   }, [prepareNavigation, route]);
 
   const loadVersions = useCallback(async (blockId: string) => {
+    const requestId = ++versionsRequestRef.current;
+    setVersions([]);
     const { data, error: queryError } = await supabase
       .from('cms_content_versions')
       .select('*')
       .eq('content_block_id', blockId)
       .order('version_number', { ascending: false });
+    if (requestId !== versionsRequestRef.current) return;
     if (queryError) setError('Historique indisponible.');
     else setVersions((data || []) as CmsContentVersion[]);
   }, []);
@@ -130,8 +147,9 @@ export default function CmsVisualEditor() {
     setFieldToken((current) => current + 1);
     setNotice('');
     setError('');
+    updateSelectedKey(block.content_key);
     void loadVersions(block.id);
-  }, [loadVersions]);
+  }, [loadVersions, updateSelectedKey]);
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get('path') || '/';
@@ -144,7 +162,11 @@ export default function CmsVisualEditor() {
 
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
-      if (event.origin !== window.location.origin || !event.data?.type) return;
+      if (
+        event.origin !== window.location.origin
+        || event.source !== iframeRef.current?.contentWindow
+        || !event.data?.type
+      ) return;
 
       if (event.data.type === 'cms:ready') {
         const incoming = (event.data.blocks || []) as CmsContentBlock[];
@@ -155,19 +177,22 @@ export default function CmsVisualEditor() {
         setRoute(nextRoute);
         setLoadingFrame(false);
         setFrameError('');
-        updateEditorUrl(nextRoute);
+        post({ type: 'cms:set-preview-state', state: previewState });
 
         const requested = requestedKey ? incoming.find((block) => block.content_key === requestedKey) : undefined;
         if (requested) {
+          updateEditorUrl(nextRoute, true);
           chooseBlock(requested);
           post({ type: 'cms:focus', key: requested.content_key });
+        } else {
+          updateEditorUrl(nextRoute);
         }
       }
 
       if (event.data.type === 'cms:navigate-request' && typeof event.data.url === 'string') {
         approveNavigation(event.data.route || '/', event.data.url);
       }
-      if (event.data.type === 'cms:select' && event.data.block) chooseBlock(event.data.block as CmsContentBlock);
+      if (event.data.type === 'cms:select' && event.data.block && !busy) chooseBlock(event.data.block as CmsContentBlock);
       if (event.data.type === 'cms:error') {
         setLoadingFrame(false);
         setFrameError(event.data.message || 'L’éditeur n’a pas pu charger cette page.');
@@ -176,7 +201,7 @@ export default function CmsVisualEditor() {
 
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [approveNavigation, chooseBlock, post, updateEditorUrl]);
+  }, [approveNavigation, busy, chooseBlock, post, previewState, updateEditorUrl]);
 
   useEffect(() => {
     if (!loadingFrame) return;
@@ -197,9 +222,11 @@ export default function CmsVisualEditor() {
   }, [dirty]);
 
   useEffect(() => {
-    if (!selected) return;
-    post({ type: 'cms:update-preview', key: selected.content_key, content, format });
-  }, [content, format, post, selected]);
+    post({ type: 'cms:set-preview-state', state: previewState });
+    if (previewState === 'draft' && selected) {
+      post({ type: 'cms:update-preview', key: selected.content_key, content, format });
+    }
+  }, [content, format, post, previewState, selected]);
 
   async function persistDraft(nextContent = content, nextFormat = format): Promise<CmsContentBlock | null> {
     if (!selected) return null;
@@ -216,24 +243,31 @@ export default function CmsVisualEditor() {
 
     setBusy(true);
     setError('');
-    const { data, error: mutationError } = await supabase.rpc('cms_save_draft', {
-      requested_key: selected.content_key,
-      requested_content: nextContent,
-      requested_format: nextFormat,
-    });
-    setBusy(false);
+    try {
+      const { data, error: mutationError } = await supabase.rpc('cms_save_draft', {
+        requested_key: selected.content_key,
+        requested_content: nextContent,
+        requested_format: nextFormat,
+      });
 
-    if (mutationError || !data) {
-      setError(mutationError?.message || 'Le brouillon n’a pas pu être enregistré.');
+      if (mutationError || !data) {
+        setError(mutationError?.message || 'Le brouillon n’a pas pu être enregistré.');
+        return null;
+      }
+
+      const block = data as CmsContentBlock;
+      setSelected(block);
+      setBlocks((current) => current.map((item) => item.id === block.id ? block : item));
+      post({ type: 'cms:replace-block', block });
+      setNotice('Brouillon enregistré.');
+      return block;
+    } catch (mutationError) {
+      console.warn('[CMS admin] Draft save failed:', mutationError);
+      setError('Le brouillon n’a pas pu être enregistré. Vérifiez votre connexion puis réessayez.');
       return null;
+    } finally {
+      setBusy(false);
     }
-
-    const block = data as CmsContentBlock;
-    setSelected(block);
-    setBlocks((current) => current.map((item) => item.id === block.id ? block : item));
-    post({ type: 'cms:replace-block', block });
-    setNotice('Brouillon enregistré.');
-    return block;
   }
 
   async function publish() {
@@ -245,44 +279,62 @@ export default function CmsVisualEditor() {
       saved = result;
     }
 
-    if (!window.confirm(`Publier maintenant « ${saved.content_key} » sur le site ?`)) return;
-    setBusy(true);
-    setError('');
-    const { data, error: publishError } = await supabase.rpc('cms_publish_content', {
-      requested_key: saved.content_key,
-    });
-    setBusy(false);
-
-    if (publishError || !data) {
-      setError(publishError?.message || 'La publication a échoué.');
+    if (saved.status === 'published') {
+      setNotice('Ce contenu est déjà identique à la version publiée.');
       return;
     }
 
-    const block = data as CmsContentBlock;
-    chooseBlock(block);
-    setBlocks((current) => current.map((item) => item.id === block.id ? block : item));
-    post({ type: 'cms:replace-block', block });
-    setNotice(`Version ${block.published_version} publiée. Les visiteurs la verront au prochain chargement.`);
+    if (!window.confirm(`Publier maintenant « ${saved.content_key} » sur le site ?`)) return;
+    setBusy(true);
+    setError('');
+    try {
+      const { data, error: publishError } = await supabase.rpc('cms_publish_content', {
+        requested_key: saved.content_key,
+      });
+
+      if (publishError || !data) {
+        setError(publishError?.message || 'La publication a échoué.');
+        return;
+      }
+
+      const block = data as CmsContentBlock;
+      chooseBlock(block);
+      setBlocks((current) => current.map((item) => item.id === block.id ? block : item));
+      post({ type: 'cms:replace-block', block });
+      setNotice(`Version ${block.published_version} publiée. Les visiteurs la verront au prochain chargement.`);
+    } catch (publishError) {
+      console.warn('[CMS admin] Publish failed:', publishError);
+      setError('La publication a échoué. Vérifiez votre connexion puis réessayez.');
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function restore(version: CmsContentVersion) {
     if (!selected || !window.confirm(`Restaurer la version ${version.version_number} comme nouveau brouillon ?`)) return;
     setBusy(true);
-    const { data, error: restoreError } = await supabase.rpc('cms_restore_version', {
-      requested_version_id: version.id,
-    });
-    setBusy(false);
+    setError('');
+    try {
+      const { data, error: restoreError } = await supabase.rpc('cms_restore_version', {
+        requested_version_id: version.id,
+      });
 
-    if (restoreError || !data) {
-      setError(restoreError?.message || 'La restauration a échoué.');
-      return;
+      if (restoreError || !data) {
+        setError(restoreError?.message || 'La restauration a échoué.');
+        return;
+      }
+
+      const block = data as CmsContentBlock;
+      chooseBlock(block);
+      setBlocks((current) => current.map((item) => item.id === block.id ? block : item));
+      post({ type: 'cms:replace-block', block });
+      setNotice(`Version ${version.version_number} restaurée en brouillon. Vérifiez-la puis publiez-la.`);
+    } catch (restoreError) {
+      console.warn('[CMS admin] Version restore failed:', restoreError);
+      setError('La restauration a échoué. Vérifiez votre connexion puis réessayez.');
+    } finally {
+      setBusy(false);
     }
-
-    const block = data as CmsContentBlock;
-    chooseBlock(block);
-    setBlocks((current) => current.map((item) => item.id === block.id ? block : item));
-    post({ type: 'cms:replace-block', block });
-    setNotice(`Version ${version.version_number} restaurée en brouillon. Vérifiez-la puis publiez-la.`);
   }
 
   function updateFormat<Key extends keyof CmsFormat>(key: Key, value: CmsFormat[Key]) {
@@ -291,7 +343,6 @@ export default function CmsVisualEditor() {
 
   function switchPreview(state: 'draft' | 'published') {
     setPreviewState(state);
-    post({ type: 'cms:set-preview-state', state });
   }
 
   return (
@@ -299,7 +350,7 @@ export default function CmsVisualEditor() {
       <div className="cms-editor-toolbar">
         <div>
           <a href="/admin/dashboard" className="cms-editor-back" aria-label="Retour au tableau de bord">←</a>
-          <button type="button" className="cms-page-picker-button" onClick={() => setPageMenuOpen(true)} aria-haspopup="dialog" aria-expanded={pageMenuOpen}>
+          <button type="button" className="cms-page-picker-button" disabled={busy} onClick={() => setPageMenuOpen(true)} aria-haspopup="dialog" aria-expanded={pageMenuOpen}>
             <span><small>Page affichée</small><strong>{currentPage?.name || route}</strong></span><b aria-hidden="true">⌄</b>
           </button>
         </div>
@@ -322,7 +373,7 @@ export default function CmsVisualEditor() {
             <label className="cms-page-picker-search">Rechercher une page<input autoFocus value={pageSearch} onChange={(event) => setPageSearch(event.target.value)} placeholder="Nom ou adresse…" /></label>
             <div className="cms-page-picker-list">
               {filteredPages.map((page) => (
-                <button type="button" key={page.route} className={page.route === route ? 'active' : ''} onClick={() => openPage(page.route)}>
+                <button type="button" key={page.route} disabled={busy} className={page.route === route ? 'active' : ''} onClick={() => openPage(page.route)}>
                   <span><strong>{page.name}</strong><small>{page.route}</small></span><em>{page.contentCount} textes</em><b aria-hidden="true">→</b>
                 </button>
               ))}
@@ -409,7 +460,7 @@ export default function CmsVisualEditor() {
                   setNotice('Modifications locales annulées.');
                 }}>Annuler</button>
                 <button type="button" className="admin-btn admin-btn-secondary" disabled={!dirty || busy} onClick={() => void persistDraft()}>{busy ? 'Enregistrement…' : 'Enregistrer le brouillon'}</button>
-                <button type="button" className="admin-btn admin-btn-primary" disabled={busy} onClick={() => void publish()}>Publier</button>
+                <button type="button" className="admin-btn admin-btn-primary" disabled={busy || (!dirty && selected.status === 'published')} onClick={() => void publish()}>Publier</button>
               </div>
 
               <details className="cms-history" open>

@@ -10,7 +10,7 @@
 
 <script>
   import { supabase } from '../../lib/supabase';
-  import { cmsRegistry, type CmsFormat } from '../../cms/content';
+  import type { CmsFormat } from '../../cms/content';
   import { sanitizeInlineHtml } from '../../cms/inline-html';
   import { discoverEditableText } from '../../cms/discover';
 
@@ -110,6 +110,14 @@
       .filter(Boolean);
   }
 
+  function visibleKeys() {
+    return new Set(
+      Array.from(document.querySelectorAll<HTMLElement>('[data-cms-key]'))
+        .map((node) => node.dataset.cmsKey || '')
+        .filter(Boolean),
+    );
+  }
+
   function markActive(key: string) {
     document.querySelectorAll('.cms-editor-active').forEach((node) => node.classList.remove('cms-editor-active'));
     document.querySelectorAll(`[data-cms-key="${CSS.escape(key)}"]`).forEach((node) => node.classList.add('cms-editor-active'));
@@ -118,27 +126,48 @@
   function announceReady() {
     if (!editorMode) return;
     document.body.classList.add('cms-editor-mode');
+    const visible = visibleKeys();
     window.parent.postMessage({
       type: 'cms:ready',
       route: pageRoute,
-      blocks: Array.from(blockByKey.values()),
+      // Database orphans and internal configuration rows can share a route but
+      // are not editable on the rendered page. Keep them out of the visual UI.
+      blocks: Array.from(blockByKey.values()).filter((block) => visible.has(block.content_key)),
       richKeys: richKeys(),
     }, window.location.origin);
   }
 
-  async function createMissingRegisteredBlocks() {
-    const visibleKeys = new Set(
-      Array.from(document.querySelectorAll<HTMLElement>('[data-cms-key]'))
-        .map((node) => node.dataset.cmsKey || '')
-        .filter(Boolean),
-    );
-    const missing = cmsRegistry.filter((entry) =>
-      visibleKeys.has(entry.key)
-      && (entry.route === pageRoute || entry.route === GLOBAL_ROUTE)
-      && !blockByKey.has(entry.key),
-    );
+  async function createMissingVisibleBlocks() {
+    const entries = new Map<string, {
+      key: string;
+      route: string;
+      type: string;
+      content: string;
+    }>();
 
-    for (const entry of missing) {
+    // Discovery runs against the untouched server-rendered fallback before any
+    // database value is applied. That DOM is therefore the safest recovery
+    // source and avoids shipping the 500 KB generated registry to the editor.
+    document.querySelectorAll<HTMLElement>('[data-cms-key]').forEach((node) => {
+      const key = node.dataset.cmsKey;
+      if (!key || entries.has(key) || blockByKey.has(key)) return;
+      const route = node.dataset.cmsRoute || pageRoute;
+      if (route !== pageRoute && route !== GLOBAL_ROUTE) return;
+      const content = (node.dataset.cmsRich === 'true'
+        ? sanitizeInlineHtml(node.innerHTML)
+        : node.textContent || '').trim();
+      if (!content || content.length > 10000) return;
+      entries.set(key, {
+        key,
+        route,
+        type: node.dataset.cmsElementType || 'paragraph',
+        content,
+      });
+    });
+
+    const missing = Array.from(entries.values());
+
+    async function createEntry(entry: (typeof missing)[number]) {
       const { data, error } = await supabase.rpc('cms_create_content_block', {
         requested_key: entry.key,
         requested_route: entry.route,
@@ -147,7 +176,7 @@
       });
       if (data) {
         blockByKey.set(entry.key, data as EditorBlock);
-        continue;
+        return;
       }
       if (error?.code !== '23505') throw error;
       const { data: existing, error: existingError } = await supabase
@@ -158,6 +187,18 @@
       if (existingError) throw existingError;
       blockByKey.set(entry.key, existing as EditorBlock);
     }
+
+    // Missing rows are a safety net for newly deployed copy, not a substitute
+    // for the seed migration. A small worker pool keeps an affected page usable
+    // without flooding Supabase or waiting on hundreds of sequential requests.
+    const queue = [...missing];
+    const workerCount = Math.min(8, queue.length);
+    await Promise.all(Array.from({ length: workerCount }, async () => {
+      while (queue.length > 0) {
+        const entry = queue.shift();
+        if (entry) await createEntry(entry);
+      }
+    }));
   }
 
   async function loadContent() {
@@ -173,7 +214,7 @@
           .order('content_key');
         if (error) throw error;
         (data as EditorBlock[] | null)?.forEach((block) => blockByKey.set(block.content_key, block));
-        await createMissingRegisteredBlocks();
+        await createMissingVisibleBlocks();
       } else {
         const { data, error } = await supabase
           .from('cms_published_content')
@@ -229,7 +270,7 @@
     }, true);
 
     window.addEventListener('message', (event) => {
-      if (event.origin !== window.location.origin || !event.data?.type) return;
+      if (event.origin !== window.location.origin || event.source !== window.parent || !event.data?.type) return;
       if (event.data.type === 'cms:update-preview') applyValue(event.data.key, event.data.content, event.data.format || {});
       if (event.data.type === 'cms:focus' && typeof event.data.key === 'string') {
         markActive(event.data.key);

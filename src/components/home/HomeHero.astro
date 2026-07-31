@@ -5,18 +5,22 @@ const trustPoints = [
   {
     key: 'home.hero.trust.interlocutors',
     note: 'Un point de contact identifié',
+    href: '/equipe',
   },
   {
     key: 'home.hero.trust.secured_missions',
     note: 'Contrat et protection sociale',
+    href: '/portage-salarial',
   },
   {
     key: 'home.hero.trust.employee_framework',
     note: 'Clients, missions et TJM restent les vôtres',
+    href: '/consultants',
   },
   {
     key: 'home.hero.trust.it_expertise',
     note: 'Cyber, data, cloud, produit et agilité',
+    href: '/expertises',
   },
 ];
 
@@ -95,13 +99,14 @@ const heroTitleLines = [
     </div>
     <div class="editorial-hero__trust-list">
       {trustPoints.map((point, index) => (
-        <article>
+        <a href={point.href} aria-label={`${cmsText(point.key)} — en savoir plus`}>
           <span>0{index + 1}</span>
           <div>
             <strong {...cmsAttrs(point.key)}>{cmsText(point.key)}</strong>
             <small>{point.note}</small>
           </div>
-        </article>
+          <b aria-hidden="true">↗</b>
+        </a>
       ))}
     </div>
   </div>
@@ -369,19 +374,39 @@ const heroTitleLines = [
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .editorial-hero__trust-list article {
+  .editorial-hero__trust-list > a {
     display: grid;
     min-width: 0;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 0.72rem;
     padding: 1.45rem 1.2rem;
     border-right: 1px solid rgba(32, 52, 64, 0.08);
+    color: inherit;
+    transition: background-color 180ms ease, transform 220ms var(--ease-soft);
   }
 
-  .editorial-hero__trust-list article > span {
+  .editorial-hero__trust-list > a:hover,
+  .editorial-hero__trust-list > a:focus-visible {
+    background: rgba(198, 164, 90, 0.09);
+    outline: none;
+    transform: translateY(-2px);
+  }
+
+  .editorial-hero__trust-list > a > span {
     color: #b79245;
     font: 700 0.55rem/1 var(--font-mono);
+  }
+
+  .editorial-hero__trust-list > a > b {
+    color: #b79245;
+    font-size: .7rem;
+    transition: transform 180ms ease;
+  }
+
+  .editorial-hero__trust-list > a:hover > b,
+  .editorial-hero__trust-list > a:focus-visible > b {
+    transform: translate(2px,-2px);
   }
 
   .editorial-hero__trust-list strong,
@@ -505,7 +530,7 @@ const heroTitleLines = [
       grid-template-columns: 1fr;
     }
 
-    .editorial-hero__trust-list article {
+    .editorial-hero__trust-list > a {
       border-bottom: 1px solid rgba(32, 52, 64, 0.08);
       padding-inline: 1rem;
     }

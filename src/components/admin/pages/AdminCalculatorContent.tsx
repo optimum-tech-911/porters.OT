@@ -7,6 +7,7 @@ import AdminTable, { type Column } from '../AdminTable';
 import AdminStatusBadge from '../AdminStatusBadge';
 import { calculatorSubmissions } from '../../../data/admin-demo.data';
 import type { CalculatorSubmission } from '../../../types/admin';
+import type { CmsContentBlock } from '../../../types/cms';
 import { supabase } from '../../../lib/supabase';
 import {
   defaultSimulatorSettings,
@@ -42,35 +43,104 @@ function formatDate(dateStr: string): string {
   });
 }
 
+const simulatorSettingKeys = Object.keys(defaultSimulatorSettings) as Array<keyof SimulatorSettings>;
+
+function simulatorSettingsNeedRepair(raw: string, normalized: SimulatorSettings): boolean {
+  try {
+    const source = JSON.parse(raw) as Record<string, unknown> | null;
+    if (!source || typeof source !== 'object' || Array.isArray(source)) return true;
+
+    const sourceKeys = Object.keys(source);
+    return sourceKeys.length !== simulatorSettingKeys.length
+      || simulatorSettingKeys.some((key) => source[key] !== normalized[key]);
+  } catch {
+    return true;
+  }
+}
+
 export default function AdminCalculatorContent() {
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
   const [settings, setSettings] = useState<SimulatorSettings>(defaultSimulatorSettings);
+  const [savedSettings, setSavedSettings] = useState<SimulatorSettings | null>(null);
   const [settingsExist, setSettingsExist] = useState(false);
+  const [settingsReady, setSettingsReady] = useState(false);
+  const [settingsNeedsRepair, setSettingsNeedsRepair] = useState(false);
+  const [settingsStatus, setSettingsStatus] = useState<'draft' | 'published' | 'missing'>('missing');
+  const [publishedVersion, setPublishedVersion] = useState<number | null>(null);
   const [loadingSettings, setLoadingSettings] = useState(true);
   const [savingSettings, setSavingSettings] = useState(false);
   const [settingsNotice, setSettingsNotice] = useState('');
   const [settingsError, setSettingsError] = useState('');
+  const [reloadToken, setReloadToken] = useState(0);
 
   useEffect(() => {
     let active = true;
-    void supabase
-      .from('cms_content_blocks')
-      .select('draft_content')
-      .eq('content_key', SIMULATOR_SETTINGS_KEY)
-      .maybeSingle()
-      .then(({ data, error }) => {
+    setLoadingSettings(true);
+    setSettingsReady(false);
+    setSettingsError('');
+    setSettingsNotice('');
+
+    async function loadSettings() {
+      try {
+        const { data, error } = await supabase
+          .from('cms_content_blocks')
+          .select('draft_content,status,published_version')
+          .eq('content_key', SIMULATOR_SETTINGS_KEY)
+          .maybeSingle();
         if (!active) return;
-        if (error) setSettingsError('Les paramètres du simulateur n’ont pas pu être chargés.');
+        if (error) throw error;
+
         if (data?.draft_content) {
-          setSettings(parseSimulatorSettings(data.draft_content));
+          const next = parseSimulatorSettings(data.draft_content);
+          const needsRepair = simulatorSettingsNeedRepair(data.draft_content, next);
+          setSettings(next);
+          setSavedSettings(next);
+          setSettingsNeedsRepair(needsRepair);
           setSettingsExist(true);
+          setSettingsStatus(data.status === 'draft' ? 'draft' : 'published');
+          setPublishedVersion(data.published_version);
+          if (needsRepair) {
+            setSettingsError('La configuration enregistrée est incomplète ou invalide. Vérifiez les valeurs puis republiez-la.');
+          }
+        } else {
+          setSettings(defaultSimulatorSettings);
+          setSavedSettings(defaultSimulatorSettings);
+          setSettingsNeedsRepair(false);
+          setSettingsExist(false);
+          setSettingsStatus('missing');
+          setPublishedVersion(null);
         }
-        setLoadingSettings(false);
-      });
+        setSettingsReady(true);
+      } catch (loadError) {
+        if (!active) return;
+        console.warn('[Simulator admin] Settings health check failed:', loadError);
+        setSettingsError('Connexion CMS indisponible. Les valeurs par défaut sont affichées, mais elles ne peuvent pas être publiées tant que la vérification échoue.');
+      } finally {
+        if (active) setLoadingSettings(false);
+      }
+    }
+
+    void loadSettings();
     return () => {
       active = false;
     };
-  }, []);
+  }, [reloadToken]);
+
+  const settingsDirty = useMemo(() =>
+    Boolean(savedSettings && JSON.stringify(settings) !== JSON.stringify(savedSettings)),
+  [savedSettings, settings]);
+
+  const canSaveSettings = settingsReady
+    && (!settingsExist || settingsDirty || settingsNeedsRepair || settingsStatus === 'draft');
+
+  useEffect(() => {
+    const warn = (event: BeforeUnloadEvent) => {
+      if (!settingsDirty) return;
+      event.preventDefault();
+    };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, [settingsDirty]);
 
   function updateSetting<K extends keyof SimulatorSettings>(key: K, value: SimulatorSettings[K]) {
     setSettings((current) => ({ ...current, [key]: value }));
@@ -79,48 +149,93 @@ export default function AdminCalculatorContent() {
   }
 
   async function saveSettings() {
+    if (!settingsReady) return;
+    const textKeys: Array<keyof Pick<SimulatorSettings,
+      'portageDescription' | 'freelanceDescription' | 'resultDisclaimer' | 'legalNotice'
+    >> = ['portageDescription', 'freelanceDescription', 'resultDisclaimer', 'legalNotice'];
+    if (textKeys.some((key) => !settings[key].trim())) {
+      setSettingsError('Les quatre textes du simulateur doivent être renseignés.');
+      return;
+    }
+
     const normalized = parseSimulatorSettings(settings);
+    const numericKeys: Array<keyof Pick<SimulatorSettings,
+      'managementFeePercent' | 'socialChargesPercent' | 'monthlyExpenses' | 'defaultMonthlyRevenue' | 'defaultTjm' | 'defaultWorkedDays'
+    >> = ['managementFeePercent', 'socialChargesPercent', 'monthlyExpenses', 'defaultMonthlyRevenue', 'defaultTjm', 'defaultWorkedDays'];
+    if (numericKeys.some((key) => normalized[key] !== settings[key])) {
+      setSettingsError('Une valeur numérique est hors de la plage autorisée. Corrigez-la avant de publier.');
+      return;
+    }
+
     setSettings(normalized);
     setSavingSettings(true);
     setSettingsNotice('');
     setSettingsError('');
     const payload = JSON.stringify(normalized);
 
-    if (!settingsExist) {
-      const { error: createError } = await supabase.rpc('cms_create_content_block', {
+    try {
+      if (!settingsExist) {
+        const { data: created, error: createError } = await supabase.rpc('cms_create_content_block', {
+          requested_key: SIMULATOR_SETTINGS_KEY,
+          requested_route: SIMULATOR_SETTINGS_ROUTE,
+          requested_element_type: 'paragraph',
+          requested_fallback: payload,
+        });
+        if (createError && createError.code !== '23505') {
+          setSettingsError(createError.message || 'Impossible d’initialiser les paramètres.');
+          return;
+        }
+        setSettingsExist(true);
+
+        // Creation already writes a published version 1. Avoid immediately
+        // publishing identical content again and manufacturing version 2.
+        if (created) {
+          const block = created as CmsContentBlock;
+          setSavedSettings(normalized);
+          setSettingsNeedsRepair(false);
+          setSettingsStatus('published');
+          setPublishedVersion(block.published_version);
+          setSettingsNotice('Paramètres initialisés et publiés. Ils sont maintenant utilisés par le simulateur.');
+          return;
+        }
+      }
+
+      if (settingsDirty || settingsNeedsRepair) {
+        const { data: draft, error: draftError } = await supabase.rpc('cms_save_draft', {
+          requested_key: SIMULATOR_SETTINGS_KEY,
+          requested_content: payload,
+          requested_format: {},
+        });
+        if (draftError || !draft) {
+          setSettingsError(draftError?.message || 'Le brouillon n’a pas pu être enregistré.');
+          return;
+        }
+        const block = draft as CmsContentBlock;
+        setSavedSettings(normalized);
+        setSettingsNeedsRepair(false);
+        setSettingsStatus(block.status);
+      }
+
+      const { data: published, error: publishError } = await supabase.rpc('cms_publish_content', {
         requested_key: SIMULATOR_SETTINGS_KEY,
-        requested_route: SIMULATOR_SETTINGS_ROUTE,
-        requested_element_type: 'paragraph',
-        requested_fallback: payload,
       });
-      if (createError && createError.code !== '23505') {
-        setSavingSettings(false);
-        setSettingsError(createError.message || 'Impossible d’initialiser les paramètres.');
+      if (publishError || !published) {
+        setSettingsStatus('draft');
+        setSettingsError(publishError?.message || 'Le brouillon est enregistré, mais sa publication a échoué. Réessayez sans modifier les champs.');
         return;
       }
-      setSettingsExist(true);
-    }
-
-    const { error: draftError } = await supabase.rpc('cms_save_draft', {
-      requested_key: SIMULATOR_SETTINGS_KEY,
-      requested_content: payload,
-      requested_format: {},
-    });
-    if (draftError) {
+      const block = published as CmsContentBlock;
+      setSavedSettings(normalized);
+      setSettingsNeedsRepair(false);
+      setSettingsStatus('published');
+      setPublishedVersion(block.published_version);
+      setSettingsNotice('Paramètres publiés. Ils sont maintenant utilisés par le simulateur.');
+    } catch (saveError) {
+      console.warn('[Simulator admin] Settings save failed:', saveError);
+      setSettingsError('La publication a échoué. Vérifiez votre connexion puis réessayez.');
+    } finally {
       setSavingSettings(false);
-      setSettingsError(draftError.message || 'Le brouillon n’a pas pu être enregistré.');
-      return;
     }
-
-    const { error: publishError } = await supabase.rpc('cms_publish_content', {
-      requested_key: SIMULATOR_SETTINGS_KEY,
-    });
-    setSavingSettings(false);
-    if (publishError) {
-      setSettingsError(publishError.message || 'Les paramètres n’ont pas pu être publiés.');
-      return;
-    }
-    setSettingsNotice('Paramètres publiés. Ils sont maintenant utilisés par le simulateur.');
   }
 
   const filtered = useMemo(() => {
@@ -196,7 +311,21 @@ export default function AdminCalculatorContent() {
         title="Paramètres publiés du simulateur"
         subtitle="Ces valeurs et textes alimentent directement le simulateur public. Chaque publication est versionnée dans le CMS."
       >
-        <fieldset disabled={loadingSettings || savingSettings} style={{ border: 0, padding: 0, margin: 0 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem', fontSize: '0.75rem', color: 'var(--admin-text-secondary)' }} role="status">
+          <span className={`cms-status-chip cms-status-chip--${settingsReady ? (settingsStatus === 'draft' || settingsNeedsRepair ? 'draft' : 'live') : 'draft'}`}>
+            {loadingSettings ? 'Vérification…' : settingsReady ? 'CMS connecté' : 'CMS indisponible'}
+          </span>
+          {settingsReady && (
+            <span>
+              {settingsStatus === 'missing'
+                ? 'Aucune configuration enregistrée : la première publication initialisera les paramètres.'
+                : `${settingsNeedsRepair ? 'Configuration à réparer' : settingsStatus === 'draft' ? 'Brouillon à publier' : 'Configuration publiée'}${publishedVersion ? ` · version ${publishedVersion}` : ''}`}
+            </span>
+          )}
+          <a href="/simulateur" target="_blank" rel="noreferrer" style={{ marginLeft: 'auto', color: '#192B63', fontWeight: 700 }}>Voir le simulateur ↗</a>
+        </div>
+
+        <fieldset disabled={loadingSettings || savingSettings || !settingsReady} style={{ border: 0, padding: 0, margin: 0 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
             {([
               ['managementFeePercent', 'Frais de gestion (%)', 0, 30, 0.1],
@@ -250,20 +379,37 @@ export default function AdminCalculatorContent() {
           <button
             type="button"
             onClick={() => void saveSettings()}
-            disabled={loadingSettings || savingSettings}
-            style={{ minHeight: '2.75rem', border: 0, borderRadius: '999px', padding: '0.7rem 1.2rem', background: '#192B63', color: '#fff', font: 'inherit', fontWeight: 700, cursor: loadingSettings || savingSettings ? 'wait' : 'pointer', opacity: loadingSettings || savingSettings ? 0.65 : 1 }}
+            disabled={loadingSettings || savingSettings || !canSaveSettings}
+            style={{ minHeight: '2.75rem', border: 0, borderRadius: '999px', padding: '0.7rem 1.2rem', background: '#192B63', color: '#fff', font: 'inherit', fontWeight: 700, cursor: loadingSettings || savingSettings ? 'wait' : canSaveSettings ? 'pointer' : 'not-allowed', opacity: loadingSettings || savingSettings || !canSaveSettings ? 0.65 : 1 }}
           >
-            {loadingSettings ? 'Chargement…' : savingSettings ? 'Publication…' : 'Enregistrer et publier'}
+            {loadingSettings
+              ? 'Chargement…'
+              : savingSettings
+                ? 'Publication…'
+                : !settingsExist
+                  ? 'Initialiser et publier'
+                  : settingsNeedsRepair
+                    ? 'Réparer et publier'
+                  : settingsStatus === 'draft' && !settingsDirty
+                    ? 'Publier le brouillon'
+                    : settingsDirty
+                      ? 'Enregistrer et publier'
+                      : 'Paramètres à jour'}
           </button>
           {settingsNotice && <p role="status" style={{ margin: 0, color: '#2d7a4f', fontSize: '0.82rem', fontWeight: 650 }}>{settingsNotice}</p>}
-          {settingsError && <p role="alert" style={{ margin: 0, color: '#b42318', fontSize: '0.82rem', fontWeight: 650 }}>{settingsError}</p>}
+          {settingsError && (
+            <p role="alert" style={{ margin: 0, color: '#b42318', fontSize: '0.82rem', fontWeight: 650 }}>
+              {settingsError}{' '}
+              {!settingsReady && <button type="button" onClick={() => setReloadToken((current) => current + 1)}>Réessayer</button>}
+            </p>
+          )}
         </div>
       </AdminChartCard>
 
       {/* Submissions Table */}
       <div style={{ marginTop: '1.5rem' }}>
         <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1rem', fontWeight: 600, color: '#192B63', marginBottom: '1rem' }}>
-          Soumissions ({calculatorSubmissions.length})
+          Aperçu des soumissions ({calculatorSubmissions.length} données de démonstration)
         </h3>
 
         <AdminFilterBar

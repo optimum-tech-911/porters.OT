@@ -61,29 +61,35 @@ export const consultantsPage = {
       title: 'Aucun lien hiérarchique',
       // F-B07 (PUBLISHABLE) — argument central
       text: 'Ni chez votre client, ni chez The Porters. Vous êtes salarié sur la forme, autonome sur le fond.',
+      href: '/portage-salarial',
     },
     {
       title: 'Vous gardez vos clients',
       text: 'Vous pouvez vous constituer votre propre clientèle et en rester pleinement responsable. Nous vous proposons aussi des missions issues de nos partenaires.',
+      href: '/blog/trouver-missions-portage-salarial',
     },
     {
       title: 'Cumul possible',
       // F-B08 (PUBLISHABLE)
       text: 'Avec un emploi salarié, sous réserve de l’accord de votre employeur et d’un maximum de 48 heures hebdomadaires cumulées. Ou avec une retraite.',
+      href: '/faq#comprendre',
     },
     {
       title: 'France entière, et au-delà',
       // F-B09 (PUBLISHABLE)
       text: 'Mission en France ou à l’étranger, pour un client français ou étranger, en télétravail ou sur site.',
+      href: '/blog/portage-salarial-international',
     },
     {
       title: 'Assurance chômage',
-      text: 'Vous cotisez chaque mois à l’assurance chômage et conservez vos droits, comme tout salarié.',
+      text: 'Vous cotisez à l’assurance chômage dans le cadre du statut salarié. Une indemnisation éventuelle reste soumise aux conditions examinées par France Travail.',
+      href: '/faq#missions',
     },
     {
       title: 'Retraite complémentaire',
       // F-B04 (PUBLISHABLE)
       text: 'Le statut cadre vous permet de cotiser au régime général et à la retraite complémentaire.',
+      href: '/faq#comprendre',
     },
   ],
 };

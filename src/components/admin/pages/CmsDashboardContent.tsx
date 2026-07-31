@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { supabase } from '../../../lib/supabase';
 import type { CmsContentBlock } from '../../../types/cms';
 import editablePages from '../../../cms/editable-pages.json';
+import { SIMULATOR_SETTINGS_KEY } from '../../../data/simulator-settings';
 
 const formatter = new Intl.DateTimeFormat('fr-FR', {
   dateStyle: 'medium',
@@ -9,37 +10,65 @@ const formatter = new Intl.DateTimeFormat('fr-FR', {
 });
 
 export default function CmsDashboardContent() {
-  const [blocks, setBlocks] = useState<CmsContentBlock[]>([]);
+  const [recentBlocks, setRecentBlocks] = useState<CmsContentBlock[]>([]);
+  const [stats, setStats] = useState({ total: 0, drafts: 0, published: 0 });
+  const [publicTotal, setPublicTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [reloadToken, setReloadToken] = useState(0);
 
   useEffect(() => {
     let active = true;
-    void supabase
-      .from('cms_content_blocks')
-      .select('*')
-      .order('updated_at', { ascending: false })
-      .then(({ data, error: queryError }) => {
+    setLoading(true);
+    setError('');
+
+    async function loadDashboard() {
+      try {
+        // PostgREST limits ordinary selects to 1,000 rows. Exact head counts
+        // keep the dashboard truthful as the CMS grows beyond that threshold.
+        const [totalResult, draftResult, publishedResult, publicResult, recentResult] = await Promise.all([
+          supabase.from('cms_content_blocks').select('id', { count: 'exact', head: true }),
+          supabase.from('cms_content_blocks').select('id', { count: 'exact', head: true }).eq('status', 'draft'),
+          supabase.from('cms_content_blocks').select('id', { count: 'exact', head: true }).eq('status', 'published'),
+          supabase.from('cms_published_content').select('content_key', { count: 'exact', head: true }),
+          supabase.from('cms_content_blocks').select('*').order('updated_at', { ascending: false }).limit(8),
+        ]);
+
         if (!active) return;
-        if (queryError) setError('Impossible de charger le contenu. Vérifiez votre session administrateur.');
-        else setBlocks((data || []) as CmsContentBlock[]);
-        setLoading(false);
-      });
+        const queryError = totalResult.error
+          || draftResult.error
+          || publishedResult.error
+          || publicResult.error
+          || recentResult.error;
+        if (queryError) throw queryError;
+
+        const total = totalResult.count || 0;
+        const nextPublicTotal = publicResult.count || 0;
+        setStats({
+          total,
+          drafts: draftResult.count || 0,
+          published: publishedResult.count || 0,
+        });
+        setPublicTotal(nextPublicTotal);
+        setRecentBlocks((recentResult.data || []) as CmsContentBlock[]);
+
+        if (nextPublicTotal !== total) {
+          setError(`La vue publique expose ${nextPublicTotal.toLocaleString('fr-FR')} textes sur ${total.toLocaleString('fr-FR')}. Vérifiez la configuration Supabase avant de publier.`);
+        }
+      } catch (queryError) {
+        if (!active) return;
+        console.warn('[CMS admin] Dashboard health check failed:', queryError);
+        setError('Impossible de vérifier le contenu et sa vue publique. Vérifiez votre session administrateur et la connexion Supabase.');
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+
+    void loadDashboard();
     return () => { active = false; };
-  }, []);
+  }, [reloadToken]);
 
-  const stats = useMemo(() => ({
-    total: blocks.length,
-    drafts: blocks.filter((block) => block.status === 'draft').length,
-    published: blocks.filter((block) => block.status === 'published').length,
-    pages: new Set(blocks.filter((block) => block.route_path !== '/_global').map((block) => block.route_path)).size,
-  }), [blocks]);
-
-  const pageCounts = useMemo(() => {
-    const counts = new Map<string, number>();
-    blocks.forEach((block) => counts.set(block.route_path, (counts.get(block.route_path) || 0) + 1));
-    return counts;
-  }, [blocks]);
+  const publicViewAccessible = !loading && !error && stats.total > 0 && publicTotal === stats.total;
 
   return (
     <div className="cms-dashboard">
@@ -54,26 +83,33 @@ export default function CmsDashboardContent() {
         </a>
       </header>
 
-      {error && <div className="cms-admin-alert cms-admin-alert--error" role="alert">{error}</div>}
+      {error && (
+        <div className="cms-admin-alert cms-admin-alert--error" role="alert">
+          <span>{error}</span>{' '}
+          <button type="button" onClick={() => setReloadToken((current) => current + 1)}>Réessayer</button>
+        </div>
+      )}
 
       <div className="cms-stat-grid" aria-busy={loading}>
-        <article><span>Textes enregistrés</span><strong>{loading ? '—' : stats.total}</strong><small>sur toutes les pages publiques</small></article>
+        <article><span>Textes enregistrés</span><strong>{loading ? '—' : stats.total.toLocaleString('fr-FR')}</strong><small>comptage exact dans le CMS</small></article>
         <article><span>Brouillons à publier</span><strong>{loading ? '—' : stats.drafts}</strong><small>{stats.drafts ? 'action requise' : 'tout est à jour'}</small></article>
-        <article><span>Contenus publiés</span><strong>{loading ? '—' : stats.published}</strong><small>visibles par les visiteurs</small></article>
-        <article><span>Pages connectées</span><strong>{loading ? '—' : stats.pages}</strong><small>{editablePages.length} routes publiques inventoriées</small></article>
+        <article><span>Contenus publiés</span><strong>{loading ? '—' : stats.published.toLocaleString('fr-FR')}</strong><small>{loading ? 'vérification en cours' : `${publicTotal.toLocaleString('fr-FR')} accessibles par la vue publique`}</small></article>
+        <article><span>Pages connectées</span><strong>{editablePages.length}</strong><small>routes publiques inventoriées</small></article>
       </div>
 
       <div className="cms-dashboard-grid">
         <section className="cms-admin-card">
           <div className="cms-admin-card-heading">
             <div><span>Pages</span><h3>Contenu modifiable</h3></div>
-            <span className="cms-status-chip cms-status-chip--live">Opérationnel</span>
+            <span className={`cms-status-chip cms-status-chip--${publicViewAccessible ? 'live' : 'draft'}`}>
+              {loading ? 'Vérification…' : publicViewAccessible ? 'Accès vérifié' : 'À vérifier'}
+            </span>
           </div>
           <div className="cms-page-directory">
             {editablePages.map((page) => (
               <a className="cms-page-row" href={`/admin/editor?path=${encodeURIComponent(page.route)}`} key={page.route}>
                 <span className="cms-page-icon" aria-hidden="true">{page.name.charAt(0)}</span>
-                <span><strong>{page.name}</strong><small>{page.route} · {loading ? '—' : pageCounts.get(page.route) || page.contentCount} textes</small></span>
+                <span><strong>{page.name}</strong><small>{page.route} · {page.contentCount} textes inventoriés</small></span>
                 <span className="cms-page-action">Modifier <b aria-hidden="true">↗</b></span>
               </a>
             ))}
@@ -86,16 +122,18 @@ export default function CmsDashboardContent() {
           </div>
           <div className="cms-recent-list">
             {loading && <p className="cms-admin-muted">Chargement…</p>}
-            {!loading && blocks.slice(0, 8).map((block) => (
-              <a key={block.id} href={`/admin/editor?path=${encodeURIComponent(block.route_path)}&key=${encodeURIComponent(block.content_key)}`}>
+            {!loading && recentBlocks.map((block) => (
+              <a key={block.id} href={block.content_key === SIMULATOR_SETTINGS_KEY
+                ? '/admin/calculator'
+                : `/admin/editor?path=${encodeURIComponent(block.route_path)}&key=${encodeURIComponent(block.content_key)}`}>
                 <span className={`cms-change-dot cms-change-dot--${block.status}`} aria-hidden="true" />
-                <span><strong>{block.content_key}</strong><small>{formatter.format(new Date(block.updated_at))}</small></span>
+                <span><strong>{block.content_key === SIMULATOR_SETTINGS_KEY ? 'Paramètres du simulateur' : block.content_key}</strong><small>{formatter.format(new Date(block.updated_at))}</small></span>
                 <span className={`cms-status-chip cms-status-chip--${block.status}`}>
                   {block.status === 'draft' ? 'Brouillon' : `v${block.published_version}`}
                 </span>
               </a>
             ))}
-            {!loading && blocks.length === 0 && <p className="cms-admin-muted">Aucun contenu enregistré.</p>}
+            {!loading && recentBlocks.length === 0 && <p className="cms-admin-muted">Aucun contenu enregistré.</p>}
           </div>
         </section>
       </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, type SubmitEvent } from 'react';
 import NumericSliderField from './NumericSliderField';
 import { supabase } from '../../lib/supabase';
 import {
@@ -56,11 +56,16 @@ const scenarios: Scenario[] = [
 export default function SimulatorForm() {
   const [settings, setSettings] = useState(defaultSimulatorSettings);
   const [mode, setMode] = useState<SimulatorMode>('portage');
-  const activeScenario = scenarios[1];
+  const [activeScenarioId, setActiveScenarioId] = useState<string | null>(null);
+  const activeScenario = scenarios.find((scenario) => scenario.id === activeScenarioId);
   const [tjm, setTjm] = useState<number>(defaultSimulatorSettings.defaultTjm);
   const [jours, setJours] = useState<number>(defaultSimulatorSettings.defaultWorkedDays);
   const [monthlyRevenue, setMonthlyRevenue] = useState<number>(defaultSimulatorSettings.defaultMonthlyRevenue);
-  const [leadSent, setLeadSent] = useState(false);
+  const userAdjustedProjection = useRef({
+    tjm: false,
+    jours: false,
+    monthlyRevenue: false,
+  });
 
   useEffect(() => {
     let active = true;
@@ -69,13 +74,20 @@ export default function SimulatorForm() {
       .select('published_content')
       .eq('content_key', SIMULATOR_SETTINGS_KEY)
       .maybeSingle()
-      .then(({ data }) => {
-        if (!active || !data?.published_content) return;
+      .then(({ data, error }) => {
+        if (!active) return;
+        if (error) {
+          console.warn('[Simulator] Published settings unavailable; defaults retained:', error);
+          return;
+        }
+        if (!data?.published_content) return;
         const next = parseSimulatorSettings(data.published_content);
         setSettings(next);
-        setTjm(next.defaultTjm);
-        setJours(next.defaultWorkedDays);
-        setMonthlyRevenue(next.defaultMonthlyRevenue);
+        // A slow settings request must not reset values the visitor has already
+        // adjusted while the page was becoming interactive.
+        if (!userAdjustedProjection.current.tjm) setTjm(next.defaultTjm);
+        if (!userAdjustedProjection.current.jours) setJours(next.defaultWorkedDays);
+        if (!userAdjustedProjection.current.monthlyRevenue) setMonthlyRevenue(next.defaultMonthlyRevenue);
       });
     return () => {
       active = false;
@@ -152,6 +164,40 @@ export default function SimulatorForm() {
   ];
   const breakdownRows = mode === 'portage' ? portageBreakdownRows : freelanceBreakdownRows;
 
+  function applyScenario(scenario: Scenario) {
+    userAdjustedProjection.current = { tjm: true, jours: true, monthlyRevenue: true };
+    setActiveScenarioId(scenario.id);
+    setTjm(scenario.tjm);
+    setJours(scenario.jours);
+    setMonthlyRevenue(scenario.tjm * scenario.jours);
+  }
+
+  function prepareSimulationEmail(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const body = [
+      `Prénom : ${String(form.get('firstName') || '')}`,
+      `Nom : ${String(form.get('lastName') || '')}`,
+      `Email : ${String(form.get('email') || '')}`,
+      `Téléphone : ${String(form.get('phone') || '')}`,
+      `Profil : ${String(form.get('profile') || '')}`,
+      `Base de calcul : ${String(form.get('revenueType') || '')}`,
+      '',
+      `Parcours : ${mode === 'portage' ? 'Portage salarial' : 'Activité freelance'}`,
+      `TJM : ${formatCurrency(tjm)}`,
+      `Jours facturés : ${jours}`,
+      `Chiffre d’affaires mensuel : ${formatCurrency(ca)}`,
+      `Frais professionnels : ${formatCurrency(frais)}`,
+      mode === 'portage' ? `Net mensuel estimé : ${formatCurrency(netMensuel)}` : '',
+      '',
+      settings.legalNotice,
+    ].filter(Boolean).join('\n');
+
+    // No lead-capture table or mail service exists in this project yet. Match
+    // the contact form's honest fallback instead of displaying a false success.
+    window.location.href = `mailto:contact@porters.fr?subject=${encodeURIComponent('Demande de simulation détaillée')}&body=${encodeURIComponent(body)}`;
+  }
+
   return (
     <div className="space-y-8">
       <div className="grid gap-4 md:grid-cols-2" role="tablist" aria-label="Choisir un simulateur">
@@ -191,6 +237,38 @@ export default function SimulatorForm() {
         </button>
       </div>
 
+      <section aria-labelledby="simulator-scenarios-title">
+        <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">Scénarios rapides</p>
+            <h3 id="simulator-scenarios-title" className="font-heading text-xl font-semibold text-porters-navy">Partez d’un repère, puis ajustez-le.</h3>
+          </div>
+          <p className="mb-0 text-xs text-porters-black/50">Les montants restent entièrement modifiables.</p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {scenarios.map((scenario) => (
+            <button
+              key={scenario.id}
+              type="button"
+              aria-pressed={activeScenarioId === scenario.id}
+              className={`group rounded-lg border p-4 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porters-gold/50 ${
+                activeScenarioId === scenario.id
+                  ? 'border-porters-gold bg-porters-navy text-white shadow-[0_14px_34px_rgba(25,43,99,0.12)]'
+                  : 'border-porters-navy/10 bg-white text-porters-navy hover:-translate-y-0.5 hover:border-porters-gold/60'
+              }`}
+              onClick={() => applyScenario(scenario)}
+            >
+              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.15em] text-porters-gold">{scenario.eyebrow}</span>
+              <strong className="mt-1 block font-heading text-base">{scenario.title}</strong>
+              <span className={`mt-2 block text-xs leading-relaxed ${activeScenarioId === scenario.id ? 'text-white/62' : 'text-porters-black/52'}`}>{scenario.description}</span>
+              <span className={`mt-3 block border-t pt-3 text-xs font-semibold ${activeScenarioId === scenario.id ? 'border-white/12 text-porters-gold' : 'border-porters-navy/8 text-porters-navy/70'}`}>
+                {formatCurrency(scenario.tjm)} / j · {scenario.jours} jours
+              </span>
+            </button>
+          ))}
+        </div>
+      </section>
+
       <div className="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(20rem,0.58fr)] lg:items-start">
         <div className="rounded-lg border border-porters-navy/10 bg-white p-5 shadow-[0_18px_50px_rgba(25,43,99,0.06)] sm:p-7">
           <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -203,7 +281,7 @@ export default function SimulatorForm() {
               </h3>
             </div>
             <p className="text-sm text-porters-black/55">
-              Profil actif : <span className="font-semibold text-porters-navy">{activeScenario.title}</span>
+              Profil actif : <span className="font-semibold text-porters-navy">{activeScenario?.title ?? 'Réglage personnalisé'}</span>
             </p>
           </div>
 
@@ -220,7 +298,11 @@ export default function SimulatorForm() {
                 format={formatCurrency}
                 minLabel="3 000 €"
                 maxLabel="25 000 €"
-                onChange={setMonthlyRevenue}
+                onChange={(value) => {
+                  userAdjustedProjection.current.monthlyRevenue = true;
+                  setActiveScenarioId(null);
+                  setMonthlyRevenue(value);
+                }}
               />
             ) : (
               <>
@@ -235,7 +317,11 @@ export default function SimulatorForm() {
                   format={formatCurrency}
                   minLabel="250 €"
                   maxLabel="1 200 €"
-                  onChange={setTjm}
+                  onChange={(value) => {
+                    userAdjustedProjection.current.tjm = true;
+                    setActiveScenarioId(null);
+                    setTjm(value);
+                  }}
                 />
                 <NumericSliderField
                   id="jours"
@@ -248,7 +334,11 @@ export default function SimulatorForm() {
                   format={formatDays}
                   minLabel="4 jours"
                   maxLabel="22 jours"
-                  onChange={setJours}
+                  onChange={(value) => {
+                    userAdjustedProjection.current.jours = true;
+                    setActiveScenarioId(null);
+                    setJours(value);
+                  }}
                 />
               </>
             )}
@@ -374,25 +464,7 @@ export default function SimulatorForm() {
           </p>
         </div>
 
-        {leadSent ? (
-          <div className="rounded-lg border border-porters-gold/30 bg-porters-gold/10 p-5">
-            <p className="font-heading text-lg font-semibold text-porters-navy">
-              Votre demande a bien été envoyée.
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-porters-black/65">
-              Un conseiller The Porters vous contactera très prochainement pour affiner cette
-              simulation avec vous et répondre à toutes vos questions.
-            </p>
-          </div>
-        ) : (
-          <form
-            className="grid gap-4 md:grid-cols-2"
-            onSubmit={(event) => {
-              event.preventDefault();
-              // TODO: branch Supabase lead capture, PDF/email sending and admin notification.
-              setLeadSent(true);
-            }}
-          >
+        <form className="grid gap-4 md:grid-cols-2" onSubmit={prepareSimulationEmail}>
             <div>
               <label className="form-label" htmlFor="lead-first-name">
                 Prénom
@@ -459,8 +531,7 @@ export default function SimulatorForm() {
                 Recevoir ma simulation détaillée
               </button>
             </div>
-          </form>
-        )}
+        </form>
       </div>
 
       <div className="flex flex-col gap-3 rounded-lg border border-porters-navy/10 bg-porters-navy/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between">

@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useId, useState, type CSSProperties } from 'react';
 
 type Props = {
   id: string;
@@ -103,6 +103,7 @@ export default function NumericSliderField({
         type="range"
         id={id}
         className="sim-range"
+        style={{ '--range-progress': `${((value - min) / (max - min)) * 100}%` } as CSSProperties}
         min={min}
         max={max}
         step={step}
