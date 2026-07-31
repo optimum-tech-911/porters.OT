@@ -1,21 +1,21 @@
 [
   {
-    "key": "home.hero.eyebrow",
+    "key": "home.hero.editorial.eyebrow",
     "route": "/",
     "type": "label",
-    "content": "Portage salarial & expertises IT"
+    "content": "Portage salarial · Experts IT"
   },
   {
-    "key": "home.hero.title",
+    "key": "home.hero.editorial.title",
     "route": "/",
     "type": "heading",
-    "content": "Vous choisissez vos missions IT.\nNous tenons le cadre."
+    "content": "Votre mission.\nVotre liberté.\nUn salaire chaque mois."
   },
   {
-    "key": "home.hero.description",
+    "key": "home.hero.editorial.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Vous gardez vos missions, votre TJM et votre autonomie. Nous prenons en charge le contrat, la facturation, la paie et le suivi administratif."
+    "content": "Vous gardez vos clients, votre TJM et votre autonomie. The Porters prend en charge le contrat, la facturation, les déclarations, la paie et votre protection sociale."
   },
   {
     "key": "home.hero.primary_cta",
@@ -24,10 +24,10 @@
     "content": "Simuler mes revenus"
   },
   {
-    "key": "home.hero.secondary_cta",
+    "key": "home.hero.editorial.secondary_cta",
     "route": "/",
     "type": "button",
-    "content": "Comment ça marche"
+    "content": "Parler à un conseiller"
   },
   {
     "key": "home.hero.enterprise_cta",

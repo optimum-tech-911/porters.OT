@@ -23,6 +23,7 @@ const rightNav: NavItem[] = [
     links: [
       { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'L’écosystème Porters' },
       { label: 'Nos agences', href: '/agences', note: 'Points de contact' },
+      { label: 'Questions fréquentes', href: '/faq', note: 'Réponses utiles' },
     ],
   },
 ];
@@ -39,11 +40,6 @@ const active = (href: string) => {
 <header class="tp-site-header" id="site-header">
   <div class="tp-header-glow" aria-hidden="true"></div>
   <div class="tp-header-inner">
-    <nav class="tp-desktop-nav tp-desktop-nav--left" aria-label="Navigation principale gauche" data-cms-ignore>
-      <a href="/portage-salarial" class:list={['tp-nav-direct', { 'is-active': active('/portage-salarial') }]}>Le portage salarial</a>
-      <a href="/entreprises" class:list={['tp-nav-direct', { 'is-active': active('/entreprises') }]}>Entreprises</a>
-    </nav>
-
     <a href="/" class="tp-header-brand" aria-label="The Porters - Accueil">
       <span class="brand-wordmark brand-wordmark-light" aria-hidden="true">
         <span class="brand-wordmark-the">The</span>
@@ -51,11 +47,8 @@ const active = (href: string) => {
       </span>
     </a>
 
-    <a href="/simulateur" class="tp-mobile-appointment">Simuler</a>
-
-    <nav class="tp-desktop-nav tp-desktop-nav--right" aria-label="Navigation principale droite" data-cms-ignore>
-      <a href="/expertises" class:list={['tp-nav-direct', { 'is-active': active('/expertises') }]}>Expertises</a>
-      <a href="/faq" class:list={['tp-nav-direct', 'tp-nav-direct--compact', { 'is-active': active('/faq') }]}>FAQ</a>
+    <nav class="tp-desktop-nav" aria-label="Navigation principale" data-cms-ignore>
+      <a href="/portage-salarial" class:list={['tp-nav-direct', { 'is-active': active('/portage-salarial') }]}>Le portage salarial</a>
       {rightNav.map((item) => (
         <div class:list={['tp-nav-item', `tp-nav-item--${item.id}`, { 'is-active': active(item.href) }]} data-popover>
           <a href={item.href} class="tp-nav-link">{item.label}</a>
@@ -68,7 +61,7 @@ const active = (href: string) => {
           >
             <span aria-hidden="true">⌄</span>
           </button>
-          <div class="tp-nav-popover" id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
+          <div class:list={['tp-nav-popover', `tp-nav-popover--${item.id}`]} id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
             <div class="tp-popover-intro">
               <span>{item.label}</span>
               <p>{item.description}</p>
@@ -87,6 +80,11 @@ const active = (href: string) => {
           </div>
         </div>
       ))}
+      <a href="/entreprises" class:list={['tp-nav-direct', { 'is-active': active('/entreprises') }]}>Entreprises</a>
+      <a href="/expertises" class:list={['tp-nav-direct', { 'is-active': active('/expertises') }]}>Expertises</a>
+    </nav>
+
+    <div class="tp-desktop-actions">
       <a href="/contact" class="tp-contact-link" aria-label="Contacter The Porters">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M4.5 6.5h15v11h-15z"></path>
@@ -94,7 +92,9 @@ const active = (href: string) => {
         </svg>
       </a>
       <a href="/simulateur" class="tp-appointment-link">Simuler mes revenus <span aria-hidden="true">→</span></a>
-    </nav>
+    </div>
+
+    <a href="/simulateur" class="tp-mobile-appointment">Simuler</a>
 
     <button class="tp-menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
       <span></span>
@@ -104,6 +104,7 @@ const active = (href: string) => {
 
   <div class="tp-mobile-menu" id="mobile-menu" aria-hidden="true" data-cms-ignore>
     <nav aria-label="Navigation mobile">
+      <a class="tp-mobile-primary-link" href="/portage-salarial">Le portage salarial</a>
       {mobileNav.map((item, index) => (
         <details class="tp-mobile-group">
           <summary>
@@ -129,10 +130,8 @@ const active = (href: string) => {
         </details>
       ))}
       <div class="tp-mobile-actions">
-        <a href="/portage-salarial">Le portage salarial</a>
         <a href="/entreprises">Entreprises</a>
         <a href="/expertises">Expertises</a>
-        <a href="/faq">Questions fréquentes</a>
         <a href="/simulateur">Simuler mes revenus</a>
         <a href="/rendez-vous">Prendre rendez-vous</a>
         <a href="/contact">Contact</a>
@@ -348,28 +347,20 @@ const active = (href: string) => {
 
   .tp-header-inner {
     position: relative;
-    display: grid;
-    width: min(100% - 3rem, 94rem);
+    display: flex;
+    width: min(100% - 3rem, 105rem);
     height: var(--tp-header-height);
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     align-items: center;
-    gap: clamp(1rem, 2.4vw, 2.4rem);
+    gap: clamp(1.1rem, 2.2vw, 2.5rem);
     margin-inline: auto;
   }
 
   .tp-desktop-nav {
     display: flex;
+    flex: 1 1 auto;
     min-width: 0;
     align-items: center;
-    gap: clamp(0.75rem, 1.6vw, 1.55rem);
-  }
-
-  .tp-desktop-nav--left {
-    justify-content: flex-end;
-  }
-
-  .tp-desktop-nav--right {
-    justify-content: flex-start;
+    gap: clamp(0.55rem, 1.1vw, 1.2rem);
   }
 
   .tp-header-brand {
@@ -377,19 +368,20 @@ const active = (href: string) => {
     z-index: 3;
     display: flex;
     width: max-content;
+    flex: 0 0 auto;
     color: #fff;
   }
 
   .tp-header-brand .brand-wordmark {
-    transform: scale(0.96);
-    transform-origin: center;
+    transform: scale(0.9);
+    transform-origin: left center;
     transition: transform 320ms var(--ease-soft), filter 220ms ease;
   }
 
   .tp-header-brand:hover .brand-wordmark,
   .tp-header-brand:focus-visible .brand-wordmark {
     filter: drop-shadow(0 0 15px rgba(190, 158, 88, 0.3));
-    transform: scale(1);
+    transform: scale(0.94);
   }
 
   .tp-header-brand :global(.brand-wordmark-the),
@@ -408,7 +400,7 @@ const active = (href: string) => {
   .tp-nav-direct {
     position: relative;
     color: rgba(255, 255, 255, 0.86);
-    font-size: clamp(0.98rem, 1.12vw, 1.16rem);
+    font-size: clamp(0.86rem, 0.92vw, 1rem);
     font-weight: 760;
     line-height: 1;
     white-space: nowrap;
@@ -436,9 +428,11 @@ const active = (href: string) => {
     padding-inline: 0.55rem;
   }
 
-  .tp-nav-direct--compact {
-    padding-inline: 0.25rem;
-    font-size: 0.88rem;
+  .tp-desktop-actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.7rem;
   }
 
   .tp-nav-item:hover .tp-nav-link,
@@ -804,15 +798,15 @@ const active = (href: string) => {
 
   .tp-appointment-link {
     display: inline-flex;
-    min-height: 3.55rem;
+    min-height: 2.8rem;
     align-items: center;
     justify-content: center;
-    gap: 0.6rem;
+    gap: 0.45rem;
     border-radius: 999px;
-    padding-inline: 1.85rem;
+    padding-inline: 1.15rem;
     background: #be9e58;
     color: #10202b;
-    font-size: 1rem;
+    font-size: 0.78rem;
     font-weight: 820;
     white-space: nowrap;
     transition:
@@ -847,10 +841,9 @@ const active = (href: string) => {
     height: var(--tp-header-height, 5.75rem);
   }
 
-  @media (max-width: 1180px) {
+  @media (max-width: 1240px) {
     .tp-header-inner {
       width: min(100% - 2rem, 94rem);
-      grid-template-columns: auto 1fr auto;
       height: 4.85rem;
     }
 
@@ -863,7 +856,8 @@ const active = (href: string) => {
       isolation: isolate;
     }
 
-    .tp-desktop-nav {
+    .tp-desktop-nav,
+    .tp-desktop-actions {
       display: none;
     }
 
@@ -985,6 +979,19 @@ const active = (href: string) => {
       margin-inline: auto;
     }
 
+    .tp-mobile-primary-link {
+      display: flex;
+      min-height: 3.4rem;
+      align-items: center;
+      border: 1px solid rgba(190, 158, 88, 0.4);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      background: rgba(190, 158, 88, 0.08);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 760;
+    }
+
     .tp-mobile-group {
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.11);
@@ -1084,7 +1091,7 @@ const active = (href: string) => {
       font-weight: 760;
     }
 
-    .tp-mobile-actions a:nth-child(2) {
+    .tp-mobile-actions a:nth-child(3) {
       border-color: #be9e58;
       background: #be9e58;
       color: #10202b;

@@ -1,1484 +1,463 @@
 ---
 import { cmsAttrs, cmsText } from '../../cms/content';
 
-type HeroSlide = {
-  id: string;
-  base: string;
-  width: number;
-  height: number;
-  desktopPosition: string;
-  mobilePosition: string;
-  duration: number;
-  zoom: 'in' | 'out';
-};
-
-const heroSlides: HeroSlide[] = [
+const trustPoints = [
   {
-    id: 'consultant-window',
-    base: 'consultant-window',
-    width: 1024,
-    height: 1536,
-    desktopPosition: '62% 42%',
-    mobilePosition: '61% 38%',
-    duration: 8400,
-    zoom: 'in',
+    key: 'home.hero.trust.interlocutors',
+    note: 'Un point de contact identifié',
   },
   {
-    id: 'walking-corridor',
-    base: 'walking-corridor',
-    width: 1440,
-    height: 1080,
-    desktopPosition: '56% 50%',
-    mobilePosition: '55% 44%',
-    duration: 8000,
-    zoom: 'out',
+    key: 'home.hero.trust.secured_missions',
+    note: 'Contrat et protection sociale',
   },
   {
-    id: 'conversation-corridor',
-    base: 'conversation-corridor',
-    width: 1440,
-    height: 1080,
-    desktopPosition: '43% 50%',
-    mobilePosition: '42% 42%',
-    duration: 8200,
-    zoom: 'in',
+    key: 'home.hero.trust.employee_framework',
+    note: 'Clients, missions et TJM restent les vôtres',
   },
   {
-    id: 'consultant-window-full',
-    base: 'consultant-window-full',
-    width: 1024,
-    height: 1536,
-    desktopPosition: '47% 46%',
-    mobilePosition: '47% 43%',
-    duration: 8600,
-    zoom: 'out',
+    key: 'home.hero.trust.it_expertise',
+    note: 'Cyber, data, cloud, produit et agilité',
   },
 ];
-
-const mobileOrder = [
-  'consultant-window',
-  'consultant-window-full',
-  'walking-corridor',
-  'conversation-corridor',
-];
-
-const featureCards = [
-  { id: 'contact', key: 'home.hero.trust.interlocutors', label: cmsText('home.hero.trust.interlocutors') },
-  { id: 'missions', key: 'home.hero.trust.secured_missions', label: cmsText('home.hero.trust.secured_missions') },
-  { id: 'status', key: 'home.hero.trust.employee_framework', label: cmsText('home.hero.trust.employee_framework') },
-  { id: 'expertise', key: 'home.hero.trust.it_expertise', label: cmsText('home.hero.trust.it_expertise') },
-];
-
-const assetRoot = '/images/hero/editorial';
-const portraitWidths = [640, 1024];
-const landscapeWidths = [720, 1440];
-const sourceSet = (slide: HeroSlide, format: 'avif' | 'webp') => {
-  const widths = slide.width === 1024 ? portraitWidths : landscapeWidths;
-  return widths.map((width) => `${assetRoot}/${slide.base}-${width}.${format} ${width}w`).join(', ');
-};
-const fallbackSource = (slide: HeroSlide) => `${assetRoot}/${slide.base}-${slide.width}.webp`;
-const transparentPixel = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 ---
 
-<section
-  class="home-hero"
-  aria-labelledby="home-hero-title"
-  data-hero-root
-  data-mobile-order={mobileOrder.join(',')}
->
-  <div class="hero-shell">
-    <div class="hero-copy">
-      <p class="hero-eyebrow hero-enter hero-enter--eyebrow" {...cmsAttrs('home.hero.eyebrow')}>
-        {cmsText('home.hero.eyebrow')}
+<section class="editorial-hero" aria-labelledby="home-hero-title">
+  <div class="editorial-hero__shell">
+    <div class="editorial-hero__copy">
+      <p class="editorial-hero__eyebrow" {...cmsAttrs('home.hero.editorial.eyebrow')}>
+        {cmsText('home.hero.editorial.eyebrow')}
       </p>
 
       <h1
         id="home-hero-title"
-        class="hero-title hero-enter hero-enter--title cms-preserve-lines"
-        {...cmsAttrs('home.hero.title')}
+        class="editorial-hero__title cms-preserve-lines"
+        {...cmsAttrs('home.hero.editorial.title')}
       >
-        {cmsText('home.hero.title')}
+        {cmsText('home.hero.editorial.title')}
       </h1>
 
-      <p class="hero-subhead hero-enter hero-enter--copy" {...cmsAttrs('home.hero.description')}>
-        {cmsText('home.hero.description')}
+      <p class="editorial-hero__description" {...cmsAttrs('home.hero.editorial.description')}>
+        {cmsText('home.hero.editorial.description')}
       </p>
 
-      <div class="hero-actions hero-enter hero-enter--actions">
-        <a href="/simulateur" class="hero-action hero-action--primary">
+      <div class="editorial-hero__actions">
+        <a class="editorial-hero__action editorial-hero__action--primary" href="/simulateur">
           <span {...cmsAttrs('home.hero.primary_cta')}>{cmsText('home.hero.primary_cta')}</span>
-          <span class="hero-action__arrow" aria-hidden="true">→</span>
+          <b aria-hidden="true">→</b>
         </a>
-        <a href="/portage-salarial" class="hero-action hero-action--secondary">
-          <span {...cmsAttrs('home.hero.secondary_cta')}>{cmsText('home.hero.secondary_cta')}</span>
-          <span class="hero-action__arrow" aria-hidden="true">→</span>
-        </a>
-        <a href="/entreprises" class="hero-action hero-action--tertiary">
-          <span {...cmsAttrs('home.hero.enterprise_cta')}>{cmsText('home.hero.enterprise_cta')}</span>
-          <span class="hero-action__arrow" aria-hidden="true">→</span>
+        <a class="editorial-hero__action editorial-hero__action--secondary" href="/rendez-vous">
+          <span {...cmsAttrs('home.hero.editorial.secondary_cta')}>{cmsText('home.hero.editorial.secondary_cta')}</span>
+          <b aria-hidden="true">→</b>
         </a>
       </div>
+
+      <a class="editorial-hero__enterprise" href="/entreprises">
+        <span {...cmsAttrs('home.hero.enterprise_cta')}>{cmsText('home.hero.enterprise_cta')}</span>
+        <b aria-hidden="true">↗</b>
+      </a>
     </div>
 
-    <div class="hero-media hero-enter hero-enter--media" data-hero-media>
-      <div class="hero-media__halo" aria-hidden="true"></div>
+    <div class="editorial-hero__visual" aria-label="Les services The Porters">
+      <div class="editorial-hero__navy" aria-hidden="true"></div>
+      <div class="editorial-hero__gold-frame" aria-hidden="true"></div>
+      <figure>
+        <img
+          src="/images/hero/porters-meeting.jpg"
+          width="1132"
+          height="1389"
+          alt="Présentation des services The Porters pendant une réunion de travail"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </figure>
+      <div class="editorial-hero__service-note">
+        <span>Ce que nous prenons en charge</span>
+        <strong>Contrat · Facturation · Paie · Suivi</strong>
+      </div>
+    </div>
+  </div>
 
-      <svg class="hero-orbit" viewBox="0 0 760 720" aria-hidden="true">
-        <path id="hero-orbit-primary" d="M57 365C75 155 238 44 452 71c189 23 304 170 249 366-43 153-177 243-359 222C156 637 41 534 57 365Z" />
-        <path id="hero-orbit-secondary" d="M112 468c101 102 251 140 392 79 117-50 181-155 176-272" />
-        <circle class="hero-orbit__node hero-orbit__node--one" cx="62" cy="356" r="6" />
-        <circle class="hero-orbit__node hero-orbit__node--two" cx="684" cy="280" r="6" />
-        <circle class="hero-orbit__node hero-orbit__node--three" cx="505" cy="548" r="7" />
-        <circle class="hero-orbit__particle hero-orbit__particle--one" r="4.5">
-          <animateMotion dur="19s" begin="-5s" repeatCount="indefinite">
-            <mpath href="#hero-orbit-primary" />
-          </animateMotion>
-        </circle>
-        <circle class="hero-orbit__particle hero-orbit__particle--two" r="3.5">
-          <animateMotion dur="14s" begin="-9s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear">
-            <mpath href="#hero-orbit-secondary" />
-          </animateMotion>
-        </circle>
-      </svg>
-
-      <div class="hero-photo-frame">
-        {heroSlides.map((slide, index) => (
-          <div
-            class:list={['hero-slide', { 'is-active': index === 0 }]}
-            data-hero-slide={slide.id}
-            data-duration={slide.duration}
-            data-loaded={index === 0 ? 'true' : 'false'}
-            data-zoom={slide.zoom}
-            style={`--desktop-position:${slide.desktopPosition};--mobile-position:${slide.mobilePosition};--slide-duration:${slide.duration}ms`}
-            aria-hidden="true"
-          >
-            <picture data-hero-picture>
-              {index === 0 ? (
-                <>
-                  <source type="image/avif" srcset={sourceSet(slide, 'avif')} sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px" />
-                  <source type="image/webp" srcset={sourceSet(slide, 'webp')} sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px" />
-                </>
-              ) : (
-                <>
-                  <source type="image/avif" data-srcset={sourceSet(slide, 'avif')} sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px" />
-                  <source type="image/webp" data-srcset={sourceSet(slide, 'webp')} sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px" />
-                </>
-              )}
-              <img
-                src={index === 0 ? fallbackSource(slide) : transparentPixel}
-                srcset={index === 0 ? sourceSet(slide, 'webp') : undefined}
-                data-src={index === 0 ? undefined : fallbackSource(slide)}
-                data-srcset={index === 0 ? undefined : sourceSet(slide, 'webp')}
-                sizes="(max-width: 900px) 86vw, (max-width: 1280px) 46vw, 660px"
-                alt=""
-                width={slide.width}
-                height={slide.height}
-                loading={index === 0 ? 'eager' : 'lazy'}
-                decoding="async"
-                fetchpriority={index === 0 ? 'high' : 'low'}
-              />
-            </picture>
+  <div class="editorial-hero__trust" aria-label="Repères The Porters">
+    <div class="editorial-hero__trust-intro">
+      <span>Le cadre, sans le grand discours</span>
+      <p>Quatre repères pour comprendre la relation.</p>
+    </div>
+    <div class="editorial-hero__trust-list">
+      {trustPoints.map((point, index) => (
+        <article>
+          <span>0{index + 1}</span>
+          <div>
+            <strong {...cmsAttrs(point.key)}>{cmsText(point.key)}</strong>
+            <small>{point.note}</small>
           </div>
-        ))}
-        <div class="hero-photo-frame__wash" aria-hidden="true"></div>
-      </div>
-
-      <ul class="hero-features" aria-label="Les atouts The Porters">
-        {featureCards.map((card, index) => (
-          <li
-            class:list={['hero-feature', `hero-feature--${card.id}`]}
-            style={`--feature-delay:${360 + index * 90}ms;--float-duration:${7.4 + index * 0.7}s;--float-delay:${1.3 - index * 0.55}s`}
-            data-hero-feature={card.id}
-          >
-            <span class="hero-feature__surface">
-              <span class="hero-feature__icon" aria-hidden="true">
-                {card.id === 'contact' && (
-                  <svg viewBox="0 0 32 32">
-                    <circle cx="16" cy="10" r="5"></circle>
-                    <path d="M6.5 27c.6-6 4.1-9 9.5-9s8.9 3 9.5 9"></path>
-                    <path d="M4 13v6M28 13v6"></path>
-                  </svg>
-                )}
-                {card.id === 'missions' && (
-                  <svg viewBox="0 0 32 32">
-                    <path d="M16 3.5 26 7v8.2c0 6.4-4.1 10.9-10 13.3-5.9-2.4-10-6.9-10-13.3V7l10-3.5Z"></path>
-                    <path d="m11.2 15.8 3.1 3.1 6.7-7"></path>
-                  </svg>
-                )}
-                {card.id === 'status' && (
-                  <svg viewBox="0 0 32 32">
-                    <rect x="4" y="9" width="24" height="17" rx="3"></rect>
-                    <path d="M12 9V6.5h8V9M4 15.5c5.7 2.9 18.3 2.9 24 0M14 17h4"></path>
-                  </svg>
-                )}
-                {card.id === 'expertise' && (
-                  <svg viewBox="0 0 32 32">
-                    <path d="m16 3.5 3.6 7.3 8.1 1.2-5.9 5.7 1.4 8.1-7.2-3.9-7.2 3.9 1.4-8.1L4.3 12l8.1-1.2L16 3.5Z"></path>
-                  </svg>
-                )}
-              </span>
-              <span class="hero-feature__label" {...cmsAttrs(card.key)}>{card.label}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <div class="hero-mobile-expertise">
-        <span class="hero-mobile-expertise__line" aria-hidden="true"></span>
-        <span class="hero-mobile-expertise__icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32">
-            <path d="m16 3.5 3.6 7.3 8.1 1.2-5.9 5.7 1.4 8.1-7.2-3.9-7.2 3.9 1.4-8.1L4.3 12l8.1-1.2L16 3.5Z"></path>
-          </svg>
-        </span>
-        <span class="hero-mobile-expertise__label" {...cmsAttrs('home.hero.trust.it_expertise')}>
-          {cmsText('home.hero.trust.it_expertise')}
-        </span>
-        <span class="hero-mobile-expertise__line" aria-hidden="true"></span>
-      </div>
-
-      <div class="hero-slide-controls" role="group" aria-label="Choisir la photographie du hero">
-        {heroSlides.map((_, index) => (
-          <button
-            type="button"
-            class:list={['hero-slide-control', { 'is-active': index === 0 }]}
-            data-hero-control={index}
-            aria-label={`Afficher la photographie ${index + 1}`}
-            aria-pressed={index === 0 ? 'true' : 'false'}
-          >
-            <span aria-hidden="true"></span>
-          </button>
-        ))}
-      </div>
+        </article>
+      ))}
     </div>
   </div>
 </section>
 
-<script>
-  const setupEditorialHero = (root: HTMLElement) => {
-    const media = root.querySelector<HTMLElement>('[data-hero-media]');
-    const slides = Array.from(root.querySelectorAll<HTMLElement>('[data-hero-slide]'));
-    const controls = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-hero-control]'));
-    const featureCards = Array.from(root.querySelectorAll<HTMLElement>('[data-hero-feature]'));
-    const orbitGraphic = root.querySelector<SVGSVGElement>('.hero-orbit');
-    const mobileQuery = window.matchMedia('(max-width: 900px)');
-    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const desktopOrder = slides.map((slide) => slide.dataset.heroSlide || '');
-    const mobileOrder = (root.dataset.mobileOrder || '').split(',').filter(Boolean);
-    let order = mobileQuery.matches ? mobileOrder : desktopOrder;
-    let activeSlideId = order[0];
-    let activePosition = 0;
-    let autoplayTimer: number | undefined;
-    let transitionTimer: number | undefined;
-    let pointerFrame: number | undefined;
-    let controlsPaused = false;
-    let destroyed = false;
-    let hoveredFeature: HTMLElement | null = null;
-    const featureAnimationByCard = new Map<HTMLElement, Animation>();
-
-    type FeatureMotionSettings = {
-      duration: number;
-      delay: number;
-      points: Array<[number, number]>;
-    };
-
-    const featureMotion: Record<string, FeatureMotionSettings> = {
-      contact: {
-        duration: 13200,
-        delay: 2400,
-        points: [[0, 0], [18, -11], [32, 3], [19, 19], [-6, 12], [0, 0]],
-      },
-      missions: {
-        duration: 15700,
-        delay: 7100,
-        points: [[0, 0], [-9, -18], [9, -34], [30, -18], [22, 8], [0, 0]],
-      },
-      status: {
-        duration: 14600,
-        delay: 4600,
-        points: [[0, 0], [20, 4], [30, -13], [13, -28], [-8, -16], [0, 0]],
-      },
-      expertise: {
-        duration: 16900,
-        delay: 9200,
-        points: [[0, 0], [-19, 10], [-34, -7], [-15, -27], [12, -18], [0, 0]],
-      },
-    };
-
-    const stopFeatureMotion = () => {
-      featureAnimationByCard.forEach((animation) => animation.cancel());
-      featureAnimationByCard.clear();
-    };
-
-    const startFeatureMotion = () => {
-      stopFeatureMotion();
-      if (mobileQuery.matches || motionQuery.matches || document.visibilityState !== 'visible') return;
-
-      featureCards.forEach((card) => {
-        const id = card.dataset.heroFeature || '';
-        const settings = featureMotion[id];
-        if (!settings) return;
-        const keyframes = settings.points.map(([x, y], index) => ({
-          transform: `translate3d(${x}px, ${y}px, 0)`,
-          offset: index / (settings.points.length - 1),
-        }));
-        const animation = card.animate(keyframes, {
-          duration: settings.duration,
-          delay: -settings.delay,
-          iterations: Infinity,
-          easing: 'linear',
-        });
-        featureAnimationByCard.set(card, animation);
-      });
-    };
-
-    const setOrbitalAnimationState = (paused: boolean) => {
-      featureAnimationByCard.forEach((animation, card) => {
-        if (paused || card === hoveredFeature) animation.pause();
-        else animation.play();
-      });
-      if (paused) orbitGraphic?.pauseAnimations?.();
-      else orbitGraphic?.unpauseAnimations?.();
-    };
-
-    const resetPointerDepth = () => {
-      featureCards.forEach((card) => {
-        const surface = card.querySelector<HTMLElement>('.hero-feature__surface');
-        surface?.style.setProperty('--card-shift-x', '0px');
-        surface?.style.setProperty('--card-shift-y', '0px');
-      });
-      media?.style.setProperty('--photo-shift-x', '0px');
-      media?.style.setProperty('--photo-shift-y', '0px');
-      media?.style.setProperty('--orbit-shift-x', '0px');
-      media?.style.setProperty('--orbit-shift-y', '0px');
-    };
-
-    const pulseFeatures = () => {
-      if (motionQuery.matches) return;
-      featureCards.forEach((card, index) => {
-        const icon = card.querySelector<HTMLElement>('.hero-feature__icon');
-        icon?.animate(
-          [
-            { transform: 'scale(1)', color: 'var(--hero-navy)' },
-            { transform: 'scale(1.09)', color: '#956a18', offset: 0.45 },
-            { transform: 'scale(1)', color: 'var(--hero-navy)' },
-          ],
-          {
-            duration: 620,
-            delay: index * 55,
-            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-          },
-        );
-      });
-    };
-
-    const slideIndexForId = (id: string) => slides.findIndex((slide) => slide.dataset.heroSlide === id);
-    const slideForId = (id: string) => slides[slideIndexForId(id)];
-
-    const loadSlide = async (id: string) => {
-      const slide = slideForId(id);
-      if (!slide || slide.dataset.loaded === 'true') return;
-      const picture = slide.querySelector<HTMLPictureElement>('[data-hero-picture]');
-      const image = picture?.querySelector<HTMLImageElement>('img');
-      if (!picture || !image) return;
-
-      picture.querySelectorAll<HTMLSourceElement>('source[data-srcset]').forEach((source) => {
-        if (source.dataset.srcset) source.srcset = source.dataset.srcset;
-      });
-      if (image.dataset.srcset) image.srcset = image.dataset.srcset;
-      if (image.dataset.src) image.src = image.dataset.src;
-      slide.dataset.loaded = 'true';
-
-      try {
-        await image.decode();
-      } catch {
-        // The fallback stays in place if decoding fails; the next transition can retry naturally.
-      }
-    };
-
-    const syncControls = () => {
-      controls.forEach((control, index) => {
-        const active = index === activePosition;
-        control.classList.toggle('is-active', active);
-        control.setAttribute('aria-pressed', String(active));
-      });
-    };
-
-    const clearAutoplay = () => {
-      if (autoplayTimer) window.clearTimeout(autoplayTimer);
-      autoplayTimer = undefined;
-    };
-
-    const canAutoplay = () => (
-      !motionQuery.matches
-      && !controlsPaused
-      && document.visibilityState === 'visible'
-      && order.length > 1
-    );
-
-    const scheduleAutoplay = () => {
-      clearAutoplay();
-      if (!canAutoplay()) return;
-      const activeSlide = slideForId(activeSlideId);
-      const duration = Number(activeSlide?.dataset.duration || 8200);
-      autoplayTimer = window.setTimeout(() => {
-        void showPosition((activePosition + 1) % order.length);
-      }, duration);
-    };
-
-    const showPosition = async (position: number) => {
-      const normalizedPosition = (position + order.length) % order.length;
-      const nextId = order[normalizedPosition];
-      if (!nextId || nextId === activeSlideId || destroyed) {
-        scheduleAutoplay();
-        return;
-      }
-
-      clearAutoplay();
-      await loadSlide(nextId);
-      if (destroyed) return;
-
-      const previousSlide = slideForId(activeSlideId);
-      const nextSlide = slideForId(nextId);
-      if (!nextSlide) return;
-
-      if (transitionTimer) window.clearTimeout(transitionTimer);
-      nextSlide.classList.add('is-adjacent');
-      nextSlide.getBoundingClientRect();
-
-      previousSlide?.classList.remove('is-active');
-      previousSlide?.classList.add('is-adjacent');
-      nextSlide.classList.remove('is-adjacent');
-      nextSlide.classList.add('is-active');
-
-      activeSlideId = nextId;
-      activePosition = normalizedPosition;
-      root.dataset.activeSlide = nextId;
-      syncControls();
-      pulseFeatures();
-
-      transitionTimer = window.setTimeout(() => {
-        slides.forEach((slide) => {
-          if (slide !== nextSlide) slide.classList.remove('is-adjacent');
-        });
-      }, 1600);
-      scheduleAutoplay();
-    };
-
-    const hydrateDeferredSlides = () => {
-      order.slice(1).forEach((id, index) => {
-        window.setTimeout(() => void loadSlide(id), index * 180);
-      });
-    };
-
-    controls.forEach((control, index) => {
-      control.addEventListener('click', () => void showPosition(index));
-      control.addEventListener('pointerenter', () => {
-        controlsPaused = true;
-        clearAutoplay();
-      });
-      control.addEventListener('pointerleave', () => {
-        controlsPaused = false;
-        scheduleAutoplay();
-      });
-      control.addEventListener('focus', () => {
-        controlsPaused = true;
-        clearAutoplay();
-      });
-      control.addEventListener('blur', () => {
-        controlsPaused = false;
-        scheduleAutoplay();
-      });
-    });
-
-    featureCards.forEach((card) => {
-      card.addEventListener('pointerenter', () => {
-        hoveredFeature = card;
-        featureAnimationByCard.get(card)?.pause();
-      });
-      card.addEventListener('pointerleave', () => {
-        hoveredFeature = null;
-        if (!motionQuery.matches && document.visibilityState === 'visible') {
-          featureAnimationByCard.get(card)?.play();
-        }
-      });
-    });
-
-    media?.addEventListener('pointermove', (event) => {
-      if (mobileQuery.matches || motionQuery.matches || pointerFrame) return;
-      pointerFrame = window.requestAnimationFrame(() => {
-        pointerFrame = undefined;
-        const rect = media.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
-        const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
-        const depths = [0.9, -0.62, 0.48, -0.76];
-
-        featureCards.forEach((card, index) => {
-          const surface = card.querySelector<HTMLElement>('.hero-feature__surface');
-          const depth = depths[index] || 0.5;
-          surface?.style.setProperty('--card-shift-x', `${(x * 7 * depth).toFixed(2)}px`);
-          surface?.style.setProperty('--card-shift-y', `${(y * 5 * depth).toFixed(2)}px`);
-        });
-
-        media.style.setProperty('--photo-shift-x', `${(x * 2.5).toFixed(2)}px`);
-        media.style.setProperty('--photo-shift-y', `${(y * 2).toFixed(2)}px`);
-        media.style.setProperty('--orbit-shift-x', `${(x * -4).toFixed(2)}px`);
-        media.style.setProperty('--orbit-shift-y', `${(y * -3).toFixed(2)}px`);
-      });
-    });
-
-    media?.addEventListener('pointerleave', resetPointerDepth);
-
-    const syncResponsiveOrder = () => {
-      order = mobileQuery.matches ? mobileOrder : desktopOrder;
-      activePosition = Math.max(0, order.indexOf(activeSlideId));
-      resetPointerDepth();
-      startFeatureMotion();
-      syncControls();
-      scheduleAutoplay();
-    };
-
-    const syncVisibility = () => {
-      const hidden = document.visibilityState !== 'visible';
-      media?.classList.toggle('is-paused', hidden);
-      setOrbitalAnimationState(hidden || motionQuery.matches);
-      if (hidden) clearAutoplay();
-      else {
-        if (featureAnimationByCard.size === 0) startFeatureMotion();
-        scheduleAutoplay();
-      }
-    };
-
-    const syncMotionPreference = () => {
-      media?.classList.toggle('is-reduced-motion', motionQuery.matches);
-      resetPointerDepth();
-      startFeatureMotion();
-      setOrbitalAnimationState(motionQuery.matches || document.visibilityState !== 'visible');
-      if (motionQuery.matches) clearAutoplay();
-      else scheduleAutoplay();
-    };
-
-    mobileQuery.addEventListener('change', syncResponsiveOrder);
-    motionQuery.addEventListener('change', syncMotionPreference);
-    document.addEventListener('visibilitychange', syncVisibility);
-    window.addEventListener('pagehide', () => {
-      destroyed = true;
-      clearAutoplay();
-      if (transitionTimer) window.clearTimeout(transitionTimer);
-      if (pointerFrame) window.cancelAnimationFrame(pointerFrame);
-      stopFeatureMotion();
-    }, { once: true });
-
-    window.setTimeout(hydrateDeferredSlides, 900);
-    syncMotionPreference();
-    syncControls();
-    scheduleAutoplay();
-  };
-
-  document.querySelectorAll<HTMLElement>('[data-hero-root]').forEach(setupEditorialHero);
-</script>
-
 <style>
-  .home-hero {
-    --hero-navy: #102b3a;
-    --hero-navy-deep: #082230;
-    --hero-gold: #c79838;
-    --hero-cream: #f8f4ed;
-    position: relative;
-    overflow: clip;
-    background:
-      radial-gradient(circle at 71% 42%, rgba(255, 255, 255, 0.92), transparent 29rem),
-      linear-gradient(110deg, #fbf8f3 0%, var(--hero-cream) 62%, #f1ede6 100%);
-    color: var(--hero-navy);
+  .editorial-hero {
+    --hero-navy: #102630;
+    --hero-ink: #203440;
+    --hero-gold: #c6a45a;
+    overflow: hidden;
+    background: #f4f0e8;
+    color: var(--hero-ink);
   }
 
-  .home-hero,
-  .home-hero *,
-  .home-hero *::before,
-  .home-hero *::after {
-    box-sizing: border-box;
-  }
-
-  .hero-shell {
+  .editorial-hero__shell {
     display: grid;
-    width: min(100% - 3rem, 94rem);
-    min-height: clamp(42rem, calc(100svh - 5.75rem), 51rem);
-    grid-template-columns: minmax(0, 0.92fr) minmax(31rem, 1.08fr);
+    width: min(100% - 3rem, 96rem);
+    min-height: clamp(42rem, calc(100svh - 5.75rem), 56rem);
+    grid-template-columns: minmax(0, 0.82fr) minmax(31rem, 1.18fr);
     align-items: center;
-    gap: clamp(0.5rem, 1.6vw, 1.5rem);
+    gap: clamp(3rem, 7vw, 8rem);
     margin-inline: auto;
+    padding-block: clamp(4.5rem, 8vw, 7rem);
   }
 
-  .hero-copy {
+  .editorial-hero__copy {
     position: relative;
-    z-index: 6;
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: clamp(3.4rem, 6vh, 5.2rem) 1rem clamp(3.4rem, 6vh, 5.2rem) 0;
+    z-index: 2;
+    max-width: 42rem;
   }
 
-  .hero-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.82rem;
-    margin: 0 0 1.45rem;
-    color: #aa7b23;
-    font-size: clamp(0.67rem, 0.72vw, 0.78rem);
-    font-weight: 760;
-    letter-spacing: 0.135em;
-    line-height: 1.4;
+  .editorial-hero__eyebrow {
+    margin: 0 0 1.25rem;
+    color: #a47f34;
+    font-size: 0.68rem;
+    font-weight: 780;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
   }
 
-  .hero-eyebrow::before {
-    width: 2rem;
-    height: 1.5px;
-    flex: 0 0 auto;
-    background: currentColor;
-    content: '';
-  }
-
-  .hero-title {
-    max-width: 10.7ch;
+  .editorial-hero__title {
+    max-width: 10ch;
     margin: 0;
-    color: var(--hero-navy);
-    font-size: clamp(3.15rem, 4.25vw, 4.6rem);
-    font-weight: 650;
-    letter-spacing: -0.052em;
-    line-height: 0.97;
-    text-wrap: initial;
+    color: var(--hero-ink);
+    font-family: "Newsreader", "Iowan Old Style", "Baskerville", Georgia, serif;
+    font-size: clamp(4.25rem, 7vw, 7.6rem);
+    font-weight: 480;
+    letter-spacing: -0.065em;
+    line-height: 0.83;
+    text-wrap: balance;
+    white-space: pre-line;
   }
 
-  .hero-subhead {
-    max-width: 38rem;
-    margin: 1.45rem 0 0;
-    color: rgba(16, 43, 58, 0.63);
-    font-size: clamp(0.96rem, 1.12vw, 1.08rem);
-    line-height: 1.65;
+  .editorial-hero__title::after {
+    display: block;
+    width: min(10rem, 34%);
+    height: 2px;
+    margin-top: 1.65rem;
+    background: var(--hero-gold);
+    content: "";
   }
 
-  .hero-actions {
+  .editorial-hero__description {
+    max-width: 39rem;
+    margin: 1.55rem 0 0;
+    color: rgba(32, 52, 64, 0.68);
+    font-size: clamp(0.95rem, 1.25vw, 1.1rem);
+    line-height: 1.72;
+  }
+
+  .editorial-hero__actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.72rem;
-    margin-top: 1.75rem;
+    gap: 0.7rem;
+    margin-top: 2rem;
   }
 
-  .hero-action {
+  .editorial-hero__action {
     display: inline-flex;
-    min-height: 3.35rem;
+    min-height: 3.25rem;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.85rem;
+    border: 1px solid rgba(32, 52, 64, 0.2);
     border-radius: 999px;
-    padding: 0.15rem 1.35rem;
-    color: var(--hero-navy);
-    font-size: 0.82rem;
-    font-weight: 760;
-    line-height: 1.2;
-    transition:
-      transform 240ms var(--ease-soft),
-      color 180ms ease,
-      background 180ms ease,
-      border-color 180ms ease,
-      box-shadow 240ms ease;
+    padding: 0.85rem 1.35rem;
+    color: var(--hero-ink);
+    font-size: 0.76rem;
+    font-weight: 780;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 220ms var(--ease-soft);
   }
 
-  .hero-action__arrow {
-    font-size: 1.1rem;
-    line-height: 1;
-    transition: transform 200ms var(--ease-soft);
+  .editorial-hero__action--primary {
+    border-color: var(--hero-gold);
+    background: var(--hero-gold);
   }
 
-  .hero-action:hover,
-  .hero-action:focus-visible {
+  .editorial-hero__action:hover,
+  .editorial-hero__action:focus-visible {
+    border-color: var(--hero-navy);
+    background: var(--hero-navy);
+    color: #fff;
     transform: translateY(-2px);
   }
 
-  .hero-action:hover .hero-action__arrow,
-  .hero-action:focus-visible .hero-action__arrow {
-    transform: translateX(4px);
+  .editorial-hero__action b,
+  .editorial-hero__enterprise b {
+    transition: transform 180ms ease;
   }
 
-  .hero-action--primary {
-    border: 1px solid var(--hero-gold);
-    background: var(--hero-navy);
-    box-shadow: 0 16px 34px rgba(8, 34, 48, 0.18);
-    color: #fff;
+  .editorial-hero__action:hover b,
+  .editorial-hero__enterprise:hover b {
+    transform: translateX(0.2rem);
   }
 
-  .hero-action--primary:hover,
-  .hero-action--primary:focus-visible {
-    background: var(--hero-navy-deep);
-    box-shadow: 0 20px 38px rgba(8, 34, 48, 0.24);
-    color: #fff;
+  .editorial-hero__enterprise {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1.25rem;
+    color: rgba(32, 52, 64, 0.72);
+    font-size: 0.72rem;
+    font-weight: 730;
   }
 
-  .hero-action--secondary {
-    border: 1px solid rgba(170, 123, 35, 0.52);
-    background: rgba(255, 255, 255, 0.2);
+  .editorial-hero__enterprise:hover {
+    color: var(--hero-ink);
   }
 
-  .hero-action--secondary:hover,
-  .hero-action--secondary:focus-visible {
-    border-color: rgba(170, 123, 35, 0.9);
-    background: rgba(255, 255, 255, 0.72);
-    color: var(--hero-navy);
-  }
-
-  .hero-action--tertiary {
+  .editorial-hero__visual {
     position: relative;
-    min-height: 2.6rem;
-    justify-content: flex-start;
-    border-radius: 0;
-    padding: 0.15rem 0;
-    color: rgba(16, 43, 58, 0.78);
-  }
-
-  .hero-action--tertiary::after {
-    position: absolute;
-    right: 2rem;
-    bottom: 0.25rem;
-    left: 0;
-    height: 1px;
-    background: rgba(199, 152, 56, 0.55);
-    content: '';
-    transition: right 220ms var(--ease-soft), background 180ms ease;
-  }
-
-  .hero-action--tertiary:hover,
-  .hero-action--tertiary:focus-visible {
-    color: var(--hero-navy);
-  }
-
-  .hero-action--tertiary:hover::after,
-  .hero-action--tertiary:focus-visible::after {
-    right: 0;
-    background: var(--hero-gold);
-  }
-
-  .hero-media {
-    position: relative;
-    min-width: 0;
-    height: clamp(40rem, calc(100svh - 7rem), 48rem);
-    min-height: 40rem;
-    max-height: 48rem;
+    min-height: clamp(33rem, 48vw, 45rem);
     isolation: isolate;
   }
 
-  .hero-media__halo {
+  .editorial-hero__navy {
     position: absolute;
+    top: 3%;
+    right: -20vw;
+    bottom: 5%;
+    left: 13%;
     z-index: -2;
-    top: 9%;
+    background: var(--hero-navy);
+  }
+
+  .editorial-hero__gold-frame {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    bottom: 15%;
     left: 3%;
-    width: 84%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 58% 42%, rgba(255, 255, 255, 0.92) 0 25%, rgba(219, 217, 211, 0.42) 58%, rgba(219, 217, 211, 0) 74%);
-    filter: blur(0.2px);
+    z-index: -1;
+    border: 1px solid rgba(198, 164, 90, 0.72);
   }
 
-  .hero-photo-frame {
+  .editorial-hero__visual figure {
     position: absolute;
-    z-index: 1;
-    top: 4.5%;
-    right: 2.5%;
-    width: 76%;
-    height: 91%;
+    inset: 8% 8% 0 12%;
+    margin: 0;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.65);
-    border-radius: 45% 45% 36% 38% / 24% 24% 18% 20%;
-    background: #e7e4de;
-    box-shadow:
-      0 34px 78px rgba(30, 44, 51, 0.15),
-      inset 0 0 0 1px rgba(255, 255, 255, 0.26);
-    transform: translate3d(var(--photo-shift-x, 0px), var(--photo-shift-y, 0px), 0);
-    transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+    background: #d8d3c8;
+    box-shadow: 0 30px 70px rgba(16, 38, 48, 0.24);
   }
 
-  .hero-photo-frame__wash {
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    background:
-      linear-gradient(90deg, rgba(248, 244, 237, 0.14), transparent 24%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 35%, rgba(16, 43, 58, 0.04));
-    pointer-events: none;
-  }
-
-  .hero-slide {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 1450ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 1500ms;
-  }
-
-  .hero-slide.is-adjacent,
-  .hero-slide.is-active {
-    visibility: visible;
-    transition: opacity 1450ms cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
-  }
-
-  .hero-slide.is-adjacent {
-    z-index: 1;
-  }
-
-  .hero-slide.is-active {
-    z-index: 2;
-    opacity: 1;
-  }
-
-  .hero-slide picture,
-  .hero-slide img {
-    display: block;
+  .editorial-hero__visual img {
     width: 100%;
     height: 100%;
-  }
-
-  .hero-slide img {
     object-fit: cover;
-    object-position: var(--desktop-position);
-    transform: scale(1.015);
-    will-change: transform;
+    object-position: 50% 43%;
+    transition: transform 900ms var(--ease-soft);
   }
 
-  .hero-slide.is-active[data-zoom='in'] img {
-    animation: hero-zoom-in var(--slide-duration) cubic-bezier(0.2, 0.5, 0.3, 1) both;
+  .editorial-hero__visual:hover img {
+    transform: scale(1.018);
   }
 
-  .hero-slide.is-active[data-zoom='out'] img {
-    animation: hero-zoom-out var(--slide-duration) cubic-bezier(0.2, 0.5, 0.3, 1) both;
-  }
-
-  .hero-orbit {
+  .editorial-hero__service-note {
     position: absolute;
+    right: 0;
+    bottom: 8%;
     z-index: 2;
-    inset: 5% -3% 2% -4%;
-    width: 107%;
-    height: 93%;
-    overflow: visible;
-    fill: none;
-    pointer-events: none;
-    transform: translate3d(var(--orbit-shift-x, 0px), var(--orbit-shift-y, 0px), 0);
-    transition: transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .hero-orbit path {
-    stroke: rgba(199, 152, 56, 0.5);
-    stroke-width: 1.15;
-  }
-
-  .hero-orbit__node {
-    fill: #fffaf0;
-    stroke: rgba(199, 152, 56, 0.74);
-    stroke-width: 2;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: hero-node-pulse 4.8s ease-in-out infinite;
-  }
-
-  .hero-orbit__node--two { animation-delay: -1.8s; }
-  .hero-orbit__node--three { animation-delay: -3.1s; }
-
-  .hero-orbit__particle {
-    fill: #c79838;
-    stroke: rgba(255, 253, 249, 0.92);
-    stroke-width: 2;
-    filter: drop-shadow(0 0 5px rgba(199, 152, 56, 0.58));
-  }
-
-  .hero-orbit__particle--two {
-    fill: #fffaf0;
-    stroke: rgba(199, 152, 56, 0.82);
-  }
-
-  .hero-features {
-    position: absolute;
-    inset: 0;
-    z-index: 5;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    pointer-events: none;
-  }
-
-  .hero-feature {
-    position: absolute;
-    width: clamp(11.5rem, 15vw, 14rem);
-    color: var(--hero-navy);
-    pointer-events: auto;
-    will-change: transform;
-  }
-
-  .hero-feature__surface {
-    --card-shift-x: 0px;
-    --card-shift-y: 0px;
-    --card-lift: 0px;
-    display: flex;
-    width: 100%;
-    min-height: 5rem;
-    align-items: center;
-    gap: 0.88rem;
-    border: 1px solid rgba(190, 158, 88, 0.26);
-    border-radius: 1.1rem;
-    padding: 0.85rem 1rem;
-    background: rgba(255, 253, 249, 0.93);
-    box-shadow: 0 18px 38px rgba(19, 39, 50, 0.13);
-    backdrop-filter: blur(12px);
-    transform: translate3d(var(--card-shift-x), var(--card-shift-y), 0) translateY(var(--card-lift));
-    transition:
-      transform 180ms var(--ease-soft),
-      border-color 180ms ease,
-      box-shadow 240ms ease,
-      background 180ms ease;
-    animation: hero-feature-surface-enter 680ms var(--ease-soft) var(--feature-delay) backwards;
-  }
-
-  .hero-feature:hover .hero-feature__surface {
-    --card-lift: -4px;
-    border-color: rgba(190, 158, 88, 0.54);
-    background: rgba(255, 254, 251, 0.98);
-    box-shadow: 0 23px 44px rgba(19, 39, 50, 0.17);
-  }
-
-  .hero-feature__icon {
     display: grid;
-    width: 2.65rem;
-    height: 2.65rem;
-    flex: 0 0 auto;
-    place-items: center;
-    border-radius: 0.8rem;
-    background: rgba(190, 158, 88, 0.09);
-    color: var(--hero-navy);
-    transition: background 180ms ease, color 180ms ease;
+    width: min(21rem, 70%);
+    gap: 0.42rem;
+    border-left: 3px solid var(--hero-gold);
+    padding: 1rem 1.2rem;
+    background: rgba(244, 240, 232, 0.96);
+    box-shadow: 0 16px 34px rgba(16, 38, 48, 0.13);
   }
 
-  .hero-feature:hover .hero-feature__icon {
-    background: rgba(190, 158, 88, 0.16);
-    color: #956a18;
+  .editorial-hero__service-note span {
+    color: #a47f34;
+    font-size: 0.54rem;
+    font-weight: 780;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
   }
 
-  .hero-feature__icon svg {
-    width: 1.8rem;
-    height: 1.8rem;
-    fill: none;
-    stroke: currentColor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.6;
+  .editorial-hero__service-note strong {
+    color: var(--hero-ink);
+    font-size: 0.78rem;
+    line-height: 1.4;
   }
 
-  .hero-feature__label {
-    max-width: 8.2rem;
-    font-size: 0.85rem;
-    font-weight: 720;
-    line-height: 1.25;
-  }
-
-  .hero-feature--contact {
-    top: 13%;
-    left: 0;
-  }
-
-  .hero-feature--missions {
-    bottom: 24%;
-    left: -2%;
-  }
-
-  .hero-feature--status {
-    right: 31%;
-    bottom: 4%;
-  }
-
-  .hero-feature--expertise {
-    right: -1.5%;
-    bottom: 22%;
-  }
-
-  .hero-slide-controls {
-    position: absolute;
-    z-index: 7;
-    right: 6.5%;
-    bottom: 1.7%;
-    display: flex;
-    min-height: 2.75rem;
-    align-items: center;
-    gap: 0.35rem;
-    border-radius: 999px;
-    padding: 0.45rem 0.55rem;
-    background: rgba(255, 253, 249, 0.8);
-    box-shadow: 0 10px 25px rgba(19, 39, 50, 0.08);
-    backdrop-filter: blur(9px);
-  }
-
-  .hero-slide-control {
+  .editorial-hero__trust {
     display: grid;
-    width: 2.75rem;
-    height: 2.75rem;
-    place-items: center;
-    border: 0;
-    border-radius: 50%;
-    background: transparent;
-    cursor: pointer;
+    grid-template-columns: minmax(14rem, 0.32fr) minmax(0, 1fr);
+    border-top: 1px solid rgba(32, 52, 64, 0.11);
+    background: #fff;
   }
 
-  .hero-slide-control span {
+  .editorial-hero__trust-intro {
+    display: grid;
+    align-content: center;
+    padding: 1.6rem clamp(1.5rem, 4vw, 4rem);
+    border-right: 1px solid rgba(32, 52, 64, 0.11);
+    text-align: right;
+  }
+
+  .editorial-hero__trust-intro span {
+    color: var(--hero-ink);
+    font-size: 0.72rem;
+    font-weight: 760;
+  }
+
+  .editorial-hero__trust-intro p {
+    margin: 0.35rem 0 0;
+    color: rgba(32, 52, 64, 0.52);
+    font-size: 0.68rem;
+    line-height: 1.45;
+  }
+
+  .editorial-hero__trust-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .editorial-hero__trust-list article {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.72rem;
+    padding: 1.45rem 1.2rem;
+    border-right: 1px solid rgba(32, 52, 64, 0.08);
+  }
+
+  .editorial-hero__trust-list article > span {
+    color: #b79245;
+    font: 700 0.55rem/1 var(--font-mono);
+  }
+
+  .editorial-hero__trust-list strong,
+  .editorial-hero__trust-list small {
     display: block;
-    width: 0.42rem;
-    height: 0.42rem;
-    border-radius: 50%;
-    background: rgba(16, 43, 58, 0.3);
-    transition: width 220ms var(--ease-soft), background 180ms ease;
   }
 
-  .hero-slide-control:hover span,
-  .hero-slide-control:focus-visible span {
-    background: rgba(16, 43, 58, 0.62);
+  .editorial-hero__trust-list strong {
+    color: var(--hero-ink);
+    font-size: 0.72rem;
   }
 
-  .hero-slide-control.is-active span {
-    width: 1.1rem;
-    border-radius: 999px;
-    background: var(--hero-gold);
+  .editorial-hero__trust-list small {
+    margin-top: 0.22rem;
+    color: rgba(32, 52, 64, 0.48);
+    font-size: 0.61rem;
+    line-height: 1.35;
   }
 
-  .hero-mobile-expertise {
-    display: none;
-  }
-
-  .hero-enter {
-    opacity: 0;
-    animation: hero-enter 720ms var(--ease-soft) both;
-  }
-
-  .hero-enter--eyebrow { animation-delay: 40ms; }
-  .hero-enter--title { animation-delay: 110ms; }
-  .hero-enter--copy { animation-delay: 200ms; }
-  .hero-enter--actions { animation-delay: 280ms; }
-  .hero-enter--media {
-    animation-name: hero-media-enter;
-    animation-delay: 170ms;
-    animation-duration: 820ms;
-  }
-
-  .hero-media.is-paused .hero-slide img,
-  .hero-media.is-paused .hero-feature,
-  .hero-media.is-paused .hero-feature__surface,
-  .hero-media.is-paused .hero-orbit__node {
-    animation-play-state: paused !important;
-  }
-
-  @keyframes hero-enter {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes hero-media-enter {
-    from { opacity: 0; transform: translateY(10px) scale(0.975); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  @keyframes hero-feature-surface-enter {
-    from { opacity: 0; filter: blur(3px); }
-    to { opacity: 1; filter: blur(0); }
-  }
-
-  @keyframes hero-feature-float {
-    0%, 100% { translate: 0 0; }
-    50% { translate: 0 -6px; }
-  }
-
-  @keyframes hero-node-pulse {
-    0%, 100% { opacity: 0.58; transform: scale(0.86); }
-    50% { opacity: 1; transform: scale(1.18); }
-  }
-
-  @keyframes hero-zoom-in {
-    from { transform: scale(1.015); }
-    to { transform: scale(1.06); }
-  }
-
-  @keyframes hero-zoom-out {
-    from { transform: scale(1.06); }
-    to { transform: scale(1.018); }
-  }
-
-  @media (min-width: 1440px) {
-    .hero-shell {
-      grid-template-columns: minmax(0, 0.9fr) minmax(38rem, 1.1fr);
+  @media (max-width: 1080px) {
+    .editorial-hero__shell {
+      grid-template-columns: minmax(0, 0.9fr) minmax(25rem, 1.1fr);
+      gap: 2.5rem;
     }
 
-    .hero-copy {
-      padding-left: 0.75rem;
+    .editorial-hero__title {
+      font-size: clamp(3.8rem, 7.5vw, 6.4rem);
+    }
+
+    .editorial-hero__trust {
+      grid-template-columns: 1fr;
+    }
+
+    .editorial-hero__trust-intro {
+      display: none;
     }
   }
 
-  @media (max-width: 1180px) and (min-width: 901px) {
-    .hero-shell {
-      width: min(100% - 2.25rem, 94rem);
-      min-height: 42rem;
-      grid-template-columns: minmax(0, 0.95fr) minmax(29rem, 1.05fr);
-    }
-
-    .hero-title {
-      font-size: clamp(2.9rem, 4.3vw, 3.7rem);
-    }
-
-    .hero-subhead {
-      font-size: 0.93rem;
-    }
-
-    .hero-media {
-      height: 41rem;
-      min-height: 41rem;
-    }
-
-    .hero-feature {
-      width: 11.2rem;
-    }
-
-    .hero-feature__surface {
-      min-height: 4.55rem;
-      padding: 0.72rem 0.82rem;
-    }
-
-    .hero-feature__icon {
-      width: 2.35rem;
-      height: 2.35rem;
-    }
-
-    .hero-feature__label {
-      font-size: 0.76rem;
-    }
-  }
-
-  @media (max-width: 900px) {
-    .home-hero {
-      background:
-        radial-gradient(circle at 48% 76%, rgba(255, 255, 255, 0.94), transparent 19rem),
-        linear-gradient(150deg, #fbf8f3, #f5f0e8 68%, #eeeae4);
-    }
-
-    .hero-shell {
-      display: block;
-      width: min(100% - 2rem, 44rem);
+  @media (max-width: 800px) {
+    .editorial-hero__shell {
+      grid-template-columns: 1fr;
       min-height: 0;
-      padding: 3rem 0 2.2rem;
+      gap: 3.25rem;
+      padding-block: 4.5rem 3rem;
     }
 
-    .hero-copy {
-      align-items: stretch;
-      padding: 0;
+    .editorial-hero__copy {
+      max-width: 44rem;
     }
 
-    .hero-eyebrow {
-      margin-bottom: 1.2rem;
-      font-size: 0.64rem;
-      letter-spacing: 0.115em;
+    .editorial-hero__title {
+      max-width: 11ch;
+      font-size: clamp(3.8rem, 15vw, 6rem);
     }
 
-    .hero-eyebrow::before {
-      width: 1.7rem;
+    .editorial-hero__visual {
+      min-height: clamp(31rem, 110vw, 42rem);
     }
 
-    .hero-title {
-      max-width: 13ch;
-      font-size: clamp(2.55rem, 9.8vw, 4rem);
-      line-height: 1.02;
+    .editorial-hero__navy {
+      right: -10vw;
+      left: 10%;
     }
 
-    .hero-subhead {
-      max-width: 39rem;
-      margin-top: 1.25rem;
-      font-size: clamp(0.98rem, 3.2vw, 1.18rem);
-      line-height: 1.58;
-    }
-
-    .hero-actions {
-      display: grid;
-      gap: 0.7rem;
-      margin-top: 1.55rem;
-    }
-
-    .hero-action {
-      width: min(100%, 24rem);
-      min-height: 3.75rem;
-      justify-content: space-between;
-      padding-inline: 1.45rem;
-      font-size: 0.94rem;
-    }
-
-    .hero-action--tertiary {
-      width: max-content;
-      min-height: 3.25rem;
-      padding-inline: 0;
-    }
-
-    .hero-media {
-      height: clamp(31rem, 121vw, 41rem);
-      min-height: 31rem;
-      max-height: 41rem;
-      margin-top: 1.75rem;
-    }
-
-    .hero-media__halo {
-      top: 7%;
-      left: 4%;
-      width: 92%;
-    }
-
-    .hero-photo-frame {
-      top: 4%;
-      right: 7%;
-      width: 86%;
-      height: calc(100% - 5.8rem);
-      border-radius: 25% 25% 22% 22% / 15% 15% 13% 13%;
-    }
-
-    .hero-slide img {
-      object-position: var(--mobile-position);
-    }
-
-    .hero-orbit {
-      inset: 3% -2% 12% -2%;
-      width: 104%;
-      height: 86%;
-    }
-
-    .hero-orbit path:nth-of-type(2),
-    .hero-orbit__node--two,
-    .hero-orbit__particle--two {
-      display: none;
-    }
-
-    .hero-feature {
-      width: clamp(9.6rem, 42vw, 12rem);
-      animation: hero-feature-float var(--float-duration) ease-in-out var(--float-delay) infinite;
-    }
-
-    .hero-feature__surface {
-      min-height: 4.6rem;
-      gap: 0.65rem;
-      border-radius: 0.95rem;
-      padding: 0.68rem 0.72rem;
-    }
-
-    .hero-feature__icon {
-      width: 2.25rem;
-      height: 2.25rem;
-      border-radius: 0.7rem;
-    }
-
-    .hero-feature__icon svg {
-      width: 1.55rem;
-      height: 1.55rem;
-    }
-
-    .hero-feature__label {
-      max-width: 6.8rem;
-      font-size: clamp(0.66rem, 2.2vw, 0.78rem);
-    }
-
-    .hero-feature--contact {
-      top: 0;
-      left: 0;
-    }
-
-    .hero-feature--missions {
-      bottom: 34%;
-      left: 0;
-    }
-
-    .hero-feature--status {
-      right: 0;
-      bottom: 15%;
-    }
-
-    .hero-feature--expertise {
-      display: none;
-    }
-
-    .hero-mobile-expertise {
-      position: absolute;
-      right: 2%;
-      bottom: 0;
-      left: 2%;
-      display: grid;
-      grid-template-columns: minmax(2rem, 1fr) auto minmax(2rem, 1fr);
-      grid-template-rows: auto auto;
-      align-items: center;
-      gap: 0.25rem 0.75rem;
-      color: rgba(16, 43, 58, 0.68);
-      text-align: center;
-    }
-
-    .hero-mobile-expertise__line {
-      height: 1px;
-      background:
-        radial-gradient(circle at 50% 50%, #fff 0 3px, transparent 4px),
-        repeating-linear-gradient(90deg, rgba(199, 152, 56, 0.75) 0 2px, transparent 2px 6px);
-    }
-
-    .hero-mobile-expertise__icon {
-      display: grid;
-      width: 2.7rem;
-      height: 2.7rem;
-      grid-column: 2;
-      place-items: center;
-      color: #aa7b23;
-    }
-
-    .hero-mobile-expertise__icon svg {
-      width: 2.3rem;
-      height: 2.3rem;
-      fill: none;
-      stroke: currentColor;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 1.5;
-    }
-
-    .hero-mobile-expertise__label {
-      grid-column: 1 / -1;
-      font-size: 0.82rem;
-      font-weight: 720;
-    }
-
-    .hero-slide-controls {
-      right: auto;
-      bottom: 4.3rem;
-      left: 50%;
-      min-height: 2.6rem;
-      padding-block: 0.35rem;
-      transform: translateX(-50%);
+    .editorial-hero__trust-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (max-width: 520px) {
-    .hero-shell {
-      width: min(100% - 1.5rem, 44rem);
-      padding-top: 2.35rem;
+    .editorial-hero__shell {
+      width: min(100% - 2rem, 96rem);
+      padding-top: 3.6rem;
     }
 
-    .hero-title {
-      font-size: clamp(2.25rem, 11.4vw, 3.25rem);
-      letter-spacing: -0.045em;
+    .editorial-hero__title {
+      font-size: clamp(3.25rem, 17vw, 4.65rem);
     }
 
-    .hero-subhead {
-      font-size: 0.98rem;
+    .editorial-hero__actions {
+      display: grid;
     }
 
-    .hero-action {
+    .editorial-hero__action {
       width: 100%;
-      min-height: 3.65rem;
     }
 
-    .hero-action--tertiary {
-      width: max-content;
+    .editorial-hero__visual {
+      min-height: 30rem;
     }
 
-    .hero-media {
-      height: clamp(29rem, 128vw, 35rem);
-      min-height: 29rem;
-      margin-top: 1.45rem;
+    .editorial-hero__visual figure {
+      inset: 6% 4% 0 9%;
     }
 
-    .hero-photo-frame {
-      right: 6%;
-      width: 88%;
-      height: calc(100% - 5.5rem);
+    .editorial-hero__service-note {
+      right: -0.25rem;
+      width: 82%;
     }
 
-    .hero-feature--missions {
-      bottom: 35%;
+    .editorial-hero__trust-list {
+      grid-template-columns: 1fr;
     }
 
-    .hero-feature--status {
-      bottom: 16%;
-    }
-
-    .hero-slide-controls {
-      bottom: 4rem;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .hero-eyebrow {
-      align-items: flex-start;
-      font-size: 0.59rem;
-    }
-
-    .hero-eyebrow::before {
-      margin-top: 0.4rem;
-    }
-
-    .hero-title {
-      font-size: clamp(2.15rem, 11.5vw, 2.6rem);
-    }
-
-    .hero-feature {
-      width: 9.45rem;
-    }
-
-    .hero-feature__surface {
-      min-height: 4.25rem;
-      padding: 0.6rem;
-    }
-
-    .hero-feature__icon {
-      width: 2rem;
-      height: 2rem;
-    }
-
-    .hero-feature__label {
-      font-size: 0.64rem;
-    }
-  }
-
-  @media (hover: none) {
-    .hero-feature:hover .hero-feature__surface {
-      --card-lift: 0px;
+    .editorial-hero__trust-list article {
+      border-bottom: 1px solid rgba(32, 52, 64, 0.08);
+      padding-inline: 1rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .home-hero *,
-    .home-hero *::before,
-    .home-hero *::after {
-      scroll-behavior: auto !important;
-    }
-
-    .hero-enter,
-    .hero-feature,
-    .hero-feature__surface,
-    .hero-orbit__node,
-    .hero-slide.is-active img {
-      animation: none !important;
-    }
-
-    .hero-enter {
-      opacity: 1;
-      transform: none;
-    }
-
-    .hero-slide {
-      transition-duration: 80ms;
-    }
-
-    .hero-feature {
-      translate: none;
-      transform: none !important;
-    }
-
-    .hero-feature__surface {
-      --card-shift-x: 0px;
-      --card-shift-y: 0px;
-      --card-lift: 0px;
+    .editorial-hero__visual img,
+    .editorial-hero__action,
+    .editorial-hero__action b,
+    .editorial-hero__enterprise b {
+      transition: none;
     }
   }
 </style>

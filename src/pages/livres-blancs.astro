@@ -1,81 +1,100 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import SiteIcon from '../components/ui/SiteIcon.astro';
 import { resources } from '../data/resources.data';
+import { resourceGuides } from '../data/resource-guides.data';
 import { pageSeo } from '../data/seo.data';
 
-const getTypeLabel = (type: string) => {
-  switch (type) {
-    case 'guide': return 'Guide pratique';
-    case 'livre-blanc': return 'Livre blanc';
-    case 'checklist': return 'Checklist';
-    default: return 'Ressource';
-  }
-};
-
-const getTypeIcon = (type: string) => {
-  switch (type) {
-    case 'guide': return 'document';
-    case 'livre-blanc': return 'chart';
-    case 'checklist': return 'check';
-    default: return 'spark';
-  }
-};
+const labels = new Map(resourceGuides.map((guide) => [guide.slug, guide.label]));
 ---
 
-<PageLayout
-  seo={pageSeo.livresBlancs}
-  breadcrumbs={[{ label: 'Livres blancs' }]}
->
-  <section class="section pt-8 lg:pt-16 pb-20">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16 reveal">
-        <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Guides pratiques</p>
-        <h1 class="mb-4">Des ressources pour <span class="gold-underline">décider avec méthode</span></h1>
-        <p class="text-porters-black/60 max-w-2xl mx-auto text-lg">
-          Comparez les statuts, préparez votre démarrage et identifiez les questions à poser avant de contractualiser.
-        </p>
-      </div>
+<PageLayout seo={pageSeo.livresBlancs} breadcrumbs={[{ label: 'Livres blancs' }]}>
+  <section class="resources-hero">
+    <div class="resources-shell">
+      <p>Guides The Porters</p>
+      <h1>Lire avant de choisir.</h1>
+      <strong>
+        Des contenus tirés de notre documentation métier pour comprendre le portage, comparer les cadres et préparer une mission.
+      </strong>
+    </div>
+  </section>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {resources.map((resource) => (
-          <div class="card p-0 overflow-hidden flex flex-col group reveal">
-            <div class="aspect-[4/3] relative flex items-center justify-center overflow-hidden border-b border-porters-navy/5 bg-[radial-gradient(circle_at_22%_18%,rgba(214,180,90,0.22),transparent_32%),linear-gradient(135deg,rgba(25,43,99,0.1),rgba(250,248,243,0.92))]">
-              <div class="absolute inset-x-8 bottom-8 h-px bg-porters-navy/12"></div>
-              <div class="absolute right-8 top-8 h-20 w-20 rounded-full border border-porters-gold/30"></div>
-              <div class="icon-chip h-16 w-16 bg-porters-white/80 text-porters-navy shadow-[0_18px_40px_rgba(25,43,99,0.12)]">
-                <SiteIcon name={getTypeIcon(resource.type)} class="h-7 w-7" />
-              </div>
-              <div class="absolute top-4 left-4">
-                <span class="rounded-full bg-porters-navy px-3 py-1 text-xs font-semibold uppercase tracking-wider text-porters-white">
-                  {getTypeLabel(resource.type)}
-                </span>
-              </div>
+  <section class="resources-library" aria-labelledby="resources-library-title">
+    <div class="resources-shell">
+      <header class="resources-heading reveal">
+        <p>La bibliothèque</p>
+        <h2 id="resources-library-title">Trois lectures.<br />Trois décisions concrètes.</h2>
+      </header>
+
+      <div class="resources-list">
+        {resources.map((resource, index) => (
+          <article class="resource-row reveal">
+            <div class="resource-row__index">0{index + 1}</div>
+            <div class="resource-row__copy">
+              <span>{labels.get(resource.slug) ?? 'Ressource'}</span>
+              <h3>{resource.title}</h3>
+              <p>{resource.description}</p>
             </div>
-            <div class="p-6 lg:p-8 flex-1 flex flex-col">
-              <h2 class="text-xl font-heading font-semibold text-porters-navy mb-3 group-hover:text-porters-gold transition-colors leading-snug">
-                {resource.title}
-              </h2>
-              <p class="text-sm text-porters-black/60 mb-6 flex-1">
-                {resource.description}
-              </p>
-              <a href={resource.downloadUrl || '/contact'} class="btn btn-secondary w-full text-center">
-                {resource.downloadUrl ? 'Télécharger' : 'Demander la ressource'}
-              </a>
-            </div>
-          </div>
+            <a href={`/livres-blancs/${resource.slug}`}>
+              Lire la ressource
+              <b aria-hidden="true">→</b>
+            </a>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="bg-porters-navy py-16">
-    <div class="container mx-auto px-6 lg:px-8 text-center reveal">
-      <h2 class="text-porters-white mb-4">Recevez les prochains guides utiles à votre activité</h2>
-      <p class="text-porters-white/60 max-w-xl mx-auto mb-8">
-        Dites-nous les sujets que vous souhaitez approfondir. Nous vous orienterons vers les ressources disponibles.
-      </p>
-      <a href="/contact" class="btn btn-gold">Être informé des prochains guides</a>
+  <section class="resources-method">
+    <div class="resources-shell resources-method__grid reveal">
+      <div>
+        <p>Notre parti pris</p>
+        <h2>Assez d’information pour décider. Pas une brochure de plus.</h2>
+      </div>
+      <div>
+        <p>
+          Chaque guide sépare les faits, les questions à poser et les points qui dépendent de votre situation. Les chiffres et règles susceptibles d’évoluer ne sont pas présentés comme des vérités permanentes.
+        </p>
+        <a href="/rendez-vous">Parler de votre situation <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </section>
 </PageLayout>
+
+<style>
+  .resources-shell{width:min(100% - 3rem,82rem);margin-inline:auto}
+  .resources-hero{padding-block:clamp(5rem,10vw,9rem);background:#102630;color:#fff}
+  .resources-hero p,.resources-heading>p,.resources-method__grid>div:first-child>p{margin:0 0 1rem;color:#d0ae5e;font-size:.66rem;font-weight:780;letter-spacing:.16em;text-transform:uppercase}
+  .resources-hero h1{max-width:10ch;margin:0;color:#fff;font-family:"Newsreader","Iowan Old Style",Georgia,serif;font-size:clamp(4rem,9vw,8.5rem);font-weight:480;letter-spacing:-.06em;line-height:.9}
+  .resources-hero strong{display:block;max-width:42rem;margin-top:1.8rem;color:rgba(255,255,255,.62);font-size:clamp(.98rem,1.5vw,1.18rem);font-weight:480;line-height:1.72}
+  .resources-library{padding-block:clamp(5rem,9vw,8rem);background:#f7f4ed}
+  .resources-heading{max-width:48rem;margin-bottom:3.5rem}
+  .resources-heading h2{margin:0;color:#203440;font-size:clamp(2.5rem,5.2vw,5rem);letter-spacing:-.055em;line-height:.98}
+  .resources-list{border-top:1px solid rgba(32,52,64,.16)}
+  .resource-row{display:grid;grid-template-columns:4rem minmax(0,1fr) auto;align-items:center;gap:clamp(1.2rem,4vw,4rem);padding:2rem .4rem;border-bottom:1px solid rgba(32,52,64,.16);transition:background .2s ease,padding .28s var(--ease-soft)}
+  .resource-row:hover{padding-inline:1.1rem;background:rgba(255,255,255,.54)}
+  .resource-row__index{color:#b79245;font:700 .68rem/1 var(--font-mono)}
+  .resource-row__copy span{color:#a47f34;font-size:.58rem;font-weight:760;letter-spacing:.14em;text-transform:uppercase}
+  .resource-row__copy h3{margin:.42rem 0 .55rem;color:#203440;font-size:clamp(1.35rem,2vw,1.9rem)}
+  .resource-row__copy p{max-width:46rem;margin:0;color:rgba(32,52,64,.58);font-size:.82rem;line-height:1.65}
+  .resource-row>a{display:inline-flex;align-items:center;gap:.75rem;border:1px solid rgba(32,52,64,.18);border-radius:999px;padding:.78rem 1rem;color:#203440;font-size:.7rem;font-weight:760;white-space:nowrap;transition:background .2s ease,color .2s ease,border-color .2s ease}
+  .resource-row>a:hover{border-color:#203440;background:#203440;color:#fff}
+  .resource-row>a b{color:#b79245}
+  .resources-method{padding-block:clamp(4rem,8vw,7rem);background:#fff}
+  .resources-method__grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(18rem,.65fr);gap:clamp(3rem,9vw,9rem);align-items:start}
+  .resources-method h2{max-width:15ch;margin:0;color:#203440;font-size:clamp(2.2rem,4vw,4rem);line-height:1.02;letter-spacing:-.045em}
+  .resources-method__grid>div:last-child>p{margin:0;color:rgba(32,52,64,.62);font-size:.92rem;line-height:1.75}
+  .resources-method a{display:inline-flex;align-items:center;gap:.65rem;margin-top:1.4rem;color:#203440;font-size:.76rem;font-weight:760}
+  .resources-method a span{color:#b79245}
+  @media(max-width:760px){
+    .resource-row{grid-template-columns:2.3rem 1fr}
+    .resource-row>a{grid-column:2;justify-self:start}
+    .resources-method__grid{grid-template-columns:1fr}
+  }
+  @media(max-width:520px){
+    .resources-shell{width:min(100% - 2rem,82rem)}
+    .resources-hero h1{font-size:clamp(3.6rem,20vw,5.4rem)}
+    .resource-row{grid-template-columns:1fr;gap:.8rem}
+    .resource-row__index{display:none}
+    .resource-row>a{grid-column:1}
+  }
+</style>

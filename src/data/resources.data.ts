@@ -13,7 +13,7 @@ export const resources: Resource[] = [
     seo: {
       title: 'Guide complet du portage salarial — The Porters',
       description:
-        'Téléchargez notre guide complet du portage salarial. Fonctionnement, avantages, obligations et étapes pour démarrer votre activité indépendante.',
+        'Consultez le guide The Porters : relation tripartite, contrats, démarrage, suivi de mission, facturation et paie.',
     },
   },
   {
@@ -28,7 +28,7 @@ export const resources: Resource[] = [
     seo: {
       title: 'Comparatif des statuts freelances — The Porters',
       description:
-        'Micro-entreprise, SASU, EURL ou portage salarial ? Téléchargez notre comparatif complet des statuts pour freelances et choisissez le plus adapté.',
+        'Comparez portage salarial, micro-entreprise et société selon l’autonomie, la protection, la gestion et le modèle de coûts.',
     },
   },
   {
@@ -43,7 +43,7 @@ export const resources: Resource[] = [
     seo: {
       title: 'Checklist pour démarrer en portage salarial — The Porters',
       description:
-        'Téléchargez notre checklist pour démarrer en portage salarial. Toutes les étapes essentielles pour lancer votre activité de consultant indépendant.',
+        'Mission, TJM, documents, contrats et suivi : la checklist des points à clarifier avant de démarrer en portage salarial.',
     },
   },
 ];
