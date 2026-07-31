@@ -14,32 +14,6 @@ type NavItem = {
   links: NavLink[];
 };
 
-const leftNav: NavItem[] = [
-  {
-    id: 'portage',
-    label: 'Le portage salarial',
-    href: '/portage-salarial',
-    description: 'Le cadre, votre quotidien, les frais et les réponses utiles.',
-    links: [
-      { label: 'Comment ça marche', href: '/portage-salarial', note: 'Cadre, contrats, paie' },
-      { label: 'Votre quotidien', href: '/consultants', note: 'De l’entrée à la sortie' },
-      { label: 'Frais et rémunération', href: '/tarifs', note: 'Services et simulation' },
-      { label: 'Questions fréquentes', href: '/faq', note: 'Réponses pratiques' },
-    ],
-  },
-  {
-    id: 'enterprises',
-    label: 'Entreprises',
-    href: '/entreprises',
-    description: 'Cadrage du besoin, sélection des profils et suivi de mission.',
-    links: [
-      { label: 'Trouver un expert IT', href: '/entreprises', note: 'Notre méthode de sélection' },
-      { label: 'Voir les expertises', href: '/expertises', note: 'Cyber, data, cloud, agilité' },
-      { label: 'Nous contacter', href: '/contact', note: 'Décrire le contexte' },
-    ],
-  },
-];
-
 const rightNav: NavItem[] = [
   {
     id: 'group',
@@ -55,7 +29,7 @@ const rightNav: NavItem[] = [
   },
 ];
 
-const mobileNav = [...leftNav, ...rightNav];
+const mobileNav = rightNav;
 
 const currentPath = Astro.url.pathname;
 const active = (href: string) => {
@@ -68,37 +42,8 @@ const active = (href: string) => {
   <div class="tp-header-glow" aria-hidden="true"></div>
   <div class="tp-header-inner">
     <nav class="tp-desktop-nav tp-desktop-nav--left" aria-label="Navigation principale gauche" data-cms-ignore>
-      {leftNav.map((item) => (
-        <div class:list={['tp-nav-item', `tp-nav-item--${item.id}`, { 'is-active': active(item.href) }]} data-popover>
-          <a href={item.href} class="tp-nav-link">{item.label}</a>
-          <button
-            class="tp-nav-toggle"
-            type="button"
-            aria-label={`Afficher ${item.label}`}
-            aria-controls={`tp-nav-popover-${item.id}`}
-            aria-expanded="false"
-          >
-            <span aria-hidden="true">⌄</span>
-          </button>
-          <div class="tp-nav-popover" id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
-            <div class="tp-popover-intro">
-              <span>{item.label}</span>
-              <p>{item.description}</p>
-            </div>
-            <div class="tp-popover-links">
-              {item.links.map((link) => (
-                <a href={link.href}>
-                  <span>
-                    <strong>{link.label}</strong>
-                    {link.note && <small>{link.note}</small>}
-                  </span>
-                  <b aria-hidden="true">↗</b>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      ))}
+      <a href="/portage-salarial" class:list={['tp-nav-direct', { 'is-active': active('/portage-salarial') }]}>Le portage salarial</a>
+      <a href="/entreprises" class:list={['tp-nav-direct', { 'is-active': active('/entreprises') }]}>Entreprises</a>
     </nav>
 
     <a href="/" class="tp-header-brand" aria-label="The Porters - Accueil">
@@ -185,6 +130,8 @@ const active = (href: string) => {
         </details>
       ))}
       <div class="tp-mobile-actions">
+        <a href="/portage-salarial">Le portage salarial</a>
+        <a href="/entreprises">Entreprises</a>
         <a href="/expertises">Expertises</a>
         <a href="/simulateur">Simuler mes revenus</a>
         <a href="/rendez-vous">Prendre rendez-vous</a>

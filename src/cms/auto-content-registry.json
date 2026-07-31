@@ -7499,17 +7499,17 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.button.nviywh",
-    "route": "/entreprises",
-    "type": "button",
-    "content": "Voir les expertises",
-    "rich": true
-  },
-  {
     "key": "pages.entreprises.auto.button.wvc156",
     "route": "/entreprises",
     "type": "button",
     "content": "Décrire mon besoin",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.heading.18887lb",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Analyse du parcours réel",
     "rich": true
   },
   {
@@ -7541,17 +7541,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.1rmt09f",
+    "key": "pages.entreprises.auto.heading.1p7xi8r",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Deux entretiens structurés",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.heading.1sn4x2t",
-    "route": "/entreprises",
-    "type": "heading",
-    "content": "Analyse du parcours réel",
+    "content": "Validation finale",
     "rich": true
   },
   {
@@ -7590,17 +7583,17 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.7rpgmw",
+    "key": "pages.entreprises.auto.heading.dhkzgx",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Évaluation sur référentiels métiers",
+    "content": "Deux entretiens structurés",
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.gvzeax",
+    "key": "pages.entreprises.auto.heading.gaybpc",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Validation finale",
+    "content": "Tests ou mise en situation",
     "rich": true
   },
   {
@@ -7611,6 +7604,13 @@
     "rich": true
   },
   {
+    "key": "pages.entreprises.auto.heading.orbn4u",
+    "route": "/entreprises",
+    "type": "heading",
+    "content": "Évaluation sur référentiels métiers",
+    "rich": true
+  },
+  {
     "key": "pages.entreprises.auto.heading.pf0mxl",
     "route": "/entreprises",
     "type": "heading",
@@ -7618,45 +7618,38 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.pob586",
-    "route": "/entreprises",
-    "type": "heading",
-    "content": "Tests ou mise en situation",
-    "rich": true
-  },
-  {
     "key": "pages.entreprises.auto.list_item.1ixew7h",
     "route": "/entreprises",
     "type": "list_item",
-    "content": "<span class=\"font-mono text-xs text-porters-gold\">02</span>Organisation en place",
+    "content": "<span class=\"font-mono text-xs text-porters-gold\" data-astro-cid-5bmr6dtb=\"\">02</span>Organisation en place",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.list_item.1r7j96c",
     "route": "/entreprises",
     "type": "list_item",
-    "content": "<span class=\"font-mono text-xs text-porters-gold\">03</span>Calendrier réel",
+    "content": "<span class=\"font-mono text-xs text-porters-gold\" data-astro-cid-5bmr6dtb=\"\">03</span>Calendrier réel",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.list_item.51gteu",
     "route": "/entreprises",
     "type": "list_item",
-    "content": "<span class=\"font-mono text-xs text-porters-gold\">01</span>Environnement technique",
+    "content": "<span class=\"font-mono text-xs text-porters-gold\" data-astro-cid-5bmr6dtb=\"\">01</span>Environnement technique",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.list_item.katmi2",
     "route": "/entreprises",
     "type": "list_item",
-    "content": "<span class=\"font-mono text-xs text-porters-gold\">05</span>Contraintes de sécurité",
+    "content": "<span class=\"font-mono text-xs text-porters-gold\" data-astro-cid-5bmr6dtb=\"\">05</span>Contraintes de sécurité",
     "rich": true
   },
   {
     "key": "pages.entreprises.auto.list_item.pa623",
     "route": "/entreprises",
     "type": "list_item",
-    "content": "<span class=\"font-mono text-xs text-porters-gold\">04</span>Niveau d’autonomie",
+    "content": "<span class=\"font-mono text-xs text-porters-gold\" data-astro-cid-5bmr6dtb=\"\">04</span>Niveau d’autonomie",
     "rich": true
   },
   {
@@ -7664,13 +7657,6 @@
     "route": "/entreprises",
     "type": "paragraph",
     "content": "Entreprises",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.15kwctg",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Validation interne, puis transmission d’un profil anonymisé avec compétences et disponibilité.",
     "rich": true
   },
   {
@@ -7688,10 +7674,38 @@
     "rich": true
   },
   {
+    "key": "pages.entreprises.auto.paragraph.17zohpy",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Validation finale",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.18ennje",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Missions réalisées, environnements pratiqués et responsabilités assumées — au-delà des mots-clés du CV.",
+    "rich": true
+  },
+  {
     "key": "pages.entreprises.auto.paragraph.1a3d85b",
     "route": "/entreprises",
     "type": "paragraph",
     "content": "The Porters met en place le contrat de prestation et porte le cadre salarial, la facturation et la paie.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1aii1dg",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Étape 01",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1blshtr",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Évaluation sur référentiels métiers",
     "rich": true
   },
   {
@@ -7702,10 +7716,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.1dl8w0r",
+    "key": "pages.entreprises.auto.paragraph.1bu6m6p",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "CIGREF, SYNTEC et ROME servent de grille commune pour situer le métier et le niveau d’expertise.",
+    "content": "Étape 02",
     "rich": true
   },
   {
@@ -7716,10 +7730,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.1gx6eeu",
+    "key": "pages.entreprises.auto.paragraph.1fv5fb7",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Un entretien RH et un entretien technique structurés rendent les profils comparables.",
+    "content": "Tests techniques, questionnaire métier ou étude de cas selon le périmètre. Disponibilité vérifiée.",
     "rich": true
   },
   {
@@ -7737,10 +7751,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.1n6rins",
+    "key": "pages.entreprises.auto.paragraph.1npg9ih",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Missions réalisées, environnements pratiqués et responsabilités assumées — au-delà des mots-clés du CV.",
+    "content": "Tests ou mise en situation",
     "rich": true
   },
   {
@@ -7751,6 +7765,20 @@
     "rich": true
   },
   {
+    "key": "pages.entreprises.auto.paragraph.1o7rqhj",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Étape 04",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1oeg3k2",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Analyse du parcours réel",
+    "rich": true
+  },
+  {
     "key": "pages.entreprises.auto.paragraph.1rvb5sc",
     "route": "/entreprises",
     "type": "paragraph",
@@ -7758,10 +7786,31 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.d84s1l",
+    "key": "pages.entreprises.auto.paragraph.1wigg75",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Tests techniques, questionnaire métier ou étude de cas selon le périmètre. Disponibilité vérifiée.",
+    "content": "CIGREF, SYNTEC et ROME servent de grille commune pour situer le métier et le niveau d’expertise.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.8nrvg2",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Étape 03",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.bbhqpq",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Validation interne, puis transmission d’un profil anonymisé avec compétences et disponibilité.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.bzxqss",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Un entretien RH et un entretien technique structurés rendent les profils comparables.",
     "rich": true
   },
   {
@@ -7776,6 +7825,20 @@
     "route": "/entreprises",
     "type": "paragraph",
     "content": "The Big Porters cadre le besoin, source et évalue les profils, puis suit la mission.",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.idkfko",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Étape 05",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.ii2rw4",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Deux entretiens structurés",
     "rich": true
   },
   {
@@ -7810,7 +7873,7 @@
     "key": "pages.entreprises.auto.paragraph.qwjkxi",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Parcours réel, référentiels CIGREF, SYNTEC et ROME, entretiens structurés, mise en situation si nécessaire, puis validation finale.",
+    "content": "Un même parcours pour rendre les profils comparables. Sélectionnez une étape pour voir ce que nous vérifions.",
     "rich": true
   },
   {
@@ -10999,94 +11062,87 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.button.1q7brq",
-    "route": "/",
-    "type": "button",
-    "content": "Le portage salarial est-il reconnu légalement ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.button.8nt9e9",
-    "route": "/",
-    "type": "button",
-    "content": "Comment fonctionne le portage salarial ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.button.r4z8ro",
-    "route": "/",
-    "type": "button",
-    "content": "Quels métiers IT peuvent être portés ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.button.ybah6f",
+    "key": "pages.home.auto.button.1518vu2",
     "route": "/",
     "type": "button",
     "content": "Y a-t-il un portage pour les salariés et un autre pour les freelances ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.11iireq",
+    "key": "pages.home.auto.button.1x3km95",
     "route": "/",
-    "type": "paragraph",
-    "content": "Avis publié sur Google",
+    "type": "button",
+    "content": "Quels métiers IT peuvent être portés ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.14oo7jr",
+    "key": "pages.home.auto.button.br0k1o",
     "route": "/",
-    "type": "paragraph",
-    "content": "Non. Il n’existe qu’un seul portage salarial. Que vous veniez d’un CDI, d’une micro-entreprise ou d’une SASU, le mécanisme est identique : un contrat de travail avec nous, un contrat de prestation avec votre client. Ce qui change, c’est votre point de départ, pas le dispositif.",
+    "type": "button",
+    "content": "Comment fonctionne le portage salarial ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1bsfshd",
+    "key": "pages.home.auto.button.y89i57",
     "route": "/",
-    "type": "paragraph",
-    "content": "Trois acteurs et deux contrats. Vous trouvez et réalisez votre mission ; l’entreprise cliente signe un contrat de prestation avec The Porters ; The Porters vous salarie et transforme votre chiffre d’affaires en salaire. Vous gardez votre autonomie commerciale et bénéficiez du statut de salarié.",
+    "type": "button",
+    "content": "Le portage salarial est-il reconnu légalement ?<span aria-hidden=\"true\" data-astro-cid-lcdefpme=\"\">+</span>",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1qqbd32",
+    "key": "pages.home.auto.paragraph.16t4hk9",
     "route": "/",
     "type": "paragraph",
     "content": "Safrana Chloé",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1yuk2er",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Avis publié sur Google",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.4yf6wm",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Consulter les avis vérifiés",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.5awpwx",
+    "key": "pages.home.auto.paragraph.1bgetsm",
     "route": "/",
     "type": "paragraph",
     "content": "Yoann Deroux",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.dot6nf",
+    "key": "pages.home.auto.paragraph.1oiw3d2",
     "route": "/",
     "type": "paragraph",
-    "content": "Mylène Pernin",
+    "content": "Non. Il n’existe qu’un seul portage salarial. Que vous veniez d’un CDI, d’une micro-entreprise ou d’une SASU, le mécanisme est identique : un contrat de travail avec nous, un contrat de prestation avec votre client. Ce qui change, c’est votre point de départ, pas le dispositif.",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.liov5m",
+    "key": "pages.home.auto.paragraph.1te9ygs",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Avis publié sur Google",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.5uo77x",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Consulter les avis vérifiés",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.8peni1",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Toutes les prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT, AMOA et conseil. Seules les professions réglementées et les services à la personne sont exclus.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.9b2ihv",
     "route": "/",
     "type": "paragraph",
     "content": "Oui. Il est encadré par le Code du travail, par l’accord national interprofessionnel de 2008 et par l’ordonnance du 2 avril 2015. Ce cadre définit les droits et obligations du salarié porté, de l’entreprise cliente et de la société de portage.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.q2a4ud",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Avis publié sur Google",
     "rich": true
   },
   {
@@ -11097,45 +11153,52 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.r1wk9g",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Avis publié sur Google",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.paragraph.savtlp",
+    "key": "pages.home.auto.paragraph.qzu6ee",
     "route": "/",
     "type": "paragraph",
     "content": "Avis Google",
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.tsdxns",
+    "key": "pages.home.auto.paragraph.rim4ik",
     "route": "/",
     "type": "paragraph",
-    "content": "Toutes les prestations intellectuelles : cybersécurité, développement, DevOps, cloud, data engineering, IA, Product Ownership, Scrum Master, coaching agile, chefferie de projet IT, AMOA et conseil. Seules les professions réglementées et les services à la personne sont exclus.",
+    "content": "Mylène Pernin",
     "rich": true
   },
   {
-    "key": "pages.home.auto.quote.13k7xyo",
+    "key": "pages.home.auto.paragraph.s2lxe8",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Trois acteurs et deux contrats. Vous trouvez et réalisez votre mission ; l’entreprise cliente signe un contrat de prestation avec The Porters ; The Porters vous salarie et transforme votre chiffre d’affaires en salaire. Vous gardez votre autonomie commerciale et bénéficiez du statut de salarié.",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.paragraph.x266uz",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Avis publié sur Google",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.quote.evzsht",
     "route": "/",
     "type": "quote",
     "content": "« Contact réactif, agréable et disponible pour accompagner les échanges. »",
     "rich": true
   },
   {
-    "key": "pages.home.auto.quote.1uon9rt",
-    "route": "/",
-    "type": "quote",
-    "content": "« Une équipe engagée, claire et toujours disponible pour le portage salarial. »",
-    "rich": true
-  },
-  {
-    "key": "pages.home.auto.quote.stoxja",
+    "key": "pages.home.auto.quote.roxvnn",
     "route": "/",
     "type": "quote",
     "content": "« Un accompagnement exemplaire sur le coaching, le suivi et la partie administrative. »",
+    "rich": true
+  },
+  {
+    "key": "pages.home.auto.quote.tbna0o",
+    "route": "/",
+    "type": "quote",
+    "content": "« Une équipe engagée, claire et toujours disponible pour le portage salarial. »",
     "rich": true
   },
   {
@@ -11653,7 +11716,7 @@
     "key": "pages.portage-salarial.auto.button.nviywh",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Voir mon quotidien",
+    "content": "Voir le mécanisme <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">↓</span>",
     "rich": true
   },
   {
@@ -11664,17 +11727,17 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.heading.1d2q4ar",
+    "key": "pages.portage-salarial.auto.heading.122ujdb",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Votre autonomie",
+    "content": "Vous gardez la mission",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.heading.1hlyx01",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Votre mission est prête ? Chiffrons le cadre.",
+    "content": "Voyez ce que votre TJM donne en net.",
     "rich": true
   },
   {
@@ -11685,38 +11748,31 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.heading.1ot5ix6",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Quel cadre correspond à votre projet ?",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.heading.1xptkyn",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "L’autonomie d’un indépendant, le cadre d’un salarié",
+    "content": "Vous exercez votre métier. Nous tenons le cadre.",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.heading.21pzto",
+    "key": "pages.portage-salarial.auto.heading.irt5ms",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Votre trésorerie",
+    "content": "Une vision du portage, au plus près des talents",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.heading.337a1u",
+    "key": "pages.portage-salarial.auto.heading.op6xj4",
     "route": "/portage-salarial",
     "type": "heading",
-    "content": "Votre protection sociale",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.heading.hvgsqf",
-    "route": "/portage-salarial",
-    "type": "heading",
-    "content": "Les quatre réponses utiles avant de choisir",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.heading.ite7s5",
-    "route": "/portage-salarial",
-    "type": "heading",
-    "content": "Votre gestion déléguée",
+    "content": "Un interlocuteur vous suit",
     "rich": true
   },
   {
@@ -11727,31 +11783,38 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.10jyyfr",
+    "key": "pages.portage-salarial.auto.heading.vw0zme",
     "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Qui signe quoi ?",
+    "type": "heading",
+    "content": "Vous devenez salarié",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.wsfrw1",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Nous gérons le cadre",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.10n12s0",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Le portage salarial",
+    "content": "Comprendre le portage",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.12l1omt",
+    "key": "pages.portage-salarial.auto.paragraph.1264m40",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "En pratique",
+    "content": "Contrat, facturation, paie et déclarations.",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1356vpz",
+    "key": "pages.portage-salarial.auto.paragraph.13i353e",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "The Porters facture votre client. Après déduction des frais de gestion, des cotisations et des éléments applicables à votre situation, le solde finance votre rémunération.",
+    "content": "Vous trouvez vos clients, négociez votre TJM et pilotez votre intervention.",
     "rich": true
   },
   {
@@ -11762,45 +11825,31 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1bx0ylt",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Relation tripartite",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1cr4qj0",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Contrat de prestation, facturation, paie et déclarations passent chez The Porters.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1e907ml",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Ce que chacun garde",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1f0st6w",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Contrats, facturation, paie et déclarations sociales sont pris en charge.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1fimf85",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Contrat, facturation, paie et déclarations.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1g76fpl",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Contrat de travail",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1gxy5zr",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Un compte dédié peut servir à lisser une paie, financer des congés ou préparer une fin de contrat.",
+    "content": "La répartition est simple",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.paragraph.1hkia6c",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Le portage salarial relie le consultant, l’entreprise cliente et The Porters. Vous pilotez la mission. Nous portons le cadre salarial, contractuel et administratif.",
+    "content": "Vous réalisez la mission pour l’entreprise cliente. The Porters signe le contrat de prestation, vous emploie et prend en charge le cadre administratif.",
     "rich": true
   },
   {
@@ -11811,73 +11860,94 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1jr00fc",
+    "key": "pages.portage-salarial.auto.paragraph.1kwu0ui",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Comment mon chiffre d’affaires devient-il un salaire ?",
+    "content": "Survolez un acteur ou un contrat pour le détailler.",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1owcl2t",
+    "key": "pages.portage-salarial.auto.paragraph.1nzigs2",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Puis-je travailler en France ou à l’étranger ?",
+    "content": "Choisir son cadre",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1qkqvv5",
+    "key": "pages.portage-salarial.auto.paragraph.1o517vj",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Convention de mission",
+    "content": "Le mot du président",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1r4pit8",
+    "key": "pages.portage-salarial.auto.paragraph.1qe1js9",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "The Porters",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1r69p7u",
+    "key": "pages.portage-salarial.auto.paragraph.1sc6k5p",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Contrat de prestation",
+    "content": "Conditions négociées entre eux",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1swbgh4",
+    "key": "pages.portage-salarial.auto.paragraph.1u917wj",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Oui. La mission peut être réalisée en France ou à l’étranger, pour un client français ou étranger, sur site ou à distance.",
+    "content": "La même équipe répond sur le contrat, l’activité déclarée et la rémunération.",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.1uksmll",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Aux professionnels autonomes qui réalisent des prestations intellectuelles et négocient eux-mêmes leurs missions. Les professions réglementées et les services à la personne en sont exclus.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.41a61h",
+    "key": "pages.portage-salarial.auto.paragraph.1vh6do0",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Le consultant",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.cnhf9n",
+    "key": "pages.portage-salarial.auto.paragraph.1ygc6qv",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Mission réalisée",
+    "content": "Contrat de prestation",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.ejw44j",
+    "key": "pages.portage-salarial.auto.paragraph.1z017i4",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Une première estimation, puis un conseiller reprend les hypothèses avec vous.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.7hnjwa",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "L'entreprise cliente",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.9dblg4",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Convention de mission",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.ax0q6x",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Un contrat de travail vous rattache au régime général et au cadre collectif applicable.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.eg8hd2",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Mission réalisée",
     "rich": true
   },
   {
@@ -11888,45 +11958,17 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.fboy7h",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Régime général, prévoyance, retraite, congés payés, assurance chômage et mutuelle collective.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.fd8gzb",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Survolez un acteur ou un contrat pour le détailler.",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.fnd9mk",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Trouve ses missions et réalise ses prestations.",
-    "rich": true
-  },
-  {
     "key": "pages.portage-salarial.auto.paragraph.ko6uzh",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Le dispositif est encadré par le Code du travail, l’accord national interprofessionnel de 2008 et l’ordonnance du 2 avril 2015.",
+    "content": "Le portage salarial est une relation tripartite encadrée par le Code du travail et la convention collective de branche.",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.luxh7e",
+    "key": "pages.portage-salarial.auto.paragraph.n2bnuj",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "À qui s’adresse le portage salarial ?",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.pbbxno",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Relation tripartite",
+    "content": "Bénéficie de l'expertise, dans un cadre sécurisé.",
     "rich": true
   },
   {
@@ -11937,28 +11979,21 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.tnykua",
+    "key": "pages.portage-salarial.auto.paragraph.x07lm1",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Bénéficie de l'expertise, dans un cadre sécurisé.",
+    "content": "Trouve ses missions et réalise ses prestations.",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.uw4yti",
+    "key": "pages.portage-salarial.auto.paragraph.x8z63d",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Vous choisissez vos missions, négociez votre TJM et organisez votre intervention.",
+    "content": "Trois façons d’exercer en autonomie. La différence se joue surtout dans le statut et dans la gestion.",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.wvxuoo",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Conditions négociées entre eux",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.x2g9ia",
+    "key": "pages.portage-salarial.auto.paragraph.xpv10b",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "CDI ou CDD",
@@ -11968,14 +12003,14 @@
     "key": "pages.portage-salarial.auto.paragraph.xxeyen",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Partez de votre TJM et de vos jours facturés pour obtenir une première estimation.",
+    "content": "Votre prochaine étape",
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.y9gi6i",
+    "key": "pages.portage-salarial.auto.paragraph.y2vwrs",
     "route": "/portage-salarial",
     "type": "paragraph",
-    "content": "Vous signez un contrat de travail avec The Porters. L’entreprise cliente signe un contrat de prestation avec The Porters. Vous conservez la relation opérationnelle avec le client.",
+    "content": "Contrat de travail",
     "rich": true
   },
   {

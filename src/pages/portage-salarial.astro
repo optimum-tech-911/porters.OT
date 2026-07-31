@@ -1,5 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import PresidentVideo from '../components/ui/PresidentVideo.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import TripartiteDiagram from '../components/ui/TripartiteDiagram.astro';
 import { pageSeo } from '../data/seo.data';
@@ -7,43 +8,51 @@ import portageHeroImage from '../../images/advisor-discussion.webp';
 
 const benefits = [
   {
-    icon: 'rocket',
-    title: 'Votre autonomie',
-    description: 'Vous choisissez vos missions, négociez votre TJM et organisez votre intervention.',
+    icon: 'rocket' as const,
+    title: 'Vous gardez la mission',
+    description: 'Vous trouvez vos clients, négociez votre TJM et pilotez votre intervention.',
   },
   {
-    icon: 'shield',
-    title: 'Votre protection sociale',
-    description: 'Régime général, prévoyance, retraite, congés payés, assurance chômage et mutuelle collective.',
+    icon: 'shield' as const,
+    title: 'Vous devenez salarié',
+    description: 'Un contrat de travail vous rattache au régime général et au cadre collectif applicable.',
   },
   {
-    icon: 'clipboard',
-    title: 'Votre gestion déléguée',
-    description: 'Contrats, facturation, paie et déclarations sociales sont pris en charge.',
+    icon: 'clipboard' as const,
+    title: 'Nous gérons le cadre',
+    description: 'Contrat de prestation, facturation, paie et déclarations passent chez The Porters.',
   },
   {
-    icon: 'calculator',
-    title: 'Votre trésorerie',
-    description: 'Un compte dédié peut servir à lisser une paie, financer des congés ou préparer une fin de contrat.',
+    icon: 'user' as const,
+    title: 'Un interlocuteur vous suit',
+    description: 'La même équipe répond sur le contrat, l’activité déclarée et la rémunération.',
   },
-] as const;
+];
 
-const faqItems = [
+const comparisonRows = [
   {
-    question: 'À qui s’adresse le portage salarial ?',
-    answer: 'Aux professionnels autonomes qui réalisent des prestations intellectuelles et négocient eux-mêmes leurs missions. Les professions réglementées et les services à la personne en sont exclus.',
+    criterion: 'Autonomie commerciale',
+    portage: 'Vous choisissez vos missions et votre TJM',
+    micro: 'Vous choisissez vos missions et vos tarifs',
+    company: 'Vous choisissez vos missions et vos tarifs',
   },
   {
-    question: 'Qui signe quoi ?',
-    answer: 'Vous signez un contrat de travail avec The Porters. L’entreprise cliente signe un contrat de prestation avec The Porters. Vous conservez la relation opérationnelle avec le client.',
+    criterion: 'Protection sociale',
+    portage: 'Statut salarié',
+    micro: 'Régime du travailleur indépendant',
+    company: 'Selon le statut du dirigeant',
   },
   {
-    question: 'Comment mon chiffre d’affaires devient-il un salaire ?',
-    answer: 'The Porters facture votre client. Après déduction des frais de gestion, des cotisations et des éléments applicables à votre situation, le solde finance votre rémunération.',
+    criterion: 'Administration',
+    portage: 'Déléguée à The Porters',
+    micro: 'Gérée par vous',
+    company: 'Gérée par la société',
   },
   {
-    question: 'Puis-je travailler en France ou à l’étranger ?',
-    answer: 'Oui. La mission peut être réalisée en France ou à l’étranger, pour un client français ou étranger, sur site ou à distance.',
+    criterion: 'Facturation et rémunération',
+    portage: 'The Porters facture et établit la paie',
+    micro: 'Vous facturez votre client',
+    company: 'La société facture et organise la rémunération',
   },
 ];
 ---
@@ -66,7 +75,7 @@ const faqItems = [
     <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,43,99,0.97)_0%,rgba(25,43,99,0.88)_46%,rgba(25,43,99,0.3)_100%)]"></div>
     <div class="container relative mx-auto px-6 py-24 lg:px-8 lg:py-32">
       <div class="max-w-2xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Le portage salarial</p>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Comprendre le portage</p>
         <h1 class="text-porters-white">Libre dans la mission. Salarié dans le cadre.</h1>
         <p class="mt-6 max-w-xl text-lg leading-relaxed text-porters-white/80">
           Vous trouvez vos clients et négociez votre TJM. The Porters met en place les contrats,
@@ -74,28 +83,33 @@ const faqItems = [
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
           <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
-          <a href="/consultants" class="btn btn-white">Voir mon quotidien</a>
+          <a href="#fonctionnement" class="portage-anchor">Voir le mécanisme <span aria-hidden="true">↓</span></a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section bg-white">
+  <section class="section bg-white" id="fonctionnement">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(18rem,0.55fr)] lg:items-center">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
         <div class="reveal">
           <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Le mécanisme</p>
           <h2>Trois acteurs. Deux contrats. Une mission.</h2>
           <p class="mt-5 text-lg leading-relaxed text-porters-black/70">
-            Le portage salarial relie le consultant, l’entreprise cliente et The Porters. Vous pilotez
-            la mission. Nous portons le cadre salarial, contractuel et administratif.
+            Vous réalisez la mission pour l’entreprise cliente. The Porters signe le contrat de prestation,
+            vous emploie et prend en charge le cadre administratif.
           </p>
-          <p class="text-porters-black/65">
-            Le dispositif est encadré par le Code du travail, l’accord national interprofessionnel de 2008
-            et l’ordonnance du 2&nbsp;avril&nbsp;2015.
+          <p class="mb-0 text-porters-black/62">
+            Le portage salarial est une relation tripartite encadrée par le Code du travail et la convention
+            collective de branche.
           </p>
         </div>
-        <div class="reveal"><TripartiteDiagram /></div>
+        <div class="reveal">
+          <PresidentVideo />
+        </div>
+        <div class="min-w-0 lg:col-span-2 reveal">
+          <TripartiteDiagram />
+        </div>
       </div>
     </div>
   </section>
@@ -103,15 +117,18 @@ const faqItems = [
   <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Ce que chacun garde</p>
-        <h2>L’autonomie d’un indépendant, le cadre d’un salarié</h2>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">La répartition est simple</p>
+        <h2>Vous exercez votre métier. Nous tenons le cadre.</h2>
       </div>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {benefits.map((benefit) => (
-          <article class="card reveal">
-            <div class="icon-chip mb-5"><SiteIcon name={benefit.icon} /></div>
-            <h3 class="mb-2 text-lg">{benefit.title}</h3>
-            <p class="mb-0 text-sm leading-relaxed text-porters-black/65">{benefit.description}</p>
+      <div class="portage-benefits">
+        {benefits.map((benefit, index) => (
+          <article class="portage-benefit reveal">
+            <span class="portage-benefit-index">0{index + 1}</span>
+            <div class="icon-chip"><SiteIcon name={benefit.icon} /></div>
+            <div>
+              <h3>{benefit.title}</h3>
+              <p>{benefit.description}</p>
+            </div>
           </article>
         ))}
       </div>
@@ -120,22 +137,34 @@ const faqItems = [
 
   <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl">
-        <div class="mb-10 text-center reveal">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">En pratique</p>
-          <h2>Les quatre réponses utiles avant de choisir</h2>
-        </div>
-        <div class="space-y-4 reveal">
-          {faqItems.map((faq) => (
-            <details class="group rounded-lg border border-porters-navy/10">
-              <summary class="flex cursor-pointer items-center justify-between p-5 font-heading font-semibold text-porters-navy">
-                <span>{faq.question}</span>
-                <span class="ml-4 text-xl text-porters-gold transition-transform group-open:rotate-45">+</span>
-              </summary>
-              <div class="px-5 pb-5 text-porters-black/68"><p class="mb-0">{faq.answer}</p></div>
-            </details>
-          ))}
-        </div>
+      <div class="mb-10 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Choisir son cadre</p>
+        <h2>Quel cadre correspond à votre projet&nbsp;?</h2>
+        <p class="mt-4 text-porters-black/65">
+          Trois façons d’exercer en autonomie. La différence se joue surtout dans le statut et dans la gestion.
+        </p>
+      </div>
+      <div class="portage-table-wrap reveal">
+        <table class="portage-table">
+          <thead>
+            <tr>
+              <th scope="col">Critère</th>
+              <th scope="col" class="is-portage">Portage salarial</th>
+              <th scope="col">Micro-entreprise</th>
+              <th scope="col">Société</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row) => (
+              <tr>
+                <th scope="row">{row.criterion}</th>
+                <td class="is-portage">{row.portage}</td>
+                <td>{row.micro}</td>
+                <td>{row.company}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -143,10 +172,142 @@ const faqItems = [
   <section class="bg-porters-navy py-16 text-porters-white">
     <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <div class="max-w-2xl reveal">
-        <h2 class="mb-2 text-porters-white">Votre mission est prête&nbsp;? Chiffrons le cadre.</h2>
-        <p class="mb-0 text-porters-white/65">Partez de votre TJM et de vos jours facturés pour obtenir une première estimation.</p>
+        <p class="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">Votre prochaine étape</p>
+        <h2 class="mb-2 text-porters-white">Voyez ce que votre TJM donne en net.</h2>
+        <p class="mb-0 text-porters-white/65">Une première estimation, puis un conseiller reprend les hypothèses avec vous.</p>
       </div>
       <a href="/simulateur" class="btn btn-gold shrink-0">Simuler mes revenus</a>
     </div>
   </section>
 </PageLayout>
+
+<style>
+  .portage-anchor {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding-inline: 0.8rem;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.84rem;
+    font-weight: 700;
+    transition: color 180ms ease, transform 220ms var(--ease-soft);
+  }
+
+  .portage-anchor:hover,
+  .portage-anchor:focus-visible {
+    color: #fff;
+    transform: translateY(-2px);
+  }
+
+  .portage-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-top: 1px solid rgba(40, 55, 67, 0.12);
+    border-left: 1px solid rgba(40, 55, 67, 0.12);
+  }
+
+  .portage-benefit {
+    display: grid;
+    min-height: 11rem;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: start;
+    gap: 1rem;
+    border-right: 1px solid rgba(40, 55, 67, 0.12);
+    border-bottom: 1px solid rgba(40, 55, 67, 0.12);
+    padding: clamp(1.35rem, 3vw, 2rem);
+    background: rgba(255, 255, 255, 0.58);
+    transition: background 180ms ease, transform 240ms var(--ease-soft);
+  }
+
+  .portage-benefit:hover {
+    background: #fff;
+    transform: translateY(-3px);
+  }
+
+  .portage-benefit-index {
+    padding-top: 0.65rem;
+    color: var(--color-porters-gold);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    font-weight: 700;
+  }
+
+  .portage-benefit h3 {
+    margin: 0.35rem 0 0;
+    font-size: 1.1rem;
+  }
+
+  .portage-benefit p {
+    margin: 0.55rem 0 0;
+    color: rgba(40, 55, 67, 0.64);
+    font-size: 0.86rem;
+    line-height: 1.65;
+  }
+
+  .portage-table-wrap {
+    overflow-x: auto;
+    border: 1px solid rgba(40, 55, 67, 0.12);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 20px 55px rgba(40, 55, 67, 0.07);
+  }
+
+  .portage-table {
+    width: 100%;
+    min-width: 48rem;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .portage-table th,
+  .portage-table td {
+    width: 25%;
+    border-bottom: 1px solid rgba(40, 55, 67, 0.1);
+    padding: 1.15rem 1.25rem;
+    color: rgba(40, 55, 67, 0.7);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .portage-table thead th {
+    background: rgba(40, 55, 67, 0.04);
+    color: var(--color-porters-navy);
+    font-size: 0.76rem;
+    font-weight: 760;
+    letter-spacing: 0.04em;
+  }
+
+  .portage-table tbody th {
+    color: var(--color-porters-navy);
+    font-weight: 700;
+  }
+
+  .portage-table .is-portage {
+    border-inline: 1px solid rgba(190, 158, 88, 0.3);
+    background: rgba(190, 158, 88, 0.1);
+    color: var(--color-porters-navy);
+    font-weight: 700;
+  }
+
+  .portage-table tbody tr:last-child th,
+  .portage-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  @media (max-width: 720px) {
+    .portage-benefits {
+      grid-template-columns: 1fr;
+    }
+
+    .portage-benefit {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .portage-benefit-index {
+      display: none;
+    }
+  }
+</style>

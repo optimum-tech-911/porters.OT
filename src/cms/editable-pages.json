@@ -67,7 +67,7 @@
   {
     "route": "/entreprises",
     "name": "Expertises IT externes, cadre maîtrisé",
-    "contentCount": 52
+    "contentCount": 61
   },
   {
     "route": "/expertises",
@@ -192,7 +192,7 @@
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 49
+    "contentCount": 45
   },
   {
     "route": "/expertises/product-project-management",

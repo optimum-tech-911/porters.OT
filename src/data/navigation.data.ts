@@ -4,21 +4,11 @@ export const navigation: Navigation = {
   main: [
     {
       label: 'Le portage salarial',
-      items: [
-        { label: 'Comment ça marche', href: '/portage-salarial' },
-        { label: 'Votre quotidien', href: '/consultants' },
-        { label: 'Frais et rémunération', href: '/tarifs' },
-        { label: 'Simuler mes revenus', href: '/simulateur' },
-        { label: 'Questions fréquentes', href: '/faq' },
-      ],
+      href: '/portage-salarial',
     },
     {
       label: 'Entreprises',
-      items: [
-        { label: 'Trouver un expert IT', href: '/entreprises' },
-        { label: 'Voir les expertises', href: '/expertises' },
-        { label: 'Nous contacter', href: '/contact' },
-      ],
+      href: '/entreprises',
     },
     {
       label: 'Expertises',

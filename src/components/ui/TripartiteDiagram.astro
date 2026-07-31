@@ -557,4 +557,15 @@ const initial = parties.find((p) => p.id === 'porters')!;
       transform: translate(-50%, -50%);
     }
   }
+
+  @media (max-width: 900px) and (prefers-reduced-motion: reduce) {
+    .tri-node,
+    .tri-node:hover,
+    .tri-node.is-active,
+    .tri-contract,
+    .tri-contract:hover,
+    .tri-contract.is-active {
+      transform: none;
+    }
+  }
 </style>

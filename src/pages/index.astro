@@ -66,6 +66,46 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     </div>
   </section>
 
+  <section class="light-section light-hellowork-section reveal-fade" data-reveal>
+    <div class="light-container">
+      <div class="light-hellowork-card reveal-up" data-reveal>
+        <div class="light-hellowork-layout">
+          <div class="light-hellowork-copy">
+            <p {...cmsAttrs('home.jobs.eyebrow')}>{cmsText('home.jobs.eyebrow')}</p>
+            <h2 {...cmsAttrs('home.jobs.title')}>{cmsText('home.jobs.title')}</h2>
+            <strong {...cmsAttrs('home.jobs.description')}>{cmsText('home.jobs.description')}</strong>
+            <ul class="light-hellowork-points" aria-label="Repères recrutement">
+              <li {...cmsAttrs('home.jobs.point.current')}>{cmsText('home.jobs.point.current')}</li>
+              <li {...cmsAttrs('home.jobs.point.direct')}>{cmsText('home.jobs.point.direct')}</li>
+              <li {...cmsAttrs('home.jobs.point.full')}>{cmsText('home.jobs.point.full')}</li>
+            </ul>
+            <div>
+              <a href="https://www.hellowork.com/fr-fr/entreprises/the-porters-171310.html" target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.external_cta')}>{cmsText('home.jobs.external_cta')}</span> <b aria-hidden="true">→</b></a>
+              <a href="/recrutement"><span {...cmsAttrs('home.jobs.internal_cta')}>{cmsText('home.jobs.internal_cta')}</span> <b aria-hidden="true">→</b></a>
+            </div>
+          </div>
+          <div class="light-hellowork-preview" aria-hidden="true">
+            <div class="light-hellowork-orbit"></div>
+            <article class="light-hellowork-panel light-hellowork-panel--primary">
+              <small {...cmsAttrs('home.jobs.preview.platform')}>{cmsText('home.jobs.preview.platform')}</small>
+              <strong {...cmsAttrs('home.jobs.preview.company')}>{cmsText('home.jobs.preview.company')}</strong>
+              <span {...cmsAttrs('home.jobs.preview.status')}>{cmsText('home.jobs.preview.status')}</span>
+            </article>
+            <article class="light-hellowork-panel light-hellowork-panel--floating">
+              <small {...cmsAttrs('home.jobs.preview.focus')}>{cmsText('home.jobs.preview.focus')}</small>
+              <strong {...cmsAttrs('home.jobs.preview.profiles')}>{cmsText('home.jobs.preview.profiles')}</strong>
+            </article>
+            <div class="light-hellowork-tags">
+              <span>Rendez-vous</span>
+              <span>RH</span>
+              <span>Conseil</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="light-section light-reviews reveal-fade" data-reveal>
     <div class="light-container">
       <div class="light-reviews-header reveal-up" data-reveal>

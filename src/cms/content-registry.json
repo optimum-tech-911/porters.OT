@@ -138,6 +138,84 @@
     "content": "Parler à un conseiller"
   },
   {
+    "key": "home.jobs.eyebrow",
+    "route": "/",
+    "type": "label",
+    "content": "Recrutement"
+  },
+  {
+    "key": "home.jobs.title",
+    "route": "/",
+    "type": "heading",
+    "content": "Les opportunités en cours"
+  },
+  {
+    "key": "home.jobs.description",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Retrouvez les offres publiées par The Porters sur notre espace HelloWork."
+  },
+  {
+    "key": "home.jobs.point.current",
+    "route": "/",
+    "type": "list_item",
+    "content": "Offres mises à jour"
+  },
+  {
+    "key": "home.jobs.point.direct",
+    "route": "/",
+    "type": "list_item",
+    "content": "Candidature en ligne"
+  },
+  {
+    "key": "home.jobs.point.full",
+    "route": "/",
+    "type": "list_item",
+    "content": "Suivi par notre équipe"
+  },
+  {
+    "key": "home.jobs.external_cta",
+    "route": "/",
+    "type": "button",
+    "content": "Voir les offres sur HelloWork"
+  },
+  {
+    "key": "home.jobs.internal_cta",
+    "route": "/",
+    "type": "button",
+    "content": "Découvrir le recrutement"
+  },
+  {
+    "key": "home.jobs.preview.platform",
+    "route": "/",
+    "type": "label",
+    "content": "HelloWork"
+  },
+  {
+    "key": "home.jobs.preview.company",
+    "route": "/",
+    "type": "name",
+    "content": "The Porters"
+  },
+  {
+    "key": "home.jobs.preview.status",
+    "route": "/",
+    "type": "label",
+    "content": "Offres en cours"
+  },
+  {
+    "key": "home.jobs.preview.focus",
+    "route": "/",
+    "type": "label",
+    "content": "Focus"
+  },
+  {
+    "key": "home.jobs.preview.profiles",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Profils business, recrutement et accompagnement"
+  },
+  {
     "key": "home.reviews.eyebrow",
     "route": "/",
     "type": "label",
