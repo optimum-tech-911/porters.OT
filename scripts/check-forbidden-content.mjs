@@ -31,6 +31,34 @@ const dist = path.join(root, 'dist');
  */
 const EXCLUDED = [`${path.sep}admin${path.sep}`];
 
+/**
+ * Builds a pattern that fires only when `term` appears as a capability The
+ * Porters claims for itself, rather than as a subject being described.
+ *
+ * Matches in both directions within a short window, because French puts the
+ * possessive either side: "notre SOC" and "le SOC que nous opérons".
+ * The window is deliberately tight (~90 chars) so an unrelated "nous" earlier in
+ * a paragraph cannot drag an editorial mention into a violation.
+ */
+function CAPABILITY_CLAIM(term) {
+  // (a) Possessive: "notre SOC", "nos pentests". The determiner alone makes it a
+  //     claim, so this matches directly rather than looking for the term nearby.
+  const possessive = `(?:notre|nos)\\s+(?:propre\\s+)?(?:${term})`;
+
+  // (b) First-person verb within a tight window of the term, either direction —
+  //     French puts the possessive on both sides ("nous opérons un SOC", "le SOC
+  //     que nous opérons"). 90 chars keeps an unrelated earlier "nous" out.
+  // Accent class covers é and è: "opérons" carries an acute, "opère" a grave.
+  const verb =
+    'nous\\s+(?:r[éèe]alisons|effectuons|op[éèe]rons|assurons|proposons|disposons|g[éèe]rons|men?ons)' +
+    '|The\\s+Porters\\s+(?:r[éèe]alise|op[éèe]re|assure|dispose|g[éèe]re)';
+  const nearby =
+    `(?:${verb})[\\s\\S]{0,90}?\\b(?:${term})\\b` +
+    `|\\b(?:${term})\\b[\\s\\S]{0,90}?(?:${verb})`;
+
+  return new RegExp(`${possessive}|${nearby}`, 'i');
+}
+
 const RULES = [
   {
     id: 'F-A04',
@@ -47,21 +75,33 @@ const RULES = [
     // a heading-specific rule would otherwise have silently stopped catching.
     pattern: /Secteurs?\s+(?:concern[ée]s?|couverts?|cit[ée]s?)/i,
   },
+  /*
+    SOC / SIEM / pentest are CONTEXTUAL rules, not blanket bans.
+
+    fact-base R3 forbids The Porters *claiming* these capabilities. It does not
+    forbid naming them: a consultant's own speciality, an explanation of what the
+    terms mean, or the mission types a cyber profile handles are all legitimate
+    editorial use, and the blog depends on them.
+
+    So these fire only when the term sits near a first-person capability
+    construction — "nous réalisons des pentests", "notre SOC", "nos tests
+    d'intrusion". Audited 2026-08-01: the two blog occurrences are category A
+    (informational, addressing the reader's speciality) and correctly pass.
+  */
   {
     id: 'R3-pentest',
-    label: 'Pentest / intrusion-testing capability — unsupported by any source',
-    pattern: /\bpentest\w*|tests?\s+d[’']intrusion/i,
+    label: 'Pentest capability CLAIM by The Porters — unsupported by any source',
+    pattern: CAPABILITY_CLAIM(/pentests?|tests?\s+d[’']intrusion/i.source),
   },
   {
     id: 'R3-soc',
-    label: 'SOC capability claim — unsupported by any source',
-    // Word-boundary + uppercase only: avoids "société", "associé", etc.
-    pattern: /\bSOC\b/,
+    label: 'SOC capability CLAIM by The Porters — unsupported by any source',
+    pattern: CAPABILITY_CLAIM('SOC'),
   },
   {
     id: 'R3-siem',
-    label: 'SIEM capability claim — unsupported by any source',
-    pattern: /\bSIEM\b/,
+    label: 'SIEM capability CLAIM by The Porters — unsupported by any source',
+    pattern: CAPABILITY_CLAIM('SIEM'),
   },
   {
     id: 'F-V08',

@@ -8,10 +8,11 @@ import calculatorImage from '../../images/financial-calculator.webp';
 const included = [
   {
     title: 'Avance de trésorerie',
-    // TODO-CLIENT: F-B14 — confirmer que le versement dès le premier mois, avant
-    // règlement de la première facture client, est toujours la pratique en 2026.
-    // Retiré du site si la pratique a changé ; c'est l'argument le plus fort du
-    // livre blanc (p.22, « PAS DE FRAIS CACHÉS »).
+    // F-B14 — REQUIRED. Le versement dès le premier mois, avant règlement de la
+    // première facture client, est une affirmation générique directement portée
+    // par le livre blanc p.22 (« PAS DE FRAIS CACHÉS »). Publiée telle quelle.
+    // Les échéances de paie exactes restent CLIENT_APPROVAL_REQUIRED (F-C14) et
+    // ne sont pas chiffrées ici.
     text: 'Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture. Le calendrier de paie vous est expliqué avant le démarrage.',
   },
   {
@@ -82,8 +83,19 @@ const included = [
           <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Notre taux</p>
           <p class="font-heading text-[3rem] font-bold leading-none text-porters-navy sm:text-[4.5rem]">Communiqué avant signature</p>
           <p class="mt-5 max-w-md text-lg leading-relaxed text-porters-black/66">
-            Le taux appliqué figure dans votre simulation et dans les documents contractuels. Il finance
-            les sept services ci-contre.
+            Les conditions de frais de gestion applicables vous sont communiquées avant la signature et
+            figurent dans vos documents contractuels. Elles financent les sept services ci-contre.
+          </p>
+          {/*
+            Aucun taux n'est affiché ici, volontairement. Le simulateur travaille sur
+            une hypothèse indicative issue de settings.managementFeePercent ; la
+            dupliquer sur cette page créerait deux chiffres pouvant diverger.
+            TODO-CLIENT: F-C15 — publier le taux réel ici une fois la politique
+            commerciale confirmée, en le lisant depuis la même source.
+          */}
+          <p class="mt-4 max-w-md text-sm leading-relaxed text-porters-black/55">
+            Le simulateur utilise une hypothèse de frais de gestion, indicative et non contractuelle,
+            afin d’estimer votre rémunération avant cet échange.
           </p>
         </div>
         <div class="reveal">
