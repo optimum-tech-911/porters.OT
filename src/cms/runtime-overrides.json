@@ -1,0 +1,29 @@
+[
+  {
+    "key": "pages.home.auto.paragraph.og6wsy",
+    "route": "/",
+    "content": "Votre projet.",
+    "purpose": "Titre de la page d'accueil — ligne 1 sur 3.",
+    "cmsOnlyBecause": "Le pass runtime (src/cms/discover.ts) produit cette clé sur le HTML construit, mais le pass build-time (scripts/generate-cms-registry.mjs, parse5) ne l'émet pas. Elle n'a donc aucune ligne dans auto-content-registry.json et n'entre jamais dans la migration de seed.",
+    "origin": "Publiée à la main via /admin/editor le 2026-07-31, version 2.",
+    "preservation": "Ne jamais remplacer par le fallback source. Ne jamais supprimer. Modifiable uniquement depuis l'éditeur CMS."
+  },
+  {
+    "key": "pages.home.auto.paragraph.1ey54qb",
+    "route": "/",
+    "content": "Notre expertise.<br>",
+    "purpose": "Titre de la page d'accueil — ligne 2 sur 3.",
+    "cmsOnlyBecause": "Même divergence runtime / build-time que la ligne 1.",
+    "origin": "Publiée à la main via /admin/editor le 2026-07-31, version 3.",
+    "preservation": "Ne jamais remplacer par le fallback source. Ne jamais supprimer. Modifiable uniquement depuis l'éditeur CMS."
+  },
+  {
+    "key": "pages.home.auto.paragraph.v73dw4",
+    "route": "/",
+    "content": "À chaque étape.<br>",
+    "purpose": "Titre de la page d'accueil — ligne 3 sur 3.",
+    "cmsOnlyBecause": "Même divergence runtime / build-time que les lignes 1 et 2.",
+    "origin": "Publiée à la main via /admin/editor le 2026-07-31, version 2.",
+    "preservation": "Ne jamais remplacer par le fallback source. Ne jamais supprimer. Modifiable uniquement depuis l'éditeur CMS."
+  }
+]

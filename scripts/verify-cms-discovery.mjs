@@ -49,6 +49,26 @@ function normalize(html) {
 const registry = JSON.parse(await readFile(path.join(root, 'src/cms/auto-content-registry.json'), 'utf8'));
 const expected = new Map(registry.map((entry) => [entry.key, entry]));
 
+/**
+ * Keys that legitimately exist at runtime with no build-time counterpart.
+ *
+ * A key normally has to appear on both sides; that is the point of this check.
+ * The exception is content an administrator published through the editor for a
+ * node the parse5 pass does not claim: the row is real, a visitor sees it, and it
+ * is deliberately CMS-managed rather than source-managed. Replacing it with the
+ * source fallback would silently discard someone's editorial decision.
+ *
+ * This is an allow-list of named keys, NOT a rule that tolerates orphans. An
+ * unregistered runtime-only key still fails, which is what keeps the check
+ * meaningful. Each entry documents why it is CMS-only and how it must be
+ * treated — see src/cms/runtime-overrides.json.
+ */
+const runtimeOverrides = JSON.parse(
+  await readFile(path.join(root, 'src/cms/runtime-overrides.json'), 'utf8'),
+);
+const allowedRuntimeOnly = new Map(runtimeOverrides.map((entry) => [entry.key, entry]));
+const usedOverrides = new Set();
+
 const files = (await htmlFiles(dist)).sort();
 const seen = new Set();
 const problems = [];
@@ -66,6 +86,18 @@ for (const file of files) {
 
     const entry = expected.get(key);
     if (!entry) {
+      const override = allowedRuntimeOnly.get(key);
+      if (override) {
+        // Registered CMS-only override. Its content lives in the database, not in
+        // the registry, so there is no build-time entry to round-trip against.
+        if (override.route !== route) {
+          problems.push(
+            `${route}: ${key} is registered as a CMS-only override for ${override.route}, not this route`,
+          );
+        }
+        usedOverrides.add(key);
+        continue;
+      }
       problems.push(`${route}: runtime produced key ${key}, which the build-time pass never emits`);
       continue;
     }
@@ -97,6 +129,17 @@ for (const [key, entry] of expected) {
   if (!seen.has(key)) problems.push(`${entry.route}: build-time key ${key} is never produced at runtime`);
 }
 
+// A registered override that no longer appears is stale: the markup it belonged
+// to has changed, so the database row is now unreachable. Reporting it keeps the
+// allow-list from quietly accumulating entries that protect nothing.
+for (const [key, entry] of allowedRuntimeOnly) {
+  if (!usedOverrides.has(key)) {
+    problems.push(
+      `${entry.route}: ${key} is registered as a CMS-only override but is no longer produced at runtime — remove it from src/cms/runtime-overrides.json or restore the markup`,
+    );
+  }
+}
+
 if (problems.length) {
   console.error(`Discovery mismatch (${problems.length}):`);
   for (const problem of problems.slice(0, 40)) console.error(`  ${problem}`);
@@ -104,4 +147,9 @@ if (problems.length) {
   process.exit(1);
 }
 
-console.log(`Discovery verified: ${seen.size} auto keys match between the runtime and the build-time pass.`);
+console.log(
+  `Discovery verified: ${seen.size} auto keys match between the runtime and the build-time pass` +
+    (usedOverrides.size
+      ? `, plus ${usedOverrides.size} registered CMS-only override${usedOverrides.size > 1 ? 's' : ''}.`
+      : '.'),
+);
