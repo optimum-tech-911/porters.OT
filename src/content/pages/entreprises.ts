@@ -24,8 +24,10 @@ export const enterprisePage = {
     {
       number: '4',
       title: 'Suivi',
+      // F-D07 — MT-LOT1 p.20 : la continuité repose sur un binôme avec relais
+      // identifié. Le mécanisme est nommé, pas seulement son effet.
       description:
-        'Points d’avancement à une fréquence définie au cadrage, avec un relais identifié dans l’équipe pour qu’aucun suivi ne dépende d’une seule personne.',
+        'Points d’avancement à une fréquence définie au cadrage. Chaque mission est suivie par un binôme, avec un relais identifié dans l’équipe, pour qu’aucun suivi ne dépende d’une seule personne.',
     },
   ],
 
@@ -45,7 +47,11 @@ export const enterprisePage = {
     {
       step: '03',
       title: 'Deux entretiens structurés',
-      text: 'Un entretien RH et un entretien technique structurés rendent les profils comparables.',
+      // F-GRILLES-01 — MT-LOT1 p.7 : « Ces entretiens s'appuient sur des grilles
+      // d'évaluation standardisées garantissant une appréciation homogène et
+      // comparable des profils. » Le concept existait déjà ici ; seule la
+      // mécanique qui le rend vrai manquait.
+      text: 'Un entretien RH et un entretien technique, qui s’appuient sur des grilles d’évaluation standardisées : c’est ce qui rend l’appréciation homogène et deux profils réellement comparables.',
     },
     {
       step: '04',
@@ -55,7 +61,11 @@ export const enterprisePage = {
     {
       step: '05',
       title: 'Validation finale',
-      text: 'Validation interne, puis transmission d’un profil anonymisé avec compétences et disponibilité.',
+      // F-D07 — MT-LOT1 p.20. Le message de continuité était rendu jusqu'à
+      // ced125a via enterprisePage.process ; un refactor a cessé d'afficher ce
+      // tableau, qui est aujourd'hui de la donnée morte. Le message est replacé
+      // ici, en fin d'entonnoir, plutôt que laissé inatteignable.
+      text: 'Validation interne, puis transmission d’un profil anonymisé avec compétences et disponibilité. La mission est ensuite suivie par un binôme, avec un relais identifié, pour qu’aucun suivi ne dépende d’une seule personne.',
     },
   ],
 
