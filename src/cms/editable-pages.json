@@ -2,7 +2,7 @@
   {
     "route": "/",
     "name": "Accueil",
-    "contentCount": 20
+    "contentCount": 82
   },
   {
     "route": "/blog/categorie/actualites",
@@ -15,6 +15,11 @@
     "contentCount": 21
   },
   {
+    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
+    "name": "Checklist pour démarrer en portage salarial",
+    "contentCount": 48
+  },
+  {
     "route": "/blog/bien-choisir-societe-portage-salarial",
     "name": "Choisir sa société de portage salarial — critères clés",
     "contentCount": 21
@@ -23,6 +28,11 @@
     "route": "/blog/choisir-statut-independant",
     "name": "Choisir son statut indépendant — portage, SASU, EURL",
     "contentCount": 21
+  },
+  {
+    "route": "/livres-blancs/comparatif-statuts-freelances",
+    "name": "Comparatif des statuts freelances",
+    "contentCount": 48
   },
   {
     "route": "/blog",
@@ -45,6 +55,11 @@
     "contentCount": 21
   },
   {
+    "route": "/expertises/developpement-integration",
+    "name": "Développement, intégration et environnements applicatifs",
+    "contentCount": 108
+  },
+  {
     "route": "/blog/categorie/devenir-consultant",
     "name": "Devenir consultant | Blog The Porters",
     "contentCount": 27
@@ -57,7 +72,7 @@
   {
     "route": "/rse",
     "name": "Engagements RSE et numérique responsable",
-    "contentCount": 34
+    "contentCount": 39
   },
   {
     "route": "/espace-client",
@@ -72,12 +87,12 @@
   {
     "route": "/expertises",
     "name": "Expertises IT, data, cyber, cloud et produit",
-    "contentCount": 152
+    "contentCount": 179
   },
   {
     "route": "/faq",
     "name": "FAQ portage salarial consultants IT",
-    "contentCount": 83
+    "contentCount": 87
   },
   {
     "route": "/blog/categorie/fonctionnement",
@@ -87,7 +102,7 @@
   {
     "route": "/tarifs",
     "name": "Frais de gestion du portage salarial",
-    "contentCount": 38
+    "contentCount": 39
   },
   {
     "route": "/blog/frais-gestion-portage-salarial",
@@ -95,9 +110,14 @@
     "contentCount": 21
   },
   {
+    "route": "/livres-blancs/guide-complet-portage-salarial",
+    "name": "Guide complet du portage salarial",
+    "contentCount": 48
+  },
+  {
     "route": "/livres-blancs",
     "name": "Livres blancs et guides",
-    "contentCount": 21
+    "contentCount": 24
   },
   {
     "route": "/mentions-legales",
@@ -182,7 +202,7 @@
   {
     "route": "/expertises/cloud-devops",
     "name": "Portage salarial pour consultants Cloud & DevOps",
-    "contentCount": 112
+    "contentCount": 114
   },
   {
     "route": "/expertises/data-ia",
@@ -192,12 +212,12 @@
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 80
+    "contentCount": 87
   },
   {
     "route": "/expertises/product-project-management",
     "name": "Portage salarial pour consultants Product & Project Management",
-    "contentCount": 105
+    "contentCount": 107
   },
   {
     "route": "/blog/portage-salarial-entreprises",
@@ -207,12 +227,12 @@
   {
     "route": "/expertises/cybersecurite",
     "name": "Portage salarial pour experts cybersécurité",
-    "contentCount": 109
+    "contentCount": 110
   },
   {
     "route": "/expertises/agilite-coaching",
     "name": "Portage salarial pour profils Agilité, Produit et Transformation",
-    "contentCount": 108
+    "contentCount": 112
   },
   {
     "route": "/blog/portage-salarial-product-owner-scrum-master",
@@ -232,7 +252,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 431
+    "contentCount": 437
   },
   {
     "route": "/recrutement",
@@ -252,7 +272,7 @@
   {
     "route": "/simulateur",
     "name": "Simulateur de revenus consultant IT",
-    "contentCount": 65
+    "contentCount": 84
   },
   {
     "route": "/blog/trouver-missions-portage-salarial",
@@ -267,6 +287,6 @@
   {
     "route": "/consultants",
     "name": "Votre quotidien de salarié porté",
-    "contentCount": 72
+    "contentCount": 81
   }
 ]
