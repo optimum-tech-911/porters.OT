@@ -24,7 +24,7 @@ export const pageSeo: Record<string, PageSeo> = {
   rendezVous: {
     title: 'Prendre rendez-vous portage salarial IT — The Porters',
     description:
-      'Choisissez un type de rendez-vous The Porters : découvrir le portage, optimiser votre salaire, passer de freelance à portage ou discuter de votre mission IT.',
+      'Choisissez votre sujet : comprendre le portage, relire votre simulation, passer de freelance à portage ou cadrer une mission IT déjà identifiée.',
   },
   agences: {
     title: 'Nos agences de portage salarial — The Porters',
