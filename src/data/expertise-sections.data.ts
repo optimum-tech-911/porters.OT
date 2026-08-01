@@ -29,7 +29,7 @@ export const expertiseSections: ExpertiseSection[] = [
     title: 'Cybersécurité',
     shortSubtitle: 'Risques, conformité et protection des systèmes',
     introduction: 'Protéger les organisations, leurs systèmes d’information, leurs données et leur continuité d’activité face à des risques toujours plus complexes.',
-    sourceSummary: 'La méthode présentée par KwickStart relie diagnostic, conseil et assistance, audit, puis plan d’actions. Elle évite de dissocier la gouvernance de l’exécution.',
+    sourceSummary: 'Notre méthode relie diagnostic, conseil et assistance, audit, puis plan d’actions. Elle évite de dissocier la gouvernance de l’exécution.',
     description: [
       'The Porters porte les consultants indépendants qui interviennent sur les enjeux de gouvernance, de conformité, de prévention, de détection et de réponse aux incidents de sécurité. Ces experts aident les entreprises à mieux identifier leurs risques, sécuriser leurs infrastructures, protéger leurs actifs critiques et répondre aux exigences réglementaires.',
       'Les missions peuvent concerner aussi bien la définition d’une stratégie de cybersécurité que la sécurisation opérationnelle des environnements cloud, des identités, des applications, des réseaux ou des données sensibles.',
@@ -43,7 +43,7 @@ export const expertiseSections: ExpertiseSection[] = [
     ],
     responsibilities: ['Diagnostic de maturité et cartographie des risques', 'Politiques, procédures et référentiels de sécurité', 'Plans d’action et feuilles de route de remédiation', 'Rapports d’audit et recommandations prioritaires', 'Dossiers de conformité et preuves documentaires', 'Tableaux de bord de pilotage et indicateurs de risque', 'Accompagnement des équipes techniques et métiers'],
     skills: ['Gouvernance de la sécurité', 'Analyse de risques', 'Conformité réglementaire', 'Politiques de sécurité', 'Audit organisationnel', 'Audit technique', 'Sensibilisation', 'Security by Design'],
-    sectors: [],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     whyPortage: 'Les missions en cybersécurité demandent souvent une forte expertise, une grande autonomie et une capacité à intervenir rapidement dans des contextes sensibles. Le portage salarial permet au consultant de conserver son indépendance tout en bénéficiant d’un cadre contractuel et administratif structuré.',
     portersSupport: ['Sécurisation du cadre contractuel', 'Gestion administrative de l’activité', 'Accompagnement personnalisé du consultant', 'Suivi des contrats, missions et facturations', 'Protection sociale du statut salarié porté', 'Soutien dans la relation avec le client'],
     ctaLabel: 'Plus de détails sur la cybersécurité',
@@ -55,7 +55,7 @@ export const expertiseSections: ExpertiseSection[] = [
     title: 'Data & IA',
     shortSubtitle: 'Données, modèles et intelligence artificielle',
     introduction: 'Transformer les données en décisions, en automatisations et en produits intelligents capables de créer une valeur concrète pour l’entreprise.',
-    sourceSummary: 'Les supports KwickStart relient stratégie, architecture, usages et maintien en conditions opérationnelles : la valeur ne s’arrête pas au prototype.',
+    sourceSummary: 'Notre approche relie stratégie, architecture, usages et maintien en conditions opérationnelles : la valeur ne s’arrête pas au prototype.',
     description: [
       'The Porters porte les experts de la donnée et de l’intelligence artificielle qui interviennent sur toute la chaîne de valeur, depuis la collecte et la structuration des données jusqu’à leur analyse, leur visualisation et leur exploitation par des modèles avancés.',
       'Ces consultants aident les organisations à fiabiliser leurs données, industrialiser leurs infrastructures, améliorer leur prise de décision et intégrer des solutions d’intelligence artificielle dans leurs processus, leurs produits et leurs outils internes.',
@@ -69,7 +69,7 @@ export const expertiseSections: ExpertiseSection[] = [
     ],
     responsibilities: ['Architecture des flux et modèles de données', 'Pipelines de collecte et de transformation', 'Tableaux de bord décisionnels', 'Analyses exploratoires et recommandations métiers', 'Modèles prédictifs et systèmes de scoring', 'Documentation technique et fonctionnelle', 'Solutions d’intelligence artificielle intégrées', 'Dispositifs de contrôle de la qualité des données', 'Mise en production et suivi des performances', 'Accompagnement des utilisateurs et des équipes internes'],
     skills: ['Python', 'SQL', 'Power BI', 'Tableau', 'Looker', 'Snowflake', 'Databricks', 'BigQuery', 'Azure Data Factory', 'AWS', 'GCP', 'Spark', 'dbt', 'Airflow', 'Machine Learning', 'Deep Learning', 'MLOps', 'LLM', 'RAG', 'Generative AI'],
-    sectors: [],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     whyPortage: 'Les spécialistes Data et IA interviennent souvent sur des projets à forte valeur ajoutée nécessitant des expertises rares et des périodes d’intervention définies. Le portage salarial leur permet de multiplier les missions tout en conservant un cadre professionnel stable et structuré.',
     portersSupport: ['Gestion des contrats de prestation', 'Prise en charge de la facturation', 'Gestion administrative et sociale', 'Accompagnement dans le suivi de mission', 'Cadre adapté aux missions longues ou ponctuelles', 'Soutien dans la relation avec les clients'],
     ctaLabel: 'Plus de détails sur la Data & l’IA',
@@ -81,7 +81,7 @@ export const expertiseSections: ExpertiseSection[] = [
     title: 'Cloud & DevOps',
     shortSubtitle: 'Infrastructure, automatisation et fiabilité',
     introduction: 'Concevoir des infrastructures plus agiles, plus fiables et plus performantes pour accélérer la transformation technologique des organisations.',
-    sourceSummary: 'L’approche KwickStart traite le Cloud comme une trajectoire : conseil sur mesure, intégration flexible, optimisation des infrastructures et suivi de la performance.',
+    sourceSummary: 'Nous traitons le Cloud comme une trajectoire : conseil, intégration flexible, optimisation des infrastructures et suivi de la performance.',
     description: [
       'The Porters porte les consultants qui modernisent les infrastructures, automatisent les déploiements et améliorent la disponibilité des services numériques.',
       'Leurs missions couvrent les environnements cloud publics, privés ou hybrides, les chaînes d’intégration et de déploiement continus, la conteneurisation, l’observabilité, la résilience, la sécurité et l’optimisation des coûts d’infrastructure.',
@@ -95,7 +95,7 @@ export const expertiseSections: ExpertiseSection[] = [
     ],
     responsibilities: ['Audit des infrastructures existantes', 'Architecture cloud cible', 'Stratégie de migration', 'Modules d’infrastructure as code', 'Pipelines CI/CD', 'Plateformes de conteneurisation', 'Systèmes de monitoring et d’alerting', 'Documentation d’exploitation', 'Plans de continuité et de reprise', 'Tableaux de bord de performance et de coûts', 'Standards de déploiement et bonnes pratiques', 'Accompagnement des équipes de développement'],
     skills: ['AWS', 'Microsoft Azure', 'Google Cloud Platform', 'Kubernetes', 'Docker', 'Terraform', 'Ansible', 'GitLab CI', 'GitHub Actions', 'Jenkins', 'Argo CD', 'Helm', 'Prometheus', 'Grafana', 'OpenTelemetry', 'Infrastructure as Code', 'FinOps', 'SRE', 'DevSecOps'],
-    sectors: [],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     whyPortage: 'Les profils Cloud et DevOps sont régulièrement sollicités pour des transformations techniques complexes, des migrations ou des phases d’industrialisation. Le portage salarial leur permet d’intervenir avec autonomie tout en déléguant la gestion administrative de leur activité.',
     portersSupport: ['Cadre contractuel adapté aux projets techniques', 'Gestion administrative et facturation', 'Accompagnement pendant toute la durée de la mission', 'Suivi des échanges contractuels avec le client', 'Protection sociale du salarié porté', 'Soutien pour les missions longues et stratégiques'],
     ctaLabel: 'Plus de détails sur le Cloud & DevOps',
@@ -121,7 +121,7 @@ export const expertiseSections: ExpertiseSection[] = [
     ],
     responsibilities: ['Diagnostic de maturité agile', 'Plan d’accompagnement et feuille de route', 'Animation de rituels et ateliers', 'Coaching individuel et collectif', 'Mise en place de cadres de collaboration', 'Indicateurs de suivi et de progression', 'Identification des blocages organisationnels', 'Accompagnement des managers', 'Amélioration des processus de delivery', 'Documentation des pratiques et méthodes', 'Plans d’amélioration continue', 'Transfert de compétences vers les équipes'],
     skills: ['Scrum', 'Kanban', 'SAFe', 'Lean', 'LeSS', 'Facilitation', 'Coaching', 'Change Management', 'Design Thinking', 'Management visuel', 'OKR', 'Product Discovery', 'Continuous Improvement', 'Team Coaching', 'Transformation organisationnelle'],
-    sectors: [],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     whyPortage: 'Les consultants en agilité interviennent souvent dans des environnements de transformation, sur des périodes de plusieurs mois et auprès de nombreuses parties prenantes. Le portage salarial leur offre un cadre professionnel adapté sans limiter leur autonomie dans la conduite de leurs missions.',
     portersSupport: ['Gestion des aspects administratifs', 'Encadrement contractuel des missions', 'Facturation et suivi des règlements', 'Accompagnement humain et personnalisé', 'Continuité entre plusieurs missions', 'Soutien dans la relation commerciale et contractuelle'],
     ctaLabel: 'Plus de détails sur l’Agilité',
@@ -147,7 +147,7 @@ export const expertiseSections: ExpertiseSection[] = [
     ],
     responsibilities: ['Note de cadrage', 'Expression des besoins', 'Spécifications fonctionnelles', 'Vision produit', 'Roadmap', 'Backlog priorisé', 'Planning projet', 'Budget et suivi des charges', 'Cartographie des risques', 'Comptes rendus de gouvernance', 'Indicateurs de performance', 'Plans de livraison', 'Rapports d’avancement', 'Coordination des équipes métiers et techniques'],
     skills: ['Product Strategy', 'Product Discovery', 'Product Delivery', 'Roadmapping', 'AMOA', 'Business Analysis', 'Gestion de projet', 'Gestion de programme', 'Jira', 'Confluence', 'Notion', 'Figma', 'Design Thinking', 'Agile', 'Scrum', 'OKR', 'User Research', 'Stakeholder Management'],
-    sectors: [],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     whyPortage: 'Les professionnels du produit et du projet occupent fréquemment des rôles stratégiques au sein d’équipes clientes pendant plusieurs mois. Le portage salarial leur permet d’exercer en autonomie tout en bénéficiant d’un statut structuré et d’une gestion simplifiée.',
     portersSupport: ['Gestion des contrats et avenants', 'Prise en charge de la facturation', 'Suivi administratif de la mission', 'Accompagnement humain et disponible', 'Protection sociale du salarié porté', 'Soutien dans les échanges avec le client', 'Continuité entre plusieurs projets', 'Cadre adapté aux missions de longue durée'],
     ctaLabel: 'Plus de détails sur Produit & Projet',

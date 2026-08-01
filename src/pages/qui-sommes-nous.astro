@@ -8,14 +8,16 @@ import { expertiseSections } from '../data/expertise-sections.data';
 const history = [
   { marker: '2016', title: 'Le portage salarial, dès l’origine', text: 'The Porters est créée pour porter l’activité de consultants indépendants : un contrat de travail, une paie, une protection sociale, et la liberté de choisir ses missions.' },
   { marker: '2018', title: 'Une seconde façon d’intervenir', text: 'The Big Porters rejoint le groupe. C’est une ESN spécialisée IT : là où le portage salarie un consultant qui a trouvé sa mission, l’ESN répond à une entreprise qui cherche encore son profil.' },
-  { marker: 'Aujourd’hui', title: 'Un écosystème spécialisé', text: 'The Porters, The Big Porters et KwickStart articulent portage salarial, mobilisation de talents et accompagnement des transformations Data, IA, Cloud et cyber.' },
+  { marker: 'Aujourd’hui', title: 'Un écosystème spécialisé', text: 'The Porters et The Big Porters articulent deux façons d’intervenir : le portage salarial pour le consultant, la prestation IT pour l’entreprise. Un même vivier, un même niveau d’exigence.' },
   { marker: 'Notre cadre', title: 'Adhérents de la FEPS', text: 'The Porters adhère à la Fédération des Entreprises de Portage Salarial. Le portage y est encadré par le Code du travail, l’ANI de 2008 et l’ordonnance du 2 avril 2015.' },
 ];
 
 const ecosystem = [
   { number: '01', name: 'The Porters', role: 'Portage salarial', text: 'Pour le consultant qui a trouvé sa mission et veut exercer en autonomie dans un cadre salarié.', href: '/portage-salarial', cta: 'Comprendre le portage' },
   { number: '02', name: 'The Big Porters', role: 'ESN spécialisée IT', text: 'Pour l’entreprise qui cherche une compétence qualifiée, un cadrage et un suivi de mission.', href: '/entreprises', cta: 'Découvrir l’offre entreprises' },
-  { number: '03', name: 'KwickStart', role: 'Transformation numérique', text: 'Pour relier conseil et delivery sur les enjeux Data, IA, Cloud et cybersécurité.', href: '/expertises', cta: 'Explorer les expertises' },
+  // TODO-CLIENT: F-A04 / Q1 — une troisième entité du groupe existe. Sa visibilité
+  // publique n'est pas tranchée, la carte porte donc le domaine et non la marque.
+  { number: '03', name: 'Nos domaines d’expertise', role: 'Data, IA, Cloud, cybersécurité', text: 'Pour relier conseil et delivery sur les transformations numériques que nous accompagnons.', href: '/expertises', cta: 'Explorer les expertises' },
 ];
 
 const teamFunctions = [

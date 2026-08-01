@@ -73,12 +73,12 @@ export const expertises: Expertise[] = [
       { title: 'Faire progresser la sécurité', text: 'Passer du diagnostic à une feuille de route suivie, avec des priorités, des responsables et des jalons.' },
     ],
     ecosystem: {
-      name: 'KwickStart',
-      eyebrow: 'Une expertise de l’écosystème Porters',
-      text: 'KwickStart est présentée dans les supports du groupe comme une ESN à approche humaine, orientée conseil et engagement de service. Son offre cyber relie diagnostic, gouvernance, audit, assistance et plan d’actions.',
+      name: 'L’ESN du groupe',
+      eyebrow: 'Une expertise du groupe Porters',
+      text: 'L’offre cybersécurité du groupe relie diagnostic, gouvernance, audit, conseil et assistance, puis plan d’actions. Approche orientée conseil et engagement de service, sans dissocier la gouvernance de l’exécution.',
       pillars: ['Conseil sur mesure', 'Continuité de service', 'Suivi des consultants'],
     },
-    sectors: ['Télécommunications', 'Énergie', 'Finance', 'Assurance', 'Automobile', 'Aéronautique', 'Santé'],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     support: [
       'Cadrage du périmètre, du TJM et du calendrier',
       'Contrat de travail et contrat de prestation',
@@ -95,7 +95,7 @@ export const expertises: Expertise[] = [
     summary:
       'Data engineers, data scientists, consultants BI, ML engineers et architectes IA conservent leur autonomie commerciale tout en déléguant le cadre contractuel, la facturation et la paie.',
     sourceSummary:
-      'Les supports KwickStart posent une chaîne simple : partir du besoin métier, fiabiliser la donnée, expérimenter avec les utilisateurs, puis déployer et maintenir la solution.',
+      'Notre lecture pose une chaîne simple : partir du besoin métier, fiabiliser la donnée, expérimenter avec les utilisateurs, puis déployer et maintenir la solution.',
     introTitle: 'Relier la donnée à un résultat métier mesurable',
     introParagraphs: [
       'Un projet data ou IA échoue rarement sur le modèle. Il échoue sur la qualité des données, l’architecture ou l’industrialisation. Nous mobilisons des profils capables d’intervenir sur ces trois étapes : cadrage, ingénierie, mise en production.',
@@ -141,12 +141,12 @@ export const expertises: Expertise[] = [
       { title: 'Construire pour durer', text: 'Documenter les flux, la gouvernance et les responsabilités afin de pérenniser les solutions au-delà du prototype.' },
     ],
     ecosystem: {
-      name: 'KwickStart',
-      eyebrow: 'Une expertise de l’écosystème Porters',
-      text: 'KwickStart concentre son accompagnement sur la Data, l’IA et le Cloud avec une double lecture technique et métier : stratégie, architecture, déploiement et maintien en conditions opérationnelles.',
+      name: 'L’ESN du groupe',
+      eyebrow: 'Une expertise du groupe Porters',
+      text: 'Sur la Data, l’IA et le Cloud, le groupe travaille avec une double lecture technique et métier : stratégie, architecture, déploiement et maintien en conditions opérationnelles.',
       pillars: ['Data utile à la décision', 'IA intégrée aux usages', 'Solutions durables'],
     },
-    sectors: ['Télécommunications', 'Énergie', 'Finance', 'Assurance', 'Industrie', 'Retail', 'Automobile', 'Aéronautique', 'Santé'],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     support: [
       'Lecture du TJM, de la durée et des conditions de mission',
       'Cadre contractuel avec l’entreprise cliente',
@@ -199,12 +199,12 @@ export const expertises: Expertise[] = [
       { title: 'Cloud gouverné', text: 'Concilier autonomie des équipes, sécurité, maîtrise des coûts et exigences d’exploitation.' },
     ],
     ecosystem: {
-      name: 'KwickStart',
-      eyebrow: 'Une expertise de l’écosystème Porters',
-      text: 'L’approche KwickStart associe conseil Cloud sur mesure, intégration flexible et optimisation des infrastructures afin de soutenir une transformation réellement exploitable.',
+      name: 'L’ESN du groupe',
+      eyebrow: 'Une expertise du groupe Porters',
+      text: 'Notre approche Cloud associe conseil, intégration flexible et optimisation des infrastructures, afin de soutenir une transformation réellement exploitable.',
       pillars: ['Architecture adaptée', 'Intégration progressive', 'Performance suivie'],
     },
-    sectors: ['Télécommunications', 'Énergie', 'Finance', 'Assurance', 'Automobile', 'Aéronautique', 'Santé'],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     support: ['Cadrage contractuel de la mission', 'Lecture du TJM et des frais liés à l’intervention', 'Facturation et paie', 'Suivi administratif du démarrage à la clôture'],
     seoDescription:
       'Portage salarial Cloud et DevOps : architecture cloud, migration, CI/CD, IaC, SRE, platform engineering, FinOps et cloud security.',
@@ -262,7 +262,7 @@ export const expertises: Expertise[] = [
       { title: 'Intégration maîtrisée', text: 'Rendre explicites les interfaces, les responsabilités, les tests et les conditions de mise en service.' },
       { title: 'Connaissance transmissible', text: 'Laisser une documentation, des décisions et des repères exploitables par les équipes après la mission.' },
     ],
-    sectors: ['Secteur public', 'Industrie', 'Banque & assurance', 'Énergie', 'Télécommunications', 'Services numériques'],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     support: [
       'Cadrage du périmètre, du TJM et du calendrier',
       'Contrat de travail et contrat de prestation',
@@ -309,7 +309,7 @@ export const expertises: Expertise[] = [
       { title: 'Boucles de retour courtes', text: 'Tester, apprendre et ajuster avant que les écarts ne deviennent coûteux.' },
       { title: 'Transformation accompagnée', text: 'Faire évoluer l’organisation avec les équipes, en traitant les résistances et les dépendances.' },
     ],
-    sectors: ['Banque & assurance', 'Industrie', 'Télécommunications', 'Énergie', 'Services numériques', 'Secteur public'],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     support: ['Comparaison des statuts', 'Cadrage du périmètre, du TJM et du calendrier', 'Contrat, facturation et paie', 'Suivi administratif pendant la mission'],
     seoDescription:
       'Portage salarial pour Product Owners, Scrum Masters, Agile Coaches, RTE, Business Analysts, Change Managers et chefs de projet transformation.',
@@ -341,7 +341,7 @@ export const expertises: Expertise[] = [
       { title: 'Exécution maîtrisée', text: 'Suivre les jalons, les risques, les dépendances et les livrables sans alourdir le projet.' },
       { title: 'Continuité', text: 'Documenter les décisions et organiser le transfert de connaissances pour sécuriser la durée.' },
     ],
-    sectors: ['Banque & assurance', 'Industrie', 'Télécommunications', 'Énergie', 'Services numériques', 'Secteur public'],
+    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     support: ['Cadrage du TJM et du périmètre', 'Contrats et facturation', 'Paie et frais professionnels validés', 'Interlocuteur administratif pendant la mission'],
     seoDescription:
       'Portage salarial pour Product Managers, Product Owners, PMO, chefs de projet IT, Business Analysts et directeurs de programme.',
