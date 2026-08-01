@@ -7,8 +7,12 @@ import calculatorImage from '../../images/financial-calculator.webp';
 // Copie : copy-bank.md CB-12. Faits : F-B12 (RC Pro), F-B13 (garantie financière).
 const included = [
   {
-    title: 'Gestion de trésorerie',
-    text: 'Le calendrier de paie et les conditions liées au règlement du client sont expliqués avant le démarrage.',
+    title: 'Avance de trésorerie',
+    // TODO-CLIENT: F-B14 — confirmer que le versement dès le premier mois, avant
+    // règlement de la première facture client, est toujours la pratique en 2026.
+    // Retiré du site si la pratique a changé ; c'est l'argument le plus fort du
+    // livre blanc (p.22, « PAS DE FRAIS CACHÉS »).
+    text: 'Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture. Le calendrier de paie vous est expliqué avant le démarrage.',
   },
   {
     title: 'Apport d’affaires',
@@ -28,7 +32,9 @@ const included = [
   },
   {
     title: 'Financement des formations',
-    text: 'Nous vous orientons sur les dispositifs mobilisables selon votre situation.',
+    // Livre blanc p.22, item 6 : « Accompagnement dans vos démarches de formation
+    // (CPF, OPCO, certifications…) ». Les dispositifs sont nommés, comme dans la source.
+    text: 'CPF, OPCO, certifications. Nous vous orientons sur les dispositifs mobilisables selon votre situation.',
   },
   {
     title: 'Garantie financière',
