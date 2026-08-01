@@ -1038,6 +1038,7 @@ from (values
   ('pages.confidentialite.auto.paragraph.qrkykr', '/confidentialite', 'paragraph', 'Une question ?'),
   ('pages.confidentialite.auto.paragraph.u55ewc', '/confidentialite', 'paragraph', 'Notre site utilise des cookies essentiels au fonctionnement du site, ainsi que des cookies de mesure d''audience pour nous aider à améliorer nos contenus. Vous pouvez à tout moment modifier vos préférences via notre outil de gestion des cookies (bientôt disponible).'),
   ('pages.confidentialite.auto.paragraph.waypk8', '/confidentialite', 'paragraph', 'Vous pouvez exercer ces droits en nous contactant à l''adresse suivante : dpo@porters.fr (ou via notre formulaire de contact).'),
+  ('pages.consultants.auto.button.1cmjm7o', '/consultants', 'button', 'Vous connaissez un consultant ? Découvrir le parrainage'),
   ('pages.consultants.auto.button.1upc42x', '/consultants', 'button', 'Prendre rendez-vous'),
   ('pages.consultants.auto.button.1ur26yk', '/consultants', 'button', 'Le portage salarial'),
   ('pages.consultants.auto.button.4nxp4q', '/consultants', 'button', 'Accueil'),

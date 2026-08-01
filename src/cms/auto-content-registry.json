@@ -6801,6 +6801,12 @@
     "rich": true
   },
   {
+    "key": "pages.consultants.auto.button.1cmjm7o",
+    "route": "/consultants",
+    "type": "button",
+    "content": "Vous connaissez un consultant ? Découvrir le parrainage"
+  },
+  {
     "key": "pages.consultants.auto.button.1upc42x",
     "route": "/consultants",
     "type": "button",
