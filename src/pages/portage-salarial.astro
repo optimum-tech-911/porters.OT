@@ -3,6 +3,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 import PresidentVideo from '../components/ui/PresidentVideo.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import TripartiteDiagram from '../components/ui/TripartiteDiagram.astro';
+import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import { pageSeo } from '../data/seo.data';
 import portageHeroImage from '../../images/advisor-discussion.webp';
 
@@ -147,6 +148,9 @@ const faqItems = [
             Le portage salarial est une relation tripartite encadrée par le Code du travail et la convention
             collective de branche.
           </p>
+          <a href="/consultants" class="mt-6 inline-flex items-center gap-2 font-semibold text-porters-navy hover:text-porters-gold transition-colors">
+            Voir le parcours complet du consultant <span aria-hidden="true">→</span>
+          </a>
         </div>
         <div class="reveal">
           <PresidentVideo />
@@ -191,7 +195,8 @@ const faqItems = [
     </div>
   </section>
 
-  <section class="section portage-practical">
+  <section class="section portage-practical brand-ambient-host">
+    <BrandAmbientShapes placement="split" />
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Chaque étape précise ce que vous faites et ce que The Porters prend en charge.</p>
@@ -251,7 +256,8 @@ const faqItems = [
     </div>
   </section>
 
-  <section class="section portage-comparison">
+  <section class="section portage-comparison brand-ambient-host">
+    <BrandAmbientShapes placement="right" />
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mx-auto mb-12 max-w-3xl text-center reveal">
         <h2>Quel cadre correspond à <span class="gold-underline">votre projet</span>&nbsp;?</h2>
@@ -284,7 +290,8 @@ const faqItems = [
     </div>
   </section>
 
-  <section class="section portage-faq">
+  <section class="section portage-faq brand-ambient-host">
+    <BrandAmbientShapes placement="left" />
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mx-auto mb-10 max-w-3xl text-center reveal">
         <h2><span class="gold-underline">Questions fréquentes</span></h2>
@@ -645,10 +652,10 @@ const faqItems = [
   }
 
   .portage-comparison {
-    background: rgba(40, 55, 67, 0.03);
+    background: linear-gradient(180deg, rgba(40,55,67,.03) 0%, rgba(40,55,67,.018) 72%, #fff 100%);
   }
 
-  .portage-faq { background:#fff; }
+  .portage-faq { margin-top:-1px;background:linear-gradient(180deg,#fff 0%,#fff 72%,#fbfaf7 100%); }
   .portage-faq-list { max-width:55rem;margin-inline:auto;border-top:1px solid rgba(40,55,67,.12); }
   .portage-faq-list details { border-bottom:1px solid rgba(40,55,67,.12); }
   .portage-faq-list summary { display:flex;min-height:4.8rem;align-items:center;justify-content:space-between;gap:1rem;color:var(--color-porters-navy);cursor:pointer;font-family:var(--font-heading);font-size:1rem;font-weight:700;list-style:none; }

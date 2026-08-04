@@ -20,6 +20,7 @@ const categoryPosts = blogPosts.filter((post) => post.category === slug);
   seo={{
     title: `${categoryInfo.label} | Blog The Porters`,
     description: categoryInfo.description,
+    noindex: categoryPosts.length === 0,
   }}
   breadcrumbs={[
     { label: 'Blog', href: '/blog' },

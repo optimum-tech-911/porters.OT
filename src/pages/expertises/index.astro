@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import SiteIcon from '../../components/ui/SiteIcon.astro';
+import BrandAmbientShapes from '../../components/ui/BrandAmbientShapes.astro';
 import { expertises } from '../../data/expertises.data';
 
 const seo = {
@@ -18,7 +19,8 @@ const commonJourney = [
 ---
 
 <PageLayout seo={seo} breadcrumbs={[{ label: 'Expertises' }]}>
-  <section class="expertise-hero">
+  <section class="expertise-hero brand-ambient-host">
+    <BrandAmbientShapes placement="left" tone="dark" />
     <div class="expertise-shell expertise-hero-grid">
       <div class="expertise-hero-copy reveal">
         <p>Expertises IT</p>
@@ -43,7 +45,7 @@ const commonJourney = [
         </div>
         {expertises.map((expertise, index) => (
           <a
-            href={`#expertise-${expertise.slug}`}
+            href={`/expertises/${expertise.slug}`}
             class={`constellation-node node-${index + 1}`}
             data-constellation-node
           >
@@ -55,7 +57,8 @@ const commonJourney = [
     </div>
   </section>
 
-  <section class="expertise-explorer" id="explorer">
+  <section class="expertise-explorer brand-ambient-host" id="explorer">
+    <BrandAmbientShapes placement="left" />
     <div class="expertise-shell">
       <header class="expertise-heading reveal">
         <p>La carte des domaines</p>
@@ -188,7 +191,7 @@ const commonJourney = [
         panel.classList.remove('is-entering');
         if (active && !reducedMotion) requestAnimationFrame(() => panel.classList.add('is-entering'));
       });
-      if (updateHash) history.replaceState(null, '', `#expertise-${panels[index]?.dataset.expertiseSlug}`);
+      if (updateHash) history.replaceState(null, '', `#expertise-panel-${panels[index]?.dataset.expertiseSlug}`);
     };
 
     tabs.forEach((tab, index) => {
@@ -205,7 +208,7 @@ const commonJourney = [
       });
     });
 
-    const requested = location.hash.replace('#expertise-', '');
+    const requested = location.hash.replace('#expertise-panel-', '');
     const requestedIndex = panels.findIndex((panel) => panel.dataset.expertiseSlug === requested);
     if (requestedIndex >= 0) select(requestedIndex, false, false);
   });

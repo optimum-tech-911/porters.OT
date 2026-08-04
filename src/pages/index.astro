@@ -1,21 +1,23 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import HomeHero from '../components/home/HomeHero.astro';
+import HomeProofMetrics from '../components/home/HomeProofMetrics.astro';
 import GoogleReviewsBadge from '../components/ui/GoogleReviewsBadge.astro';
 import GoogleReviewsMarquee from '../components/ui/GoogleReviewsMarquee.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
+import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import { faqGroups } from '../data/faq.data';
 import { pageSeo } from '../data/seo.data';
 import { googleReviewHighlights } from '../content/pages/home';
 import { cmsAttrs, cmsText } from '../cms/content';
 
 const partnerLogos = [
-  { name: 'BPCE', url: '/images/logos/partners/partner-1.png' },
-  { name: 'Groupama', url: '/images/logos/partners/partner-2.png' },
-  { name: 'Airbus', url: '/images/logos/partners/partner-3.png' },
-  { name: 'Safran', url: '/images/logos/partners/partner-4.png' },
-  { name: 'Thales', url: '/images/logos/partners/partner-5.png' },
-  { name: 'Capgemini', url: '/images/logos/partners/capgemini.svg' },
+  { name: 'BPCE', url: '/images/logos/partners/partner-1.png', optimizedUrl: '/images/logos/partners/partner-1-320.avif' },
+  { name: 'Groupama', url: '/images/logos/partners/partner-2.png', optimizedUrl: '/images/logos/partners/partner-2-320.avif' },
+  { name: 'Airbus', url: '/images/logos/partners/partner-3.png', optimizedUrl: '/images/logos/partners/partner-3-320.avif' },
+  { name: 'Safran', url: '/images/logos/partners/partner-4.png', optimizedUrl: '/images/logos/partners/partner-4-320.avif' },
+  { name: 'Thales', url: '/images/logos/partners/partner-5.png', optimizedUrl: '/images/logos/partners/partner-5-320.avif' },
+  { name: 'Capgemini', url: '/images/logos/partners/capgemini.svg', optimizedUrl: null },
 ];
 
 // The IT specialism leads: it is the differentiator, and it used to sit last
@@ -112,21 +114,34 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     <div class="light-logo-intro">
       <span {...cmsAttrs('home.ecosystem.label')}>{cmsText('home.ecosystem.label')}</span>
     </div>
-    <div class="light-logo-marquee auto-marquee" tabindex="0">
+    <div
+      class="light-logo-marquee auto-marquee"
+      tabindex="0"
+      role="region"
+      aria-label="Logos des partenaires et clients présentés en défilement"
+    >
       <div class="light-logo-track auto-marquee-track">
         <div class="light-logo-group">
           {partnerLogos.map((logo) => (
-            <img src={logo.url} alt={logo.name} loading="lazy" decoding="async" />
+            <picture>
+              {logo.optimizedUrl && <source srcset={logo.optimizedUrl} type="image/avif" />}
+              <img src={logo.url} alt={logo.name} width="320" height="107" loading="lazy" decoding="async" />
+            </picture>
           ))}
         </div>
         <div class="light-logo-group" aria-hidden="true">
           {partnerLogos.map((logo) => (
-            <img src={logo.url} alt="" loading="lazy" decoding="async" />
+            <picture>
+              {logo.optimizedUrl && <source srcset={logo.optimizedUrl} type="image/avif" />}
+              <img src={logo.url} alt="" width="320" height="107" loading="lazy" decoding="async" />
+            </picture>
           ))}
         </div>
       </div>
     </div>
   </section>
+
+  <HomeProofMetrics />
 
   <section class="light-section light-offer-section reveal-fade" data-reveal>
     <div class="light-container light-offer-layout">
@@ -143,6 +158,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
           <button
             type="button"
             class:list={['light-offer-item', 'reveal-up', { 'is-active': index === 0 }]}
+            aria-pressed={index === 0 ? 'true' : 'false'}
             data-reveal
             data-offer-step
             data-offer-title={item.title}
@@ -244,7 +260,8 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     </div>
   </section>
 
-  <section class="light-section light-reviews reveal-fade" data-reveal>
+  <section class="light-section light-reviews brand-ambient-host reveal-fade" data-reveal>
+    <BrandAmbientShapes placement="right" />
     <div class="light-container">
       <div class="light-reviews-header reveal-up" data-reveal>
         <div>
@@ -257,7 +274,8 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     </div>
   </section>
 
-  <section class="light-section light-faq reveal-fade" data-reveal>
+  <section class="light-section light-faq brand-ambient-host reveal-fade" data-reveal>
+    <BrandAmbientShapes placement="left" />
     <div class="light-container light-faq-layout">
       <div class="light-faq-copy reveal-up" data-reveal>
         <p {...cmsAttrs('home.faq.eyebrow')}>{cmsText('home.faq.eyebrow')}</p>
@@ -300,7 +318,11 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     const detailLinkText = detailLink?.querySelector<HTMLElement>('span');
 
     const selectStep = (step: HTMLButtonElement) => {
-      steps.forEach((item) => item.classList.toggle('is-active', item === step));
+      steps.forEach((item) => {
+        const active = item === step;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
       if (detailIndex) detailIndex.textContent = step.dataset.offerIndex || '';
       if (detailTitle) detailTitle.textContent = step.dataset.offerTitle || '';
       if (detailText) detailText.textContent = step.dataset.offerText || '';
@@ -393,6 +415,11 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     min-width: 0;
     padding-block: 1.5rem;
   }
+  .light-logo-marquee:focus-visible,
+  .light-jobs-marquee:focus-visible {
+    outline: 2px solid var(--color-porters-gold);
+    outline-offset: -3px;
+  }
   .light-logo-track {
     --marquee-duration: 38s;
     gap: 0;
@@ -403,6 +430,9 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     align-items: center;
     gap: clamp(2.5rem, 5vw, 5rem);
     padding-right: clamp(2.5rem, 5vw, 5rem);
+  }
+  .light-logo-group picture {
+    display: contents;
   }
   .light-logo-group img {
     width: clamp(4.5rem, 7vw, 6.5rem);
@@ -1051,7 +1081,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     }
   }
   .light-reviews {
-    background: white;
+    background: linear-gradient(180deg, #fff 0%, #fbfaf7 100%);
   }
   .light-reviews-header {
     display: flex;
@@ -1114,7 +1144,8 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     transform: translate(3px, -3px);
   }
   .light-faq {
-    background: white;
+    margin-top: -1px;
+    background: linear-gradient(180deg, #fbfaf7 0%, #fff 28%, #fff 100%);
   }
   .light-faq-list {
     border-top: 1px solid rgba(40, 55, 67, 0.16);
@@ -1377,6 +1408,10 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     }}
 
   @media (prefers-reduced-motion: reduce) {
+    .light-offer-detail.is-switching,
+    .light-faq-list details[open] .light-faq-answer > div {
+      animation: none;
+    }
     .light-faq-list summary span {
       transition: none;
     }

@@ -4204,6 +4204,16 @@ body {
     padding: 3rem 0;
   }
 
+  .brand-ambient-host {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .brand-ambient-host > :not(.brand-ambient-shapes) {
+    position: relative;
+    z-index: 1;
+  }
+
   @media (min-width: 1024px) {
     .section-sm {
       padding: 4rem 0;

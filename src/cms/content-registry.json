@@ -78,6 +78,48 @@
     "content": "Un écosystème habitué aux projets exigeants"
   },
   {
+    "key": "home.proof.title",
+    "route": "/",
+    "type": "heading",
+    "content": "The Porters, c’est aussi…"
+  },
+  {
+    "key": "home.proof.missions.label",
+    "route": "/",
+    "type": "label",
+    "content": "Missions en cours"
+  },
+  {
+    "key": "home.proof.missions.description",
+    "route": "/",
+    "type": "text",
+    "content": "Des missions structurées sans retirer aux consultants la maîtrise de leur client, de leur TJM et de leur intervention."
+  },
+  {
+    "key": "home.proof.experience.label",
+    "route": "/",
+    "type": "label",
+    "content": "D’expérience"
+  },
+  {
+    "key": "home.proof.experience.description",
+    "route": "/",
+    "type": "text",
+    "content": "Un accompagnement du portage salarial pensé pour les consultants et les métiers du numérique."
+  },
+  {
+    "key": "home.proof.remuneration.label",
+    "route": "/",
+    "type": "label",
+    "content": "Première rémunération"
+  },
+  {
+    "key": "home.proof.remuneration.description",
+    "route": "/",
+    "type": "text",
+    "content": "Une première rémunération versée dès le premier mois, avant le règlement de la première facture client."
+  },
+  {
     "key": "home.offer.eyebrow",
     "route": "/",
     "type": "label",

@@ -1,0 +1,71 @@
+---
+interface Props {
+  placement?: 'left' | 'right' | 'split';
+  tone?: 'light' | 'dark';
+}
+
+const { placement = 'right', tone = 'light' } = Astro.props;
+---
+
+<brand-ambient-shapes
+  class="brand-ambient-shapes"
+  data-placement={placement}
+  data-tone={tone}
+  data-cms-ignore
+  aria-hidden="true"
+>
+  <span class="brand-ambient-shape brand-ambient-shape--primary"></span>
+  <span class="brand-ambient-shape brand-ambient-shape--secondary"></span>
+</brand-ambient-shapes>
+
+<style>
+  .brand-ambient-shapes {
+    position: absolute;
+    z-index: 0;
+    inset: -1px 0;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%);
+  }
+
+  .brand-ambient-shape {
+    position: absolute;
+    display: block;
+    transform: rotate(var(--shape-rotation));
+    transform-origin: center;
+  }
+
+  .brand-ambient-shape--primary {
+    --shape-rotation: 17deg;
+    top: -8rem;
+    width: clamp(16rem, 24vw, 28rem);
+    height: clamp(22rem, 34vw, 36rem);
+    border-radius: 46% 54% 42% 58% / 35% 43% 57% 65%;
+    background: rgba(198, 164, 90, 0.075);
+  }
+
+  .brand-ambient-shape--secondary {
+    --shape-rotation: -11deg;
+    bottom: -9rem;
+    width: clamp(14rem, 20vw, 23rem);
+    height: clamp(18rem, 28vw, 30rem);
+    border-radius: 58% 42% 51% 49% / 41% 58% 42% 59%;
+    background: rgba(32, 52, 64, 0.028);
+  }
+
+  [data-placement='right'] .brand-ambient-shape--primary { right: -10rem; }
+  [data-placement='right'] .brand-ambient-shape--secondary { left: -9rem; }
+  [data-placement='left'] .brand-ambient-shape--primary { left: -10rem; }
+  [data-placement='left'] .brand-ambient-shape--secondary { right: -9rem; }
+  [data-placement='split'] .brand-ambient-shape--primary { right: -9rem; }
+  [data-placement='split'] .brand-ambient-shape--secondary { left: -8rem; }
+
+  [data-tone='dark'] .brand-ambient-shape--primary { background: rgba(198, 164, 90, 0.07); }
+  [data-tone='dark'] .brand-ambient-shape--secondary { background: rgba(255, 255, 255, 0.022); }
+
+  @media (max-width: 700px) {
+    .brand-ambient-shape--primary { top: -7rem; width: 15rem; height: 22rem; }
+    .brand-ambient-shape--secondary { bottom: -8rem; width: 13rem; height: 18rem; }
+  }
+</style>

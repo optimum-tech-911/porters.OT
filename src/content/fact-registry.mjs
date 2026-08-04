@@ -23,6 +23,32 @@
  */
 
 export const REQUIRED = [
+  // ── / — proof points authorised by the final client-preparation brief ────
+  {
+    id: 'F-HOME-PROOF-01',
+    status: 'REQUIRED',
+    source: 'Final Porters perfection brief, 04/08/2026',
+    route: '/',
+    message: 'The Porters accompagne plus de 150 missions en cours.',
+    evidence: ['150+', 'Missions en cours'],
+  },
+  {
+    id: 'F-HOME-PROOF-02',
+    status: 'REQUIRED',
+    source: 'Final Porters perfection brief, 04/08/2026',
+    route: '/',
+    message: 'The Porters présente plus de dix ans d’expérience.',
+    evidence: ['10+ ans', 'D’expérience'],
+  },
+  {
+    id: 'F-HOME-PROOF-03',
+    status: 'REQUIRED',
+    source: 'LB2024 p.22; final Porters perfection brief, 04/08/2026',
+    route: '/',
+    message: 'La première rémunération est versée dès le premier mois.',
+    evidence: ['1er mois', 'Première rémunération'],
+  },
+
   // ── /tarifs — livre blanc p.22, « PAS DE FRAIS CACHÉS » ──────────────────
   {
     id: 'F-B14',

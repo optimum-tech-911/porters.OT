@@ -1,0 +1,278 @@
+---
+const people = [
+  {
+    id: 'ambre',
+    name: 'Ambre Lambert',
+    role: 'Directrice commerciale IT',
+    eyebrow: 'Entreprises',
+    image: '/images/team/ambre-lambert.png',
+    optimizedImage: '/images/team/ambre-lambert-800.avif',
+  },
+  {
+    id: 'eric',
+    name: 'Éric Bensaid',
+    role: 'Fondateur',
+    eyebrow: 'Vision',
+    image: '/images/team/eric-bensaid.png',
+    optimizedImage: '/images/team/eric-bensaid-800.avif',
+  },
+  {
+    id: 'lisa',
+    name: 'Lisa Delrieu',
+    role: 'Chargée de recrutement',
+    eyebrow: 'Consultants',
+    image: '/images/team/lisa-delrieu.png',
+    optimizedImage: '/images/team/lisa-delrieu-800.avif',
+  },
+];
+---
+
+<div class="team-portrait-hero" data-team-portrait-hero>
+  <div class="team-portrait-shape" aria-hidden="true"></div>
+  <div class="team-portrait-search" aria-hidden="true">
+    <span>The Porters pour vous.</span>
+    <b>⌕</b>
+  </div>
+  <div class="team-portrait-lines" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="team-portrait-cards" aria-label="Les interlocuteurs The Porters">
+    {people.map((person) => (
+      <a
+        class:list={['team-portrait-card', `team-portrait-card--${person.id}`]}
+        href="/equipe"
+        aria-label={`${person.name}, ${person.role} — découvrir l’équipe`}
+      >
+        <span class="team-portrait-image">
+          <picture>
+            <source srcset={person.optimizedImage} type="image/avif" />
+            <img src={person.image} alt={person.name} width="800" height="800" loading="eager" decoding="async" />
+          </picture>
+        </span>
+        <span class="team-portrait-copy">
+          <small>{person.eyebrow}</small>
+          <strong>{person.name}</strong>
+          <em>{person.role}</em>
+        </span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .team-portrait-hero,
+  .team-portrait-hero * {
+    box-sizing: border-box;
+  }
+
+  .team-portrait-hero {
+    --team-center: var(--team-center-position, 50%);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .team-portrait-hero::before {
+    position: absolute;
+    top: -10rem;
+    right: -11rem;
+    width: 34rem;
+    height: 42rem;
+    border-radius: 48% 0 0 62%;
+    background: #203440;
+    content: '';
+    pointer-events: none;
+    transform: rotate(8deg);
+  }
+
+  .team-portrait-hero::after {
+    position: absolute;
+    top: -15rem;
+    left: -10rem;
+    width: 32rem;
+    height: 32rem;
+    border-radius: 50%;
+    background: rgba(198, 164, 90, 0.34);
+    content: '';
+    pointer-events: none;
+  }
+
+  .team-portrait-shape {
+    position: absolute;
+    top: -8rem;
+    left: calc(var(--team-center) - 12rem);
+    width: 24rem;
+    height: 42rem;
+    border-radius: 48% 52% 43% 57% / 35% 42% 58% 65%;
+    background: linear-gradient(160deg, rgba(247, 235, 205, 0.96), rgba(198, 164, 90, 0.68));
+    transform: rotate(-13deg);
+  }
+
+  .team-portrait-search {
+    position: absolute;
+    top: clamp(2.2rem, 7vh, 4.2rem);
+    left: var(--team-center);
+    z-index: 6;
+    display: flex;
+    width: min(76%, 25rem);
+    min-height: 3.4rem;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(32, 52, 64, 0.14);
+    border-radius: 999px;
+    padding: 0 1.1rem 0 1.35rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 13px 30px rgba(32, 52, 64, 0.16);
+    color: #203440;
+    font-size: 0.83rem;
+    font-weight: 700;
+    transform: translateX(-50%);
+  }
+
+  .team-portrait-search b {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border-radius: 50%;
+    background: #203440;
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  .team-portrait-lines span {
+    position: absolute;
+    top: clamp(5.6rem, calc(7vh + 3.4rem), 7.6rem);
+    left: var(--team-center);
+    z-index: 1;
+    width: 2px;
+    height: 10rem;
+    background: repeating-linear-gradient(to bottom, rgba(32, 52, 64, 0.48) 0 3px, transparent 3px 8px);
+    transform-origin: top;
+  }
+
+  .team-portrait-lines span:first-child { transform: rotate(-58deg); }
+  .team-portrait-lines span:nth-child(2) { transform: rotate(0); }
+  .team-portrait-lines span:last-child { transform: rotate(58deg); }
+
+  .team-portrait-card {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    width: clamp(11rem, 15vw, 13.2rem);
+    gap: 0.55rem;
+    border: 1px solid rgba(32, 52, 64, 0.14);
+    border-radius: 1.15rem;
+    padding: 0.55rem;
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 20px 45px rgba(32, 52, 64, 0.19);
+    color: #203440;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    will-change: transform;
+    transition: transform 220ms cubic-bezier(.2,.8,.2,1), border-color 180ms ease, box-shadow 220ms ease;
+  }
+
+  .team-portrait-card--ambre { top: clamp(12rem, 25vh, 15rem); left: calc(var(--team-center) - 22rem); transform: rotate(-2deg); }
+  .team-portrait-card--eric { top: clamp(8.5rem, 18vh, 11rem); left: var(--team-center); z-index: 5; width: clamp(13rem, 19vw, 16rem); transform: translateX(-50%); }
+  .team-portrait-card--lisa { top: clamp(12rem, 25vh, 15rem); left: calc(var(--team-center) + 9rem); transform: rotate(2deg); }
+
+  .team-portrait-card:hover,
+  .team-portrait-card:focus-visible,
+  .team-portrait-card:active {
+    z-index: 8;
+    border-color: #c6a45a;
+    box-shadow: 0 32px 68px rgba(3, 13, 19, 0.3), 0 0 0 3px rgba(198, 164, 90, 0.16);
+    outline: none;
+  }
+
+  .team-portrait-card--ambre:hover,
+  .team-portrait-card--ambre:focus-visible,
+  .team-portrait-card--ambre:active { transform: rotate(-1deg) translateY(-7px) scale(1.015); }
+  .team-portrait-card--eric:hover,
+  .team-portrait-card--eric:focus-visible,
+  .team-portrait-card--eric:active { transform: translateX(-50%) translateY(-7px) scale(1.015); }
+  .team-portrait-card--lisa:hover,
+  .team-portrait-card--lisa:focus-visible,
+  .team-portrait-card--lisa:active { transform: rotate(1deg) translateY(-7px) scale(1.015); }
+
+  .team-portrait-image {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1.05;
+    border-radius: 0.85rem;
+    background: #f3efe6;
+    overflow: hidden;
+  }
+
+  .team-portrait-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 33%;
+    transition: transform 420ms cubic-bezier(.2,.8,.2,1);
+  }
+
+  .team-portrait-image picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .team-portrait-card:hover img,
+  .team-portrait-card:focus-visible img,
+  .team-portrait-card:active img { transform: scale(1.02); }
+
+  .team-portrait-copy { display: grid; padding: 0.22rem 0.28rem 0.35rem; }
+  .team-portrait-copy small { color: #a98238; font-size: 0.55rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; }
+  .team-portrait-copy strong { margin-top: 0.22rem; font-size: 0.92rem; line-height: 1.15; }
+  .team-portrait-copy em { margin-top: 0.16rem; color: rgba(32, 52, 64, 0.58); font-size: 0.64rem; font-style: normal; }
+
+  @media (max-width: 780px) {
+    .team-portrait-hero { min-height: 34rem; }
+    .team-portrait-search { width: min(82%, 23rem); }
+    .team-portrait-card { width: 9.5rem; }
+    .team-portrait-card--ambre { top: 13rem; left: 2%; }
+    .team-portrait-card--eric { top: 7.2rem; width: 13rem; }
+    .team-portrait-card--lisa { top: 13rem; right: 2%; left: auto; }
+  }
+
+  @media (max-width: 520px) {
+    .team-portrait-hero { min-height: 30rem; }
+    .team-portrait-hero::before { top: -8rem; right: -17rem; }
+    .team-portrait-shape { top: -7rem; left: 25%; width: 18rem; }
+    .team-portrait-search { top: 1rem; min-height: 3rem; font-size: 0.7rem; }
+    .team-portrait-lines { display: none; }
+    .team-portrait-card { width: 8.25rem; padding: 0.4rem; }
+    .team-portrait-card--ambre { top: 14.5rem; left: 0.65rem; }
+    .team-portrait-card--eric { top: 6rem; width: 10.5rem; }
+    .team-portrait-card--lisa { top: 14.5rem; right: 0.65rem; left: auto; }
+    .team-portrait-copy strong { font-size: 0.72rem; }
+    .team-portrait-copy em { font-size: 0.55rem; }
+  }
+
+  @media (max-width: 420px) {
+    .team-portrait-card { width: 6.5rem; }
+    .team-portrait-card--ambre { left: 0.5rem; }
+    .team-portrait-card--eric { width: 8rem; }
+    .team-portrait-card--lisa { right: 0.5rem; }
+    .team-portrait-copy small { font-size: 0.48rem; }
+    .team-portrait-copy strong { font-size: 0.65rem; }
+    .team-portrait-copy em { font-size: 0.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .team-portrait-card,
+    .team-portrait-image img { transition: none; }
+  }
+</style>

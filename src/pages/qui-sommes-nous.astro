@@ -1,6 +1,8 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
+import TeamPortraitHero from '../components/about/TeamPortraitHero.astro';
+import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import { pageSeo } from '../data/seo.data';
 import { aboutPage } from '../content/pages/about';
 import { expertiseSections } from '../data/expertise-sections.data';
@@ -35,16 +37,26 @@ const responsibilityCommitments = [
 ];
 ---
 
-<PageLayout seo={pageSeo.quiSommesNous} breadcrumbs={[{ label: 'Qui sommes-nous' }]}>
+<PageLayout seo={pageSeo.quiSommesNous} noBreadcrumbs>
   <section class="about-hero">
-    <div class="about-shell reveal">
-      <p class="eyebrow">The Porters · Notre rôle</p>
-      <h1>Le portage salarial pensé pour les experts du numérique.</h1>
-      <p>Nous donnons aux consultants l’autonomie pour développer leur activité, avec un cadre salarié clair et un accompagnement qui reste humain.</p>
+    <div class="about-hero-visual" aria-hidden="false">
+      <TeamPortraitHero />
+    </div>
+    <div class="about-shell about-hero-content">
+      <div class="about-hero-copy reveal">
+        <p class="eyebrow">The Porters · Notre rôle</p>
+        <h1>Le portage salarial pensé pour les experts du numérique.</h1>
+        <p>Nous donnons aux consultants l’autonomie pour développer leur activité, avec un cadre salarié clair et un accompagnement qui reste humain.</p>
+        <div class="about-hero-actions">
+          <a href="/portage-salarial">Comprendre le portage <span aria-hidden="true">→</span></a>
+          <a href="/simulateur">Simuler mes revenus <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="about-section ecosystem-section" aria-labelledby="ecosystem-title">
+  <section class="about-section ecosystem-section brand-ambient-host" aria-labelledby="ecosystem-title">
+    <BrandAmbientShapes placement="right" />
     <div class="about-shell">
       <header class="section-head reveal">
         <p>L’écosystème Porters</p>
@@ -209,7 +221,8 @@ const responsibilityCommitments = [
     </div>
   </section>
 
-  <section class="about-section history-section" id="histoire">
+  <section class="about-section history-section brand-ambient-host" id="histoire">
+    <BrandAmbientShapes placement="split" />
     <div class="about-shell">
       <header class="section-head reveal"><p>Notre histoire</p><h2>Une histoire de spécialisation,<br />de proximité et de complémentarité.</h2></header>
       <div class="history-timeline" data-history-schema>
@@ -371,7 +384,8 @@ const responsibilityCommitments = [
 </script>
 
 <style>
-  .about-shell{width:min(100% - 3rem,82rem);margin:auto}.about-hero{padding:clamp(5rem,10vw,9rem) 0;background:#f4f6f7;text-align:center}.eyebrow,.section-head>p,.about-cta p{margin-bottom:1rem;color:#b79245;font-size:.72rem;font-weight:750;letter-spacing:.15em;text-transform:uppercase}.about-hero h1{max-width:18ch;margin:auto;color:#203440;font-size:clamp(3rem,6vw,6rem);line-height:.98;letter-spacing:-.055em}.about-hero .about-shell>p:last-child{max-width:48rem;margin:1.6rem auto 0;color:rgba(32,52,64,.62);font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.7}.about-section{padding:clamp(5rem,10vw,9rem) 0}.section-head{max-width:52rem;margin-bottom:4rem}.section-head h2{font-size:clamp(2.3rem,4.5vw,4.5rem);line-height:1.03;letter-spacing:-.045em}.section-head.light h2{color:#fff}
+  .about-shell{width:min(100% - 3rem,82rem);margin:auto}.about-hero{position:relative;overflow:hidden;padding:clamp(3.6rem,7vw,6.4rem) 0;background:radial-gradient(circle at 82% 16%,rgba(198,164,90,.13),transparent 30%),linear-gradient(145deg,#f4f6f7,#f8f5ee 68%,#eef1f2)}.about-hero-grid{position:relative;display:grid;grid-template-columns:minmax(19rem,.62fr) minmax(38rem,1.38fr);align-items:center;gap:clamp(2.4rem,5vw,5.5rem)}.about-hero-copy{position:relative;z-index:2}.eyebrow,.section-head>p,.about-cta p{margin-bottom:1rem;color:#b79245;font-size:.72rem;font-weight:750;letter-spacing:.15em;text-transform:uppercase}.about-hero h1{max-width:12ch;margin:0;color:#203440;font-size:clamp(3rem,5vw,5.3rem);line-height:.96;letter-spacing:-.055em}.about-hero-copy>p:last-of-type{max-width:34rem;margin:1.6rem 0 0;color:rgba(32,52,64,.64);font-size:clamp(.98rem,1.35vw,1.12rem);line-height:1.72}.about-hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}.about-hero-actions a{display:inline-flex;min-height:3.1rem;align-items:center;justify-content:center;gap:.75rem;border:1px solid rgba(32,52,64,.18);border-radius:999px;padding:.75rem 1.2rem;color:#203440;font-size:.72rem;font-weight:760;transition:background 180ms ease,border-color 180ms ease,color 180ms ease,transform 220ms cubic-bezier(.2,.8,.2,1)}.about-hero-actions a:first-child{border-color:#c6a45a;background:#c6a45a}.about-hero-actions a:hover,.about-hero-actions a:focus-visible{border-color:#203440;background:#203440;color:#fff;outline:none;transform:translateY(-2px)}.about-hero-team{min-width:0}.about-section{padding:clamp(5rem,10vw,9rem) 0}.section-head{max-width:52rem;margin-bottom:4rem}.section-head h2{font-size:clamp(2.3rem,4.5vw,4.5rem);line-height:1.03;letter-spacing:-.045em}.section-head.light h2{color:#fff}
+  .about-hero{display:flex;min-height:clamp(44rem,calc(100vh - 5.5rem),54rem);align-items:center;padding:0;background:#f8f4ec}.about-hero-visual{--team-center-position:70%;position:absolute;z-index:1;inset:0}.about-hero-content{position:relative;z-index:3;display:flex;min-height:inherit;align-items:center}.about-hero-copy{width:min(36%,31rem);margin:0;text-align:left}.about-hero h1{max-width:12ch;margin:0}.about-hero-copy>p:last-of-type{max-width:31rem;margin:1.6rem 0 0}.about-hero-actions{justify-content:flex-start}
   .mission-system {
     --mx: 0px;
     --my: 0px;
@@ -709,7 +723,7 @@ const responsibilityCommitments = [
     content: "";
     pointer-events: none;
   }
-  .ecosystem-section{overflow:hidden;background:#f7f4ed}
+  .ecosystem-section{overflow:hidden;padding-top:clamp(4rem,7vw,6.5rem);background:linear-gradient(180deg,#f8f4ec 0%,#f7f4ed 11rem,#f7f4ed 100%)}
   .ecosystem-section .section-head{display:grid;grid-template-columns:minmax(0,.95fr) minmax(15rem,.45fr);column-gap:clamp(2rem,7vw,7rem);align-items:end;max-width:none}
   .ecosystem-section .section-head>p{grid-column:1/-1}
   .ecosystem-section .section-head h2{margin:0}
@@ -736,7 +750,8 @@ const responsibilityCommitments = [
   .values-section{background:#f6f3ec}.values-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(3rem,8vw,8rem)}.values-list{display:grid;gap:.75rem}.values-list details{position:relative;overflow:hidden;border:1px solid rgba(32,52,64,.12);border-radius:8px;background:rgba(255,255,255,.38);transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s ease,border-color .22s ease,background .22s ease}.values-list details:hover,.values-list details[open]{border-color:rgba(198,164,90,.5);background:#fff;box-shadow:0 18px 42px rgba(32,52,64,.08);transform:translateY(-4px)}.values-list details:before{position:absolute;inset:0 auto 0 0;width:3px;background:#c6a45a;content:"";opacity:0;transform:scaleY(.3);transition:.28s ease}.values-list details:hover:before,.values-list details[open]:before{opacity:1;transform:scaleY(1)}.values-list summary{display:grid;grid-template-columns:3rem 1fr auto;align-items:center;padding:1.2rem 1.25rem;color:#203440;font-weight:760;cursor:pointer;list-style:none}.values-list summary::-webkit-details-marker{display:none}.values-list summary>span{display:grid;width:2rem;height:2rem;place-items:center;border:1px solid rgba(198,164,90,.35);border-radius:50%;color:#b79245;font:650 .65rem monospace}.values-list summary b{display:grid;width:2rem;height:2rem;place-items:center;border-radius:50%;color:#b79245;font-size:1.2rem;transition:.24s cubic-bezier(.2,.8,.2,1)}.values-list details[open] summary b{background:#c6a45a;color:#10202b;transform:rotate(45deg)}.values-list details p{max-width:38rem;margin:0 1.25rem 1.35rem 4.25rem;color:rgba(32,52,64,.62);font-size:.9rem;line-height:1.7;animation:value-copy .32s cubic-bezier(.2,.8,.2,1) both}
   .history-section {
     overflow: hidden;
-    background: linear-gradient(180deg, #fff 0%, #f7f4ed 100%);
+    padding-top: clamp(4rem, 7vw, 6.5rem);
+    background: linear-gradient(180deg, #f6f3ec 0%, #faf9f6 22%, #f7f5f0 68%, #f4f6f7 100%);
   }
   .history-section .section-head {
     text-align: center;
@@ -901,7 +916,7 @@ const responsibilityCommitments = [
     box-shadow: 0 20px 50px rgba(32, 52, 64, 0.1);
     transform: translateY(-4px);
   }
-  .team-integrated-section{background:#f4f6f7}.team-function-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(32,52,64,.12);border-left:1px solid rgba(32,52,64,.12)}
+  .team-integrated-section{margin-top:-1px;padding-top:clamp(4rem,7vw,6.5rem);background:linear-gradient(180deg,#f4f6f7 0%,#f7f8f8 9rem,#f4f6f7 100%)}.team-function-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(32,52,64,.12);border-left:1px solid rgba(32,52,64,.12)}
   .team-function-rail article{min-height:14rem;border-right:1px solid rgba(32,52,64,.12);border-bottom:1px solid rgba(32,52,64,.12);padding:1.6rem;background:rgba(255,255,255,.56);transition:background 180ms ease,transform 260ms cubic-bezier(.2,.8,.2,1)}
   .team-function-rail article:hover{background:#fff;transform:translateY(-4px)}.team-function-rail span,.responsibility-commitments>article>span{color:#b79245;font-family:var(--font-mono);font-size:.64rem;font-weight:700}
   .team-function-rail h3{margin-top:2rem;font-size:1.05rem}.team-function-rail p{margin-top:.7rem;color:rgba(32,52,64,.6);font-size:.76rem;line-height:1.65}
@@ -912,6 +927,13 @@ const responsibilityCommitments = [
   .about-cta{padding:4rem 0;background:#203440;color:#fff}.about-cta .about-shell{display:flex;align-items:center;justify-content:space-between;gap:2rem}.about-cta h2{color:#fff}.about-cta a{display:grid;min-height:3.2rem;place-items:center;border-radius:999px;padding:0 1.4rem;background:#c6a45a;color:#10202b;font-size:.82rem;font-weight:750;white-space:nowrap}
   @keyframes dash{to{stroke-dashoffset:-200}}@keyframes orbit{to{transform:rotate(1turn)}}@keyframes mission-spin{to{transform:rotate(1turn)}}@keyframes mission-spin-reverse{to{rotate:-1turn}}@keyframes expertise-node-float{0%,100%{translate:0 0}50%{translate:0 -5px}}@keyframes detail-pop{from{opacity:.82;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}@keyframes value-copy{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
   @media(max-width:1100px){
+    .about-hero{min-height:65rem;align-items:flex-start}
+    .about-hero-content{align-items:flex-start}
+    .about-hero-copy{width:100%;max-width:46rem;margin-inline:auto;padding-top:4.5rem;text-align:center}
+    .about-hero h1{max-width:14ch;margin-inline:auto}
+    .about-hero-copy>p:last-of-type{margin-inline:auto}
+    .about-hero-actions{justify-content:center}
+    .about-hero-visual{--team-center-position:50%;inset:27rem 0 0}
     .mission-system{min-height:40rem}
     .mission-orbit-item{width:min(13.5rem,25vw);transform:rotate(var(--angle)) translate(clamp(12rem,23vw,15.5rem)) rotate(calc(-1 * var(--angle))) translate(-50%,-50%)}
     .vision{width:18rem;height:18rem}
@@ -991,6 +1013,6 @@ const responsibilityCommitments = [
     .history-node::before { left: 1.5rem; }
   }
   @media(max-width:700px){.team-function-rail{grid-template-columns:1fr}}
-  @media(max-width:560px){.about-shell{width:min(100% - 2rem,82rem)}.about-hero{padding-block:4.2rem}.about-section{padding-block:4.6rem;overflow:hidden;scroll-margin-top:5.2rem}.section-head{max-width:100%;margin-bottom:2.2rem}.section-head h2{max-width:100%;overflow-wrap:normal;font-size:clamp(2rem,10vw,3.15rem);line-height:1.02}.about-hero h1{font-size:clamp(2.45rem,12vw,3.6rem)}.about-hero .about-shell>p:last-child{font-size:.98rem}.mission-card p{font-size:.74rem}.expertise-section .section-head h2{font-size:clamp(2rem,9.5vw,2.9rem)}.about-cta{padding-bottom:calc(6rem + env(safe-area-inset-bottom))}}
+  @media(max-width:560px){.about-shell{width:min(100% - 2rem,82rem)}.about-hero{min-height:70rem;padding:0}.about-hero-copy{padding-top:3.5rem}.about-hero-visual{inset:36rem 0 0}.about-hero-actions{display:grid}.about-hero-actions a{width:100%;justify-content:space-between}.about-section{padding-block:4.6rem;overflow:hidden;scroll-margin-top:5.2rem}.section-head{max-width:100%;margin-bottom:2.2rem}.section-head h2{max-width:100%;overflow-wrap:normal;font-size:clamp(2rem,10vw,3.15rem);line-height:1.02}.about-hero h1{font-size:clamp(2.45rem,12vw,3.6rem)}.about-hero-copy>p:last-of-type{font-size:.98rem}.mission-card p{font-size:.74rem}.expertise-section .section-head h2{font-size:clamp(2rem,9.5vw,2.9rem)}.about-cta{padding-bottom:calc(6rem + env(safe-area-inset-bottom))}}
   @media(prefers-reduced-motion:reduce){.mission-rings circle,.mission-orbit,.mission-card,.vision-orbit,.expertise-radar circle,.expertise-node,.expertise-detail.detail-pop,.history-step,.values-list details{animation:none}.mission-system,.mission-visual,.vision,.expertise-radar{transform:none!important}}
 </style>

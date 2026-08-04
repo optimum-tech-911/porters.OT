@@ -12,26 +12,31 @@ const breadcrumbs = [{ label: 'Parler à un conseiller' }];
 
 const meetingTypes = [
   {
+    value: 'Comprendre le portage salarial',
     title: 'Comprendre le portage salarial',
     duration: '30 min',
     description: 'Le cadre, les deux contrats, la protection sociale et ce qui change concrètement pour vous.',
   },
   {
+    value: 'Relire ma simulation',
     title: 'Relire ma simulation',
     duration: '45 min',
     description: 'Votre TJM, vos jours facturés, vos frais réels et ce que cela donne en net.',
   },
   {
+    value: 'Passer de freelance à portage',
     title: 'Passer de freelance à portage',
     duration: '45 min',
     description: 'Ce que vous gagnez et ce que vous perdez en passant de micro-entreprise ou de SASU au portage.',
   },
   {
+    value: 'Discuter de ma mission IT',
     title: 'Discuter de ma mission IT',
     duration: '45 min',
     description: 'Une mission cyber, data, IA, cloud, DevOps, produit ou agilité déjà identifiée à cadrer.',
   },
   {
+    value: 'Parler à quelqu’un près de moi',
     title: 'Parler à quelqu’un près de moi',
     duration: '30 min',
     description: 'Un échange sur place ou à distance, selon votre localisation et votre rythme de mission.',
@@ -87,19 +92,16 @@ const reasons = [
                 Un sujet, vos coordonnées, vos disponibilités. C’est tout ce dont nous avons besoin pour préparer un échange utile.
               </p>
             </div>
-            <div class="grid gap-3 mb-8">
-              {meetingTypes.map((type) => (
-                <label class="flex cursor-pointer items-start gap-4 rounded-lg border border-porters-navy/10 bg-porters-navy/[0.02] p-4 transition-colors hover:border-porters-gold/50">
-                  <input type="radio" name="meetingTypePreview" class="mt-1" />
-                  <span>
-                    <span class="block font-heading font-semibold text-porters-navy">{type.title}</span>
-                    <span class="mt-1 block text-xs font-semibold uppercase tracking-[0.14em] text-porters-gold">{type.duration}</span>
-                    <span class="mt-2 block text-sm leading-relaxed text-porters-black/60">{type.description}</span>
-                  </span>
-                </label>
-              ))}
-            </div>
-            <ContactForm client:visible />
+            <ContactForm
+              client:visible
+              appointmentTopics={meetingTypes.map((type) => ({
+                value: type.value,
+                title: type.title,
+                meta: type.duration,
+                description: type.description,
+              }))}
+              requestAvailability
+            />
           </div>
         </div>
 

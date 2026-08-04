@@ -212,7 +212,7 @@
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 87
+    "contentCount": 88
   },
   {
     "route": "/expertises/product-project-management",
@@ -242,7 +242,7 @@
   {
     "route": "/rendez-vous",
     "name": "Prendre rendez-vous portage salarial IT",
-    "contentCount": 47
+    "contentCount": 48
   },
   {
     "route": "/parrainage",
@@ -252,7 +252,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 437
+    "contentCount": 443
   },
   {
     "route": "/recrutement",

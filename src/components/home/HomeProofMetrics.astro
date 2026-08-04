@@ -1,0 +1,488 @@
+---
+import { cmsAttrs, cmsText } from '../../cms/content';
+
+type ProofMetric = {
+  id: 'missions' | 'experience' | 'remuneration';
+  target?: number;
+  prefix?: string;
+  suffix?: string;
+  accessibleValue: string;
+  labelKey: string;
+  descriptionKey: string;
+};
+
+const metrics: ProofMetric[] = [
+  {
+    id: 'missions',
+    target: 150,
+    suffix: '+',
+    accessibleValue: 'Plus de 150 missions en cours',
+    labelKey: 'home.proof.missions.label',
+    descriptionKey: 'home.proof.missions.description',
+  },
+  {
+    id: 'experience',
+    target: 10,
+    suffix: '+ ans',
+    accessibleValue: 'Plus de 10 ans d’expérience',
+    labelKey: 'home.proof.experience.label',
+    descriptionKey: 'home.proof.experience.description',
+  },
+  {
+    id: 'remuneration',
+    prefix: '1',
+    accessibleValue: 'Première rémunération dès le premier mois',
+    labelKey: 'home.proof.remuneration.label',
+    descriptionKey: 'home.proof.remuneration.description',
+  },
+];
+---
+
+<home-proof-metrics
+  class="home-proof"
+  data-home-proof
+  role="region"
+  aria-labelledby="home-proof-title"
+>
+  <div class="home-proof__inner">
+    <h2 id="home-proof-title" {...cmsAttrs('home.proof.title')}>{cmsText('home.proof.title')}</h2>
+
+    <div class="home-proof__diagram" role="list" aria-label="Chiffres clés The Porters">
+      <div class="home-proof__cluster">
+        {metrics.map((metric, index) => (
+          <div
+            class:list={['home-proof__bubble', `home-proof__bubble--${metric.id}`]}
+            style={`--proof-delay: ${index * 130}ms; --float-delay: ${820 + index * 280}ms`}
+            role="listitem"
+            aria-label={metric.accessibleValue}
+          >
+            <div class="home-proof__bubble-surface">
+              <strong class="home-proof__value" data-cms-ignore>
+                {metric.target ? (
+                  <span
+                    class="home-proof__number"
+                    data-proof-count
+                    data-target={metric.target}
+                    data-suffix={metric.suffix}
+                  >{metric.target}{metric.suffix}</span>
+                ) : (
+                  <span>{metric.prefix}er mois</span>
+                )}
+              </strong>
+            </div>
+          </div>
+        ))}
+        <span class="home-proof__connector home-proof__connector--missions"></span>
+        <span class="home-proof__connector home-proof__connector--experience"></span>
+        <span class="home-proof__connector home-proof__connector--remuneration"></span>
+      </div>
+
+      {metrics.map((metric, index) => (
+        <div
+          class:list={['home-proof__callout', `home-proof__callout--${metric.id}`]}
+          style={`--line-delay: ${470 + index * 150}ms; --copy-delay: ${680 + index * 150}ms`}
+        >
+          <span class="home-proof__line" aria-hidden="true"></span>
+          <div class="home-proof__callout-copy">
+            <strong {...cmsAttrs(metric.labelKey)}>{cmsText(metric.labelKey)}</strong>
+            <p {...cmsAttrs(metric.descriptionKey)}>{cmsText(metric.descriptionKey)}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</home-proof-metrics>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector('[data-home-proof]:not([data-proof-ready])');
+    if (!(root instanceof HTMLElement)) return;
+    root.dataset.proofReady = 'true';
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      root.classList.add('is-visible');
+      return;
+    }
+
+    root.classList.add('home-proof--motion');
+    const reveal = () => {
+      if (root.dataset.proofRevealed === 'true') return;
+      root.dataset.proofRevealed = 'true';
+      root.classList.add('is-visible');
+
+      root.querySelectorAll('[data-proof-count]').forEach((counter) => {
+        if (!(counter instanceof HTMLElement) || counter.dataset.counted === 'true') return;
+        counter.dataset.counted = 'true';
+        const target = Number(counter.dataset.target || 0);
+        const suffix = counter.dataset.suffix || '';
+        if (!Number.isFinite(target) || target <= 0) return;
+
+        counter.textContent = `0${suffix}`;
+        const start = performance.now();
+        const duration = 1100;
+        const tick = (now) => {
+          const progress = Math.min(1, (now - start) / duration);
+          counter.textContent = `${Math.round(target * (1 - Math.pow(1 - progress, 3)))}${suffix}`;
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      reveal();
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      reveal();
+    }, { threshold: 0.22, rootMargin: '0px 0px -8% 0px' });
+
+    observer.observe(root);
+  })();
+</script>
+
+<style>
+  .home-proof {
+    display: block;
+    overflow: clip;
+    background:
+      radial-gradient(circle at 14% 32%, rgba(198, 164, 90, 0.1), transparent 26rem),
+      linear-gradient(135deg, #f5f9fb 0%, #edf4f8 100%);
+    color: #203440;
+  }
+
+  .home-proof__inner {
+    width: min(100% - 3rem, 80rem);
+    margin-inline: auto;
+    padding: clamp(4.5rem, 7vw, 6.5rem) 0 clamp(5rem, 8vw, 7rem);
+  }
+
+  .home-proof h2 {
+    width: min(100%, 29rem);
+    margin: 0;
+    font-family: var(--font-display, 'Newsreader', Georgia, serif);
+    font-size: clamp(2.55rem, 4.2vw, 4rem);
+    font-weight: 500;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+  }
+
+  .home-proof__diagram {
+    --diagram-gap: clamp(1.5rem, 3vw, 3.25rem);
+    display: grid;
+    grid-template-columns: minmax(11rem, 1fr) minmax(31rem, 36rem) minmax(11rem, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: var(--diagram-gap);
+    min-height: clamp(31rem, 43vw, 35rem);
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .home-proof__cluster {
+    position: relative;
+    z-index: 2;
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    min-height: inherit;
+  }
+
+  .home-proof__bubble {
+    position: absolute;
+    z-index: 2;
+    width: var(--bubble-size);
+    aspect-ratio: 1;
+  }
+
+  .home-proof__bubble-surface {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    border: 1px solid rgba(32, 52, 64, 0.12);
+    border-radius: 50%;
+    box-shadow: 0 24px 62px rgba(20, 41, 52, 0.13);
+    transition: box-shadow 360ms ease, scale 360ms cubic-bezier(.2, .8, .2, 1);
+    will-change: opacity, scale, translate;
+  }
+
+  .home-proof__bubble--missions {
+    --bubble-size: min(64%, 21rem);
+    top: 0;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+  }
+
+  .home-proof__bubble--missions .home-proof__bubble-surface {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: #203440;
+    color: #fff;
+  }
+
+  .home-proof__bubble--experience {
+    --bubble-size: min(48%, 15.5rem);
+    top: 42%;
+    left: 2%;
+    z-index: 3;
+  }
+
+  .home-proof__bubble--experience .home-proof__bubble-surface {
+    border: 5px solid #f5f9fb;
+    background: #b9dcf0;
+    color: #203440;
+  }
+
+  .home-proof__bubble--remuneration {
+    --bubble-size: min(44%, 14rem);
+    top: 57%;
+    right: 2%;
+    z-index: 4;
+  }
+
+  .home-proof__bubble--remuneration .home-proof__bubble-surface {
+    border: 5px solid #f5f9fb;
+    background: #d5a34c;
+    color: #162d39;
+  }
+
+  .home-proof__value {
+    padding: 1rem;
+    font-size: clamp(3.2rem, 6vw, 5.6rem);
+    font-weight: 750;
+    letter-spacing: -0.07em;
+    line-height: 0.88;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* The compact metrics must never outgrow their circular surfaces. */
+  .home-proof__bubble--experience .home-proof__value { font-size: clamp(1.85rem, 2.5vw, 2.7rem); }
+  .home-proof__bubble--remuneration .home-proof__value { font-size: clamp(1.75rem, 2.3vw, 2.35rem); }
+
+  .home-proof__number {
+    display: inline-block;
+    min-width: 3ch;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .home-proof__bubble--experience .home-proof__number { min-width: 6ch; }
+
+  .home-proof__connector {
+    position: absolute;
+    z-index: 1;
+    height: 1px;
+    background: rgba(32, 52, 64, 0.72);
+  }
+
+  .home-proof__connector--missions {
+    top: 30%;
+    right: calc(-1 * var(--diagram-gap));
+    left: 82%;
+  }
+
+  .home-proof__connector--experience {
+    top: 58%;
+    right: 92%;
+    left: calc(-1 * var(--diagram-gap));
+  }
+
+  .home-proof__connector--remuneration {
+    top: 73%;
+    right: calc(-1 * var(--diagram-gap));
+    left: 90%;
+  }
+
+  .home-proof__callout {
+    position: relative;
+    z-index: 3;
+    align-self: center;
+    width: 100%;
+    max-width: 18.5rem;
+  }
+
+  .home-proof__callout--missions {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .home-proof__callout--experience {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .home-proof__callout--remuneration {
+    grid-column: 3;
+    grid-row: 3;
+    justify-self: end;
+  }
+
+  .home-proof__line {
+    display: block;
+    width: calc(100% + var(--diagram-gap));
+    height: 1px;
+    margin-bottom: 1rem;
+    background: rgba(32, 52, 64, 0.72);
+  }
+
+  .home-proof__callout--missions .home-proof__line,
+  .home-proof__callout--remuneration .home-proof__line {
+    margin-left: calc(-1 * var(--diagram-gap));
+    transform-origin: left center;
+  }
+
+  .home-proof__callout--experience .home-proof__line { transform-origin: right center; }
+
+  .home-proof__callout strong {
+    display: block;
+    font-size: clamp(0.8rem, 1.05vw, 1rem);
+    font-weight: 800;
+    letter-spacing: 0.075em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .home-proof__callout p {
+    margin: 0.45rem 0 0;
+    color: rgba(32, 52, 64, 0.7);
+    font-size: clamp(0.82rem, 1.04vw, 0.94rem);
+    line-height: 1.48;
+  }
+
+  .home-proof--motion .home-proof__bubble-surface {
+    opacity: 0;
+    scale: 0.82;
+    translate: 0 2rem;
+    transition:
+      opacity 680ms cubic-bezier(.2, .8, .2, 1),
+      scale 860ms cubic-bezier(.16, 1, .3, 1),
+      translate 860ms cubic-bezier(.16, 1, .3, 1);
+    transition-delay: var(--proof-delay);
+  }
+
+  .home-proof--motion .home-proof__connector,
+  .home-proof--motion .home-proof__line {
+    transform: scaleX(0);
+    transition: transform 680ms cubic-bezier(.16, 1, .3, 1);
+    transition-delay: var(--line-delay, 520ms);
+  }
+
+  .home-proof--motion .home-proof__callout-copy {
+    opacity: 0;
+    translate: 0 0.8rem;
+    transition:
+      opacity 450ms ease,
+      translate 560ms cubic-bezier(.16, 1, .3, 1);
+    transition-delay: var(--copy-delay);
+  }
+
+  .home-proof--motion.is-visible .home-proof__bubble-surface {
+    opacity: 1;
+    scale: 1;
+    translate: 0;
+  }
+
+  .home-proof--motion.is-visible .home-proof__connector,
+  .home-proof--motion.is-visible .home-proof__line { transform: scaleX(1); }
+
+  .home-proof--motion.is-visible .home-proof__callout-copy {
+    opacity: 1;
+    translate: 0;
+  }
+
+  .home-proof.is-visible .home-proof__bubble-surface {
+    animation: proof-float 7.5s ease-in-out var(--float-delay) infinite alternate both;
+  }
+
+  @keyframes proof-float {
+    from { translate: 0 0; }
+    to { translate: 0 -0.4rem; }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .home-proof.is-visible .home-proof__bubble:hover { z-index: 6; }
+
+    .home-proof.is-visible .home-proof__bubble:hover .home-proof__bubble-surface {
+      animation-play-state: paused;
+      box-shadow: 0 34px 80px rgba(20, 41, 52, 0.2);
+      scale: 1.035;
+    }
+
+    .home-proof.is-visible .home-proof__diagram:has(.home-proof__bubble--missions:hover) .home-proof__callout--missions .home-proof__callout-copy,
+    .home-proof.is-visible .home-proof__diagram:has(.home-proof__bubble--remuneration:hover) .home-proof__callout--remuneration .home-proof__callout-copy {
+      translate: 0.3rem 0;
+    }
+
+    .home-proof.is-visible .home-proof__diagram:has(.home-proof__bubble--experience:hover) .home-proof__callout--experience .home-proof__callout-copy {
+      translate: -0.3rem 0;
+    }
+  }
+
+  @media (max-width: 1180px) {
+    .home-proof__inner { width: min(100% - 1.5rem, 44rem); }
+
+    .home-proof__diagram {
+      display: block;
+      min-height: 0;
+      margin-top: 2.8rem;
+    }
+
+    .home-proof__cluster {
+      min-height: clamp(26rem, 70vw, 31rem);
+    }
+
+    .home-proof__bubble--missions { --bubble-size: min(63%, 18rem); }
+    .home-proof__bubble--experience { --bubble-size: min(48%, 13.5rem); top: 41%; }
+    .home-proof__bubble--remuneration { --bubble-size: min(43%, 12rem); top: 58%; }
+
+    .home-proof__connector { display: none; }
+
+    .home-proof__callout {
+      width: min(100%, 34rem);
+      max-width: none;
+      margin: 0 auto;
+      padding: 1.35rem 0;
+    }
+
+    .home-proof__callout--missions,
+    .home-proof__callout--experience,
+    .home-proof__callout--remuneration {
+      display: block;
+    }
+
+    .home-proof__line,
+    .home-proof__callout--missions .home-proof__line,
+    .home-proof__callout--remuneration .home-proof__line {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    .home-proof__callout-copy { max-width: 33rem; }
+  }
+
+  @media (max-width: 520px) {
+    .home-proof h2 { width: min(90%, 23rem); }
+    .home-proof__cluster { min-height: 25rem; }
+    .home-proof__callout { padding: 1.15rem 0; }
+    .home-proof__callout strong { font-size: 0.76rem; }
+    .home-proof__callout p { font-size: 0.84rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-proof__bubble-surface,
+    .home-proof__connector,
+    .home-proof__line,
+    .home-proof__callout-copy {
+      opacity: 1 !important;
+      scale: 1 !important;
+      translate: 0 !important;
+      transform: none !important;
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

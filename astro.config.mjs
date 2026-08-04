@@ -17,7 +17,7 @@ export default defineConfig({
         const excludePatterns = [
           '/mentions-legales',
           '/confidentialite',
-          '/rse',
+          '/blog/categorie/actualites',
           '/admin',
         ];
         return !excludePatterns.some((pattern) => page.includes(pattern));

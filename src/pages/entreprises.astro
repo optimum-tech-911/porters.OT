@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import SiteIcon from '../components/ui/SiteIcon.astro';
+import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import { pageSeo } from '../data/seo.data';
 import enterpriseHeroImage from '../../images/team-workshop.webp';
 import { enterprisePage } from '../content/pages/entreprises';
@@ -113,7 +114,8 @@ const models = [
     </div>
   </section>
 
-  <section class="enterprise-process" id="processus">
+  <section class="enterprise-process brand-ambient-host" id="processus">
+    <BrandAmbientShapes placement="left" />
     <div class="enterprise-shell">
       <header class="enterprise-heading reveal">
         <p>Notre processus de sélection</p>
@@ -188,7 +190,8 @@ const models = [
     </div>
   </section>
 
-  <section class="enterprise-projects">
+  <section class="enterprise-projects brand-ambient-host">
+    <BrandAmbientShapes placement="right" />
     <div class="enterprise-shell">
       <header class="enterprise-heading reveal">
         <p>Expérience mobilisable</p>

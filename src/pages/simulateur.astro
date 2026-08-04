@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import SimulatorForm from '../components/forms/SimulatorForm.tsx';
+import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import { pageSeo } from '../data/seo.data';
 import simulatorImage from '../../images/financial-calculator.webp';
 import calculatorImage from '../../images/business-meeting.webp';
@@ -54,7 +55,7 @@ const faqItems = [
       <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(25,43,99,0.96)_0%,rgba(25,43,99,0.84)_42%,rgba(25,43,99,0.38)_72%,rgba(25,43,99,0.12)_100%)]"></div>
       <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,16,32,0.18)_0%,rgba(11,16,32,0.42)_100%)]"></div>
     </div>
-    <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28">
+    <div class="container relative mx-auto px-6 py-20 lg:px-8 lg:py-28 simulator-hero-content">
       <div class="max-w-2xl reveal">
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Décider avec des chiffres</p>
         <h1 class="mb-6 max-w-[36rem] text-porters-white">
@@ -73,7 +74,8 @@ const faqItems = [
   </section>
 
   <!-- Simulator -->
-  <section class="section bg-porters-navy/[0.02]">
+  <section class="section bg-porters-navy/[0.02] brand-ambient-host">
+    <BrandAmbientShapes placement="right" />
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-10 grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.28fr)] lg:items-end">
         <div class="reveal">
@@ -102,7 +104,8 @@ const faqItems = [
   </section>
 
   <!-- FAQ -->
-  <section class="section" style="background-color: rgba(25, 43, 99, 0.03);">
+  <section class="section brand-ambient-host" style="background-color: rgba(25, 43, 99, 0.03);">
+    <BrandAmbientShapes placement="left" />
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-12 reveal">

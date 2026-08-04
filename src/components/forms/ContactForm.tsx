@@ -1,12 +1,29 @@
 import { useState, type SubmitEvent } from 'react';
 
-export default function ContactForm() {
+type AppointmentTopic = {
+  value: string;
+  title: string;
+  meta?: string;
+  description?: string;
+};
+
+type ContactFormProps = {
+  appointmentTopics?: AppointmentTopic[];
+  requestAvailability?: boolean;
+};
+
+export default function ContactForm({
+  appointmentTopics = [],
+  requestAvailability = false,
+}: ContactFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     company: '',
     subject: '',
+    appointmentTopic: '',
+    availability: '',
     message: '',
   });
   const handleChange = (
@@ -28,15 +45,62 @@ export default function ContactForm() {
       `Téléphone : ${formData.phone || 'Non renseigné'}`,
       `Société : ${formData.company || 'Non renseignée'}`,
       `Profil : ${profile}`,
+      ...(formData.appointmentTopic
+        ? [`Sujet du rendez-vous : ${formData.appointmentTopic}`]
+        : []),
+      ...(formData.availability
+        ? [`Disponibilités : ${formData.availability}`]
+        : []),
       '',
       formData.message,
     ].join('\n');
 
-    window.location.href = `mailto:contact@porters.fr?subject=${encodeURIComponent(`Demande de contact — ${profile}`)}&body=${encodeURIComponent(body)}`;
+    const emailSubject = formData.appointmentTopic
+      ? `Demande de rendez-vous — ${formData.appointmentTopic}`
+      : `Demande de contact — ${profile}`;
+
+    window.location.href = `mailto:contact@porters.fr?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(body)}`;
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {appointmentTopics.length > 0 && (
+        <fieldset>
+          <legend className="form-label mb-3">Sujet du rendez-vous *</legend>
+          <div className="grid gap-3">
+            {appointmentTopics.map((topic) => (
+              <label
+                key={topic.value}
+                className="flex cursor-pointer items-start gap-4 rounded-lg border border-porters-navy/10 bg-porters-navy/[0.02] p-4 transition-colors hover:border-porters-gold/50 has-[:checked]:border-porters-gold has-[:checked]:bg-porters-gold/[0.06]"
+              >
+                <input
+                  type="radio"
+                  name="appointmentTopic"
+                  value={topic.value}
+                  checked={formData.appointmentTopic === topic.value}
+                  onChange={handleChange}
+                  className="mt-1"
+                  required
+                />
+                <span>
+                  <span className="block font-heading font-semibold text-porters-navy">{topic.title}</span>
+                  {topic.meta && (
+                    <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.14em] text-porters-gold">
+                      {topic.meta}
+                    </span>
+                  )}
+                  {topic.description && (
+                    <span className="mt-2 block text-sm leading-relaxed text-porters-black/60">
+                      {topic.description}
+                    </span>
+                  )}
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className="form-label">
@@ -100,6 +164,25 @@ export default function ContactForm() {
           />
         </div>
       </div>
+
+      {requestAvailability && (
+        <div>
+          <label htmlFor="availability" className="form-label">
+            Vos disponibilités *
+          </label>
+          <textarea
+            id="availability"
+            name="availability"
+            className="form-input"
+            rows={3}
+            placeholder="Par exemple : mardi après 14 h, jeudi matin, ou la semaine prochaine à distance."
+            value={formData.availability}
+            onChange={handleChange}
+            required
+            style={{ resize: 'vertical' }}
+          />
+        </div>
+      )}
 
       <div>
         <label htmlFor="subject" className="form-label">
