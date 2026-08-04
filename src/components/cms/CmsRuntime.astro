@@ -229,7 +229,12 @@
     } catch (error) {
       console.warn('[CMS] Fallback content retained:', error);
       if (editorMode) {
-        window.parent.postMessage({ type: 'cms:error', message: error instanceof Error ? error.message : 'Chargement impossible' }, window.location.origin);
+        const message = error instanceof Error
+          ? error.message
+          : error && typeof error === 'object' && 'message' in error && typeof error.message === 'string'
+            ? error.message
+            : 'Chargement impossible';
+        window.parent.postMessage({ type: 'cms:error', message }, window.location.origin);
       }
     }
   }

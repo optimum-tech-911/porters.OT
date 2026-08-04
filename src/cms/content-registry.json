@@ -92,7 +92,7 @@
   {
     "key": "home.proof.missions.description",
     "route": "/",
-    "type": "text",
+    "type": "paragraph",
     "content": "Des missions structurées sans retirer aux consultants la maîtrise de leur client, de leur TJM et de leur intervention."
   },
   {
@@ -104,7 +104,7 @@
   {
     "key": "home.proof.experience.description",
     "route": "/",
-    "type": "text",
+    "type": "paragraph",
     "content": "Un accompagnement du portage salarial pensé pour les consultants et les métiers du numérique."
   },
   {
@@ -116,7 +116,7 @@
   {
     "key": "home.proof.remuneration.description",
     "route": "/",
-    "type": "text",
+    "type": "paragraph",
     "content": "Une première rémunération versée dès le premier mois, avant le règlement de la première facture client."
   },
   {
