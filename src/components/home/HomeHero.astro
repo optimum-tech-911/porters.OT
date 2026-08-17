@@ -118,13 +118,13 @@ const heroTitleLines = [
                 data-hero-job
                 data-job-title={job.title}
                 data-job-salary={job.salary}
-                data-job-meta={`${job.city} · ${job.contract}`}
+                data-job-meta={job.city}
                 aria-label={`${job.title}, ${job.salary} — voir toutes les offres The Porters sur HelloWork`}
               >
                 <div class="editorial-hero__job-copy">
                   <span>{job.salary}</span>
                   <strong>{job.title}</strong>
-                  <small>{job.city} · {job.contract}</small>
+                  <small>{job.city}</small>
                 </div>
                 <b aria-hidden="true">↗</b>
               </a>

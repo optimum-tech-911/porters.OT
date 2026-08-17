@@ -24,12 +24,12 @@ const featuredJobs = helloWorkJobs;
       </svg>
     </div>
     <button class="opportunity-popup__close" type="button" aria-label="Fermer cette suggestion" data-opportunity-close>×</button>
-    <div class="opportunity-popup__badge">Opportunité IT</div>
+    <div class="opportunity-popup__badge">Opportunité</div>
     <p class="opportunity-popup__platform">The Porters sur HelloWork</p>
     <div data-opportunity-content>
       <strong>{featuredJobs[0].salary}</strong>
       <h2>{featuredJobs[0].title}</h2>
-      <p>{featuredJobs[0].city} · {featuredJobs[0].contract}</p>
+      <p>{featuredJobs[0].city}</p>
     </div>
     <div class="opportunity-popup__actions">
       <a href={helloWorkUrl} target="_blank" rel="noopener noreferrer">Voir les offres <span aria-hidden="true">↗</span></a>
@@ -76,7 +76,7 @@ const featuredJobs = helloWorkJobs;
     if (!content) return;
     const job = featuredJobs[currentJob];
     content.classList.remove('is-changing');
-    content.innerHTML = `<strong>${job.salary}</strong><h2>${job.title}</h2><p>${job.city} · ${job.contract}</p>`;
+    content.innerHTML = `<strong>${job.salary}</strong><h2>${job.title}</h2><p>${job.city}</p>`;
     requestAnimationFrame(() => content.classList.add('is-changing'));
   };
 
