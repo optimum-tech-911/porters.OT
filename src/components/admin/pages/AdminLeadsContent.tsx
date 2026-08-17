@@ -1,14 +1,48 @@
 /**
  * AdminLeadsContent — Lead management with filters, table, detail panel
  */
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import AdminPageHeader from '../AdminPageHeader';
 import AdminFilterBar, { type FilterConfig } from '../AdminFilterBar';
 import AdminTable, { type Column } from '../AdminTable';
 import AdminStatusBadge from '../AdminStatusBadge';
 import AdminLeadDetailPanel from '../AdminLeadDetailPanel';
-import { leads, adminUsers } from '../../../data/admin-demo.data';
+import { adminUsers } from '../../../data/admin-demo.data';
+import { supabase } from '../../../lib/supabase';
 import type { Lead } from '../../../types/admin';
+
+interface CrmInquiryRow {
+  id: string;
+  created_at: string;
+  updated_at: string;
+  kind: 'contact' | 'simulation';
+  status: string;
+  assigned_admin: string | null;
+  first_name: string | null;
+  last_name: string | null;
+  name: string | null;
+  email: string;
+  phone: string | null;
+  company: string | null;
+  profile: string | null;
+  subject: string | null;
+  message: string | null;
+  simulator_mode: 'portage' | 'freelance' | null;
+  tjm: number | null;
+  days_worked: number | null;
+  monthly_revenue: number | null;
+  professional_expenses: number | null;
+  estimated_net_monthly: number | null;
+  source_page: string | null;
+  landing_page: string | null;
+  referrer: string | null;
+  utm_source: string | null;
+  utm_medium: string | null;
+  utm_campaign: string | null;
+  utm_content: string | null;
+  utm_term: string | null;
+  session_id: string | null;
+}
 
 const filters: FilterConfig[] = [
   {
@@ -48,9 +82,77 @@ function formatDate(dateStr: string): string {
 }
 
 export default function AdminLeadsContent() {
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState('');
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    let active = true;
+    void supabase
+      .from('crm_inquiries')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .then(({ data, error }) => {
+        if (!active) return;
+        if (error) {
+          console.error('[Admin] Unable to load leads:', error);
+          setLoadError('Impossible de charger les demandes. Vérifiez la migration Supabase et votre session admin.');
+          setLoading(false);
+          return;
+        }
+        const mapped = ((data || []) as CrmInquiryRow[]).map<Lead>((row) => {
+          const name = row.name || [row.first_name, row.last_name].filter(Boolean).join(' ') || 'Contact sans nom';
+          const statusMap: Record<string, Lead['status']> = {
+            new: 'new',
+            contacted: 'contacted',
+            qualified: 'qualified',
+            proposal: 'proposal',
+            converted: 'converted',
+            archived: 'lost',
+          };
+          const score = Math.min(100, (row.kind === 'simulation' ? 72 : 52) + (row.phone ? 8 : 0) + (row.company ? 8 : 0) + (row.utm_source ? 4 : 0));
+          return {
+            id: row.id,
+            name,
+            email: row.email,
+            phone: row.phone || '',
+            company: row.company || '',
+            source: row.kind === 'simulation' ? 'simulator' : 'contact',
+            status: statusMap[row.status] || 'new',
+            assignedAdmin: row.assigned_admin,
+            lastInteraction: row.updated_at || row.created_at,
+            score,
+            createdAt: row.created_at,
+            profile: row.profile || undefined,
+            subject: row.subject || undefined,
+            message: row.message || undefined,
+            simulatorMode: row.simulator_mode || undefined,
+            tjm: row.tjm ?? undefined,
+            daysWorked: row.days_worked ?? undefined,
+            monthlyRevenue: row.monthly_revenue ?? undefined,
+            professionalExpenses: row.professional_expenses ?? undefined,
+            estimatedNetMonthly: row.estimated_net_monthly ?? undefined,
+            sourcePage: row.source_page || undefined,
+            landingPage: row.landing_page || undefined,
+            referrer: row.referrer || undefined,
+            utmSource: row.utm_source || undefined,
+            utmMedium: row.utm_medium || undefined,
+            utmCampaign: row.utm_campaign || undefined,
+            utmContent: row.utm_content || undefined,
+            utmTerm: row.utm_term || undefined,
+            sessionId: row.session_id || undefined,
+          };
+        });
+        setLeads(mapped);
+        setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const filteredLeads = useMemo(() => {
     return leads.filter((lead) => {
@@ -136,6 +238,9 @@ export default function AdminLeadsContent() {
         subtitle={`${leads.length} leads · ${leads.filter((l) => l.status === 'new').length} nouveaux`}
       />
 
+      {loading && <p className="admin-empty-state">Chargement des demandes…</p>}
+      {loadError && <p className="admin-empty-state">{loadError}</p>}
+
       <AdminFilterBar
         filters={filters}
         searchPlaceholder="Rechercher un lead..."
@@ -143,16 +248,20 @@ export default function AdminLeadsContent() {
         onSearchChange={setSearchQuery}
       />
 
-      <AdminTable
+      {!loading && !loadError && <AdminTable
         columns={columns}
         data={filteredLeads}
         onRowClick={setSelectedLead}
         emptyMessage="Aucun lead ne correspond à vos filtres."
-      />
+      />}
 
       {selectedLead && (
         <AdminLeadDetailPanel
           lead={selectedLead}
+          onUpdated={(updatedLead) => {
+            setLeads((current) => current.map((lead) => lead.id === updatedLead.id ? updatedLead : lead));
+            setSelectedLead(updatedLead);
+          }}
           onClose={() => setSelectedLead(null)}
         />
       )}

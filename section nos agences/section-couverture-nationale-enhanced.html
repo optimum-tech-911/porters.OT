@@ -84,7 +84,7 @@ button{font:inherit}
 .cvg__title em{display:block;margin-top:8px;color:var(--gold-soft);font-style:normal}
 .cvg__lede{max-width:50ch;margin:25px 0 0;color:var(--muted);font-size:clamp(16px,1.15vw,18px);line-height:1.62}
 
-.cvg__metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:28px 0 0}
+.cvg__metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:28px 0 0}
 .cvg__metric{min-width:0;padding:14px 14px 13px;border:1px solid rgba(255,255,255,.07);border-radius:16px;background:rgba(255,255,255,.035)}
 .cvg__metric strong{display:block;color:var(--ink);font-size:19px;font-weight:500;letter-spacing:-.02em}
 .cvg__metric span{display:block;margin-top:5px;color:var(--muted);font:400 9px/1.25 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase}
@@ -241,14 +241,13 @@ button{font:inherit}
       <div class="cvg__intro">
         <p class="cvg__eyebrow">Couverture nationale</p>
         <div class="cvg__status"><span class="cvg__status-dot"></span>France entière · Corse comprise</div>
-        <h2 class="cvg__title" id="cvg-title">4 agences.<em>Une présence partout en France.</em></h2>
-        <p class="cvg__lede">Paris, Lyon, Montpellier et Aix-Marseille structurent notre présence terrain. Partout en France, nos équipes vous accompagnent à distance ou se déplacent selon vos besoins.</p>
+        <h2 class="cvg__title" id="cvg-title">Cinq agences,<em>et le reste de la France en visio.</em></h2>
+        <p class="cvg__lede">Paris, Lyon, Toulouse, Montpellier et Aix-Marseille : c’est là que nous avons pignon sur rue. Ailleurs, nos équipes vous suivent à distance et se déplacent quand la situation le demande.</p>
       </div>
 
       <div class="cvg__metrics" aria-label="Chiffres clés de la couverture nationale">
-        <div class="cvg__metric"><strong>4</strong><span>Agences physiques</span></div>
+        <div class="cvg__metric"><strong>5</strong><span>Agences physiques</span></div>
         <div class="cvg__metric"><strong>2016</strong><span>Année de création</span></div>
-        <div class="cvg__metric"><strong>2 modes</strong><span>Sur site & distance</span></div>
       </div>
 
       <div class="cvg__controls">
@@ -262,14 +261,15 @@ button{font:inherit}
           <li class="cvg__item"><button class="cvg__btn" type="button" data-city="lyon" aria-pressed="false"><span class="cvg__dot"></span><span class="cvg__city">Lyon</span><span class="cvg__zone">Rhône-Alpes · Est</span></button></li>
           <li class="cvg__item"><button class="cvg__btn" type="button" data-city="montpellier" aria-pressed="false"><span class="cvg__dot"></span><span class="cvg__city">Montpellier</span><span class="cvg__zone">Occitanie · Sud-Ouest</span></button></li>
           <li class="cvg__item"><button class="cvg__btn" type="button" data-city="aix" aria-pressed="false"><span class="cvg__dot"></span><span class="cvg__city">Aix-Marseille</span><span class="cvg__zone">PACA · Corse</span></button></li>
+          <li class="cvg__item"><button class="cvg__btn" type="button" data-city="toulouse" aria-pressed="false"><span class="cvg__dot"></span><span class="cvg__city">Toulouse</span><span class="cvg__zone">Occitanie · Sud-Ouest</span></button></li>
         </ul>
       </div>
 
       <div class="cvg__detail" aria-live="polite">
         <div class="cvg__detail-main">
           <p class="cvg__detail-kicker" id="cvg-detail-kicker">Réseau national</p>
-          <h3 class="cvg__detail-title" id="cvg-detail-title">Une équipe proche, où que vous soyez.</h3>
-          <p class="cvg__detail-text" id="cvg-detail-text">Les quatre agences assurent un relais local, tandis que l’accompagnement reste disponible sur tout le territoire.</p>
+          <h3 class="cvg__detail-title" id="cvg-detail-title">Quelqu’un près de chez vous, ou au bout du fil.</h3>
+          <p class="cvg__detail-text" id="cvg-detail-text">Les cinq agences assurent le relais local ; le suivi, lui, ne dépend pas de votre code postal.</p>
         </div>
         <span class="cvg__detail-badge" id="cvg-detail-badge">France entière</span>
       </div>
@@ -278,7 +278,7 @@ button{font:inherit}
     <div class="cvg__map-wrap">
       <div class="cvg__map-badge"><i></i>Couverture nationale active</div>
       <div class="cvg__map">
-        <svg class="cvg__svg" viewBox="-12 -14 800 760" role="img" aria-label="Carte de France : intervention sur tout le territoire, agences à Paris, Lyon, Montpellier et Aix-Marseille.">
+        <svg class="cvg__svg" viewBox="-12 -14 800 760" role="img" aria-label="Carte de France : intervention sur tout le territoire, agences à Paris, Lyon, Toulouse, Montpellier et Aix-Marseille.">
         <defs>
           <pattern id="cvgDots" width="11" height="11" patternUnits="userSpaceOnUse">
             <circle cx="1.5" cy="1.5" r="1" style="fill:var(--gold)" opacity=".34"/>
@@ -312,6 +312,7 @@ button{font:inherit}
         <g class="cvg-glow" clip-path="url(#cvgClip)" aria-hidden="true">
           <circle class="cvg-zone" data-city="paris" cx="359" cy="169" r="205" fill="url(#cvgHalo)"/>
           <circle class="cvg-zone" data-city="lyon" cx="488" cy="402" r="185" fill="url(#cvgHalo)"/>
+          <circle class="cvg-zone" data-city="toulouse" cx="342" cy="548" r="175" fill="url(#cvgHalo)"/>
           <circle class="cvg-zone" data-city="montpellier" cx="440" cy="567" r="175" fill="url(#cvgHalo)"/>
           <circle class="cvg-zone" data-city="aix" cx="524" cy="580" r="175" fill="url(#cvgHalo)"/>
         </g>
@@ -345,6 +346,13 @@ button{font:inherit}
           <text class="cvg-pin__label" x="421" y="572" text-anchor="end">MONTPELLIER</text>
           <circle class="cvg-pin__hit" cx="440" cy="567" r="26"/>
         </g>
+        <g class="cvg-pin" data-city="toulouse" role="button" tabindex="0" aria-label="Agence de Toulouse" style="animation-delay:1.55s">
+          <circle class="cvg-pin__halo" cx="342" cy="548" r="17"/>
+          <circle class="cvg-pin__ring" cx="342" cy="548" r="10"/>
+          <circle class="cvg-pin__core" cx="342" cy="548" r="4.6"/>
+          <text class="cvg-pin__label" x="323" y="553" text-anchor="end">TOULOUSE</text>
+          <circle class="cvg-pin__hit" cx="342" cy="548" r="26"/>
+        </g>
         <g class="cvg-pin" data-city="aix" role="button" tabindex="0" aria-label="Agence Aix-Marseille" style="animation-delay:1.61s">
           <circle class="cvg-pin__halo" cx="524" cy="580" r="17"/>
           <circle class="cvg-pin__ring" cx="524" cy="580" r="10"/>
@@ -356,7 +364,7 @@ button{font:inherit}
         <div class="cvg__map-card" aria-hidden="true">
           <small id="cvg-map-kicker">France entière</small>
           <strong id="cvg-map-title">Métropole + Corse</strong>
-          <span id="cvg-map-text">Quatre points d’ancrage, un accompagnement sans frontière régionale.</span>
+          <span id="cvg-map-text">Cinq points d’ancrage, un accompagnement sans frontière régionale.</span>
         </div>
       </div>
     </div>
@@ -370,9 +378,10 @@ button{font:inherit}
   if(!root) return;
 
   const data = {
-    national: { kicker:'Réseau national', title:'Une équipe proche, où que vous soyez.', text:'Les quatre agences assurent un relais local, tandis que l’accompagnement reste disponible sur tout le territoire.', badge:'France entière', mapKicker:'France entière', mapTitle:'Métropole + Corse', mapText:'Quatre points d’ancrage, un accompagnement sans frontière régionale.' },
+    national: { kicker:'Réseau national', title:'Quelqu’un près de chez vous, ou au bout du fil.', text:'Les cinq agences assurent le relais local ; le suivi, lui, ne dépend pas de votre code postal.', badge:'France entière', mapKicker:'France entière', mapTitle:'Métropole + Corse', mapText:'Cinq points d’ancrage, et un suivi qui ne s’arrête pas aux frontières régionales.' },
     paris: { kicker:'Agence physique', title:'Paris', text:'Point d’ancrage Île-de-France et Nord, avec rendez-vous sur place ou accompagnement à distance.', badge:'Île-de-France · Nord', mapKicker:'Agence Paris', mapTitle:'Île-de-France · Nord', mapText:'Un relais local connecté à l’ensemble du réseau national.' },
     lyon: { kicker:'Agence physique', title:'Lyon', text:'Point d’ancrage Rhône-Alpes et Est, avec rendez-vous sur place ou accompagnement à distance.', badge:'Rhône-Alpes · Est', mapKicker:'Agence Lyon', mapTitle:'Rhône-Alpes · Est', mapText:'Une présence régionale au service de missions partout en France.' },
+    toulouse: { kicker:'Agence physique', title:'Toulouse', text:'Point d’ancrage toulousain pour les expertises IT, data, cyber, cloud, produit et agilité.', badge:'Occitanie · Sud-Ouest', mapKicker:'Agence Toulouse', mapTitle:'Occitanie · Sud-Ouest', mapText:'Un relais toulousain connecté à l’ensemble du réseau national.' },
     montpellier: { kicker:'Agence physique', title:'Montpellier', text:'Point d’ancrage Occitanie et Sud-Ouest, avec rendez-vous sur place ou accompagnement à distance.', badge:'Occitanie · Sud-Ouest', mapKicker:'Agence Montpellier', mapTitle:'Occitanie · Sud-Ouest', mapText:'Un suivi de proximité prolongé par une couverture nationale.' },
     aix: { kicker:'Agence physique', title:'Aix-Marseille', text:'Point d’ancrage PACA et Corse, avec rendez-vous sur place ou accompagnement à distance.', badge:'PACA · Corse', mapKicker:'Agence Aix-Marseille', mapTitle:'PACA · Corse', mapText:'Un relais méditerranéen intégré au réseau national.' }
   };

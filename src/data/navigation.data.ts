@@ -23,7 +23,7 @@ export const navigation: Navigation = {
     },
   ],
   cta: {
-    label: 'Simuler mes revenus',
+    label: 'Simulateur',
     href: '/simulateur',
   },
   footer: {
@@ -32,7 +32,7 @@ export const navigation: Navigation = {
         title: 'Le portage salarial',
         links: [
           { label: 'Comprendre le portage', href: '/portage-salarial' },
-          { label: 'Simuler mes revenus', href: '/simulateur' },
+          { label: 'Simulateur', href: '/simulateur' },
         ],
       },
       {

@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
-import ChatbotButton from '../components/Chatbot/ChatbotButton';
+import ChatbotAssistant from '../components/Chatbot/ChatbotAssistant.astro';
 import CmsRuntime from '../components/cms/CmsRuntime.astro';
+import HelloWorkOpportunityPopup from '../components/ui/HelloWorkOpportunityPopup.astro';
 
 interface Props {
   seo: {
@@ -114,16 +115,193 @@ const allStructuredData = [
       <slot />
     </main>
     <slot name="footer" />
-    <ChatbotButton client:idle />
+    <ChatbotAssistant />
+    <HelloWorkOpportunityPopup />
     <CmsRuntime />
 
-    <!-- Scroll reveal observer -->
+    <!-- Orchestrated section entrance observer -->
     <script>
-      const revealElements = document.querySelectorAll('[data-reveal], .reveal');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      /* Deliberate page choreography. A section owns one viewport trigger and
+         its children share a short, readable stagger. Keeping the trigger on
+         the section prevents late elements from firing in an arbitrary order
+         while still letting marquees and interactive scenes keep their own
+         transforms. */
+      const motionSections = Array.from(
+        document.querySelectorAll<HTMLElement>('[data-motion-section]')
+      );
+
+      const finishSectionMotion = (section: HTMLElement, delay = 0) => {
+        window.setTimeout(() => {
+          section.classList.remove('motion-section-ready', 'is-motion-visible');
+          section.querySelectorAll<HTMLElement>('[data-motion-item]').forEach((item) => {
+            item.style.removeProperty('--motion-order');
+          });
+        }, delay);
+      };
+
+      motionSections.forEach((section) => {
+        const items = Array.from(section.querySelectorAll<HTMLElement>('[data-motion-item]'));
+        section.classList.add('motion-section-ready');
+        items.forEach((item, index) => {
+          if (!item.style.getPropertyValue('--motion-order')) {
+            item.style.setProperty('--motion-order', String(Math.min(index, 12)));
+          }
+        });
+      });
+
       if (reducedMotion || !('IntersectionObserver' in window)) {
-        revealElements.forEach((element) => element.classList.add('visible', 'is-visible'));
+        motionSections.forEach((section) => {
+          section.classList.add('is-motion-visible');
+          finishSectionMotion(section);
+        });
+      } else {
+        const sectionObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const section = entry.target as HTMLElement;
+              const itemCount = section.querySelectorAll('[data-motion-item]').length;
+              const requestedHold = Number(section.dataset.motionHold || 0);
+              const defaultHold = 1200 + Math.min(itemCount, 12) * 90;
+              section.classList.add('is-motion-visible');
+              sectionObserver.unobserve(section);
+              finishSectionMotion(section, Math.max(defaultHold, requestedHold));
+            });
+          },
+          { threshold: 0.11, rootMargin: '0px 0px -8% 0px' }
+        );
+
+        motionSections.forEach((section) => sectionObserver.observe(section));
+      }
+
+      const motionOwnedSelector = [
+        '[data-motion-section]',
+        '[data-motion-scene]',
+        '[data-project-lab]',
+        '[data-expertise-lab]',
+        '[data-expertise-constellation]',
+        '[data-expertise-workbench]',
+        '[data-expertise-journey]',
+        '[data-enterprise-process]',
+        '[data-history-schema]',
+        '[data-method-lab]',
+        '[data-offer-schema]',
+        '[data-table-man]',
+        '[data-tri]',
+        '[data-home-proof]',
+        '.auto-marquee',
+        '[class*="marquee__track"]',
+      ].join(',');
+
+      const isMotionOwned = (element: Element) =>
+        element.matches(motionOwnedSelector) || Boolean(element.querySelector(motionOwnedSelector));
+
+      const belongsToMotionOwner = (element: Element) =>
+        isMotionOwned(element) || Boolean(element.closest(motionOwnedSelector));
+
+      document.querySelectorAll<HTMLElement>('main section').forEach((section) => {
+        const sectionReveal = section.matches('[data-reveal], .reveal') ? [section] : [];
+        const existing = [
+          ...sectionReveal,
+          ...Array.from(section.querySelectorAll<HTMLElement>('[data-reveal], .reveal')),
+        ];
+
+        // Never stack the global reveal over a component that already owns its
+        // animation timeline. This keeps marquees, diagrams and interactive
+        // scenes smooth instead of making them animate twice.
+        existing.filter(belongsToMotionOwner).forEach((element) => {
+          element.classList.remove('reveal', 'reveal-up', 'reveal-fade', 'reveal-scale');
+          element.removeAttribute('data-reveal');
+        });
+
+        const activeExisting = existing.filter((element) => !belongsToMotionOwner(element));
+
+        // Sections without explicit reveal markup still get an entrance on their
+        // direct content blocks. Components with their own continuous animation
+        // retain full ownership of their timing.
+        if (activeExisting.length === 0 && !isMotionOwned(section)) {
+          const shell = section.querySelector<HTMLElement>(':scope > .container, :scope > [class*="shell"]') || section;
+          Array.from(shell.children)
+            .filter((child): child is HTMLElement =>
+              child instanceof HTMLElement
+              && !child.matches('script,style,[aria-hidden="true"]')
+              && !/ambient|background|overlay/i.test(child.className)
+              && !isMotionOwned(child)
+            )
+            .slice(0, 8)
+            .forEach((child) => child.classList.add('reveal'));
+        }
+
+        // Cards and rows enter in a short cascade instead of appearing as one
+        // static slab. Semantic targets keep the effect predictable and avoid
+        // touching decorative layers.
+        Array.from(section.querySelectorAll<HTMLElement>(
+          'article, details, figure, li, tbody > tr, [class*="-card"], [class*="_card"], [class~="card"]'
+        ))
+          .filter((element) =>
+            !element.matches('[data-reveal], .reveal')
+            && !belongsToMotionOwner(element)
+          )
+          .slice(0, 14)
+          .forEach((element, index) => {
+            element.classList.add('reveal', 'motion-enhanced', 'motion-pop');
+            element.style.setProperty('--reveal-delay', `${Math.min((index % 7) * 70, 420)}ms`);
+          });
+
+        const reveals = [
+          ...(section.matches('[data-reveal], .reveal') ? [section] : []),
+          ...Array.from(section.querySelectorAll<HTMLElement>('[data-reveal], .reveal')),
+        ]
+          .filter((element) => !belongsToMotionOwner(element));
+
+        reveals.forEach((element, index) => {
+          element.classList.add('motion-enhanced');
+
+          const looksLikeCard = element.matches('article,li,details,figure')
+            || /card|table|faq|portrait|schema|panel|grid/i.test(element.className);
+          const looksLikeMedia = element.matches('figure,picture')
+            || Boolean(element.querySelector(':scope > img, :scope > video'));
+
+          if (looksLikeCard) element.classList.add('motion-pop');
+          else if (looksLikeMedia || index % 2 === 1) element.classList.add('motion-slide-right');
+          else element.classList.add('motion-slide-left');
+
+          if (!element.style.getPropertyValue('--reveal-delay')) {
+            element.style.setProperty('--reveal-delay', `${Math.min(index * 95, 475)}ms`);
+          }
+        });
+      });
+
+      const revealElements = document.querySelectorAll('[data-reveal], .reveal');
+
+      // Release the animation classes after the entrance finishes so existing
+      // hover transforms and interactive motion regain full control.
+      const finishEntrance = (element: Element, delay = 0) => {
+        window.setTimeout(() => {
+          element.classList.remove(
+            'reveal',
+            'reveal-up',
+            'reveal-fade',
+            'reveal-scale',
+            'reveal-left',
+            'reveal-right',
+            'motion-enhanced',
+            'motion-slide-left',
+            'motion-slide-right',
+            'motion-pop'
+          );
+          element.removeAttribute('data-reveal');
+          if (element instanceof HTMLElement) element.style.removeProperty('--reveal-delay');
+        }, delay);
+      };
+
+      if (reducedMotion || !('IntersectionObserver' in window)) {
+        revealElements.forEach((element) => {
+          element.classList.add('visible', 'is-visible');
+          finishEntrance(element);
+        });
       } else {
         const observer = new IntersectionObserver(
           (entries) => {
@@ -131,10 +309,11 @@ const allStructuredData = [
               if (entry.isIntersecting) {
                 entry.target.classList.add('visible', 'is-visible');
                 observer.unobserve(entry.target);
+                finishEntrance(entry.target, 1550);
               }
             });
           },
-          { threshold: 0.12, rootMargin: '0px 0px -80px 0px' }
+          { threshold: 0.08, rootMargin: '0px 0px -55px 0px' }
         );
 
         revealElements.forEach((element) => observer.observe(element));

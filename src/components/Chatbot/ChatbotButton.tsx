@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { emitAssistantEvent } from '../../lib/searchAssistant';
 import ChatbotPanel from './ChatbotPanel';
 import './chatbot.css';
@@ -7,15 +7,34 @@ export default function ChatbotButton() {
   const [open, setOpen] = useState(false);
 
   const close = useCallback(() => setOpen(false), []);
+  const show = useCallback(() => {
+    setOpen((current) => {
+      if (!current) {
+        emitAssistantEvent('chatbot_opened');
+        window.dispatchEvent(new CustomEvent('tp:assistant-open'));
+      }
+      return true;
+    });
+  }, []);
+
+  useEffect(() => {
+    const requestOpen = () => show();
+    window.addEventListener('tp:assistant-request-open', requestOpen);
+    return () => window.removeEventListener('tp:assistant-request-open', requestOpen);
+  }, [show]);
+
   const toggle = () => {
     setOpen((current) => {
-      if (!current) emitAssistantEvent('chatbot_opened');
+      if (!current) {
+        emitAssistantEvent('chatbot_opened');
+        window.dispatchEvent(new CustomEvent('tp:assistant-open'));
+      }
       return !current;
     });
   };
 
   return (
-    <>
+    <div className="tp-chat-root" data-chatbot-root>
       <ChatbotPanel open={open} onClose={close} />
       <button
         type="button"
@@ -37,7 +56,6 @@ export default function ChatbotButton() {
           {!open && <i aria-hidden="true" />}
         </span>
       </button>
-    </>
+    </div>
   );
 }
-

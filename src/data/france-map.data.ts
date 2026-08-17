@@ -64,6 +64,16 @@ export const franceMapPins: FranceMapPin[] = [
     labelSide: 'left',
   },
   {
+    id: 'toulouse',
+    city: 'Toulouse',
+    region: 'Occitanie',
+    x: 39.2,
+    y: 76.1,
+    href: '/agences/toulouse',
+    agencySlugs: ['toulouse'],
+    labelSide: 'left',
+  },
+  {
     id: 'aix-marseille',
     city: 'Aix-Marseille',
     region: "Provence-Alpes-Côte d'Azur",
@@ -87,7 +97,7 @@ export const franceMapRoutes = franceMapPins
   .map((pin) => {
     const point = toSvgPoint(pin);
     const controlX = Math.round((paris.x + point.x) / 2);
-    const controlY = Math.round((paris.y + point.y) / 2 - (pin.id === 'lille' ? 36 : pin.id === 'bordeaux' ? 18 : -14));
+    const controlY = Math.round((paris.y + point.y) / 2 - (pin.id === 'lille' ? 36 : pin.id === 'bordeaux' || pin.id === 'toulouse' ? 18 : -14));
 
     return {
       id: pin.id,

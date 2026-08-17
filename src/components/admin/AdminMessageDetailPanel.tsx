@@ -1,14 +1,14 @@
-/**
- * AdminMessageDetailPanel — Slide-over detail panel for a message
- * TODO: Connect status change and assignment to Supabase when backend is ready.
- */
+/** AdminMessageDetailPanel — Slide-over detail panel for a CRM message. */
+import { useEffect, useState } from 'react';
 import type { ContactMessage } from '../../types/admin';
 import { adminUsers } from '../../data/admin-demo.data';
+import { supabase } from '../../lib/supabase';
 import AdminStatusBadge from './AdminStatusBadge';
 
 interface Props {
   message: ContactMessage;
   onClose: () => void;
+  onUpdated: (message: ContactMessage) => void;
 }
 
 function formatDate(dateStr: string): string {
@@ -21,8 +21,68 @@ function formatDate(dateStr: string): string {
   });
 }
 
-export default function AdminMessageDetailPanel({ message, onClose }: Props) {
+const databaseStatus: Record<ContactMessage['status'], string> = {
+  new: 'new',
+  assigned: 'contacted',
+  answered: 'qualified',
+  archived: 'archived',
+};
+
+export default function AdminMessageDetailPanel({ message, onClose, onUpdated }: Props) {
+  const [status, setStatus] = useState<ContactMessage['status']>(message.status);
+  const [priority, setPriority] = useState<ContactMessage['priority']>(message.priority);
+  const [saving, setSaving] = useState(false);
+  const [feedback, setFeedback] = useState('');
+
+  useEffect(() => {
+    setStatus(message.status);
+    setPriority(message.priority);
+    setFeedback('');
+  }, [message.id, message.priority, message.status]);
+
   const assignedUser = adminUsers.find((u) => u.id === message.assignedAdmin);
+
+  async function saveMessage() {
+    setSaving(true);
+    setFeedback('');
+    const { error } = await supabase
+      .from('crm_inquiries')
+      .update({ status: databaseStatus[status], priority })
+      .eq('id', message.id);
+    setSaving(false);
+    if (error) {
+      console.error('[Admin] Unable to update message:', error);
+      setFeedback('La mise à jour a échoué. Vérifiez votre session admin.');
+      return;
+    }
+    onUpdated({ ...message, status, priority });
+    setFeedback('Message mis à jour.');
+  }
+
+  async function assignToMe() {
+    setSaving(true);
+    setFeedback('');
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData.user) {
+      setSaving(false);
+      setFeedback('Votre session admin doit être reconnectée.');
+      return;
+    }
+    const nextStatus: ContactMessage['status'] = status === 'new' ? 'assigned' : status;
+    const { error } = await supabase
+      .from('crm_inquiries')
+      .update({ assigned_admin: userData.user.id, status: databaseStatus[nextStatus], priority })
+      .eq('id', message.id);
+    setSaving(false);
+    if (error) {
+      console.error('[Admin] Unable to assign message:', error);
+      setFeedback('L’assignation a échoué.');
+      return;
+    }
+    setStatus(nextStatus);
+    onUpdated({ ...message, status: nextStatus, priority, assignedAdmin: userData.user.id });
+    setFeedback('Message assigné à votre compte.');
+  }
 
   return (
     <>
@@ -48,11 +108,11 @@ export default function AdminMessageDetailPanel({ message, onClose }: Props) {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div className="admin-panel-field">
               <div className="admin-panel-field-label">Statut</div>
-              <div className="admin-panel-field-value"><AdminStatusBadge status={message.status} /></div>
+              <div className="admin-panel-field-value"><AdminStatusBadge status={status} /></div>
             </div>
             <div className="admin-panel-field">
               <div className="admin-panel-field-label">Priorité</div>
-              <div className="admin-panel-field-value"><AdminStatusBadge status={message.priority} /></div>
+              <div className="admin-panel-field-value"><AdminStatusBadge status={priority} /></div>
             </div>
           </div>
 
@@ -73,12 +133,31 @@ export default function AdminMessageDetailPanel({ message, onClose }: Props) {
             </div>
           )}
 
+          {message.subject && (
+            <div className="admin-panel-field">
+              <div className="admin-panel-field-label">Sujet</div>
+              <div className="admin-panel-field-value">{message.subject}</div>
+            </div>
+          )}
+
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Page source</div>
             <div className="admin-panel-field-value" style={{ fontFamily: 'monospace', fontSize: '0.8125rem' }}>
               {message.sourcePage}
             </div>
           </div>
+
+          {(message.landingPage || message.utmSource || message.referrer || message.sessionId) && (
+            <div className="admin-panel-field">
+              <div className="admin-panel-field-label">Attribution</div>
+              <div className="admin-panel-field-value" style={{ display: 'grid', gap: '.35rem', fontSize: '.8125rem' }}>
+                {message.landingPage && <span>Arrivée : {message.landingPage}</span>}
+                {message.utmSource && <span>UTM : {[message.utmSource, message.utmMedium, message.utmCampaign, message.utmContent, message.utmTerm].filter(Boolean).join(' · ')}</span>}
+                {message.referrer && <span>Référent : {message.referrer}</span>}
+                {message.sessionId && <span>Session : {message.sessionId}</span>}
+              </div>
+            </div>
+          )}
 
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Message</div>
@@ -90,9 +169,31 @@ export default function AdminMessageDetailPanel({ message, onClose }: Props) {
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Assigné à</div>
             <div className="admin-panel-field-value">
-              {assignedUser ? assignedUser.name : 'Non assigné'}
+              {assignedUser ? assignedUser.name : message.assignedAdmin ? 'Votre équipe admin' : 'Non assigné'}
             </div>
           </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="admin-panel-field">
+              <label className="admin-panel-field-label" htmlFor="message-status">Changer le statut</label>
+              <select id="message-status" className="admin-filter-select" value={status} onChange={(event) => setStatus(event.target.value as ContactMessage['status'])}>
+                <option value="new">Nouveau</option>
+                <option value="assigned">Assigné</option>
+                <option value="answered">Répondu</option>
+                <option value="archived">Archivé</option>
+              </select>
+            </div>
+            <div className="admin-panel-field">
+              <label className="admin-panel-field-label" htmlFor="message-priority">Priorité</label>
+              <select id="message-priority" className="admin-filter-select" value={priority} onChange={(event) => setPriority(event.target.value as ContactMessage['priority'])}>
+                <option value="low">Basse</option>
+                <option value="medium">Moyenne</option>
+                <option value="high">Haute</option>
+              </select>
+            </div>
+          </div>
+
+          {feedback && <p className="admin-panel-field-value" role="status">{feedback}</p>}
 
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Reçu le</div>
@@ -103,11 +204,14 @@ export default function AdminMessageDetailPanel({ message, onClose }: Props) {
         </div>
 
         <div className="admin-panel-footer">
-          <button className="admin-btn admin-btn-primary" disabled>
+          <a className="admin-btn admin-btn-primary" href={`mailto:${message.email}?subject=${encodeURIComponent(`Re: ${message.subject || 'Votre demande The Porters'}`)}`}>
             Répondre
+          </a>
+          <button className="admin-btn admin-btn-secondary" type="button" disabled={saving} onClick={() => void saveMessage()}>
+            {saving ? 'Enregistrement…' : 'Enregistrer'}
           </button>
-          <button className="admin-btn admin-btn-secondary" disabled>
-            Assigner
+          <button className="admin-btn admin-btn-secondary" type="button" disabled={saving} onClick={() => void assignToMe()}>
+            M’assigner
           </button>
           <button className="admin-btn admin-btn-ghost" onClick={onClose}>
             Fermer

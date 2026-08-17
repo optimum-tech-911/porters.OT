@@ -1,8 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import PageLayout from '../../layouts/PageLayout.astro';
 import SiteIcon from '../../components/ui/SiteIcon.astro';
 import BrandAmbientShapes from '../../components/ui/BrandAmbientShapes.astro';
 import { expertises, type Expertise } from '../../data/expertises.data';
+import tripartiteClient from '../../assets/home/tripartite-client.png';
+import tripartiteConsultant from '../../assets/home/tripartite-consultant.png';
+import qualifiedMatch from '../../assets/enterprise/qualified-match.png';
 
 export function getStaticPaths() {
   return expertises.map((expertise) => ({
@@ -12,10 +16,13 @@ export function getStaticPaths() {
 }
 
 const { expertise } = Astro.props as { expertise: Expertise };
-const expertiseIndex = expertises.findIndex((item) => item.slug === expertise.slug);
 const relatedExpertises = expertises
   .filter((item) => item.slug !== expertise.slug)
   .slice(0, 2);
+const detailImages = [tripartiteClient, tripartiteConsultant, qualifiedMatch];
+const expertiseIndex = Math.max(0, expertises.findIndex((item) => item.slug === expertise.slug));
+const heroImage = detailImages[expertiseIndex % detailImages.length];
+const detailImage = detailImages[(expertiseIndex + 1) % detailImages.length];
 ---
 
 <PageLayout
@@ -36,20 +43,24 @@ const relatedExpertises = expertises
     { label: expertise.eyebrow },
   ]}
 >
-  <section class="domain-hero brand-ambient-host">
+  <section class="domain-hero brand-ambient-host" data-motion-section data-motion-hold="2200">
     <BrandAmbientShapes placement="left" tone="dark" />
     <div class="domain-shell domain-hero-grid">
-      <div class="domain-hero-copy reveal">
-        <p>Expertise 0{expertiseIndex + 1} · {expertise.eyebrow}</p>
-        <h1>{expertise.title}</h1>
-        <strong>{expertise.summary}</strong>
-        <div class="domain-hero-actions">
-          <a href="/simulateur">Simuler mes revenus <span aria-hidden="true">→</span></a>
+      <div class="domain-hero-copy">
+        <p data-motion-item="left" style="--motion-order:0">{expertise.eyebrow}</p>
+        <h1 data-motion-item="left" style="--motion-order:1">{expertise.title}</h1>
+        <strong data-motion-item="left" style="--motion-order:2">{expertise.summary}</strong>
+        <div class="domain-hero-actions" data-motion-item="pop" style="--motion-order:3">
+          <a href="/simulateur">Calculer mon salaire net <span aria-hidden="true">→</span></a>
           <a href="/rendez-vous">Parler de la mission</a>
         </div>
       </div>
 
-      <div class="domain-orbit reveal" aria-label={`Cycle d’intervention ${expertise.eyebrow}`}>
+      <div class="domain-orbit" data-domain-orbit data-motion-item="pop" style="--motion-order:2" aria-label={`Cycle d’intervention ${expertise.eyebrow}`}>
+        <figure class="domain-hero-photo">
+          <Image src={heroImage} alt={`Professionnels réunis autour d’une mission ${expertise.eyebrow}`} widths={[640, 900, 1200]} sizes="(max-width:1050px) 92vw, 42vw" format="webp" quality={86} />
+          <figcaption><strong>{expertise.roles.length} profils</strong><span>{expertise.missionTypes.length} périmètres de mission</span></figcaption>
+        </figure>
         <svg viewBox="0 0 600 600" aria-hidden="true">
           <circle cx="300" cy="300" r="206"></circle>
           <circle cx="300" cy="300" r="132"></circle>
@@ -66,8 +77,8 @@ const relatedExpertises = expertises
             class={`domain-orbit-node domain-orbit-node--${index + 1}`}
             style={`--node-delay:${index * 0.7}s`}
             data-method-jump={index}
+            data-orbit-node
           >
-            <span>{stage.number}</span>
             <strong>{stage.title}</strong>
           </a>
         ))}
@@ -86,31 +97,34 @@ const relatedExpertises = expertises
     </div>
   </section>
 
-  <section class="domain-section domain-intro">
+  <section class="domain-section domain-intro" data-motion-section>
     <div class="domain-shell domain-intro-grid">
-      <header class="domain-heading reveal">
-        <p>Enjeu de mission</p>
-        <h2>{expertise.introTitle}</h2>
+      <header class="domain-heading">
+        <p data-motion-item="left" style="--motion-order:0">Enjeu de mission</p>
+        <h2 data-motion-item="left" style="--motion-order:1">{expertise.introTitle}</h2>
+        <figure class="domain-intro-visual" data-motion-item="pop" style="--motion-order:3">
+          <Image src={detailImage} alt={`Échange professionnel autour d’une mission ${expertise.eyebrow}`} widths={[460, 720, 960]} sizes="(max-width:1050px) 92vw, 43vw" format="webp" quality={88} />
+        </figure>
       </header>
-      <div class="domain-intro-copy reveal">
+      <div class="domain-intro-copy" data-motion-item="right" style="--motion-order:2">
         {expertise.introParagraphs.map((paragraph) => <p>{paragraph}</p>)}
         <aside>
           <SiteIcon name="shield" />
-          <p><strong>Le cadre The Porters</strong> Vous gardez la maîtrise de l’expertise et de la relation opérationnelle. Nous structurons le cadre salarial, contractuel et administratif.</p>
+          <p><strong>Le cadre The Porters</strong> Vous gardez la main sur votre expertise et sur la relation avec le client. Nous nous occupons du salariat, du contrat et de l’administratif.</p>
         </aside>
       </div>
     </div>
   </section>
 
-  <section class="domain-section method-section" id="methode" data-method-lab>
+  <section class="domain-section method-section" id="methode" data-method-lab data-motion-section>
     <div class="domain-shell">
-      <header class="domain-heading domain-heading--light reveal">
-        <p>Le système d’intervention</p>
-        <h2>Quatre passages.<br />Un résultat qui reste lisible.</h2>
-        <strong>Sélectionnez une étape pour comprendre ce qui doit être clarifié avant de passer à la suivante.</strong>
+      <header class="domain-heading domain-heading--light" data-motion-item="left" style="--motion-order:0">
+        <p>Comment se déroule une mission</p>
+        <h2>Quatre étapes,<br />et personne ne perd le fil.</h2>
+        <strong>Cliquez sur une étape pour voir ce qu’il faut avoir réglé avant de passer à la suivante.</strong>
       </header>
 
-      <div class="method-lab reveal">
+      <div class="method-lab" data-motion-item="wipe" style="--motion-order:1">
         <div class="method-tabs" role="tablist" aria-label={`Méthode ${expertise.eyebrow}`}>
           {expertise.methodStages.map((stage, index) => (
             <button
@@ -123,7 +137,6 @@ const relatedExpertises = expertises
               class:list={{ 'is-active': index === 0 }}
               data-method-tab
             >
-              <span>{stage.number}</span>
               <strong>{stage.title}</strong>
               <b aria-hidden="true">↗</b>
             </button>
@@ -140,8 +153,7 @@ const relatedExpertises = expertises
               hidden={index !== 0}
               data-method-panel
             >
-              <span>{stage.number}</span>
-              <p>Étape {index + 1} sur {expertise.methodStages.length}</p>
+              <p>Étape en cours</p>
               <h3>{stage.title}</h3>
               <strong>{stage.text}</strong>
               <div class="method-stage-output">
@@ -155,14 +167,14 @@ const relatedExpertises = expertises
     </div>
   </section>
 
-  <section class="domain-section roles-section">
+  <section class="domain-section roles-section" data-motion-section>
     <div class="domain-shell">
-      <header class="domain-heading reveal">
+      <header class="domain-heading" data-motion-item="left" style="--motion-order:0">
         <p>Profils accompagnés</p>
         <h2>Le bon rôle au bon moment.</h2>
-        <strong>Les intitulés comptent moins que la responsabilité réelle dans le dispositif.</strong>
+        <strong>Un intitulé de poste dit moins de choses que ce qu’on a réellement porté.</strong>
       </header>
-      <div class="role-map reveal">
+      <div class="role-map" data-motion-item="pop" style="--motion-order:1">
         <div class="role-map-core">
           <span>Votre besoin</span>
           <strong>{expertise.eyebrow}</strong>
@@ -170,7 +182,6 @@ const relatedExpertises = expertises
         <div class="role-grid">
           {expertise.roles.map((role, index) => (
             <article style={`--role-index:${index}`}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
               <h3>{role}</h3>
             </article>
           ))}
@@ -179,19 +190,18 @@ const relatedExpertises = expertises
     </div>
   </section>
 
-  <section class="domain-section mission-section brand-ambient-host">
+  <section class="domain-section mission-section brand-ambient-host" data-motion-section>
     <BrandAmbientShapes placement="left" />
     <div class="domain-shell mission-grid">
-      <header class="domain-heading reveal">
+      <header class="domain-heading" data-motion-item="left" style="--motion-order:0">
         <p>Périmètres fréquents</p>
-        <h2>Des missions définies par ce qu’elles doivent produire.</h2>
-        <strong>Ouvrez un périmètre pour voir comment il s’inscrit dans la mission.</strong>
+        <h2>Des missions jugées sur ce qu’elles produisent.</h2>
+        <strong>Ouvrez un périmètre pour voir la place qu’il prend dans la mission.</strong>
       </header>
-      <div class="mission-accordion reveal">
+      <div class="mission-accordion" data-motion-item="right" style="--motion-order:1">
         {expertise.missionTypes.map((mission, index) => (
           <details open={index === 0}>
             <summary>
-              <span>{String(index + 1).padStart(2, '0')}</span>
               <strong>{mission}</strong>
               <b aria-hidden="true">+</b>
             </summary>
@@ -206,18 +216,18 @@ const relatedExpertises = expertises
   </section>
 
   {expertise.ecosystem && (
-    <section class="ecosystem-focus">
+    <section class="ecosystem-focus" data-motion-section>
       <div class="domain-shell ecosystem-focus-grid">
-        <div class="ecosystem-signature reveal">
+        <div class="ecosystem-signature" data-motion-item="left" style="--motion-order:0">
           <span>{expertise.ecosystem.eyebrow}</span>
           <strong>{expertise.ecosystem.name}</strong>
           <i aria-hidden="true"></i>
         </div>
-        <div class="ecosystem-copy reveal">
+        <div class="ecosystem-copy" data-motion-item="right" style="--motion-order:1">
           <p>{expertise.ecosystem.text}</p>
           <div>
-            {expertise.ecosystem.pillars.map((pillar, index) => (
-              <span><b>0{index + 1}</b>{pillar}</span>
+            {expertise.ecosystem.pillars.map((pillar) => (
+              <span>{pillar}</span>
             ))}
           </div>
         </div>
@@ -225,29 +235,28 @@ const relatedExpertises = expertises
     </section>
   )}
 
-  <section class="domain-section impact-section">
+  <section class="domain-section impact-section" data-motion-section>
     <div class="domain-shell impact-grid">
       <div>
-        <header class="domain-heading reveal">
-          <p>Valeur concrète</p>
-          <h2>Ce que la mission doit rendre possible.</h2>
+        <header class="domain-heading" data-motion-item="left" style="--motion-order:0">
+          <p>Ce que ça change</p>
+          <h2>Ce que la mission doit permettre, une fois finie.</h2>
         </header>
         <div class="impact-cards">
           {expertise.businessValue.map((value, index) => (
-            <article class="reveal" style={`--impact-index:${index}`}>
-              <span>0{index + 1}</span>
+            <article data-motion-item="pop" style={`--motion-order:${index + 1};--impact-index:${index}`}>
               <h3>{value.title}</h3>
               <p>{value.text}</p>
             </article>
           ))}
         </div>
       </div>
-      <aside class="support-card reveal">
+      <aside class="support-card" data-motion-item="right" style="--motion-order:2">
         <p>Ce que The Porters prend en charge</p>
-        <h2>Le cadre, sans prendre la main sur votre expertise.</h2>
+        <h2>Tout le cadre, sans toucher à votre expertise.</h2>
         <ol>
-          {expertise.support.map((item, index) => (
-            <li><span>0{index + 1}</span>{item}</li>
+          {expertise.support.map((item) => (
+            <li>{item}</li>
           ))}
         </ol>
         <a href="/simulateur">Faire une simulation <span aria-hidden="true">→</span></a>
@@ -255,13 +264,13 @@ const relatedExpertises = expertises
     </div>
   </section>
 
-  <section class="domain-next">
+  <section class="domain-next" data-motion-section>
     <div class="domain-shell">
-      <header class="domain-heading domain-heading--light reveal">
-        <p>Continuer l’exploration</p>
-        <h2>Une mission peut mobiliser plusieurs domaines.</h2>
+      <header class="domain-heading domain-heading--light" data-motion-item="left" style="--motion-order:0">
+        <p>Pour aller plus loin</p>
+        <h2>Une mission déborde souvent sur un autre domaine.</h2>
       </header>
-      <div class="domain-next-grid reveal">
+      <div class="domain-next-grid" data-motion-item="wipe" style="--motion-order:1">
         {relatedExpertises.map((related) => (
           <a href={`/expertises/${related.slug}`}>
             <span>{related.eyebrow}</span>
@@ -280,14 +289,62 @@ const relatedExpertises = expertises
 </PageLayout>
 
 <script>
+  document.querySelectorAll<HTMLElement>('[data-domain-orbit]').forEach((orbit) => {
+    const nodes = Array.from(orbit.querySelectorAll<HTMLElement>('[data-orbit-node]'));
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeIndex = 0;
+    let timer = 0;
+    let paused = false;
+    let inView = !('IntersectionObserver' in window);
+
+    const activate = (nextIndex: number) => {
+      activeIndex = (nextIndex + nodes.length) % nodes.length;
+      nodes.forEach((node, index) => node.classList.toggle('is-active', index === activeIndex));
+      orbit.style.setProperty('--orbit-phase', String(activeIndex));
+    };
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (reducedMotion || paused || !inView || nodes.length < 2) return;
+      timer = window.setTimeout(() => {
+        activate(activeIndex + 1);
+        schedule();
+      }, 1900);
+    };
+
+    nodes.forEach((node, index) => {
+      node.addEventListener('pointerenter', () => { paused = true; activate(index); schedule(); });
+      node.addEventListener('pointerleave', () => { paused = false; schedule(); });
+      node.addEventListener('focusin', () => { paused = true; activate(index); schedule(); });
+      node.addEventListener('focusout', () => { paused = false; schedule(); });
+    });
+    activate(0);
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        inView = Boolean(entry?.isIntersecting);
+        schedule();
+      }, { threshold: .34 });
+      observer.observe(orbit);
+    } else {
+      schedule();
+    }
+  });
+
   document.querySelectorAll<HTMLElement>('[data-method-lab]').forEach((lab) => {
     const tabs = Array.from(lab.querySelectorAll<HTMLButtonElement>('[data-method-tab]'));
     const panels = Array.from(lab.querySelectorAll<HTMLElement>('[data-method-panel]'));
     const progress = lab.querySelector<HTMLElement>('[data-method-progress]');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const orbit = document.querySelector<HTMLElement>('[data-domain-orbit]');
+    const orbitNodes = Array.from(orbit?.querySelectorAll<HTMLElement>('[data-orbit-node]') || []);
+    let activeIndex = 0;
+    let cycleTimer = 0;
+    let isPaused = false;
+    let isInView = !('IntersectionObserver' in window);
 
     const select = (nextIndex: number, focus = false) => {
       const index = (nextIndex + tabs.length) % tabs.length;
+      activeIndex = index;
       tabs.forEach((tab, tabIndex) => {
         const active = tabIndex === index;
         tab.classList.toggle('is-active', active);
@@ -302,10 +359,23 @@ const relatedExpertises = expertises
         if (active && !reducedMotion) requestAnimationFrame(() => panel.classList.add('is-entering'));
       });
       if (progress) progress.style.setProperty('--progress', `${((index + 1) / tabs.length) * 100}%`);
+      orbitNodes.forEach((node, nodeIndex) => node.classList.toggle('is-active', nodeIndex === index));
+    };
+
+    const scheduleCycle = () => {
+      window.clearTimeout(cycleTimer);
+      if (reducedMotion || isPaused || !isInView || tabs.length < 2) return;
+      cycleTimer = window.setTimeout(() => {
+        select(activeIndex + 1);
+        scheduleCycle();
+      }, 2600);
     };
 
     tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => select(index));
+      tab.addEventListener('click', () => {
+        select(index);
+        scheduleCycle();
+      });
       tab.addEventListener('keydown', (event) => {
         if (!['ArrowDown', 'ArrowRight', 'ArrowUp', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
         event.preventDefault();
@@ -318,20 +388,90 @@ const relatedExpertises = expertises
       });
     });
 
-    document.querySelectorAll<HTMLAnchorElement>('[data-method-jump]').forEach((jump) => {
-      jump.addEventListener('click', () => select(Number(jump.dataset.methodJump || 0)));
+    orbitNodes.forEach((jump) => {
+      jump.addEventListener('click', () => {
+        select(Number(jump.dataset.methodJump || 0));
+        scheduleCycle();
+      });
     });
 
     select(0);
+    lab.addEventListener('pointerenter', () => {
+      isPaused = true;
+      scheduleCycle();
+    });
+    lab.addEventListener('pointerleave', () => {
+      isPaused = false;
+      scheduleCycle();
+    });
+    lab.addEventListener('focusin', () => {
+      isPaused = true;
+      scheduleCycle();
+    });
+    lab.addEventListener('focusout', () => requestAnimationFrame(() => {
+      isPaused = lab.contains(document.activeElement);
+      scheduleCycle();
+    }));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        isInView = Boolean(entry?.isIntersecting);
+        scheduleCycle();
+      }, { threshold: .22 });
+      observer.observe(lab);
+    } else {
+      scheduleCycle();
+    }
   });
 
-  document.querySelectorAll<HTMLDetailsElement>('.mission-accordion details').forEach((detail) => {
-    detail.addEventListener('toggle', () => {
-      if (!detail.open) return;
-      detail.parentElement?.querySelectorAll<HTMLDetailsElement>('details').forEach((other) => {
-        if (other !== detail) other.open = false;
+  document.querySelectorAll<HTMLElement>('.mission-accordion').forEach((accordion) => {
+    const details = Array.from(accordion.querySelectorAll<HTMLDetailsElement>('details'));
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeIndex = Math.max(0, details.findIndex((detail) => detail.open));
+    let timer = 0;
+    let isPaused = false;
+    let isInView = !('IntersectionObserver' in window);
+
+    const openAt = (nextIndex: number) => {
+      activeIndex = (nextIndex + details.length) % details.length;
+      details.forEach((detail, index) => { detail.open = index === activeIndex; });
+    };
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (reducedMotion || isPaused || !isInView || details.length < 2) return;
+      timer = window.setTimeout(() => {
+        openAt(activeIndex + 1);
+        schedule();
+      }, 3000);
+    };
+
+    details.forEach((detail, index) => {
+      detail.addEventListener('toggle', () => {
+        if (!detail.open) return;
+        activeIndex = index;
+        details.forEach((other) => {
+          if (other !== detail) other.open = false;
+        });
       });
     });
+
+    accordion.addEventListener('pointerenter', () => { isPaused = true; schedule(); });
+    accordion.addEventListener('pointerleave', () => { isPaused = false; schedule(); });
+    accordion.addEventListener('focusin', () => { isPaused = true; schedule(); });
+    accordion.addEventListener('focusout', () => requestAnimationFrame(() => {
+      isPaused = accordion.contains(document.activeElement);
+      schedule();
+    }));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        isInView = Boolean(entry?.isIntersecting);
+        schedule();
+      }, { threshold: .28 });
+      observer.observe(accordion);
+    } else {
+      schedule();
+    }
   });
 </script>
 
@@ -355,22 +495,30 @@ const relatedExpertises = expertises
   .domain-hero-actions a:first-child{border-color:#c6a45a;background:#c6a45a;color:#102630}
   .domain-hero-actions a:hover{border-color:#fff;background:#fff;color:#102630;transform:translateY(-3px)}
 
-  .domain-orbit{position:relative;aspect-ratio:1;min-width:0}
+  .domain-orbit{position:relative;min-width:0;min-height:36rem;isolation:isolate}
   .domain-orbit svg{width:100%;height:100%;overflow:visible;animation:orbit-turn 34s linear infinite}
+  .domain-orbit>svg{position:absolute;z-index:-1;inset:-4%;width:108%;height:108%}
   .domain-orbit svg circle,.domain-orbit svg path{fill:none;stroke:rgba(198,164,90,.2);stroke-width:1}
   .domain-orbit svg path{stroke:rgba(255,255,255,.07);stroke-dasharray:5 9}
-  .domain-orbit-core{position:absolute;top:50%;left:50%;display:grid;width:12.5rem;height:12.5rem;place-content:center;border:1px solid rgba(198,164,90,.45);border-radius:50%;background:rgba(13,34,45,.88);text-align:center;transform:translate(-50%,-50%);box-shadow:0 0 0 2rem rgba(198,164,90,.04),0 20px 60px rgba(0,0,0,.28)}
+  .domain-hero-photo{position:absolute;z-index:0;inset:5% 4% 8%;overflow:hidden;margin:0;border:1px solid rgba(213,182,104,.34);border-radius:1.4rem;background:#173440;box-shadow:0 34px 95px rgba(0,0,0,.38),0 0 0 .45rem rgba(213,182,104,.035);animation:hero-photo-breathe 6.2s ease-in-out infinite}
+  .domain-hero-photo:after{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,32,42,.01),rgba(10,32,42,.06) 45%,rgba(10,32,42,.86));content:"";pointer-events:none}
+  .domain-hero-photo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.94);transition:filter .7s ease,transform 1s cubic-bezier(.16,1,.3,1);animation:hero-photo-pan 9.5s ease-in-out infinite alternate}
+  .domain-hero-photo:hover img{filter:saturate(1.05) brightness(1.03);transform:scale(1.055)}
+  .domain-hero-photo figcaption{position:absolute;z-index:2;right:1.25rem;bottom:1.1rem;left:1.25rem;display:flex;align-items:end;justify-content:space-between;gap:1rem;color:#fff}
+  .domain-hero-photo figcaption strong{font-size:.82rem}
+  .domain-hero-photo figcaption span{color:rgba(255,255,255,.62);font-size:.62rem}
+  .domain-orbit-core{position:absolute;z-index:3;bottom:4%;left:50%;display:grid;width:10.5rem;height:10.5rem;place-content:center;border:1px solid rgba(198,164,90,.68);border-radius:50%;background:rgba(13,34,45,.94);text-align:center;transform:translateX(-50%);box-shadow:0 0 0 1rem rgba(198,164,90,.07),0 20px 60px rgba(0,0,0,.34);animation:domain-core-pulse 5.8s ease-in-out infinite}
   .domain-orbit-core small{color:#c6a45a;font-size:.58rem;font-weight:760;letter-spacing:.13em;text-transform:uppercase}
   .domain-orbit-core strong{margin:.5rem 0;color:#fff;font-size:1.45rem}
   .domain-orbit-core span{color:rgba(255,255,255,.45);font-size:.65rem}
-  .domain-orbit-node{position:absolute;display:grid;min-width:9.5rem;gap:.25rem;border:1px solid rgba(255,255,255,.13);border-radius:.75rem;padding:.85rem 1rem;background:rgba(18,44,56,.88);color:#fff;text-decoration:none;box-shadow:0 14px 36px rgba(0,0,0,.2);animation:node-float 4.5s ease-in-out var(--node-delay) infinite;transition:border-color .2s ease,background-color .2s ease}
+  .domain-orbit-node{position:absolute;z-index:4;display:grid;min-width:9.5rem;gap:.25rem;border:1px solid rgba(255,255,255,.16);border-radius:.75rem;padding:.85rem 1rem;background:rgba(18,44,56,.88);color:#fff;text-decoration:none;box-shadow:0 14px 36px rgba(0,0,0,.24);backdrop-filter:blur(12px);animation:node-float 3.9s ease-in-out var(--node-delay) infinite;transition:border-color .28s ease,background-color .28s ease,box-shadow .32s ease,transform .42s cubic-bezier(.16,1,.3,1)}
   .domain-orbit-node span{color:#c6a45a;font:700 .6rem var(--font-mono)}
   .domain-orbit-node strong{font-size:.78rem}
-  .domain-orbit-node:hover{border-color:#c6a45a;background:#203d49}
-  .domain-orbit-node--1{top:4%;left:50%;transform:translateX(-50%)}
-  .domain-orbit-node--2{top:50%;right:-2%;transform:translateY(-50%)}
-  .domain-orbit-node--3{bottom:4%;left:50%;transform:translateX(-50%)}
-  .domain-orbit-node--4{top:50%;left:-2%;transform:translateY(-50%)}
+  .domain-orbit-node:hover,.domain-orbit-node.is-active{border-color:#d5b668;background:#254754;box-shadow:0 0 0 .48rem rgba(198,164,90,.14),0 28px 62px rgba(0,0,0,.38);transform:translateY(-10px) scale(1.11)}
+  .domain-orbit-node--1{top:1%;left:1%}
+  .domain-orbit-node--2{top:6%;right:0}
+  .domain-orbit-node--3{right:-1%;bottom:15%}
+  .domain-orbit-node--4{bottom:20%;left:-1%}
   .domain-source-strip{position:relative;border-top:1px solid rgba(255,255,255,.09);background:rgba(8,25,34,.55)}
   .domain-source-strip .domain-shell{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2rem;padding-block:1.25rem}
   .domain-source-strip span{margin:0}
@@ -388,6 +536,10 @@ const relatedExpertises = expertises
   .domain-intro-copy aside svg{width:1.2rem;color:#b79245}
   .domain-intro-copy aside p{margin:0;font-size:.79rem;line-height:1.65}
   .domain-intro-copy aside strong{display:block;color:#203440}
+  .domain-intro-visual{position:relative;overflow:hidden;margin:2.2rem 0 0;border-radius:1rem;box-shadow:0 22px 60px rgba(32,52,64,.14)}
+  .domain-intro-visual:after{position:absolute;right:-3rem;bottom:-3rem;width:10rem;height:10rem;border:1px solid rgba(198,164,90,.5);border-radius:50%;box-shadow:0 0 0 2rem rgba(198,164,90,.08);content:"";animation:intro-ring 5s ease-in-out infinite}
+  .domain-intro-visual img{display:block;width:100%;aspect-ratio:1.45;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .domain-intro-visual:hover img{transform:scale(1.045)}
 
   .method-section{overflow:hidden;background:#102630}
   .method-section:before{position:absolute}
@@ -396,12 +548,10 @@ const relatedExpertises = expertises
   .method-section .domain-heading>strong{padding-bottom:.5rem}
   .method-lab{display:grid;grid-template-columns:minmax(17rem,.36fr) minmax(0,.64fr);gap:1rem;margin-top:4rem;padding:1rem;border:1px solid rgba(255,255,255,.1);border-radius:1.25rem;background:rgba(255,255,255,.025)}
   .method-tabs{display:grid;align-content:start;gap:.6rem}
-  .method-tabs button{display:grid;grid-template-columns:2.2rem 1fr auto;align-items:center;gap:.75rem;min-height:4.8rem;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:.8rem 1rem;background:transparent;color:#fff;cursor:pointer;text-align:left;transition:border-color .22s ease,background-color .22s ease,transform .22s ease}
-  .method-tabs button span{display:grid;width:2rem;height:2rem;place-items:center;border-radius:50%;background:rgba(198,164,90,.1);color:#c6a45a;font:700 .6rem var(--font-mono)}
+  .method-tabs button{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.75rem;min-height:4.8rem;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:.8rem 1rem;background:transparent;color:#fff;cursor:pointer;text-align:left;transition:border-color .22s ease,background-color .22s ease,transform .22s ease}
   .method-tabs button strong{font-size:.84rem}
   .method-tabs button b{color:#c6a45a}
   .method-tabs button:hover,.method-tabs button.is-active{border-color:rgba(198,164,90,.65);background:rgba(198,164,90,.1);transform:translateX(.35rem)}
-  .method-tabs button.is-active span{background:#c6a45a;color:#102630}
   .method-stage{position:relative;min-height:26rem;overflow:hidden;border-radius:.85rem;background:#f8f4ec;color:#203440}
   .method-progress{height:3px;background:rgba(32,52,64,.1)}
   .method-progress span{display:block;width:var(--progress,25%);height:100%;background:#c6a45a;transition:width .45s cubic-bezier(.2,.8,.2,1)}
@@ -434,13 +584,13 @@ const relatedExpertises = expertises
   .mission-accordion{display:grid;align-content:start;gap:.65rem}
   .mission-accordion details{overflow:hidden;border:1px solid rgba(32,52,64,.12);border-radius:.75rem;background:rgba(255,255,255,.6);transition:border-color .22s ease,background-color .22s ease,transform .22s ease}
   .mission-accordion details[open]{border-color:rgba(198,164,90,.55);background:#fff;transform:translateX(-.4rem)}
-  .mission-accordion summary{display:grid;grid-template-columns:2rem 1fr auto;align-items:center;gap:.75rem;min-height:4.6rem;padding:.8rem 1rem;color:#203440;cursor:pointer;list-style:none}
+  .mission-accordion summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.75rem;min-height:4.6rem;padding:.8rem 1rem;color:#203440;cursor:pointer;list-style:none}
   .mission-accordion summary::-webkit-details-marker{display:none}
   .mission-accordion summary>span{color:#b79245;font:700 .6rem var(--font-mono)}
   .mission-accordion summary strong{font-size:.8rem;line-height:1.35}
   .mission-accordion summary b{display:grid;width:1.8rem;height:1.8rem;place-items:center;border-radius:50%;color:#b79245;font-size:1rem;transition:transform .22s ease,background-color .22s ease}
   .mission-accordion details[open] summary b{background:#c6a45a;color:#203440;transform:rotate(45deg)}
-  .mission-accordion details>p{margin:0;padding:0 3.6rem 1.3rem;color:rgba(32,52,64,.62);font-size:.76rem;line-height:1.65;animation:stage-enter .3s ease both}
+  .mission-accordion details>p{margin:0;padding:0 3.5rem 1.3rem 1rem;color:rgba(32,52,64,.62);font-size:.76rem;line-height:1.65;animation:stage-enter .3s ease both}
 
   .ecosystem-focus{overflow:hidden;padding-block:clamp(4rem,8vw,7rem);background:#c6a45a;color:#102630}
   .ecosystem-focus-grid{display:grid;grid-template-columns:minmax(16rem,.38fr) minmax(0,.62fr);gap:clamp(3rem,9vw,9rem);align-items:center}
@@ -466,8 +616,7 @@ const relatedExpertises = expertises
   .support-card>p{margin:0;color:#c6a45a;font-size:.62rem;font-weight:760;letter-spacing:.13em;text-transform:uppercase}
   .support-card h2{margin:1rem 0 2rem;color:#fff;font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.05;letter-spacing:-.045em}
   .support-card ol{display:grid;gap:0;margin:0;padding:0;list-style:none}
-  .support-card li{display:grid;grid-template-columns:2rem 1fr;gap:.7rem;padding:.9rem 0;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.68);font-size:.75rem;line-height:1.45}
-  .support-card li span{color:#c6a45a;font:700 .6rem var(--font-mono)}
+  .support-card li{display:block;padding:.9rem 0;border-top:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.68);font-size:.75rem;line-height:1.45}
   .support-card>a{display:flex;align-items:center;justify-content:space-between;margin-top:1.8rem;border-radius:999px;padding:.9rem 1.1rem;background:#c6a45a;color:#102630;font-size:.74rem;font-weight:760;text-decoration:none;transition:transform .22s ease,background-color .22s ease}
   .support-card>a:hover{background:#fff;transform:translateY(-3px)}
 
@@ -480,20 +629,24 @@ const relatedExpertises = expertises
   .domain-next-grid b{position:absolute;right:1.5rem;top:1.5rem;color:#c6a45a}
 
   @keyframes orbit-turn{to{transform:rotate(360deg)}}
-  @keyframes node-float{0%,100%{margin-top:0}50%{margin-top:-.45rem}}
+  @keyframes hero-photo-breathe{0%,100%{transform:translate3d(-5px,10px,0) scale(.972)}50%{transform:translate3d(7px,-16px,0) scale(1.025)}}
+  @keyframes hero-photo-pan{from{object-position:45% 50%;transform:scale(1.02)}to{object-position:58% 50%;transform:scale(1.085)}}
+  @keyframes domain-core-pulse{50%{box-shadow:0 0 0 1.5rem rgba(198,164,90,.09),0 24px 68px rgba(0,0,0,.4)}}
+  @keyframes intro-ring{0%,100%{opacity:.55;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
+  @keyframes node-float{0%,100%{margin-top:.5rem;margin-left:-.35rem}35%{margin-top:-1.1rem;margin-left:.65rem}70%{margin-top:-.2rem;margin-left:-.65rem}}
   @keyframes stage-enter{from{opacity:0;transform:translateY(1rem)}to{opacity:1;transform:none}}
 
   @media(max-width:1050px){
     .domain-hero-grid{grid-template-columns:1fr;min-height:0}
     .domain-hero-copy{padding-top:2rem}
-    .domain-orbit{width:min(100%,37rem);margin-inline:auto}
+    .domain-orbit{width:min(100%,40rem);min-height:38rem;margin-inline:auto}
     .domain-intro-grid,.mission-grid,.impact-grid{grid-template-columns:1fr}
     .support-card{position:relative;top:auto}
     .method-section .domain-heading,.roles-section .domain-heading{grid-template-columns:1fr}
     .method-section .domain-heading>p,.roles-section .domain-heading>p{grid-column:auto}
     .method-lab{grid-template-columns:1fr}
     .method-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
-    .method-tabs button{grid-template-columns:1fr;justify-items:start}
+    .method-tabs button{grid-template-columns:minmax(0,1fr) auto}
     .method-tabs button b{display:none}
     .method-tabs button:hover,.method-tabs button.is-active{transform:translateY(-.25rem)}
   }
@@ -505,11 +658,14 @@ const relatedExpertises = expertises
     .domain-source-strip .domain-shell{grid-template-columns:1fr;gap:1rem}
     .domain-sector-list{justify-items:start}
     .domain-sector-list ul{justify-content:flex-start}
-    .domain-orbit{margin-top:1.5rem}
+    .domain-orbit{min-height:34rem;margin-top:1.5rem}
+    .domain-hero-photo{inset:8% 4% 12%}
     .domain-orbit-node{min-width:7rem;padding:.65rem}
     .domain-orbit-node strong{font-size:.68rem}
-    .domain-orbit-node--2{right:-1%}
-    .domain-orbit-node--4{left:-1%}
+    .domain-orbit-node--1{top:1%;left:0}
+    .domain-orbit-node--2{top:2%;right:0}
+    .domain-orbit-node--3{right:0;bottom:18%}
+    .domain-orbit-node--4{bottom:19%;left:0}
     .method-tabs{grid-template-columns:1fr 1fr}
     .method-tabs button{min-height:4rem}
     .method-stage{min-height:24rem}
@@ -531,15 +687,16 @@ const relatedExpertises = expertises
     .domain-orbit-core{width:9rem;height:9rem}
     .domain-orbit-node{min-width:6.2rem}
     .domain-orbit-node strong{font-size:.6rem}
+    .domain-hero-photo figcaption{display:grid;gap:.2rem}
     .method-tabs{grid-template-columns:1fr}
-    .method-tabs button{grid-template-columns:2rem 1fr}
+    .method-tabs button{grid-template-columns:minmax(0,1fr) auto}
     .method-stage article{padding:1.5rem}
     .method-stage article>span{font-size:3.5rem}
     .role-grid{grid-template-columns:1fr}
   }
 
   @media(prefers-reduced-motion:reduce){
-    .domain-orbit svg,.domain-orbit-node,.ecosystem-signature:before,.ecosystem-signature:after{animation:none}
+    .domain-orbit svg,.domain-orbit-node,.domain-hero-photo,.domain-hero-photo img,.domain-orbit-core,.ecosystem-signature:before,.ecosystem-signature:after,.domain-intro-visual:after{animation:none}
     .method-stage article.is-entering{animation:none}
   }
 </style>

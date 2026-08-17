@@ -1,0 +1,134 @@
+---
+interface Props {
+  id?: string;
+}
+
+const { id = 'contact-form' } = Astro.props;
+---
+
+<form class="contact-form" id={id} data-contact-form>
+  <div class="contact-form__grid">
+    <label>
+      <span>Nom complet *</span>
+      <input type="text" name="name" autocomplete="name" placeholder="Votre nom" required />
+    </label>
+    <label>
+      <span>Email *</span>
+      <input type="email" name="email" autocomplete="email" placeholder="votre@email.com" required />
+    </label>
+    <label>
+      <span>Téléphone</span>
+      <input type="tel" name="phone" autocomplete="tel" placeholder="06 00 00 00 00" />
+    </label>
+    <label>
+      <span>Société</span>
+      <input type="text" name="company" autocomplete="organization" placeholder="Nom de votre société" />
+    </label>
+  </div>
+
+  <fieldset>
+    <legend>Votre point de départ *</legend>
+    <div class="contact-form__choices">
+      <label><input type="radio" name="subject" value="Mission et statut" required /><span>Mission et statut</span></label>
+      <label><input type="radio" name="subject" value="Simulation et frais" /><span>Simulation et frais</span></label>
+      <label><input type="radio" name="subject" value="Besoin d’expertise" /><span>Besoin d’expertise</span></label>
+    </div>
+  </fieldset>
+
+  <label>
+    <span>Décrivez votre contexte *</span>
+    <textarea name="message" rows="6" placeholder="Mission, calendrier, expertise recherchée, TJM ou question à clarifier…" required></textarea>
+  </label>
+
+  <label class="contact-form__consent">
+    <input type="checkbox" name="consent" required />
+    <span>
+      J’accepte que The Porters utilise ces informations pour répondre à ma demande.
+      <a href="/confidentialite">Politique de confidentialité</a>
+    </span>
+  </label>
+
+  <div class="contact-form__actions">
+    <button type="submit">Envoyer ma demande <span aria-hidden="true">→</span></button>
+    <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
+  </div>
+</form>
+
+<script>
+  import { supabase } from '../../lib/supabase';
+
+  document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const subject = String(data.get('subject') || 'Demande de contact');
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const status = form.querySelector<HTMLElement>('[data-contact-status]');
+      const params = new URLSearchParams(window.location.search);
+      let sessionId = window.localStorage.getItem('porters_session_id');
+      if (!sessionId) {
+        sessionId = window.crypto?.randomUUID?.() || `session-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+        window.localStorage.setItem('porters_session_id', sessionId);
+      }
+
+      if (button) {
+        button.disabled = true;
+        button.dataset.originalLabel = button.textContent || '';
+        button.innerHTML = 'Envoi en cours…';
+      }
+      if (status) {
+        status.textContent = 'Enregistrement sécurisé de votre demande…';
+        status.dataset.state = 'loading';
+      }
+
+      const { error } = await supabase.from('crm_inquiries').insert({
+        kind: 'contact',
+        source: 'website',
+        status: 'new',
+        priority: subject === 'Besoin d’expertise' ? 'high' : 'medium',
+        name: String(data.get('name') || '').trim(),
+        email: String(data.get('email') || '').trim(),
+        phone: String(data.get('phone') || '').trim() || null,
+        company: String(data.get('company') || '').trim() || null,
+        subject,
+        message: String(data.get('message') || '').trim(),
+        consent: data.get('consent') === 'on',
+        source_page: window.location.pathname,
+        landing_page: window.location.href,
+        referrer: document.referrer || null,
+        utm_source: params.get('utm_source'),
+        utm_medium: params.get('utm_medium'),
+        utm_campaign: params.get('utm_campaign'),
+        utm_content: params.get('utm_content'),
+        utm_term: params.get('utm_term'),
+        session_id: sessionId,
+        user_agent: window.navigator.userAgent,
+      });
+
+      if (button) {
+        button.disabled = false;
+        button.innerHTML = error ? 'Réessayer <span aria-hidden="true">→</span>' : 'Demande envoyée <span aria-hidden="true">✓</span>';
+      }
+
+      if (error) {
+        console.error('[Contact] Unable to save inquiry:', error);
+        if (status) {
+          status.textContent = 'L’envoi a échoué. Réessayez ou écrivez à contact@porters.fr.';
+          status.dataset.state = 'error';
+        }
+        return;
+      }
+
+      form.reset();
+      if (status) {
+        status.textContent = 'Merci. Votre demande a bien été transmise à notre équipe.';
+        status.dataset.state = 'success';
+      }
+    });
+  });
+</script>
+
+<style>
+  .contact-form{display:grid;gap:1.35rem}.contact-form__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.contact-form label{display:grid;gap:.5rem}.contact-form label>span,.contact-form legend{color:#253743;font-size:.7rem;font-weight:780}.contact-form input:not([type="radio"]):not([type="checkbox"]),.contact-form textarea{width:100%;border:1px solid rgba(37,55,67,.13);border-radius:.75rem;padding:.85rem 1rem;background:#fbfaf7;color:#253743;font:inherit;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}.contact-form input:not([type="radio"]):not([type="checkbox"]):focus,.contact-form textarea:focus{border-color:#c6a45a;background:#fff;box-shadow:0 0 0 4px rgba(198,164,90,.1);outline:none}.contact-form fieldset{margin:0;border:0;padding:0}.contact-form legend{margin-bottom:.7rem}.contact-form__choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}.contact-form__choices label{position:relative;cursor:pointer}.contact-form__choices input{position:absolute;opacity:0}.contact-form__choices span{display:flex;min-height:3rem;align-items:center;justify-content:center;border:1px solid rgba(37,55,67,.12);border-radius:999px;padding:.65rem .8rem;background:#fff;text-align:center;transition:transform .2s ease,border-color .2s ease,background .2s ease}.contact-form__choices input:checked+span{border-color:#c6a45a;background:rgba(198,164,90,.12);transform:translateY(-2px)}.contact-form__choices input:focus-visible+span{outline:2px solid #c6a45a;outline-offset:2px}.contact-form__consent{grid-template-columns:auto 1fr!important;align-items:start;gap:.75rem!important;border-radius:.75rem;background:rgba(37,55,67,.035);padding:1rem}.contact-form__consent input{margin-top:.15rem;accent-color:#c6a45a}.contact-form__consent span{font-size:.67rem!important;line-height:1.55;color:rgba(37,55,67,.62)!important}.contact-form__consent a{color:#9b762e;text-decoration:underline}.contact-form__actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}.contact-form__status{margin:0;font-size:.7rem;color:rgba(37,55,67,.62)}.contact-form__status[data-state="error"]{color:#9c2f2f}.contact-form__status[data-state="success"]{color:#39704f}.contact-form button{display:flex;min-height:3.45rem;align-items:center;justify-content:center;gap:.8rem;border:0;border-radius:999px;padding-inline:1.35rem;background:#d5b15c;color:#142d39;cursor:pointer;font:inherit;font-size:.78rem;font-weight:800;transition:transform .24s ease,box-shadow .24s ease,background .24s ease}.contact-form button:disabled{cursor:wait;opacity:.68}.contact-form button:hover,.contact-form button:focus-visible{background:#dfbd6b;box-shadow:0 16px 34px rgba(37,55,67,.14);outline:none;transform:translateY(-3px)}.contact-form button span{font-size:1rem;transition:transform .2s ease}.contact-form button:hover span{transform:translateX(4px)}
+  @media(max-width:680px){.contact-form__grid,.contact-form__choices{grid-template-columns:1fr}}
+</style>

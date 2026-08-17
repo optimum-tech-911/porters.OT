@@ -139,7 +139,7 @@ const corePages: CorePageDefinition[] = [
     category: 'consultant',
     url: '/simulateur',
     keywords: ['simulateur', 'simulation', 'salaire', 'revenus', 'rémunération', 'TJM', 'jours facturés', 'frais professionnels'],
-    ctaLabel: 'Simuler mes revenus',
+    ctaLabel: 'Calculer mon salaire net',
     ctaUrl: '/simulateur',
   },
   {

@@ -1,14 +1,14 @@
-/**
- * AdminLeadDetailPanel — Slide-over detail panel for a lead
- * TODO: Connect edit/save actions to Supabase when backend is ready.
- */
+/** AdminLeadDetailPanel — Slide-over detail panel for a CRM lead. */
+import { useEffect, useState } from 'react';
 import type { Lead } from '../../types/admin';
 import { adminUsers } from '../../data/admin-demo.data';
+import { supabase } from '../../lib/supabase';
 import AdminStatusBadge from './AdminStatusBadge';
 
 interface Props {
   lead: Lead;
   onClose: () => void;
+  onUpdated: (lead: Lead) => void;
 }
 
 function formatDate(dateStr: string): string {
@@ -21,10 +21,70 @@ function formatDate(dateStr: string): string {
   });
 }
 
-export default function AdminLeadDetailPanel({ lead, onClose }: Props) {
+const databaseStatus: Record<Lead['status'], string> = {
+  new: 'new',
+  contacted: 'contacted',
+  qualified: 'qualified',
+  proposal: 'proposal',
+  converted: 'converted',
+  lost: 'archived',
+};
+
+export default function AdminLeadDetailPanel({ lead, onClose, onUpdated }: Props) {
+  const [status, setStatus] = useState<Lead['status']>(lead.status);
+  const [saving, setSaving] = useState(false);
+  const [feedback, setFeedback] = useState('');
+
+  useEffect(() => {
+    setStatus(lead.status);
+    setFeedback('');
+  }, [lead.id, lead.status]);
+
   const assignedUser = adminUsers.find((u) => u.id === lead.assignedAdmin);
 
   const scoreClass = lead.score >= 70 ? 'high' : lead.score >= 40 ? 'medium' : 'low';
+
+  async function saveStatus() {
+    setSaving(true);
+    setFeedback('');
+    const { error } = await supabase
+      .from('crm_inquiries')
+      .update({ status: databaseStatus[status] })
+      .eq('id', lead.id);
+    setSaving(false);
+    if (error) {
+      console.error('[Admin] Unable to update lead:', error);
+      setFeedback('La mise à jour a échoué. Vérifiez votre session admin.');
+      return;
+    }
+    onUpdated({ ...lead, status, lastInteraction: new Date().toISOString() });
+    setFeedback('Statut enregistré.');
+  }
+
+  async function assignToMe() {
+    setSaving(true);
+    setFeedback('');
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData.user) {
+      setSaving(false);
+      setFeedback('Votre session admin doit être reconnectée.');
+      return;
+    }
+    const nextStatus: Lead['status'] = status === 'new' ? 'contacted' : status;
+    const { error } = await supabase
+      .from('crm_inquiries')
+      .update({ assigned_admin: userData.user.id, status: databaseStatus[nextStatus] })
+      .eq('id', lead.id);
+    setSaving(false);
+    if (error) {
+      console.error('[Admin] Unable to assign lead:', error);
+      setFeedback('L’assignation a échoué.');
+      return;
+    }
+    setStatus(nextStatus);
+    onUpdated({ ...lead, status: nextStatus, assignedAdmin: userData.user.id, lastInteraction: new Date().toISOString() });
+    setFeedback('Lead assigné à votre compte.');
+  }
 
   return (
     <>
@@ -50,7 +110,7 @@ export default function AdminLeadDetailPanel({ lead, onClose }: Props) {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
             <div className="admin-panel-field">
               <div className="admin-panel-field-label">Statut</div>
-              <div className="admin-panel-field-value"><AdminStatusBadge status={lead.status} /></div>
+              <div className="admin-panel-field-value"><AdminStatusBadge status={status} /></div>
             </div>
             <div className="admin-panel-field">
               <div className="admin-panel-field-label">Source</div>
@@ -75,6 +135,47 @@ export default function AdminLeadDetailPanel({ lead, onClose }: Props) {
             </div>
           )}
 
+          {lead.profile && (
+            <div className="admin-panel-field">
+              <div className="admin-panel-field-label">Profil métier</div>
+              <div className="admin-panel-field-value">{lead.profile}</div>
+            </div>
+          )}
+
+          {lead.source === 'simulator' && (
+            <div className="admin-panel-field">
+              <div className="admin-panel-field-label">Scénario de simulation</div>
+              <div className="admin-panel-field-value" style={{ display: 'grid', gap: '.45rem', background: 'var(--admin-bg)', padding: '1rem', borderRadius: 'var(--admin-radius-sm)' }}>
+                <span>Parcours : {lead.simulatorMode === 'freelance' ? 'Activité freelance' : 'Portage salarial'}</span>
+                {typeof lead.monthlyRevenue === 'number' && <span>CA mensuel : {lead.monthlyRevenue.toLocaleString('fr-FR')} €</span>}
+                {lead.simulatorMode === 'freelance' && typeof lead.tjm === 'number' && <span>TJM : {lead.tjm.toLocaleString('fr-FR')} €</span>}
+                {lead.simulatorMode === 'freelance' && typeof lead.daysWorked === 'number' && <span>Jours facturés : {lead.daysWorked}</span>}
+                {typeof lead.professionalExpenses === 'number' && <span>Frais professionnels : {lead.professionalExpenses.toLocaleString('fr-FR')} €</span>}
+                {typeof lead.estimatedNetMonthly === 'number' && <strong>Net mensuel estimé : {lead.estimatedNetMonthly.toLocaleString('fr-FR')} €</strong>}
+              </div>
+            </div>
+          )}
+
+          {lead.message && (
+            <div className="admin-panel-field">
+              <div className="admin-panel-field-label">Contexte</div>
+              <div className="admin-panel-field-value">{lead.message}</div>
+            </div>
+          )}
+
+          {(lead.sourcePage || lead.landingPage || lead.utmSource || lead.referrer || lead.sessionId) && (
+            <div className="admin-panel-field">
+              <div className="admin-panel-field-label">Attribution</div>
+              <div className="admin-panel-field-value" style={{ display: 'grid', gap: '.35rem', fontSize: '.8125rem' }}>
+                {lead.sourcePage && <span>Page : {lead.sourcePage}</span>}
+                {lead.landingPage && <span>Arrivée : {lead.landingPage}</span>}
+                {lead.utmSource && <span>UTM : {[lead.utmSource, lead.utmMedium, lead.utmCampaign, lead.utmContent, lead.utmTerm].filter(Boolean).join(' · ')}</span>}
+                {lead.referrer && <span>Référent : {lead.referrer}</span>}
+                {lead.sessionId && <span>Session : {lead.sessionId}</span>}
+              </div>
+            </div>
+          )}
+
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Score de qualification</div>
             <div className="admin-panel-field-value">
@@ -93,9 +194,28 @@ export default function AdminLeadDetailPanel({ lead, onClose }: Props) {
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Assigné à</div>
             <div className="admin-panel-field-value">
-              {assignedUser ? assignedUser.name : 'Non assigné'}
+              {assignedUser ? assignedUser.name : lead.assignedAdmin ? 'Votre équipe admin' : 'Non assigné'}
             </div>
           </div>
+
+          <div className="admin-panel-field">
+            <label className="admin-panel-field-label" htmlFor="lead-status">Changer le statut</label>
+            <select
+              id="lead-status"
+              className="admin-filter-select"
+              value={status}
+              onChange={(event) => setStatus(event.target.value as Lead['status'])}
+            >
+              <option value="new">Nouveau</option>
+              <option value="contacted">Contacté</option>
+              <option value="qualified">Qualifié</option>
+              <option value="proposal">Proposition</option>
+              <option value="converted">Converti</option>
+              <option value="lost">Archivé / perdu</option>
+            </select>
+          </div>
+
+          {feedback && <p className="admin-panel-field-value" role="status">{feedback}</p>}
 
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Dernière interaction</div>
@@ -111,10 +231,16 @@ export default function AdminLeadDetailPanel({ lead, onClose }: Props) {
         </div>
 
         <div className="admin-panel-footer">
-          <button className="admin-btn admin-btn-primary" disabled>
-            Modifier
+          <button className="admin-btn admin-btn-primary" type="button" disabled={saving} onClick={() => void saveStatus()}>
+            {saving ? 'Enregistrement…' : 'Enregistrer'}
           </button>
-          <button className="admin-btn admin-btn-secondary" onClick={onClose}>
+          <button className="admin-btn admin-btn-secondary" type="button" disabled={saving} onClick={() => void assignToMe()}>
+            M’assigner
+          </button>
+          <a className="admin-btn admin-btn-secondary" href={`mailto:${lead.email}?subject=${encodeURIComponent(`Votre demande The Porters`)}`}>
+            Contacter
+          </a>
+          <button className="admin-btn admin-btn-ghost" type="button" onClick={onClose}>
             Fermer
           </button>
         </div>

@@ -13,7 +13,11 @@
  * Below 900px a triangle stops being legible, so the stage becomes a stacked
  * list and the whole content is shown at once.
  */
+import { Image } from 'astro:assets';
 import SiteIcon from './SiteIcon.astro';
+import consultantImage from '../../assets/home/tripartite-consultant.png';
+import clientImage from '../../assets/home/tripartite-client.png';
+import portersImage from '../../assets/home/welcome-porters.png';
 
 const parties = [
   {
@@ -21,8 +25,10 @@ const parties = [
     name: 'Le consultant',
     detail: 'Trouve ses missions et réalise ses prestations.',
     icon: 'user' as const,
+    image: 'consultant',
     contracts: ['work', 'mission'],
     peers: ['porters', 'client'],
+    introDelay: 540,
     pos: { x: 18.1, y: 83.8, w: 34.4 },
   },
   {
@@ -30,8 +36,10 @@ const parties = [
     name: 'The Porters',
     detail: 'Contrat, facturation, paie et déclarations.',
     icon: 'briefcase' as const,
+    image: 'porters',
     contracts: ['work', 'service'],
     peers: ['consultant', 'client'],
+    introDelay: 360,
     pos: { x: 50, y: 13, w: 31.1 },
   },
   {
@@ -39,16 +47,18 @@ const parties = [
     name: "L'entreprise cliente",
     detail: "Bénéficie de l'expertise, dans un cadre sécurisé.",
     icon: 'building' as const,
+    image: 'client',
     contracts: ['service', 'mission'],
     peers: ['porters', 'consultant'],
+    introDelay: 720,
     pos: { x: 81.9, y: 83.8, w: 34.4 },
   },
 ];
 
 const contracts = [
-  { id: 'work', label: 'Contrat de travail', detail: 'CDI ou CDD', parties: ['porters', 'consultant'], pos: { x: 26.4, y: 41.7 } },
-  { id: 'service', label: 'Contrat de prestation', detail: 'Convention de mission', parties: ['porters', 'client'], pos: { x: 73.6, y: 41.7 } },
-  { id: 'mission', label: 'Mission réalisée', detail: 'Conditions négociées entre eux', parties: ['consultant', 'client'], pos: { x: 50, y: 72 } },
+  { id: 'work', label: 'Contrat de travail', detail: 'CDI ou CDD', image: 'consultant', parties: ['porters', 'consultant'], introDelay: 930, pos: { x: 26.4, y: 41.7 } },
+  { id: 'service', label: 'Contrat de prestation', detail: 'Convention de mission', image: 'client', parties: ['porters', 'client'], introDelay: 1070, pos: { x: 73.6, y: 41.7 } },
+  { id: 'mission', label: 'Mission réalisée', detail: 'Conditions négociées entre eux', image: 'porters', parties: ['consultant', 'client'], introDelay: 1210, pos: { x: 50, y: 72 } },
 ];
 
 const nameOf = Object.fromEntries(parties.map((p) => [p.id, p.name]));
@@ -79,6 +89,10 @@ const initial = parties.find((p) => p.id === 'porters')!;
           <marker id="tri-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M0 0 10 5 0 10z" class="tri-arrowhead" />
           </marker>
+          <filter id="tri-puce-glow" x="-200%" y="-200%" width="400%" height="400%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
         </defs>
         <g class="tri-link" data-link="work">
           <line class="link-base" x1="450" y1="61" x2="163" y2="394" />
@@ -92,9 +106,33 @@ const initial = parties.find((p) => p.id === 'porters')!;
           <polyline class="link-base" points="163,394 450,394 737,394" marker-mid="url(#tri-arrow)" />
           <polyline class="link-flow" points="163,394 450,394 737,394" />
         </g>
+
+        <g class="tri-cycle-arrows">
+          <circle cx="450" cy="258" r="61" />
+          <path d="M450 190l-10 15h20z" />
+          <path d="M509 292l-18-1 9 16z" />
+          <path d="M391 292l9 15 9-16z" />
+        </g>
+
+        <g class="tri-flow-puces" filter="url(#tri-puce-glow)">
+          <circle r="6">
+            <animateMotion dur="7.2s" repeatCount="indefinite" path="M450 61 L737 394 L163 394 Z" />
+          </circle>
+          <circle r="6">
+            <animateMotion dur="7.2s" begin="-2.4s" repeatCount="indefinite" path="M450 61 L737 394 L163 394 Z" />
+          </circle>
+          <circle r="6">
+            <animateMotion dur="7.2s" begin="-4.8s" repeatCount="indefinite" path="M450 61 L737 394 L163 394 Z" />
+          </circle>
+        </g>
       </svg>
 
-      {parties.map((party, index) => (
+      <span class="tri-center-logo" aria-hidden="true">
+        <span>The</span>
+        <strong>PORTERS</strong>
+      </span>
+
+      {parties.map((party) => (
         <button
           type="button"
           class="tri-node"
@@ -106,8 +144,9 @@ const initial = parties.find((p) => p.id === 'porters')!;
           data-lead={party.detail}
           data-meta-label="Contrats"
           data-meta={party.contracts.map((id) => labelOf[id]).join(' · ')}
+          data-image={party.image}
           aria-pressed={party.id === initial.id ? 'true' : 'false'}
-          style={`--x:${party.pos.x}%; --y:${party.pos.y}%; --w:${party.pos.w}%; --enter:${index * 90}ms`}
+          style={`--x:${party.pos.x}%; --y:${party.pos.y}%; --w:${party.pos.w}%; --enter:${party.introDelay}ms`}
         >
           <span class="tri-node-icon" aria-hidden="true"><SiteIcon name={party.icon} class="h-4 w-4" /></span>
           <span class="tri-node-name">{party.name}</span>
@@ -115,7 +154,7 @@ const initial = parties.find((p) => p.id === 'porters')!;
         </button>
       ))}
 
-      {contracts.map((contract, index) => (
+      {contracts.map((contract) => (
         <button
           type="button"
           class="tri-contract"
@@ -127,8 +166,9 @@ const initial = parties.find((p) => p.id === 'porters')!;
           data-lead={contract.detail}
           data-meta-label="Entre"
           data-meta={contract.parties.map((id) => nameOf[id]).join(' et ')}
+          data-image={contract.image}
           aria-pressed="false"
-          style={`--x:${contract.pos.x}%; --y:${contract.pos.y}%; --enter:${360 + index * 90}ms`}
+          style={`--x:${contract.pos.x}%; --y:${contract.pos.y}%; --enter:${contract.introDelay}ms`}
         >
           <span class="tri-contract-label">{contract.label}</span>
           <span class="tri-contract-detail">{contract.detail}</span>
@@ -137,12 +177,19 @@ const initial = parties.find((p) => p.id === 'porters')!;
     </div>
 
     <aside class="tri-detail" data-tri-detail aria-live="polite" data-cms-ignore>
-      <span class="tri-detail-kind" data-detail-kind>Acteur</span>
-      <h3 data-detail-title>{initial.name}</h3>
-      <p data-detail-lead>{initial.detail}</p>
-      <div class="tri-detail-meta">
-        <small data-detail-meta-label>Contrats</small>
-        <strong data-detail-meta>{initial.contracts.map((id) => labelOf[id]).join(' · ')}</strong>
+      <div class="tri-detail-media" aria-live="off">
+        <Image class="tri-detail-image" data-detail-image="consultant" src={consultantImage} alt="Consultant en échange avec une conseillère" widths={[420, 640]} sizes="(max-width: 1080px) 80vw, 20vw" format="webp" quality={86} />
+        <Image class="tri-detail-image" data-detail-image="porters" src={portersImage} alt="Carte de bienvenue The Porters" widths={[420, 640]} sizes="(max-width: 1080px) 80vw, 20vw" format="webp" quality={86} />
+        <Image class="tri-detail-image" data-detail-image="client" src={clientImage} alt="Équipe d’une entreprise cliente en réunion" widths={[420, 640]} sizes="(max-width: 1080px) 80vw, 20vw" format="webp" quality={86} />
+      </div>
+      <div class="tri-detail-copy">
+        <span class="tri-detail-kind" data-detail-kind>Acteur</span>
+        <h3 data-detail-title>{initial.name}</h3>
+        <p data-detail-lead>{initial.detail}</p>
+        <div class="tri-detail-meta">
+          <small data-detail-meta-label>Contrats</small>
+          <strong data-detail-meta>{initial.contracts.map((id) => labelOf[id]).join(' · ')}</strong>
+        </div>
       </div>
     </aside>
   </div>
@@ -152,9 +199,14 @@ const initial = parties.find((p) => p.id === 'porters')!;
   document.querySelectorAll<HTMLElement>('[data-tri]').forEach((root) => {
     const items = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-kind]'));
     const detail = root.querySelector<HTMLElement>('[data-tri-detail]');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeIndex = 0;
+    let cycleTimer = 0;
+    let introduced = false;
     const field = (name: string) => detail?.querySelector<HTMLElement>(`[data-detail-${name}]`);
 
     const select = (item: HTMLButtonElement) => {
+      activeIndex = Math.max(0, items.indexOf(item));
       const links = (item.dataset.links || '').split(' ').filter(Boolean);
       const parties = (item.dataset.parties || item.dataset.party || '').split(' ').filter(Boolean);
 
@@ -183,22 +235,62 @@ const initial = parties.find((p) => p.id === 'porters')!;
       const meta = field('meta');
       if (meta) meta.textContent = item.dataset.meta || '';
 
+      const activeImage = item.dataset.image || 'porters';
+      detail?.querySelectorAll<HTMLElement>('[data-detail-image]').forEach((image) => {
+        const visible = image.dataset.detailImage === activeImage;
+        image.classList.toggle('is-visible', visible);
+        image.setAttribute('aria-hidden', String(!visible));
+      });
+
       detail?.classList.remove('is-switching');
       requestAnimationFrame(() => detail?.classList.add('is-switching'));
     };
 
     items.forEach((item) => {
-      item.addEventListener('click', () => select(item));
-      item.addEventListener('focus', () => select(item));
+      item.addEventListener('click', () => { select(item); restartCycle(); });
+      item.addEventListener('focus', () => { select(item); stopCycle(); });
       // Pointer only: touch already fires click, and hover-select on touch would
       // fight the tap.
       item.addEventListener('pointerenter', (event) => {
-        if ((event as PointerEvent).pointerType === 'mouse') select(item);
+        if ((event as PointerEvent).pointerType === 'mouse') { select(item); stopCycle(); }
       });
+      item.addEventListener('pointerleave', () => restartCycle());
     });
+
+    const stopCycle = () => window.clearInterval(cycleTimer);
+    const restartCycle = () => {
+      stopCycle();
+      if (!introduced || reduceMotion || items.length < 2) return;
+      cycleTimer = window.setInterval(() => {
+        activeIndex = (activeIndex + 1) % items.length;
+        select(items[activeIndex]);
+      }, 2600);
+    };
 
     const start = items.find((item) => item.getAttribute('aria-pressed') === 'true');
     if (start) select(start);
+
+    const introduce = () => {
+      if (introduced) return;
+      introduced = true;
+      root.classList.add('is-introduced');
+      if (!reduceMotion) cycleTimer = window.setTimeout(restartCycle, 2200);
+    };
+
+    root.classList.add('tri-motion-ready');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      introduce();
+    } else {
+      const entranceObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry?.isIntersecting) return;
+          introduce();
+          entranceObserver.disconnect();
+        },
+        { threshold: 0.16, rootMargin: '0px 0px -7% 0px' }
+      );
+      entranceObserver.observe(root);
+    }
   });
 </script>
 
@@ -225,6 +317,70 @@ const initial = parties.find((p) => p.id === 'porters')!;
     margin-bottom: clamp(0.8rem, 2vw, 1.5rem);
   }
 
+  .tri.tri-motion-ready .tri-head,
+  .tri.tri-motion-ready .tri-stage,
+  .tri.tri-motion-ready .tri-detail {
+    transition:
+      opacity 0.72s ease,
+      filter 0.82s ease,
+      transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tri.tri-motion-ready:not(.is-introduced) .tri-head {
+    opacity: 0;
+    filter: blur(7px);
+    transform: translateX(-3.5rem);
+  }
+
+  .tri.tri-motion-ready:not(.is-introduced) .tri-stage {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(2.4rem) scale(0.94);
+  }
+
+  .tri.tri-motion-ready:not(.is-introduced) .tri-detail {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateX(3.5rem) scale(0.96);
+  }
+
+  .tri.tri-motion-ready:not(.is-introduced) .tri-node,
+  .tri.tri-motion-ready:not(.is-introduced) .tri-contract,
+  .tri.tri-motion-ready:not(.is-introduced) .tri-link,
+  .tri.tri-motion-ready:not(.is-introduced) .tri-cycle-arrows,
+  .tri.tri-motion-ready:not(.is-introduced) .tri-node-icon::before {
+    animation-play-state: paused;
+  }
+
+  .tri.tri-motion-ready .tri-flow-puces {
+    opacity: 0;
+    transition: opacity 0.5s 1.24s ease;
+  }
+
+  .tri.tri-motion-ready.is-introduced .tri-flow-puces {
+    opacity: 1;
+  }
+
+  .tri.tri-motion-ready .tri-center-logo {
+    opacity: 0;
+    filter: blur(7px);
+    transition:
+      opacity .5s 1.14s ease,
+      filter .6s 1.14s ease,
+      transform .72s 1.14s cubic-bezier(.16,1.2,.3,1);
+    transform: translate(-50%, -50%) scale(.52) rotate(-8deg);
+  }
+
+  .tri.tri-motion-ready.is-introduced .tri-center-logo {
+    opacity: 1;
+    filter: none;
+    transform: translate(-50%, -50%) scale(1) rotate(0);
+  }
+
+  .tri.tri-motion-ready.is-introduced .tri-detail {
+    transition-delay: 1.36s;
+  }
+
   .tri-eyebrow {
     margin: 0;
     color: var(--gold-ink);
@@ -242,7 +398,7 @@ const initial = parties.find((p) => p.id === 'porters')!;
 
   .tri-body {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(13.5rem, 0.34fr);
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.42fr);
     align-items: start;
     gap: clamp(1rem, 2.5vw, 2.25rem);
   }
@@ -263,11 +419,72 @@ const initial = parties.find((p) => p.id === 'porters')!;
   }
 
   .tri-link {
+    animation: tri-link-breathe 3.8s ease-in-out infinite alternate;
     transition: opacity 260ms ease;
   }
 
   .tri-arrowhead {
     fill: var(--gold);
+  }
+
+  .tri-cycle-arrows {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: tri-cycle-spin 9s linear infinite;
+  }
+
+  .tri-cycle-arrows circle {
+    fill: rgba(250, 248, 243, 0.76);
+    stroke: rgba(190, 158, 88, 0.48);
+    stroke-width: 1.5;
+    stroke-dasharray: 5 8;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .tri-cycle-arrows path {
+    fill: var(--gold);
+  }
+
+  .tri-flow-puces circle {
+    fill: #d7ad4f;
+    stroke: #fff;
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .tri-center-logo {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 54.9%;
+    display: grid;
+    width: clamp(3.5rem, 7.2vw, 5.5rem);
+    aspect-ratio: 1;
+    place-content: center;
+    border: 1px solid rgba(190, 158, 88, 0.52);
+    border-radius: 50%;
+    background: rgba(40, 55, 67, 0.96);
+    box-shadow: 0 8px 26px rgba(40, 55, 67, 0.22), 0 0 0 5px rgba(250, 248, 243, 0.78);
+    color: #fff;
+    line-height: 0.8;
+    pointer-events: none;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  .tri-center-logo span {
+    margin-right: 1.35rem;
+    font-family: var(--font-heading, Georgia, serif);
+    font-size: clamp(0.48rem, 0.8vw, 0.68rem);
+    font-style: italic;
+  }
+
+  .tri-center-logo strong {
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: clamp(0.48rem, 0.88vw, 0.7rem);
+    font-weight: 900;
+    letter-spacing: 0.02em;
   }
 
   .link-base {
@@ -323,6 +540,13 @@ const initial = parties.find((p) => p.id === 'porters')!;
     padding: 0.85rem 0.9rem;
     color: #fff;
     text-align: center;
+    animation-name: tri-enter, tri-node-drift;
+    animation-duration: 560ms, 5.8s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1), ease-in-out;
+    animation-delay: var(--enter, 0ms), calc(900ms + var(--enter, 0ms));
+    animation-iteration-count: 1, infinite;
+    animation-direction: normal, alternate;
+    animation-fill-mode: both;
     transition:
       transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
       border-color 240ms ease,
@@ -331,6 +555,7 @@ const initial = parties.find((p) => p.id === 'porters')!;
   }
 
   .tri-node-icon {
+    position: relative;
     display: grid;
     width: 1.7rem;
     height: 1.7rem;
@@ -340,6 +565,15 @@ const initial = parties.find((p) => p.id === 'porters')!;
     background: rgba(190, 158, 88, 0.18);
     color: var(--gold);
     transition: background-color 240ms ease;
+  }
+
+  .tri-node-icon::before {
+    position: absolute;
+    inset: -0.28rem;
+    border: 1.5px dashed rgba(215, 173, 79, 0.8);
+    border-radius: inherit;
+    content: '';
+    animation: tri-puce-spin 3.6s linear infinite;
   }
 
   .tri-node-name {
@@ -362,6 +596,8 @@ const initial = parties.find((p) => p.id === 'porters')!;
     transform: translate(-50%, -50%) translateY(-4px);
   }
 
+  .tri-node:hover { animation-play-state: paused; }
+
   .tri-node.is-active .tri-node-icon {
     background: var(--gold);
     color: var(--navy);
@@ -381,6 +617,13 @@ const initial = parties.find((p) => p.id === 'porters')!;
     background: rgba(250, 248, 243, 0.92);
     padding: 0.35rem 0.6rem;
     text-align: center;
+    animation-name: tri-enter, tri-contract-pulse;
+    animation-duration: 560ms, 4.6s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1), ease-in-out;
+    animation-delay: var(--enter, 0ms), calc(1.1s + var(--enter, 0ms));
+    animation-iteration-count: 1, infinite;
+    animation-direction: normal, alternate;
+    animation-fill-mode: both;
     transition:
       transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
       border-color 240ms ease,
@@ -408,6 +651,8 @@ const initial = parties.find((p) => p.id === 'porters')!;
     transform: translate(-50%, -50%) scale(1.04);
   }
 
+  .tri-contract:hover { animation-play-state: paused; }
+
   .tri-contract.is-related {
     border-color: rgba(190, 158, 88, 0.45);
   }
@@ -426,11 +671,38 @@ const initial = parties.find((p) => p.id === 'porters')!;
 
   /* ---------- detail panel ---------- */
   .tri-detail {
+    overflow: hidden;
     border: 1px solid rgba(190, 158, 88, 0.28);
     border-radius: 14px;
     background: #fff;
     box-shadow: 0 14px 34px rgba(11, 16, 32, 0.07);
-    padding: 1.1rem 1.2rem;
+  }
+
+  .tri-detail-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  .tri-detail-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity 420ms ease, transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tri-detail-image.is-visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .tri-detail-copy {
+    padding: 1.1rem 1.2rem 1.2rem;
   }
 
   .tri-detail-kind {
@@ -488,8 +760,23 @@ const initial = parties.find((p) => p.id === 'porters')!;
   }
 
   @keyframes tri-flow { to { stroke-dashoffset: -48; } }
-  @keyframes tri-enter { from { opacity: 0; transform: translate(-50%, -50%) translateY(12px) scale(0.97); } }
+  @keyframes tri-cycle-spin { to { transform: rotate(360deg); } }
+  @keyframes tri-puce-spin { to { transform: rotate(-360deg); } }
+  @keyframes tri-link-breathe { from { opacity: .7; } to { opacity: 1; } }
+  @keyframes tri-enter {
+    0% { opacity:0;filter:blur(11px);transform:translate(-50%,-50%) translateY(3.2rem) scale(.56) rotate(-3deg); }
+    62% { opacity:1;filter:blur(0);transform:translate(-50%,-50%) translateY(-.7rem) scale(1.075) rotate(1deg); }
+    82% { opacity:1;filter:none;transform:translate(-50%,-50%) translateY(.2rem) scale(.985) rotate(0); }
+    100% { opacity:1;filter:none;transform:translate(-50%,-50%); }
+  }
+  @keyframes tri-node-drift { from { translate: 0 0; } to { translate: 0 -5px; } }
+  @keyframes tri-contract-pulse { from { box-shadow: 0 0 0 rgba(190,158,88,0); } to { box-shadow: 0 0 0 .3rem rgba(190,158,88,.08); } }
   @keyframes tri-switch { from { opacity: 0.35; transform: translateY(4px); } }
+  @keyframes tri-mobile-enter {
+    0% { opacity:0;filter:blur(9px);transform:translateY(2.5rem) scale(.7); }
+    65% { opacity:1;filter:none;transform:translateY(-.35rem) scale(1.04); }
+    100% { opacity:1;filter:none;transform:none; }
+  }
 
   @media (max-width: 1080px) {
     .tri-body { grid-template-columns: minmax(0, 1fr); }
@@ -506,6 +793,8 @@ const initial = parties.find((p) => p.id === 'porters')!;
       gap: 0.5rem;
     }
 
+    .tri-center-logo { display: none; }
+
     .tri-node,
     .tri-contract {
       position: static;
@@ -514,6 +803,11 @@ const initial = parties.find((p) => p.id === 'porters')!;
       animation: none;
       text-align: left;
       justify-items: start;
+    }
+
+    .tri.tri-motion-ready.is-introduced .tri-node,
+    .tri.tri-motion-ready.is-introduced .tri-contract {
+      animation: tri-mobile-enter .78s var(--enter, 0ms) cubic-bezier(.16,1,.3,1) both;
     }
 
     .tri-node { grid-template-columns: auto 1fr; column-gap: 0.7rem; }
@@ -538,15 +832,20 @@ const initial = parties.find((p) => p.id === 'porters')!;
     .tri-node,
     .tri-contract,
     .tri-detail.is-switching,
-    .tri-link.is-active .link-flow {
+    .tri-link.is-active .link-flow,
+    .tri-cycle-arrows,
+    .tri-node-icon::before {
       animation: none;
     }
+
+    .tri-flow-puces { display: none; }
 
     .tri-node,
     .tri-contract,
     .tri-link,
     .link-base,
-    .link-flow {
+    .link-flow,
+    .tri-detail-image {
       transition: none;
     }
 

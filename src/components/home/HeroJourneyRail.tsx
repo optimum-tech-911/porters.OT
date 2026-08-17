@@ -31,7 +31,6 @@ export default function HeroJourneyRail({ audienceId, reducedMotion }: Props) {
             data-rail-item
             className={`hero-journey-step ${index === activeIndex ? 'is-active' : ''}`}
           >
-            <span className="hero-journey-number">0{index + 1}</span>
             <span className="hero-journey-icon">
               <img src={step.image.src} alt="" width="256" height="256" />
             </span>

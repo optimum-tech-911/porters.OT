@@ -1,3 +1,35 @@
+.tp-chat-root {
+  position: fixed;
+  z-index: 2147483000;
+  inset: 0;
+  isolation: isolate;
+  pointer-events: none;
+}
+
+.tp-chat-root .tp-chat-launcher,
+.tp-chat-root .tp-chat-panel {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tp-chat-panel[hidden] {
+  display: none !important;
+}
+
+[data-chat-close-icon] {
+  display: none;
+}
+
+.tp-chat-launcher.is-open [data-chat-open-icon],
+.tp-chat-launcher.is-open .tp-chat-launcher-icon > i {
+  display: none;
+}
+
+.tp-chat-launcher.is-open [data-chat-close-icon] {
+  display: block;
+}
+
 .tp-chat-launcher,
 .tp-chat-panel {
   --chat-navy: #283743;
@@ -12,7 +44,7 @@
   position: fixed;
   right: max(1.25rem, env(safe-area-inset-right));
   bottom: max(1.25rem, env(safe-area-inset-bottom));
-  z-index: 110;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 0.7rem;
@@ -74,7 +106,7 @@
   position: fixed;
   right: max(1.25rem, env(safe-area-inset-right));
   bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 4.7rem);
-  z-index: 109;
+  z-index: 1;
   display: grid;
   width: min(27rem, calc(100vw - 2.5rem));
   height: min(43rem, calc(100dvh - 7.5rem));

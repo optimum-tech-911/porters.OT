@@ -7,6 +7,7 @@ const people = [
     eyebrow: 'Entreprises',
     image: '/images/team/ambre-lambert.png',
     optimizedImage: '/images/team/ambre-lambert-800.avif',
+    linkedin: 'https://fr.linkedin.com/in/ambrelambert',
   },
   {
     id: 'eric',
@@ -15,6 +16,7 @@ const people = [
     eyebrow: 'Vision',
     image: '/images/team/eric-bensaid.png',
     optimizedImage: '/images/team/eric-bensaid-800.avif',
+    linkedin: 'https://fr.linkedin.com/in/eric-bensaid-73573816',
   },
   {
     id: 'lisa',
@@ -23,16 +25,22 @@ const people = [
     eyebrow: 'Consultants',
     image: '/images/team/lisa-delrieu.png',
     optimizedImage: '/images/team/lisa-delrieu-800.avif',
+    linkedin: 'https://fr.linkedin.com/in/lisa-delrieu',
   },
 ];
 ---
 
 <div class="team-portrait-hero" data-team-portrait-hero>
   <div class="team-portrait-shape" aria-hidden="true"></div>
-  <div class="team-portrait-search" aria-hidden="true">
+  <button
+    class="team-portrait-search"
+    type="button"
+    data-assistant-open
+    aria-label="Ouvrir l’assistant The Porters"
+  >
     <span>The Porters pour vous.</span>
     <b>⌕</b>
-  </div>
+  </button>
   <div class="team-portrait-lines" aria-hidden="true">
     <span></span><span></span><span></span>
   </div>
@@ -41,8 +49,11 @@ const people = [
     {people.map((person) => (
       <a
         class:list={['team-portrait-card', `team-portrait-card--${person.id}`]}
-        href="/equipe"
-        aria-label={`${person.name}, ${person.role} — découvrir l’équipe`}
+        href={person.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-team-portrait-card
+        aria-label={`${person.name}, ${person.role} — voir son profil LinkedIn`}
       >
         <span class="team-portrait-image">
           <picture>
@@ -54,11 +65,39 @@ const people = [
           <small>{person.eyebrow}</small>
           <strong>{person.name}</strong>
           <em>{person.role}</em>
+          <span class="team-portrait-link">LinkedIn <b aria-hidden="true">↗</b></span>
         </span>
       </a>
     ))}
   </div>
 </div>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-assistant-open]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('tp:assistant-request-open', {
+        detail: { source: 'team-search' },
+      }));
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-team-portrait-card]').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      if ((event as PointerEvent).pointerType !== 'mouse') return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--portrait-tilt-x', `${((event.clientY - rect.top) / rect.height - .5) * -4}deg`);
+      card.style.setProperty('--portrait-tilt-y', `${((event.clientX - rect.left) / rect.width - .5) * 5}deg`);
+      card.style.setProperty('--portrait-glow-x', `${((event.clientX - rect.left) / rect.width) * 100}%`);
+      card.style.setProperty('--portrait-glow-y', `${((event.clientY - rect.top) / rect.height) * 100}%`);
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.removeProperty('--portrait-tilt-x');
+      card.style.removeProperty('--portrait-tilt-y');
+      card.style.removeProperty('--portrait-glow-x');
+      card.style.removeProperty('--portrait-glow-y');
+    });
+  });
+</script>
 
 <style>
   .team-portrait-hero,
@@ -77,43 +116,45 @@ const people = [
     background: transparent;
     box-shadow: none;
     isolation: isolate;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .team-portrait-hero::before {
     position: absolute;
-    top: -10rem;
-    right: -11rem;
-    width: 34rem;
-    height: 42rem;
-    border-radius: 48% 0 0 62%;
-    background: #203440;
+    top: 2rem;
+    right: 2rem;
+    width: 27rem;
+    height: 27rem;
+    border: 1px solid rgba(32, 52, 64, 0.08);
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, rgba(32, 52, 64, 0.13), rgba(32, 52, 64, 0.035) 58%, transparent 72%);
     content: '';
     pointer-events: none;
-    transform: rotate(8deg);
+    animation: portrait-orbit 16s ease-in-out infinite alternate;
   }
 
   .team-portrait-hero::after {
     position: absolute;
-    top: -15rem;
-    left: -10rem;
-    width: 32rem;
-    height: 32rem;
+    top: -12rem;
+    left: 2rem;
+    width: 29rem;
+    height: 29rem;
     border-radius: 50%;
-    background: rgba(198, 164, 90, 0.34);
+    background: radial-gradient(circle at 50% 62%, rgba(198, 164, 90, 0.22) 0 52%, rgba(198, 164, 90, 0) 73%);
     content: '';
     pointer-events: none;
   }
 
   .team-portrait-shape {
     position: absolute;
-    top: -8rem;
+    top: -10rem;
     left: calc(var(--team-center) - 12rem);
     width: 24rem;
     height: 42rem;
     border-radius: 48% 52% 43% 57% / 35% 42% 58% 65%;
-    background: linear-gradient(160deg, rgba(247, 235, 205, 0.96), rgba(198, 164, 90, 0.68));
+    background: linear-gradient(180deg, rgba(247, 235, 205, 0) 0, rgba(247, 235, 205, 0.5) 22%, rgba(198, 164, 90, 0.28) 100%);
     transform: rotate(-13deg);
+    animation: portrait-shape-drift 12s ease-in-out infinite alternate;
   }
 
   .team-portrait-search {
@@ -132,10 +173,23 @@ const people = [
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 13px 30px rgba(32, 52, 64, 0.16);
     color: #203440;
+    cursor: pointer;
+    font-family: inherit;
     font-size: 0.83rem;
     font-weight: 700;
     transform: translateX(-50%);
+    transition: border-color 220ms ease, box-shadow 260ms ease, transform 260ms cubic-bezier(.16,1,.3,1);
   }
+
+  .team-portrait-search:hover,
+  .team-portrait-search:focus-visible {
+    border-color: rgba(198, 164, 90, 0.78);
+    outline: none;
+    box-shadow: 0 18px 38px rgba(32, 52, 64, 0.21), 0 0 0 4px rgba(198, 164, 90, 0.13);
+    transform: translateX(-50%) translateY(-3px) scale(1.015);
+  }
+
+  .team-portrait-search:active { transform: translateX(-50%) scale(.985); }
 
   .team-portrait-search b {
     display: grid;
@@ -147,7 +201,11 @@ const people = [
     color: #fff;
     font-size: 1.15rem;
     font-weight: 500;
+    transition: background-color 220ms ease, color 220ms ease, transform 260ms cubic-bezier(.16,1,.3,1);
   }
+
+  .team-portrait-search:hover b,
+  .team-portrait-search:focus-visible b { background:#c6a45a;color:#203440;transform:rotate(-9deg) scale(1.05); }
 
   .team-portrait-lines span {
     position: absolute;
@@ -165,6 +223,8 @@ const people = [
   .team-portrait-lines span:last-child { transform: rotate(58deg); }
 
   .team-portrait-card {
+    --portrait-tilt-x: 0deg;
+    --portrait-tilt-y: 0deg;
     position: absolute;
     z-index: 2;
     display: grid;
@@ -180,12 +240,38 @@ const people = [
     font: inherit;
     text-align: left;
     will-change: transform;
+    animation: portrait-card-float 4.2s ease-in-out infinite;
     transition: transform 220ms cubic-bezier(.2,.8,.2,1), border-color 180ms ease, box-shadow 220ms ease;
   }
 
-  .team-portrait-card--ambre { top: clamp(12rem, 25vh, 15rem); left: calc(var(--team-center) - 22rem); transform: rotate(-2deg); }
-  .team-portrait-card--eric { top: clamp(8.5rem, 18vh, 11rem); left: var(--team-center); z-index: 5; width: clamp(13rem, 19vw, 16rem); transform: translateX(-50%); }
-  .team-portrait-card--lisa { top: clamp(12rem, 25vh, 15rem); left: calc(var(--team-center) + 9rem); transform: rotate(2deg); }
+  .team-portrait-card::before {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at var(--portrait-glow-x, 50%) var(--portrait-glow-y, 50%), rgba(255,255,255,.42), transparent 38%);
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 180ms ease;
+  }
+
+  .team-portrait-card::after {
+    position: absolute;
+    z-index: -1;
+    inset: -0.45rem;
+    border: 1px solid rgba(198, 164, 90, 0.42);
+    border-radius: 1.5rem;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.96);
+    transition: opacity 220ms ease, transform 360ms cubic-bezier(.16,1,.3,1);
+  }
+
+  .team-portrait-card--ambre { top: clamp(10.5rem, 23vh, 13rem); left: calc(var(--team-center) - 22rem); transform: rotate(-2deg); animation-delay: -1.6s; animation-duration: 4.6s; }
+  .team-portrait-card--eric { top: clamp(7.5rem, 16vh, 9.5rem); left: var(--team-center); z-index: 5; width: clamp(13rem, 19vw, 16rem); transform: translateX(-50%); animation-delay: -.7s; animation-duration: 3.8s; }
+  .team-portrait-card--lisa { top: clamp(10.5rem, 23vh, 13rem); left: calc(var(--team-center) + 9rem); transform: rotate(2deg); animation-delay: -2.8s; animation-duration: 4.9s; }
 
   .team-portrait-card:hover,
   .team-portrait-card:focus-visible,
@@ -194,17 +280,24 @@ const people = [
     border-color: #c6a45a;
     box-shadow: 0 32px 68px rgba(3, 13, 19, 0.3), 0 0 0 3px rgba(198, 164, 90, 0.16);
     outline: none;
+    animation-play-state: paused;
   }
+
+  .team-portrait-card:hover::before,
+  .team-portrait-card:focus-visible::before { opacity: 1; }
+
+  .team-portrait-card:hover::after,
+  .team-portrait-card:focus-visible::after { opacity: 1; transform: scale(1); }
 
   .team-portrait-card--ambre:hover,
   .team-portrait-card--ambre:focus-visible,
-  .team-portrait-card--ambre:active { transform: rotate(-1deg) translateY(-7px) scale(1.015); }
+  .team-portrait-card--ambre:active { transform: perspective(700px) rotateX(var(--portrait-tilt-x)) rotateY(var(--portrait-tilt-y)) rotate(-1deg) translateY(-13px) scale(1.045); }
   .team-portrait-card--eric:hover,
   .team-portrait-card--eric:focus-visible,
-  .team-portrait-card--eric:active { transform: translateX(-50%) translateY(-7px) scale(1.015); }
+  .team-portrait-card--eric:active { transform: translateX(-50%) perspective(700px) rotateX(var(--portrait-tilt-x)) rotateY(var(--portrait-tilt-y)) translateY(-13px) scale(1.045); }
   .team-portrait-card--lisa:hover,
   .team-portrait-card--lisa:focus-visible,
-  .team-portrait-card--lisa:active { transform: rotate(1deg) translateY(-7px) scale(1.015); }
+  .team-portrait-card--lisa:active { transform: perspective(700px) rotateX(var(--portrait-tilt-x)) rotateY(var(--portrait-tilt-y)) rotate(1deg) translateY(-13px) scale(1.045); }
 
   .team-portrait-image {
     position: relative;
@@ -231,12 +324,32 @@ const people = [
 
   .team-portrait-card:hover img,
   .team-portrait-card:focus-visible img,
-  .team-portrait-card:active img { transform: scale(1.02); }
+  .team-portrait-card:active img { transform: scale(1.065); }
 
   .team-portrait-copy { display: grid; padding: 0.22rem 0.28rem 0.35rem; }
   .team-portrait-copy small { color: #a98238; font-size: 0.55rem; font-weight: 800; letter-spacing: 0.11em; text-transform: uppercase; }
   .team-portrait-copy strong { margin-top: 0.22rem; font-size: 0.92rem; line-height: 1.15; }
   .team-portrait-copy em { margin-top: 0.16rem; color: rgba(32, 52, 64, 0.58); font-size: 0.64rem; font-style: normal; }
+  .team-portrait-link { display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;border-top:1px solid rgba(32,52,64,.1);padding-top:.45rem;color:#9a762e;font-size:.55rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.68;transition:opacity 180ms ease,color 180ms ease; }
+  .team-portrait-link b { font-size:.8rem;transition:transform 220ms cubic-bezier(.2,.8,.2,1); }
+  .team-portrait-card:hover .team-portrait-link,.team-portrait-card:focus-visible .team-portrait-link { color:#203440;opacity:1; }
+  .team-portrait-card:hover .team-portrait-link b,.team-portrait-card:focus-visible .team-portrait-link b { transform:translate(.16rem,-.16rem); }
+
+  @keyframes portrait-card-float {
+    0%, 100% { translate: 0 0; }
+    45% { translate: 0 -0.9rem; }
+    62% { translate: 0 -0.72rem; }
+  }
+
+  @keyframes portrait-orbit {
+    from { transform: translate3d(0, 0, 0) scale(0.96); }
+    to { transform: translate3d(-1rem, 1.25rem, 0) scale(1.04); }
+  }
+
+  @keyframes portrait-shape-drift {
+    from { transform: rotate(-13deg) translate3d(0, 0, 0); }
+    to { transform: rotate(-8deg) translate3d(1rem, 0.75rem, 0); }
+  }
 
   @media (max-width: 780px) {
     .team-portrait-hero { min-height: 34rem; }
@@ -249,7 +362,7 @@ const people = [
 
   @media (max-width: 520px) {
     .team-portrait-hero { min-height: 30rem; }
-    .team-portrait-hero::before { top: -8rem; right: -17rem; }
+    .team-portrait-hero::before { top: 6rem; right: -13rem; }
     .team-portrait-shape { top: -7rem; left: 25%; width: 18rem; }
     .team-portrait-search { top: 1rem; min-height: 3rem; font-size: 0.7rem; }
     .team-portrait-lines { display: none; }
@@ -273,6 +386,8 @@ const people = [
 
   @media (prefers-reduced-motion: reduce) {
     .team-portrait-card,
-    .team-portrait-image img { transition: none; }
+    .team-portrait-image img,
+    .team-portrait-hero::before,
+    .team-portrait-shape { animation: none; transition: none; }
   }
 </style>

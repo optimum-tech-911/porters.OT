@@ -78,6 +78,21 @@
   function applyValue(key: string, content: string, format: CmsFormat) {
     document.querySelectorAll<HTMLElement>('[data-cms-key]').forEach((node) => {
       if (node.dataset.cmsKey !== key) return;
+      if (node.dataset.cmsLayoutTarget === 'true') {
+        try {
+          const layout = JSON.parse(content) as { x?: number; y?: number; scale?: number };
+          const x = Math.max(-800, Math.min(800, Number(layout.x) || 0));
+          const y = Math.max(-800, Math.min(800, Number(layout.y) || 0));
+          const scale = Math.max(40, Math.min(220, Number(layout.scale) || 100));
+          node.style.setProperty('--cms-layout-x', `${x}px`);
+          node.style.setProperty('--cms-layout-y', `${y}px`);
+          node.style.setProperty('--cms-layout-scale', String(scale / 100));
+          node.dataset.cmsLayoutValue = JSON.stringify({ x, y, scale });
+        } catch {
+          // Keep the authored fallback position if a legacy value is malformed.
+        }
+        return;
+      }
       if (node.dataset.cmsRich === 'true') {
         if (isPreMergeRow(key, content)) return;
         // Sanitized on the way in as well as on the way out: the stored value is
@@ -126,7 +141,28 @@
   function announceReady() {
     if (!editorMode) return;
     document.body.classList.add('cms-editor-mode');
+    document.dispatchEvent(new CustomEvent('cms:editor-ready'));
     const visible = visibleKeys();
+    document.querySelectorAll<HTMLElement>('[data-cms-layout-target="true"]').forEach((node) => {
+      const key = node.dataset.cmsKey;
+      if (!key || blockByKey.has(key)) return;
+      const content = node.dataset.cmsLayoutValue || '{"x":0,"y":0,"scale":100}';
+      blockByKey.set(key, {
+        id: `layout:${key}`,
+        content_key: key,
+        route_path: node.dataset.cmsRoute || pageRoute,
+        element_type: 'paragraph',
+        fallback_content: content,
+        draft_content: content,
+        published_content: content,
+        draft_format: {},
+        published_format: {},
+        status: 'draft',
+        published_version: 0,
+        updated_at: new Date(0).toISOString(),
+        published_at: new Date(0).toISOString(),
+      } as EditorBlock);
+    });
     window.parent.postMessage({
       type: 'cms:ready',
       route: pageRoute,
@@ -153,7 +189,9 @@
       if (!key || entries.has(key) || blockByKey.has(key)) return;
       const route = node.dataset.cmsRoute || pageRoute;
       if (route !== pageRoute && route !== GLOBAL_ROUTE) return;
-      const content = (node.dataset.cmsRich === 'true'
+      const content = node.dataset.cmsLayoutTarget === 'true'
+        ? node.dataset.cmsLayoutValue || '{"x":0,"y":0,"scale":100}'
+        : (node.dataset.cmsRich === 'true'
         ? sanitizeInlineHtml(node.innerHTML)
         : node.textContent || '').trim();
       if (!content || content.length > 10000) return;
@@ -240,20 +278,101 @@
   }
 
   if (editorMode) {
+    let activeLayoutDrag: {
+      node: HTMLElement;
+      pointerId: number;
+      startX: number;
+      startY: number;
+      originX: number;
+      originY: number;
+      scale: number;
+    } | null = null;
+
+    function layoutValue(node: HTMLElement) {
+      try {
+        const value = JSON.parse(node.dataset.cmsLayoutValue || '{}') as { x?: number; y?: number; scale?: number };
+        return {
+          x: Number(value.x) || 0,
+          y: Number(value.y) || 0,
+          scale: Math.max(40, Math.min(220, Number(value.scale) || 100)),
+        };
+      } catch {
+        return { x: 0, y: 0, scale: 100 };
+      }
+    }
+
+    document.addEventListener('pointerdown', (event) => {
+      const clicked = event.target as HTMLElement;
+      const node = clicked.closest<HTMLElement>('[data-cms-layout-target="true"]');
+      if (!node || event.button !== 0) return;
+      const value = layoutValue(node);
+      activeLayoutDrag = {
+        node,
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        originX: value.x,
+        originY: value.y,
+        scale: value.scale,
+      };
+      node.setPointerCapture(event.pointerId);
+      node.classList.add('cms-layout-dragging');
+      event.preventDefault();
+      event.stopPropagation();
+    }, true);
+
+    document.addEventListener('pointermove', (event) => {
+      if (!activeLayoutDrag || activeLayoutDrag.pointerId !== event.pointerId) return;
+      const x = Math.round(activeLayoutDrag.originX + event.clientX - activeLayoutDrag.startX);
+      const y = Math.round(activeLayoutDrag.originY + event.clientY - activeLayoutDrag.startY);
+      const content = JSON.stringify({ x, y, scale: activeLayoutDrag.scale });
+      applyValue(activeLayoutDrag.node.dataset.cmsKey || '', content, {});
+      window.parent.postMessage({
+        type: 'cms:layout-preview',
+        key: activeLayoutDrag.node.dataset.cmsKey,
+        content,
+      }, window.location.origin);
+    }, true);
+
+    document.addEventListener('pointerup', (event) => {
+      if (!activeLayoutDrag || activeLayoutDrag.pointerId !== event.pointerId) return;
+      const { node } = activeLayoutDrag;
+      node.classList.remove('cms-layout-dragging');
+      if (node.hasPointerCapture(event.pointerId)) node.releasePointerCapture(event.pointerId);
+      const block = blockByKey.get(node.dataset.cmsKey || '');
+      if (block) {
+        const content = node.dataset.cmsLayoutValue || ('draft_content' in block ? block.draft_content : block.published_content);
+        markActive(node.dataset.cmsKey || '');
+        window.parent.postMessage({
+          type: 'cms:select',
+          key: node.dataset.cmsKey,
+          route: node.dataset.cmsRoute,
+          elementType: 'layout',
+          rich: false,
+          block,
+        }, window.location.origin);
+        window.parent.postMessage({ type: 'cms:layout-preview', key: node.dataset.cmsKey, content }, window.location.origin);
+      }
+      activeLayoutDrag = null;
+      event.preventDefault();
+      event.stopPropagation();
+    }, true);
+
     document.addEventListener('click', (event) => {
       const clicked = event.target as HTMLElement;
       const target = clicked.closest<HTMLElement>('[data-cms-key]');
       if (target?.dataset.cmsKey) {
         event.preventDefault();
         event.stopPropagation();
-        const block = blockByKey.get(target.dataset.cmsKey);
+        const storedBlock = blockByKey.get(target.dataset.cmsKey);
+        const block = storedBlock;
         if (!block) return;
         markActive(target.dataset.cmsKey);
         window.parent.postMessage({
           type: 'cms:select',
           key: target.dataset.cmsKey,
           route: target.dataset.cmsRoute,
-          elementType: target.dataset.cmsElementType,
+          elementType: target.dataset.cmsLayoutTarget === 'true' ? 'layout' : target.dataset.cmsElementType,
           rich: target.dataset.cmsRich === 'true',
           block,
         }, window.location.origin);
@@ -351,5 +470,15 @@
   body.cms-editor-mode [data-cms-key].cms-editor-active {
     background-color: rgba(190, 158, 88, 0.18);
     outline: 2px solid #be9e58;
+  }
+
+  body.cms-editor-mode [data-cms-layout-target='true'] {
+    touch-action: none;
+    user-select: none;
+  }
+
+  body.cms-editor-mode [data-cms-layout-target='true'].cms-layout-dragging {
+    outline-style: solid;
+    outline-color: #be9e58;
   }
 </style>

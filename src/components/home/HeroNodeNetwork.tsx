@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const MAIN_CARDS = [
   {
     id: 'simuler',
-    title: 'Simuler mes revenus',
+    title: 'Calculer mon salaire net',
     shortTitle: 'Simuler',
     subtitle: 'Estimer mon salaire',
     description: 'Estimez votre rémunération en portage salarial selon votre TJM, vos jours facturés et vos frais professionnels.',

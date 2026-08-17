@@ -50,17 +50,13 @@ const { resource, guide } = Astro.props;
       <nav class="guide-nav" aria-label="Sommaire du guide">
         <p>Dans ce guide</p>
         {guide.sections.map((section) => (
-          <a href={`#chapitre-${section.number}`}>
-            <span>{section.number}</span>
-            {section.eyebrow}
-          </a>
+          <a href={`#chapitre-${section.number}`}>{section.eyebrow}</a>
         ))}
       </nav>
 
       <div class="guide-chapters">
         {guide.sections.map((section) => (
           <section id={`chapitre-${section.number}`} class="guide-chapter reveal">
-            <div class="guide-chapter__number">{section.number}</div>
             <div>
               <p>{section.eyebrow}</p>
               <h2>{section.title}</h2>
@@ -93,7 +89,7 @@ const { resource, guide } = Astro.props;
           <p>Votre situation est spécifique ?</p>
           <h2>Passez du guide à votre simulation.</h2>
           <div>
-            <a href="/simulateur">Simuler mes revenus <span aria-hidden="true">→</span></a>
+            <a href="/simulateur">Calculer mon salaire net <span aria-hidden="true">→</span></a>
             <a href="/rendez-vous">Parler à un conseiller</a>
           </div>
         </section>

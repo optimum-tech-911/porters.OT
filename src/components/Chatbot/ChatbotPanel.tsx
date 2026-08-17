@@ -117,7 +117,7 @@ export default function ChatbotPanel({ open, onClose }: Props) {
         </div>
         <div>
           <h2 id={titleId}>Assistant The Porters</h2>
-          <p>Recherche privée dans le contenu du site</p>
+          <p>Cherche pour vous dans les pages du site</p>
         </div>
         <div className="tp-chat-header-actions">
           <button type="button" onClick={reset} aria-label="Recommencer la conversation" title="Recommencer">
@@ -134,7 +134,7 @@ export default function ChatbotPanel({ open, onClose }: Props) {
       </header>
 
       <div className="tp-chat-intro">
-        Posez une question sur le portage salarial, les expertises ou nos accompagnements.
+        Posez votre question sur le portage, les expertises ou votre situation.
       </div>
 
       <div className="tp-chat-thread" ref={scrollRef} aria-live="polite" aria-relevant="additions">
@@ -157,7 +157,7 @@ export default function ChatbotPanel({ open, onClose }: Props) {
             type="text"
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Ex. Comment simuler mes revenus ?"
+            placeholder="Ex. Combien je toucherais avec un TJM de 600 € ?"
             maxLength={220}
             autoComplete="off"
             disabled={pending}

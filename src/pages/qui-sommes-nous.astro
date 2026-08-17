@@ -1,11 +1,15 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
 import SiteIcon from '../components/ui/SiteIcon.astro';
 import TeamPortraitHero from '../components/about/TeamPortraitHero.astro';
 import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
+import LogoMarquee from '../components/ui/LogoMarquee.astro';
 import { pageSeo } from '../data/seo.data';
-import { aboutPage } from '../content/pages/about';
 import { expertiseSections } from '../data/expertise-sections.data';
+import bigPortersLogo from '../assets/brands/big-porters-esn.png';
+import ericTwoOffers from '../assets/about/eric-two-offers.png';
+import lisaExpertiseGuide from '../assets/about/lisa-expertise-guide.png';
 
 const history = [
   { marker: '2016', title: 'Le portage salarial, dès l’origine', text: 'The Porters est créée pour porter l’activité de consultants indépendants : un contrat de travail, une paie, une protection sociale, et la liberté de choisir ses missions.' },
@@ -14,109 +18,120 @@ const history = [
   { marker: 'Notre cadre', title: 'Adhérents de la FEPS', text: 'The Porters adhère à la Fédération des Entreprises de Portage Salarial. Le portage y est encadré par le Code du travail, l’ANI de 2008 et l’ordonnance du 2 avril 2015.' },
 ];
 
-const ecosystem = [
-  { number: '01', name: 'The Porters', role: 'Portage salarial', text: 'Pour le consultant qui a trouvé sa mission et veut exercer en autonomie dans un cadre salarié.', href: '/portage-salarial', cta: 'Comprendre le portage' },
-  { number: '02', name: 'The Big Porters', role: 'ESN spécialisée IT', text: 'Pour l’entreprise qui cherche une compétence qualifiée, un cadrage et un suivi de mission.', href: '/entreprises', cta: 'Découvrir l’offre entreprises' },
-  // TODO-CLIENT: F-A04 / Q1 — une troisième entité du groupe existe. Sa visibilité
-  // publique n'est pas tranchée, la carte porte donc le domaine et non la marque.
-  { number: '03', name: 'Nos domaines d’expertise', role: 'Data, IA, Cloud, cybersécurité', text: 'Pour relier conseil et delivery sur les transformations numériques que nous accompagnons.', href: '/expertises', cta: 'Explorer les expertises' },
-];
-
-const teamFunctions = [
-  { number: '01', title: 'Conseil et cadrage', text: 'La situation, le TJM et les hypothèses sont posés avant de contractualiser.' },
-  { number: '02', title: 'Contrats et conformité', text: 'Les engagements, les accès et les contraintes du client sont rendus lisibles.' },
-  { number: '03', title: 'Facturation et paie', text: 'Activité, facture, frais et bulletin suivent un même dossier.' },
-  { number: '04', title: 'Suivi de mission', text: 'Un interlocuteur identifié et un relais évitent qu’un dossier dépende d’une seule personne.' },
+const ecosystemExpertises = ['Cybersécurité', 'Data & IA', 'Cloud & DevOps', 'Développement', 'Product & Agilité'];
+const ecosystemPartners = [
+  { name: 'Atos', url: '/images/logos/partners/atos.svg' },
+  { name: 'Capgemini', url: '/images/logos/partners/capgemini.svg' },
+  { name: 'BPCE', url: '/images/logos/partners/partner-1-320.avif' },
+  { name: 'Groupama', url: '/images/logos/partners/partner-2-320.avif' },
+  { name: 'Airbus', url: '/images/logos/partners/partner-3-320.avif' },
+  { name: 'GFI', url: '/images/logos/partners/gfi.svg' },
+  { name: 'Safran', url: '/images/logos/partners/partner-4-320.avif' },
+  { name: 'Thales', url: '/images/logos/partners/partner-5-320.avif' },
+  { name: 'SGI', url: '/images/logos/partners/sgi.svg' },
 ];
 
 const responsibilityCommitments = [
-  { number: '01', title: 'Numérique responsable', text: 'Une charte, un référent désigné et des pratiques d’éco-conception inspirées du RGESN et du Green IT.' },
-  { number: '02', title: 'Accessibilité', text: 'Les prestations qui touchent aux interfaces s’appuient sur le RGAA et les recommandations WCAG dès la conception.' },
-  { number: '03', title: 'Sobriété opérationnelle', text: 'Gestion administrative dématérialisée, train privilégié et équipements réparés ou reconditionnés lorsque c’est possible.' },
-  { number: '04', title: 'Diversité', text: 'Le groupe est signataire de la Charte de la diversité et évalue les candidatures sur les compétences, l’expérience et le savoir-être.' },
+  { title: 'Numérique responsable', text: 'Une charte, un référent désigné et des pratiques d’éco-conception inspirées du RGESN et du Green IT.' },
+  { title: 'Accessibilité', text: 'Les prestations qui touchent aux interfaces s’appuient sur le RGAA et les recommandations WCAG dès la conception.' },
+  { title: 'Sobriété opérationnelle', text: 'Gestion administrative dématérialisée, train privilégié et équipements réparés ou reconditionnés lorsque c’est possible.' },
+  { title: 'Diversité', text: 'Le groupe est signataire de la Charte de la diversité et évalue les candidatures sur les compétences, l’expérience et le savoir-être.' },
 ];
 ---
 
 <PageLayout seo={pageSeo.quiSommesNous} noBreadcrumbs>
-  <section class="about-hero">
+  <section class="about-section ecosystem-section brand-ambient-host" aria-labelledby="ecosystem-title" data-ecosystem-intro>
+    <div class="about-shell">
+      <header class="section-head" data-ecosystem-text>
+        <p>L’écosystème Porters</p>
+        <h1 id="ecosystem-title">Un groupe,<br />deux façons de travailler.</h1>
+        <strong>Selon que vous êtes consultant ou entreprise, vous ne frappez pas à la même porte.</strong>
+      </header>
+
+      <div class="ecosystem-stage" data-motion-scene>
+        <div class="ecosystem-stage-shape ecosystem-stage-shape--gold" aria-hidden="true"></div>
+        <div class="ecosystem-stage-shape ecosystem-stage-shape--navy" aria-hidden="true"></div>
+        <div class="ecosystem-stage-label" data-ecosystem-label>Nos domaines d’expertise</div>
+        <div class="ecosystem-offers">
+        <article class="ecosystem-offer ecosystem-offer--portage" data-ecosystem-card="left">
+          <div class="ecosystem-offer-glow" aria-hidden="true"></div>
+          <div class="ecosystem-logo ecosystem-logo--porters" aria-label="The Porters">
+            <span class="brand-wordmark" aria-hidden="true">
+              <span class="brand-wordmark-the">The</span>
+              <span class="brand-wordmark-porters">Porters</span>
+            </span>
+          </div>
+          <div class="ecosystem-offer-copy">
+            <small>Portage salarial</small>
+            <h3>The Porters</h3>
+            <p>The Porters accompagne les consultants qui ont trouvé leur mission : contrat de travail, facturation, paie, protection sociale et suivi personnalisé, sans renoncer à leur autonomie.</p>
+          </div>
+          <div class="ecosystem-expertises" aria-label="Domaines d’expertise">
+            {ecosystemExpertises.map((expertise) => <span>{expertise}</span>)}
+          </div>
+          <a class="ecosystem-offer-link" href="/portage-salarial">Comment fonctionne le portage <b aria-hidden="true">↗</b></a>
+        </article>
+
+        <figure class="ecosystem-guide" aria-hidden="true" data-ecosystem-eric>
+          <Image
+            src={ericTwoOffers}
+            alt=""
+            widths={[560, 720, 900, 1024]}
+            sizes="(max-width: 760px) 80vw, 48rem"
+            format="webp"
+            quality={94}
+            loading="eager"
+          />
+        </figure>
+
+        <article class="ecosystem-offer ecosystem-offer--esn" data-ecosystem-card="right">
+          <div class="ecosystem-offer-glow" aria-hidden="true"></div>
+          <div class="ecosystem-logo ecosystem-logo--big-porters">
+            <img src={bigPortersLogo.src} alt="The Big Porters, une ESN de talents" width="1254" height="1254" loading="eager" decoding="async" />
+          </div>
+          <div class="ecosystem-offer-copy">
+            <small>ESN spécialisée IT</small>
+            <h3>The Big Porters</h3>
+            <p>The Big Porters accompagne les entreprises à la recherche de talents IT qualifiés, avec une sélection attentive des profils, un cadrage précis et un suivi de mission dédié.</p>
+          </div>
+          <div class="ecosystem-expertises" aria-label="Domaines d’expertise">
+            {ecosystemExpertises.map((expertise) => <span>{expertise}</span>)}
+          </div>
+          <a class="ecosystem-offer-link" href="/entreprises">Notre offre pour les entreprises <b aria-hidden="true">↗</b></a>
+        </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="about-partner-tape" aria-label="Écosystème partenaires">
+    <LogoMarquee title="Écosystème partenaires" logos={ecosystemPartners} speed="26s" />
+  </div>
+
+  <section class="about-hero" data-team-intro data-motion-scene>
     <div class="about-hero-visual" aria-hidden="false">
       <TeamPortraitHero />
     </div>
-    <div class="about-shell about-hero-content">
-      <div class="about-hero-copy reveal">
-        <p class="eyebrow">The Porters · Notre rôle</p>
-        <h1>Le portage salarial pensé pour les experts du numérique.</h1>
-        <p>Nous donnons aux consultants l’autonomie pour développer leur activité, avec un cadre salarié clair et un accompagnement qui reste humain.</p>
-        <div class="about-hero-actions">
-          <a href="/portage-salarial">Comprendre le portage <span aria-hidden="true">→</span></a>
-          <a href="/simulateur">Simuler mes revenus <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </div>
   </section>
 
-  <section class="about-section ecosystem-section brand-ambient-host" aria-labelledby="ecosystem-title">
-    <BrandAmbientShapes placement="right" />
-    <div class="about-shell">
-      <header class="section-head reveal">
-        <p>L’écosystème Porters</p>
-        <h2 id="ecosystem-title">Trois expertises.<br />Une porte d’entrée claire.</h2>
-        <strong>Le bon interlocuteur dépend de votre point de départ : exercer, recruter ou transformer.</strong>
-      </header>
-
-      <div class="ecosystem-schema reveal">
-        <div class="ecosystem-origin">
-          <small>Votre point de départ</small>
-          <strong>Un besoin numérique précis</strong>
-          <span>Nous vous orientons vers le cadre adapté.</span>
-        </div>
-        <svg class="ecosystem-connectors" viewBox="0 0 1200 150" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M600 0V58M600 58H200V150M600 58V150M600 58H1000V150" />
-          <circle cx="600" cy="58" r="5" />
-        </svg>
-        <div class="ecosystem-branches">
-          {ecosystem.map((entity) => (
-            <article>
-              <span>{entity.number}</span>
-              <small>{entity.role}</small>
-              <h3>{entity.name}</h3>
-              <p>{entity.text}</p>
-              <a href={entity.href}>{entity.cta}<b aria-hidden="true">→</b></a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="about-section mission-section" id="mission">
-    <div class="about-shell">
-      <header class="section-head reveal"><p>Mission & vision</p><h2>Faire du portage un cadre qui soutient l’expertise.</h2></header>
-      <div class="mission-system reveal" data-motion-scene>
-        <div class="mission-visual">
-          <svg class="mission-rings" viewBox="0 0 760 760" aria-hidden="true">
-            <circle cx="380" cy="380" r="148" />
-            <circle cx="380" cy="380" r="238" />
-            <circle cx="380" cy="380" r="316" />
-            <path d="M380 64V696M64 380H696M156 156 604 604M604 156 156 604" />
-          </svg>
-          <div class="vision"><span class="vision-orbit one"></span><span class="vision-orbit two"></span><small>Notre vision</small><strong>Libre dans la mission.<br />Accompagné dans le cadre.</strong><p>Le consultant reste maître de son expertise. The Porters structure le cadre contractuel et administratif.</p></div>
-          <div class="mission-orbit">
-            {aboutPage.missionCards.map((card, index) => (
-              <div class={`mission-orbit-item m${index + 1}`}>
-                <article class="mission-card" tabindex="0"><span>0{index + 1}</span><div><h3>{card.title}</h3><p>{card.text}</p></div></article>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Positional CMS placeholder: keeps legacy section keys from sliding onto expertises. -->
+  <section class="removed-section-placeholder" hidden data-cms-ignore aria-hidden="true"></section>
 
   <section class="about-section expertise-section" id="expertises">
     <div class="about-shell">
-      <header class="section-head light reveal"><p>Nos expertises</p><h2>Un réseau de métiers numériques,<br />un même cadre de mission.</h2></header>
+      <header class="section-head light reveal"><p>Nos expertises</p><h2>Cinq domaines,<br />et les profils qui vont avec.</h2></header>
       <div class="expertise-lab reveal" data-expertise-lab>
+        <figure class="expertise-lisa" aria-hidden="true">
+          <Image
+            src={lisaExpertiseGuide}
+            alt=""
+            widths={[420, 560, 720]}
+            sizes="(max-width: 760px) 72vw, 22rem"
+            format="webp"
+            quality={94}
+            loading="lazy"
+          />
+        </figure>
         {expertiseSections.map((expertise, index) => (
           <div class:list={['expertise-entry', { 'is-active': index === 0 }]} data-expertise-entry>
             <button
@@ -131,7 +146,6 @@ const responsibilityCommitments = [
               style={`--selector-offset: ${index * 6.1}rem`}
             >
               <span class="expertise-node-copy">
-                <i>{expertise.number}</i>
                 <span><strong>{expertise.title}</strong><small>{expertise.shortSubtitle}</small></span>
               </span>
               <b class="expertise-node-arrow" aria-hidden="true">↗</b>
@@ -147,10 +161,9 @@ const responsibilityCommitments = [
             >
               <header class="expertise-panel-header">
                 <p>Domaine sélectionné</p>
-                <span class="detail-index">{expertise.number}</span>
                 <h3>{expertise.title}</h3>
                 <div class="detail-line"></div>
-                <div class="expertise-source-note">
+              <div class="expertise-source-note expertise-live-block" data-live-block>
                   <div>
                     <span>L’approche en bref</span>
                     <p>{expertise.sourceSummary}</p>
@@ -159,31 +172,36 @@ const responsibilityCommitments = [
                     Plus de détails <b aria-hidden="true">↗</b>
                   </a>
                 </div>
-                <div class="expertise-intro-grid">
+                <div class="expertise-intro-grid expertise-live-block" data-live-block>
                   <p class="expertise-introduction">{expertise.introduction}</p>
                   <div class="expertise-description">{expertise.description.map((paragraph) => <p>{paragraph}</p>)}</div>
                 </div>
               </header>
 
-              <section class="expertise-panel-section">
+              <section class="expertise-panel-section expertise-live-block" data-live-block>
                 <div class="expertise-section-title"><SiteIcon name="users" /><h4>Profils accompagnés</h4></div>
-                <div class="expertise-tags">{expertise.profiles.map((profile) => <span>{profile}</span>)}</div>
+                <div class="expertise-profile-marquee" aria-label={expertise.profiles.join(', ')}>
+                  <div class="expertise-profile-track">
+                    <div class="expertise-profile-group">{expertise.profiles.map((profile) => <span>{profile}</span>)}</div>
+                    <div class="expertise-profile-group" aria-hidden="true" data-cms-ignore>{expertise.profiles.map((profile) => <span>{profile}</span>)}</div>
+                  </div>
+                </div>
               </section>
 
               <div class="expertise-panel-columns">
-                <section class="expertise-panel-section">
+                <section class="expertise-panel-section expertise-live-block" data-live-block>
                   <div class="expertise-section-title"><SiteIcon name="compass" /><h4>Missions les plus fréquentes</h4></div>
-                  <ol class="expertise-mission-list">
-                    {expertise.missions.map((mission, missionIndex) => <li><span>{String(missionIndex + 1).padStart(2, '0')}</span><div><strong>{mission.title}</strong><p>{mission.description}</p></div></li>)}
-                  </ol>
+                  <ul class="expertise-mission-list">
+                    {expertise.missions.map((mission) => <li><div><strong>{mission.title}</strong><p>{mission.description}</p></div></li>)}
+                  </ul>
                 </section>
-                <section class="expertise-panel-section">
+                <section class="expertise-panel-section expertise-live-block" data-live-block>
                   <div class="expertise-section-title"><SiteIcon name="clipboard" /><h4>Responsabilités et livrables</h4></div>
                   <ul class="expertise-check-list">{expertise.responsibilities.map((item) => <li><SiteIcon name="check" /><span>{item}</span></li>)}</ul>
                 </section>
               </div>
 
-              <section class="expertise-panel-section">
+              <section class="expertise-panel-section expertise-live-block" data-live-block>
                 <div class="expertise-section-title"><SiteIcon name="spark" /><h4>Compétences et environnements</h4></div>
                 <div class="expertise-tags expertise-tags--skills">{expertise.skills.map((skill) => <span>{skill}</span>)}</div>
               </section>
@@ -191,18 +209,18 @@ const responsibilityCommitments = [
               <div class="expertise-panel-columns expertise-panel-columns--compact">
                 {/* Secteurs non publiés : fact-base F-S01 est DO_NOT_PUBLISH. */}
                 {expertise.sectors.length > 0 && (
-                  <section class="expertise-panel-section">
+                  <section class="expertise-panel-section expertise-live-block" data-live-block>
                     <div class="expertise-section-title"><SiteIcon name="building" /><h4>Secteurs concernés</h4></div>
                     <div class="expertise-tags">{expertise.sectors.map((sector) => <span>{sector}</span>)}</div>
                   </section>
                 )}
-                <section class="expertise-panel-section expertise-why">
+                <section class="expertise-panel-section expertise-why expertise-live-block" data-live-block>
                   <div class="expertise-section-title"><SiteIcon name="scale" /><h4>Pourquoi le portage pour ce profil ?</h4></div>
                   <p>{expertise.whyPortage}</p>
                 </section>
               </div>
 
-              <section class="expertise-support">
+              <section class="expertise-support expertise-live-block" data-live-block>
                 <div class="expertise-section-title"><SiteIcon name="shield" /><h4>L’accompagnement Porters</h4></div>
                 <ul class="expertise-support-list">{expertise.portersSupport.map((item) => <li><SiteIcon name="check" /><span>{item}</span></li>)}</ul>
               </section>
@@ -214,17 +232,13 @@ const responsibilityCommitments = [
     </div>
   </section>
 
-  <section class="about-section values-section">
-    <div class="about-shell values-grid">
-      <div class="section-head reveal"><p>Nos valeurs</p><h2>Des principes visibles dans la façon de travailler.</h2></div>
-      <div class="values-list reveal">{aboutPage.values.map((value, index) => <details open={index === 0}><summary><span>0{index + 1}</span>{value.title}<b>+</b></summary><p>{value.text}</p></details>)}</div>
-    </div>
-  </section>
+  <!-- Positional CMS placeholder: preserves the former values section slot. -->
+  <section class="removed-section-placeholder" hidden data-cms-ignore aria-hidden="true"></section>
 
   <section class="about-section history-section brand-ambient-host" id="histoire">
     <BrandAmbientShapes placement="split" />
     <div class="about-shell">
-      <header class="section-head reveal"><p>Notre histoire</p><h2>Une histoire de spécialisation,<br />de proximité et de complémentarité.</h2></header>
+      <header class="section-head reveal"><p>Notre histoire</p><h2>D’un consultant porté<br />à un groupe de deux sociétés.</h2></header>
       <div class="history-timeline" data-history-schema>
         {history.map((item, index) => (
           <div
@@ -235,7 +249,7 @@ const responsibilityCommitments = [
             style={`--step:${index}; --reveal-delay: ${index * 120}ms`}
           >
             <div class="history-dot-wrap">
-              <span class="history-dot">{String(index + 1).padStart(2, '0')}</span>
+              <span class="history-dot" aria-hidden="true"></span>
             </div>
             <article class="history-card">
               <div class="history-card-accent" aria-hidden="true"></div>
@@ -251,32 +265,19 @@ const responsibilityCommitments = [
     </div>
   </section>
 
-  <section class="about-section team-integrated-section">
-    <div class="about-shell">
-      <header class="section-head reveal"><p>L’équipe derrière le cadre</p><h2>Quatre fonctions. Un dossier qui reste suivi.</h2></header>
-      <div class="team-function-rail reveal">
-        {teamFunctions.map((item) => (
-          <article>
-            <span>{item.number}</span>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
+  <!-- Positional CMS placeholder: preserves the former team-functions section slot. -->
+  <section class="removed-section-placeholder" hidden data-cms-ignore aria-hidden="true"></section>
 
   <section class="about-section responsibility-integrated-section">
     <div class="about-shell responsibility-integrated-grid">
       <header class="section-head light reveal">
         <p>Responsabilité</p>
-        <h2>Des engagements présents dans la façon de travailler.</h2>
-        <strong>Les éléments utiles de notre démarche RSE vivent ici, au cœur de la présentation du groupe.</strong>
+        <h2>Ce que nous nous imposons au quotidien.</h2>
+        <strong>L’essentiel de notre démarche RSE tient en quatre points ; le détail est sur la page dédiée.</strong>
       </header>
       <div class="responsibility-commitments reveal">
         {responsibilityCommitments.map((item) => (
           <article>
-            <span>{item.number}</span>
             <div><h3>{item.title}</h3><p>{item.text}</p></div>
           </article>
         ))}
@@ -284,7 +285,8 @@ const responsibilityCommitments = [
     </div>
   </section>
 
-  <section class="about-cta"><div class="about-shell"><div><p>Votre projet</p><h2>Votre expertise mérite un cadre à sa hauteur.</h2></div><a href="/rendez-vous">Parler à un conseiller →</a></div></section>
+  <!-- Positional CMS placeholder: preserves the former final CTA section slot. -->
+  <section class="removed-section-placeholder" hidden data-cms-ignore aria-hidden="true"></section>
 </PageLayout>
 
 <script>
@@ -293,6 +295,23 @@ const responsibilityCommitments = [
     const tabs = entries.map((entry) => entry.querySelector<HTMLButtonElement>('[role="tab"]')).filter((tab): tab is HTMLButtonElement => Boolean(tab));
     const panels = entries.map((entry) => entry.querySelector<HTMLElement>('[data-expertise-panel]')).filter((panel): panel is HTMLElement => Boolean(panel));
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const liveObserver = !reducedMotion && 'IntersectionObserver' in window
+      ? new IntersectionObserver((observed) => {
+          observed.forEach((item) => {
+            if (!item.isIntersecting) return;
+            item.target.classList.add('is-live');
+            liveObserver?.unobserve(item.target);
+          });
+        }, { threshold: .16, rootMargin: '0px 0px -8% 0px' })
+      : null;
+
+    const prepareLiveBlocks = (panel: HTMLElement) => {
+      panel.querySelectorAll<HTMLElement>('[data-live-block]').forEach((block, index) => {
+        block.style.setProperty('--live-delay', `${Math.min(index * 70, 350)}ms`);
+        if (reducedMotion || !liveObserver) block.classList.add('is-live');
+        else liveObserver.observe(block);
+      });
+    };
 
     const select = (position: number, options: { focus?: boolean; updateHash?: boolean } = {}) => {
       const nextPosition = (position + tabs.length) % tabs.length;
@@ -306,6 +325,7 @@ const responsibilityCommitments = [
         const selected = index === nextPosition;
         panel.hidden = !selected;
         panel.classList.toggle('detail-pop', selected && !reducedMotion);
+        if (selected) requestAnimationFrame(() => prepareLiveBlocks(panel));
       });
       if (options.focus) tabs[nextPosition]?.focus();
       if (options.updateHash) history.replaceState(null, '', `#expertise-${tabs[nextPosition]?.id.replace('expertise-tab-', '')}`);
@@ -325,6 +345,7 @@ const responsibilityCommitments = [
     const hash = window.location.hash.replace('#expertise-', '');
     const hashIndex = tabs.findIndex((tab) => tab.id === `expertise-tab-${hash}`);
     if (hashIndex >= 0) select(hashIndex);
+    else if (panels[0]) prepareLiveBlocks(panels[0]);
   });
   document.querySelectorAll<HTMLDetailsElement>('.values-list details').forEach((detail) => {
     const summary = detail.querySelector('summary');
@@ -381,11 +402,40 @@ const responsibilityCommitments = [
       scene.addEventListener('pointerleave', () => { scene.style.setProperty('--mx', '0px'); scene.style.setProperty('--my', '0px'); });
     });
   }
+
+  const reducedIntroMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const introSections = Array.from(document.querySelectorAll<HTMLElement>('[data-ecosystem-intro], [data-team-intro]'));
+
+  if (!reducedIntroMotion && 'IntersectionObserver' in window) {
+    introSections.forEach((section) => section.classList.add('intro-ready'));
+    const introObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const section = entry.target as HTMLElement;
+        section.classList.add('is-intro-visible');
+        introObserver.unobserve(section);
+        window.setTimeout(() => {
+          section.classList.remove('intro-ready', 'is-intro-visible');
+        }, section.hasAttribute('data-ecosystem-intro') ? 1700 : 1550);
+      });
+    }, { threshold: .16, rootMargin: '0px 0px -8% 0px' });
+    introSections.forEach((section) => introObserver.observe(section));
+  }
 </script>
 
 <style>
-  .about-shell{width:min(100% - 3rem,82rem);margin:auto}.about-hero{position:relative;overflow:hidden;padding:clamp(3.6rem,7vw,6.4rem) 0;background:radial-gradient(circle at 82% 16%,rgba(198,164,90,.13),transparent 30%),linear-gradient(145deg,#f4f6f7,#f8f5ee 68%,#eef1f2)}.about-hero-grid{position:relative;display:grid;grid-template-columns:minmax(19rem,.62fr) minmax(38rem,1.38fr);align-items:center;gap:clamp(2.4rem,5vw,5.5rem)}.about-hero-copy{position:relative;z-index:2}.eyebrow,.section-head>p,.about-cta p{margin-bottom:1rem;color:#b79245;font-size:.72rem;font-weight:750;letter-spacing:.15em;text-transform:uppercase}.about-hero h1{max-width:12ch;margin:0;color:#203440;font-size:clamp(3rem,5vw,5.3rem);line-height:.96;letter-spacing:-.055em}.about-hero-copy>p:last-of-type{max-width:34rem;margin:1.6rem 0 0;color:rgba(32,52,64,.64);font-size:clamp(.98rem,1.35vw,1.12rem);line-height:1.72}.about-hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}.about-hero-actions a{display:inline-flex;min-height:3.1rem;align-items:center;justify-content:center;gap:.75rem;border:1px solid rgba(32,52,64,.18);border-radius:999px;padding:.75rem 1.2rem;color:#203440;font-size:.72rem;font-weight:760;transition:background 180ms ease,border-color 180ms ease,color 180ms ease,transform 220ms cubic-bezier(.2,.8,.2,1)}.about-hero-actions a:first-child{border-color:#c6a45a;background:#c6a45a}.about-hero-actions a:hover,.about-hero-actions a:focus-visible{border-color:#203440;background:#203440;color:#fff;outline:none;transform:translateY(-2px)}.about-hero-team{min-width:0}.about-section{padding:clamp(5rem,10vw,9rem) 0}.section-head{max-width:52rem;margin-bottom:4rem}.section-head h2{font-size:clamp(2.3rem,4.5vw,4.5rem);line-height:1.03;letter-spacing:-.045em}.section-head.light h2{color:#fff}
-  .about-hero{display:flex;min-height:clamp(44rem,calc(100vh - 5.5rem),54rem);align-items:center;padding:0;background:#f8f4ec}.about-hero-visual{--team-center-position:70%;position:absolute;z-index:1;inset:0}.about-hero-content{position:relative;z-index:3;display:flex;min-height:inherit;align-items:center}.about-hero-copy{width:min(36%,31rem);margin:0;text-align:left}.about-hero h1{max-width:12ch;margin:0}.about-hero-copy>p:last-of-type{max-width:31rem;margin:1.6rem 0 0}.about-hero-actions{justify-content:flex-start}
+  .about-shell{width:min(100% - 3rem,82rem);margin:auto}.about-hero{position:relative;overflow:hidden;padding:clamp(3.6rem,7vw,6.4rem) 0;background:radial-gradient(circle at 82% 16%,rgba(198,164,90,.13),transparent 30%),linear-gradient(145deg,#f4f6f7,#f8f5ee 68%,#eef1f2)}.about-hero-grid{position:relative;display:grid;grid-template-columns:minmax(19rem,.62fr) minmax(38rem,1.38fr);align-items:center;gap:clamp(2.4rem,5vw,5.5rem)}.about-hero-copy{position:relative;z-index:2}.eyebrow,.section-head>p,.about-cta p{margin-bottom:1rem;color:#b79245;font-size:.72rem;font-weight:750;letter-spacing:.15em;text-transform:uppercase}.about-hero h2{max-width:12ch;margin:0;color:#203440;font-size:clamp(3rem,5vw,5.3rem);line-height:.96;letter-spacing:-.055em}.about-hero-copy>p:last-of-type{max-width:34rem;margin:1.6rem 0 0;color:rgba(32,52,64,.64);font-size:clamp(.98rem,1.35vw,1.12rem);line-height:1.72}.about-hero-actions{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}.about-hero-actions a{display:inline-flex;min-height:3.1rem;align-items:center;justify-content:center;gap:.75rem;border:1px solid rgba(32,52,64,.18);border-radius:999px;padding:.75rem 1.2rem;color:#203440;font-size:.72rem;font-weight:760;transition:background 180ms ease,border-color 180ms ease,color 180ms ease,transform 220ms cubic-bezier(.2,.8,.2,1)}.about-hero-actions a:first-child{border-color:#c6a45a;background:#c6a45a}.about-hero-actions a:hover,.about-hero-actions a:focus-visible{border-color:#203440;background:#203440;color:#fff;outline:none;transform:translateY(-2px)}.about-hero-team{min-width:0}.about-section{padding:clamp(5rem,10vw,9rem) 0}.section-head{max-width:52rem;margin-bottom:4rem}.section-head h1,.section-head h2{font-size:clamp(2.3rem,4.5vw,4.5rem);line-height:1.03;letter-spacing:-.045em}.section-head.light h2{color:#fff}
+  .about-hero{display:flex;min-height:clamp(34rem,40vw,39rem);align-items:center;border-block:1px solid rgba(32,52,64,.08);padding:1.5rem 0;background:radial-gradient(circle at 50% 43%,rgba(198,164,90,.12),transparent 34%),linear-gradient(180deg,#fbf9f4 0%,#f6f2e9 100%)}
+  .about-hero-visual{--team-center-position:50%;position:relative;z-index:2;width:min(100% - 3rem,78rem);height:clamp(32rem,37vw,37rem);margin:auto;overflow:visible;background:transparent}
+  .about-partner-tape{position:relative;z-index:10;overflow:hidden;border-block:1px solid rgba(32,52,64,.1);background:rgba(255,255,255,.97);box-shadow:0 15px 38px rgba(32,52,64,.08)}
+  .about-partner-tape::before,.about-partner-tape::after{position:absolute;z-index:2;top:0;bottom:0;width:min(8vw,7rem);content:"";pointer-events:none}
+  .about-partner-tape::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+  .about-partner-tape::after{right:0;background:linear-gradient(-90deg,#fff,transparent)}
+  .about-partner-tape :global(.logo-marquee){padding:.75rem 0 .9rem}
+  .about-partner-tape :global(.logo-marquee__title){margin-bottom:.55rem;font-size:.61rem;letter-spacing:.18em}
+  .about-partner-tape :global(.logo-marquee__inner){gap:clamp(1.6rem,4vw,4rem)}
+  .about-partner-tape :global(.logo-marquee__img){width:clamp(7rem,11vw,10rem);height:2.85rem;margin:0;padding:.32rem .65rem;border-radius:.55rem;background:transparent;filter:grayscale(100%) opacity(64%)}
+  .about-partner-tape :global(.logo-marquee__img:hover){filter:grayscale(0%) opacity(100%)}
   .mission-system {
     --mx: 0px;
     --my: 0px;
@@ -465,9 +515,7 @@ const responsibilityCommitments = [
   .m6 { --angle: 218deg; }
 
   .mission-card {
-    display: grid;
-    grid-template-columns: 2.15rem 1fr;
-    gap: 0.75rem;
+    display: block;
     min-height: 8.8rem;
     padding: 1rem;
     border: 1px solid rgba(32, 52, 64, 0.12);
@@ -487,23 +535,6 @@ const responsibilityCommitments = [
     outline: none;
     transform: translateY(-7px) scale(1.025);
     z-index: 10;
-  }
-
-  .mission-card > span {
-    display: grid;
-    width: 2rem;
-    height: 2rem;
-    place-items: center;
-    border: 1px solid rgba(198, 164, 90, 0.45);
-    border-radius: 50%;
-    color: #b79245;
-    font: 700 0.6rem var(--font-mono);
-    transition: background 0.3s ease, color 0.3s ease;
-  }
-
-  .mission-card:hover > span {
-    background: #c6a45a;
-    color: #fff;
   }
 
   .mission-card h3 { font-size: 0.9rem; line-height: 1.28; }
@@ -570,11 +601,27 @@ const responsibilityCommitments = [
     background: rgba(255, 255, 255, 0.018);
   }
 
+  .expertise-lisa {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: clamp(22rem, 34vw, 30rem);
+    height: 28rem;
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+    filter: drop-shadow(0 28px 34px rgba(0, 0, 0, 0.22));
+  }
+
+  .expertise-lisa :global(img) { display: block; width: 100%; height: auto; }
+
   .expertise-entry { display: contents; }
 
   .expertise-node {
     position: absolute;
-    top: calc(clamp(1rem, 1.6vw, 1.4rem) + var(--selector-offset));
+    z-index: 3;
+    top: calc(28rem + var(--selector-offset));
     left: clamp(1rem, 1.6vw, 1.4rem);
     display: flex;
     width: calc(36% - clamp(1rem, 1.6vw, 1.4rem));
@@ -591,12 +638,14 @@ const responsibilityCommitments = [
     cursor: pointer;
     font: inherit;
     text-align: left;
-    transition: border-color 220ms ease, background-color 220ms ease, color 220ms ease;
+    transition: border-color 220ms ease, background-color 220ms ease, color 220ms ease, transform 260ms cubic-bezier(.2,.8,.2,1), box-shadow 260ms ease;
   }
 
   .expertise-node:hover {
     border-color: rgba(198, 164, 90, 0.62);
     background: rgba(198, 164, 90, 0.08);
+    box-shadow: 0 16px 32px rgba(0,0,0,.2);
+    transform: translateX(.35rem);
   }
 
   .expertise-node:focus-visible {
@@ -616,22 +665,6 @@ const responsibilityCommitments = [
     align-items: center;
     gap: 0.8rem;
   }
-
-  .expertise-node-copy > i {
-    display: grid;
-    width: 2rem;
-    height: 2rem;
-    flex: 0 0 auto;
-    place-items: center;
-    border-radius: 50%;
-    background: rgba(198, 164, 90, 0.12);
-    color: #c6a45a;
-    font: 700 0.62rem var(--font-mono);
-    font-style: normal;
-    transition: background-color 220ms ease, color 220ms ease;
-  }
-
-  .expertise-entry.is-active .expertise-node-copy > i { background: #c6a45a; color: #10202b; }
 
   .expertise-node-copy > span { display: grid; min-width: 0; gap: 0.3rem; }
   .expertise-node strong { font-size: 0.98rem; line-height: 1.2; }
@@ -667,8 +700,7 @@ const responsibilityCommitments = [
   }
 
   .expertise-panel-header > p:first-child { margin: 0; }
-  .detail-index { display: block; margin-top: 1.6rem; color: rgba(32, 52, 64, 0.23); font: 700 clamp(3rem, 5vw, 4.5rem)/1 var(--font-mono); }
-  .expertise-panel h3 { margin-top: 0.3rem; font-size: clamp(1.8rem, 3vw, 2.7rem); letter-spacing: -0.04em; }
+  .expertise-panel h3 { margin-top: 1rem; font-size: clamp(1.8rem, 3vw, 2.7rem); letter-spacing: -0.04em; }
   .detail-line { width: 3.5rem; height: 2px; margin: 1rem 0 1.25rem; background: #c6a45a; }
   .expertise-source-note { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.2rem; margin-bottom: 1.45rem; padding: 1rem 1.05rem; border: 1px solid rgba(183, 146, 69, 0.22); border-radius: 0.75rem; background: rgba(198, 164, 90, 0.07); }
   .expertise-source-note span { color: #b79245; font-size: 0.58rem; font-weight: 760; letter-spacing: 0.13em; text-transform: uppercase; }
@@ -690,18 +722,28 @@ const responsibilityCommitments = [
 
   .expertise-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .expertise-tags span { display: inline-flex; min-height: 1.7rem; align-items: center; border: 1px solid rgba(32, 52, 64, 0.12); border-radius: 0.35rem; padding: 0.25rem 0.55rem; background: rgba(255, 255, 255, 0.48); color: rgba(32, 52, 64, 0.78); font-size: 0.68rem; line-height: 1.25; }
-  .expertise-tags--skills span { border-color: rgba(183, 146, 69, 0.22); background: rgba(198, 164, 90, 0.08); }
+  .expertise-tags--skills span { border-color: rgba(183, 146, 69, 0.22); background: rgba(198, 164, 90, 0.08); cursor:default;transition:transform 240ms cubic-bezier(.2,.8,.2,1),background-color 180ms ease,border-color 180ms ease,box-shadow 240ms ease,color 180ms ease; }
+  .expertise-tags--skills span:hover { z-index:2;border-color:#b79245;background:#203440;color:#fff;box-shadow:0 12px 24px rgba(32,52,64,.2);transform:translateY(-5px) scale(1.055) rotate(-1deg); }
+
+  .expertise-profile-marquee { position:relative;overflow:hidden;margin-inline:-.4rem;padding:.25rem .4rem .45rem;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+  .expertise-profile-track { display:flex;width:max-content;gap:.45rem;animation:expertise-profile-scroll 24s linear infinite; }
+  .expertise-profile-group { display:flex;flex:none;gap:.45rem; }
+  .expertise-profile-group span { display:inline-flex;min-height:1.8rem;align-items:center;border:1px solid rgba(32,52,64,.14);border-radius:999px;padding:.3rem .7rem;background:rgba(255,255,255,.7);color:rgba(32,52,64,.78);font-size:.68rem;white-space:nowrap;box-shadow:0 5px 14px rgba(32,52,64,.04); }
+  .expertise-profile-marquee:hover .expertise-profile-track { animation-play-state:paused; }
 
   .expertise-panel-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
   .expertise-panel-columns .expertise-panel-section { min-width: 0; }
   .expertise-mission-list { display: grid; gap: 0.9rem; margin: 0; padding: 0; list-style: none; }
-  .expertise-mission-list li { display: grid; grid-template-columns: 1.8rem 1fr; gap: 0.6rem; }
-  .expertise-mission-list li > span { color: #b79245; font: 700 0.62rem/1 var(--font-mono); padding-top: 0.2rem; }
+  .expertise-mission-list li { position: relative; padding-left: 1.15rem;transition:transform 220ms cubic-bezier(.2,.8,.2,1),background-color 180ms ease; }
+  .expertise-mission-list li:hover { border-radius:.55rem;background:rgba(198,164,90,.075);transform:translateX(.45rem); }
+  .expertise-mission-list li::before { position: absolute; top: .42rem; left: 0; width: .42rem; height: .42rem; border-radius: 50%; background: #c6a45a; content: ""; }
   .expertise-mission-list strong { display: block; color: #203440; font-size: 0.78rem; line-height: 1.3; }
   .expertise-mission-list p { margin: 0.25rem 0 0; color: rgba(32, 52, 64, 0.62); font-size: 0.72rem; line-height: 1.55; }
 
   .expertise-check-list, .expertise-support-list { display: grid; gap: 0.55rem; margin: 0; padding: 0; list-style: none; }
   .expertise-check-list li, .expertise-support-list li { display: flex; align-items: flex-start; gap: 0.5rem; color: rgba(32, 52, 64, 0.7); font-size: 0.74rem; line-height: 1.4; }
+  .expertise-check-list li,.expertise-support-list li { transition:color 180ms ease,transform 220ms cubic-bezier(.2,.8,.2,1); }
+  .expertise-check-list li:hover,.expertise-support-list li:hover { color:#203440;transform:translateX(.35rem); }
   .expertise-check-list svg, .expertise-support-list svg { width: 0.85rem; height: 0.85rem; flex: 0 0 auto; margin-top: 0.12rem; color: #b79245; }
   .expertise-panel-columns--compact { align-items: start; }
   .expertise-why p { margin: 0; color: rgba(32, 52, 64, 0.67); font-size: 0.78rem; line-height: 1.65; }
@@ -710,6 +752,13 @@ const responsibilityCommitments = [
   .expertise-support .expertise-panel-section { margin: 0; padding: 0; border: 0; }
   .expertise-support-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem 1rem; }
   .expertise-support-list li { font-size: 0.7rem; }
+
+  .expertise-live-block { opacity:0;transform:translateY(22px) scale(.985);transition:opacity 620ms ease,transform 720ms cubic-bezier(.16,1,.3,1),box-shadow 260ms ease,background-color 220ms ease;transition-delay:var(--live-delay,0ms); }
+  .expertise-live-block.is-live { opacity:1;transform:none; }
+  @media(hover:hover){
+    .expertise-panel:has(.expertise-live-block:hover) .expertise-live-block.is-live:not(:hover){opacity:.68;transform:scale(.985)}
+    .expertise-live-block.is-live:hover{position:relative;z-index:4;background-color:rgba(255,255,255,.52);box-shadow:0 16px 34px rgba(32,52,64,.09);transform:translateY(-4px) scale(1.012);transition-delay:0ms}
+  }
 
   .expertise-panel:after {
     position: absolute;
@@ -723,31 +772,54 @@ const responsibilityCommitments = [
     content: "";
     pointer-events: none;
   }
-  .ecosystem-section{overflow:hidden;padding-top:clamp(4rem,7vw,6.5rem);background:linear-gradient(180deg,#f8f4ec 0%,#f7f4ed 11rem,#f7f4ed 100%)}
-  .ecosystem-section .section-head{display:grid;grid-template-columns:minmax(0,.95fr) minmax(15rem,.45fr);column-gap:clamp(2rem,7vw,7rem);align-items:end;max-width:none}
+  .ecosystem-section{position:relative;overflow:hidden;min-height:calc(100svh - 5rem);padding:clamp(3.5rem,5vw,5rem) 0 0;background:radial-gradient(circle at 20% 58%,rgba(255,255,255,.92),transparent 30%),radial-gradient(circle at 88% 14%,rgba(198,164,90,.14),transparent 29%),linear-gradient(145deg,#edf1f2 0%,#f8f4ec 58%,#efe9dc 100%)}
+  .ecosystem-section .section-head{display:grid;grid-template-columns:minmax(0,.95fr) minmax(15rem,.5fr);column-gap:clamp(2rem,7vw,7rem);align-items:end;max-width:none}
   .ecosystem-section .section-head>p{grid-column:1/-1}
-  .ecosystem-section .section-head h2{margin:0}
-  .ecosystem-section .section-head strong{max-width:24rem;padding-bottom:.5rem;color:rgba(32,52,64,.58);font-size:.92rem;font-weight:520;line-height:1.65}
-  .ecosystem-schema{position:relative}
-  .ecosystem-origin{position:relative;z-index:2;display:grid;width:min(100%,28rem);justify-items:center;margin-inline:auto;border:1px solid rgba(32,52,64,.16);border-radius:1rem;padding:1.45rem 1.8rem;background:#203440;box-shadow:0 16px 34px rgba(32,52,64,.12);color:#fff;text-align:center}
-  .ecosystem-origin small{color:#d2b566;font-size:.58rem;font-weight:780;letter-spacing:.15em;text-transform:uppercase}
-  .ecosystem-origin strong{margin-top:.45rem;font-size:1.15rem}
-  .ecosystem-origin span{margin-top:.35rem;color:rgba(255,255,255,.62);font-size:.75rem}
-  .ecosystem-connectors{display:block;width:100%;height:7.8rem;overflow:visible}
-  .ecosystem-connectors path{fill:none;stroke:rgba(183,146,69,.72);stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-dasharray:8 8;animation:ecosystem-draw 1.2s ease both}
-  .ecosystem-connectors circle{fill:#c6a45a}
-  .ecosystem-branches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.15rem}
-  .ecosystem-branches article{position:relative;display:flex;min-height:18rem;flex-direction:column;border:1px solid rgba(32,52,64,.12);border-top:2px solid #c6a45a;border-radius:.8rem;padding:1.65rem;background:#fff;box-shadow:0 10px 30px rgba(32,52,64,.05);transition:border-color .24s ease,box-shadow .28s ease,transform .28s ease}
-  .ecosystem-branches article:hover{border-color:rgba(183,146,69,.52);box-shadow:0 18px 38px rgba(32,52,64,.1);transform:translateY(-.35rem)}
-  .ecosystem-branches article>span{display:grid;width:2rem;height:2rem;place-items:center;margin-bottom:1.55rem;border:1px solid rgba(198,164,90,.42);border-radius:50%;color:#b79245;font:700 .6rem var(--font-mono)}
-  .ecosystem-branches small{color:#b79245;font-size:.58rem;font-weight:760;letter-spacing:.14em;text-transform:uppercase}
-  .ecosystem-branches h3{margin:.4rem 0 .8rem;color:#203440;font-size:clamp(1.35rem,1.8vw,1.8rem)}
-  .ecosystem-branches p{max-width:24rem;margin:0 0 1.5rem;color:rgba(32,52,64,.62);font-size:.82rem;line-height:1.65}
-  .ecosystem-branches a{display:inline-flex;align-items:center;gap:.55rem;margin-top:auto;color:#203440;font-size:.72rem;font-weight:760}
-  .ecosystem-branches a b{color:#b79245;transition:transform .2s ease}
-  .ecosystem-branches a:hover b{transform:translateX(.25rem)}
-  @keyframes ecosystem-draw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}
-  .values-section{background:#f6f3ec}.values-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(3rem,8vw,8rem)}.values-list{display:grid;gap:.75rem}.values-list details{position:relative;overflow:hidden;border:1px solid rgba(32,52,64,.12);border-radius:8px;background:rgba(255,255,255,.38);transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s ease,border-color .22s ease,background .22s ease}.values-list details:hover,.values-list details[open]{border-color:rgba(198,164,90,.5);background:#fff;box-shadow:0 18px 42px rgba(32,52,64,.08);transform:translateY(-4px)}.values-list details:before{position:absolute;inset:0 auto 0 0;width:3px;background:#c6a45a;content:"";opacity:0;transform:scaleY(.3);transition:.28s ease}.values-list details:hover:before,.values-list details[open]:before{opacity:1;transform:scaleY(1)}.values-list summary{display:grid;grid-template-columns:3rem 1fr auto;align-items:center;padding:1.2rem 1.25rem;color:#203440;font-weight:760;cursor:pointer;list-style:none}.values-list summary::-webkit-details-marker{display:none}.values-list summary>span{display:grid;width:2rem;height:2rem;place-items:center;border:1px solid rgba(198,164,90,.35);border-radius:50%;color:#b79245;font:650 .65rem monospace}.values-list summary b{display:grid;width:2rem;height:2rem;place-items:center;border-radius:50%;color:#b79245;font-size:1.2rem;transition:.24s cubic-bezier(.2,.8,.2,1)}.values-list details[open] summary b{background:#c6a45a;color:#10202b;transform:rotate(45deg)}.values-list details p{max-width:38rem;margin:0 1.25rem 1.35rem 4.25rem;color:rgba(32,52,64,.62);font-size:.9rem;line-height:1.7;animation:value-copy .32s cubic-bezier(.2,.8,.2,1) both}
+  .ecosystem-section .section-head{--ecosystem-final-transform:translateY(clamp(1.6rem,3vw,2.8rem));position:relative;z-index:5;margin-bottom:0;transform:var(--ecosystem-final-transform)}
+  .ecosystem-section .section-head h1{max-width:9ch;margin:0}
+  .ecosystem-section .section-head strong{max-width:28rem;padding-bottom:.5rem;color:rgba(32,52,64,.62);font-size:clamp(.9rem,1.2vw,1.04rem);font-weight:520;line-height:1.7}
+  .ecosystem-stage{--mx:0px;--my:0px;position:relative;width:100vw;min-height:clamp(38rem,48vw,43rem);margin-left:calc(50% - 50vw);overflow:visible;isolation:isolate}
+  .ecosystem-stage-shape{position:absolute;z-index:0;border-radius:50%;pointer-events:none;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+  .ecosystem-stage-shape--gold{left:-13rem;bottom:-16rem;width:38rem;height:38rem;background:rgba(198,164,90,.14);box-shadow:0 0 0 5rem rgba(198,164,90,.045);transform:translate(calc(var(--mx) * -.35),calc(var(--my) * -.35))}
+  .ecosystem-stage-shape--navy{right:-17rem;top:6rem;width:42rem;height:42rem;background:#18303c;box-shadow:0 0 0 4rem rgba(32,52,64,.055);transform:translate(calc(var(--mx) * .35),calc(var(--my) * .35))}
+  .ecosystem-stage-label{--ecosystem-final-transform:translateX(-50%);position:absolute;z-index:6;top:-1.5rem;left:50%;border:1px solid rgba(183,146,69,.35);border-radius:999px;padding:.7rem 1.05rem;background:rgba(255,255,255,.9);color:#9a762e;font-size:.62rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;box-shadow:0 12px 30px rgba(32,52,64,.08);transform:var(--ecosystem-final-transform);backdrop-filter:blur(10px)}
+  .ecosystem-offers{position:relative;z-index:2;display:grid;width:min(100% - 3rem,86rem);grid-template-columns:repeat(2,minmax(19rem,24rem));justify-content:center;gap:clamp(14rem,22vw,29rem);align-items:center;min-height:inherit;margin:auto;padding:4.6rem 0 2.5rem;perspective:1200px}
+  .ecosystem-guide{--ecosystem-final-transform:translateX(-50%);position:absolute;z-index:2;bottom:-9.5rem;left:50%;width:clamp(29rem,38vw,35rem);margin:0;pointer-events:none;transform:var(--ecosystem-final-transform);filter:drop-shadow(0 24px 30px rgba(20,32,40,.16))}
+  .ecosystem-guide :global(img){display:block;width:100%;height:auto}
+  .ecosystem-offer{position:relative;z-index:3;display:flex;min-height:27rem;overflow:hidden;flex-direction:column;border:1px solid rgba(32,52,64,.13);border-radius:1.35rem;padding:clamp(1.35rem,2.2vw,1.8rem);box-shadow:0 22px 55px rgba(32,52,64,.13);isolation:isolate;transition:border-color .28s ease,box-shadow .38s ease,transform .48s cubic-bezier(.16,1,.3,1)}
+  .ecosystem-offer::before{position:absolute;z-index:-2;inset:0;background:linear-gradient(135deg,transparent 32%,rgba(198,164,90,.11) 52%,transparent 70%);background-position:120% 0;background-size:220% 100%;content:"";transition:background-position .7s cubic-bezier(.16,1,.3,1)}
+  .ecosystem-offer::after{position:absolute;z-index:-1;right:-7rem;bottom:-7rem;width:19rem;height:19rem;border:1px solid rgba(198,164,90,.3);border-radius:50%;box-shadow:0 0 0 2.6rem rgba(198,164,90,.055),0 0 0 5.2rem rgba(198,164,90,.03);content:"";transition:transform .65s cubic-bezier(.16,1,.3,1)}
+  .ecosystem-offer--portage{--ecosystem-final-transform:translateY(1.35rem) rotate(-1.5deg);background:rgba(255,255,255,.96);color:#203440;transform:var(--ecosystem-final-transform)}
+  .ecosystem-offer--esn{--ecosystem-final-transform:translateY(-1.2rem) rotate(1.5deg);z-index:4;border:1.5px solid rgba(218,187,112,.9);background:linear-gradient(145deg,#315160 0%,#1b3947 46%,#112a37 100%);color:#fff;box-shadow:0 30px 72px rgba(10,28,38,.34),0 0 0 .4rem rgba(255,255,255,.17);transform:var(--ecosystem-final-transform)}
+  .ecosystem-offer:hover,.ecosystem-offer:focus-within{border-color:rgba(183,146,69,.82);box-shadow:0 34px 75px rgba(32,52,64,.22);transform:translateY(-.8rem) rotate(0deg) scale(1.025)}
+  .ecosystem-offer:hover::before,.ecosystem-offer:focus-within::before{background-position:-20% 0}
+  .ecosystem-offer:hover::after,.ecosystem-offer:focus-within::after{transform:translate(-1.2rem,-1.2rem) scale(1.08)}
+  .ecosystem-offer-glow{position:absolute;z-index:-1;top:-7rem;left:-6rem;width:18rem;height:18rem;border-radius:50%;background:rgba(198,164,90,.1);filter:blur(8px);transition:transform .65s cubic-bezier(.16,1,.3,1)}
+  .ecosystem-offer:hover .ecosystem-offer-glow,.ecosystem-offer:focus-within .ecosystem-offer-glow{transform:translate(2rem,1.5rem) scale(1.18)}
+  .ecosystem-logo{display:flex;min-height:7.6rem;align-items:center;justify-content:center;margin-bottom:1.25rem;border:1px solid rgba(32,52,64,.09);border-radius:1rem;background:rgba(248,244,236,.7);transition:background-color .3s ease,transform .45s cubic-bezier(.16,1,.3,1)}
+  .ecosystem-offer:hover .ecosystem-logo,.ecosystem-offer:focus-within .ecosystem-logo{transform:translateY(-.3rem) scale(1.025)}
+  .ecosystem-logo--porters :global(.brand-wordmark){transform:scale(1.65)}
+  .ecosystem-logo--porters :global(.brand-wordmark-the){color:#203440}
+  .ecosystem-logo--porters :global(.brand-wordmark-porters){color:#203440}
+  .ecosystem-logo--big-porters{border-color:rgba(255,255,255,.22);background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.045));box-shadow:inset 0 1px 0 rgba(255,255,255,.12)}
+  .ecosystem-logo--big-porters :global(img){display:block;width:clamp(8.4rem,12vw,10.4rem);height:auto;object-fit:contain;filter:brightness(1.12) contrast(1.08) drop-shadow(0 12px 22px rgba(0,0,0,.3));transition:transform .45s cubic-bezier(.16,1,.3,1)}
+  .ecosystem-offer--esn:hover .ecosystem-logo--big-porters :global(img),.ecosystem-offer--esn:focus-within .ecosystem-logo--big-porters :global(img){transform:rotate(2deg) scale(1.045)}
+  .ecosystem-offer-copy small{color:#a98238;font-size:.62rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+  .ecosystem-offer--esn .ecosystem-offer-copy small{color:#d2b566}
+  .ecosystem-offer-copy h3{margin:.5rem 0 .7rem;font-size:clamp(1.55rem,2.2vw,2rem);letter-spacing:-.035em}
+  .ecosystem-offer--esn .ecosystem-offer-copy h3{color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.18)}
+  .ecosystem-offer-copy p{max-width:30rem;margin:0;color:rgba(32,52,64,.66);font-size:.79rem;line-height:1.64}
+  .ecosystem-offer--esn .ecosystem-offer-copy p{color:rgba(255,255,255,.82)}
+  .ecosystem-expertises{display:flex;flex-wrap:wrap;gap:.36rem;margin:1.1rem 0 1.25rem}
+  .ecosystem-expertises span{border:1px solid rgba(32,52,64,.12);border-radius:999px;padding:.38rem .56rem;background:rgba(248,244,236,.72);color:rgba(32,52,64,.72);font-size:.56rem;font-weight:700;transition:border-color .22s ease,background-color .22s ease,color .22s ease,transform .22s ease}
+  .ecosystem-offer--esn .ecosystem-expertises span{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.1);color:rgba(255,255,255,.88)}
+  .ecosystem-offer:hover .ecosystem-expertises span,.ecosystem-offer:focus-within .ecosystem-expertises span{border-color:rgba(198,164,90,.48);transform:translateY(-2px)}
+  .ecosystem-offer-link{display:flex;min-height:2.8rem;align-items:center;justify-content:space-between;gap:1rem;margin-top:auto;border-top:1px solid rgba(32,52,64,.13);padding-top:1rem;color:#203440;font-size:.7rem;font-weight:800}
+  .ecosystem-offer--esn .ecosystem-offer-link{border-color:rgba(255,255,255,.14);color:#fff}
+  .ecosystem-offer-link b{display:grid;width:2.2rem;height:2.2rem;place-items:center;border-radius:50%;background:#c6a45a;color:#203440;font-size:1rem;transition:background-color .22s ease,color .22s ease,transform .3s cubic-bezier(.16,1,.3,1)}
+  .ecosystem-offer-link:hover b,.ecosystem-offer-link:focus-visible b{background:#203440;color:#fff;transform:translate(.2rem,-.2rem) rotate(6deg)}
+  .ecosystem-offer--esn .ecosystem-offer-link:hover b,.ecosystem-offer--esn .ecosystem-offer-link:focus-visible b{background:#fff;color:#203440}
+  .values-section{background:#f6f3ec}.values-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(3rem,8vw,8rem)}.values-list{display:grid;gap:.75rem}.values-list details{position:relative;overflow:hidden;border:1px solid rgba(32,52,64,.12);border-radius:8px;background:rgba(255,255,255,.38);transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s ease,border-color .22s ease,background .22s ease}.values-list details:hover,.values-list details[open]{border-color:rgba(198,164,90,.5);background:#fff;box-shadow:0 18px 42px rgba(32,52,64,.08);transform:translateY(-4px)}.values-list details:before{position:absolute;inset:0 auto 0 0;width:3px;background:#c6a45a;content:"";opacity:0;transform:scaleY(.3);transition:.28s ease}.values-list details:hover:before,.values-list details[open]:before{opacity:1;transform:scaleY(1)}.values-list summary{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1.2rem 1.25rem;color:#203440;font-weight:760;cursor:pointer;list-style:none}.values-list summary::-webkit-details-marker{display:none}.values-list summary b{display:grid;width:2rem;height:2rem;place-items:center;border-radius:50%;color:#b79245;font-size:1.2rem;transition:.24s cubic-bezier(.2,.8,.2,1)}.values-list details[open] summary b{background:#c6a45a;color:#10202b;transform:rotate(45deg)}.values-list details p{max-width:38rem;margin:0 1.25rem 1.35rem;color:rgba(32,52,64,.62);font-size:.9rem;line-height:1.7;animation:value-copy .32s cubic-bezier(.2,.8,.2,1) both}
   .history-section {
     overflow: hidden;
     padding-top: clamp(4rem, 7vw, 6.5rem);
@@ -830,10 +902,10 @@ const responsibilityCommitments = [
     border: 2px solid rgba(198, 164, 90, 0.5);
     background: #fff;
     color: #203440;
-    font: 700 0.75rem/1 monospace;
     box-shadow: 0 0 0 0.6rem rgba(247, 244, 237, 0.9);
     transition: 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
+  .history-dot::after { width: .58rem; height: .58rem; border-radius: 50%; background: #c6a45a; content: ""; box-shadow: 0 0 0 .35rem rgba(198,164,90,.13); }
   .history-node.is-active .history-dot,
   .history-node:hover .history-dot {
     background: #203440;
@@ -918,27 +990,57 @@ const responsibilityCommitments = [
   }
   .team-integrated-section{margin-top:-1px;padding-top:clamp(4rem,7vw,6.5rem);background:linear-gradient(180deg,#f4f6f7 0%,#f7f8f8 9rem,#f4f6f7 100%)}.team-function-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(32,52,64,.12);border-left:1px solid rgba(32,52,64,.12)}
   .team-function-rail article{min-height:14rem;border-right:1px solid rgba(32,52,64,.12);border-bottom:1px solid rgba(32,52,64,.12);padding:1.6rem;background:rgba(255,255,255,.56);transition:background 180ms ease,transform 260ms cubic-bezier(.2,.8,.2,1)}
-  .team-function-rail article:hover{background:#fff;transform:translateY(-4px)}.team-function-rail span,.responsibility-commitments>article>span{color:#b79245;font-family:var(--font-mono);font-size:.64rem;font-weight:700}
-  .team-function-rail h3{margin-top:2rem;font-size:1.05rem}.team-function-rail p{margin-top:.7rem;color:rgba(32,52,64,.6);font-size:.76rem;line-height:1.65}
+  .team-function-rail article:hover{background:#fff;transform:translateY(-4px)}
+  .team-function-rail h3{margin-top:.25rem;font-size:1.05rem}.team-function-rail p{margin-top:.7rem;color:rgba(32,52,64,.6);font-size:.76rem;line-height:1.65}
   .responsibility-integrated-section{overflow:hidden;background:#203440;color:#fff}.responsibility-integrated-grid{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1fr);gap:clamp(3rem,7vw,7rem);align-items:start}
   .responsibility-integrated-section .section-head strong{display:block;margin-top:1.2rem;color:rgba(255,255,255,.58);font-size:.86rem;font-weight:500;line-height:1.7}.responsibility-commitments{display:grid;border-top:1px solid rgba(255,255,255,.12)}
-  .responsibility-commitments article{display:grid;grid-template-columns:auto 1fr;gap:1rem;border-bottom:1px solid rgba(255,255,255,.12);padding:1.35rem .4rem;transition:padding 220ms cubic-bezier(.2,.8,.2,1),background 180ms ease}
+  .responsibility-commitments article{display:block;border-bottom:1px solid rgba(255,255,255,.12);padding:1.35rem .4rem;transition:padding 220ms cubic-bezier(.2,.8,.2,1),background 180ms ease}
   .responsibility-commitments article:hover{padding-left:1rem;background:rgba(198,164,90,.08)}.responsibility-commitments h3{margin:0;color:#fff;font-size:.92rem}.responsibility-commitments p{margin:.45rem 0 0;color:rgba(255,255,255,.55);font-size:.72rem;line-height:1.6}
   .about-cta{padding:4rem 0;background:#203440;color:#fff}.about-cta .about-shell{display:flex;align-items:center;justify-content:space-between;gap:2rem}.about-cta h2{color:#fff}.about-cta a{display:grid;min-height:3.2rem;place-items:center;border-radius:999px;padding:0 1.4rem;background:#c6a45a;color:#10202b;font-size:.82rem;font-weight:750;white-space:nowrap}
+
+  .ecosystem-section.intro-ready [data-ecosystem-text],
+  .ecosystem-section.intro-ready [data-ecosystem-label],
+  .ecosystem-section.intro-ready [data-ecosystem-card],
+  .ecosystem-section.intro-ready [data-ecosystem-eric],
+  .about-hero.intro-ready .about-hero-visual,
+  .about-hero.intro-ready :global(.team-portrait-search),
+  .about-hero.intro-ready :global(.team-portrait-lines),
+  .about-hero.intro-ready :global(.team-portrait-card){opacity:0}
+  .ecosystem-section.intro-ready.is-intro-visible [data-ecosystem-text]{animation:ecosystem-text-in .78s .06s cubic-bezier(.16,1,.3,1) both}
+  .ecosystem-section.intro-ready.is-intro-visible [data-ecosystem-label]{animation:ecosystem-label-in .62s .34s cubic-bezier(.16,1,.3,1) both}
+  .ecosystem-section.intro-ready.is-intro-visible [data-ecosystem-card="left"]{animation:ecosystem-left-card-in .92s .24s cubic-bezier(.16,1,.3,1) both}
+  .ecosystem-section.intro-ready.is-intro-visible [data-ecosystem-card="right"]{animation:ecosystem-right-card-in .92s .34s cubic-bezier(.16,1,.3,1) both}
+  .ecosystem-section.intro-ready.is-intro-visible [data-ecosystem-eric]{animation:ecosystem-eric-in .95s .5s cubic-bezier(.16,1,.3,1) both}
+  .about-hero.intro-ready.is-intro-visible .about-hero-visual{animation:team-canvas-in .78s cubic-bezier(.16,1,.3,1) both}
+  .about-hero.intro-ready.is-intro-visible :global(.team-portrait-search){animation:team-search-in .65s .16s cubic-bezier(.16,1,.3,1) both}
+  .about-hero.intro-ready.is-intro-visible :global(.team-portrait-lines){animation:team-lines-in .48s .4s ease both}
+  .about-hero.intro-ready.is-intro-visible :global(.team-portrait-card--ambre){animation:team-ambre-in .78s .34s cubic-bezier(.16,1,.3,1) both}
+  .about-hero.intro-ready.is-intro-visible :global(.team-portrait-card--eric){animation:team-eric-in .82s .46s cubic-bezier(.16,1,.3,1) both}
+  .about-hero.intro-ready.is-intro-visible :global(.team-portrait-card--lisa){animation:team-lisa-in .78s .4s cubic-bezier(.16,1,.3,1) both}
+
+  :global(body:has(.ecosystem-section) main){display:flex;flex-direction:column}
+  .ecosystem-section{order:1}.about-partner-tape{order:2}.about-hero{order:3}.history-section{order:4}.expertise-section{order:5}.responsibility-integrated-section{order:6}
+  .removed-section-placeholder{display:none!important}
+  @keyframes expertise-profile-scroll{to{transform:translateX(calc(-50% - .225rem))}}
+  @keyframes ecosystem-text-in{from{opacity:0;transform:translateY(5.5rem)}to{opacity:1;transform:var(--ecosystem-final-transform)}}
+  @keyframes ecosystem-label-in{from{opacity:0;transform:translateX(-50%) translateY(-1.3rem) scale(.78)}to{opacity:1;transform:var(--ecosystem-final-transform)}}
+  @keyframes ecosystem-left-card-in{from{opacity:0;transform:translate3d(-11rem,3rem,0) rotate(-7deg) scale(.91)}to{opacity:1;transform:var(--ecosystem-final-transform)}}
+  @keyframes ecosystem-right-card-in{from{opacity:0;transform:translate3d(11rem,2rem,0) rotate(7deg) scale(.91)}to{opacity:1;transform:var(--ecosystem-final-transform)}}
+  @keyframes ecosystem-eric-in{from{opacity:0;transform:translateX(-50%) translateY(10rem) scale(.66);filter:blur(8px) drop-shadow(0 24px 30px rgba(20,32,40,.16))}to{opacity:1;transform:var(--ecosystem-final-transform);filter:blur(0) drop-shadow(0 24px 30px rgba(20,32,40,.16))}}
+  @keyframes team-canvas-in{from{opacity:0;transform:translateY(1.5rem) scale(.97)}to{opacity:1;transform:none}}
+  @keyframes team-search-in{from{opacity:0;transform:translateX(-50%) translateY(-2rem) scale(.88)}to{opacity:1;transform:translateX(-50%)}}
+  @keyframes team-lines-in{from{opacity:0}to{opacity:1}}
+  @keyframes team-ambre-in{0%{opacity:0;transform:translateX(-10rem) rotate(-12deg) scale(.76)}72%{opacity:1;transform:translateX(.8rem) rotate(1deg) scale(1.035)}100%{opacity:1;transform:rotate(-2deg)}}
+  @keyframes team-eric-in{0%{opacity:0;transform:translateX(-50%) translateY(6rem) scale(.45);filter:blur(9px)}70%{opacity:1;transform:translateX(-50%) translateY(-.65rem) scale(1.055);filter:blur(0)}100%{opacity:1;transform:translateX(-50%);filter:blur(0)}}
+  @keyframes team-lisa-in{0%{opacity:0;transform:translateX(10rem) rotate(12deg) scale(.76)}72%{opacity:1;transform:translateX(-.8rem) rotate(-1deg) scale(1.035)}100%{opacity:1;transform:rotate(2deg)}}
   @keyframes dash{to{stroke-dashoffset:-200}}@keyframes orbit{to{transform:rotate(1turn)}}@keyframes mission-spin{to{transform:rotate(1turn)}}@keyframes mission-spin-reverse{to{rotate:-1turn}}@keyframes expertise-node-float{0%,100%{translate:0 0}50%{translate:0 -5px}}@keyframes detail-pop{from{opacity:.82;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}@keyframes value-copy{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
   @media(max-width:1100px){
-    .about-hero{min-height:65rem;align-items:flex-start}
-    .about-hero-content{align-items:flex-start}
-    .about-hero-copy{width:100%;max-width:46rem;margin-inline:auto;padding-top:4.5rem;text-align:center}
-    .about-hero h1{max-width:14ch;margin-inline:auto}
-    .about-hero-copy>p:last-of-type{margin-inline:auto}
-    .about-hero-actions{justify-content:center}
-    .about-hero-visual{--team-center-position:50%;inset:27rem 0 0}
+    .about-hero{min-height:38rem;align-items:center;padding:1.5rem 0}
+    .about-hero-visual{--team-center-position:50%;width:min(100% - 2rem,70rem);height:35rem}
     .mission-system{min-height:40rem}
     .mission-orbit-item{width:min(13.5rem,25vw);transform:rotate(var(--angle)) translate(clamp(12rem,23vw,15.5rem)) rotate(calc(-1 * var(--angle))) translate(-50%,-50%)}
     .vision{width:18rem;height:18rem}
-    .mission-card{grid-template-columns:1fr; gap:0.5rem;}
-    .mission-card>span{width:1.85rem;height:1.85rem}
+    .mission-card{display:block}
     .mission-card p{font-size:0.68rem}
     .expertise-intro-grid{grid-template-columns:1fr;}
     .expertise-panel-columns{gap:1.1rem;}
@@ -985,10 +1087,11 @@ const responsibilityCommitments = [
     .mission-rings{display:none}
     .mission-orbit{position:relative;display:grid;grid-template-columns:1fr;gap:1rem;animation:none}
     .mission-orbit-item{position:static;width:100%;transform:none}
-    .mission-card{grid-template-columns:2.5rem 1fr;animation:none;box-shadow:0 8px 24px rgba(32,52,64,.05);transform:none!important;margin-bottom:0;}
+    .mission-card{display:block;animation:none;box-shadow:0 8px 24px rgba(32,52,64,.05);transform:none!important;margin-bottom:0;}
     .vision{position:relative;left:auto;top:auto;width:100%;height:auto;margin:0;padding:2rem;border-radius:1rem;transform:none!important;box-shadow:0 12px 30px rgba(32,52,64,.15)}
 
     .expertise-lab{display:block; padding:0; border-color:transparent; background:transparent;}
+    .expertise-lisa{position:relative;top:auto;left:auto;width:min(24rem,100%);height:28rem;margin:0 auto -3rem;overflow:hidden;}
     .expertise-entry{display:block;}
     .expertise-node{position:relative; top:auto; left:auto; width:100%; min-height:4.6rem; margin-top:.75rem; border-radius:.8rem;}
     .expertise-entry:first-child .expertise-node{margin-top:0;}
@@ -1000,19 +1103,24 @@ const responsibilityCommitments = [
     .expertise-panel h3{font-size:2rem;}
     .expertise-source-note{grid-template-columns:1fr;align-items:start}
     .expertise-source-note a{justify-content:space-between}
-    .ecosystem-section .section-head{grid-template-columns:1fr}
+    .ecosystem-section .section-head{--ecosystem-final-transform:translateY(.75rem);grid-template-columns:1fr}
     .ecosystem-section .section-head>p{grid-column:auto}
-    .ecosystem-connectors{display:none}
-    .ecosystem-origin{margin-bottom:1rem}
-    .ecosystem-branches{grid-template-columns:1fr}
-    .ecosystem-branches article{min-height:0}
+    .ecosystem-section .section-head h1{max-width:12ch}
+    .ecosystem-stage{min-height:auto}
+    .ecosystem-stage-label{--ecosystem-final-transform:none;position:relative;top:auto;left:auto;width:max-content;margin:1.4rem auto 0;transform:var(--ecosystem-final-transform)}
+    .ecosystem-stage-shape--navy{right:-24rem;top:34%}.ecosystem-stage-shape--gold{left:-24rem;bottom:8%}
+    .ecosystem-offers{width:min(100% - 2rem,32rem);grid-template-columns:1fr;min-height:0;padding:1.5rem 0 0;gap:1.2rem}
+    .ecosystem-guide{--ecosystem-final-transform:none;position:relative;bottom:auto;left:auto;width:min(20rem,82vw);height:25rem;margin:-3rem auto -7rem;overflow:hidden;transform:var(--ecosystem-final-transform);filter:drop-shadow(0 24px 28px rgba(20,32,40,.16))}
+    .ecosystem-offer,.ecosystem-offer--portage,.ecosystem-offer--esn{--ecosystem-final-transform:none;min-height:0;transform:var(--ecosystem-final-transform)}
+    .ecosystem-logo{min-height:8.5rem}
+    .about-partner-tape :global(.logo-marquee__img){width:7rem;height:2.4rem}
 
-    .history-dot { width: 3rem; height: 3rem; font-size: 0.65rem; box-shadow: 0 0 0 0.4rem rgba(247,244,237,0.9); }
+    .history-dot { width: 3rem; height: 3rem; box-shadow: 0 0 0 0.4rem rgba(247,244,237,0.9); }
     .history-card { margin: 0 0 0 1rem; }
     .history-node::after,
     .history-node::before { left: 1.5rem; }
   }
   @media(max-width:700px){.team-function-rail{grid-template-columns:1fr}}
-  @media(max-width:560px){.about-shell{width:min(100% - 2rem,82rem)}.about-hero{min-height:70rem;padding:0}.about-hero-copy{padding-top:3.5rem}.about-hero-visual{inset:36rem 0 0}.about-hero-actions{display:grid}.about-hero-actions a{width:100%;justify-content:space-between}.about-section{padding-block:4.6rem;overflow:hidden;scroll-margin-top:5.2rem}.section-head{max-width:100%;margin-bottom:2.2rem}.section-head h2{max-width:100%;overflow-wrap:normal;font-size:clamp(2rem,10vw,3.15rem);line-height:1.02}.about-hero h1{font-size:clamp(2.45rem,12vw,3.6rem)}.about-hero-copy>p:last-of-type{font-size:.98rem}.mission-card p{font-size:.74rem}.expertise-section .section-head h2{font-size:clamp(2rem,9.5vw,2.9rem)}.about-cta{padding-bottom:calc(6rem + env(safe-area-inset-bottom))}}
-  @media(prefers-reduced-motion:reduce){.mission-rings circle,.mission-orbit,.mission-card,.vision-orbit,.expertise-radar circle,.expertise-node,.expertise-detail.detail-pop,.history-step,.values-list details{animation:none}.mission-system,.mission-visual,.vision,.expertise-radar{transform:none!important}}
+  @media(max-width:560px){.about-shell{width:min(100% - 2rem,82rem)}.about-hero{min-height:34rem;padding:1rem 0}.about-hero-visual{width:100%;height:32rem}.about-section{padding-block:4.6rem;overflow:hidden;scroll-margin-top:5.2rem}.ecosystem-section{padding-top:3.5rem;padding-bottom:0}.section-head{max-width:100%;margin-bottom:2.2rem}.section-head h1,.section-head h2{max-width:100%;overflow-wrap:normal;font-size:clamp(2rem,10vw,3.15rem);line-height:1.02}.mission-card p{font-size:.74rem}.expertise-section .section-head h2{font-size:clamp(2rem,9.5vw,2.9rem)}.about-cta{padding-bottom:calc(6rem + env(safe-area-inset-bottom))}}
+  @media(prefers-reduced-motion:reduce){.mission-rings circle,.mission-orbit,.mission-card,.vision-orbit,.expertise-radar circle,.expertise-node,.expertise-detail.detail-pop,.history-step,.values-list details,.expertise-profile-track{animation:none}.mission-system,.mission-visual,.vision,.expertise-radar,.ecosystem-offer,.ecosystem-logo,.ecosystem-logo img,.ecosystem-stage-shape{transform:none!important;transition:none!important}.expertise-live-block{opacity:1;transform:none;transition:none}}
 </style>

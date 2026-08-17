@@ -1,28 +1,22 @@
 ---
 import { cmsAttrs, cmsText } from '../../cms/content';
+import { googleReviewHighlights } from '../../content/pages/home';
+import { helloWorkUrl } from '../../data/hello-work.data';
 
-const trustPoints = [
-  {
-    key: 'home.hero.trust.interlocutors',
-    note: 'Un point de contact identifié',
-    href: '/equipe',
-  },
-  {
-    key: 'home.hero.trust.secured_missions',
-    note: 'Contrat et protection sociale',
-    href: '/portage-salarial',
-  },
-  {
-    key: 'home.hero.trust.employee_framework',
-    note: 'Clients, missions et TJM restent les vôtres',
-    href: '/consultants',
-  },
-  {
-    key: 'home.hero.trust.it_expertise',
-    note: 'Cyber, data, cloud, produit et agilité',
-    href: '/expertises',
-  },
-];
+type HeroJob = {
+  title: string;
+  city: string;
+  contract: string;
+  salary: string;
+  href: string;
+};
+
+interface Props {
+  jobs?: HeroJob[];
+}
+
+const { jobs = [] } = Astro.props;
+const reviewNotes = googleReviewHighlights;
 
 const heroTitleLines = [
   { key: 'home.hero.editorial.title_line_1', accent: false },
@@ -31,7 +25,7 @@ const heroTitleLines = [
 ];
 ---
 
-<section class="editorial-hero" aria-labelledby="home-hero-title">
+<section class="editorial-hero" data-motion-scene aria-labelledby="home-hero-title">
   <div class="editorial-hero__shell">
     <div class="editorial-hero__copy">
       <p class="editorial-hero__eyebrow" {...cmsAttrs('home.hero.editorial.eyebrow')}>
@@ -70,7 +64,7 @@ const heroTitleLines = [
       </a>
     </div>
 
-    <div class="editorial-hero__visual" aria-label="Les services The Porters">
+    <div class="editorial-hero__visual" aria-label="L’accompagnement The Porters et les avis clients">
       <div class="editorial-hero__stone" aria-hidden="true"></div>
       <div class="editorial-hero__navy" aria-hidden="true"></div>
       <div class="editorial-hero__gold-frame" aria-hidden="true"></div>
@@ -84,33 +78,150 @@ const heroTitleLines = [
           fetchpriority="high"
         />
       </figure>
-      <div class="editorial-hero__service-note">
-        <span>Ce que nous prenons en charge</span>
-        <strong>Contrat · Facturation · Paie · Suivi</strong>
+      <div class="editorial-hero__review-notes" aria-label="Avis clients">
+        {reviewNotes.map((review, index) => (
+          <article
+            class:list={['editorial-hero__review-note', `editorial-hero__review-note--${index + 1}`]}
+            style={`--review-delay:${index * 4.5}s`}
+          >
+            <span aria-label="5 étoiles sur 5">★★★★★</span>
+            <p>«&nbsp;{review.quote}&nbsp;»</p>
+            <strong>{review.author}</strong>
+            <small>Avis Google</small>
+          </article>
+        ))}
       </div>
-      <span class="editorial-hero__rail" aria-hidden="true">Contrat · Facturation · Paie · Protection</span>
     </div>
   </div>
 
-  <div class="editorial-hero__trust" aria-label="Repères The Porters">
-    <div class="editorial-hero__trust-intro">
-      <span>Le cadre, sans le grand discours</span>
-      <p>Quatre repères pour comprendre la relation.</p>
-    </div>
-    <div class="editorial-hero__trust-list">
-      {trustPoints.map((point, index) => (
-        <a href={point.href} aria-label={`${cmsText(point.key)} — en savoir plus`}>
-          <span>0{index + 1}</span>
-          <div>
-            <strong {...cmsAttrs(point.key)}>{cmsText(point.key)}</strong>
-            <small>{point.note}</small>
+  <div class="editorial-hero__jobs" aria-label="Offres The Porters sur HelloWork">
+    <a
+      class="editorial-hero__jobs-intro"
+      href={helloWorkUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span>HelloWork</span>
+      <strong>Offres The Porters</strong>
+      <b aria-hidden="true">↗</b>
+    </a>
+    <div class="editorial-hero__jobs-marquee">
+      <div class="editorial-hero__jobs-track">
+        {[false, true].map((duplicate) => (
+          <div class="editorial-hero__jobs-group" aria-hidden={duplicate ? 'true' : undefined}>
+            {jobs.map((job) => (
+              <a
+                href={helloWorkUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                tabindex={duplicate ? -1 : undefined}
+                data-hero-job
+                data-job-title={job.title}
+                data-job-salary={job.salary}
+                data-job-meta={`${job.city} · ${job.contract}`}
+                aria-label={`${job.title}, ${job.salary} — voir toutes les offres The Porters sur HelloWork`}
+              >
+                <div class="editorial-hero__job-copy">
+                  <span>{job.salary}</span>
+                  <strong>{job.title}</strong>
+                  <small>{job.city} · {job.contract}</small>
+                </div>
+                <b aria-hidden="true">↗</b>
+              </a>
+            ))}
           </div>
-          <b aria-hidden="true">↗</b>
-        </a>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
+
+  <div class="editorial-hero__job-preview" id="hero-job-preview" aria-hidden="true" hidden>
+    <small>HelloWork · The Porters</small>
+    <span data-preview-salary></span>
+    <strong data-preview-title></strong>
+    <p data-preview-meta></p>
+    <b>Voir toutes nos opportunités&nbsp; ↗</b>
+  </div>
 </section>
+
+<script>
+  const heroJobPreview = document.querySelector<HTMLElement>('#hero-job-preview');
+  const heroJobTriggers = document.querySelectorAll<HTMLElement>('[data-hero-job]');
+  const previewSalary = heroJobPreview?.querySelector<HTMLElement>('[data-preview-salary]');
+  const previewTitle = heroJobPreview?.querySelector<HTMLElement>('[data-preview-title]');
+  const previewMeta = heroJobPreview?.querySelector<HTMLElement>('[data-preview-meta]');
+  let previewHideTimer = 0;
+  let previewLeaveTimer = 0;
+
+  const finishHidingJobPreview = () => {
+    if (!heroJobPreview) return;
+    heroJobPreview.hidden = true;
+    heroJobPreview.classList.remove('is-leaving');
+  };
+
+  const hideJobPreview = (immediate = false) => {
+    window.clearTimeout(previewHideTimer);
+    window.clearTimeout(previewLeaveTimer);
+    if (!heroJobPreview) return;
+    heroJobPreview.classList.remove('is-open');
+    heroJobPreview.setAttribute('aria-hidden', 'true');
+    if (immediate) {
+      finishHidingJobPreview();
+      return;
+    }
+    heroJobPreview.classList.add('is-leaving');
+    previewLeaveTimer = window.setTimeout(finishHidingJobPreview, 190);
+  };
+
+  const showJobPreview = (trigger: HTMLElement) => {
+    if (!heroJobPreview) return;
+    window.clearTimeout(previewHideTimer);
+    window.clearTimeout(previewLeaveTimer);
+    if (previewSalary) previewSalary.textContent = trigger.dataset.jobSalary || '';
+    if (previewTitle) previewTitle.textContent = trigger.dataset.jobTitle || '';
+    if (previewMeta) previewMeta.textContent = trigger.dataset.jobMeta || '';
+
+    heroJobPreview.hidden = false;
+    heroJobPreview.classList.remove('is-open', 'is-leaving');
+    heroJobPreview.setAttribute('aria-hidden', 'false');
+
+    requestAnimationFrame(() => {
+      const rect = trigger.getBoundingClientRect();
+      const width = heroJobPreview.offsetWidth;
+      const height = heroJobPreview.offsetHeight;
+      const left = Math.min(window.innerWidth - width - 12, Math.max(12, rect.left + rect.width / 2 - width / 2));
+      const preferredTop = rect.top - height - 14;
+      const opensAbove = preferredTop > 12;
+      const top = opensAbove ? preferredTop : Math.min(window.innerHeight - height - 12, rect.bottom + 14);
+      const originX = Math.min(width - 24, Math.max(24, rect.left + rect.width / 2 - left));
+      heroJobPreview.style.left = `${left}px`;
+      heroJobPreview.style.top = `${top}px`;
+      heroJobPreview.style.setProperty('--preview-origin-x', `${originX}px`);
+      heroJobPreview.style.setProperty('--preview-origin-y', opensAbove ? '100%' : '0%');
+      heroJobPreview.style.setProperty('--preview-drift', opensAbove ? '12px' : '-12px');
+      requestAnimationFrame(() => heroJobPreview.classList.add('is-open'));
+    });
+  };
+
+  // Keep the preview outside the hero's overflow and stacking context.
+  if (heroJobPreview && heroJobPreview.parentElement !== document.body) {
+    document.body.append(heroJobPreview);
+  }
+
+  heroJobTriggers.forEach((trigger) => {
+    trigger.addEventListener('pointerenter', (event) => {
+      if (event.pointerType !== 'touch') showJobPreview(trigger);
+    });
+    trigger.addEventListener('pointerleave', () => {
+      previewHideTimer = window.setTimeout(hideJobPreview, 100);
+    });
+    trigger.addEventListener('focus', () => showJobPreview(trigger));
+    trigger.addEventListener('blur', () => hideJobPreview());
+  });
+
+  window.addEventListener('scroll', () => hideJobPreview(true), { passive: true });
+  window.addEventListener('resize', () => hideJobPreview(true));
+</script>
 
 <style>
   .editorial-hero {
@@ -134,13 +245,30 @@ const heroTitleLines = [
     top: clamp(7rem, 15.2vh, 10.25rem);
     left: clamp(2rem, 4.58vw, 5.5rem);
     z-index: 2;
-    width: min(41.5%, 50rem);
+    width: min(46%, 55rem);
   }
+
+  .editorial-hero__eyebrow,
+  .editorial-hero__title-line,
+  .editorial-hero__description,
+  .editorial-hero__actions,
+  .editorial-hero__enterprise {
+    opacity: 0;
+    animation: hero-copy-arrive 760ms var(--ease-soft) forwards;
+  }
+
+  .editorial-hero__eyebrow { animation-delay: 80ms; }
+  .editorial-hero__title-line:nth-child(1) { animation-delay: 150ms; }
+  .editorial-hero__title-line:nth-child(2) { animation-delay: 235ms; }
+  .editorial-hero__title-line:nth-child(3) { animation-delay: 320ms; }
+  .editorial-hero__description { animation-delay: 440ms; }
+  .editorial-hero__actions { animation-delay: 550ms; }
+  .editorial-hero__enterprise { animation-delay: 650ms; }
 
   .editorial-hero__eyebrow {
     margin: 0 0 1.25rem;
     color: #a47f34;
-    font-size: 0.68rem;
+    font-size: clamp(0.82rem, 0.9vw, 1rem);
     font-weight: 780;
     letter-spacing: 0.16em;
     text-transform: uppercase;
@@ -151,7 +279,7 @@ const heroTitleLines = [
     margin: 0;
     color: var(--hero-ink);
     font-family: "Newsreader", "Iowan Old Style", "Baskerville", Georgia, serif;
-    font-size: clamp(3.65rem, 3.65vw, 4.4rem);
+    font-size: clamp(4.25rem, 4.45vw, 5.35rem);
     font-weight: 480;
     letter-spacing: -0.035em;
     line-height: 1.06;
@@ -174,7 +302,8 @@ const heroTitleLines = [
     max-width: 33rem;
     margin: 2.2rem 0 0;
     color: rgba(32, 52, 64, 0.68);
-    font-size: clamp(0.95rem, 1.25vw, 1.1rem);
+    max-width: 38rem;
+    font-size: clamp(1.15rem, 1.4vw, 1.32rem);
     line-height: 1.72;
   }
 
@@ -195,10 +324,15 @@ const heroTitleLines = [
     border-radius: 999px;
     padding: 0.85rem 1.35rem;
     color: var(--hero-ink);
-    font-size: 0.76rem;
+    font-size: clamp(0.9rem, 0.92vw, 1rem);
     font-weight: 780;
+    opacity: 1;
+    animation: hero-button-pop 720ms var(--ease-soft) backwards;
     transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 220ms var(--ease-soft);
   }
+
+  .editorial-hero__action:nth-child(1) { animation-delay: 620ms; }
+  .editorial-hero__action:nth-child(2) { animation-delay: 720ms; }
 
   .editorial-hero__action--primary {
     border-color: var(--hero-gold);
@@ -244,6 +378,8 @@ const heroTitleLines = [
     bottom: 0;
     left: 44.58%;
     isolation: isolate;
+    opacity: 0;
+    animation: hero-visual-arrive 980ms 240ms var(--ease-soft) forwards;
   }
 
   .editorial-hero__stone {
@@ -300,148 +436,360 @@ const heroTitleLines = [
     transform: scale(1.018);
   }
 
-  .editorial-hero__service-note {
+  .editorial-hero__review-notes {
     position: absolute;
-    right: 0;
-    bottom: 3.2%;
+    top: 10%;
+    right: 4.5%;
+    bottom: 10%;
     z-index: 2;
-    display: grid;
-    width: min(21rem, 70%);
-    gap: 0.42rem;
-    border-left: 3px solid var(--hero-gold);
-    padding: 1rem 1.2rem;
-    background: rgba(244, 240, 232, 0.96);
-    box-shadow: 0 16px 34px rgba(16, 38, 48, 0.13);
+    width: min(15rem, 31%);
+    pointer-events: none;
   }
 
-  .editorial-hero__rail {
+  .editorial-hero__review-note {
     position: absolute;
-    top: 24%;
-    right: 5.5%;
-    color: rgba(255,255,255,.38);
-    font-size: .56rem;
-    font-weight: 700;
-    letter-spacing: .25em;
-    text-transform: uppercase;
-    writing-mode: vertical-rl;
+    width: 100%;
+    border: 1px solid rgba(198, 164, 90, 0.48);
+    border-radius: 0.85rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 45px rgba(5, 20, 27, 0.22);
+    opacity: 0;
+    transform-origin: 85% 100%;
+    animation: hero-review-cycle 13.5s var(--ease-soft) infinite both;
+    animation-delay: calc(1.15s + var(--review-delay));
   }
 
-  .editorial-hero__service-note span {
-    color: #a47f34;
-    font-size: 0.54rem;
-    font-weight: 780;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
+  .editorial-hero__review-note--1 {
+    top: 7%;
+    right: 0;
   }
 
-  .editorial-hero__service-note strong {
-    color: var(--hero-ink);
-    font-size: 0.78rem;
-    line-height: 1.4;
+  .editorial-hero__review-note--2,
+  .editorial-hero__review-note--3 {
+    right: 16%;
+    bottom: 6%;
+    transform-origin: 15% 100%;
   }
 
-  .editorial-hero__trust {
-    display: grid;
-    min-height: 7.75rem;
-    grid-template-columns: minmax(14rem, 0.32fr) minmax(0, 1fr);
-    border-top: 1px solid rgba(32, 52, 64, 0.11);
-    background: #fff;
+  .editorial-hero__review-note--3 {
+    right: 2%;
+    bottom: 30%;
   }
 
-  .editorial-hero__trust-intro {
-    display: grid;
-    align-content: center;
-    padding: 1.6rem clamp(1.5rem, 4vw, 4rem);
-    border-right: 1px solid rgba(32, 52, 64, 0.11);
-    text-align: right;
-  }
-
-  .editorial-hero__trust-intro span {
-    color: var(--hero-ink);
-    font-size: 0.72rem;
-    font-weight: 760;
-  }
-
-  .editorial-hero__trust-intro p {
-    margin: 0.35rem 0 0;
-    color: rgba(32, 52, 64, 0.52);
+  .editorial-hero__review-note > span {
+    color: var(--hero-gold);
     font-size: 0.68rem;
-    line-height: 1.45;
+    letter-spacing: 0.12em;
   }
 
-  .editorial-hero__trust-list {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .editorial-hero__review-note p {
+    margin: 0.65rem 0 0.8rem;
+    color: var(--hero-ink);
+    font-size: 0.76rem;
+    line-height: 1.5;
   }
 
-  .editorial-hero__trust-list > a {
-    display: grid;
-    min-width: 0;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 0.72rem;
-    padding: 1.45rem 1.2rem;
-    border-right: 1px solid rgba(32, 52, 64, 0.08);
-    color: inherit;
-    transition: background-color 180ms ease, transform 220ms var(--ease-soft);
-  }
-
-  .editorial-hero__trust-list > a:hover,
-  .editorial-hero__trust-list > a:focus-visible {
-    background: rgba(198, 164, 90, 0.09);
-    outline: none;
-    transform: translateY(-2px);
-  }
-
-  .editorial-hero__trust-list > a > span {
-    color: #b79245;
-    font: 700 0.55rem/1 var(--font-mono);
-  }
-
-  .editorial-hero__trust-list > a > b {
-    color: #b79245;
-    font-size: .7rem;
-    transition: transform 180ms ease;
-  }
-
-  .editorial-hero__trust-list > a:hover > b,
-  .editorial-hero__trust-list > a:focus-visible > b {
-    transform: translate(2px,-2px);
-  }
-
-  .editorial-hero__trust-list strong,
-  .editorial-hero__trust-list small {
+  .editorial-hero__review-note strong,
+  .editorial-hero__review-note small {
     display: block;
   }
 
-  .editorial-hero__trust-list strong {
+  .editorial-hero__review-note strong {
     color: var(--hero-ink);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
   }
 
-  .editorial-hero__trust-list small {
-    margin-top: 0.22rem;
-    color: rgba(32, 52, 64, 0.66);
-    font-size: 0.61rem;
+  .editorial-hero__review-note small {
+    margin-top: 0.12rem;
+    color: rgba(32, 52, 64, 0.52);
+    font-size: 0.58rem;
+  }
+
+  .editorial-hero__jobs {
+    display: grid;
+    min-height: 7.25rem;
+    grid-template-columns: minmax(12rem, 0.24fr) minmax(0, 1fr);
+    border-top: 1px solid rgba(32, 52, 64, 0.11);
+    background: #fff;
+    opacity: 0;
+    animation: hero-jobs-arrive 820ms 840ms var(--ease-soft) forwards;
+  }
+
+  .editorial-hero__jobs-intro {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.35rem clamp(1.25rem, 3vw, 3rem);
+    border-right: 1px solid rgba(32, 52, 64, 0.11);
+    color: var(--hero-ink);
+  }
+
+  .editorial-hero__jobs-intro span {
+    color: #a47f34;
+    font-size: 0.56rem;
+    font-weight: 780;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .editorial-hero__jobs-intro strong {
+    margin-top: 0.25rem;
+    font-size: 0.82rem;
+  }
+
+  .editorial-hero__jobs-intro b {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .editorial-hero__jobs-marquee {
+    min-width: 0;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  }
+
+  .editorial-hero__jobs-track {
+    display: flex;
+    width: max-content;
+    height: 100%;
+    animation: hero-jobs-scroll 26s linear infinite;
+    will-change: transform;
+  }
+
+  .editorial-hero__jobs-marquee:hover .editorial-hero__jobs-track,
+  .editorial-hero__jobs-marquee:focus-within .editorial-hero__jobs-track {
+    animation-play-state: paused;
+  }
+
+  .editorial-hero__jobs-group {
+    display: flex;
+    height: 100%;
+  }
+
+  .editorial-hero__jobs-group > a {
+    position: relative;
+    display: grid;
+    width: clamp(14rem, 20vw, 19rem);
+    min-width: clamp(14rem, 20vw, 19rem);
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.4rem;
+    border-right: 1px solid rgba(32, 52, 64, 0.09);
+    color: var(--hero-ink);
+    transition: background 180ms ease, box-shadow 220ms ease;
+  }
+
+  .editorial-hero__jobs-group > a:hover,
+  .editorial-hero__jobs-group > a:focus-visible {
+    background: rgba(198, 164, 90, 0.09);
+    box-shadow: inset 0 3px 0 var(--hero-gold);
+    outline: none;
+  }
+
+  .editorial-hero__jobs-group strong,
+  .editorial-hero__jobs-group small {
+    display: block;
+  }
+
+  .editorial-hero__jobs-group strong {
+    color: var(--hero-ink);
+    font-size: 0.72rem;
     line-height: 1.35;
   }
 
+  .editorial-hero__job-copy > span {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 0.42rem;
+    border-radius: 999px;
+    padding: 0.28rem 0.55rem;
+    background: var(--hero-navy);
+    color: #fff;
+    font-size: 0.66rem;
+    font-weight: 820;
+    letter-spacing: -0.01em;
+    box-shadow: 0 7px 18px rgba(16, 38, 48, 0.16);
+  }
+
+  .editorial-hero__jobs-group small {
+    margin-top: 0.3rem;
+    color: rgba(32, 52, 64, 0.55);
+    font-size: 0.62rem;
+  }
+
+  .editorial-hero__jobs-group b {
+    color: var(--hero-gold);
+    font-size: 0.78rem;
+  }
+
+  .editorial-hero__job-preview {
+    --preview-origin-x: 50%;
+    --preview-origin-y: 100%;
+    --preview-drift: 12px;
+    position: fixed;
+    inset: auto;
+    z-index: 2147483000;
+    display: grid;
+    width: min(21rem, calc(100vw - 1.5rem));
+    gap: 0.35rem;
+    border: 1px solid rgba(198, 164, 90, 0.45);
+    border-radius: 0.85rem;
+    margin: 0;
+    padding: 1rem;
+    background: rgba(16, 38, 48, 0.98);
+    color: #fff;
+    box-shadow: 0 24px 55px rgba(5, 20, 27, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    clip-path: inset(82% 42% 0 42% round 0.85rem);
+    transform: translateY(var(--preview-drift)) scale(0.18, 0.08);
+    transform-origin: var(--preview-origin-x) var(--preview-origin-y);
+    filter: blur(5px);
+    transition:
+      opacity 150ms ease,
+      visibility 150ms ease,
+      clip-path 390ms cubic-bezier(0.2, 0.9, 0.25, 1),
+      transform 390ms cubic-bezier(0.2, 1.2, 0.3, 1),
+      filter 260ms ease;
+    pointer-events: none;
+  }
+
+  .editorial-hero__job-preview[hidden] {
+    display: none;
+  }
+
+  .editorial-hero__job-preview::after {
+    position: absolute;
+    left: var(--preview-origin-x);
+    width: 0.75rem;
+    height: 0.75rem;
+    border-right: 1px solid rgba(198, 164, 90, 0.45);
+    border-bottom: 1px solid rgba(198, 164, 90, 0.45);
+    background: #102630;
+    content: '';
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .editorial-hero__job-preview[style*="100%"]::after {
+    bottom: -0.42rem;
+  }
+
+  .editorial-hero__job-preview[style*="0%"]::after {
+    top: -0.42rem;
+    transform: translateX(-50%) rotate(225deg);
+  }
+
+  .editorial-hero__job-preview small {
+    margin: 0;
+    color: #d8bb70;
+    font-size: 0.56rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .editorial-hero__job-preview > span {
+    display: inline-flex;
+    width: fit-content;
+    margin-block: 0.25rem;
+    border-radius: 999px;
+    padding: 0.38rem 0.62rem;
+    background: var(--hero-gold);
+    color: var(--hero-navy);
+    font-size: 0.74rem;
+    font-weight: 820;
+  }
+
+  .editorial-hero__job-preview strong {
+    color: #fff;
+    font-size: 0.9rem;
+  }
+
+  .editorial-hero__job-preview p {
+    margin: 0;
+    color: rgba(255,255,255,.62);
+    font-size: .68rem;
+  }
+
+  .editorial-hero__job-preview b {
+    margin-top: 0.35rem;
+    color: #f2d996;
+    font-size: 0.68rem;
+  }
+
+  .editorial-hero__job-preview.is-open {
+    opacity: 1;
+    visibility: visible;
+    clip-path: inset(0 round 0.85rem);
+    transform: none;
+    filter: none;
+  }
+
+  .editorial-hero__job-preview.is-leaving {
+    opacity: 0;
+    visibility: hidden;
+    clip-path: inset(82% 42% 0 42% round 0.85rem);
+    transform: translateY(var(--preview-drift)) scale(0.18, 0.08);
+    filter: blur(4px);
+  }
+
+  @keyframes hero-jobs-scroll {
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes hero-review-cycle {
+    0% {
+      opacity: 0;
+      transform: translateY(22px) scale(0.82) rotate(-2deg);
+      box-shadow: 0 8px 22px rgba(5, 20, 27, 0.08);
+    }
+    4% {
+      opacity: 1;
+      transform: translateY(-3px) scale(1.055) rotate(0.8deg);
+      box-shadow: 0 0 0 5px rgba(198, 164, 90, 0.18), 0 24px 54px rgba(5, 20, 27, 0.3);
+    }
+    8%, 26% {
+      opacity: 1;
+      transform: none;
+      box-shadow: 0 18px 45px rgba(5, 20, 27, 0.22);
+    }
+    31% {
+      opacity: 0;
+      transform: translateY(-14px) scale(0.94) rotate(1.5deg);
+      box-shadow: 0 8px 20px rgba(5, 20, 27, 0.08);
+    }
+    32%, 100% {
+      opacity: 0;
+      transform: translateY(12px) scale(0.9);
+    }
+  }
+
+  @keyframes hero-copy-arrive {
+    from { opacity: 0; transform: translateX(-48px); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+
+  @keyframes hero-visual-arrive {
+    from { opacity: 0; transform: translateX(56px) scale(0.97); filter: blur(8px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+
+  @keyframes hero-button-pop {
+    from { opacity: 0; transform: translateY(20px) scale(0.78); filter: blur(5px); }
+    72% { opacity: 1; transform: translateY(-3px) scale(1.035); filter: none; }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+
+  @keyframes hero-jobs-arrive {
+    from { opacity: 0; transform: translateY(34px); filter: blur(7px); }
+    to { opacity: 1; transform: none; filter: none; }
+  }
+
   @media (max-width: 1180px) and (min-width: 801px) {
-    .editorial-hero__shell {
-      height: 45rem;
-    }
-
-    .editorial-hero__title {
-      font-size: clamp(3.3rem, 5.4vw, 4rem);
-    }
-
-    .editorial-hero__trust {
-      grid-template-columns: 1fr;
-    }
-
-    .editorial-hero__trust-intro {
-      display: none;
-    }
+    .editorial-hero__jobs { grid-template-columns: minmax(11rem, 0.24fr) minmax(0, 1fr); }
   }
 
   @media (min-width: 1181px) {
@@ -450,7 +798,13 @@ const heroTitleLines = [
     }
   }
 
-  @media (max-width: 800px) {
+  /*
+    The absolute overlap composition above needs the full desktop width: below
+    1181px — the same threshold the accent-line rule uses — the copy column and
+    the visual are squeezed into the same space and the CTAs spill out of the
+    shell into the section underneath. Everything narrower therefore stacks.
+  */
+  @media (max-width: 1180px) {
     .editorial-hero__shell {
       display: grid;
       grid-template-columns: 1fr;
@@ -479,7 +833,7 @@ const heroTitleLines = [
     */
     .editorial-hero__title {
       max-width: 14ch;
-      font-size: clamp(3rem, 8.5vw, 4.6rem);
+      font-size: clamp(3.4rem, 9.2vw, 5rem);
     }
 
     .editorial-hero__visual {
@@ -495,11 +849,8 @@ const heroTitleLines = [
 
     .editorial-hero__gold-frame { right:2%;bottom:0;left:4%;width:auto; }
     .editorial-hero__visual figure { inset:5% 9% 4% 10%;width:auto; }
-    .editorial-hero__stone,.editorial-hero__rail { display:none; }
-
-    .editorial-hero__trust-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    .editorial-hero__stone { display:none; }
+    .editorial-hero__review-notes { right: 3%; width: min(14rem, 34%); }
   }
 
   @media (max-width: 520px) {
@@ -511,7 +862,7 @@ const heroTitleLines = [
     /* 17vw was ~66px on a 390px screen: "À chaque étape." could not hold one line. */
     .editorial-hero__title {
       max-width: 15ch;
-      font-size: clamp(2.35rem, 10.5vw, 3.3rem);
+      font-size: clamp(2.75rem, 12vw, 3.75rem);
     }
 
     .editorial-hero__actions {
@@ -530,27 +881,68 @@ const heroTitleLines = [
       inset: 6% 4% 0 9%;
     }
 
-    .editorial-hero__service-note {
-      right: -0.25rem;
-      width: 82%;
-    }
-
-    .editorial-hero__trust-list {
-      grid-template-columns: 1fr;
-    }
-
-    .editorial-hero__trust-list > a {
-      border-bottom: 1px solid rgba(32, 52, 64, 0.08);
-      padding-inline: 1rem;
-    }
+    .editorial-hero__review-notes { top:auto;right:0;bottom:4%;width:72%; }
+    .editorial-hero__review-note--1 { position:relative;top:auto;right:auto; }
+    .editorial-hero__review-note--2,
+    .editorial-hero__review-note--3 { display:none; }
+    .editorial-hero__jobs { grid-template-columns: 1fr; }
+    .editorial-hero__jobs-intro { display:none; }
+    .editorial-hero__jobs-group > a { min-width: 15rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .editorial-hero__visual img,
+    .editorial-hero__visual,
+    .editorial-hero__eyebrow,
+    .editorial-hero__title-line,
+    .editorial-hero__description,
+    .editorial-hero__actions,
+    .editorial-hero__enterprise,
     .editorial-hero__action,
     .editorial-hero__action b,
-    .editorial-hero__enterprise b {
+    .editorial-hero__enterprise b,
+    .editorial-hero__review-note,
+    .editorial-hero__jobs,
+    .editorial-hero__jobs-track {
+      animation: none;
       transition: none;
+    }
+
+    .editorial-hero__visual,
+    .editorial-hero__eyebrow,
+    .editorial-hero__title-line,
+    .editorial-hero__description,
+    .editorial-hero__actions,
+    .editorial-hero__enterprise {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .editorial-hero__action,
+    .editorial-hero__jobs {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .editorial-hero__review-note--1 {
+      opacity: 1;
+      transform: none;
+    }
+
+    .editorial-hero__review-note--2 {
+      display: none;
+    }
+
+    .editorial-hero__jobs-marquee {
+      overflow-x: auto;
+      mask-image: none;
+      -webkit-mask-image: none;
+    }
+
+    .editorial-hero__jobs-group[aria-hidden="true"] {
+      display: none;
     }
   }
 </style>

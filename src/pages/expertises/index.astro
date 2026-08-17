@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
 import PageLayout from '../../layouts/PageLayout.astro';
 import SiteIcon from '../../components/ui/SiteIcon.astro';
 import BrandAmbientShapes from '../../components/ui/BrandAmbientShapes.astro';
 import { expertises } from '../../data/expertises.data';
+import tripartiteClient from '../../assets/home/tripartite-client.png';
+import qualifiedMatch from '../../assets/enterprise/qualified-match.png';
 
 const seo = {
   title: 'Expertises IT, data, cyber, cloud et produit — The Porters',
@@ -19,54 +22,79 @@ const commonJourney = [
 ---
 
 <PageLayout seo={seo} breadcrumbs={[{ label: 'Expertises' }]}>
-  <section class="expertise-hero brand-ambient-host">
+  <section class="expertise-hero brand-ambient-host" data-motion-section data-motion-hold="2200">
     <BrandAmbientShapes placement="left" tone="dark" />
     <div class="expertise-shell expertise-hero-grid">
-      <div class="expertise-hero-copy reveal">
-        <p>Expertises IT</p>
-        <h1>Partez du problème.<br /><span>Activez la bonne expertise.</span></h1>
-        <strong>
+      <div class="expertise-hero-copy">
+        <p data-motion-item="left" style="--motion-order:0">Expertises IT</p>
+        <h1 data-motion-item="left" style="--motion-order:1">Dites-nous le problème.<br /><span>Nous savons qui l’a déjà résolu.</span></h1>
+        <strong data-motion-item="left" style="--motion-order:2">
           Cyber, data, IA, cloud, DevOps, produit ou transformation&nbsp;: chaque mission commence
           par un contexte précis, jamais par une étiquette.
         </strong>
-        <a href="#explorer">Explorer les domaines <span aria-hidden="true">↓</span></a>
+        <a href="#explorer" data-motion-item="pop" style="--motion-order:3">Explorer les domaines <span aria-hidden="true">↓</span></a>
       </div>
 
-      <div class="expertise-constellation reveal" data-expertise-constellation aria-label="Carte des expertises The Porters">
-        <svg viewBox="0 0 620 620" aria-hidden="true">
-          <circle cx="310" cy="310" r="205" />
-          <circle cx="310" cy="310" r="118" />
-          <path d="M310 62V558M62 310H558M134 134 486 486M486 134 134 486" />
-        </svg>
-        <div class="expertise-core">
+      <div class="expertise-signal-stage" data-motion-item="pop" style="--motion-order:2" data-expertise-stage data-cms-ignore aria-label="Du besoin au résultat avec The Porters">
+        <figure class="signal-image signal-image--brief is-active" data-signal-image aria-hidden="true">
+          <Image src={tripartiteClient} alt="" widths={[320, 520]} sizes="(max-width: 720px) 42vw, 15rem" format="webp" quality={82} />
+          <figcaption>Le besoin, avec les personnes qui le portent</figcaption>
+        </figure>
+        <figure class="signal-image signal-image--result" data-signal-image aria-hidden="true">
+          <Image src={qualifiedMatch} alt="" widths={[320, 520]} sizes="(max-width: 720px) 42vw, 15rem" format="webp" quality={82} />
+          <figcaption>Une expertise qualifiée pour le contexte</figcaption>
+        </figure>
+        <div class="signal-spine" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="signal-core" aria-hidden="true">
           <small>Point de départ</small>
           <strong>Votre mission</strong>
+          <span>Besoin · résultat · contraintes</span>
+        </div>
+        <div class="signal-card signal-card--brief">
+          <small>01 · Le brief</small>
+          <strong>Votre problème</strong>
           <span>Contexte · résultat · contraintes</span>
         </div>
-        {expertises.map((expertise, index) => (
-          <a
-            href={`/expertises/${expertise.slug}`}
-            class={`constellation-node node-${index + 1}`}
-            data-constellation-node
-          >
-            <span>0{index + 1}</span>
-            <strong>{expertise.eyebrow}</strong>
-          </a>
+        <div class="signal-card signal-card--match">
+          <small>02 · Le choix</small>
+          <strong>La bonne expertise</strong>
+          <span>Le niveau réellement nécessaire</span>
+        </div>
+        <div class="signal-card signal-card--result">
+          <small>03 · La sortie</small>
+          <strong>Un résultat cadré</strong>
+          <span>Livrables · passage · transmission</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="expertise-domain-tape" data-cms-ignore aria-label="Domaines d’expertise disponibles">
+      <div>
+        {[...expertises, ...expertises].map((expertise) => (
+          <a href={`/expertises/${expertise.slug}`}><span>{expertise.eyebrow}</span><i aria-hidden="true"></i></a>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="expertise-explorer brand-ambient-host" id="explorer">
+  <section class="expertise-explorer brand-ambient-host" id="explorer" data-motion-section data-expertise-explorer>
     <BrandAmbientShapes placement="left" />
     <div class="expertise-shell">
-      <header class="expertise-heading reveal">
-        <p>La carte des domaines</p>
-        <h2>Une vue claire, <span class="gold-underline">un domaine à la fois</span>.</h2>
-        <strong>Sélectionnez une expertise pour voir les profils, les missions et la valeur attendue.</strong>
+      <header class="expertise-heading">
+        <p data-motion-item="left" style="--motion-order:0">La carte des domaines</p>
+        <h2 data-motion-item="left" style="--motion-order:1">Six domaines, <span class="gold-underline">et ce qu’on y fait vraiment</span>.</h2>
+        <strong data-motion-item="right" style="--motion-order:2">Cliquez sur un domaine pour voir les profils, les missions et ce qu’on en attend.</strong>
       </header>
 
-      <div class="expertise-workbench reveal" data-expertise-workbench>
+      <div class="expertise-explorer-tape" data-motion-item="wipe" style="--motion-order:3" data-cms-ignore aria-hidden="true">
+        <div>
+          {[...expertises, ...expertises].map((expertise) => (
+            <span>{expertise.eyebrow}<i></i></span>
+          ))}
+        </div>
+      </div>
+
+      <div class="expertise-workbench" data-motion-item="wipe" style="--motion-order:4" data-expertise-workbench>
         <div class="expertise-selector" role="tablist" aria-label="Domaines d’expertise">
           {expertises.map((expertise, index) => (
             <button
@@ -79,7 +107,6 @@ const commonJourney = [
               class:list={['expertise-selector-button', { 'is-active': index === 0 }]}
               data-expertise-tab
             >
-              <span>0{index + 1}</span>
               <strong>{expertise.eyebrow}</strong>
               <small>{expertise.roles.slice(0, 2).join(' · ')}</small>
               <b aria-hidden="true">→</b>
@@ -104,7 +131,6 @@ const commonJourney = [
                   <h3>{expertise.introTitle}</h3>
                 </div>
                 <div class="expertise-panel-actions">
-                  <span class="expertise-panel-index">0{index + 1}</span>
                   <a class="expertise-panel-cta" href={`/expertises/${expertise.slug}`}>
                     Voir le domaine en détail <span aria-hidden="true">↗</span>
                   </a>
@@ -115,25 +141,27 @@ const commonJourney = [
               <div class="expertise-panel-grid">
                 <section>
                   <div class="expertise-section-title"><SiteIcon name="users" /><h4>Profils</h4></div>
-                  <div class="expertise-tags">
-                    {expertise.roles.slice(0, 6).map((role) => <span>{role}</span>)}
+                  <div class="expertise-tags-viewport">
+                    <div class="expertise-tags" data-profile-ticker>
+                      {expertise.roles.slice(0, 6).map((role) => <span>{role}</span>)}
+                    </div>
                   </div>
                 </section>
                 <section>
                   <div class="expertise-section-title"><SiteIcon name="compass" /><h4>Missions</h4></div>
                   <ol class="expertise-missions">
                     {expertise.missionTypes.slice(0, 4).map((mission, missionIndex) => (
-                      <li><span>0{missionIndex + 1}</span>{mission}</li>
+                      <li style={`--mission-index:${missionIndex}`}>{mission}</li>
                     ))}
                   </ol>
                 </section>
               </div>
 
               <section class="expertise-value">
-                <div class="expertise-section-title"><SiteIcon name="spark" /><h4>Valeur concrète</h4></div>
+                <div class="expertise-section-title"><SiteIcon name="spark" /><h4>Ce que ça change</h4></div>
                 <div>
-                  {expertise.businessValue.map((value) => (
-                    <article>
+                  {expertise.businessValue.map((value, valueIndex) => (
+                    <article style={`--value-index:${valueIndex}`}>
                       <strong>{value.title}</strong>
                       <p>{value.text}</p>
                     </article>
@@ -148,17 +176,16 @@ const commonJourney = [
     </div>
   </section>
 
-  <section class="expertise-journey" data-expertise-journey>
+  <section class="expertise-journey" data-expertise-journey data-motion-section>
     <div class="expertise-shell">
-      <header class="expertise-heading expertise-heading--light reveal">
-        <p>Une méthode commune</p>
-        <h2>De la question au résultat.</h2>
+      <header class="expertise-heading expertise-heading--light">
+        <p data-motion-item="left" style="--motion-order:0">Une méthode commune</p>
+        <h2 data-motion-item="left" style="--motion-order:1">Quatre temps, du brief à la passation.</h2>
       </header>
       <div class="journey-track" aria-label="Déroulement commun d’une mission">
         <div class="journey-line" aria-hidden="true"><span data-journey-progress></span></div>
         {commonJourney.map((step, index) => (
-          <article class="journey-step reveal" data-journey-step style={`--journey-index:${index}`}>
-            <span>{step.number}</span>
+          <article class="journey-step" data-motion-item="pop" data-journey-step style={`--journey-index:${index};--motion-order:${index + 2}`}>
             <div>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
@@ -175,9 +202,25 @@ const commonJourney = [
     const tabs = Array.from(workbench.querySelectorAll<HTMLButtonElement>('[data-expertise-tab]'));
     const panels = Array.from(workbench.querySelectorAll<HTMLElement>('[data-expertise-panel]'));
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeIndex = Math.max(0, tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true'));
+    let cycleTimer = 0;
+    let isPaused = false;
+    let isInView = !('IntersectionObserver' in window);
+
+    workbench.querySelectorAll<HTMLElement>('[data-profile-ticker]').forEach((ticker) => {
+      if (ticker.dataset.tickerReady === 'true') return;
+      Array.from(ticker.children).forEach((item) => {
+        const clone = item.cloneNode(true) as HTMLElement;
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('data-cms-ignore', 'true');
+        ticker.append(clone);
+      });
+      ticker.dataset.tickerReady = 'true';
+    });
 
     const select = (nextIndex: number, focus = false, updateHash = true) => {
       const index = (nextIndex + tabs.length) % tabs.length;
+      activeIndex = index;
       tabs.forEach((tab, tabIndex) => {
         const active = tabIndex === index;
         tab.classList.toggle('is-active', active);
@@ -189,13 +232,30 @@ const commonJourney = [
         const active = panelIndex === index;
         panel.hidden = !active;
         panel.classList.remove('is-entering');
-        if (active && !reducedMotion) requestAnimationFrame(() => panel.classList.add('is-entering'));
+        if (active && !reducedMotion) requestAnimationFrame(() => {
+          panel.classList.add('is-entering');
+          window.setTimeout(() => panel.classList.remove('is-entering'), 760);
+        });
       });
       if (updateHash) history.replaceState(null, '', `#expertise-panel-${panels[index]?.dataset.expertiseSlug}`);
     };
 
+    const stopCycle = () => window.clearTimeout(cycleTimer);
+    const scheduleCycle = () => {
+      stopCycle();
+      workbench.classList.toggle('is-paused', isPaused || !isInView);
+      if (reducedMotion || isPaused || !isInView || tabs.length < 2) return;
+      cycleTimer = window.setTimeout(() => {
+        select(activeIndex + 1, false, false);
+        scheduleCycle();
+      }, 3400);
+    };
+
     tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => select(index));
+      tab.addEventListener('click', () => {
+        select(index);
+        scheduleCycle();
+      });
       tab.addEventListener('keydown', (event) => {
         if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
         event.preventDefault();
@@ -208,20 +268,112 @@ const commonJourney = [
       });
     });
 
+    workbench.addEventListener('focusin', () => {
+      isPaused = true;
+      scheduleCycle();
+    });
+    workbench.addEventListener('focusout', () => requestAnimationFrame(() => {
+      isPaused = workbench.contains(document.activeElement);
+      scheduleCycle();
+    }));
+
     const requested = location.hash.replace('#expertise-panel-', '');
     const requestedIndex = panels.findIndex((panel) => panel.dataset.expertiseSlug === requested);
     if (requestedIndex >= 0) select(requestedIndex, false, false);
+
+    if ('IntersectionObserver' in window) {
+      const visibilityObserver = new IntersectionObserver(([entry]) => {
+        isInView = Boolean(entry?.isIntersecting);
+        scheduleCycle();
+      }, { threshold: 0.28 });
+      visibilityObserver.observe(workbench);
+    } else {
+      scheduleCycle();
+    }
   });
 
-  document.querySelectorAll<HTMLElement>('[data-expertise-constellation]').forEach((constellation) => {
-    const nodes = Array.from(constellation.querySelectorAll<HTMLElement>('[data-constellation-node]'));
-    nodes.forEach((node, index) => {
-      node.addEventListener('pointerenter', () => {
-        nodes.forEach((item, itemIndex) => item.classList.toggle('is-related', itemIndex === index));
-        constellation.style.setProperty('--active-angle', `${index * (360 / nodes.length)}deg`);
+  document.querySelectorAll<HTMLElement>('[data-expertise-stage]').forEach((stage) => {
+    const cards = Array.from(stage.querySelectorAll<HTMLElement>('.signal-card'));
+    const images = Array.from(stage.querySelectorAll<HTMLElement>('[data-signal-image]'));
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeIndex = 0;
+    let timer = 0;
+    let isVisible = !('IntersectionObserver' in window);
+    let isPaused = false;
+
+    const highlight = (index: number) => {
+      activeIndex = (index + cards.length) % cards.length;
+      cards.forEach((card, cardIndex) => card.classList.toggle('is-active', cardIndex === activeIndex));
+      images.forEach((image, imageIndex) => image.classList.toggle('is-active', imageIndex === (activeIndex === 2 ? 1 : 0)));
+    };
+    const schedule = () => {
+      window.clearTimeout(timer);
+      if (reducedMotion || isPaused || !isVisible || cards.length < 2) return;
+      timer = window.setTimeout(() => {
+        highlight(activeIndex + 1);
+        schedule();
+      }, 1850);
+    };
+
+    cards.forEach((card, index) => {
+      card.addEventListener('pointerenter', () => {
+        isPaused = true;
+        highlight(index);
+        schedule();
       });
-      node.addEventListener('pointerleave', () => node.classList.remove('is-related'));
+      card.addEventListener('pointerleave', () => {
+        isPaused = false;
+        schedule();
+      });
+      card.addEventListener('focusin', () => {
+        isPaused = true;
+        highlight(index);
+        schedule();
+      });
+      card.addEventListener('focusout', () => {
+        isPaused = false;
+        schedule();
+      });
     });
+    highlight(0);
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(([entry]) => {
+        isVisible = Boolean(entry?.isIntersecting);
+        schedule();
+      }, { threshold: .35 });
+      observer.observe(stage);
+    } else {
+      schedule();
+    }
+
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reducedMotion) {
+      stage.addEventListener('pointermove', (event) => {
+        const box = stage.getBoundingClientRect();
+        const x = (event.clientX - box.left) / box.width - .5;
+        const y = (event.clientY - box.top) / box.height - .5;
+        stage.style.setProperty('--stage-x', `${x * 9}px`);
+        stage.style.setProperty('--stage-y', `${y * 6}px`);
+      });
+      stage.addEventListener('pointerleave', () => {
+        stage.style.setProperty('--stage-x', '0px');
+        stage.style.setProperty('--stage-y', '0px');
+      });
+    }
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-expertise-explorer]').forEach((explorer) => {
+    const activate = () => explorer.classList.add('is-live');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      activate();
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      activate();
+      observer.disconnect();
+    }, { threshold: .18 });
+    observer.observe(explorer);
   });
 
   document.querySelectorAll<HTMLElement>('[data-expertise-journey]').forEach((journey) => {
@@ -314,115 +466,276 @@ const commonJourney = [
     align-items: center;
     gap: 0.7rem;
     margin-top: 2rem;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 999px;
+    padding: .8rem 1rem;
+    background: rgba(255,255,255,.055);
     color: #fff;
     font-size: 0.82rem;
     font-weight: 760;
+    text-decoration: none;
+    transition: transform 220ms var(--ease-soft), background 220ms ease, border-color 220ms ease;
   }
 
-  .expertise-constellation {
+  .expertise-hero-copy > a:hover,
+  .expertise-hero-copy > a:focus-visible {
+    border-color: rgba(213,182,104,.7);
+    background: rgba(213,182,104,.13);
+    outline: none;
+    transform: translateY(-3px);
+  }
+
+  .expertise-hero-copy > a span {
+    transition: transform 220ms var(--ease-soft);
+  }
+
+  .expertise-hero-copy > a:hover span {
+    transform: translateY(3px);
+  }
+
+  .expertise-signal-stage {
+    --stage-x: 0px;
+    --stage-y: 0px;
     position: relative;
-    width: min(100%, 37rem);
-    aspect-ratio: 1;
+    width: min(100%, 39rem);
+    min-height: 32rem;
     margin-inline: auto;
+    isolation: isolate;
   }
 
-  .expertise-constellation > svg {
+  .expertise-signal-stage::before {
     position: absolute;
-    inset: 0;
+    z-index: -2;
+    inset: 3% 7%;
+    border: 1px solid rgba(213,182,104,.2);
+    border-radius: 50%;
+    background:
+      linear-gradient(115deg, rgba(255,255,255,.055), transparent 42%),
+      radial-gradient(circle at 50% 42%, rgba(213,182,104,.17), transparent 45%);
+    content: "";
+    transform: translate(var(--stage-x), var(--stage-y)) rotate(-8deg);
+    transition: transform 900ms cubic-bezier(.16,1,.3,1);
+  }
+
+  .expertise-signal-stage::after {
+    position: absolute;
+    z-index: -1;
+    inset: 18% 24%;
+    border-radius: 50%;
+    background: rgba(255,255,255,.035);
+    box-shadow: 0 0 0 3rem rgba(213,182,104,.025);
+    content: "";
+    animation: signal-halo-pulse 5.6s ease-in-out infinite;
+  }
+
+  .signal-spine {
+    position: absolute;
+    z-index: 1;
+    top: 9%;
+    bottom: 9%;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(transparent, rgba(213,182,104,.58) 16% 84%, transparent);
+    transform: translateX(-50%);
+  }
+
+  .signal-image {
+    position: absolute;
+    z-index: 0;
+    width: clamp(11rem, 37%, 15rem);
+    overflow: hidden;
+    margin: 0;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 1rem;
+    background: #173440;
+    box-shadow: 0 22px 60px rgba(0,0,0,.24);
+    opacity: .17;
+    filter: saturate(.6) brightness(.72);
+    transform: translateY(24px) scale(.88) rotate(var(--signal-image-tilt));
+    transition: opacity .6s ease, filter .6s ease, transform .8s cubic-bezier(.16,1,.3,1);
+    animation: signal-image-drift 6.8s ease-in-out var(--signal-image-delay, 0s) infinite;
+  }
+
+  .signal-image img {
+    display: block;
     width: 100%;
-    height: 100%;
-    animation: constellation-spin 58s linear infinite;
+    aspect-ratio: 1.35;
+    object-fit: cover;
   }
 
-  .expertise-constellation svg circle,
-  .expertise-constellation svg path {
-    fill: none;
-    stroke: rgba(213, 182, 104, 0.24);
-    stroke-width: 1;
-    stroke-dasharray: 6 10;
+  .signal-image figcaption {
+    padding: .62rem .72rem;
+    color: rgba(255,255,255,.72);
+    font-size: .56rem;
+    font-weight: 680;
+    line-height: 1.35;
   }
 
-  .expertise-core {
+  .signal-image.is-active {
+    z-index: 2;
+    opacity: .96;
+    filter: saturate(1.05) brightness(1.02);
+    box-shadow: 0 32px 78px rgba(0,0,0,.36), 0 0 0 .3rem rgba(213,182,104,.09);
+    transform: translateY(-8px) scale(1.04) rotate(var(--signal-image-tilt));
+  }
+
+  .signal-image--brief {
+    --signal-image-tilt: -4deg;
+    top: 21%;
+    left: 5%;
+  }
+
+  .signal-image--result {
+    --signal-image-delay: -3.1s;
+    --signal-image-tilt: 4deg;
+    right: 5%;
+    bottom: 17%;
+  }
+
+  .signal-spine i {
     position: absolute;
+    left: 50%;
+    width: .62rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #d5b668;
+    box-shadow: 0 0 0 .55rem rgba(213,182,104,.1);
+    transform: translate(-50%,-50%);
+  }
+
+  .signal-spine i:nth-child(1) { top: 10%; }
+  .signal-spine i:nth-child(2) { top: 50%; }
+  .signal-spine i:nth-child(3) { top: 90%; }
+
+  .signal-core {
+    position: absolute;
+    z-index: 3;
     top: 50%;
     left: 50%;
     display: grid;
-    width: 12.5rem;
+    width: clamp(12rem, 34%, 14rem);
     aspect-ratio: 1;
     place-content: center;
-    border: 1px solid rgba(213, 182, 104, 0.45);
+    gap: .5rem;
+    border: 1px solid rgba(213,182,104,.75);
     border-radius: 50%;
-    background: rgba(16, 38, 48, 0.84);
-    box-shadow: 0 0 0 2rem rgba(213, 182, 104, 0.04), 0 24px 70px rgba(0,0,0,.25);
+    background: rgba(10,34,44,.92);
+    box-shadow: 0 0 0 1.4rem rgba(213,182,104,.045), 0 0 0 3.2rem rgba(213,182,104,.025), 0 30px 70px rgba(0,0,0,.22);
     text-align: center;
-    transform: translate(-50%, -50%);
-    backdrop-filter: blur(12px);
+    transform: translate(calc(-50% + var(--stage-x)), calc(-50% + var(--stage-y)));
+    transition: transform 900ms cubic-bezier(.16,1,.3,1);
+    animation: signal-core-breathe 5.4s ease-in-out infinite;
   }
 
-  .expertise-core small {
+  .signal-core::before,
+  .signal-core::after {
+    position: absolute;
+    inset: -3.8rem;
+    border: 1px dashed rgba(213,182,104,.22);
+    border-radius: 50%;
+    content: "";
+    animation: signal-orbit-spin 24s linear infinite;
+  }
+
+  .signal-core::after {
+    inset: -6.6rem;
+    border-style: solid;
+    border-color: rgba(255,255,255,.07) transparent rgba(213,182,104,.14);
+    animation-duration: 32s;
+    animation-direction: reverse;
+  }
+
+  .signal-core small {
     color: #d5b668;
-    font-size: 0.58rem;
-    font-weight: 760;
-    letter-spacing: 0.12em;
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .14em;
     text-transform: uppercase;
   }
 
-  .expertise-core strong {
-    margin-top: 0.45rem;
-    color: #fff;
-    font-family: var(--font-heading);
-    font-size: 1.35rem;
-  }
+  .signal-core strong { color: #fff; font-size: 1.15rem; }
+  .signal-core span { color: rgba(255,255,255,.52); font-size: .62rem; }
 
-  .expertise-core span {
-    margin-top: 0.35rem;
-    color: rgba(255,255,255,.52);
-    font-size: 0.62rem;
-  }
-
-  .constellation-node {
+  .signal-card {
     position: absolute;
-    z-index: 2;
+    z-index: 4;
     display: grid;
-    min-width: 9.5rem;
-    gap: 0.18rem;
-    border: 1px solid rgba(255,255,255,.13);
-    border-radius: 12px;
-    padding: 0.75rem 0.9rem;
-    background: rgba(255,255,255,.075);
+    width: 13.5rem;
+    gap: .22rem;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 14px;
+    padding: .9rem 1rem;
+    background: rgba(20,43,55,.82);
     color: #fff;
-    box-shadow: 0 14px 32px rgba(0,0,0,.16);
+    box-shadow: 0 18px 46px rgba(0,0,0,.18);
+    opacity: .76;
+    backdrop-filter: blur(13px);
+    transform: translateY(0) scale(.96);
+    transition: opacity .3s ease, border-color .3s ease, background .3s ease, transform .45s cubic-bezier(.16,1,.3,1);
+    animation: signal-card-drift var(--signal-card-duration, 4.8s) ease-in-out var(--signal-card-delay, 0s) infinite;
+  }
+
+  .signal-card::after {
+    position: absolute;
+    top: 50%;
+    width: 2rem;
+    height: 1px;
+    background: rgba(213,182,104,.48);
+    content: "";
+  }
+
+  .signal-card small { color:#d5b668;font-size:.55rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase; }
+  .signal-card strong { color:#fff;font-size:.83rem; }
+  .signal-card span { color:rgba(255,255,255,.55);font-size:.58rem;line-height:1.45; }
+  .signal-card.is-active,
+  .signal-card:hover { z-index:6;border-color:rgba(213,182,104,.88);background:rgba(32,55,65,.98);box-shadow:0 26px 58px rgba(0,0,0,.35),0 0 0 .35rem rgba(213,182,104,.1);opacity:1;transform:translateY(-14px) scale(1.055); }
+  .signal-card--brief { --signal-card-delay:-.7s;top: 5%; left: 1%; }
+  .signal-card--brief::after { left: 100%; }
+  .signal-card--match { --signal-card-delay:-2.2s;--signal-card-duration:5.3s;top: 40%; right: -1%; }
+  .signal-card--match::after { right: 100%; }
+  .signal-card--result { --signal-card-delay:-3.6s;--signal-card-duration:5.7s;bottom: 4%; left: 3%; }
+  .signal-card--result::after { left: 100%; }
+
+  .expertise-domain-tape,
+  .expertise-explorer-tape {
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .expertise-domain-tape {
+    margin-top: clamp(2rem,4vw,3.25rem);
+    border-block: 1px solid rgba(255,255,255,.1);
+    background: rgba(7,24,32,.42);
     backdrop-filter: blur(12px);
-    transition: border-color 180ms ease, background 180ms ease, transform 240ms var(--ease-soft);
   }
 
-  .constellation-node:hover,
-  .constellation-node:focus-visible,
-  .constellation-node.is-related {
-    border-color: rgba(213, 182, 104, 0.75);
-    background: rgba(213, 182, 104, 0.14);
-    outline: none;
-    transform: translateY(-4px);
+  .expertise-domain-tape > div,
+  .expertise-explorer-tape > div {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: expertise-tape-roll 23s linear infinite;
   }
 
-  .constellation-node span {
-    color: #d5b668;
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
+  .expertise-domain-tape a {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: .85rem 1.2rem;
+    color: rgba(255,255,255,.72);
+    font-size: .67rem;
+    font-weight: 780;
+    letter-spacing: .12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .2s ease;
   }
 
-  .constellation-node strong {
-    font-size: 0.74rem;
-  }
-
-  .node-1 { top: 2%; left: 50%; transform: translateX(-50%); }
-  .node-1:hover, .node-1:focus-visible { transform: translate(-50%, -4px); }
-  .node-2 { top: 25%; right: 0; }
-  .node-3 { right: 7%; bottom: 13%; }
-  .node-4 { bottom: 2%; left: 50%; transform: translateX(-50%); }
-  .node-4:hover, .node-4:focus-visible { transform: translate(-50%, -4px); }
-  .node-5 { bottom: 13%; left: 7%; }
-  .node-6 { top: 25%; left: 0; }
+  .expertise-domain-tape a:hover { color:#d5b668; }
+  .expertise-domain-tape i,
+  .expertise-explorer-tape i { width:.35rem;aspect-ratio:1;border-radius:50%;background:#d5b668; }
 
   .expertise-explorer {
     padding-block: clamp(5rem, 9vw, 8rem);
@@ -450,7 +763,31 @@ const commonJourney = [
     line-height: 1.7;
   }
 
+  .expertise-explorer-tape {
+    margin: -1.35rem 0 1.35rem;
+    border-block: 1px solid rgba(40,55,67,.09);
+    background: rgba(255,255,255,.58);
+  }
+
+  .expertise-explorer-tape > div {
+    animation-duration: 34s;
+    animation-direction: reverse;
+  }
+
+  .expertise-explorer-tape span {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .72rem 1rem;
+    color: rgba(37,55,67,.66);
+    font-size: .64rem;
+    font-weight: 760;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
   .expertise-workbench {
+    position: relative;
     display: grid;
     grid-template-columns: minmax(15rem, .35fr) minmax(0, 1fr);
     overflow: hidden;
@@ -458,6 +795,43 @@ const commonJourney = [
     border-radius: 18px;
     background: #fff;
     box-shadow: 0 28px 75px rgba(40,55,67,.09);
+    transition: box-shadow 380ms ease, transform 380ms var(--ease-soft);
+  }
+
+  .expertise-workbench::before {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    width: 22%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d5b668, transparent);
+    content: "";
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .expertise-explorer.is-live .expertise-workbench::before {
+    animation: explorer-glint 4.8s 1.1s ease-in-out infinite;
+  }
+
+  .expertise-explorer.is-live .expertise-selector-button {
+    animation: explorer-tab-arrive 680ms var(--ease-soft) both;
+  }
+
+  .expertise-explorer.is-live .expertise-selector-button:nth-child(2) { animation-delay: 70ms; }
+  .expertise-explorer.is-live .expertise-selector-button:nth-child(3) { animation-delay: 140ms; }
+  .expertise-explorer.is-live .expertise-selector-button:nth-child(4) { animation-delay: 210ms; }
+  .expertise-explorer.is-live .expertise-selector-button:nth-child(5) { animation-delay: 280ms; }
+  .expertise-explorer.is-live .expertise-selector-button:nth-child(6) { animation-delay: 350ms; }
+
+  .expertise-explorer.is-live .expertise-panels {
+    animation: explorer-panel-arrive 820ms 120ms var(--ease-soft) both;
+  }
+
+  .expertise-workbench:hover {
+    box-shadow: 0 38px 95px rgba(40,55,67,.14);
+    transform: translateY(-3px);
   }
 
   .expertise-selector {
@@ -494,6 +868,18 @@ const commonJourney = [
     transition: transform 220ms var(--ease-soft);
   }
 
+  .expertise-selector-button::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #d5b668, rgba(213,182,104,.2));
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
   .expertise-selector-button:hover,
   .expertise-selector-button:focus-visible,
   .expertise-selector-button.is-active {
@@ -504,6 +890,14 @@ const commonJourney = [
 
   .expertise-selector-button.is-active::before {
     transform: scaleY(1);
+  }
+
+  .expertise-selector-button.is-active::after {
+    animation: expertise-tab-progress 4s linear forwards;
+  }
+
+  .expertise-workbench.is-paused .expertise-selector-button.is-active::after {
+    animation-play-state: paused;
   }
 
   .expertise-selector-button > span {
@@ -533,13 +927,40 @@ const commonJourney = [
     color: #d5b668;
   }
 
+  .expertise-selector-button.is-active > b {
+    animation: selector-arrow-nudge 1.35s ease-in-out infinite;
+  }
+
   .expertise-panels {
     min-width: 0;
-    min-height: 48rem;
+    min-height: 44rem;
+    background: radial-gradient(circle at 88% 12%, rgba(213,182,104,.11), transparent 28%), #fff;
   }
 
   .expertise-panel {
+    position: relative;
+    overflow: hidden;
     padding: clamp(1.7rem, 4vw, 3.5rem);
+  }
+
+  .expertise-panel::after {
+    position: absolute;
+    z-index: 0;
+    right: -8rem;
+    bottom: -9rem;
+    width: 19rem;
+    aspect-ratio: 1;
+    border: 1px solid rgba(213,182,104,.12);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3rem rgba(213,182,104,.025);
+    content: "";
+    pointer-events: none;
+    animation: panel-orbit-pulse 6.4s ease-in-out infinite;
+  }
+
+  .expertise-panel > * {
+    position: relative;
+    z-index: 1;
   }
 
   .expertise-panel[hidden] {
@@ -549,6 +970,32 @@ const commonJourney = [
   .expertise-panel.is-entering {
     animation: panel-enter 420ms var(--ease-soft);
   }
+
+  .expertise-panel.is-entering .expertise-panel-top,
+  .expertise-panel.is-entering .expertise-summary,
+  .expertise-panel.is-entering .expertise-panel-grid,
+  .expertise-panel.is-entering .expertise-value {
+    animation: panel-piece-enter 560ms var(--ease-soft) both;
+  }
+
+  .expertise-panel.is-entering .expertise-summary { animation-delay: 80ms; }
+  .expertise-panel.is-entering .expertise-panel-grid { animation-delay: 145ms; }
+  .expertise-panel.is-entering .expertise-value { animation-delay: 210ms; }
+
+  .expertise-panel.is-entering .expertise-tags span,
+  .expertise-panel.is-entering .expertise-missions li,
+  .expertise-panel.is-entering .expertise-value article {
+    animation: panel-chip-pop 520ms var(--ease-soft) both;
+  }
+
+  .expertise-panel.is-entering .expertise-tags span:nth-child(2),
+  .expertise-panel.is-entering .expertise-missions li:nth-child(2),
+  .expertise-panel.is-entering .expertise-value article:nth-child(2) { animation-delay: 70ms; }
+  .expertise-panel.is-entering .expertise-tags span:nth-child(3),
+  .expertise-panel.is-entering .expertise-missions li:nth-child(3),
+  .expertise-panel.is-entering .expertise-value article:nth-child(3) { animation-delay: 130ms; }
+  .expertise-panel.is-entering .expertise-tags span:nth-child(n+4),
+  .expertise-panel.is-entering .expertise-missions li:nth-child(n+4) { animation-delay: 190ms; }
 
   .expertise-panel-top {
     display: flex;
@@ -586,10 +1033,16 @@ const commonJourney = [
   .expertise-panel-grid {
     display: grid;
     grid-template-columns: .8fr 1.2fr;
+    min-width: 0;
     gap: 2rem;
     margin-top: 2.2rem;
     border-top: 1px solid rgba(40,55,67,.1);
     padding-top: 2rem;
+  }
+
+  .expertise-panel-grid > section {
+    min-width: 0;
+    overflow: hidden;
   }
 
   .expertise-section-title {
@@ -606,19 +1059,45 @@ const commonJourney = [
     font-size: .82rem;
   }
 
+  .expertise-tags-viewport {
+    overflow: hidden;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    contain: inline-size paint;
+    padding: .18rem 0 .42rem;
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
+
   .expertise-tags {
     display: flex;
-    flex-wrap: wrap;
+    min-width: max-content;
+    width: fit-content;
+    flex-wrap: nowrap;
     gap: .45rem;
+    animation: profile-ticker-roll 12s linear infinite;
   }
 
   .expertise-tags span {
+    flex: 0 0 auto;
     border: 1px solid rgba(40,55,67,.1);
     border-radius: 999px;
     padding: .43rem .7rem;
     background: rgba(40,55,67,.035);
     color: rgba(40,55,67,.68);
     font-size: .66rem;
+    transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 180ms var(--ease-soft);
+  }
+
+  .expertise-tags span:hover {
+    border-color: rgba(177,138,59,.5);
+    background: rgba(213,182,104,.14);
+    color: #253743;
+    transform: translateY(-3px);
+  }
+
+  .expertise-tags:has(span:hover) {
+    animation-play-state: paused;
   }
 
   .expertise-missions {
@@ -628,11 +1107,23 @@ const commonJourney = [
 
   .expertise-missions li {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: .42rem 1fr;
+    align-items: center;
     gap: .7rem;
     color: rgba(40,55,67,.7);
     font-size: .76rem;
     line-height: 1.45;
+    animation: mission-focus 6.4s ease-in-out infinite;
+    animation-delay: calc(var(--mission-index) * 1.6s);
+  }
+
+  .expertise-missions li::before {
+    width: .34rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #d5b668;
+    box-shadow: 0 0 0 0 rgba(213,182,104,.25);
+    content: "";
   }
 
   .expertise-missions span {
@@ -657,6 +1148,16 @@ const commonJourney = [
     border-left: 2px solid #d5b668;
     padding: .75rem .9rem;
     background: rgba(213,182,104,.07);
+    transition: background 200ms ease, box-shadow 200ms ease, transform 240ms var(--ease-soft);
+    animation: value-card-float 6.6s ease-in-out infinite;
+    animation-delay: calc(var(--value-index) * -1.75s);
+  }
+
+  .expertise-value article:hover {
+    animation-play-state: paused;
+    background: rgba(213,182,104,.14);
+    box-shadow: 0 14px 30px rgba(37,55,67,.08);
+    transform: translateY(-5px);
   }
 
   .expertise-value strong {
@@ -768,16 +1269,52 @@ const commonJourney = [
     line-height: 1.55;
   }
 
-  @keyframes constellation-spin { to { transform: rotate(1turn); } }
+  @keyframes signal-halo-pulse { 50% { opacity:.55;transform:scale(1.035); } }
+  @keyframes signal-image-drift {
+    0%,100% { margin-top:0; }
+    50% { margin-top:-20px; }
+  }
+  @keyframes signal-card-drift {
+    0%,100% { margin-top:0;margin-left:0; }
+    35% { margin-top:-13px;margin-left:8px; }
+    72% { margin-top:7px;margin-left:-6px; }
+  }
+  @keyframes signal-core-breathe { 50% { box-shadow:0 0 0 1.8rem rgba(213,182,104,.055),0 0 0 3.8rem rgba(213,182,104,.018),0 34px 80px rgba(0,0,0,.27); } }
+  @keyframes signal-orbit-spin { to { transform:rotate(360deg); } }
+  @keyframes expertise-tape-roll { to { transform:translateX(-50%); } }
+  @keyframes expertise-tab-progress { to { transform: scaleX(1); } }
+  @keyframes profile-ticker-roll { to { transform:translateX(calc(-50% - .225rem)); } }
+  @keyframes selector-arrow-nudge { 50% { transform:translateX(5px); } }
+  @keyframes panel-orbit-pulse {
+    50% { border-color:rgba(213,182,104,.28);box-shadow:0 0 0 3.8rem rgba(213,182,104,.04);transform:scale(1.05); }
+  }
+  @keyframes mission-focus {
+    0%, 100% { color:rgba(40,55,67,.48);transform:translateX(0); }
+    14%, 31% { color:#253743;transform:translateX(.48rem); }
+    20% { text-shadow:0 8px 22px rgba(37,55,67,.12); }
+  }
+  @keyframes value-card-float {
+    0%, 100% { box-shadow:0 0 0 rgba(37,55,67,0);transform:translateY(0); }
+    50% { box-shadow:0 14px 30px rgba(37,55,67,.07);transform:translateY(-5px); }
+  }
   @keyframes panel-enter { from { opacity: .25; transform: translateY(12px); } }
+  @keyframes panel-piece-enter { from { opacity: 0; transform: translateY(18px); } }
+  @keyframes panel-chip-pop { from { opacity:0;transform:translateY(12px) scale(.92); } }
+  @keyframes explorer-tab-arrive { from { opacity:0;transform:translateX(-34px); } }
+  @keyframes explorer-panel-arrive { from { opacity:0;transform:translateX(46px) scale(.985); } }
+  @keyframes explorer-glint {
+    0%, 18% { left:-24%;opacity:0; }
+    26% { opacity:1; }
+    54%, 100% { left:102%;opacity:0; }
+  }
 
   @media (max-width: 1000px) {
     .expertise-hero-grid {
       grid-template-columns: 1fr;
     }
 
-    .expertise-constellation {
-      width: min(100%, 32rem);
+    .expertise-signal-stage {
+      width: min(100%, 38rem);
     }
 
     .expertise-workbench {
@@ -803,37 +1340,20 @@ const commonJourney = [
       width: min(100% - 2rem, 84rem);
     }
 
-    .expertise-constellation {
-      display: grid;
-      aspect-ratio: auto;
-      gap: .5rem;
-    }
-
-    .expertise-constellation > svg,
-    .expertise-core {
-      display: none;
-    }
-
-    .constellation-node,
-    .node-1,
-    .node-2,
-    .node-3,
-    .node-4,
-    .node-5,
-    .node-6 {
-      position: static;
-      min-width: 0;
-      transform: none;
-    }
-
-    .constellation-node:hover,
-    .constellation-node:focus-visible,
-    .node-1:hover,
-    .node-1:focus-visible,
-    .node-4:hover,
-    .node-4:focus-visible {
-      transform: translateY(-2px);
-    }
+    .expertise-signal-stage { min-height:32rem; }
+    .signal-core { width:11rem; }
+    .signal-core::before { inset:-2.8rem; }
+    .signal-core::after { inset:-4.8rem; }
+    .signal-spine { left:50%; }
+    .signal-card { width:10.7rem;padding:.7rem .78rem; }
+    .signal-card span { display:none; }
+    .signal-card--brief { top:2%;left:0; }
+    .signal-card--match { top:42%;right:0; }
+    .signal-card--result { bottom:2%;left:0; }
+    .signal-image { width:10.5rem; }
+    .signal-image--brief { top:18%;left:4%; }
+    .signal-image--result { right:3%;bottom:18%; }
+    .expertise-domain-tape { margin-top:1rem; }
 
     .expertise-panel-grid,
     .expertise-value > div:last-child,
@@ -864,12 +1384,31 @@ const commonJourney = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .expertise-constellation > svg,
-    .expertise-panel.is-entering {
+    .expertise-signal-stage::after,
+    .signal-core,
+    .signal-core::before,
+    .signal-core::after,
+    .signal-image,
+    .signal-card,
+    .expertise-domain-tape > div,
+    .expertise-explorer-tape > div,
+    .expertise-explorer.is-live .expertise-workbench::before,
+    .expertise-explorer.is-live .expertise-selector-button,
+    .expertise-explorer.is-live .expertise-panels,
+    .expertise-selector-button::after,
+    .expertise-selector-button.is-active > b,
+    .expertise-panel::after,
+    .expertise-tags,
+    .expertise-missions li,
+    .expertise-value article,
+    .expertise-panel.is-entering,
+    .expertise-panel.is-entering .expertise-tags span,
+    .expertise-panel.is-entering .expertise-missions li,
+    .expertise-panel.is-entering .expertise-value article {
       animation: none;
     }
 
-    .constellation-node,
+    .signal-card,
     .expertise-selector-button,
     .journey-step,
     .journey-line span {

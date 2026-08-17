@@ -4,22 +4,18 @@ import { pageSeo } from '../data/seo.data';
 
 const functions = [
   {
-    number: '01',
     title: 'Conseil et cadrage',
     description: 'Votre situation, votre statut actuel, votre TJM cible. On chiffre avant de contractualiser.',
   },
   {
-    number: '02',
     title: 'Contrats et conformité',
     description: 'Les deux contrats, qui s’engage sur quoi, et les contraintes de sécurité ou de confidentialité du client.',
   },
   {
-    number: '03',
     title: 'Facturation et paie',
     description: 'Votre compte rendu d’activité, la facture au client, vos frais, votre bulletin. Deux sessions de paie par mois.',
   },
   {
-    number: '04',
     title: 'Suivi de mission',
     description: 'Points d’avancement à une fréquence définie au départ, avec un relais identifié si votre interlocuteur est absent.',
   },
@@ -43,7 +39,6 @@ const functions = [
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {functions.map((item) => (
           <div class="card p-7 reveal">
-            <p class="mb-5 font-heading text-sm font-semibold text-porters-gold">{item.number}</p>
             <h2 class="mb-3 text-xl text-porters-navy">{item.title}</h2>
             <p class="mb-0 text-sm leading-relaxed text-porters-black/60">{item.description}</p>
           </div>

@@ -26,11 +26,11 @@ const audienceRoutes = [
     <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(18,35,48,0.97)_0%,rgba(18,35,48,0.84)_50%,rgba(18,35,48,0.3)_100%)]"></div>
     <div class="container relative mx-auto px-6 py-24 lg:px-8 lg:py-32">
       <div class="max-w-3xl reveal">
-        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Partie 2 · Votre quotidien</p>
-        <h1 class="text-porters-white">Votre quotidien de consultant porté, sans zone floue.</h1>
-        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/80">Vous gardez vos missions, votre TJM et votre organisation. Nous cadrons les contrats, la facturation, la paie et le suivi administratif.</p>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Le quotidien d’un salarié porté</p>
+        <h1 class="text-porters-white">Votre quotidien de salarié porté, mois par mois.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/80">Vos missions, votre TJM et votre organisation ne bougent pas. Ce qui change, c’est que vous n’avez plus à vous occuper des contrats, de la facturation, de la paie ni des déclarations.</p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-          <a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a>
+          <a href="/simulateur" class="btn btn-gold">Calculer mon salaire net</a>
           <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
         </div>
       </div>
@@ -41,8 +41,8 @@ const audienceRoutes = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Pour qui&nbsp;?</p>
-        <h2>Vous vendez une expertise, pas du temps disponible</h2>
-        <p class="mt-5 text-porters-black/66">Les principaux métiers IT accompagnés. D’autres prestations intellectuelles peuvent également être éligibles.</p>
+        <h2>Les métiers que nous portons le plus souvent</h2>
+        <p class="mt-5 text-porters-black/66">Voici les profils IT que nous accompagnons le plus. D’autres prestations intellectuelles peuvent aussi entrer dans le cadre.</p>
       </div>
       <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {consultantsPage.audiences.map((audience, index) => (
@@ -60,17 +60,16 @@ const audienceRoutes = [
   <section class="section bg-porters-navy/[0.03]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Chronologie</p>
-        <h2>De votre entrée à votre sortie</h2>
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Mois par mois</p>
+        <h2>Du premier rendez-vous au solde de tout compte</h2>
         <p class="mt-5 text-porters-black/66">
-          Six repères, du cadrage de la mission à la fin du contrat.
+          Six étapes, du cadrage de la mission jusqu’à la sortie.
         </p>
       </div>
       <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {consultantsPage.timeline.map((step, index) => (
+        {consultantsPage.timeline.map((step) => (
           <li class="border-t-2 border-porters-gold bg-white p-6 shadow-sm reveal">
-            <span class="font-mono text-sm font-semibold text-porters-gold">0{index + 1}</span>
-            <p class="mt-4 mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-navy/55">{step.marker}</p>
+            <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-navy/55">{step.marker}</p>
             <h3 class="mt-1 text-lg">{step.title}</h3>
             <p class="mb-0 mt-3 text-sm leading-relaxed text-porters-black/64">{step.text}</p>
           </li>
@@ -115,7 +114,7 @@ const audienceRoutes = [
       */}
       <div class="mt-10">
         <a href="/parrainage" class="text-sm font-medium text-porters-navy hover:text-porters-gold transition-colors inline-flex items-center gap-1">
-          Vous connaissez un consultant ? Découvrir le parrainage
+          Vous connaissez un consultant que cela intéresserait ? Parlons parrainage
           <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
@@ -125,7 +124,7 @@ const audienceRoutes = [
   <section class="bg-porters-navy py-16 text-porters-white">
     <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <div class="max-w-2xl"><h2 class="mb-2 text-porters-white">Voyez ce que votre TJM donne en net.</h2><p class="mb-0 text-porters-white/65">Le simulateur répond en quelques minutes. Un conseiller reprend ensuite vos hypothèses avec vous.</p></div>
-      <div class="flex flex-col gap-3 sm:flex-row"><a href="/simulateur" class="btn btn-gold">Simuler mes revenus</a><a href="/rendez-vous" class="btn btn-white">Prendre rendez-vous</a></div>
+      <div class="flex flex-col gap-3 sm:flex-row"><a href="/simulateur" class="btn btn-gold">Calculer mon salaire net</a><a href="/rendez-vous" class="btn btn-white">Prendre rendez-vous</a></div>
     </div>
   </section>
 </PageLayout>

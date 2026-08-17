@@ -27,13 +27,13 @@
     "key": "home.hero.editorial.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Vous gardez vos clients, votre TJM et votre autonomie. The Porters prend en charge le contrat, la facturation, les déclarations, la paie et votre protection sociale."
+    "content": "Vos clients, votre TJM et votre façon de travailler restent les vôtres. Le contrat, la facturation, les déclarations, la paie et la protection sociale, c’est nous qui nous en chargeons."
   },
   {
     "key": "home.hero.editorial_v2.action.simulator",
     "route": "/",
     "type": "button",
-    "content": "Simuler mes revenus"
+    "content": "Calculer mon salaire net"
   },
   {
     "key": "home.hero.editorial_v2.action.advisor",
@@ -45,7 +45,7 @@
     "key": "home.hero.editorial_v2.action.enterprise",
     "route": "/",
     "type": "button",
-    "content": "Nos solutions entreprises"
+    "content": "Pour les entreprises"
   },
   {
     "key": "home.hero.trust.interlocutors",
@@ -75,13 +75,13 @@
     "key": "home.ecosystem.label",
     "route": "/",
     "type": "label",
-    "content": "Un écosystème habitué aux projets exigeants"
+    "content": "Habitués des projets exigeants"
   },
   {
     "key": "home.proof.title",
     "route": "/",
     "type": "heading",
-    "content": "The Porters, c’est aussi…"
+    "content": "The Porters, en quelques chiffres."
   },
   {
     "key": "home.proof.missions.label",
@@ -93,19 +93,7 @@
     "key": "home.proof.missions.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Des missions structurées sans retirer aux consultants la maîtrise de leur client, de leur TJM et de leur intervention."
-  },
-  {
-    "key": "home.proof.experience.label",
-    "route": "/",
-    "type": "label",
-    "content": "D’expérience"
-  },
-  {
-    "key": "home.proof.experience.description",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Un accompagnement du portage salarial pensé pour les consultants et les métiers du numérique."
+    "content": "Des missions cadrées, sans jamais vous déposséder de votre client, de votre TJM ni de votre façon d’intervenir."
   },
   {
     "key": "home.proof.remuneration.label",
@@ -117,25 +105,25 @@
     "key": "home.proof.remuneration.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Une première rémunération versée dès le premier mois, avant le règlement de la première facture client."
+    "content": "Vous êtes payé dès le premier mois, sans attendre que votre client règle sa facture."
   },
   {
     "key": "home.offer.eyebrow",
     "route": "/",
     "type": "label",
-    "content": "Ce que nous prenons en charge"
+    "content": "Ce que nous portons à votre place"
   },
   {
     "key": "home.offer.title",
     "route": "/",
     "type": "heading",
-    "content": "Vous vendez une expertise. Nous transformons son chiffre d’affaires en salaire."
+    "content": "Vous facturez votre expertise, nous la transformons en salaire."
   },
   {
     "key": "home.offer.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Quatre volets, et à chacun ce qui reste chez vous et ce qui passe chez nous."
+    "content": "Quatre volets : d’un côté ce qui reste chez vous, de l’autre ce dont nous nous occupons."
   },
   {
     "key": "home.offer.cta",
@@ -147,19 +135,19 @@
     "key": "home.offer.human.title",
     "route": "/",
     "type": "heading",
-    "content": "Un seul interlocuteur"
+    "content": "Toujours la même personne"
   },
   {
     "key": "home.offer.human.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Un interlocuteur identifiable suit les sujets contractuels, administratifs et de paie pendant votre mission."
+    "content": "La même personne suit votre contrat, votre administratif et votre paie, du premier jour de mission au dernier."
   },
   {
     "key": "home.offer.employee.title",
     "route": "/",
     "type": "heading",
-    "content": "Statut salarié, cadre"
+    "content": "Le statut de salarié cadre"
   },
   {
     "key": "home.offer.employee.description",
@@ -171,13 +159,13 @@
     "key": "home.offer.admin.title",
     "route": "/",
     "type": "heading",
-    "content": "Administratif pris en charge"
+    "content": "L’administratif, c’est notre affaire"
   },
   {
     "key": "home.offer.admin.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Contrat, facturation de votre client, paie, déclarations sociales et fiscales. Vous ne produisez aucun de ces documents."
+    "content": "Contrat, facturation de votre client, paie, déclarations sociales et fiscales : vous n’éditez aucun de ces documents."
   },
   {
     "key": "home.offer.it.title",
@@ -189,7 +177,7 @@
     "key": "home.offer.it.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Cyber, data, IA, cloud, DevOps, produit et agilité, sur des socles récents comme sur des environnements historiques critiques."
+    "content": "Cyber, data, IA, cloud, DevOps, produit et agilité — sur les socles les plus récents comme sur les environnements historiques encore en production."
   },
   {
     "key": "home.offer.advisor_cta",
@@ -201,19 +189,19 @@
     "key": "home.jobs.eyebrow",
     "route": "/",
     "type": "label",
-    "content": "Recrutement"
+    "content": "Nous rejoindre"
   },
   {
     "key": "home.jobs.title",
     "route": "/",
     "type": "heading",
-    "content": "Les opportunités en cours"
+    "content": "On recrute aussi chez nous"
   },
   {
     "key": "home.jobs.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Retrouvez les offres publiées par The Porters sur notre espace HelloWork."
+    "content": "Nos offres sont publiées sur HelloWork, et c’est notre équipe qui les suit."
   },
   {
     "key": "home.jobs.point.current",
@@ -291,19 +279,19 @@
     "key": "home.faq.title",
     "route": "/",
     "type": "heading",
-    "content": "Les réponses avant l’appel"
+    "content": "Les questions qui reviennent"
   },
   {
     "key": "home.faq.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Statut, rémunération, frais, missions. Si votre question n’est pas là, elle est sur la FAQ complète."
+    "content": "Statut, rémunération, frais, missions : voici les réponses courtes. Les plus détaillées vous attendent dans la FAQ."
   },
   {
     "key": "home.faq.cta",
     "route": "/",
     "type": "button",
-    "content": "Consulter toute la FAQ"
+    "content": "Lire la FAQ complète"
   },
   {
     "key": "home.final_cta.eyebrow",
@@ -321,13 +309,13 @@
     "key": "home.final_cta.description",
     "route": "/",
     "type": "paragraph",
-    "content": "Le simulateur répond en quelques minutes. Ensuite, un conseiller reprend vos hypothèses avec vous."
+    "content": "Le simulateur vous donne un ordre de grandeur en deux minutes. Un conseiller reprend ensuite vos hypothèses avec vous."
   },
   {
     "key": "home.final_cta.simulator",
     "route": "/",
     "type": "button",
-    "content": "Simuler mes revenus"
+    "content": "Ouvrir le simulateur"
   },
   {
     "key": "home.final_cta.advisor",

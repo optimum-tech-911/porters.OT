@@ -19,11 +19,11 @@ const rightNav: NavItem[] = [
     id: 'group',
     label: 'Le groupe',
     href: '/qui-sommes-nous',
-    description: 'Portage, talents et transformation numérique.',
+    description: 'Deux maisons, un même métier : le portage et le recrutement IT.',
     links: [
-      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'L’écosystème Porters' },
-      { label: 'Nos agences', href: '/agences', note: 'Points de contact' },
-      { label: 'Questions fréquentes', href: '/faq', note: 'Réponses utiles' },
+      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'Notre histoire, nos deux offres' },
+      { label: 'Nos agences', href: '/agences', note: 'Cinq villes, une équipe joignable' },
+      { label: 'Questions fréquentes', href: '/faq', note: 'Les réponses avant l’appel' },
     ],
   },
 ];
@@ -91,10 +91,10 @@ const active = (href: string) => {
           <path d="m5 7 7 6 7-6"></path>
         </svg>
       </a>
-      <a href="/simulateur" class="tp-appointment-link">Simuler mes revenus <span aria-hidden="true">→</span></a>
+      <a href="/simulateur" class="tp-appointment-link">Simulateur <span aria-hidden="true">→</span></a>
     </div>
 
-    <a href="/simulateur" class="tp-mobile-appointment">Simuler</a>
+    <a href="/simulateur" class="tp-mobile-appointment">Simulateur</a>
 
     <button class="tp-menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Ouvrir le menu">
       <span></span>
@@ -105,10 +105,9 @@ const active = (href: string) => {
   <div class="tp-mobile-menu" id="mobile-menu" aria-hidden="true" data-cms-ignore>
     <nav aria-label="Navigation mobile">
       <a class="tp-mobile-primary-link" href="/portage-salarial">Le portage salarial</a>
-      {mobileNav.map((item, index) => (
+      {mobileNav.map((item) => (
         <details class="tp-mobile-group">
           <summary>
-            <span>0{index + 1}</span>
             {item.label}
             <b aria-hidden="true">⌄</b>
           </summary>
@@ -132,7 +131,7 @@ const active = (href: string) => {
       <div class="tp-mobile-actions">
         <a href="/entreprises">Entreprises</a>
         <a href="/expertises">Expertises</a>
-        <a href="/simulateur">Simuler mes revenus</a>
+        <a href="/simulateur">Simulateur</a>
         <a href="/rendez-vous">Prendre rendez-vous</a>
         <a href="/contact">Contact</a>
       </div>
@@ -289,7 +288,7 @@ const active = (href: string) => {
 
 <style>
   .tp-site-header {
-    --tp-header-height: 6.5rem;
+    --tp-header-height: 7.35rem;
     position: fixed;
     inset: 0 0 auto;
     z-index: 80;
@@ -360,7 +359,7 @@ const active = (href: string) => {
     flex: 1 1 auto;
     min-width: 0;
     align-items: center;
-    gap: clamp(0.55rem, 1.1vw, 1.2rem);
+    gap: clamp(0.65rem, 1.15vw, 1.35rem);
   }
 
   .tp-header-brand {
@@ -401,7 +400,7 @@ const active = (href: string) => {
   .tp-nav-direct {
     position: relative;
     color: rgba(255, 255, 255, 0.86);
-    font-size: clamp(0.94rem, 1vw, 1.08rem);
+    font-size: clamp(1.12rem, 1.14vw, 1.26rem);
     font-weight: 760;
     line-height: 1;
     white-space: nowrap;
@@ -425,14 +424,14 @@ const active = (href: string) => {
   .tp-nav-direct {
     display: inline-flex;
     align-items: center;
-    min-height: 2.9rem;
-    padding-inline: 0.55rem;
+    min-height: 3.6rem;
+    padding-inline: 0.82rem;
   }
 
   .tp-desktop-nav > .tp-nav-direct:first-child {
-    min-height: 3.2rem;
-    padding-inline: 0.8rem;
-    font-size: clamp(1rem, 1.08vw, 1.16rem);
+    min-height: 3.75rem;
+    padding-inline: 1.1rem;
+    font-size: clamp(1.16rem, 1.18vw, 1.3rem);
   }
 
   .tp-desktop-actions {
@@ -768,8 +767,8 @@ const active = (href: string) => {
 
   .tp-contact-link {
     display: grid;
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 3rem;
+    height: 3rem;
     place-items: center;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
@@ -781,8 +780,8 @@ const active = (href: string) => {
   }
 
   .tp-contact-link svg {
-    width: 1.05rem;
-    height: 1.05rem;
+    width: 1.2rem;
+    height: 1.2rem;
   }
 
   .tp-contact-link path {
@@ -801,15 +800,15 @@ const active = (href: string) => {
 
   .tp-appointment-link {
     display: inline-flex;
-    min-height: 3.2rem;
+    min-height: 3.85rem;
     align-items: center;
     justify-content: center;
     gap: 0.58rem;
     border-radius: 999px;
-    padding-inline: 1.55rem;
+    padding-inline: 2.05rem;
     background: #be9e58;
     color: #10202b;
-    font-size: 0.86rem;
+    font-size: 1.04rem;
     font-weight: 820;
     white-space: nowrap;
     transition:

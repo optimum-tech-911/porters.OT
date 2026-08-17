@@ -40,6 +40,15 @@ export interface ContactMessage {
   assignedAdmin: string | null;
   priority: MessagePriority;
   createdAt: string;
+  subject?: string;
+  referrer?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
+  landingPage?: string;
+  sessionId?: string;
 }
 
 // --- Leads ---
@@ -59,6 +68,24 @@ export interface Lead {
   lastInteraction: string;
   score: number; // 0-100 placeholder — TODO: implement scoring logic with Supabase
   createdAt: string;
+  profile?: string;
+  subject?: string;
+  message?: string;
+  simulatorMode?: 'portage' | 'freelance';
+  tjm?: number;
+  daysWorked?: number;
+  monthlyRevenue?: number;
+  professionalExpenses?: number;
+  estimatedNetMonthly?: number;
+  sourcePage?: string;
+  referrer?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
+  landingPage?: string;
+  sessionId?: string;
 }
 
 // --- Meetings ---

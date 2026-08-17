@@ -32,14 +32,8 @@ export const REQUIRED = [
     message: 'The Porters accompagne plus de 150 missions en cours.',
     evidence: ['150+', 'Missions en cours'],
   },
-  {
-    id: 'F-HOME-PROOF-02',
-    status: 'REQUIRED',
-    source: 'Final Porters perfection brief, 04/08/2026',
-    route: '/',
-    message: 'The Porters présente plus de dix ans d’expérience.',
-    evidence: ['10+ ans', 'D’expérience'],
-  },
+  // F-HOME-PROOF-02 (« 10+ ans d’expérience ») a été retiré de REQUIRED :
+  // voir WITHDRAWN_BY_CLIENT en bas de ce fichier.
   {
     id: 'F-HOME-PROOF-03',
     status: 'REQUIRED',
@@ -277,6 +271,27 @@ export const CLIENT_APPROVAL_REQUIRED = [
   { id: 'F-A05', fact: 'Nombre et statut des agences', blocks: 'Q2 — cinq réponses contradictoires' },
   { id: 'F-S04', fact: '+1,5 % sur les frais professionnels', blocks: 'Ne pas confondre avec le taux de gestion' },
   { id: 'F-S07', fact: 'Parrainage 200 € / 7 500 €', blocks: 'Trois versions contradictoires' },
+];
+
+/**
+ * Retirés de REQUIRED sur décision du client, pas par oubli.
+ *
+ * La source reste valable : c'est la place du message sur le site qui a été
+ * supprimée. Conservés ici pour qu'un futur agent ne « répare » pas un contrôle
+ * en republiant un bloc que le client a demandé d'enlever — et pour que la
+ * remise en ligne reste possible sans revenir aux sources d'origine.
+ */
+export const WITHDRAWN_BY_CLIENT = [
+  {
+    id: 'F-HOME-PROOF-02',
+    source: 'Final Porters perfection brief, 04/08/2026',
+    route: '/',
+    message: 'The Porters présente plus de dix ans d’expérience.',
+    evidence: ['10+ ans', 'D’expérience'],
+    withdrawn: '2026-08-17',
+    reason:
+      'Bulle « 10+ ans » et son encart « D’expérience » retirés de la section chiffres clés de la page d’accueil à la demande du client.',
+  },
 ];
 
 /** Never publishable. Enforced contextually by check-forbidden-content.mjs. */

@@ -1,8 +1,8 @@
 export const quickQuestions = [
   'Comment fonctionne le portage salarial ?',
   'Je suis consultant IT, est-ce adapté ?',
-  'Simuler mes revenus',
-  'Trouver une expertise',
+  'Combien je gagnerais ?',
+  'Trouver un profil IT',
   'Je suis une entreprise',
 ];
 

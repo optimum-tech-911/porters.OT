@@ -22,13 +22,12 @@ const labels = new Map(resourceGuides.map((guide) => [guide.slug, guide.label]))
     <div class="resources-shell">
       <header class="resources-heading reveal">
         <p>La bibliothèque</p>
-        <h2 id="resources-library-title">Trois lectures.<br />Trois décisions concrètes.</h2>
+        <h2 id="resources-library-title">Trois guides,<br />écrits pour être utiles.</h2>
       </header>
 
       <div class="resources-list">
-        {resources.map((resource, index) => (
+        {resources.map((resource) => (
           <article class="resource-row reveal">
-            <div class="resource-row__index">0{index + 1}</div>
             <div class="resource-row__copy">
               <span>{labels.get(resource.slug) ?? 'Ressource'}</span>
               <h3>{resource.title}</h3>
@@ -48,7 +47,7 @@ const labels = new Map(resourceGuides.map((guide) => [guide.slug, guide.label]))
     <div class="resources-shell resources-method__grid reveal">
       <div>
         <p>Notre parti pris</p>
-        <h2>Assez d’information pour décider. Pas une brochure de plus.</h2>
+        <h2>Des guides qu’on lit jusqu’au bout.</h2>
       </div>
       <div>
         <p>
@@ -70,9 +69,8 @@ const labels = new Map(resourceGuides.map((guide) => [guide.slug, guide.label]))
   .resources-heading{max-width:48rem;margin-bottom:3.5rem}
   .resources-heading h2{margin:0;color:#203440;font-size:clamp(2.5rem,5.2vw,5rem);letter-spacing:-.055em;line-height:.98}
   .resources-list{border-top:1px solid rgba(32,52,64,.16)}
-  .resource-row{display:grid;grid-template-columns:4rem minmax(0,1fr) auto;align-items:center;gap:clamp(1.2rem,4vw,4rem);padding:2rem .4rem;border-bottom:1px solid rgba(32,52,64,.16);transition:background .2s ease,padding .28s var(--ease-soft)}
+  .resource-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:clamp(1.2rem,4vw,4rem);padding:2rem .4rem;border-bottom:1px solid rgba(32,52,64,.16);transition:background .2s ease,padding .28s var(--ease-soft)}
   .resource-row:hover{padding-inline:1.1rem;background:rgba(255,255,255,.54)}
-  .resource-row__index{color:#b79245;font:700 .68rem/1 var(--font-mono)}
   .resource-row__copy span{color:#a47f34;font-size:.58rem;font-weight:760;letter-spacing:.14em;text-transform:uppercase}
   .resource-row__copy h3{margin:.42rem 0 .55rem;color:#203440;font-size:clamp(1.35rem,2vw,1.9rem)}
   .resource-row__copy p{max-width:46rem;margin:0;color:rgba(32,52,64,.58);font-size:.82rem;line-height:1.65}
@@ -86,15 +84,14 @@ const labels = new Map(resourceGuides.map((guide) => [guide.slug, guide.label]))
   .resources-method a{display:inline-flex;align-items:center;gap:.65rem;margin-top:1.4rem;color:#203440;font-size:.76rem;font-weight:760}
   .resources-method a span{color:#b79245}
   @media(max-width:760px){
-    .resource-row{grid-template-columns:2.3rem 1fr}
-    .resource-row>a{grid-column:2;justify-self:start}
+    .resource-row{grid-template-columns:1fr}
+    .resource-row>a{justify-self:start}
     .resources-method__grid{grid-template-columns:1fr}
   }
   @media(max-width:520px){
     .resources-shell{width:min(100% - 2rem,82rem)}
     .resources-hero h1{font-size:clamp(3.6rem,20vw,5.4rem)}
     .resource-row{grid-template-columns:1fr;gap:.8rem}
-    .resource-row__index{display:none}
     .resource-row>a{grid-column:1}
   }
 </style>

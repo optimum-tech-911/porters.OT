@@ -65,11 +65,11 @@ const included = [
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Frais de gestion</p>
         <h1 class="max-w-2xl text-porters-white">Ce que nous prenons, et ce que ça paie.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
-          Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel. Ils couvrent sept services
-          concrets. Votre simulation en présente le détail avant toute signature.
+          Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel. Ils couvrent sept prestations,
+          détaillées ci-dessous. Votre simulation en donne le montant avant toute signature.
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-          <a href="/simulateur" class="btn btn-gold">Calculer mon revenu</a>
+          <a href="/simulateur" class="btn btn-gold">Calculer mon salaire net</a>
           <a href="#inclus" class="btn border-white bg-transparent text-porters-white hover:bg-white hover:text-porters-navy">Voir les sept prestations</a>
         </div>
       </div>
@@ -101,9 +101,8 @@ const included = [
         <div class="reveal">
           <h2 class="mb-8">Les sept prestations que couvrent nos frais</h2>
           <div class="grid gap-x-8 gap-y-5 sm:grid-cols-2">
-            {included.map((item, index) => (
-              <div class="flex items-start gap-3 border-b border-porters-navy/10 pb-5">
-                <span class="mt-0.5 shrink-0 font-mono text-sm font-semibold text-porters-gold">0{index + 1}</span>
+            {included.map((item) => (
+              <div class="border-b border-porters-navy/10 pb-5">
                 <span class="text-sm leading-relaxed text-porters-navy">
                   <strong class="font-heading font-semibold">{item.title}</strong>
                   <span class="mt-1 block text-porters-black/64">{item.text}</span>
@@ -120,14 +119,13 @@ const included = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-12 max-w-3xl reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">À valider avant de signer</p>
-        <h2>Ce qui dépend de votre situation, et pas de nos frais</h2>
+        <h2>Ce qui varie d’un consultant à l’autre</h2>
         <p class="mt-5 text-porters-black/66">
-          Trois éléments varient selon votre activité et doivent être lus séparément du taux de gestion.
+          Ces trois postes dépendent de votre activité : ils se lisent à part du taux de gestion.
         </p>
       </div>
       <div class="grid gap-12 lg:grid-cols-3 lg:gap-14">
         <div class="reveal">
-          <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">01</p>
           <h3 class="mb-3">Vos frais professionnels</h3>
           <p class="mb-0 text-porters-black/64">
             Seules les dépenses réelles, justifiées et liées à votre activité peuvent être retenues.
@@ -135,7 +133,6 @@ const included = [
           </p>
         </div>
         <div class="reveal">
-          <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">02</p>
           <h3 class="mb-3">Votre mutuelle</h3>
           <p class="mb-0 text-porters-black/64">
             Les conditions d’adhésion, la part prise en charge et le montant restant sont expliqués avant
@@ -143,7 +140,6 @@ const included = [
           </p>
         </div>
         <div class="reveal">
-          <p class="mb-3 font-mono text-sm font-semibold text-porters-gold">03</p>
           <h3 class="mb-3">Le calendrier de paie</h3>
           <p class="mb-0 text-porters-black/64">
             Votre date de versement dépend notamment de la transmission de votre compte rendu d’activité.

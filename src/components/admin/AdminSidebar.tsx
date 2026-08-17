@@ -4,8 +4,9 @@
  * TODO: When Supabase Auth is connected, show current user's permissions
  *       and only display nav items they have access to.
  */
+import { useEffect, useState, type ReactElement } from 'react';
 import { adminNavItems } from '../../data/admin-demo.data';
-import type { ReactElement } from 'react';
+import { supabase } from '../../lib/supabase';
 
 const iconMap: Record<string, ReactElement> = {
   dashboard: (
@@ -92,6 +93,26 @@ interface Props {
 
 export default function AdminSidebar({ currentPath }: Props) {
   const groups = ['main', 'communication', 'tools', 'management'] as const;
+  const [crmBadges, setCrmBadges] = useState({ messages: 0, leads: 0 });
+
+  useEffect(() => {
+    let active = true;
+    void Promise.all([
+      supabase
+        .from('crm_inquiries')
+        .select('id', { count: 'exact', head: true })
+        .eq('kind', 'contact')
+        .eq('status', 'new'),
+      supabase
+        .from('crm_inquiries')
+        .select('id', { count: 'exact', head: true })
+        .eq('status', 'new'),
+    ]).then(([messages, leads]) => {
+      if (!active || messages.error || leads.error) return;
+      setCrmBadges({ messages: messages.count || 0, leads: leads.count || 0 });
+    });
+    return () => { active = false; };
+  }, []);
 
   const isActive = (href: string) => {
     if (href === '/admin/dashboard') {
@@ -125,21 +146,28 @@ export default function AdminSidebar({ currentPath }: Props) {
               {groupLabels[group] && (
                 <div className="admin-sidebar-group-label">{groupLabels[group]}</div>
               )}
-              {items.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className={`admin-nav-item${isActive(item.href) ? ' active' : ''}`}
-                >
-                  <span className="admin-nav-icon">
-                    {iconMap[item.icon] || null}
-                  </span>
-                  {item.label}
-                  {item.badge !== undefined && item.badge > 0 && (
-                    <span className="admin-nav-badge">{item.badge}</span>
-                  )}
-                </a>
-              ))}
+              {items.map((item) => {
+                const liveBadge = item.href === '/admin/messages'
+                  ? crmBadges.messages
+                  : item.href === '/admin/leads'
+                    ? crmBadges.leads
+                    : 0;
+                return (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className={`admin-nav-item${isActive(item.href) ? ' active' : ''}`}
+                  >
+                    <span className="admin-nav-icon">
+                      {iconMap[item.icon] || null}
+                    </span>
+                    {item.label}
+                    {liveBadge > 0 && (
+                      <span className="admin-nav-badge">{liveBadge}</span>
+                    )}
+                  </a>
+                );
+              })}
             </div>
           );
         })}

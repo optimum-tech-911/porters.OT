@@ -1,0 +1,309 @@
+---
+import './chatbot.css';
+
+const quickQuestions = [
+  'Comment fonctionne le portage salarial ?',
+  'Je suis consultant IT, est-ce adapté ?',
+  'Combien je gagnerais ?',
+  'Trouver un profil IT',
+  'Je suis une entreprise',
+];
+---
+
+<tp-chat-static>
+  <div
+    class="tp-chat-root"
+    data-chatbot-static-root
+    data-chatbot-root
+    style="position:fixed;z-index:2147483000;inset:0;isolation:isolate;pointer-events:none"
+  >
+    <section
+      class="tp-chat-panel"
+      data-chat-panel
+      data-cms-ignore
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="tp-chat-title"
+      hidden
+    >
+      <header class="tp-chat-header">
+        <div class="tp-chat-brand" aria-hidden="true"><span>TP</span><i></i></div>
+        <div>
+          <h2 id="tp-chat-title">Assistant The Porters</h2>
+          <p>Cherche pour vous dans les pages du site</p>
+        </div>
+        <div class="tp-chat-header-actions">
+          <button type="button" data-chat-reset aria-label="Recommencer la conversation" title="Recommencer">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 6V2m0 0h-4m4 0-2.7 2.7A6.5 6.5 0 1 0 16.4 11"></path></svg>
+          </button>
+          <button type="button" data-chat-close aria-label="Fermer l’assistant">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="tp-chat-intro">Posez votre question sur le portage, les expertises ou votre situation.</div>
+
+      <div class="tp-chat-thread" data-chat-thread aria-live="polite" aria-relevant="additions">
+        <div class="tp-chat-message tp-chat-message--assistant">
+          <div class="tp-chat-avatar" aria-hidden="true"><span>TP</span></div>
+          <div class="tp-chat-bubble">
+            <p>Bonjour. Je peux vous orienter sur le portage salarial, les revenus, les expertises, les entreprises et les points de contact The Porters.</p>
+          </div>
+        </div>
+        <div class="tp-chat-quick" data-chat-quick aria-label="Questions fréquentes">
+          {quickQuestions.map((question) => <button type="button" data-chat-question={question}>{question}</button>)}
+        </div>
+      </div>
+
+      <form class="tp-chat-composer" data-chat-form>
+        <label for="tp-chat-question">Votre question</label>
+        <div>
+          <input
+            id="tp-chat-question"
+            data-chat-input
+            type="text"
+            placeholder="Ex. Combien je toucherais avec un TJM de 600 € ?"
+            maxlength="220"
+            autocomplete="off"
+          />
+          <button type="submit" data-chat-submit disabled aria-label="Envoyer la question">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <path d="m3 10 13-6-4.5 12-2-4-6.5-2Z"></path>
+              <path d="m9.5 12 2.5-2.5"></path>
+            </svg>
+          </button>
+        </div>
+        <p>Aucune donnée envoyée à un service externe.</p>
+      </form>
+    </section>
+
+    <button
+      type="button"
+      class="tp-chat-launcher"
+      data-chat-launcher
+      aria-label="Ouvrir l’assistant The Porters"
+      aria-expanded="false"
+      style="position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:2;display:flex;visibility:visible;opacity:1;pointer-events:auto"
+    >
+      <span class="tp-chat-launcher-label">Une question ?</span>
+      <span class="tp-chat-launcher-icon">
+        <svg data-chat-open-icon viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5.5 17.5 3.5 21l4.8-1.4c1.1.5 2.4.8 3.7.8 5 0 9-3.7 9-8.3S17 3.8 12 3.8 3 7.5 3 12.1c0 2 .9 3.9 2.5 5.4Z"></path>
+          <path d="M8 12h.01M12 12h.01M16 12h.01"></path>
+        </svg>
+        <svg data-chat-close-icon viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg>
+        <i aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+</tp-chat-static>
+
+<script>
+  import { emitAssistantEvent, localSearchAssistant, type AssistantResponse } from '../../lib/searchAssistant';
+
+  const categoryLabels: Record<string, string> = {
+    page: 'Page',
+    consultant: 'Consultants',
+    entreprise: 'Entreprises',
+    expertise: 'Expertise',
+    faq: 'FAQ',
+    agence: 'Agence',
+    article: 'Article',
+    ressource: 'Ressource',
+    legal: 'Information légale',
+  };
+
+  const make = <K extends keyof HTMLElementTagNameMap>(tag: K, className?: string) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    return node;
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-chatbot-static-root]').forEach((root) => {
+    if (root.dataset.chatReady === 'true') return;
+    root.dataset.chatReady = 'true';
+
+    const panel = root.querySelector<HTMLElement>('[data-chat-panel]');
+    const launcher = root.querySelector<HTMLButtonElement>('[data-chat-launcher]');
+    const closeButton = root.querySelector<HTMLButtonElement>('[data-chat-close]');
+    const resetButton = root.querySelector<HTMLButtonElement>('[data-chat-reset]');
+    const thread = root.querySelector<HTMLElement>('[data-chat-thread]');
+    const quick = root.querySelector<HTMLElement>('[data-chat-quick]');
+    const form = root.querySelector<HTMLFormElement>('[data-chat-form]');
+    const input = root.querySelector<HTMLInputElement>('[data-chat-input]');
+    const submit = root.querySelector<HTMLButtonElement>('[data-chat-submit]');
+    if (!panel || !launcher || !closeButton || !resetButton || !thread || !quick || !form || !input || !submit) return;
+
+    const initialThread = thread.innerHTML;
+    let isOpen = false;
+    let pending = false;
+    let responseTimer = 0;
+    let previousOverflow = '';
+
+    const scrollToLatest = () => thread.scrollTo({ top: thread.scrollHeight, behavior: 'smooth' });
+
+    const setOpen = (next: boolean) => {
+      if (isOpen === next) return;
+      isOpen = next;
+      panel.hidden = !next;
+      launcher.classList.toggle('is-open', next);
+      launcher.setAttribute('aria-expanded', String(next));
+      launcher.setAttribute('aria-label', next ? 'Fermer l’assistant The Porters' : 'Ouvrir l’assistant The Porters');
+      if (next) {
+        emitAssistantEvent('chatbot_opened');
+        window.dispatchEvent(new CustomEvent('tp:assistant-open'));
+        if (matchMedia('(max-width: 640px)').matches) {
+          previousOverflow = document.body.style.overflow;
+          document.body.style.overflow = 'hidden';
+        }
+        window.setTimeout(() => input.focus(), 80);
+      } else if (matchMedia('(max-width: 640px)').matches) {
+        document.body.style.overflow = previousOverflow;
+      }
+    };
+
+    const appendMessage = (role: 'assistant' | 'user', text: string, response?: AssistantResponse) => {
+      const row = make('div', `tp-chat-message tp-chat-message--${role}`);
+      if (role === 'assistant') {
+        const avatar = make('div', 'tp-chat-avatar');
+        avatar.setAttribute('aria-hidden', 'true');
+        const initials = make('span');
+        initials.textContent = 'TP';
+        avatar.append(initials);
+        row.append(avatar);
+      }
+      const bubble = make('div', 'tp-chat-bubble');
+      const paragraph = make('p');
+      paragraph.textContent = text;
+      bubble.append(paragraph);
+
+      if (response) {
+        const results = make('div', 'tp-chat-results');
+        const actions = make('div', 'tp-chat-actions');
+        response.actions.forEach((action) => {
+          const link = make('a', action.primary ? 'is-primary' : undefined);
+          link.href = action.url;
+          const label = make('span');
+          label.textContent = action.label;
+          const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          arrow.setAttribute('viewBox', '0 0 16 16');
+          arrow.setAttribute('aria-hidden', 'true');
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          path.setAttribute('d', 'M3 8h9M9 4.5 12.5 8 9 11.5');
+          arrow.append(path);
+          link.append(label, arrow);
+          link.addEventListener('click', () => emitAssistantEvent('chatbot_result_clicked', { url: action.url }));
+          actions.append(link);
+        });
+        results.append(actions);
+
+        if (response.confidence === 'low' && response.related.length) {
+          const related = make('div', 'tp-chat-related');
+          const title = make('p');
+          title.textContent = 'Pages proches';
+          related.append(title);
+          response.related.forEach((item) => {
+            const link = make('a');
+            link.href = item.url;
+            const copy = make('span');
+            const category = make('small');
+            category.textContent = categoryLabels[item.category] ?? item.category;
+            const heading = make('strong');
+            heading.textContent = item.title;
+            copy.append(category, heading);
+            const arrow = make('span');
+            arrow.setAttribute('aria-hidden', 'true');
+            arrow.textContent = '↗';
+            link.append(copy, arrow);
+            link.addEventListener('click', () => emitAssistantEvent('chatbot_result_clicked', { url: item.url }));
+            related.append(link);
+          });
+          results.append(related);
+        }
+        bubble.append(results);
+      }
+      row.append(bubble);
+      thread.append(row);
+      scrollToLatest();
+      return row;
+    };
+
+    const appendPending = () => {
+      const row = make('div', 'tp-chat-message tp-chat-message--assistant');
+      row.dataset.chatPending = 'true';
+      const avatar = make('div', 'tp-chat-avatar');
+      avatar.setAttribute('aria-hidden', 'true');
+      const initials = make('span');
+      initials.textContent = 'TP';
+      avatar.append(initials);
+      const bubble = make('div', 'tp-chat-bubble is-pending');
+      const typing = make('span', 'tp-chat-typing');
+      typing.setAttribute('aria-label', 'Recherche en cours');
+      typing.append(make('i'), make('i'), make('i'));
+      bubble.append(typing);
+      row.append(avatar, bubble);
+      thread.append(row);
+      scrollToLatest();
+    };
+
+    const ask = (question: string) => {
+      const clean = question.trim().slice(0, 220);
+      if (!clean || pending) return;
+      appendMessage('user', clean);
+      input.value = '';
+      submit.disabled = true;
+      const activeQuick = thread.querySelector<HTMLElement>('[data-chat-quick]');
+      if (activeQuick) activeQuick.hidden = true;
+      pending = true;
+      input.disabled = true;
+      emitAssistantEvent('chatbot_question_asked');
+      appendPending();
+
+      responseTimer = window.setTimeout(() => {
+        root.querySelector('[data-chat-pending]')?.remove();
+        const response = localSearchAssistant.answer(clean);
+        if (response.confidence === 'low') emitAssistantEvent('chatbot_no_result');
+        appendMessage('assistant', response.answer, response);
+        pending = false;
+        input.disabled = false;
+        input.focus();
+        responseTimer = 0;
+      }, 240);
+    };
+
+    const reset = () => {
+      if (responseTimer) window.clearTimeout(responseTimer);
+      responseTimer = 0;
+      pending = false;
+      thread.innerHTML = initialThread;
+      input.disabled = false;
+      input.value = '';
+      submit.disabled = true;
+      window.setTimeout(() => input.focus(), 0);
+      bindQuickQuestions();
+    };
+
+    const bindQuickQuestions = () => {
+      thread.querySelectorAll<HTMLButtonElement>('[data-chat-question]').forEach((button) => {
+        button.addEventListener('click', () => ask(button.dataset.chatQuestion || button.textContent || ''));
+      });
+    };
+
+    launcher.addEventListener('click', () => setOpen(!isOpen));
+    closeButton.addEventListener('click', () => setOpen(false));
+    resetButton.addEventListener('click', reset);
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      ask(input.value);
+    });
+    input.addEventListener('input', () => { submit.disabled = pending || input.value.trim().length < 2; });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && isOpen) setOpen(false); });
+    window.addEventListener('tp:assistant-request-open', () => setOpen(true));
+    bindQuickQuestions();
+  });
+</script>
+
+<style is:global>
+  tp-chat-static { display: contents; }
+</style>

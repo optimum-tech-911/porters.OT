@@ -8,7 +8,7 @@
   --color-porters-gold: #BE9E58;
 
   --font-heading: 'Bricolage Grotesque', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-body: 'Newsreader', Georgia, serif;
   --font-logo: 'Bricolage Grotesque', system-ui, sans-serif;
   --font-logo-script: 'Yellowtail', cursive;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
@@ -373,6 +373,91 @@ body {
      SCROLL REVEAL ANIMATION
      ======================================== */
 
+  /* Coordinated section choreography. These states exist only while a section
+     enters the viewport; BaseLayout releases them afterwards so hover and
+     interactive transforms remain completely independent. */
+  [data-motion-section].motion-section-ready [data-motion-item] {
+    --motion-x: 0px;
+    --motion-y: 46px;
+    --motion-scale: 0.965;
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate3d(var(--motion-x), var(--motion-y), 0) scale(var(--motion-scale));
+    transition:
+      opacity 0.7s ease,
+      filter 0.82s ease,
+      transform 0.92s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--motion-order, 0) * 82ms + var(--motion-delay, 0ms));
+    will-change: opacity, filter, transform;
+  }
+
+  [data-motion-section].motion-section-ready [data-motion-item="left"] {
+    --motion-x: -78px;
+    --motion-y: 8px;
+    --motion-scale: 0.985;
+  }
+
+  [data-motion-section].motion-section-ready [data-motion-item="right"] {
+    --motion-x: 78px;
+    --motion-y: 8px;
+    --motion-scale: 0.985;
+  }
+
+  [data-motion-section].motion-section-ready [data-motion-item="pop"] {
+    --motion-y: 28px;
+    --motion-scale: 0.84;
+  }
+
+  [data-motion-section].motion-section-ready [data-motion-item="chip"] {
+    --motion-y: 18px;
+    --motion-scale: 0.72;
+    transform: translate3d(0, var(--motion-y), 0) scale(var(--motion-scale)) rotate(-5deg);
+  }
+
+  [data-motion-section].motion-section-ready [data-motion-item="fade"] {
+    --motion-y: 0px;
+    --motion-scale: 1;
+  }
+
+  [data-motion-section].motion-section-ready [data-motion-item="wipe"] {
+    --motion-y: 22px;
+    --motion-scale: 1;
+    clip-path: inset(0 100% 0 0 round 18px);
+    transition:
+      opacity 0.72s ease,
+      filter 0.82s ease,
+      transform 0.92s cubic-bezier(0.16, 1, 0.3, 1),
+      clip-path 1.02s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--motion-order, 0) * 82ms + var(--motion-delay, 0ms));
+  }
+
+  [data-motion-section].motion-section-ready.is-motion-visible [data-motion-item] {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    clip-path: inset(0 0 0 0 round 18px);
+  }
+
+  @media (max-width: 720px) {
+    [data-motion-section].motion-section-ready [data-motion-item="left"] {
+      --motion-x: -38px;
+    }
+
+    [data-motion-section].motion-section-ready [data-motion-item="right"] {
+      --motion-x: 38px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-motion-section].motion-section-ready [data-motion-item] {
+      opacity: 1 !important;
+      filter: none !important;
+      transform: none !important;
+      clip-path: none !important;
+      transition: none !important;
+    }
+  }
+
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -440,6 +525,75 @@ body {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
     will-change: auto;
+  }
+
+  /* Strong section entrances. Applied by BaseLayout only to content that does
+     not belong to a component with its own continuous motion system. */
+  .reveal.motion-enhanced,
+  [data-reveal].motion-enhanced {
+    --reveal-x: 0px;
+    --reveal-y: 52px;
+    --reveal-scale: 0.965;
+    opacity: 0;
+    filter: blur(9px);
+    transform: translate3d(var(--reveal-x), var(--reveal-y), 0) scale(var(--reveal-scale));
+    transition:
+      opacity 0.72s ease,
+      filter 0.82s ease,
+      transform 0.94s cubic-bezier(0.16, 1.18, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.motion-enhanced.motion-slide-left,
+  [data-reveal].motion-enhanced.motion-slide-left {
+    --reveal-x: -72px;
+    --reveal-y: 10px;
+    --reveal-scale: 0.98;
+  }
+
+  .reveal.motion-enhanced.motion-slide-right,
+  [data-reveal].motion-enhanced.motion-slide-right {
+    --reveal-x: 72px;
+    --reveal-y: 10px;
+    --reveal-scale: 0.98;
+  }
+
+  .reveal.motion-enhanced.motion-pop,
+  [data-reveal].motion-enhanced.motion-pop {
+    --reveal-x: 0px;
+    --reveal-y: 34px;
+    --reveal-scale: 0.9;
+  }
+
+  .reveal.motion-enhanced.visible,
+  .reveal.motion-enhanced.is-visible,
+  [data-reveal].motion-enhanced.visible,
+  [data-reveal].motion-enhanced.is-visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  @media (max-width: 720px) {
+    .reveal.motion-enhanced.motion-slide-left,
+    [data-reveal].motion-enhanced.motion-slide-left {
+      --reveal-x: -36px;
+    }
+
+    .reveal.motion-enhanced.motion-slide-right,
+    [data-reveal].motion-enhanced.motion-slide-right {
+      --reveal-x: 36px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal.motion-enhanced,
+    [data-reveal].motion-enhanced {
+      opacity: 1 !important;
+      filter: none !important;
+      transform: none !important;
+      transition: none !important;
+    }
   }
 
   .stagger-children > *:nth-child(1) { --reveal-delay: 0ms; }

@@ -16,6 +16,20 @@ const defaults: Required<CmsFormat> = {
 
 const versionDate = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
 const formatKeys = Object.keys(defaults) as Array<keyof CmsFormat>;
+type LayoutValue = { x: number; y: number; scale: number };
+
+function parseLayoutValue(value: string): LayoutValue {
+  try {
+    const parsed = JSON.parse(value) as Partial<LayoutValue>;
+    return {
+      x: Math.max(-800, Math.min(800, Number(parsed.x) || 0)),
+      y: Math.max(-800, Math.min(800, Number(parsed.y) || 0)),
+      scale: Math.max(40, Math.min(220, Number(parsed.scale) || 100)),
+    };
+  } catch {
+    return { x: 0, y: 0, scale: 100 };
+  }
+}
 
 export default function CmsVisualEditor() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -39,8 +53,17 @@ export default function CmsVisualEditor() {
   const [pageSearch, setPageSearch] = useState('');
   const [richKeys, setRichKeys] = useState<Set<string>>(new Set());
   const [fieldToken, setFieldToken] = useState(0);
+  const [leftSidebarCollapsed, setLeftSidebarCollapsed] = useState(false);
+  const [rightPanelCollapsed, setRightPanelCollapsed] = useState(false);
+  const selectedRef = useRef<CmsContentBlock | null>(null);
 
   const isRich = Boolean(selected && richKeys.has(selected.content_key));
+  const isLayout = selected?.content_key.startsWith('pages.portage-salarial.media.') ?? false;
+  const layoutValue = useMemo(() => parseLayoutValue(content), [content]);
+
+  useEffect(() => {
+    selectedRef.current = selected;
+  }, [selected]);
 
   // What a visitor would actually read. Only merged blocks hold markup; a plain
   // block stores literal text, and parsing it would reinterpret characters the
@@ -161,6 +184,11 @@ export default function CmsVisualEditor() {
   }, [updateEditorUrl]);
 
   useEffect(() => {
+    document.body.classList.toggle('cms-editor-admin-sidebar-collapsed', leftSidebarCollapsed);
+    return () => document.body.classList.remove('cms-editor-admin-sidebar-collapsed');
+  }, [leftSidebarCollapsed]);
+
+  useEffect(() => {
     const onMessage = (event: MessageEvent) => {
       if (
         event.origin !== window.location.origin
@@ -193,6 +221,13 @@ export default function CmsVisualEditor() {
         approveNavigation(event.data.route || '/', event.data.url);
       }
       if (event.data.type === 'cms:select' && event.data.block && !busy) chooseBlock(event.data.block as CmsContentBlock);
+      if (event.data.type === 'cms:layout-preview' && typeof event.data.content === 'string') {
+        setContent(event.data.content);
+        const current = selectedRef.current;
+        if (current && current.content_key === event.data.key) {
+          post({ type: 'cms:focus', key: current.content_key });
+        }
+      }
       if (event.data.type === 'cms:error') {
         setLoadingFrame(false);
         setFrameError(event.data.message || 'L’éditeur n’a pas pu charger cette page.');
@@ -341,12 +376,19 @@ export default function CmsVisualEditor() {
     setFormat((current) => ({ ...current, [key]: value }));
   }
 
+  function updateLayout(next: Partial<LayoutValue>) {
+    const value = { ...layoutValue, ...next };
+    const serialized = JSON.stringify(value);
+    setContent(serialized);
+    if (selected) post({ type: 'cms:update-preview', key: selected.content_key, content: serialized, format: {} });
+  }
+
   function switchPreview(state: 'draft' | 'published') {
     setPreviewState(state);
   }
 
   return (
-    <div className="cms-editor-shell">
+    <div className={`cms-editor-shell${rightPanelCollapsed ? ' cms-editor-shell--panel-collapsed' : ''}`}>
       <div className="cms-editor-toolbar">
         <div>
           <a href="/admin/dashboard" className="cms-editor-back" aria-label="Retour au tableau de bord">←</a>
@@ -357,6 +399,28 @@ export default function CmsVisualEditor() {
         <div className="cms-preview-toggle" aria-label="Mode de prévisualisation">
           <button className={previewState === 'draft' ? 'active' : ''} onClick={() => switchPreview('draft')}>Brouillon</button>
           <button className={previewState === 'published' ? 'active' : ''} onClick={() => switchPreview('published')}>Publié</button>
+        </div>
+        <div className="cms-editor-layout-controls" aria-label="Taille de l’espace de travail">
+          <button
+            type="button"
+            className={`cms-editor-layout-toggle${leftSidebarCollapsed ? ' active' : ''}`}
+            aria-label={leftSidebarCollapsed ? 'Afficher le menu de navigation' : 'Masquer le menu de navigation'}
+            aria-pressed={leftSidebarCollapsed}
+            title={leftSidebarCollapsed ? 'Afficher le menu de gauche' : 'Masquer le menu de gauche'}
+            onClick={() => setLeftSidebarCollapsed((current) => !current)}
+          >
+            <span aria-hidden="true">{leftSidebarCollapsed ? '▸' : '◂'}</span><em>Menu</em>
+          </button>
+          <button
+            type="button"
+            className={`cms-editor-layout-toggle${rightPanelCollapsed ? ' active' : ''}`}
+            aria-label={rightPanelCollapsed ? 'Afficher le panneau de modification' : 'Masquer le panneau de modification'}
+            aria-pressed={rightPanelCollapsed}
+            title={rightPanelCollapsed ? 'Afficher le panneau de droite' : 'Masquer le panneau de droite'}
+            onClick={() => setRightPanelCollapsed((current) => !current)}
+          >
+            <em>Panneau</em><span aria-hidden="true">{rightPanelCollapsed ? '◂' : '▸'}</span>
+          </button>
         </div>
         <div className="cms-editor-toolbar-status">
           <span className={dirty ? 'is-dirty' : 'is-saved'}>{dirty ? 'Modifications non enregistrées' : 'Aucune modification locale'}</span>
@@ -395,24 +459,38 @@ export default function CmsVisualEditor() {
           />}
         </section>
 
-        <aside className="cms-editor-panel">
+        <aside className="cms-editor-panel" aria-hidden={rightPanelCollapsed}>
           {!selected ? (
             <div className="cms-editor-empty">
               <span aria-hidden="true">✦</span>
-              <h2>Sélectionnez un texte</h2>
-              <p>Survolez la page puis cliquez sur un élément entouré en doré pour le modifier.</p>
+              <h2>Sélectionnez un élément</h2>
+              <p>Survolez la page puis cliquez sur un texte ou une image entourée en doré pour la modifier.</p>
               <small>{blocks.length} éléments disponibles sur cette page</small>
             </div>
           ) : (
             <>
               <div className="cms-editor-panel-head">
-                <div><span>Élément sélectionné</span><h2>{selected.element_type === 'heading' ? 'Titre' : selected.element_type === 'button' ? 'Bouton' : 'Texte'}</h2></div>
+                <div><span>Élément sélectionné</span><h2>{isLayout ? 'Image mobile' : selected.element_type === 'heading' ? 'Titre' : selected.element_type === 'button' ? 'Bouton' : 'Texte'}</h2></div>
                 <span className={`cms-status-chip cms-status-chip--${selected.status}`}>{selected.status === 'draft' ? 'Brouillon' : 'Publié'}</span>
               </div>
 
               <div className="cms-key-card"><small>Clé stable</small><code>{selected.content_key}</code><span>{selected.route_path}</span></div>
 
-              <label className="cms-field-label" htmlFor={isRich ? undefined : 'cms-content'}>Contenu</label>
+              {isLayout ? (
+                <div className="cms-layout-panel">
+                  <p>Glissez directement l’homme dans l’aperçu, ou ajustez sa position précisément ici.</p>
+                  <label>Horizontal <strong>{layoutValue.x}px</strong>
+                    <input type="range" min="-800" max="800" step="1" value={layoutValue.x} onChange={(event) => updateLayout({ x: Number(event.target.value) })} />
+                  </label>
+                  <label>Vertical <strong>{layoutValue.y}px</strong>
+                    <input type="range" min="-800" max="800" step="1" value={layoutValue.y} onChange={(event) => updateLayout({ y: Number(event.target.value) })} />
+                  </label>
+                  <label>Taille <strong>{layoutValue.scale}%</strong>
+                    <input type="range" min="40" max="220" step="1" value={layoutValue.scale} onChange={(event) => updateLayout({ scale: Number(event.target.value) })} />
+                  </label>
+                  <button type="button" className="cms-reset-format" onClick={() => updateLayout({ x: 0, y: 0, scale: 100 })}>Réinitialiser la position</button>
+                </div>
+              ) : <><label className="cms-field-label" htmlFor={isRich ? undefined : 'cms-content'}>Contenu</label>
               {isRich ? (
                 <CmsRichTextField value={content} syncToken={fieldToken} onChange={setContent} />
               ) : (
@@ -447,7 +525,7 @@ export default function CmsVisualEditor() {
                   </select>
                 </label>
                 <button type="button" className="cms-reset-format" onClick={() => setFormat({ ...defaults })}>Réinitialiser le style</button>
-              </div>
+              </div></>}
 
               {error && <div className="cms-admin-alert cms-admin-alert--error" role="alert">{error}</div>}
               {notice && <div className="cms-admin-alert cms-admin-alert--success" role="status">{notice}</div>}

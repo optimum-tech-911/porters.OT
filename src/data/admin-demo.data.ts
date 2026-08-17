@@ -956,13 +956,13 @@ export const recentActivity: ActivityItem[] = [
 export const adminNavItems: AdminNavItem[] = [
   { label: 'Tableau de bord', href: '/admin/dashboard', icon: 'dashboard', group: 'main' },
   { label: 'Éditeur visuel', href: '/admin/editor', icon: 'editor', group: 'main' },
-  { label: 'Messages', href: '/admin/messages', icon: 'messages', badge: 3, group: 'communication' },
-  { label: 'Leads', href: '/admin/leads', icon: 'leads', badge: 3, group: 'communication' },
+  { label: 'Messages', href: '/admin/messages', icon: 'messages', group: 'communication' },
+  { label: 'Leads', href: '/admin/leads', icon: 'leads', group: 'communication' },
   { label: 'Rendez-vous', href: '/admin/meetings', icon: 'meetings', group: 'communication' },
   { label: 'Calendrier', href: '/admin/calendar', icon: 'calendar', group: 'communication' },
   { label: 'Simulateur', href: '/admin/calculator', icon: 'calculator', group: 'tools' },
   { label: 'Analytics', href: '/admin/analytics', icon: 'analytics', group: 'tools' },
   { label: 'Équipe', href: '/admin/team', icon: 'team', group: 'management' },
-  { label: 'Notifications', href: '/admin/notifications', icon: 'notifications', badge: 7, group: 'management' },
+  { label: 'Notifications', href: '/admin/notifications', icon: 'notifications', group: 'management' },
   { label: 'Paramètres', href: '/admin/settings', icon: 'settings', group: 'management' },
 ];

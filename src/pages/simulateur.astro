@@ -12,7 +12,6 @@ const seo = {
 };
 
 const breadcrumbs = [{ label: 'Simulateur' }];
-
 const faqItems = [
   {
     question: 'Comment est calculé le résultat de la simulation ?',
@@ -24,7 +23,7 @@ const faqItems = [
   },
   {
     question: 'Quel TJM minimum faut-il pratiquer ?',
-    answer: 'Il n’en existe pas. Votre tarif dépend de votre expertise, de la tension sur votre métier, de la durée de la mission et de votre objectif de net. Le simulateur sert à tester plusieurs scénarios avant d’en discuter.',
+    answer: 'Il n’y en a pas. Votre tarif dépend de votre expertise, de la tension sur votre métier, de la durée de la mission et du net que vous visez. Le simulateur sert justement à tester plusieurs scénarios avant d’en parler.',
   },
 ];
 ---
@@ -62,7 +61,7 @@ const faqItems = [
           Votre TJM en net, <span class="gold-underline">ligne par ligne</span>
         </h1>
         <p class="max-w-xl text-base leading-relaxed text-porters-white/82 sm:text-lg">
-          Chiffre d’affaires, frais de gestion, frais professionnels, cotisations, net. Chaque poste est affiché, aucun n’est agrégé. Le résultat reste une estimation jusqu’à validation de votre situation.
+          Chiffre d’affaires, frais de gestion, frais professionnels, cotisations, net : chaque ligne apparaît séparément. Le résultat reste une estimation tant que votre situation n’a pas été validée.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <span class="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-porters-white/78">Portage & activité autonome</span>
@@ -97,9 +96,7 @@ const faqItems = [
           />
         </div>
       </div>
-      <div>
-        <SimulatorForm client:load />
-      </div>
+      <SimulatorForm client:load />
     </div>
   </section>
 

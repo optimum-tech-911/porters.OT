@@ -4,37 +4,31 @@ import workshopImage from '../../images/team-workshop.webp';
 
 const commitments = [
   {
-    number: '01',
     title: 'Une charte Numérique Responsable, et un référent désigné',
     // F-D10 (PUBLISHABLE)
     text: 'Une charte fixe les principes de sobriété, d’éco-conception et d’accessibilité. Un référent Numérique Responsable est désigné.',
   },
   {
-    number: '02',
     title: 'Éco-conception logicielle',
     // F-D10 (PUBLISHABLE) — référentiels nommés, jamais présentés comme certifications
     text: 'Les équipes s’appuient sur le RGESN et les pratiques Green IT pour réduire le poids du code, des requêtes et des dépendances.',
   },
   {
-    number: '03',
     title: 'Accessibilité numérique',
     // F-D09 (PUBLISHABLE)
     text: 'Les prestations qui touchent à une interface s’appuient sur le RGAA et les recommandations WCAG dès la conception.',
   },
   {
-    number: '04',
     title: 'Déplacements à faible impact',
     // F-D14 (PUBLISHABLE)
     text: 'Train en priorité sur les longues distances, transports en commun ou mobilités douces en proximité.',
   },
   {
-    number: '05',
     title: 'Équipements réparés, reconditionnés, donnés',
     // F-D15 (PUBLISHABLE)
     text: 'Réparation quand elle est possible, périphériques reconditionnés, recyclage et dons par des filières identifiées.',
   },
   {
-    number: '06',
     title: 'Diversité et égalité des chances',
     // F-D11 (PUBLISHABLE)
     text: 'Le groupe est signataire de la Charte de la diversité. Le recrutement repose sur les compétences, l’expérience et le savoir-être.',
@@ -86,7 +80,7 @@ const governance = [
     <div class="container relative mx-auto flex min-h-[39rem] items-center px-6 py-20 lg:px-8">
       <div class="max-w-3xl reveal">
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Responsabilité sociale et environnementale</p>
-        <h1 class="max-w-3xl text-porters-white">Six engagements concrets, pas une déclaration d’intention.</h1>
+        <h1 class="max-w-3xl text-porters-white">Six engagements que nous pouvons prouver.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
           Une charte, un référent, des pratiques identifiées et des indicateurs suivis en comité de pilotage.
         </p>
@@ -103,7 +97,6 @@ const governance = [
       <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
         {commitments.map((commitment) => (
           <article class="border-t-2 border-porters-gold pt-6 reveal">
-            <p class="mb-4 font-mono text-sm font-semibold text-porters-gold">{commitment.number}</p>
             <h3 class="mb-3">{commitment.title}</h3>
             <p class="mb-0 max-w-xl text-porters-black/66">{commitment.text}</p>
           </article>

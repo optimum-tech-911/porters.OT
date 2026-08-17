@@ -39,11 +39,11 @@ ${post.sections
 <p>${section.body}</p>`,
   )
   .join('\n')}
-${post.expertiseHref ? `<p><a href="${post.expertiseHref}">Découvrir la page expertise associée</a></p>` : ''}
+${post.expertiseHref ? `<p><a href="${post.expertiseHref}">Voir le domaine d’expertise correspondant</a></p>` : ''}
 ${post.faq?.length ? `<h2>Questions fréquentes</h2>
 ${post.faq.map((item) => `<h3>${item.question}</h3><p>${item.answer}</p>`).join('\n')}` : ''}
-<h2>Passer à l'étape suivante</h2>
-<p>Pour appliquer ces principes à votre situation, utilisez le simulateur The Porters ou demandez un rendez-vous avec un conseiller. Les chiffres exacts, les frais et les conditions d'accompagnement sont toujours à valider selon votre mission.</p>`;
+<h2>Et pour votre cas à vous ?</h2>
+<p>Le simulateur The Porters vous donnera un premier ordre de grandeur, et un conseiller peut reprendre le calcul avec vos vrais paramètres. Les chiffres exacts, les frais et les conditions dépendent toujours de la mission.</p>`;
 
 const posts: BlogSeed[] = [
   {

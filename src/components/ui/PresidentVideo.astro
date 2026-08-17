@@ -30,6 +30,7 @@ const { class: className = '' } = Astro.props;
     <span class="mt-1 shrink-0 text-porters-gold" aria-hidden="true">▶</span>
   </figcaption>
   <video
+    data-president-video
     class="block h-auto w-full bg-porters-navy"
     controls
     preload="metadata"
@@ -38,3 +39,15 @@ const { class: className = '' } = Astro.props;
     src={presidentVideo}
   ></video>
 </figure>
+
+<script>
+  document.querySelectorAll<HTMLVideoElement>('[data-president-video]').forEach((video) => {
+    const startAt = 2;
+    const seekToOpening = () => {
+      if (video.duration > startAt && video.currentTime < startAt - 0.1) video.currentTime = startAt;
+    };
+    video.addEventListener('loadedmetadata', seekToOpening, { once: true });
+    video.addEventListener('play', seekToOpening);
+    if (video.readyState >= 1) seekToOpening();
+  });
+</script>

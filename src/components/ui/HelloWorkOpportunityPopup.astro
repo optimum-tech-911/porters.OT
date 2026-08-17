@@ -1,0 +1,513 @@
+---
+import { Image } from 'astro:assets';
+import { helloWorkJobs, helloWorkUrl } from '../../data/hello-work.data';
+import popupWoman from '../../assets/home/popup-woman.png';
+
+const featuredJobs = helloWorkJobs;
+---
+
+<div class="opportunity-backdrop" data-opportunity-backdrop aria-hidden="true"></div>
+<div class="opportunity-popup-shell is-left" data-opportunity-shell>
+  <aside class="opportunity-popup" data-opportunity-popup role="dialog" aria-modal="true" aria-label="Offre HelloWork mise en avant" aria-live="polite" aria-hidden="true">
+    <div class="opportunity-popup__art" aria-hidden="true">
+      <svg viewBox="0 0 220 150" role="presentation">
+        <circle class="opportunity-popup__orbit opportunity-popup__orbit--outer" cx="158" cy="38" r="72"></circle>
+        <circle class="opportunity-popup__orbit opportunity-popup__orbit--inner" cx="158" cy="38" r="48"></circle>
+        <path class="opportunity-popup__grid" d="M76 120H210M76 94H210M76 68H210M102 42V132M136 42V132M170 42V132M204 42V132"></path>
+        <path class="opportunity-popup__bars" d="M88 126V105M118 126V91M148 126V103M178 126V72M208 126V50"></path>
+        <path class="opportunity-popup__trend" d="M88 104 118 88 148 98 178 68 208 45"></path>
+        <circle class="opportunity-popup__point" cx="88" cy="104" r="4"></circle>
+        <circle class="opportunity-popup__point" cx="118" cy="88" r="4"></circle>
+        <circle class="opportunity-popup__point" cx="148" cy="98" r="4"></circle>
+        <circle class="opportunity-popup__point" cx="178" cy="68" r="4"></circle>
+        <circle class="opportunity-popup__point opportunity-popup__point--last" cx="208" cy="45" r="6"></circle>
+      </svg>
+    </div>
+    <button class="opportunity-popup__close" type="button" aria-label="Fermer cette suggestion" data-opportunity-close>×</button>
+    <div class="opportunity-popup__badge">Opportunité IT</div>
+    <p class="opportunity-popup__platform">The Porters sur HelloWork</p>
+    <div data-opportunity-content>
+      <strong>{featuredJobs[0].salary}</strong>
+      <h2>{featuredJobs[0].title}</h2>
+      <p>{featuredJobs[0].city} · {featuredJobs[0].contract}</p>
+    </div>
+    <div class="opportunity-popup__actions">
+      <a href={helloWorkUrl} target="_blank" rel="noopener noreferrer">Voir les offres <span aria-hidden="true">↗</span></a>
+      <a href="/rendez-vous">Parler à un conseiller</a>
+    </div>
+  </aside>
+  <figure class="opportunity-popup__woman" aria-hidden="true">
+    <Image
+      src={popupWoman}
+      alt=""
+      widths={[240, 320, 420]}
+      sizes="(max-width: 640px) 8rem, 11.5rem"
+      format="webp"
+      quality={92}
+      loading="lazy"
+    />
+  </figure>
+</div>
+
+<script is:inline define:vars={{ featuredJobs }}>
+  const popup = document.querySelector('[data-opportunity-popup]');
+  const shell = document.querySelector('[data-opportunity-shell]');
+  const backdrop = document.querySelector('[data-opportunity-backdrop]');
+  const close = popup?.querySelector('[data-opportunity-close]');
+  const content = popup?.querySelector('[data-opportunity-content]');
+  const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let currentJob = 0;
+  let rotationTimer;
+  let showTimer;
+  let hideTimer;
+  let lastJob = -1;
+
+  const randomDelay = () => 23000 + Math.round(Math.random() * 10000);
+
+  const pickJob = () => {
+    if (featuredJobs.length < 2) return 0;
+    let next = Math.floor(Math.random() * featuredJobs.length);
+    while (next === lastJob) next = Math.floor(Math.random() * featuredJobs.length);
+    lastJob = next;
+    return next;
+  };
+
+  const render = () => {
+    if (!content) return;
+    const job = featuredJobs[currentJob];
+    content.classList.remove('is-changing');
+    content.innerHTML = `<strong>${job.salary}</strong><h2>${job.title}</h2><p>${job.city} · ${job.contract}</p>`;
+    requestAnimationFrame(() => content.classList.add('is-changing'));
+  };
+
+  const hide = () => {
+    shell?.classList.remove('is-visible');
+    backdrop?.classList.remove('is-visible');
+    popup?.setAttribute('aria-hidden', 'true');
+    if (rotationTimer) window.clearInterval(rotationTimer);
+    if (hideTimer) window.clearTimeout(hideTimer);
+  };
+
+  const show = () => {
+    if (!popup || !shell || document.hidden || document.querySelector('.tp-chat-launcher[aria-expanded="true"]')) {
+      scheduleNext();
+      return;
+    }
+    currentJob = pickJob();
+    shell.classList.toggle('is-left', Math.random() > 0.3);
+    shell.classList.toggle('is-right', !shell.classList.contains('is-left'));
+    backdrop?.classList.toggle('is-right', shell.classList.contains('is-right'));
+    render();
+    backdrop?.classList.add('is-visible');
+    shell.classList.add('is-visible');
+    popup?.setAttribute('aria-hidden', 'false');
+    if (!motionReduced) {
+      rotationTimer = window.setInterval(() => {
+        currentJob = (currentJob + 1) % featuredJobs.length;
+        render();
+      }, 7000);
+    }
+    hideTimer = window.setTimeout(() => {
+      hide();
+      scheduleNext();
+    }, 16500);
+  };
+
+  function scheduleNext(delay = randomDelay()) {
+    if (showTimer) window.clearTimeout(showTimer);
+    showTimer = window.setTimeout(show, delay);
+  }
+
+  scheduleNext(motionReduced ? 6800 : 8200);
+
+  close?.addEventListener('click', () => {
+    hide();
+    if (showTimer) window.clearTimeout(showTimer);
+    scheduleNext(randomDelay());
+  });
+
+  window.addEventListener('tp:assistant-open', () => {
+    hide();
+    if (showTimer) window.clearTimeout(showTimer);
+    scheduleNext(45000);
+  });
+</script>
+
+<style>
+  .opportunity-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background:
+      radial-gradient(circle at var(--spot-x, 18%) 72%, transparent 0 9rem, rgba(4, 17, 23, 0.16) 20rem),
+      rgba(5, 18, 25, 0.56);
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(2.5px) saturate(0.72);
+    transition: opacity 420ms ease, visibility 420ms ease;
+    pointer-events: auto;
+  }
+
+  .opportunity-backdrop.is-right { --spot-x: 82%; }
+
+  .opportunity-backdrop.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .opportunity-popup-shell {
+    position: fixed;
+    bottom: clamp(1rem, 3vw, 2.25rem);
+    z-index: 2100;
+    width: min(22rem, calc(100vw - 2rem));
+    isolation: isolate;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(var(--popup-drift, -2rem), 1.4rem, 0) scale(0.86) rotate(-1deg);
+    transition: opacity 240ms ease, visibility 240ms ease, transform 520ms var(--ease-soft);
+  }
+
+  .opportunity-popup-shell.is-left {
+    --popup-drift: -2rem;
+    left: clamp(1rem, 3vw, 2.25rem);
+  }
+
+  .opportunity-popup-shell.is-right {
+    --popup-drift: 2rem;
+    right: clamp(1rem, 3vw, 2.25rem);
+    bottom: clamp(6.5rem, 10vw, 8rem);
+  }
+
+  .opportunity-popup-shell.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    animation:
+      opportunity-pop-in 720ms cubic-bezier(0.16, 1.35, 0.32, 1) both,
+      opportunity-highlight 7s 1.1s ease-in-out infinite;
+  }
+
+  .opportunity-popup {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(190, 158, 88, 0.82);
+    border-radius: 1.2rem;
+    padding: 1.45rem;
+    background:
+      linear-gradient(135deg, transparent 0 72%, rgba(198, 164, 90, 0.08) 72% 74%, transparent 74%),
+      radial-gradient(circle at 100% 0%, rgba(190, 158, 88, 0.26), transparent 43%),
+      radial-gradient(circle at 2% 100%, rgba(32, 52, 64, 0.08), transparent 36%),
+      rgba(255, 252, 246, 0.98);
+    box-shadow: 0 35px 95px rgba(5, 20, 27, 0.55), 0 0 0 0 rgba(198, 164, 90, 0);
+  }
+
+  .opportunity-popup::before {
+    position: absolute;
+    right: -4.4rem;
+    bottom: -5.5rem;
+    z-index: 0;
+    width: 12rem;
+    height: 12rem;
+    border: 1px solid rgba(198, 164, 90, 0.36);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 1.35rem rgba(198, 164, 90, 0.055),
+      0 0 0 2.7rem rgba(198, 164, 90, 0.035);
+    content: '';
+  }
+
+  .opportunity-popup::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c6a45a 30%, #f1d58f 50%, #c6a45a 70%, transparent);
+    background-size: 220% 100%;
+    content: '';
+    transform: translateX(-100%);
+  }
+
+  .opportunity-popup-shell.is-visible .opportunity-popup::after {
+    animation: opportunity-shimmer 1.15s 260ms ease-out forwards;
+  }
+
+  .opportunity-popup__art {
+    position: absolute;
+    top: 0.15rem;
+    right: -1rem;
+    z-index: 0;
+    width: 13rem;
+    color: var(--color-porters-gold);
+    opacity: 0.2;
+    transform: translate(18px, -12px) scale(0.82) rotate(2deg);
+    transform-origin: top right;
+  }
+
+  .opportunity-popup-shell.is-visible .opportunity-popup__art {
+    animation: opportunity-art-arrive 900ms 180ms cubic-bezier(0.16, 1.1, 0.3, 1) both;
+  }
+
+  .opportunity-popup__art svg {
+    display: block;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .opportunity-popup__orbit,
+  .opportunity-popup__grid,
+  .opportunity-popup__bars,
+  .opportunity-popup__trend {
+    fill: none;
+    stroke: currentColor;
+  }
+
+  .opportunity-popup__orbit { stroke-width: 1.4; }
+  .opportunity-popup__orbit--outer { stroke-dasharray: 5 7; }
+  .opportunity-popup__orbit--inner { stroke-dasharray: 2 5; }
+  .opportunity-popup__grid { stroke-width: 0.7; opacity: 0.45; }
+  .opportunity-popup__bars { stroke-width: 9; stroke-linecap: round; opacity: 0.5; }
+  .opportunity-popup__trend {
+    stroke-width: 3.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 180;
+    stroke-dashoffset: 180;
+  }
+
+  .opportunity-popup-shell.is-visible .opportunity-popup__trend {
+    animation: opportunity-chart-draw 900ms 650ms ease-out forwards;
+  }
+
+  .opportunity-popup__point {
+    fill: #c6a45a;
+    opacity: 0;
+  }
+
+  .opportunity-popup-shell.is-visible .opportunity-popup__point {
+    animation: opportunity-point-pop 320ms 1.25s ease-out forwards;
+  }
+
+  .opportunity-popup-shell.is-visible .opportunity-popup__point--last {
+    animation: opportunity-point-pop 320ms 1.35s ease-out forwards, opportunity-point-pulse 1.5s 1.7s ease-in-out infinite;
+  }
+
+  .opportunity-popup__woman {
+    position: absolute;
+    bottom: calc(100% - 1.2rem);
+    left: 50%;
+    z-index: 4;
+    width: clamp(9.5rem, 26vw, 11.5rem);
+    margin: 0;
+    pointer-events: none;
+    opacity: 0;
+    filter: blur(7px) drop-shadow(0 22px 24px rgba(5, 20, 27, 0.3));
+    transform: translate3d(-50%, 3.2rem, 0) scale(0.78) rotate(-2deg);
+    transform-origin: 50% 100%;
+  }
+
+  .opportunity-popup__woman :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .opportunity-popup-shell.is-visible .opportunity-popup__woman {
+    animation: opportunity-woman-arrive 900ms 240ms cubic-bezier(0.16, 1.2, 0.3, 1) both;
+  }
+
+  .opportunity-popup__close {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid rgba(40, 55, 67, 0.16);
+    border-radius: 50%;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--color-porters-navy);
+    cursor: pointer;
+    font: 500 1.2rem/1 sans-serif;
+  }
+
+  .opportunity-popup__badge {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    border-radius: 999px;
+    padding: 0.4rem 0.7rem;
+    background: var(--color-porters-gold);
+    color: var(--color-porters-navy);
+    font-size: 0.62rem;
+    font-weight: 820;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .opportunity-popup__platform,
+  [data-opportunity-content],
+  .opportunity-popup__actions {
+    position: relative;
+    z-index: 2;
+  }
+
+  .opportunity-popup__platform {
+    margin: 0.65rem 0 0;
+    color: rgba(40, 55, 67, 0.58);
+    font-size: 0.68rem;
+  }
+
+  [data-opportunity-content] > strong {
+    display: block;
+    width: fit-content;
+    margin-top: 1rem;
+    border-radius: 0.6rem;
+    padding: 0.5rem 0.7rem;
+    background: var(--color-porters-navy);
+    color: #fff;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 24px rgba(40, 55, 67, 0.18);
+  }
+
+  [data-opportunity-content] h2 {
+    margin: 0.9rem 2rem 0 0;
+    font-size: 1.18rem;
+    line-height: 1.2;
+  }
+
+  [data-opportunity-content] p {
+    margin: 0.55rem 0 0;
+    color: rgba(40, 55, 67, 0.62);
+    font-size: 0.76rem;
+  }
+
+  [data-opportunity-content].is-changing {
+    animation: opportunity-content 440ms var(--ease-soft);
+  }
+
+  .opportunity-popup__actions {
+    display: grid;
+    gap: 0.55rem;
+    margin-top: 1.2rem;
+  }
+
+  .opportunity-popup__actions a {
+    display: flex;
+    min-height: 2.8rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    border: 1px solid rgba(40, 55, 67, 0.16);
+    border-radius: 999px;
+    padding-inline: 1rem;
+    color: var(--color-porters-navy);
+    font-size: 0.75rem;
+    font-weight: 780;
+  }
+
+  .opportunity-popup__actions a:first-child {
+    border-color: var(--color-porters-navy);
+    background: var(--color-porters-navy);
+    color: #fff;
+  }
+
+  @keyframes opportunity-content {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes opportunity-pop-in {
+    0% {
+      opacity: 0;
+      transform: translate3d(var(--popup-drift, -2rem), 2.5rem, 0) scale(0.42) rotate(-5deg);
+      filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(5, 20, 27, 0.18), 0 0 0 0 rgba(198, 164, 90, 0);
+    }
+    58% {
+      opacity: 1;
+      transform: translate3d(0, -0.45rem, 0) scale(1.055) rotate(0.7deg);
+      filter: none;
+      box-shadow: 0 42px 110px rgba(5, 20, 27, 0.62), 0 0 0 12px rgba(198, 164, 90, 0.16);
+    }
+    78% { transform: translate3d(0, 0.15rem, 0) scale(0.985) rotate(-0.2deg); }
+    100% {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      box-shadow: 0 35px 95px rgba(5, 20, 27, 0.55), 0 0 0 5px rgba(198, 164, 90, 0.1);
+    }
+  }
+
+  @keyframes opportunity-art-arrive {
+    from { opacity: 0; transform: translate(28px, -20px) scale(0.68) rotate(9deg); }
+    to { opacity: 0.27; transform: translate(0, 0) scale(1) rotate(0); }
+  }
+
+  @keyframes opportunity-woman-arrive {
+    0% { opacity: 0; filter: blur(7px) drop-shadow(0 12px 16px rgba(5,20,27,.12)); transform:translate3d(-50%,3.2rem,0) scale(.78) rotate(-2deg); }
+    64% { opacity:1; filter:blur(0) drop-shadow(0 24px 28px rgba(5,20,27,.32)); transform:translate3d(-50%,-.35rem,0) scale(1.035) rotate(.35deg); }
+    100% { opacity:1; filter:blur(0) drop-shadow(0 22px 24px rgba(5,20,27,.3)); transform:translate3d(-50%,0,0) scale(1) rotate(0); }
+  }
+
+  @keyframes opportunity-chart-draw { to { stroke-dashoffset: 0; } }
+
+  @keyframes opportunity-point-pop {
+    from { opacity: 0; transform: scale(0); transform-origin: center; }
+    to { opacity: 1; transform: scale(1); transform-origin: center; }
+  }
+
+  @keyframes opportunity-point-pulse {
+    50% { opacity: 0.7; transform: scale(1.65); transform-origin: center; }
+  }
+
+  @keyframes opportunity-shimmer {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100%); }
+  }
+
+  @keyframes opportunity-highlight {
+    0%, 72%, 100% { box-shadow: 0 35px 95px rgba(5, 20, 27, 0.55), 0 0 0 5px rgba(198, 164, 90, 0.1); }
+    82% { box-shadow: 0 38px 105px rgba(5, 20, 27, 0.62), 0 0 0 14px rgba(198, 164, 90, 0.2); }
+    90% { box-shadow: 0 35px 95px rgba(5, 20, 27, 0.55), 0 0 0 6px rgba(198, 164, 90, 0.08); }
+  }
+
+  @media (max-width: 640px) {
+    .opportunity-popup-shell {
+      right: 1rem;
+      bottom: calc(5.8rem + env(safe-area-inset-bottom));
+      left: 1rem;
+      width: auto;
+    }
+
+    .opportunity-popup__woman {
+      bottom: calc(100% - .95rem);
+      width: 8.4rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .opportunity-backdrop,
+    .opportunity-popup-shell,
+    .opportunity-popup-shell.is-visible,
+    .opportunity-popup,
+    [data-opportunity-content].is-changing,
+    .opportunity-popup__art,
+    .opportunity-popup__woman,
+    .opportunity-popup__trend,
+    .opportunity-popup__point {
+      animation: none;
+      transition: none;
+    }
+
+    .opportunity-popup-shell.is-visible .opportunity-popup__woman {
+      opacity: 1;
+      filter: drop-shadow(0 22px 24px rgba(5,20,27,.3));
+      transform: translate3d(-50%,0,0);
+    }
+  }
+</style>

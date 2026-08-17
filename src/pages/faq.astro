@@ -29,9 +29,9 @@ const seo = {
     <div class="faq-shell">
       <header class="faq-hero reveal">
         <p>Questions fréquentes</p>
-        <h1>Les réponses, avant l’appel.</h1>
+        <h1>Tout ce qu’on nous demande avant de signer.</h1>
         <span>
-          Statut, rémunération, frais, congés, aléas, entrée et sortie. Chaque réponse commence par la réponse&nbsp;— la nuance vient après.
+          Statut, rémunération, frais, congés, imprévus, entrée et sortie. On répond d’abord, on nuance ensuite.
         </span>
       </header>
 
@@ -47,24 +47,22 @@ const seo = {
             <div class="faq-center">
               <small>The Porters</small>
               <strong>FAQ</strong>
-              <span>{faqGroups.reduce((total, group) => total + group.items.length, 0)} réponses indexées</span>
+              <span>{faqGroups.reduce((total, group) => total + group.items.length, 0)} réponses</span>
             </div>
             {faqGroups.map((group, index) => (
               <a href={`#${group.slug}`} class:list={['faq-chip', `chip-${index + 1}`, { active: index === 0 }]} data-faq-chip={group.slug}>
-                <span>0{index + 1}</span>
                 <b>{group.title}</b>
-                <small>{group.items.length} points</small>
+                <small>{group.items.length} questions</small>
               </a>
             ))}
           </div>
-          <p class="faq-map-note">Cinq familles de questions. Choisissez celle qui vous bloque.</p>
+          <p class="faq-map-note">Cinq familles de questions. Allez droit à celle qui vous bloque.</p>
         </aside>
 
         <div class="faq-groups">
           {faqGroups.map((group, groupIndex) => (
             <section id={group.slug} class="faq-group reveal-up" data-reveal data-faq-group={group.slug} style={`--reveal-delay:${groupIndex * 80}ms`}>
               <header>
-                <span>0{groupIndex + 1}</span>
                 <div>
                   <p>Thème</p>
                   <h2>{group.title}</h2>
@@ -74,7 +72,6 @@ const seo = {
                 {group.items.map((faq, index) => (
                   <details class="faq-item" style={`--item-delay:${index * 55}ms`}>
                     <summary aria-expanded="false">
-                      <span>{String(index + 1).padStart(2, '0')}</span>
                       <strong>{faq.question}</strong>
                       <i aria-hidden="true">+</i>
                     </summary>
@@ -95,7 +92,7 @@ const seo = {
           <h2>Un conseiller reprend votre situation ligne par ligne.</h2>
         </div>
         <div>
-          <a href="/simulateur">Simuler mes revenus <span>→</span></a>
+          <a href="/simulateur">Ouvrir le simulateur <span>→</span></a>
           <a href="/rendez-vous">Parler à un conseiller <span>→</span></a>
         </div>
       </section>
@@ -183,7 +180,7 @@ const seo = {
 
   .faq-board {
     display: grid;
-    grid-template-columns: minmax(24rem, 0.9fr) minmax(0, 1.1fr);
+    grid-template-columns: minmax(24rem, 0.88fr) minmax(30rem, 1.12fr);
     gap: clamp(2.5rem, 6vw, 5.5rem);
     align-items: start;
   }
@@ -341,6 +338,7 @@ const seo = {
 
   .faq-groups {
     display: grid;
+    min-width: 0;
     gap: 1.2rem;
   }
 
@@ -354,9 +352,7 @@ const seo = {
   }
 
   .faq-group > header {
-    display: grid;
-    grid-template-columns: 3.8rem 1fr;
-    gap: 1rem;
+    display: block;
     padding: 1.35rem 1.4rem;
     border-bottom: 1px solid rgba(32, 52, 64, 0.08);
     background:
@@ -408,7 +404,7 @@ const seo = {
 
   .faq-item summary {
     display: grid;
-    grid-template-columns: 2.3rem 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 0.85rem;
     padding: 1.05rem;
@@ -427,6 +423,7 @@ const seo = {
   }
 
   .faq-item summary strong {
+    min-width: 0;
     font-size: 0.92rem;
     line-height: 1.42;
   }
@@ -620,12 +617,6 @@ const seo = {
       transform: translateY(-2px);
     }
 
-    .faq-group > header,
-    .faq-item summary {
-      grid-template-columns: 2.8rem 1fr auto;
-      gap: 0.65rem;
-    }
-
     .faq-group > header {
       padding: 1rem;
     }
@@ -636,6 +627,8 @@ const seo = {
     }
 
     .faq-item summary {
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.65rem;
       padding: 0.95rem 0.75rem;
     }
 

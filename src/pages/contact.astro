@@ -1,6 +1,6 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import ContactForm from '../components/forms/ContactForm';
+import ContactFormStatic from '../components/forms/ContactFormStatic.astro';
 import { agencies } from '../data/agencies.data';
 import { pageSeo } from '../data/seo.data';
 import contactImage from '../../images/enterprise-collaboration.webp';
@@ -15,7 +15,7 @@ import contactImage from '../../images/enterprise-collaboration.webp';
       <div class="mb-16 grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(18rem,0.62fr)] lg:items-center">
         <div class="reveal">
           <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Contact</p>
-          <h1 class="mb-4">Décrivez le contexte. <span class="gold-underline">Nous répondons précisément.</span></h1>
+          <h1 class="mb-4">Posez votre question. <span class="gold-underline">Nous y répondons précisément.</span></h1>
           <p class="text-porters-black/60 max-w-2xl text-lg leading-relaxed">
             Mission déjà trouvée, statut à comparer, simulation à relire, ou un besoin de profil à couvrir. Plus le contexte est précis, plus la réponse l’est&nbsp;— et plus vite elle arrive.
           </p>
@@ -41,7 +41,7 @@ import contactImage from '../../images/enterprise-collaboration.webp';
         <div class="lg:col-span-3 reveal">
           <div class="card p-8 lg:p-10">
             <h2 class="text-2xl font-heading font-semibold text-porters-navy mb-8">Où en êtes-vous&nbsp;?</h2>
-            <ContactForm client:visible />
+            <ContactFormStatic />
           </div>
         </div>
 

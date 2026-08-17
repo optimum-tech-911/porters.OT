@@ -2,17 +2,17 @@
 const footerColumns = [
   {
     title: 'Le portage salarial',
-    note: 'Comprendre le cadre et préparer votre mission.',
+    note: 'Comprendre le principe avant de vous lancer.',
     links: [
       { label: 'Comment fonctionne le portage', href: '/portage-salarial' },
       { label: 'Frais et rémunération', href: '/tarifs' },
-      { label: 'Simuler mes revenus', href: '/simulateur' },
+      { label: 'Simulateur', href: '/simulateur' },
       { label: 'Questions fréquentes', href: '/faq' },
     ],
   },
   {
     title: 'Entreprises',
-    note: 'Cadrer un besoin et identifier la bonne expertise.',
+    note: 'Trouver le bon profil pour votre projet.',
     links: [
       { label: 'Notre offre entreprises', href: '/entreprises' },
       { label: 'Nos expertises IT', href: '/expertises' },
@@ -22,7 +22,7 @@ const footerColumns = [
   },
   {
     title: 'Domaines',
-    note: 'Des pages détaillées, organisées par résultat de mission.',
+    note: 'Nos domaines d’intervention, un par un.',
     links: [
       { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
       { label: 'Data & IA', href: '/expertises/data-ia' },
@@ -34,7 +34,7 @@ const footerColumns = [
   },
   {
     title: 'Le groupe',
-    note: 'The Porters, ses implantations et ses ressources.',
+    note: 'Qui nous sommes, où nous sommes, ce que nous publions.',
     links: [
       { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
       { label: 'Nos agences', href: '/agences' },
@@ -53,12 +53,12 @@ const currentYear = new Date().getFullYear();
   <div class="site-footer__accent" aria-hidden="true"></div>
   <div class="site-footer__cta">
     <div>
-      <p>Votre prochaine étape</p>
-      <h2>Une question précise mérite une réponse claire.</h2>
+      <p>Et maintenant ?</p>
+      <h2>Il reste sûrement une question. Posez-la.</h2>
     </div>
     <div class="site-footer__cta-actions">
       <a href="/rendez-vous">Parler à un conseiller <span aria-hidden="true">→</span></a>
-      <a href="/simulateur">Simuler mes revenus <span aria-hidden="true">→</span></a>
+      <a href="/simulateur">Ouvrir le simulateur <span aria-hidden="true">→</span></a>
     </div>
   </div>
 
@@ -70,14 +70,13 @@ const currentYear = new Date().getFullYear();
           <span class="brand-wordmark-porters">Porters</span>
         </span>
       </a>
-      <p>Portage salarial et expertises IT pour consultants autonomes et entreprises exigeantes.</p>
+      <p>Portage salarial et expertises IT, pour les consultants indépendants comme pour les entreprises qui les recrutent.</p>
       <a class="site-footer__contact" href="mailto:contact@porters.fr">contact@porters.fr <span aria-hidden="true">↗</span></a>
     </div>
 
     <nav class="site-footer__nav" aria-label="Navigation de pied de page">
-      {footerColumns.map((column, columnIndex) => (
+      {footerColumns.map((column) => (
         <section>
-          <span class="site-footer__number">0{columnIndex + 1}</span>
           <h3>{column.title}</h3>
           <p>{column.note}</p>
           <ul>

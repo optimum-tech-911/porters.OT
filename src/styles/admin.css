@@ -127,6 +127,14 @@
   scrollbar-color: rgba(255,255,255,0.1) transparent;
 }
 
+body.cms-editor-admin-sidebar-collapsed .admin-sidebar {
+  transform: translateX(-100%);
+}
+
+body.cms-editor-admin-sidebar-collapsed .admin-main-wrapper {
+  margin-left: 0;
+}
+
 .admin-sidebar-brand {
   padding: 1.25rem 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -1909,24 +1917,70 @@
    Supabase authentication + visual CMS
    ============================================================================= */
 
-.admin-auth-pending .admin-layout { visibility: hidden; }
 .admin-auth-gate {
   position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: none;
-  place-items: center;
-  align-content: center;
-  gap: 0.85rem;
-  background: var(--admin-bg);
+  z-index: 10000;
+  top: 0.85rem;
+  right: 0.85rem;
+  display: grid;
   color: var(--admin-text-secondary);
   font: 500 0.85rem/1.5 var(--font-body, 'Montserrat', sans-serif);
+  pointer-events: none;
 }
-.admin-auth-pending .admin-auth-gate { display: grid; }
+.admin-auth-panel {
+  display: flex;
+  max-width: min(24rem, calc(100vw - 1.7rem));
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid rgba(25, 43, 99, 0.12);
+  border-radius: 999px;
+  padding: 0.65rem 0.9rem;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 14px 38px rgba(6, 13, 32, 0.16);
+  pointer-events: auto;
+}
+.admin-auth-mark {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--admin-navy);
+  color: var(--admin-gold);
+  font-family: var(--font-heading, 'Cinzel', serif);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.admin-auth-panel p { margin: 0; color: var(--admin-text-primary); font-size: 0.68rem; font-weight: 700; }
+.admin-auth-panel small { max-width: 24rem; color: var(--admin-text-secondary); font-size: 0.63rem; line-height: 1.45; }
+.admin-auth-gate--error { top: 1rem; right: 1rem; }
+.admin-auth-gate--error .admin-auth-panel {
+  display: grid;
+  width: min(22rem, calc(100vw - 2rem));
+  justify-items: start;
+  border-radius: 14px;
+  padding: 1rem;
+}
+.admin-auth-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem; margin-top: 0.35rem; }
+.admin-auth-actions button,
+.admin-auth-actions a {
+  border: 1px solid rgba(25, 43, 99, 0.14);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  background: #fff;
+  color: var(--admin-navy);
+  cursor: pointer;
+  font: 700 0.72rem/1 var(--font-body, 'Montserrat', sans-serif);
+  text-decoration: none;
+}
+.admin-auth-actions button { border-color: var(--admin-gold); background: var(--admin-gold); }
 .admin-auth-spinner {
   display: inline-block;
-  width: 1.6rem;
-  height: 1.6rem;
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
   border: 2px solid rgba(25, 43, 99, 0.15);
   border-top-color: var(--admin-gold);
   border-radius: 50%;
@@ -2078,12 +2132,20 @@
 .cms-preview-toggle { border: 1px solid var(--admin-border); border-radius: 7px; padding: .2rem; background: var(--admin-bg); }
 .cms-preview-toggle button { min-height: 1.8rem; border: 0; border-radius: 5px; padding: 0 .7rem; background: transparent; color: var(--admin-text-secondary); font: 600 .65rem var(--font-body, sans-serif); cursor: pointer; }
 .cms-preview-toggle button.active { background: #fff; color: var(--admin-navy); box-shadow: var(--admin-shadow); }
+.cms-editor-layout-controls { border: 1px solid var(--admin-border); border-radius: 7px; padding: .2rem; background: var(--admin-bg); }
+.cms-editor-layout-toggle { display: flex; min-height: 1.8rem; align-items: center; gap: .35rem; border: 0; border-radius: 5px; padding: 0 .58rem; background: transparent; color: var(--admin-text-secondary); cursor: pointer; }
+.cms-editor-layout-toggle em { font: 650 .62rem var(--font-body, sans-serif); font-style: normal; }
+.cms-editor-layout-toggle > span { color: var(--admin-gold); font-size: .85rem; line-height: 1; }
+.cms-editor-layout-toggle:hover, .cms-editor-layout-toggle:focus-visible { background: #fff; color: var(--admin-navy); outline: none; box-shadow: var(--admin-shadow); }
+.cms-editor-layout-toggle.active { background: var(--admin-navy); color: #fff; box-shadow: var(--admin-shadow); }
+.cms-editor-layout-toggle.active > span { color: var(--admin-gold-light); }
 .cms-editor-toolbar-status { font-size: .64rem; }
 .cms-editor-toolbar-status > span::before { display: inline-block; width: .42rem; height: .42rem; margin-right: .4rem; border-radius: 50%; content: ''; }
 .cms-editor-toolbar-status .is-saved::before { background: #2d7a4f; }
 .cms-editor-toolbar-status .is-dirty::before { background: var(--admin-gold); }
 .cms-editor-toolbar-status a { color: var(--admin-navy); font-weight: 700; text-decoration: none; }
-.cms-editor-workspace { display: grid; height: calc(100% - 3.75rem); grid-template-columns: minmax(0, 1fr) 25rem; }
+.cms-editor-workspace { display: grid; height: calc(100% - 3.75rem); grid-template-columns: minmax(0, 1fr) 25rem; transition: grid-template-columns .28s ease; }
+.cms-editor-shell--panel-collapsed .cms-editor-workspace { grid-template-columns: minmax(0, 1fr) 0; }
 .cms-editor-canvas { position: relative; padding: 1rem; overflow: hidden; }
 .cms-editor-canvas iframe { width: 100%; height: 100%; border: 0; border-radius: 8px; background: #fff; box-shadow: 0 12px 35px rgba(25,43,99,.12); }
 .cms-frame-loading { position: absolute; z-index: 2; inset: 1rem; display: flex; align-items: center; justify-content: center; gap: .7rem; border-radius: 8px; background: rgba(255,255,255,.9); color: var(--admin-text-secondary); font-size: .72rem; }
@@ -2108,7 +2170,8 @@
 .cms-page-picker-list small { margin-top: .2rem; color: var(--admin-text-muted); font-size: .58rem; }
 .cms-page-picker-list em { color: var(--admin-text-muted); font-size: .58rem; font-style: normal; white-space: nowrap; }
 .cms-page-picker-list b { color: var(--admin-gold); }
-.cms-editor-panel { overflow-y: auto; border-left: 1px solid var(--admin-border-strong); padding: 1.15rem; background: #fff; }
+.cms-editor-panel { min-width: 0; box-sizing: border-box; overflow-y: auto; border-left: 1px solid var(--admin-border-strong); padding: 1.15rem; background: #fff; opacity: 1; transition: opacity .18s ease, padding .28s ease, border-color .28s ease; }
+.cms-editor-shell--panel-collapsed .cms-editor-panel { visibility: hidden; overflow: hidden; border-left-color: transparent; padding-right: 0; padding-left: 0; opacity: 0; pointer-events: none; }
 .cms-editor-empty { display: grid; min-height: 65%; place-items: center; align-content: center; text-align: center; }
 .cms-editor-empty > span { display: grid; width: 3.2rem; height: 3.2rem; place-items: center; margin-bottom: 1rem; border-radius: 50%; background: rgba(214,180,90,.12); color: var(--admin-gold); font-size: 1.2rem; }
 .cms-editor-empty h2 { margin: 0; color: var(--admin-navy); font: 600 1.5rem var(--font-display, serif); }
@@ -2126,6 +2189,11 @@
 .cms-editor-panel textarea { width: 100%; resize: vertical; box-sizing: border-box; border: 1px solid var(--admin-border-strong); border-radius: 7px; padding: .8rem; color: var(--admin-text-primary); font: 500 .75rem/1.6 var(--font-body, sans-serif); outline: none; }
 .cms-editor-panel textarea:focus, .cms-format-grid select:focus { border-color: var(--admin-gold); box-shadow: 0 0 0 3px rgba(214,180,90,.12); }
 .cms-character-count { margin-top: .25rem; color: var(--admin-text-muted); font-size: .58rem; text-align: right; }
+.cms-layout-panel { display: grid; gap: 1rem; }
+.cms-layout-panel > p { margin: 0; border: 1px solid rgba(214,180,90,.3); border-radius: 7px; padding: .75rem; background: rgba(214,180,90,.08); color: var(--admin-text-secondary); font-size: .68rem; line-height: 1.55; }
+.cms-layout-panel label { display: grid; grid-template-columns: 1fr auto; gap: .45rem; color: var(--admin-text-secondary); font-size: .65rem; font-weight: 700; }
+.cms-layout-panel label strong { color: var(--admin-navy); }
+.cms-layout-panel input[type='range'] { width: 100%; grid-column: 1 / -1; accent-color: var(--admin-gold); cursor: ew-resize; }
 
 /* Merged text blocks store inline markup, so the field renders it rather than
    showing tags: the panel looks like the sentence it edits. */
@@ -2161,6 +2229,7 @@
   .cms-dashboard-grid { grid-template-columns: 1fr; }
   .cms-editor-workspace { grid-template-columns: minmax(0, 1fr) 21rem; }
   .cms-editor-toolbar-status > span { display: none; }
+  .cms-editor-layout-toggle em { display: none; }
 }
 
 @media (max-width: 760px) {
@@ -2178,7 +2247,9 @@
   .cms-page-picker-list > button { grid-template-columns: minmax(0,1fr) auto; }
   .cms-page-picker-list em { display: none; }
   .cms-editor-toolbar-status { display: none !important; }
+  .cms-editor-layout-controls { display: none !important; }
   .cms-editor-workspace { height: auto; grid-template-columns: 1fr; }
+  .cms-editor-shell--panel-collapsed .cms-editor-workspace { grid-template-columns: 1fr; }
   .cms-editor-canvas { height: 65vh; }
   .cms-editor-panel { border-top: 1px solid var(--admin-border-strong); border-left: 0; }
   .cms-editor-actions { grid-template-columns: 1fr; }

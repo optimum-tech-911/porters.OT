@@ -222,7 +222,6 @@ export default function HomeHeroCarousel({ audiences, children }: Props) {
                   className={`audience-tab ${isActive ? 'is-active' : ''}`}
                   onClick={() => setActiveAudience(index)}
                 >
-                  <span className="audience-tab-index">0{index + 1}</span>
                   <span className="audience-tab-label">{item.tabLabel}</span>
                   {isActive && (
                     <span className="audience-tab-progress" aria-hidden="true">

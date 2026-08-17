@@ -415,10 +415,7 @@ export const agencies: Agency[] = [
         'The Porters Toulouse accompagne les consultants IT et tech en portage salarial : simulation, cadrage de mission et suivi personnalisé.',
     },
   },
-].filter((agency) => agency.slug !== 'toulouse');
-
-// TODO(client): réintégrer Toulouse dans `agencies` uniquement après confirmation
-// d'une présence réelle, du format de rendez-vous et des coordonnées publiables.
+];
 
 export const legacyAgencyNotes = [
   {

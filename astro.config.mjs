@@ -27,13 +27,15 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     resolve: {
-      // Keep every hydrated Astro island on the same React runtime. This also
-      // prevents a stale optimized dependency from mixing jsx-dev-runtime and
-      // React instances after dependency or Vite configuration changes.
+      // Keep every hydrated Astro island on the same React runtime.
       dedupe: ['react', 'react-dom'],
     },
     optimizeDeps: {
+      // Force the admin islands and their development JSX helpers through the
+      // same pre-bundled React runtime. This prevents stale `_jsxDEV` exports
+      // from blanking the admin shell during local development.
       include: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
+      force: true,
     },
   },
 });

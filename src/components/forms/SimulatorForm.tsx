@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type SubmitEvent } from 'react';
+import { useEffect, useRef, useState, type SubmitEventHandler } from 'react';
 import NumericSliderField from './NumericSliderField';
 import { supabase } from '../../lib/supabase';
 import {
@@ -7,60 +7,19 @@ import {
   SIMULATOR_SETTINGS_KEY,
 } from '../../data/simulator-settings';
 
-type Scenario = {
-  id: string;
-  title: string;
-  eyebrow: string;
-  description: string;
-  tjm: number;
-  jours: number;
-};
-
 type SimulatorMode = 'portage' | 'freelance';
-
-const scenarios: Scenario[] = [
-  {
-    id: 'launch',
-    title: 'Premier contrat',
-    eyebrow: 'Je démarre',
-    description: 'Un cadre prudent pour projeter une première mission.',
-    tjm: 420,
-    jours: 16,
-  },
-  {
-    id: 'regular',
-    title: 'Mission régulière',
-    eyebrow: 'Je stabilise',
-    description: 'Le scénario courant pour un consultant avec une activité mensuelle suivie.',
-    tjm: 550,
-    jours: 18,
-  },
-  {
-    id: 'senior',
-    title: 'Expert senior',
-    eyebrow: 'J’optimise',
-    description: 'Une activité soutenue pour visualiser un niveau de facturation senior.',
-    tjm: 750,
-    jours: 19,
-  },
-  {
-    id: 'part-time',
-    title: 'Temps choisi',
-    eyebrow: 'Je module',
-    description: 'Une projection pour garder de la flexibilité tout en sécurisant vos revenus.',
-    tjm: 600,
-    jours: 12,
-  },
-];
 
 export default function SimulatorForm() {
   const [settings, setSettings] = useState(defaultSimulatorSettings);
   const [mode, setMode] = useState<SimulatorMode>('portage');
-  const [activeScenarioId, setActiveScenarioId] = useState<string | null>(null);
-  const activeScenario = scenarios.find((scenario) => scenario.id === activeScenarioId);
   const [tjm, setTjm] = useState<number>(defaultSimulatorSettings.defaultTjm);
   const [jours, setJours] = useState<number>(defaultSimulatorSettings.defaultWorkedDays);
   const [monthlyRevenue, setMonthlyRevenue] = useState<number>(defaultSimulatorSettings.defaultMonthlyRevenue);
+  const [resultUnlocked, setResultUnlocked] = useState(false);
+  const [submissionState, setSubmissionState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [submissionMessage, setSubmissionMessage] = useState('');
+  const leadFormRef = useRef<HTMLFormElement>(null);
+  const resultRef = useRef<HTMLElement>(null);
   const userAdjustedProjection = useRef({
     tjm: false,
     jours: false,
@@ -168,42 +127,76 @@ export default function SimulatorForm() {
   ];
   const breakdownRows = mode === 'portage' ? portageBreakdownRows : freelanceBreakdownRows;
 
-  function applyScenario(scenario: Scenario) {
-    userAdjustedProjection.current = { tjm: true, jours: true, monthlyRevenue: true };
-    setActiveScenarioId(scenario.id);
-    setTjm(scenario.tjm);
-    setJours(scenario.jours);
-    setMonthlyRevenue(scenario.tjm * scenario.jours);
+  function focusLeadForm() {
+    leadFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    window.setTimeout(() => leadFormRef.current?.querySelector<HTMLInputElement>('input')?.focus(), 550);
   }
 
-  function prepareSimulationEmail(event: SubmitEvent<HTMLFormElement>) {
+  const submitSimulation: SubmitEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const body = [
-      `Prénom : ${String(form.get('firstName') || '')}`,
-      `Nom : ${String(form.get('lastName') || '')}`,
-      `Email : ${String(form.get('email') || '')}`,
-      `Téléphone : ${String(form.get('phone') || '')}`,
-      `Profil : ${String(form.get('profile') || '')}`,
-      `Base de calcul : ${String(form.get('revenueType') || '')}`,
-      '',
-      `Parcours : ${mode === 'portage' ? 'Portage salarial' : 'Activité freelance'}`,
-      `TJM : ${formatCurrency(tjm)}`,
-      `Jours facturés : ${jours}`,
-      `Chiffre d’affaires mensuel : ${formatCurrency(ca)}`,
-      `Frais professionnels : ${formatCurrency(frais)}`,
-      mode === 'portage' ? `Net mensuel estimé : ${formatCurrency(netMensuel)}` : '',
-      '',
-      settings.legalNotice,
-    ].filter(Boolean).join('\n');
+    setSubmissionState('submitting');
+    setSubmissionMessage('Enregistrement sécurisé de votre simulation…');
 
-    // No lead-capture table or mail service exists in this project yet. Match
-    // the contact form's honest fallback instead of displaying a false success.
-    window.location.href = `mailto:contact@porters.fr?subject=${encodeURIComponent('Demande de simulation détaillée')}&body=${encodeURIComponent(body)}`;
-  }
+    const params = new URLSearchParams(window.location.search);
+    let sessionId = window.localStorage.getItem('porters_session_id');
+    if (!sessionId) {
+      sessionId = window.crypto?.randomUUID?.() || `session-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      window.localStorage.setItem('porters_session_id', sessionId);
+    }
+
+    const { error } = await supabase.from('crm_inquiries').insert({
+      kind: 'simulation',
+      source: 'website',
+      status: 'new',
+      priority: Number(ca) >= 10000 ? 'high' : 'medium',
+      first_name: String(form.get('firstName') || '').trim(),
+      last_name: String(form.get('lastName') || '').trim(),
+      name: `${String(form.get('firstName') || '').trim()} ${String(form.get('lastName') || '').trim()}`.trim(),
+      email: String(form.get('email') || '').trim(),
+      phone: String(form.get('phone') || '').trim(),
+      profile: String(form.get('profile') || '').trim(),
+      subject: 'Simulation de revenus',
+      message: `Base de calcul : ${String(form.get('revenueType') || '')}`,
+      simulator_mode: mode,
+      tjm,
+      days_worked: jours,
+      monthly_revenue: Math.round(ca),
+      professional_expenses: Math.round(frais),
+      estimated_net_monthly: mode === 'portage' ? Math.round(netMensuel) : null,
+      consent: form.get('consent') === 'on',
+      source_page: window.location.pathname,
+      landing_page: window.location.href,
+      referrer: document.referrer || null,
+      utm_source: params.get('utm_source'),
+      utm_medium: params.get('utm_medium'),
+      utm_campaign: params.get('utm_campaign'),
+      utm_content: params.get('utm_content'),
+      utm_term: params.get('utm_term'),
+      session_id: sessionId,
+      user_agent: window.navigator.userAgent,
+      metadata: {
+        revenueType: String(form.get('revenueType') || ''),
+        managementFeePercent: managementRatePercent,
+        socialChargesPercent: settings.socialChargesPercent,
+      },
+    });
+
+    if (error) {
+      console.error('[Simulator] Unable to save inquiry:', error);
+      setSubmissionState('error');
+      setSubmissionMessage("La simulation n’a pas pu être enregistrée. Réessayez ou contactez-nous directement.");
+      return;
+    }
+
+    setResultUnlocked(true);
+    setSubmissionState('success');
+    setSubmissionMessage('Votre estimation est prête. Elle est maintenant affichée ci-dessus.');
+    window.setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
+  };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" data-simulator-live>
       <div className="grid gap-4 md:grid-cols-2" role="tablist" aria-label="Choisir un simulateur">
         <button
           type="button"
@@ -245,31 +238,9 @@ export default function SimulatorForm() {
         <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">Scénarios rapides</p>
-            <h3 id="simulator-scenarios-title" className="font-heading text-xl font-semibold text-porters-navy">Partez d’un repère, puis ajustez-le.</h3>
+            <h3 id="simulator-scenarios-title" className="font-heading text-xl font-semibold text-porters-navy">Commencez par un repère, puis ajustez.</h3>
           </div>
           <p className="mb-0 text-xs text-porters-black/50">Les montants restent entièrement modifiables.</p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {scenarios.map((scenario) => (
-            <button
-              key={scenario.id}
-              type="button"
-              aria-pressed={activeScenarioId === scenario.id}
-              className={`group rounded-lg border p-4 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porters-gold/50 ${
-                activeScenarioId === scenario.id
-                  ? 'border-porters-gold bg-porters-navy text-white shadow-[0_14px_34px_rgba(25,43,99,0.12)]'
-                  : 'border-porters-navy/10 bg-white text-porters-navy hover:-translate-y-0.5 hover:border-porters-gold/60'
-              }`}
-              onClick={() => applyScenario(scenario)}
-            >
-              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.15em] text-porters-gold">{scenario.eyebrow}</span>
-              <strong className="mt-1 block font-heading text-base">{scenario.title}</strong>
-              <span className={`mt-2 block text-xs leading-relaxed ${activeScenarioId === scenario.id ? 'text-white/62' : 'text-porters-black/52'}`}>{scenario.description}</span>
-              <span className={`mt-3 block border-t pt-3 text-xs font-semibold ${activeScenarioId === scenario.id ? 'border-white/12 text-porters-gold' : 'border-porters-navy/8 text-porters-navy/70'}`}>
-                {formatCurrency(scenario.tjm)} / j · {scenario.jours} jours
-              </span>
-            </button>
-          ))}
         </div>
       </section>
 
@@ -285,7 +256,7 @@ export default function SimulatorForm() {
               </h3>
             </div>
             <p className="text-sm text-porters-black/55">
-              Profil actif : <span className="font-semibold text-porters-navy">{activeScenario?.title ?? 'Réglage personnalisé'}</span>
+              Profil actif : <span className="font-semibold text-porters-navy">Réglage personnalisé</span>
             </p>
           </div>
 
@@ -304,7 +275,6 @@ export default function SimulatorForm() {
                 maxLabel="25 000 €"
                 onChange={(value) => {
                   userAdjustedProjection.current.monthlyRevenue = true;
-                  setActiveScenarioId(null);
                   setMonthlyRevenue(value);
                 }}
               />
@@ -323,7 +293,6 @@ export default function SimulatorForm() {
                   maxLabel="1 200 €"
                   onChange={(value) => {
                     userAdjustedProjection.current.tjm = true;
-                    setActiveScenarioId(null);
                     setTjm(value);
                   }}
                 />
@@ -340,7 +309,6 @@ export default function SimulatorForm() {
                   maxLabel="22 jours"
                   onChange={(value) => {
                     userAdjustedProjection.current.jours = true;
-                    setActiveScenarioId(null);
                     setJours(value);
                   }}
                 />
@@ -361,10 +329,16 @@ export default function SimulatorForm() {
           </div>
         </div>
 
-        <aside className="overflow-hidden rounded-lg bg-porters-navy text-porters-white shadow-[0_20px_55px_rgba(25,43,99,0.16)]">
+        <aside
+          ref={resultRef}
+          data-simulator-result
+          className="relative overflow-hidden rounded-lg bg-porters-navy text-porters-white shadow-[0_20px_55px_rgba(25,43,99,0.16)]"
+        >
+          {resultUnlocked ? (
+            <>
           <div className="border-b border-white/10 p-5 sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">
-              Résultat live
+              Votre estimation
             </p>
             <p className="mt-3 text-porters-white/62">
               {mode === 'portage' ? 'Salaire net mensuel estimé' : "Chiffre d'affaires mensuel estimé"}
@@ -428,47 +402,45 @@ export default function SimulatorForm() {
               </p>
             </div>
           </div>
+            </>
+          ) : (
+            <div className="flex min-h-[31rem] flex-col justify-between p-6 sm:p-8">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">Projection prête</p>
+                <h3 className="mt-4 max-w-sm font-heading text-3xl font-semibold leading-tight text-white">
+                  C’est noté, vos chiffres sont pris en compte.
+                </h3>
+                <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/64">
+                  Bougez les curseurs autant que vous voulez. Pour voir le détail ligne par ligne, laissez-nous vos coordonnées une seule fois, juste en dessous.
+                </p>
+              </div>
+              <div className="relative my-8 flex items-center justify-center" aria-hidden="true">
+                <span className="absolute h-44 w-44 rounded-full border border-porters-gold/25 animate-[spin_18s_linear_infinite]" />
+                <span className="absolute h-28 w-28 rounded-full border border-dashed border-white/18 animate-[spin_12s_linear_infinite_reverse]" />
+                <span className="grid h-20 w-20 place-items-center rounded-full bg-porters-gold text-3xl text-porters-navy shadow-[0_0_45px_rgba(219,178,87,0.24)]">↗</span>
+              </div>
+              <button type="button" className="btn btn-primary w-full justify-center" onClick={focusLeadForm}>
+                Voir mon résultat détaillé
+              </button>
+            </div>
+          )}
         </aside>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-3">
-        <div className="rounded-lg border border-porters-navy/10 bg-white p-5">
-          <p className="font-heading font-semibold text-porters-navy">Lecture immédiate</p>
-          <p className="mt-2 text-sm leading-relaxed text-porters-black/60">
-            {mode === 'portage'
-              ? "Visualisez l'effet du chiffre d'affaires et des frais sur votre salaire estimé."
-              : "Visualisez l'effet du TJM, des jours facturés et des frais sur votre chiffre d'affaires."}
-          </p>
-        </div>
-        <div className="rounded-lg border border-porters-navy/10 bg-white p-5">
-          <p className="font-heading font-semibold text-porters-navy">Scénarios comparables</p>
-          <p className="mt-2 text-sm leading-relaxed text-porters-black/60">
-            Passez d'un démarrage prudent à une mission senior sans ressaisir tous les champs.
-          </p>
-        </div>
-        <div className="rounded-lg border border-porters-navy/10 bg-white p-5">
-          <p className="font-heading font-semibold text-porters-navy">Suite personnalisée</p>
-          <p className="mt-2 text-sm leading-relaxed text-porters-black/60">
-            Repartez avec une base claire pour un échange précis avec l'équipe The Porters.
-          </p>
-        </div>
       </div>
 
       <div className="rounded-lg border border-porters-navy/10 bg-white p-5 shadow-[0_18px_50px_rgba(25,43,99,0.06)] sm:p-7">
         <div className="mb-6 max-w-2xl">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-porters-gold">
-            Recevoir ma simulation
+            Le détail, ligne par ligne
           </p>
           <h3 className="mt-2 font-heading text-2xl font-semibold text-porters-navy">
-            Gardez une trace de votre scénario
+            Où faut-il vous envoyer le calcul ?
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-porters-black/60">
-            Laissez vos coordonnées pour préparer un échange précis autour de votre activité, de
-            votre profil métier et de vos frais professionnels.
+            Votre scénario reste modifiable. Ces informations nous servent à vous remettre un résultat daté, que nous pourrons reprendre ensemble ensuite.
           </p>
         </div>
 
-        <form className="grid gap-4 md:grid-cols-2" onSubmit={prepareSimulationEmail}>
+        <form ref={leadFormRef} className="grid gap-4 md:grid-cols-2" onSubmit={submitSimulation}>
             <div>
               <label className="form-label" htmlFor="lead-first-name">
                 Prénom
@@ -530,10 +502,17 @@ export default function SimulatorForm() {
                 ma simulation, conformément à la politique de confidentialité.
               </span>
             </label>
-            <div className="md:col-span-2">
-              <button type="submit" className="btn btn-primary">
-                Recevoir ma simulation détaillée
+            <div className="md:col-span-2 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+              <button type="submit" className="btn btn-primary" disabled={submissionState === 'submitting'}>
+                {submissionState === 'submitting' ? 'Calcul en cours…' : 'Afficher mon salaire net'}
               </button>
+              <p
+                className={`mb-0 text-sm ${submissionState === 'error' ? 'text-red-700' : 'text-porters-navy/70'}`}
+                role="status"
+                aria-live="polite"
+              >
+                {submissionMessage}
+              </p>
             </div>
         </form>
       </div>

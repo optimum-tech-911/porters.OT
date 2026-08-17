@@ -42,7 +42,7 @@ const hasPhone = agency.phone.trim().length > 0;
               Parler à un conseiller
             </a>
             <a href="/simulateur" class="btn btn-secondary">
-              Simuler mes revenus
+              Calculer mon salaire net
             </a>
           </div>
         </div>
@@ -59,7 +59,7 @@ const hasPhone = agency.phone.trim().length > 0;
                   {hasAddress ? (
                     <p class="text-porters-white/90">{agency.address}<br/>{agency.postalCode} {agency.city}</p>
                   ) : (
-                    <p class="text-porters-white/80">Rendez-vous sur demande ou à distance avec l'équipe The Porters.</p>
+                    <p class="text-porters-white/80">Sur rendez-vous, dans nos locaux ou en visio, comme vous préférez.</p>
                   )}
                 </div>
               </div>
@@ -95,7 +95,7 @@ const hasPhone = agency.phone.trim().length > 0;
   <section class="section bg-porters-navy/[0.02]">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
-        <h2 class="mb-8 text-center reveal">Développez votre activité à <span class="gold-underline">{agency.city}</span>, sans porter seul le cadre</h2>
+        <h2 class="mb-8 text-center reveal">Travailler à <span class="gold-underline">{agency.city}</span>, sans porter l’administratif tout seul</h2>
         <div class="prose max-w-none text-porters-black/70 leading-relaxed reveal">
           <p>{agency.description}</p>
         </div>
@@ -108,7 +108,7 @@ const hasPhone = agency.phone.trim().length > 0;
       <div class="container mx-auto px-6 lg:px-8">
         <div class="mb-12 text-center reveal">
           <p class="mb-3 text-sm font-semibold uppercase tracking-wider text-porters-gold">Ce que nous prenons en charge</p>
-          <h2>Un cadre clair, où que vous soyez à <span class="gold-underline">{agency.city}</span></h2>
+          <h2>Ce dont nous nous occupons, à <span class="gold-underline">{agency.city}</span> comme ailleurs</h2>
         </div>
         <div class="grid gap-6 md:grid-cols-3">
           {agency.serviceCards.map((service) => (
@@ -170,7 +170,7 @@ const hasPhone = agency.phone.trim().length > 0;
     <section class="section">
       <div class="container mx-auto px-6 lg:px-8 max-w-3xl">
         <div class="text-center mb-12 reveal">
-          <h2 class="mb-4">Questions fréquentes sur notre agence</h2>
+          <h2 class="mb-4">Ce qu’on nous demande dans cette agence</h2>
         </div>
         
         <div class="space-y-4 reveal">
