@@ -17,7 +17,7 @@
     "key": "global.footer.auto.button.19iqi8e",
     "route": "/_global",
     "type": "button",
-    "content": "Ouvrir le simulateur <span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">→</span>",
     "rich": true
   },
   {
@@ -122,7 +122,7 @@
     "key": "global.footer.auto.button.3vss45",
     "route": "/_global",
     "type": "button",
-    "content": "Parler à un conseiller <span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">→</span>",
+    "content": "Je parle à un conseiller <span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">→</span>",
     "rich": true
   },
   {
@@ -2840,14 +2840,14 @@
     "key": "pages.blog.bien-choisir-societe-portage-salarial.auto.button.1jbsm65",
     "route": "/blog/bien-choisir-societe-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.bien-choisir-societe-portage-salarial.auto.button.1q8ls5y",
     "route": "/blog/bien-choisir-societe-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -3976,14 +3976,14 @@
     "key": "pages.blog.choisir-statut-independant.auto.button.1jbsm65",
     "route": "/blog/choisir-statut-independant",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.choisir-statut-independant.auto.button.1q8ls5y",
     "route": "/blog/choisir-statut-independant",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -4123,14 +4123,14 @@
     "key": "pages.blog.consultant-informatique-independant-galeres.auto.button.1jbsm65",
     "route": "/blog/consultant-informatique-independant-galeres",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.consultant-informatique-independant-galeres.auto.button.1q8ls5y",
     "route": "/blog/consultant-informatique-independant-galeres",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -4270,14 +4270,14 @@
     "key": "pages.blog.contrat-portage-salarial.auto.button.1jbsm65",
     "route": "/blog/contrat-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.contrat-portage-salarial.auto.button.1q8ls5y",
     "route": "/blog/contrat-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -4417,14 +4417,14 @@
     "key": "pages.blog.devenir-freelance-informatique.auto.button.1jbsm65",
     "route": "/blog/devenir-freelance-informatique",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.devenir-freelance-informatique.auto.button.1q8ls5y",
     "route": "/blog/devenir-freelance-informatique",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -4564,14 +4564,14 @@
     "key": "pages.blog.frais-gestion-portage-salarial.auto.button.1jbsm65",
     "route": "/blog/frais-gestion-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.frais-gestion-portage-salarial.auto.button.1q8ls5y",
     "route": "/blog/frais-gestion-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -4711,14 +4711,14 @@
     "key": "pages.blog.guide-portage-salarial.auto.button.1jbsm65",
     "route": "/blog/guide-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.guide-portage-salarial.auto.button.1q8ls5y",
     "route": "/blog/guide-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -4858,14 +4858,14 @@
     "key": "pages.blog.optimiser-remuneration-portage-salarial.auto.button.1jbsm65",
     "route": "/blog/optimiser-remuneration-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.optimiser-remuneration-portage-salarial.auto.button.1q8ls5y",
     "route": "/blog/optimiser-remuneration-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -5012,14 +5012,14 @@
     "key": "pages.blog.portage-salarial-consultant-cybersecurite.auto.button.1jbsm65",
     "route": "/blog/portage-salarial-consultant-cybersecurite",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-consultant-cybersecurite.auto.button.1q8ls5y",
     "route": "/blog/portage-salarial-consultant-cybersecurite",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -5215,14 +5215,14 @@
     "key": "pages.blog.portage-salarial-consultant-data-ia.auto.button.1jbsm65",
     "route": "/blog/portage-salarial-consultant-data-ia",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-consultant-data-ia.auto.button.1q8ls5y",
     "route": "/blog/portage-salarial-consultant-data-ia",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -5418,14 +5418,14 @@
     "key": "pages.blog.portage-salarial-devops-freelance.auto.button.1jbsm65",
     "route": "/blog/portage-salarial-devops-freelance",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-devops-freelance.auto.button.1q8ls5y",
     "route": "/blog/portage-salarial-devops-freelance",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -5614,14 +5614,14 @@
     "key": "pages.blog.portage-salarial-entreprises.auto.button.1jbsm65",
     "route": "/blog/portage-salarial-entreprises",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-entreprises.auto.button.1q8ls5y",
     "route": "/blog/portage-salarial-entreprises",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -5761,14 +5761,14 @@
     "key": "pages.blog.portage-salarial-informatique.auto.button.1jbsm65",
     "route": "/blog/portage-salarial-informatique",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-informatique.auto.button.1q8ls5y",
     "route": "/blog/portage-salarial-informatique",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -5908,14 +5908,14 @@
     "key": "pages.blog.portage-salarial-international.auto.button.1jbsm65",
     "route": "/blog/portage-salarial-international",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-international.auto.button.1q8ls5y",
     "route": "/blog/portage-salarial-international",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -6062,14 +6062,14 @@
     "key": "pages.blog.portage-salarial-product-owner-scrum-master.auto.button.1jbsm65",
     "route": "/blog/portage-salarial-product-owner-scrum-master",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-product-owner-scrum-master.auto.button.1q8ls5y",
     "route": "/blog/portage-salarial-product-owner-scrum-master",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -6258,14 +6258,14 @@
     "key": "pages.blog.portage-salarial-solution-flexible.auto.button.1jbsm65",
     "route": "/blog/portage-salarial-solution-flexible",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-solution-flexible.auto.button.1q8ls5y",
     "route": "/blog/portage-salarial-solution-flexible",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -6405,14 +6405,14 @@
     "key": "pages.blog.role-charge-de-compte-portage-salarial.auto.button.1jbsm65",
     "route": "/blog/role-charge-de-compte-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.role-charge-de-compte-portage-salarial.auto.button.1q8ls5y",
     "route": "/blog/role-charge-de-compte-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -6552,14 +6552,14 @@
     "key": "pages.blog.secteurs-adaptes-portage-salarial.auto.button.1jbsm65",
     "route": "/blog/secteurs-adaptes-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.secteurs-adaptes-portage-salarial.auto.button.1q8ls5y",
     "route": "/blog/secteurs-adaptes-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -6699,14 +6699,14 @@
     "key": "pages.blog.trouver-missions-portage-salarial.auto.button.1jbsm65",
     "route": "/blog/trouver-missions-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.blog.trouver-missions-portage-salarial.auto.button.1q8ls5y",
     "route": "/blog/trouver-missions-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -7104,7 +7104,7 @@
     "key": "pages.consultants.auto.button.1upc42x",
     "route": "/consultants",
     "type": "button",
-    "content": "Prendre rendez-vous",
+    "content": "Je prends rendez-vous",
     "rich": true
   },
   {
@@ -7125,21 +7125,21 @@
     "key": "pages.consultants.auto.button.nviywh",
     "route": "/consultants",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.button.oofb2a",
     "route": "/consultants",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.button.wvc156",
     "route": "/consultants",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -7377,7 +7377,7 @@
     "key": "pages.consultants.auto.paragraph.14a6447",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Lire le détail",
+    "content": "Je lis le détail",
     "rich": true
   },
   {
@@ -7475,7 +7475,7 @@
     "key": "pages.consultants.auto.paragraph.1nrab1u",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Lire le détail",
+    "content": "Je lis le détail",
     "rich": true
   },
   {
@@ -7510,14 +7510,14 @@
     "key": "pages.consultants.auto.paragraph.1vd65na",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Lire le détail",
+    "content": "Je lis le détail",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.1xh2v6g",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Lire le détail",
+    "content": "Je lis le détail",
     "rich": true
   },
   {
@@ -7531,7 +7531,7 @@
     "key": "pages.consultants.auto.paragraph.9erv7",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Lire le détail",
+    "content": "Je lis le détail",
     "rich": true
   },
   {
@@ -7636,7 +7636,7 @@
     "key": "pages.consultants.auto.paragraph.rwkztd",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Lire le détail",
+    "content": "Je lis le détail",
     "rich": true
   },
   {
@@ -7971,7 +7971,7 @@
     "key": "pages.entreprises.auto.button.13ayosw",
     "route": "/entreprises",
     "type": "button",
-    "content": "Décrire mon besoin <span aria-hidden=\"true\" data-astro-cid-5bmr6dtb=\"\">→</span>",
+    "content": "Je confie mon besoin <span aria-hidden=\"true\" data-astro-cid-5bmr6dtb=\"\">→</span>",
     "rich": true
   },
   {
@@ -8888,14 +8888,14 @@
     "key": "pages.expertises.agilite-coaching.auto.button.gwvn35",
     "route": "/expertises/agilite-coaching",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
     "rich": true
   },
   {
     "key": "pages.expertises.agilite-coaching.auto.button.s7gcxm",
     "route": "/expertises/agilite-coaching",
     "type": "button",
-    "content": "Parler de la mission",
+    "content": "Je parle de ma mission",
     "rich": true
   },
   {
@@ -9693,7 +9693,7 @@
     "key": "pages.expertises.auto.button.1q8ls5y",
     "route": "/expertises",
     "type": "button",
-    "content": "Explorer les domaines <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↓</span>",
+    "content": "Je découvre les domaines <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↓</span>",
     "rich": true
   },
   {
@@ -10876,14 +10876,14 @@
     "key": "pages.expertises.cloud-devops.auto.button.gwvn35",
     "route": "/expertises/cloud-devops",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
     "rich": true
   },
   {
     "key": "pages.expertises.cloud-devops.auto.button.s7gcxm",
     "route": "/expertises/cloud-devops",
     "type": "button",
-    "content": "Parler de la mission",
+    "content": "Je parle de ma mission",
     "rich": true
   },
   {
@@ -11688,14 +11688,14 @@
     "key": "pages.expertises.cybersecurite.auto.button.gwvn35",
     "route": "/expertises/cybersecurite",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
     "rich": true
   },
   {
     "key": "pages.expertises.cybersecurite.auto.button.s7gcxm",
     "route": "/expertises/cybersecurite",
     "type": "button",
-    "content": "Parler de la mission",
+    "content": "Je parle de ma mission",
     "rich": true
   },
   {
@@ -12472,14 +12472,14 @@
     "key": "pages.expertises.data-ia.auto.button.gwvn35",
     "route": "/expertises/data-ia",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
     "rich": true
   },
   {
     "key": "pages.expertises.data-ia.auto.button.s7gcxm",
     "route": "/expertises/data-ia",
     "type": "button",
-    "content": "Parler de la mission",
+    "content": "Je parle de ma mission",
     "rich": true
   },
   {
@@ -13277,14 +13277,14 @@
     "key": "pages.expertises.developpement-integration.auto.button.gwvn35",
     "route": "/expertises/developpement-integration",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
     "rich": true
   },
   {
     "key": "pages.expertises.developpement-integration.auto.button.s7gcxm",
     "route": "/expertises/developpement-integration",
     "type": "button",
-    "content": "Parler de la mission",
+    "content": "Je parle de ma mission",
     "rich": true
   },
   {
@@ -14047,14 +14047,14 @@
     "key": "pages.expertises.product-project-management.auto.button.gwvn35",
     "route": "/expertises/product-project-management",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
     "rich": true
   },
   {
     "key": "pages.expertises.product-project-management.auto.button.s7gcxm",
     "route": "/expertises/product-project-management",
     "type": "button",
-    "content": "Parler de la mission",
+    "content": "Je parle de ma mission",
     "rich": true
   },
   {
@@ -14796,14 +14796,14 @@
     "key": "pages.faq.auto.button.bubqhp",
     "route": "/faq",
     "type": "button",
-    "content": "Parler à un conseiller <span data-astro-cid-vagwt47q=\"\">→</span>",
+    "content": "Je parle à un conseiller <span data-astro-cid-vagwt47q=\"\">→</span>",
     "rich": true
   },
   {
     "key": "pages.faq.auto.button.vjh4vq",
     "route": "/faq",
     "type": "button",
-    "content": "Ouvrir le simulateur <span data-astro-cid-vagwt47q=\"\">→</span>",
+    "content": "Je simule mes revenus <span data-astro-cid-vagwt47q=\"\">→</span>",
     "rich": true
   },
   {
@@ -15507,13 +15507,6 @@
     "rich": true
   },
   {
-    "key": "pages.home.auto.paragraph.1hlp063",
-    "route": "/",
-    "type": "paragraph",
-    "content": "Explorer les expertises",
-    "rich": true
-  },
-  {
     "key": "pages.home.auto.paragraph.1jsx6v",
     "route": "/",
     "type": "paragraph",
@@ -15832,7 +15825,7 @@
     "key": "pages.livres-blancs.auto.button.1ca9ilv",
     "route": "/livres-blancs",
     "type": "button",
-    "content": "Parler de votre situation <span aria-hidden=\"true\" data-astro-cid-hdoqvdln=\"\">↗</span>",
+    "content": "Je parle de ma situation <span aria-hidden=\"true\" data-astro-cid-hdoqvdln=\"\">↗</span>",
     "rich": true
   },
   {
@@ -16000,7 +15993,7 @@
     "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.134vnmm",
     "route": "/livres-blancs/checklist-demarrer-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
     "rich": true
   },
   {
@@ -16021,7 +16014,7 @@
     "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.1hthkth",
     "route": "/livres-blancs/checklist-demarrer-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
@@ -16336,7 +16329,7 @@
     "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.134vnmm",
     "route": "/livres-blancs/comparatif-statuts-freelances",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
     "rich": true
   },
   {
@@ -16357,7 +16350,7 @@
     "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.1hthkth",
     "route": "/livres-blancs/comparatif-statuts-freelances",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
@@ -16672,7 +16665,7 @@
     "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.134vnmm",
     "route": "/livres-blancs/guide-complet-portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
+    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
     "rich": true
   },
   {
@@ -16693,7 +16686,7 @@
     "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.1hthkth",
     "route": "/livres-blancs/guide-complet-portage-salarial",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
@@ -17358,7 +17351,7 @@
     "key": "pages.portage-salarial.auto.button.14m5iej",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Comprendre les frais <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">→</span>",
+    "content": "Je comprends les frais <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">→</span>",
     "rich": true
   },
   {
@@ -17421,14 +17414,14 @@
     "key": "pages.portage-salarial.auto.button.pc30mw",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Lire les questions fréquentes <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">→</span>",
+    "content": "Je consulte la FAQ <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">→</span>",
     "rich": true
   },
   {
     "key": "pages.portage-salarial.auto.button.wvc156",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je calcule mon salaire",
     "rich": true
   },
   {
@@ -21298,7 +21291,7 @@
     "key": "pages.simulateur.auto.button.1iq9isv",
     "route": "/simulateur",
     "type": "button",
-    "content": "Parler à un conseiller",
+    "content": "Je parle à un conseiller",
     "rich": true
   },
   {
@@ -21669,7 +21662,7 @@
     "key": "pages.tarifs.auto.button.1unfqlc",
     "route": "/tarifs",
     "type": "button",
-    "content": "Prendre rendez-vous",
+    "content": "Je prends rendez-vous",
     "rich": true
   },
   {
@@ -21683,14 +21676,14 @@
     "key": "pages.tarifs.auto.button.nviywh",
     "route": "/tarifs",
     "type": "button",
-    "content": "Voir les sept prestations",
+    "content": "Je découvre les prestations",
     "rich": true
   },
   {
     "key": "pages.tarifs.auto.button.wvc156",
     "route": "/tarifs",
     "type": "button",
-    "content": "Calculer mon salaire net",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {

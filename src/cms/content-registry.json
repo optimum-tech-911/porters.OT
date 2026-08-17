@@ -186,6 +186,30 @@
     "content": "Parler à un conseiller"
   },
   {
+    "key": "home.offer.it.cta",
+    "route": "/",
+    "type": "button",
+    "content": "Je découvre les expertises"
+  },
+  {
+    "key": "home.offer.employee.cta",
+    "route": "/",
+    "type": "button",
+    "content": "Comprendre le cadre"
+  },
+  {
+    "key": "home.offer.admin.cta",
+    "route": "/",
+    "type": "button",
+    "content": "Voir l’accompagnement"
+  },
+  {
+    "key": "home.offer.human.cta",
+    "route": "/",
+    "type": "button",
+    "content": "Rencontrer l’équipe"
+  },
+  {
     "key": "home.jobs.eyebrow",
     "route": "/",
     "type": "label",

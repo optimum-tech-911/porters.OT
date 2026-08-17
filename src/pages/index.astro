@@ -26,10 +26,10 @@ const partnerLogos = [
 // The IT specialism leads: it is the differentiator, and it used to sit last
 // (copy-plan §9.1). Order here drives both the grid and the detail panel below.
 const offerItems = [
-  { key: 'home.offer.it', title: cmsText('home.offer.it.title'), text: cmsText('home.offer.it.description'), icon: 'network' as const, href: '/expertises', cta: 'Explorer les expertises' },
-  { key: 'home.offer.employee', title: cmsText('home.offer.employee.title'), text: cmsText('home.offer.employee.description'), icon: 'shield' as const, href: '/portage-salarial', cta: 'Comprendre le cadre' },
-  { key: 'home.offer.admin', title: cmsText('home.offer.admin.title'), text: cmsText('home.offer.admin.description'), icon: 'clipboard' as const, href: '/consultants', cta: 'Voir l’accompagnement' },
-  { key: 'home.offer.human', title: cmsText('home.offer.human.title'), text: cmsText('home.offer.human.description'), icon: 'user' as const, href: '/equipe', cta: 'Rencontrer l’équipe' },
+  { key: 'home.offer.it', title: cmsText('home.offer.it.title'), text: cmsText('home.offer.it.description'), icon: 'network' as const, href: '/expertises', cta: cmsText('home.offer.it.cta') },
+  { key: 'home.offer.employee', title: cmsText('home.offer.employee.title'), text: cmsText('home.offer.employee.description'), icon: 'shield' as const, href: '/portage-salarial', cta: cmsText('home.offer.employee.cta') },
+  { key: 'home.offer.admin', title: cmsText('home.offer.admin.title'), text: cmsText('home.offer.admin.description'), icon: 'clipboard' as const, href: '/consultants', cta: cmsText('home.offer.admin.cta') },
+  { key: 'home.offer.human', title: cmsText('home.offer.human.title'), text: cmsText('home.offer.human.description'), icon: 'user' as const, href: '/equipe', cta: cmsText('home.offer.human.cta') },
 ];
 
 const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
@@ -110,13 +110,14 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
               <h3 {...cmsAttrs(`${item.key}.title`, 'data-offer-title')}>{item.title}</h3>
               <p {...cmsAttrs(`${item.key}.description`, 'data-offer-text')}>{item.text}</p>
             </div>
+            <span class="sr-only" {...cmsAttrs(`${item.key}.cta`, 'data-offer-cta')}>{item.cta}</span>
           </button>
         ))}
         </div>
         <aside class="light-offer-detail" data-motion-item="up" style="--motion-order:8" aria-live="polite">
           <h3 {...cmsAttrs('home.offer.it.title')}>{offerItems[0]?.title}</h3>
           <p {...cmsAttrs('home.offer.it.description')}>{offerItems[0]?.text}</p>
-          <a href={offerItems[0].href} data-offer-link><span>{offerItems[0].cta}</span> <b aria-hidden="true">→</b></a>
+          <a href={offerItems[0].href} data-offer-link><span data-cms-ignore>{offerItems[0].cta}</span> <b aria-hidden="true">→</b></a>
         </aside>
       </div>
     </div>

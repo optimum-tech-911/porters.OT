@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { helloWorkJobs, helloWorkUrl } from '../../data/hello-work.data';
-import popupWoman from '../../assets/home/popup-woman.png';
+import popupWoman from '../../assets/home/popup-woman-new.png';
 
 const featuredJobs = helloWorkJobs;
 ---
@@ -33,7 +33,7 @@ const featuredJobs = helloWorkJobs;
     </div>
     <div class="opportunity-popup__actions">
       <a href={helloWorkUrl} target="_blank" rel="noopener noreferrer">Voir les offres <span aria-hidden="true">↗</span></a>
-      <a href="/rendez-vous">Parler à un conseiller</a>
+      <a href="/rendez-vous">Je parle à un conseiller</a>
     </div>
   </aside>
   <figure class="opportunity-popup__woman" aria-hidden="true">
@@ -41,7 +41,7 @@ const featuredJobs = helloWorkJobs;
       src={popupWoman}
       alt=""
       widths={[240, 320, 420]}
-      sizes="(max-width: 640px) 8rem, 11.5rem"
+      sizes="(max-width: 640px) 11rem, 13.5rem"
       format="webp"
       quality={92}
       loading="lazy"
@@ -62,7 +62,9 @@ const featuredJobs = helloWorkJobs;
   let hideTimer;
   let lastJob = -1;
 
-  const randomDelay = () => 23000 + Math.round(Math.random() * 10000);
+  // One appearance every 1 min 30 (the gap is measured from the moment the
+  // previous card finishes hiding, so the perceived cycle is ~90 s).
+  const randomDelay = () => 90000;
 
   const pickJob = () => {
     if (featuredJobs.length < 2) return 0;
@@ -119,6 +121,7 @@ const featuredJobs = helloWorkJobs;
   }
 
   scheduleNext(motionReduced ? 6800 : 8200);
+
 
   close?.addEventListener('click', () => {
     hide();
@@ -296,10 +299,10 @@ const featuredJobs = helloWorkJobs;
 
   .opportunity-popup__woman {
     position: absolute;
-    bottom: calc(100% - 1.2rem);
+    bottom: calc(100% - 0.5rem);
     left: 50%;
     z-index: 4;
-    width: clamp(9.5rem, 26vw, 11.5rem);
+    width: clamp(11rem, 30vw, 13.5rem);
     margin: 0;
     pointer-events: none;
     opacity: 0;

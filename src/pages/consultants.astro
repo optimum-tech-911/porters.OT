@@ -30,8 +30,8 @@ const audienceRoutes = [
         <h1 class="text-porters-white">Votre quotidien de salarié porté, mois par mois.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/80">Vos missions, votre TJM et votre organisation ne bougent pas. Ce qui change, c’est que vous n’avez plus à vous occuper des contrats, de la facturation, de la paie ni des déclarations.</p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-          <a href="/simulateur" class="btn btn-gold">Calculer mon salaire net</a>
-          <a href="/rendez-vous" class="btn btn-white">Parler à un conseiller</a>
+          <a href="/simulateur" class="btn btn-gold">Je simule mes revenus</a>
+          <a href="/rendez-vous" class="btn btn-white">Je parle à un conseiller</a>
         </div>
       </div>
     </div>
@@ -101,7 +101,7 @@ const audienceRoutes = [
           <a href={topic.href} class="card group reveal flex min-h-56 flex-col p-6 transition-transform hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porters-gold/50">
             <div class="flex items-start justify-between gap-4"><h3 class="text-lg">{topic.title}</h3><b class="text-porters-gold transition-transform group-hover:translate-x-1" aria-hidden="true">↗</b></div>
             <p class="mb-0 mt-3 text-sm leading-relaxed text-porters-black/64">{topic.text}</p>
-            <span class="mt-auto pt-5 text-xs font-semibold text-porters-navy">Lire le détail</span>
+            <span class="mt-auto pt-5 text-xs font-semibold text-porters-navy">Je lis le détail</span>
           </a>
         ))}
       </div>
@@ -124,7 +124,7 @@ const audienceRoutes = [
   <section class="bg-porters-navy py-16 text-porters-white">
     <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       <div class="max-w-2xl"><h2 class="mb-2 text-porters-white">Voyez ce que votre TJM donne en net.</h2><p class="mb-0 text-porters-white/65">Le simulateur répond en quelques minutes. Un conseiller reprend ensuite vos hypothèses avec vous.</p></div>
-      <div class="flex flex-col gap-3 sm:flex-row"><a href="/simulateur" class="btn btn-gold">Calculer mon salaire net</a><a href="/rendez-vous" class="btn btn-white">Prendre rendez-vous</a></div>
+      <div class="flex flex-col gap-3 sm:flex-row"><a href="/simulateur" class="btn btn-gold">Je simule mes revenus</a><a href="/rendez-vous" class="btn btn-white">Je prends rendez-vous</a></div>
     </div>
   </section>
 </PageLayout>

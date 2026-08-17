@@ -2,7 +2,7 @@
   {
     "route": "/",
     "name": "Accueil",
-    "contentCount": 62
+    "contentCount": 61
   },
   {
     "route": "/blog/categorie/actualites",
