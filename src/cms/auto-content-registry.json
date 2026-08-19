@@ -3984,7 +3984,7 @@
     "key": "pages.blog.categorie.secteurs.auto.heading.77lg1y",
     "route": "/blog/categorie/secteurs",
     "type": "heading",
-    "content": "Portage salarial pour consultant Data &amp; IA",
+    "content": "Portage salarial pour consultant Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -5656,14 +5656,14 @@
     "key": "pages.blog.portage-salarial-consultant-data-ia.auto.heading.1d6h11k",
     "route": "/blog/portage-salarial-consultant-data-ia",
     "type": "heading",
-    "content": "Quels profils Data &amp; IA utilisent le portage ?",
+    "content": "Quels profils Big Data / Cloud / IA utilisent le portage ?",
     "rich": true
   },
   {
     "key": "pages.blog.portage-salarial-consultant-data-ia.auto.heading.1gq6cv2",
     "route": "/blog/portage-salarial-consultant-data-ia",
     "type": "heading",
-    "content": "Portage salarial pour consultant Data &amp; IA",
+    "content": "Portage salarial pour consultant Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -5712,7 +5712,7 @@
     "key": "pages.blog.portage-salarial-consultant-data-ia.auto.paragraph.18ahffj",
     "route": "/blog/portage-salarial-consultant-data-ia",
     "type": "paragraph",
-    "content": "Portage salarial pour consultant Data &amp; IA",
+    "content": "Portage salarial pour consultant Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -5775,7 +5775,7 @@
     "key": "pages.blog.portage-salarial-consultant-data-ia.auto.paragraph.t30x3f",
     "route": "/blog/portage-salarial-consultant-data-ia",
     "type": "paragraph",
-    "content": "Les missions Data &amp; IA vont du cadrage stratégique à l’industrialisation. Le portage salarial permet à l’expert de rester autonome tout en déléguant les contrats, la facturation et la paie.",
+    "content": "Les missions Big Data / Cloud / IA vont du cadrage stratégique à l’industrialisation. Le portage salarial permet à l’expert de rester autonome tout en déléguant les contrats, la facturation et la paie.",
     "rich": true
   },
   {
@@ -9434,7 +9434,7 @@
     "key": "pages.expertises.agilite-coaching.auto.heading.1ozy636",
     "route": "/expertises/agilite-coaching",
     "type": "heading",
-    "content": "Portage salarial pour profils Agilité, Produit et Transformation",
+    "content": "Portage salarial pour profils Agilité",
     "rich": true
   },
   {
@@ -11163,7 +11163,7 @@
     "key": "pages.expertises.cloud-devops.auto.heading.1ozy636",
     "route": "/expertises/cloud-devops",
     "type": "heading",
-    "content": "Portage salarial pour consultants Cloud &amp; DevOps",
+    "content": "Portage salarial pour consultants DevOps",
     "rich": true
   },
   {
@@ -12752,7 +12752,7 @@
     "key": "pages.expertises.data-ia.auto.heading.1ozy636",
     "route": "/expertises/data-ia",
     "type": "heading",
-    "content": "Portage salarial pour consultants Data &amp; IA",
+    "content": "Portage salarial pour consultants Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -16578,13 +16578,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.button.1l67kzl",
-    "route": "/qui-sommes-nous",
-    "type": "button",
-    "content": "Plus de détails <b aria-hidden=\"true\" data-astro-cid-auz7fwxu=\"\">↗</b>",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.button.78y8cl",
     "route": "/qui-sommes-nous",
     "type": "button",
@@ -16606,13 +16599,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.heading.108ovi5",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Produit &amp; projet",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.heading.11ghgl4",
     "route": "/qui-sommes-nous",
     "type": "heading",
@@ -16624,13 +16610,6 @@
     "route": "/qui-sommes-nous",
     "type": "heading",
     "content": "Un groupe,<br data-astro-cid-auz7fwxu=\"\">deux façons de travailler.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.heading.18i4fnh",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Responsabilités et livrables",
     "rich": true
   },
   {
@@ -16655,24 +16634,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.heading.1cs2o0t",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Profils accompagnés",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.heading.1gejdm",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Data &amp; IA",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.heading.1ggd7u1",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Pourquoi le portage pour ce profil ?",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -16686,7 +16651,7 @@
     "key": "pages.qui-sommes-nous.auto.heading.1gxhh5j",
     "route": "/qui-sommes-nous",
     "type": "heading",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -16816,13 +16781,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.heading.dn7p1z",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "L’accompagnement Porters",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.heading.ench17",
     "route": "/qui-sommes-nous",
     "type": "heading",
@@ -16862,13 +16820,6 @@
     "route": "/qui-sommes-nous",
     "type": "heading",
     "content": "Diversité",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.heading.jzde10",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Missions les plus fréquentes",
     "rich": true
   },
   {
@@ -16921,13 +16872,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.heading.sx7tes",
-    "route": "/qui-sommes-nous",
-    "type": "heading",
-    "content": "Compétences et environnements",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.heading.wk3qfj",
     "route": "/qui-sommes-nous",
     "type": "heading",
@@ -16970,13 +16914,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.10qycyn",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product &amp; Agilité",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.10wswd9",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -16995,13 +16932,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Consultant transformation agile",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.11okd6j",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Supervision de la réalisation, organisation des mises en production, suivi des résultats et amélioration continue du produit ou du service.",
     "rich": true
   },
   {
@@ -17047,13 +16977,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.12y54rj",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Gestion de projet",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.130flpl",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -17072,13 +16995,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Looker",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.13yd7wi",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Protection sociale du salarié porté",
     "rich": true
   },
   {
@@ -17131,20 +17047,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.153qy10",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Continuité entre plusieurs projets",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.15dydzs",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Stratégie et pilotage produit",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.15gmgw4",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -17183,7 +17085,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.16gk30e",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Développement",
+    "content": "Agilité",
     "rich": true
   },
   {
@@ -17236,13 +17138,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.18tubxe",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product Designer stratégique",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.18zcigd",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -17271,34 +17166,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.19k09wu",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Scrum",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.19lo1cw",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Design Thinking",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1a5drsb",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Indicateurs de performance",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1a7rrq0",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Cartographie des risques",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1a7vo24",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -17313,31 +17180,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ajjcrt",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Rapports d’avancement",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1am41sc",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Roadmap",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1azuwfa",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Gestion des contrats et avenants",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1bsin5",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -17345,13 +17191,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Les missions peuvent concerner aussi bien la définition d’une stratégie de cybersécurité que la sécurisation opérationnelle des environnements cloud, des identités, des applications, des réseaux ou des données sensibles.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1c3e79v",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Pilotage de projet et coordination",
     "rich": true
   },
   {
@@ -17428,7 +17267,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1ey6qat",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -17498,7 +17337,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1hwijah",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -17579,13 +17418,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ksmgqi",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Analyse des enjeux métiers, recueil des besoins, identification des utilisateurs, définition du périmètre et formalisation des objectifs du projet.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1kxuv91",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -17604,13 +17436,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "The Porters et The Big Porters articulent deux façons d’intervenir : le portage salarial pour le consultant, la prestation IT pour l’entreprise. Un même vivier, un même niveau d’exigence.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1lqfuts",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Coordination des équipes métiers et techniques",
     "rich": true
   },
   {
@@ -17639,13 +17464,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Scrum Master",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1m9bjss",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product Manager",
     "rich": true
   },
   {
@@ -17789,13 +17607,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1pnltxo",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Comptes rendus de gouvernance",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1poeuem",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -17866,24 +17677,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ricb7l",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Cadrage et définition des besoins",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1rjhjyq",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Team Coaching",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1rmtyj6",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Business Analyst",
     "rich": true
   },
   {
@@ -17901,31 +17698,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1s0osji",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Business Analysis",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1s5didx",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Continuous Improvement",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1s64lew",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Suivi administratif de la mission",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1sqfszu",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Produit &amp; projet",
     "rich": true
   },
   {
@@ -17936,24 +17712,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1srwfx5",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Construction de la vision, définition de la feuille de route, priorisation des fonctionnalités et suivi de la valeur créée par le produit.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1svrs4w",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Documentation technique et fonctionnelle",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1swmogz",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product Delivery",
     "rich": true
   },
   {
@@ -17978,31 +17740,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1tu72pg",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Delivery Manager",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1tu92ye",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product &amp; Agilité",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1u07c8s",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Systèmes de monitoring et d’alerting",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ud2dhh",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "AMOA",
     "rich": true
   },
   {
@@ -18027,24 +17768,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1usa9sk",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Organisation des équipes, suivi du budget, gestion des délais, anticipation des risques et coordination entre les différentes parties prenantes.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.1uxlh6l",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Portage salarial",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1wiqk2k",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "User Research",
     "rich": true
   },
   {
@@ -18058,7 +17785,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.1wq5eyc",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -18080,13 +17807,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Cloud Architect",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.1ygubhl",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Backlog priorisé",
     "rich": true
   },
   {
@@ -18143,20 +17863,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Lean",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.3g2yxt",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Accompagnement humain et disponible",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.3ki6f7",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Le mémoire technique du groupe formalise une continuité de bout en bout : cadrage, exécution, recette, capitalisation et transfert de connaissances.",
     "rich": true
   },
   {
@@ -18244,13 +17950,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.6eloqz",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Stakeholder Management",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.6gnj6f",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -18272,13 +17971,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.7flqzn",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Soutien dans les échanges avec le client",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.7txxpw",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -18286,24 +17978,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.7ueev5",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Jira",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.7v8q1k",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Nos expertises",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.87hw5r",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Agile",
     "rich": true
   },
   {
@@ -18325,20 +18003,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "The Porters accompagne les consultants qui ont trouvé leur mission : contrat de travail, facturation, paie, protection sociale et suivi personnalisé, sans renoncer à leur autonomie.",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.8zl37m",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product Discovery",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.98n3fb",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "L’approche en bref",
     "rich": true
   },
   {
@@ -18384,13 +18048,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.a0l6sz",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "PMO",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.a4n9ie",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -18402,13 +18059,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Helm",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.a8uafh",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Cadre adapté aux missions de longue durée",
     "rich": true
   },
   {
@@ -18437,20 +18087,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Intelligence artificielle générative",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.bctfgu",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Chef de projet IT",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.bh2tp5",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Figma",
     "rich": true
   },
   {
@@ -18559,13 +18195,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.drgrsi",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Notion",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.drh451",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -18587,13 +18216,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.eedbzd",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Cadrer les besoins, aligner les équipes et piloter la réalisation de produits et de projets numériques à forte valeur métier.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.entfma",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -18601,24 +18223,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.es2xu8",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product Operations Manager",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.es5i42",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Architecte infrastructure",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.eugu3s",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Gestion de programme",
     "rich": true
   },
   {
@@ -18692,13 +18300,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.fy0nl5",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product Strategy",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.fy64ee",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -18730,7 +18331,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.hcd9dc",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -18745,13 +18346,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Gestion des aspects administratifs",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.hx6fe7",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Product Owner",
     "rich": true
   },
   {
@@ -18832,13 +18426,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.jsrfsw",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Program Manager",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.jv18ha",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -18853,24 +18440,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.k99m7i",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Spécifications fonctionnelles",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.ke96xk",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Airflow",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.kq1vmb",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Confluence",
     "rich": true
   },
   {
@@ -18909,24 +18482,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.m5qwsq",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Planning projet",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.m5x4hy",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Spark",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.ma1bq8",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Domaine sélectionné",
     "rich": true
   },
   {
@@ -18940,14 +18499,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.n0s7pz",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Développement",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.n8yb9u",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Delivery et amélioration continue",
+    "content": "Agilité",
     "rich": true
   },
   {
@@ -18969,13 +18521,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "dbt",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.nv42l6",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Les professionnels du produit et du projet occupent fréquemment des rôles stratégiques au sein d’équipes clientes pendant plusieurs mois. Le portage salarial leur permet d’exercer en autonomie tout en bénéficiant d’un statut structuré et d’une gestion simplifiée.",
     "rich": true
   },
   {
@@ -19021,13 +18566,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.pwv8y8",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Note de cadrage",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.pxdmud",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -19056,31 +18594,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.qkglkt",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Expression des besoins",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.qlcvsn",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Docker",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.qnbg6t",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "OKR",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.qwd0ax",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Transformation Project Manager",
     "rich": true
   },
   {
@@ -19112,13 +18629,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.rmdrfb",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Budget et suivi des charges",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.rs5x5o",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -19126,24 +18636,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.s1958u",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Stratégie, pilotage et delivery",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.s60qxv",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "GitHub Actions",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.s89qp8",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Roadmapping",
     "rich": true
   },
   {
@@ -19157,7 +18653,7 @@
     "key": "pages.qui-sommes-nous.auto.paragraph.saw9s8",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -19217,20 +18713,6 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.u0amh6",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Plans de livraison",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.ufzs9z",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Prise en charge de la facturation",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.uj2o1u",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
@@ -19245,31 +18727,10 @@
     "rich": true
   },
   {
-    "key": "pages.qui-sommes-nous.auto.paragraph.v11wdn",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Vision produit",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.v2d919",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Ces experts assurent la coordination entre les directions, les utilisateurs, les équipes techniques et les partenaires. Ils structurent les priorités, définissent les objectifs, sécurisent les délais et veillent à la qualité de l’exécution.",
-    "rich": true
-  },
-  {
     "key": "pages.qui-sommes-nous.auto.paragraph.vqjtg",
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Encadrement contractuel des missions",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.vqpni1",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Directeur de projet",
     "rich": true
   },
   {
@@ -19291,13 +18752,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Power BI",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.w2xq52",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "The Porters porte les professionnels capables de transformer une ambition stratégique ou un besoin métier en produit, en service ou en projet concret.",
     "rich": true
   },
   {
@@ -19326,13 +18780,6 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Release Train Engineer",
-    "rich": true
-  },
-  {
-    "key": "pages.qui-sommes-nous.auto.paragraph.wxvnil",
-    "route": "/qui-sommes-nous",
-    "type": "paragraph",
-    "content": "Consultant AMOA",
     "rich": true
   },
   {

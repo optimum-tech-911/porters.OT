@@ -504,16 +504,16 @@ const posts: BlogSeed[] = [
   },
   {
     slug: 'portage-salarial-consultant-data-ia',
-    title: 'Portage salarial pour consultant Data & IA',
+    title: 'Portage salarial pour consultant Big Data / Cloud / IA',
     excerpt: 'Data engineering, BI, gouvernance, machine learning et IA : structurer sa mission, son TJM et son cadre contractuel.',
-    intro: 'Les missions Data & IA vont du cadrage stratégique à l’industrialisation. Le portage salarial permet à l’expert de rester autonome tout en déléguant les contrats, la facturation et la paie.',
+    intro: 'Les missions Big Data / Cloud / IA vont du cadrage stratégique à l’industrialisation. Le portage salarial permet à l’expert de rester autonome tout en déléguant les contrats, la facturation et la paie.',
     sections: [
       { title: 'Partir du besoin métier', body: 'Une mission crédible relie les données, les utilisateurs et un résultat attendu : qualité, décision, automatisation, délai, coût ou maîtrise des risques.' },
       { title: 'Cadrer l’accès aux données', body: 'Sources, droits d’accès, sécurité, environnement cloud, propriété des livrables et exigences de gouvernance doivent être clarifiés avant l’intervention.' },
       { title: 'Du prototype à la production', body: 'Un POC ne suffit pas toujours. Les responsabilités d’industrialisation, de documentation, de MLOps et de suivi de performance doivent être nommées.' },
     ],
     faq: [
-      { question: 'Quels profils Data & IA utilisent le portage ?', answer: 'Data Analysts, Data Engineers, Data Scientists, ML Engineers, architectes data ou IA, spécialistes BI et consultants en gouvernance peuvent y recourir.' },
+      { question: 'Quels profils Big Data / Cloud / IA utilisent le portage ?', answer: 'Data Analysts, Data Engineers, Data Scientists, ML Engineers, architectes data ou IA, spécialistes BI et consultants en gouvernance peuvent y recourir.' },
       { question: 'Comment définir son TJM Data ou IA ?', answer: 'Le TJM dépend de l’expérience, de la rareté des compétences, de la responsabilité, de la durée et du contexte. Une simulation aide à relier ce TJM au revenu estimé.' },
     ],
     expertiseHref: '/expertises/data-ia',
@@ -521,7 +521,7 @@ const posts: BlogSeed[] = [
     readingTime: 7,
     featured: true,
     category: 'secteurs',
-    seo: { title: 'Portage salarial consultant Data & IA — The Porters', description: 'Portage salarial Data et IA : data engineering, BI, gouvernance, machine learning, TJM, contrats et industrialisation.' },
+    seo: { title: 'Portage salarial consultant Big Data / Cloud / IA — The Porters', description: 'Portage salarial Data et IA : data engineering, BI, gouvernance, machine learning, TJM, contrats et industrialisation.' },
   },
   {
     slug: 'portage-salarial-devops-freelance',

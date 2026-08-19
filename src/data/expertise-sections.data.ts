@@ -52,7 +52,7 @@ export const expertiseSections: ExpertiseSection[] = [
   {
     id: 'data-ia',
     number: '02',
-    title: 'Data & IA',
+    title: 'Big Data / Cloud / IA',
     shortSubtitle: 'Données, modèles et intelligence artificielle',
     introduction: 'Transformer les données en décisions, en automatisations et en produits intelligents capables de créer une valeur concrète pour l’entreprise.',
     sourceSummary: 'Notre approche relie stratégie, architecture, usages et maintien en conditions opérationnelles : la valeur ne s’arrête pas au prototype.',
@@ -78,7 +78,7 @@ export const expertiseSections: ExpertiseSection[] = [
   {
     id: 'cloud-devops',
     number: '03',
-    title: 'Cloud & DevOps',
+    title: 'DevOps',
     shortSubtitle: 'Infrastructure, automatisation et fiabilité',
     introduction: 'Concevoir des infrastructures plus agiles, plus fiables et plus performantes pour accélérer la transformation technologique des organisations.',
     sourceSummary: 'Nous traitons le Cloud comme une trajectoire : conseil, intégration flexible, optimisation des infrastructures et suivi de la performance.',
@@ -98,7 +98,7 @@ export const expertiseSections: ExpertiseSection[] = [
     sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
     whyPortage: 'Les profils Cloud et DevOps sont régulièrement sollicités pour des transformations techniques complexes, des migrations ou des phases d’industrialisation. Le portage salarial leur permet d’intervenir avec autonomie tout en déléguant la gestion administrative de leur activité.',
     portersSupport: ['Cadre contractuel adapté aux projets techniques', 'Gestion administrative et facturation', 'Accompagnement pendant toute la durée de la mission', 'Suivi des échanges contractuels avec le client', 'Protection sociale du salarié porté', 'Soutien pour les missions longues et stratégiques'],
-    ctaLabel: 'Plus de détails sur le Cloud & DevOps',
+    ctaLabel: 'Plus de détails sur le DevOps',
     ctaHref: '/expertises/cloud-devops',
   },
   {
@@ -125,32 +125,6 @@ export const expertiseSections: ExpertiseSection[] = [
     whyPortage: 'Les consultants en agilité interviennent souvent dans des environnements de transformation, sur des périodes de plusieurs mois et auprès de nombreuses parties prenantes. Le portage salarial leur offre un cadre professionnel adapté sans limiter leur autonomie dans la conduite de leurs missions.',
     portersSupport: ['Gestion des aspects administratifs', 'Encadrement contractuel des missions', 'Facturation et suivi des règlements', 'Accompagnement humain et personnalisé', 'Continuité entre plusieurs missions', 'Soutien dans la relation commerciale et contractuelle'],
     ctaLabel: 'Plus de détails sur l’Agilité',
-    ctaHref: '/expertises/agilite-coaching',
-  },
-  {
-    id: 'produit-projet',
-    number: '05',
-    title: 'Produit & projet',
-    shortSubtitle: 'Stratégie, pilotage et delivery',
-    introduction: 'Cadrer les besoins, aligner les équipes et piloter la réalisation de produits et de projets numériques à forte valeur métier.',
-    sourceSummary: 'Le mémoire technique du groupe formalise une continuité de bout en bout : cadrage, exécution, recette, capitalisation et transfert de connaissances.',
-    description: [
-      'The Porters porte les professionnels capables de transformer une ambition stratégique ou un besoin métier en produit, en service ou en projet concret.',
-      'Ces experts assurent la coordination entre les directions, les utilisateurs, les équipes techniques et les partenaires. Ils structurent les priorités, définissent les objectifs, sécurisent les délais et veillent à la qualité de l’exécution.',
-    ],
-    profiles: ['Product Manager', 'Product Owner', 'Chef de projet IT', 'Directeur de projet', 'Program Manager', 'PMO', 'Business Analyst', 'Consultant AMOA', 'Delivery Manager', 'Product Operations Manager', 'Transformation Project Manager', 'Product Designer stratégique'],
-    missions: [
-      { title: 'Cadrage et définition des besoins', description: 'Analyse des enjeux métiers, recueil des besoins, identification des utilisateurs, définition du périmètre et formalisation des objectifs du projet.' },
-      { title: 'Stratégie et pilotage produit', description: 'Construction de la vision, définition de la feuille de route, priorisation des fonctionnalités et suivi de la valeur créée par le produit.' },
-      { title: 'Pilotage de projet et coordination', description: 'Organisation des équipes, suivi du budget, gestion des délais, anticipation des risques et coordination entre les différentes parties prenantes.' },
-      { title: 'Delivery et amélioration continue', description: 'Supervision de la réalisation, organisation des mises en production, suivi des résultats et amélioration continue du produit ou du service.' },
-    ],
-    responsibilities: ['Note de cadrage', 'Expression des besoins', 'Spécifications fonctionnelles', 'Vision produit', 'Roadmap', 'Backlog priorisé', 'Planning projet', 'Budget et suivi des charges', 'Cartographie des risques', 'Comptes rendus de gouvernance', 'Indicateurs de performance', 'Plans de livraison', 'Rapports d’avancement', 'Coordination des équipes métiers et techniques'],
-    skills: ['Product Strategy', 'Product Discovery', 'Product Delivery', 'Roadmapping', 'AMOA', 'Business Analysis', 'Gestion de projet', 'Gestion de programme', 'Jira', 'Confluence', 'Notion', 'Figma', 'Design Thinking', 'Agile', 'Scrum', 'OKR', 'User Research', 'Stakeholder Management'],
-    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
-    whyPortage: 'Les professionnels du produit et du projet occupent fréquemment des rôles stratégiques au sein d’équipes clientes pendant plusieurs mois. Le portage salarial leur permet d’exercer en autonomie tout en bénéficiant d’un statut structuré et d’une gestion simplifiée.',
-    portersSupport: ['Gestion des contrats et avenants', 'Prise en charge de la facturation', 'Suivi administratif de la mission', 'Accompagnement humain et disponible', 'Protection sociale du salarié porté', 'Soutien dans les échanges avec le client', 'Continuité entre plusieurs projets', 'Cadre adapté aux missions de longue durée'],
-    ctaLabel: 'Plus de détails sur Produit & Projet',
     ctaHref: '/expertises/agilite-coaching',
   },
 ];

@@ -123,7 +123,7 @@ const corePages: CorePageDefinition[] = [
     id: 'page-expertises',
     title: 'Nos expertises numériques',
     description:
-      'Cybersécurité, Data & IA, Cloud & DevOps, Agilité & Coaching, Product & Project Management : accédez au domaine qui correspond à votre mission.',
+      'Cybersécurité, Big Data / Cloud / IA, DevOps, Agilité : accédez au domaine qui correspond à votre mission.',
     body: joinText(expertises.flatMap((expertise) => [expertise.eyebrow, expertise.title, expertise.summary, ...expertise.roles])),
     category: 'expertise',
     url: '/expertises',

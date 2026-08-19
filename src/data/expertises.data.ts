@@ -91,7 +91,7 @@ export const expertises: Expertise[] = [
   {
     slug: 'data-ia',
     eyebrow: 'Big Data / Cloud / IA',
-    title: 'Portage salarial pour consultants Data & IA',
+    title: 'Portage salarial pour consultants Big Data / Cloud / IA',
     summary:
       'Data engineers, data scientists, consultants BI, ML engineers et architectes IA conservent leur autonomie commerciale tout en déléguant le cadre contractuel, la facturation et la paie.',
     sourceSummary:
@@ -154,12 +154,12 @@ export const expertises: Expertise[] = [
       'Point de contact administratif pendant l’intervention',
     ],
     seoDescription:
-      'Portage salarial pour consultants Data & IA : stratégie data, engineering, BI, gouvernance, machine learning, IA et plateformes cloud.',
+      'Portage salarial pour consultants Big Data / Cloud / IA : stratégie data, engineering, BI, gouvernance, machine learning, IA et plateformes cloud.',
   },
   {
     slug: 'cloud-devops',
     eyebrow: 'DevOps',
-    title: 'Portage salarial pour consultants Cloud & DevOps',
+    title: 'Portage salarial pour consultants DevOps',
     summary:
       'Architectes cloud, DevOps engineers, SRE, platform engineers et spécialistes cloud security : sécurisez le cadre de votre mission tout en gardant la maîtrise technique de l’intervention.',
     sourceSummary:
@@ -212,7 +212,7 @@ export const expertises: Expertise[] = [
 {
     slug: 'agilite-coaching',
     eyebrow: 'Agilité',
-    title: 'Portage salarial pour profils Agilité, Produit et Transformation',
+    title: 'Portage salarial pour profils Agilité',
     summary:
       'Product Owners, Scrum Masters, Agile Coaches, RTE, Business Analysts et Change Managers interviennent avec autonomie, dans un cadre salarié adapté aux missions de transformation.',
     sourceSummary:

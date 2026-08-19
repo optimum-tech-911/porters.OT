@@ -165,13 +165,13 @@
     "contentCount": 44
   },
   {
-    "route": "/blog/portage-salarial-consultant-cybersecurite",
-    "name": "Portage salarial consultant cybersécurité",
+    "route": "/blog/portage-salarial-consultant-data-ia",
+    "name": "Portage salarial consultant Big Data / Cloud / IA",
     "contentCount": 30
   },
   {
-    "route": "/blog/portage-salarial-consultant-data-ia",
-    "name": "Portage salarial consultant Data & IA",
+    "route": "/blog/portage-salarial-consultant-cybersecurite",
+    "name": "Portage salarial consultant cybersécurité",
     "contentCount": 30
   },
   {
@@ -200,14 +200,14 @@
     "contentCount": 49
   },
   {
-    "route": "/expertises/cloud-devops",
-    "name": "Portage salarial pour consultants Cloud & DevOps",
-    "contentCount": 116
+    "route": "/expertises/data-ia",
+    "name": "Portage salarial pour consultants Big Data / Cloud / IA",
+    "contentCount": 115
   },
   {
-    "route": "/expertises/data-ia",
-    "name": "Portage salarial pour consultants Data & IA",
-    "contentCount": 115
+    "route": "/expertises/cloud-devops",
+    "name": "Portage salarial pour consultants DevOps",
+    "contentCount": 116
   },
   {
     "route": "/portage-salarial",
@@ -226,7 +226,7 @@
   },
   {
     "route": "/expertises/agilite-coaching",
-    "name": "Portage salarial pour profils Agilité, Produit et Transformation",
+    "name": "Portage salarial pour profils Agilité",
     "contentCount": 114
   },
   {
@@ -247,7 +247,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 407
+    "contentCount": 328
   },
   {
     "route": "/recrutement",
