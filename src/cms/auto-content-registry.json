@@ -52,7 +52,7 @@
     "key": "global.footer.auto.button.1ei7i1h",
     "route": "/_global",
     "type": "button",
-    "content": "Développement &amp; intégration<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "Agilité<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
@@ -126,31 +126,17 @@
     "rich": true
   },
   {
-    "key": "global.footer.auto.button.5o4qdv",
-    "route": "/_global",
-    "type": "button",
-    "content": "Product &amp; Project<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
-  },
-  {
-    "key": "global.footer.auto.button.dg39c",
-    "route": "/_global",
-    "type": "button",
-    "content": "Agilité &amp; transformation<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
-  },
-  {
     "key": "global.footer.auto.button.gilzjz",
     "route": "/_global",
     "type": "button",
-    "content": "Data &amp; IA<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "Big Data / Cloud / IA<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
     "key": "global.footer.auto.button.rlhpm",
     "route": "/_global",
     "type": "button",
-    "content": "Cloud &amp; DevOps<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "DevOps<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
@@ -441,6 +427,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.aix-en-provence.auto.paragraph.1kbulmq",
+    "route": "/agences/aix-en-provence",
+    "type": "paragraph",
+    "content": "Un premier rendez-vous peut être organisé à distance ou selon les modalités confirmées par l'équipe pour le bassin aixois.",
+    "rich": true
+  },
+  {
     "key": "pages.agences.aix-en-provence.auto.paragraph.1ni0def",
     "route": "/agences/aix-en-provence",
     "type": "paragraph",
@@ -466,6 +459,13 @@
     "route": "/agences/aix-en-provence",
     "type": "paragraph",
     "content": "Chaque parcours conserve un interlocuteur identifiable pour éviter la dispersion entre le contrat, la paie, la facturation et le suivi opérationnel.",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.aix-en-provence.auto.paragraph.292b15",
+    "route": "/agences/aix-en-provence",
+    "type": "paragraph",
+    "content": "Les parcours couvrent notamment les consultants IT, data, cloud, DevOps, cybersécurité, produit, projet et transformation.",
     "rich": true
   },
   {
@@ -654,7 +654,7 @@
     "key": "pages.agences.auto.paragraph.1r0gr6w",
     "route": "/agences",
     "type": "paragraph",
-    "content": "Occitanie · Sud-Ouest",
+    "content": "Occitanie · Sud",
     "rich": true
   },
   {
@@ -721,6 +721,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.auto.paragraph.n97nl3",
+    "route": "/agences",
+    "type": "paragraph",
+    "content": "En agence ou à distance, toujours à vos côtés.",
+    "rich": true
+  },
+  {
     "key": "pages.agences.auto.paragraph.swye4l",
     "route": "/agences",
     "type": "paragraph",
@@ -739,6 +746,20 @@
     "route": "/agences",
     "type": "paragraph",
     "content": "Couverture nationale",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.auto.paragraph.w9hou5",
+    "route": "/agences",
+    "type": "paragraph",
+    "content": "<span class=\"cvg__status-dot\"></span>France entière",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.auto.paragraph.ymo84p",
+    "route": "/agences",
+    "type": "paragraph",
+    "content": "<i></i>Présence nationale",
     "rich": true
   },
   {
@@ -924,6 +945,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.lyon.auto.paragraph.1kbulmq",
+    "route": "/agences/lyon",
+    "type": "paragraph",
+    "content": "Simon Girardey, Responsable Lyon, est joignable par email ou téléphone depuis cette page.",
+    "rich": true
+  },
+  {
     "key": "pages.agences.lyon.auto.paragraph.1n2dvs9",
     "route": "/agences/lyon",
     "type": "paragraph",
@@ -956,6 +984,13 @@
     "route": "/agences/lyon",
     "type": "paragraph",
     "content": "Si vous démarrez, l'échange sert à cadrer le TJM, les jours facturés, les frais et le calendrier de mission avant de contractualiser.",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.lyon.auto.paragraph.292b15",
+    "route": "/agences/lyon",
+    "type": "paragraph",
+    "content": "The Porters Lyon vous accueille au 4 place Amédée Bonnet, 69002 Lyon, sur rendez-vous.",
     "rich": true
   },
   {
@@ -1225,6 +1260,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.marseille.auto.paragraph.1kbulmq",
+    "route": "/agences/marseille",
+    "type": "paragraph",
+    "content": "Les échanges sont organisés sur rendez-vous, à distance ou selon les modalités précisées par l'équipe.",
+    "rich": true
+  },
+  {
     "key": "pages.agences.marseille.auto.paragraph.1n2dvs9",
     "route": "/agences/marseille",
     "type": "paragraph",
@@ -1257,6 +1299,13 @@
     "route": "/agences/marseille",
     "type": "paragraph",
     "content": "Le rendez-vous permet de clarifier la situation : client déjà identifié, durée de mission, TJM, rythme de facturation, frais et calendrier de paie.",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.marseille.auto.paragraph.292b15",
+    "route": "/agences/marseille",
+    "type": "paragraph",
+    "content": "Oui. Choisissez un échange de découverte, une simulation ou un cadrage de mission depuis la page Rendez-vous.",
     "rich": true
   },
   {
@@ -1519,6 +1568,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.montpellier.auto.paragraph.1kbulmq",
+    "route": "/agences/montpellier",
+    "type": "paragraph",
+    "content": "L'agence accompagne notamment les développeurs, chefs de projet, Product Owners, Scrum Masters, experts data, DevOps, cloud, cybersécurité et consultants conseil.",
+    "rich": true
+  },
+  {
     "key": "pages.agences.montpellier.auto.paragraph.1n2dvs9",
     "route": "/agences/montpellier",
     "type": "paragraph",
@@ -1551,6 +1607,13 @@
     "route": "/agences/montpellier",
     "type": "paragraph",
     "content": "Le portage combine autonomie commerciale, statut salarié et gestion administrative déléguée pour laisser chaque consultant se concentrer sur sa valeur métier.",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.montpellier.auto.paragraph.292b15",
+    "route": "/agences/montpellier",
+    "type": "paragraph",
+    "content": "Choisissez votre motif et vos disponibilités sur la page Rendez-vous. L’équipe vous confirme le créneau et le format de l’échange.",
     "rich": true
   },
   {
@@ -1827,6 +1890,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.paris.auto.paragraph.1kbulmq",
+    "route": "/agences/paris",
+    "type": "paragraph",
+    "content": "Utilisez la page Rendez-vous pour choisir le motif de l'échange et indiquer vos disponibilités. L'équipe vous confirme ensuite le créneau et son format.",
+    "rich": true
+  },
+  {
     "key": "pages.agences.paris.auto.paragraph.1n2dvs9",
     "route": "/agences/paris",
     "type": "paragraph",
@@ -1862,6 +1932,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.paris.auto.paragraph.292b15",
+    "route": "/agences/paris",
+    "type": "paragraph",
+    "content": "L’agence accompagne notamment des consultants IT, Product Owners, chefs de projet digitaux, experts data, cloud, DevOps, cybersécurité et profils conseil.",
+    "rich": true
+  },
+  {
     "key": "pages.agences.paris.auto.paragraph.3idc18",
     "route": "/agences/paris",
     "type": "paragraph",
@@ -1880,6 +1957,13 @@
     "route": "/agences/paris",
     "type": "paragraph",
     "content": "Le délai de réponse et le format du rendez-vous sont confirmés après réception de votre demande.",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.paris.auto.paragraph.7m1kt4",
+    "route": "/agences/paris",
+    "type": "paragraph",
+    "content": "Non, aucune mission n'est garantie. L'accompagnement porte sur le cadrage, le positionnement, la simulation et la sécurisation administrative de vos missions.",
     "rich": true
   },
   {
@@ -2142,6 +2226,13 @@
     "rich": true
   },
   {
+    "key": "pages.agences.toulouse.auto.paragraph.1kbulmq",
+    "route": "/agences/toulouse",
+    "type": "paragraph",
+    "content": "Choisissez un rendez-vous en ligne. L'équipe vous confirme le créneau, le format et l'interlocuteur adapté à votre besoin.",
+    "rich": true
+  },
+  {
     "key": "pages.agences.toulouse.auto.paragraph.1ni0def",
     "route": "/agences/toulouse",
     "type": "paragraph",
@@ -2167,6 +2258,13 @@
     "route": "/agences/toulouse",
     "type": "paragraph",
     "content": "Le rendez-vous sert à qualifier le besoin : découvrir le portage, optimiser une simulation, discuter d'une mission IT ou échanger avec l'agence.",
+    "rich": true
+  },
+  {
+    "key": "pages.agences.toulouse.auto.paragraph.292b15",
+    "route": "/agences/toulouse",
+    "type": "paragraph",
+    "content": "Les profils aéronautique, spatial, industrie, data, IA, cloud, cybersécurité, produit, agilité et gestion de projet peuvent être accompagnés.",
     "rich": true
   },
   {
@@ -2436,6 +2534,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.auto.paragraph.10uq19m",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.auto.paragraph.129aoeb",
     "route": "/blog",
     "type": "paragraph",
@@ -2457,10 +2562,24 @@
     "rich": true
   },
   {
+    "key": "pages.blog.auto.paragraph.15fkouk",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.auto.paragraph.15sj1hz",
     "route": "/blog",
     "type": "paragraph",
     "content": "5 min",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.auto.paragraph.16flec6",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Devenir consultant",
     "rich": true
   },
   {
@@ -2613,6 +2732,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.auto.paragraph.1p725qa",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.auto.paragraph.1sa07y5",
     "route": "/blog",
     "type": "paragraph",
@@ -2633,6 +2759,13 @@
     "content": "Lire l'article"
   },
   {
+    "key": "pages.blog.auto.paragraph.1tcifjv",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.auto.paragraph.1tpmxud",
     "route": "/blog",
     "type": "paragraph",
@@ -2643,6 +2776,20 @@
     "route": "/blog",
     "type": "paragraph",
     "content": "Lire l'article"
+  },
+  {
+    "key": "pages.blog.auto.paragraph.1w1xs0w",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.auto.paragraph.1xkog3z",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
   },
   {
     "key": "pages.blog.auto.paragraph.1xm4lfo",
@@ -2714,6 +2861,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.auto.paragraph.cfkgdx",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.auto.paragraph.cwix1j",
     "route": "/blog",
     "type": "paragraph",
@@ -2741,10 +2895,24 @@
     "content": "Lire l'article"
   },
   {
+    "key": "pages.blog.auto.paragraph.gfgyvl",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.auto.paragraph.hkjsbm",
     "route": "/blog",
     "type": "paragraph",
     "content": "6 min",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.auto.paragraph.hzkjz",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -2772,6 +2940,13 @@
     "route": "/blog",
     "type": "paragraph",
     "content": "Revenus irréguliers, impayés, solitude administrative : les problèmes qui poussent des consultants IT à envisager le portage.",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.auto.paragraph.n5vuil",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Devenir consultant",
     "rich": true
   },
   {
@@ -2809,10 +2984,24 @@
     "rich": true
   },
   {
+    "key": "pages.blog.auto.paragraph.rvkknq",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.auto.paragraph.t0qcy1",
     "route": "/blog",
     "type": "paragraph",
     "content": "Secteurs IT",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.auto.paragraph.w2yc98",
+    "route": "/blog",
+    "type": "paragraph",
+    "content": "Devenir consultant",
     "rich": true
   },
   {
@@ -2953,6 +3142,13 @@
     "route": "/blog/bien-choisir-societe-portage-salarial",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.bien-choisir-societe-portage-salarial.auto.paragraph.m0f8hf",
+    "route": "/blog/bien-choisir-societe-portage-salarial",
+    "type": "paragraph",
+    "content": "Devenir consultant",
     "rich": true
   },
   {
@@ -3159,6 +3355,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.categorie.devenir-consultant.auto.paragraph.128fbrm",
+    "route": "/blog/categorie/devenir-consultant",
+    "type": "paragraph",
+    "content": "Devenir consultant",
+    "rich": true
+  },
+  {
     "key": "pages.blog.categorie.devenir-consultant.auto.paragraph.1522rhp",
     "route": "/blog/categorie/devenir-consultant",
     "type": "paragraph",
@@ -3199,6 +3402,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.categorie.devenir-consultant.auto.paragraph.1mvame1",
+    "route": "/blog/categorie/devenir-consultant",
+    "type": "paragraph",
+    "content": "Devenir consultant",
+    "rich": true
+  },
+  {
     "key": "pages.blog.categorie.devenir-consultant.auto.paragraph.1nhb5jk",
     "route": "/blog/categorie/devenir-consultant",
     "type": "paragraph",
@@ -3230,6 +3440,13 @@
     "route": "/blog/categorie/devenir-consultant",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.devenir-consultant.auto.paragraph.exxsso",
+    "route": "/blog/categorie/devenir-consultant",
+    "type": "paragraph",
+    "content": "Devenir consultant",
     "rich": true
   },
   {
@@ -3373,10 +3590,31 @@
     "rich": true
   },
   {
+    "key": "pages.blog.categorie.fonctionnement.auto.paragraph.105u8nn",
+    "route": "/blog/categorie/fonctionnement",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.categorie.fonctionnement.auto.paragraph.127tk0v",
     "route": "/blog/categorie/fonctionnement",
     "type": "paragraph",
     "content": "5 min",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.fonctionnement.auto.paragraph.128fbrm",
+    "route": "/blog/categorie/fonctionnement",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.fonctionnement.auto.paragraph.12ajlzr",
+    "route": "/blog/categorie/fonctionnement",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -3391,6 +3629,13 @@
     "route": "/blog/categorie/fonctionnement",
     "type": "paragraph",
     "content": "Le chargé de compte est le point d'appui du consultant porté : administratif, facturation, paie, questions de mission et suivi au quotidien.",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.fonctionnement.auto.paragraph.17ggw9q",
+    "route": "/blog/categorie/fonctionnement",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -3445,6 +3690,13 @@
     "route": "/blog/categorie/fonctionnement",
     "type": "paragraph",
     "content": "Comprendre le portage salarial, la relation tripartite, le contrat de travail et la transformation du chiffre d'affaires en salaire.",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.fonctionnement.auto.paragraph.1mvame1",
+    "route": "/blog/categorie/fonctionnement",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -3515,6 +3767,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.categorie.fonctionnement.auto.paragraph.exxsso",
+    "route": "/blog/categorie/fonctionnement",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.categorie.fonctionnement.auto.paragraph.f0fmar",
     "route": "/blog/categorie/fonctionnement",
     "type": "paragraph",
@@ -3523,6 +3782,13 @@
   },
   {
     "key": "pages.blog.categorie.fonctionnement.auto.paragraph.h77ku",
+    "route": "/blog/categorie/fonctionnement",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.fonctionnement.auto.paragraph.hlc9qd",
     "route": "/blog/categorie/fonctionnement",
     "type": "paragraph",
     "content": "Fonctionnement",
@@ -3547,6 +3813,13 @@
     "route": "/blog/categorie/fonctionnement",
     "type": "paragraph",
     "content": "6 min",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.fonctionnement.auto.paragraph.lbbetw",
+    "route": "/blog/categorie/fonctionnement",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -3729,10 +4002,31 @@
     "rich": true
   },
   {
+    "key": "pages.blog.categorie.secteurs.auto.paragraph.105u8nn",
+    "route": "/blog/categorie/secteurs",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.categorie.secteurs.auto.paragraph.127tk0v",
     "route": "/blog/categorie/secteurs",
     "type": "paragraph",
     "content": "5 min",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.secteurs.auto.paragraph.128fbrm",
+    "route": "/blog/categorie/secteurs",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.secteurs.auto.paragraph.12ajlzr",
+    "route": "/blog/categorie/secteurs",
+    "type": "paragraph",
+    "content": "Secteurs IT",
     "rich": true
   },
   {
@@ -3747,6 +4041,13 @@
     "route": "/blog/categorie/secteurs",
     "type": "paragraph",
     "content": "Revenus irréguliers, impayés, solitude administrative : les problèmes qui poussent des consultants IT à envisager le portage.",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.secteurs.auto.paragraph.17ggw9q",
+    "route": "/blog/categorie/secteurs",
+    "type": "paragraph",
+    "content": "Secteurs IT",
     "rich": true
   },
   {
@@ -3801,6 +4102,13 @@
     "route": "/blog/categorie/secteurs",
     "type": "paragraph",
     "content": "Data engineering, BI, gouvernance, machine learning et IA : structurer sa mission, son TJM et son cadre contractuel.",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.secteurs.auto.paragraph.1mvame1",
+    "route": "/blog/categorie/secteurs",
+    "type": "paragraph",
+    "content": "Secteurs IT",
     "rich": true
   },
   {
@@ -3871,6 +4179,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.categorie.secteurs.auto.paragraph.exxsso",
+    "route": "/blog/categorie/secteurs",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.categorie.secteurs.auto.paragraph.f0fmar",
     "route": "/blog/categorie/secteurs",
     "type": "paragraph",
@@ -3879,6 +4194,13 @@
   },
   {
     "key": "pages.blog.categorie.secteurs.auto.paragraph.h77ku",
+    "route": "/blog/categorie/secteurs",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.secteurs.auto.paragraph.hlc9qd",
     "route": "/blog/categorie/secteurs",
     "type": "paragraph",
     "content": "Secteurs IT",
@@ -3903,6 +4225,13 @@
     "route": "/blog/categorie/secteurs",
     "type": "paragraph",
     "content": "6 min",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.categorie.secteurs.auto.paragraph.lbbetw",
+    "route": "/blog/categorie/secteurs",
+    "type": "paragraph",
+    "content": "Secteurs IT",
     "rich": true
   },
   {
@@ -4092,6 +4421,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.choisir-statut-independant.auto.paragraph.m0f8hf",
+    "route": "/blog/choisir-statut-independant",
+    "type": "paragraph",
+    "content": "Devenir consultant",
+    "rich": true
+  },
+  {
     "key": "pages.blog.choisir-statut-independant.auto.paragraph.t30x3f",
     "route": "/blog/choisir-statut-independant",
     "type": "paragraph",
@@ -4236,6 +4572,13 @@
     "route": "/blog/consultant-informatique-independant-galeres",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.consultant-informatique-independant-galeres.auto.paragraph.m0f8hf",
+    "route": "/blog/consultant-informatique-independant-galeres",
+    "type": "paragraph",
+    "content": "Secteurs IT",
     "rich": true
   },
   {
@@ -4386,6 +4729,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.contrat-portage-salarial.auto.paragraph.m0f8hf",
+    "route": "/blog/contrat-portage-salarial",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.contrat-portage-salarial.auto.paragraph.t30x3f",
     "route": "/blog/contrat-portage-salarial",
     "type": "paragraph",
@@ -4530,6 +4880,13 @@
     "route": "/blog/devenir-freelance-informatique",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.devenir-freelance-informatique.auto.paragraph.m0f8hf",
+    "route": "/blog/devenir-freelance-informatique",
+    "type": "paragraph",
+    "content": "Secteurs IT",
     "rich": true
   },
   {
@@ -4680,6 +5037,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.frais-gestion-portage-salarial.auto.paragraph.m0f8hf",
+    "route": "/blog/frais-gestion-portage-salarial",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.frais-gestion-portage-salarial.auto.paragraph.t30x3f",
     "route": "/blog/frais-gestion-portage-salarial",
     "type": "paragraph",
@@ -4827,6 +5191,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.guide-portage-salarial.auto.paragraph.m0f8hf",
+    "route": "/blog/guide-portage-salarial",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.guide-portage-salarial.auto.paragraph.t30x3f",
     "route": "/blog/guide-portage-salarial",
     "type": "paragraph",
@@ -4971,6 +5342,13 @@
     "route": "/blog/optimiser-remuneration-portage-salarial",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.optimiser-remuneration-portage-salarial.auto.paragraph.m0f8hf",
+    "route": "/blog/optimiser-remuneration-portage-salarial",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -5177,6 +5555,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.portage-salarial-consultant-cybersecurite.auto.paragraph.m0f8hf",
+    "route": "/blog/portage-salarial-consultant-cybersecurite",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.portage-salarial-consultant-cybersecurite.auto.paragraph.t30x3f",
     "route": "/blog/portage-salarial-consultant-cybersecurite",
     "type": "paragraph",
@@ -5377,6 +5762,13 @@
     "route": "/blog/portage-salarial-consultant-data-ia",
     "type": "paragraph",
     "content": "Data Analysts, Data Engineers, Data Scientists, ML Engineers, architectes data ou IA, spécialistes BI et consultants en gouvernance peuvent y recourir.",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.portage-salarial-consultant-data-ia.auto.paragraph.m0f8hf",
+    "route": "/blog/portage-salarial-consultant-data-ia",
+    "type": "paragraph",
+    "content": "Secteurs IT",
     "rich": true
   },
   {
@@ -5583,6 +5975,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.portage-salarial-devops-freelance.auto.paragraph.m0f8hf",
+    "route": "/blog/portage-salarial-devops-freelance",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.portage-salarial-devops-freelance.auto.paragraph.t30x3f",
     "route": "/blog/portage-salarial-devops-freelance",
     "type": "paragraph",
@@ -5727,6 +6126,13 @@
     "route": "/blog/portage-salarial-entreprises",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.portage-salarial-entreprises.auto.paragraph.m0f8hf",
+    "route": "/blog/portage-salarial-entreprises",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -5877,6 +6283,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.portage-salarial-informatique.auto.paragraph.m0f8hf",
+    "route": "/blog/portage-salarial-informatique",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.portage-salarial-informatique.auto.paragraph.t30x3f",
     "route": "/blog/portage-salarial-informatique",
     "type": "paragraph",
@@ -6021,6 +6434,13 @@
     "route": "/blog/portage-salarial-international",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.portage-salarial-international.auto.paragraph.m0f8hf",
+    "route": "/blog/portage-salarial-international",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -6227,6 +6647,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.portage-salarial-product-owner-scrum-master.auto.paragraph.m0f8hf",
+    "route": "/blog/portage-salarial-product-owner-scrum-master",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.portage-salarial-product-owner-scrum-master.auto.paragraph.t30x3f",
     "route": "/blog/portage-salarial-product-owner-scrum-master",
     "type": "paragraph",
@@ -6371,6 +6798,13 @@
     "route": "/blog/portage-salarial-solution-flexible",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.portage-salarial-solution-flexible.auto.paragraph.m0f8hf",
+    "route": "/blog/portage-salarial-solution-flexible",
+    "type": "paragraph",
+    "content": "Fonctionnement",
     "rich": true
   },
   {
@@ -6521,6 +6955,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.role-charge-de-compte-portage-salarial.auto.paragraph.m0f8hf",
+    "route": "/blog/role-charge-de-compte-portage-salarial",
+    "type": "paragraph",
+    "content": "Fonctionnement",
+    "rich": true
+  },
+  {
     "key": "pages.blog.role-charge-de-compte-portage-salarial.auto.paragraph.t30x3f",
     "route": "/blog/role-charge-de-compte-portage-salarial",
     "type": "paragraph",
@@ -6668,6 +7109,13 @@
     "rich": true
   },
   {
+    "key": "pages.blog.secteurs-adaptes-portage-salarial.auto.paragraph.m0f8hf",
+    "route": "/blog/secteurs-adaptes-portage-salarial",
+    "type": "paragraph",
+    "content": "Secteurs IT",
+    "rich": true
+  },
+  {
     "key": "pages.blog.secteurs-adaptes-portage-salarial.auto.paragraph.t30x3f",
     "route": "/blog/secteurs-adaptes-portage-salarial",
     "type": "paragraph",
@@ -6812,6 +7260,13 @@
     "route": "/blog/trouver-missions-portage-salarial",
     "type": "paragraph",
     "content": "Une question ?",
+    "rich": true
+  },
+  {
+    "key": "pages.blog.trouver-missions-portage-salarial.auto.paragraph.m0f8hf",
+    "route": "/blog/trouver-missions-portage-salarial",
+    "type": "paragraph",
+    "content": "Devenir consultant",
     "rich": true
   },
   {
@@ -7028,7 +7483,7 @@
     "key": "pages.confidentialite.auto.paragraph.1sve2ab",
     "route": "/confidentialite",
     "type": "paragraph",
-    "content": "Dernière mise à jour : 17/08/2026",
+    "content": "Dernière mise à jour : 19/08/2026",
     "rich": true
   },
   {
@@ -7926,6 +8381,13 @@
     "rich": true
   },
   {
+    "key": "pages.contact.auto.paragraph.ewl5a1",
+    "route": "/contact",
+    "type": "paragraph",
+    "content": "Votre situation *",
+    "rich": true
+  },
+  {
     "key": "pages.contact.auto.paragraph.m7k6kn",
     "route": "/contact",
     "type": "paragraph",
@@ -7982,24 +8444,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.button.32541h",
-    "route": "/entreprises",
-    "type": "button",
-    "content": "Découvrir <b aria-hidden=\"true\" data-astro-cid-5bmr6dtb=\"\">↗</b>",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.button.i8fnlq",
-    "route": "/entreprises",
-    "type": "button",
-    "content": "Découvrir <b aria-hidden=\"true\" data-astro-cid-5bmr6dtb=\"\">↗</b>",
-    "rich": true
-  },
-  {
     "key": "pages.entreprises.auto.heading.120k1wy",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Cinq étapes, et <span class=\"gold-underline\" data-astro-cid-5bmr6dtb=\"\">la même grille pour tous</span>.",
+    "content": "Quatre étapes, et <span class=\"gold-underline\" data-astro-cid-5bmr6dtb=\"\">la même grille pour tous</span>.",
     "rich": true
   },
   {
@@ -8052,10 +8500,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.2z4ixi",
+    "key": "pages.entreprises.auto.heading.1wer16p",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Validation finale",
+    "content": "Portage salarial",
     "rich": true
   },
   {
@@ -8069,7 +8517,7 @@
     "key": "pages.entreprises.auto.heading.8enu35",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Tests ou mise en situation",
+    "content": "Validation finale",
     "rich": true
   },
   {
@@ -8077,13 +8525,6 @@
     "route": "/entreprises",
     "type": "heading",
     "content": "Deux façons de travailler avec nous.",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.heading.dz5l2t",
-    "route": "/entreprises",
-    "type": "heading",
-    "content": "The Big Porters",
     "rich": true
   },
   {
@@ -8129,10 +8570,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.s4u6m0",
+    "key": "pages.entreprises.auto.heading.spgfwk",
     "route": "/entreprises",
     "type": "heading",
-    "content": "Portage salarial",
+    "content": "The Big Porters",
     "rich": true
   },
   {
@@ -8199,6 +8640,13 @@
     "rich": true
   },
   {
+    "key": "pages.entreprises.auto.paragraph.1e485we",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "Porters",
+    "rich": true
+  },
+  {
     "key": "pages.entreprises.auto.paragraph.1eo6jny",
     "route": "/entreprises",
     "type": "paragraph",
@@ -8227,10 +8675,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.1j7wnhu",
+    "key": "pages.entreprises.auto.paragraph.1j8wtwi",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "The Porters met en place le contrat de prestation et porte le cadre salarial, la facturation et la paie.",
+    "content": "S’adapter au terrain",
     "rich": true
   },
   {
@@ -8286,7 +8734,7 @@
     "key": "pages.entreprises.auto.paragraph.1ps00h8",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Tests techniques, questionnaire métier ou étude de cas selon le périmètre. Disponibilité vérifiée.",
+    "content": "Validation interne, puis transmission d’un profil anonymisé avec compétences et disponibilité. La mission est ensuite suivie par un binôme, avec un relais identifié, pour qu’aucun suivi ne dépende d’une seule personne.",
     "rich": true
   },
   {
@@ -8301,6 +8749,13 @@
     "route": "/entreprises",
     "type": "paragraph",
     "content": "Accès et contraintes",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.1ssu339",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "The",
     "rich": true
   },
   {
@@ -8322,13 +8777,6 @@
     "route": "/entreprises",
     "type": "paragraph",
     "content": "Notre processus de sélection",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.1wejwht",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Une seule question",
     "rich": true
   },
   {
@@ -8381,20 +8829,6 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.6wcujf",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Consultant déjà identifié",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.7a8me1",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Porters",
-    "rich": true
-  },
-  {
     "key": "pages.entreprises.auto.paragraph.8h91n6",
     "route": "/entreprises",
     "type": "paragraph",
@@ -8416,13 +8850,6 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.9kmkhe",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "The",
-    "rich": true
-  },
-  {
     "key": "pages.entreprises.auto.paragraph.af8ukc",
     "route": "/entreprises",
     "type": "paragraph",
@@ -8441,6 +8868,13 @@
     "route": "/entreprises",
     "type": "paragraph",
     "content": "Ce que nous couvrons",
+    "rich": true
+  },
+  {
+    "key": "pages.entreprises.auto.paragraph.crkzxn",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "The Porters met en place le contrat de prestation et porte le cadre salarial, la facturation et la paie.",
     "rich": true
   },
   {
@@ -8472,6 +8906,13 @@
     "rich": true
   },
   {
+    "key": "pages.entreprises.auto.paragraph.emfrf2",
+    "route": "/entreprises",
+    "type": "paragraph",
+    "content": "L’ESN du groupe cadre le besoin, source et évalue les profils, puis suit la mission.",
+    "rich": true
+  },
+  {
     "key": "pages.entreprises.auto.paragraph.g4fl5u",
     "route": "/entreprises",
     "type": "paragraph",
@@ -8486,17 +8927,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.ghvh6g",
+    "key": "pages.entreprises.auto.paragraph.g9s7qo",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Expertise encore à trouver",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.hi4gff",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Le consultant est-il déjà identifié ?",
+    "content": "Comprendre votre environnement",
     "rich": true
   },
   {
@@ -8507,10 +8941,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.jc6al4",
+    "key": "pages.entreprises.auto.paragraph.jq0zbt",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Sortie",
+    "content": "Mobiliser la bonne expertise",
     "rich": true
   },
   {
@@ -8528,24 +8962,10 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.paragraph.mke4ux",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Validation interne, puis transmission d’un profil anonymisé avec compétences et disponibilité. La mission est ensuite suivie par un binôme, avec un relais identifié, pour qu’aucun suivi ne dépende d’une seule personne.",
-    "rich": true
-  },
-  {
     "key": "pages.entreprises.auto.paragraph.n8l3ut",
     "route": "/entreprises",
     "type": "paragraph",
     "content": "Calendrier",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.odvezz",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "L’ESN du groupe cadre le besoin, source et évalue les profils, puis suit la mission.",
     "rich": true
   },
   {
@@ -8601,7 +9021,7 @@
     "key": "pages.entreprises.auto.paragraph.wcbb8x",
     "route": "/entreprises",
     "type": "paragraph",
-    "content": "Vérification",
+    "content": "Sortie",
     "rich": true
   },
   {
@@ -9168,7 +9588,7 @@
     "key": "pages.expertises.agilite-coaching.auto.paragraph.148200c",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
-    "content": "Agilité, produit &amp; transformation",
+    "content": "Agilité",
     "rich": true
   },
   {
@@ -9210,7 +9630,7 @@
     "key": "pages.expertises.agilite-coaching.auto.paragraph.18ahffj",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
-    "content": "Agilité, produit &amp; transformation",
+    "content": "Agilité",
     "rich": true
   },
   {
@@ -9364,7 +9784,7 @@
     "key": "pages.expertises.agilite-coaching.auto.paragraph.1sve2ab",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
-    "content": "Agilité, produit &amp; transformation",
+    "content": "Agilité",
     "rich": true
   },
   {
@@ -9483,7 +9903,7 @@
     "key": "pages.expertises.agilite-coaching.auto.paragraph.7n7d0l",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -9669,21 +10089,7 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.button.15l8jqa",
-    "route": "/expertises",
-    "type": "button",
-    "content": "Voir le domaine en détail <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↗</span>",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.button.1kk0vbn",
-    "route": "/expertises",
-    "type": "button",
-    "content": "Voir le domaine en détail <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↗</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.button.1m3tkrd",
     "route": "/expertises",
     "type": "button",
     "content": "Voir le domaine en détail <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↗</span>",
@@ -9732,13 +10138,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.heading.1f32pdq",
-    "route": "/expertises",
-    "type": "heading",
-    "content": "Missions",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.heading.1h2slzm",
     "route": "/expertises",
     "type": "heading",
@@ -9750,13 +10149,6 @@
     "route": "/expertises",
     "type": "heading",
     "content": "Relier la donnée à un résultat métier mesurable",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.heading.1k4bawr",
-    "route": "/expertises",
-    "type": "heading",
-    "content": "Profils",
     "rich": true
   },
   {
@@ -9802,13 +10194,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.heading.3cudf6",
-    "route": "/expertises",
-    "type": "heading",
-    "content": "Profils",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.heading.4n22a1",
     "route": "/expertises",
     "type": "heading",
@@ -9851,20 +10236,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.heading.minmq7",
-    "route": "/expertises",
-    "type": "heading",
-    "content": "Ce que ça change",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.heading.n2yhlg",
-    "route": "/expertises",
-    "type": "heading",
-    "content": "L’agilité sert la valeur, pas les rituels",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.heading.nd8ib6",
     "route": "/expertises",
     "type": "heading",
@@ -9900,31 +10271,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.heading.ufcqz3",
-    "route": "/expertises",
-    "type": "heading",
-    "content": "Missions",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.heading.wg45lt",
-    "route": "/expertises",
-    "type": "heading",
-    "content": "Donner une direction claire aux projets complexes",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.heading.x1u99y",
-    "route": "/expertises",
-    "type": "heading",
-    "content": "Ce que ça change",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.heading.x9zo2f",
     "route": "/expertises",
     "type": "heading",
-    "content": "Faire évoluer le système sans perdre la maîtrise de l’existant",
+    "content": "L’agilité sert la valeur, pas les rituels",
     "rich": true
   },
   {
@@ -9959,20 +10309,6 @@
     "key": "pages.expertises.auto.list_item.1351197",
     "route": "/expertises",
     "type": "list_item",
-    "content": "Maintenance corrective et évolutive",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.list_item.1b2oa6y",
-    "route": "/expertises",
-    "type": "list_item",
-    "content": "Pilotage de projet IT",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.list_item.1dcvzr6",
-    "route": "/expertises",
-    "type": "list_item",
     "content": "Conduite du changement et communication",
     "rich": true
   },
@@ -9980,35 +10316,14 @@
     "key": "pages.expertises.auto.list_item.1g307b1",
     "route": "/expertises",
     "type": "list_item",
-    "content": "Architecture, interfaces et intégration de solutions",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.list_item.1g3bvyz",
-    "route": "/expertises",
-    "type": "list_item",
-    "content": "Cadrage et priorisation",
+    "content": "Coaching d’équipe et accompagnement des managers",
     "rich": true
   },
   {
     "key": "pages.expertises.auto.list_item.1h3koeu",
     "route": "/expertises",
     "type": "list_item",
-    "content": "Conception et développement applicatif",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.list_item.1jk4o18",
-    "route": "/expertises",
-    "type": "list_item",
-    "content": "Coaching d’équipe et accompagnement des managers",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.list_item.1t1b20t",
-    "route": "/expertises",
-    "type": "list_item",
-    "content": "Gouvernance de programme",
+    "content": "Transformation agile et diagnostic de maturité",
     "rich": true
   },
   {
@@ -10022,7 +10337,7 @@
     "key": "pages.expertises.auto.list_item.2ac8pw",
     "route": "/expertises",
     "type": "list_item",
-    "content": "Analyse et évolution d’applications IBM i / AS400",
+    "content": "Vision produit, roadmap et priorisation du backlog",
     "rich": true
   },
   {
@@ -10030,13 +10345,6 @@
     "route": "/expertises",
     "type": "list_item",
     "content": "Audit organisationnel et technique",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.list_item.374kgv",
-    "route": "/expertises",
-    "type": "list_item",
-    "content": "Transformation agile et diagnostic de maturité",
     "rich": true
   },
   {
@@ -10061,24 +10369,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.list_item.nfai2t",
-    "route": "/expertises",
-    "type": "list_item",
-    "content": "Vision produit, roadmap et priorisation du backlog",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.list_item.r6jey1",
     "route": "/expertises",
     "type": "list_item",
     "content": "Analyse des risques et de la conformité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.list_item.ru5pig",
-    "route": "/expertises",
-    "type": "list_item",
-    "content": "Vision et stratégie produit",
     "rich": true
   },
   {
@@ -10103,20 +10397,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.10c7r6r",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Priorités partagées",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1147lx2",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Change Manager",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.117o0h9",
     "route": "/expertises",
     "type": "paragraph",
@@ -10138,13 +10418,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.121ycxl",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Transformation accompagnée",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.1338h9b",
     "route": "/expertises",
     "type": "paragraph",
@@ -10152,10 +10425,17 @@
     "rich": true
   },
   {
+    "key": "pages.expertises.auto.paragraph.13jfz49",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "Contexte · résultat · contraintes",
+    "rich": true
+  },
+  {
     "key": "pages.expertises.auto.paragraph.156je3a",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -10166,31 +10446,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.167hpfq",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Boucles de retour courtes",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.17mos8m",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Décisions explicites",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.17mv3kx",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Agile Coach",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.19400nh",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Faire évoluer les applications sans traiter l’historique comme une boîte noire ni fragiliser la production.",
+    "content": "Relier la roadmap, le backlog et les décisions quotidiennes à des objectifs compréhensibles.",
     "rich": true
   },
   {
@@ -10222,6 +10481,13 @@
     "rich": true
   },
   {
+    "key": "pages.expertises.auto.paragraph.1b0q0wo",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "Votre problème",
+    "rich": true
+  },
+  {
     "key": "pages.expertises.auto.paragraph.1ceb03x",
     "route": "/expertises",
     "type": "paragraph",
@@ -10243,38 +10509,24 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.1e5aiw",
+    "key": "pages.expertises.auto.paragraph.1eij8mi",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Continuité",
+    "content": "Besoin · résultat · contraintes",
     "rich": true
   },
   {
     "key": "pages.expertises.auto.paragraph.1epw15i",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Développeur Full Stack",
+    "content": "Agile Coach",
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.1fedh0m",
+    "key": "pages.expertises.auto.paragraph.1fhmd08",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Product Manager · Product Owner",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1fsnixr",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Agilité, produit &amp; transformation",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1fy0w1b",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Product Owners, Scrum Masters, Agile Coaches, RTE, Business Analysts et Change Managers interviennent avec autonomie, dans un cadre salarié adapté aux missions de transformation.",
+    "content": "01 · Le brief",
     "rich": true
   },
   {
@@ -10295,7 +10547,7 @@
     "key": "pages.expertises.auto.paragraph.1hjaigy",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Connaissance transmissible",
+    "content": "Transformation accompagnée",
     "rich": true
   },
   {
@@ -10313,27 +10565,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.1ir157t",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Documenter les décisions et organiser le transfert de connaissances pour sécuriser la durée.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1ixfa70",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Product &amp; Project Management",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1jai7v3",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Agilité, produit &amp; transformation",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.1kattez",
     "route": "/expertises",
     "type": "paragraph",
@@ -10348,38 +10579,31 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.1lc3878",
+    "key": "pages.expertises.auto.paragraph.1om26zf",
     "route": "/expertises",
     "type": "paragraph",
     "content": "Business Analyst",
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.1ncm3zv",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Product Owner",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1om26zf",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Ingénieur tests et recette",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.1oz32qw",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Analyste-programmeur IBM i / AS400",
+    "content": "Release Train Engineer (RTE)",
     "rich": true
   },
   {
     "key": "pages.expertises.auto.paragraph.1pk5o8k",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Architecte applicatif · Lead Developer",
+    "content": "Product Owner · Scrum Master",
+    "rich": true
+  },
+  {
+    "key": "pages.expertises.auto.paragraph.1pm3kyn",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "Une expertise qualifiée pour le contexte",
     "rich": true
   },
   {
@@ -10397,31 +10621,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.1tbusnr",
+    "key": "pages.expertises.auto.paragraph.1trx28y",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Release Train Engineer (RTE)",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1tecd9e",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Faire évoluer l’organisation avec les équipes, en traitant les résistances et les dépendances.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1tvgalz",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Clarifier les arbitrages, les responsabilités et les critères de réussite.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.1vafrd0",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Relier la roadmap, le backlog et les décisions quotidiennes à des objectifs compréhensibles.",
+    "content": "Le besoin, avec les personnes qui le portent",
     "rich": true
   },
   {
@@ -10449,7 +10652,7 @@
     "key": "pages.expertises.auto.paragraph.1xapj4w",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -10467,17 +10670,17 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.1ylyuq0",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Scrum Master",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.1ym9utd",
     "route": "/expertises",
     "type": "paragraph",
     "content": "Cliquez sur un domaine pour voir les profils, les missions et ce qu’on en attend.",
+    "rich": true
+  },
+  {
+    "key": "pages.expertises.auto.paragraph.1yrusxc",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "Le niveau réellement nécessaire",
     "rich": true
   },
   {
@@ -10491,14 +10694,7 @@
     "key": "pages.expertises.auto.paragraph.3zuq0t",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.5bxx2y",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "PMO",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -10523,6 +10719,13 @@
     "rich": true
   },
   {
+    "key": "pages.expertises.auto.paragraph.6l5rvd",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "Point de départ",
+    "rich": true
+  },
+  {
     "key": "pages.expertises.auto.paragraph.6pug35",
     "route": "/expertises",
     "type": "paragraph",
@@ -10540,7 +10743,14 @@
     "key": "pages.expertises.auto.paragraph.a259tt",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Intégrateur applicatif",
+    "content": "Change Manager",
+    "rich": true
+  },
+  {
+    "key": "pages.expertises.auto.paragraph.a4txtb",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "Livrables · passage · transmission",
     "rich": true
   },
   {
@@ -10561,14 +10771,7 @@
     "key": "pages.expertises.auto.paragraph.azfequ",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Rendre explicites les interfaces, les responsabilités, les tests et les conditions de mise en service.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.b0fv7a",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Product Manager",
+    "content": "Tester, apprendre et ajuster avant que les écarts ne deviennent coûteux.",
     "rich": true
   },
   {
@@ -10589,7 +10792,14 @@
     "key": "pages.expertises.auto.paragraph.bmx6t0",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Continuité préservée",
+    "content": "Priorités partagées",
+    "rich": true
+  },
+  {
+    "key": "pages.expertises.auto.paragraph.c62tb7",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "Votre mission",
     "rich": true
   },
   {
@@ -10617,21 +10827,21 @@
     "key": "pages.expertises.auto.paragraph.db94eq",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Développement &amp; intégration",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.dkbxzn",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Exécution maîtrisée",
+    "content": "Agilité",
     "rich": true
   },
   {
     "key": "pages.expertises.auto.paragraph.elkzt",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
+    "rich": true
+  },
+  {
+    "key": "pages.expertises.auto.paragraph.fuzf87",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "02 · Le choix",
     "rich": true
   },
   {
@@ -10645,7 +10855,7 @@
     "key": "pages.expertises.auto.paragraph.gkm3c4",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Architecte applicatif",
+    "content": "Product Owner",
     "rich": true
   },
   {
@@ -10656,24 +10866,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.hj3cv5",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Business Analyst",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.jysov4",
     "route": "/expertises",
     "type": "paragraph",
     "content": "Plateforme observable",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.kd9lk7",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Tester, apprendre et ajuster avant que les écarts ne deviennent coûteux.",
     "rich": true
   },
   {
@@ -10687,21 +10883,14 @@
     "key": "pages.expertises.auto.paragraph.lktgbp",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Intégration maîtrisée",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.lsehk5",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Product Owner · Scrum Master",
+    "content": "Boucles de retour courtes",
     "rich": true
   },
   {
     "key": "pages.expertises.auto.paragraph.mqx7t7",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Laisser une documentation, des décisions et des repères exploitables par les équipes après la mission.",
+    "content": "Faire évoluer l’organisation avec les équipes, en traitant les résistances et les dépendances.",
     "rich": true
   },
   {
@@ -10712,13 +10901,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.o81yfo",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Suivre les jalons, les risques, les dépendances et les livrables sans alourdir le projet.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.opxcvt",
     "route": "/expertises",
     "type": "paragraph",
@@ -10726,10 +10908,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.q8oaq4",
+    "key": "pages.expertises.auto.paragraph.p66b05",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Cadrez vos missions de pilotage produit, projet ou programme avec un statut salarié, tout en conservant votre autonomie de conseil et votre relation client.",
+    "content": "La bonne expertise",
     "rich": true
   },
   {
@@ -10768,17 +10950,24 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.v8bhhg",
+    "key": "pages.expertises.auto.paragraph.v2c6eu",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Chef de projet IT",
+    "content": "03 · La sortie",
     "rich": true
   },
   {
     "key": "pages.expertises.auto.paragraph.v8povr",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Lead Developer",
+    "content": "Scrum Master",
+    "rich": true
+  },
+  {
+    "key": "pages.expertises.auto.paragraph.vqu79u",
+    "route": "/expertises",
+    "type": "paragraph",
+    "content": "Un résultat cadré",
     "rich": true
   },
   {
@@ -10796,17 +10985,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.auto.paragraph.x8uda3",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Directeur de programme",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.auto.paragraph.xere8a",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Développeurs, architectes, intégrateurs, testeurs et responsables applicatifs interviennent sur un périmètre défini, des applications récentes aux socles historiques critiques.",
+    "content": "Product Owners, Scrum Masters, Agile Coaches, RTE, Business Analysts et Change Managers interviennent avec autonomie, dans un cadre salarié adapté aux missions de transformation.",
     "rich": true
   },
   {
@@ -10814,20 +10996,6 @@
     "route": "/expertises",
     "type": "paragraph",
     "content": "Data Scientist",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.ycwhwd",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Product Owner",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.auto.paragraph.ye0c82",
-    "route": "/expertises",
-    "type": "paragraph",
-    "content": "Product &amp; Project Management",
     "rich": true
   },
   {
@@ -10841,7 +11009,7 @@
     "key": "pages.expertises.auto.paragraph.za032s",
     "route": "/expertises",
     "type": "paragraph",
-    "content": "Développement &amp; intégration",
+    "content": "Agilité",
     "rich": true
   },
   {
@@ -11114,7 +11282,7 @@
     "key": "pages.expertises.cloud-devops.auto.paragraph.148200c",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -11149,7 +11317,7 @@
     "key": "pages.expertises.cloud-devops.auto.paragraph.18ahffj",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -11317,7 +11485,7 @@
     "key": "pages.expertises.cloud-devops.auto.paragraph.1sve2ab",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -11401,7 +11569,7 @@
     "key": "pages.expertises.cloud-devops.auto.paragraph.24ncss",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -12185,7 +12353,7 @@
     "key": "pages.expertises.cybersecurite.auto.paragraph.24ncss",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -12374,7 +12542,7 @@
     "key": "pages.expertises.cybersecurite.auto.paragraph.pzdmi1",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -12703,7 +12871,7 @@
     "key": "pages.expertises.data-ia.auto.paragraph.148200c",
     "route": "/expertises/data-ia",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -12738,7 +12906,7 @@
     "key": "pages.expertises.data-ia.auto.paragraph.18ahffj",
     "route": "/expertises/data-ia",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -12906,7 +13074,7 @@
     "key": "pages.expertises.data-ia.auto.paragraph.1sve2ab",
     "route": "/expertises/data-ia",
     "type": "paragraph",
-    "content": "Data &amp; IA",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -12990,7 +13158,7 @@
     "key": "pages.expertises.data-ia.auto.paragraph.24ncss",
     "route": "/expertises/data-ia",
     "type": "paragraph",
-    "content": "Cloud &amp; DevOps",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -13253,1539 +13421,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.developpement-integration.auto.button.1ur26yk",
-    "route": "/expertises/developpement-integration",
-    "type": "button",
-    "content": "Expertises",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.button.4nxp4q",
-    "route": "/expertises/developpement-integration",
-    "type": "button",
-    "content": "Accueil",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.button.8i2pp4",
-    "route": "/expertises/developpement-integration",
-    "type": "button",
-    "content": "Faire une simulation <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.button.gwvn35",
-    "route": "/expertises/developpement-integration",
-    "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.button.s7gcxm",
-    "route": "/expertises/developpement-integration",
-    "type": "button",
-    "content": "Je parle de ma mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.10jotge",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Ingénieur tests et recette",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.10m4tof",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Chef de projet technique",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.120k1wy",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Faire évoluer le système sans perdre la maîtrise de l’existant",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.15m0y6w",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Intégrer &amp; tester",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.15mlymr",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Business Analyst",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.17un98y",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Comprendre",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.17ygva",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Connaissance transmissible",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.190pgsd",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Développeur Full Stack",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.194kr17",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Architecte applicatif",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1emhe8q",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Lead Developer",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1ip1n30",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Continuité préservée",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1k0ldwv",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Analyste-programmeur IBM i / AS400",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1ksmgzc",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Ingénieur exploitation",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1lm5plv",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Quatre étapes,<br data-astro-cid-rnckc5ic=\"\">et personne ne perd le fil.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1om1uc1",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Responsable applicatif",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1ozy636",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Développement, intégration et environnements applicatifs",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1rjw9qs",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Intégrateur applicatif",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1ru8hjc",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Le bon rôle au bon moment.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.1x1yc2h",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Intégration maîtrisée",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.55pbwt",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Ce que la mission doit permettre, une fois finie.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.emmk7d",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Maintenir &amp; transmettre",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.gq7jc7",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Une mission déborde souvent sur un autre domaine.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.ix7g9j",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Tout le cadre, sans toucher à votre expertise.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.vts721",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Des missions jugées sur ce qu’elles produisent.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.heading.ye7twz",
-    "route": "/expertises/developpement-integration",
-    "type": "heading",
-    "content": "Concevoir",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.list_item.1aivemk",
-    "route": "/expertises/developpement-integration",
-    "type": "list_item",
-    "content": "Suivi administratif du démarrage à la clôture",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.list_item.1fwdtcy",
-    "route": "/expertises/developpement-integration",
-    "type": "list_item",
-    "content": "Contrat de travail et contrat de prestation",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.list_item.8j4ub",
-    "route": "/expertises/developpement-integration",
-    "type": "list_item",
-    "content": "Facturation, paie et frais professionnels validés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.list_item.xywhqh",
-    "route": "/expertises/developpement-integration",
-    "type": "list_item",
-    "content": "Cadrage du périmètre, du TJM et du calendrier",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.11cikae",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Ouvrez un périmètre pour voir la place qu’il prend dans la mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.12vv3vb",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Faire évoluer les applications sans traiter l’historique comme une boîte noire ni fragiliser la production.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.12y5u51",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Votre besoin",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.139m91f",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Ce que ça change",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.13jrip7",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Notre lecture du domaine",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.148200c",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Développement &amp; intégration",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.14agl03",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Documentation, réversibilité et transfert de connaissances",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.14ppupg",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Rendre explicites les interfaces, les responsabilités, les tests et les conditions de mise en service.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.15f181p",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Étape en cours",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.16rw202",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.16xttrd",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Modernisation progressive d’un socle existant",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.18ahffj",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Développement &amp; intégration",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.18nzg3o",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1b54zg",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Relier la donnée à un résultat métier mesurable",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1bwi7b4",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Une application ne vit jamais seule. Elle dépend de données, d’interfaces, d’habilitations, d’environnements d’exploitation et de pratiques métier parfois anciennes. Le cadrage commence donc par le contexte réel, les dépendances et le niveau de service attendu.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1e4y6wq",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Développeurs, architectes, intégrateurs, testeurs et responsables applicatifs interviennent sur un périmètre défini, des applications récentes aux socles historiques critiques.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1fs7vfz",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Concevoir",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1g2z5zq",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Étape en cours",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1g7flh4",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cybersécurité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1huzjjq",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Toutes les expertises",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1i83z97",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Étape en cours",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1ij70aa",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Maintenir &amp; transmettre",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1k3ge1h",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Ce que The Porters prend en charge",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1kr4zmh",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Comprendre",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1kwnxac",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Qualifier les usages, les dépendances, les interfaces, les habilitations et les contraintes d’exploitation.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1lb8ab6",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Comprendre",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1lo2isj",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Stabiliser, documenter et transférer les connaissances afin que la solution reste exploitable dans le temps.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1nj69nd",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Maintenir &amp; transmettre",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1np4atg",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Tests, recette et sécurisation des mises en production",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1pvtgpi",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Documentation et transfert de connaissances",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1q6zv81",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Conception proportionnée au périmètre et à la criticité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1qyht0i",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Analyse et évolution d’applications IBM i / AS400",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1rot2vm",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "The Porters structure le cadre contractuel et administratif de la mission. L’expert conserve la responsabilité de ses choix techniques, de ses livrables et de la relation opérationnelle avec les équipes du client.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1sve2ab",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Développement &amp; intégration",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1tbbwqd",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Architecture, interfaces et intégration de solutions",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1tsakef",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Le mémoire technique du groupe documente une continuité complète : qualifier l’existant, concevoir ou faire évoluer, intégrer et tester, puis maintenir et transmettre sans rompre le service.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1u28esk",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Intégrer &amp; tester",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1v56u29",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Repère de sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1vyykck",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Étape en cours",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1vzllaq",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Assembler, contrôler et recetter avec des critères de sortie lisibles avant la mise en production.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1w9wyii",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Enjeu de mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1wrxc9z",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1xyqx5e",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cartographie de l’existant, des dépendances et des accès",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.1z0v0nf",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Besoin · résultat · contraintes",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.2ssgfk",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Conception et développement applicatif",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.35lrje",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Point de départ",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.464ocj",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Intégrer &amp; tester",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.4srm6w",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.4ypzux",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Laisser une documentation, des décisions et des repères exploitables par les équipes après la mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.72f20r",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.7n7d0l",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Data &amp; IA",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.7v8q1k",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Profils accompagnés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.b1p3so",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Concevoir",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.cwix1j",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.doqh5b",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Un intitulé de poste dit moins de choses que ce qu’on a réellement porté.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.f4zki7",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Maintenance corrective et évolutive",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.i1crk6",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "La mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.jc3le3",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "10 profils",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.k63p0s",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Intégration, tests et recette avec des critères explicites",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.kjhdwn",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Revenir à la carte des domaines",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.l37bw5",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Définir une évolution compatible avec l’architecture, la sécurité, la continuité et les pratiques des équipes.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.l9zz4u",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.ljyuua",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "<strong data-astro-cid-rnckc5ic=\"\">Le cadre The Porters</strong> Vous gardez la main sur votre expertise et sur la relation avec le client. Nous nous occupons du salariat, du contrat et de l’administratif.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.lush39",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Pour aller plus loin",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.nfcbjn",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Maintien en conditions opérationnelles",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.opxcvt",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Comment se déroule une mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.pn1pmf",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Périmètres fréquents",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.pvss8d",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "La sécurité exige une mission précisément cadrée",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.q10fjx",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.wce92a",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "8 périmètres de mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.xyq7uj",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Repère de sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.y78ruo",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Repère de sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.yorddf",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Le périmètre peut couvrir une réalisation nouvelle, l’intégration d’une solution, la maintenance évolutive ou la modernisation progressive d’un socle critique. Les environnements historiques, dont IBM i / AS400, sont traités comme des actifs de production à comprendre avant de les transformer.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.yx6gri",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Repère de sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.zgimns",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cliquez sur une étape pour voir ce qu’il faut avoir réglé avant de passer à la suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.developpement-integration.auto.paragraph.zq9cyh",
-    "route": "/expertises/developpement-integration",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.button.1ur26yk",
-    "route": "/expertises/product-project-management",
-    "type": "button",
-    "content": "Expertises",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.button.4nxp4q",
-    "route": "/expertises/product-project-management",
-    "type": "button",
-    "content": "Accueil",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.button.8i2pp4",
-    "route": "/expertises/product-project-management",
-    "type": "button",
-    "content": "Faire une simulation <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.button.gwvn35",
-    "route": "/expertises/product-project-management",
-    "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.button.s7gcxm",
-    "route": "/expertises/product-project-management",
-    "type": "button",
-    "content": "Je parle de ma mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.10jotge",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Business Analyst",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.120k1wy",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Donner une direction claire aux projets complexes",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.15m0y6w",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Recette",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.17un98y",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Cadrage",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.17ygva",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Continuité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.190pgsd",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Chef de projet IT",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.194kr17",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Product Manager",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1emhe8q",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Product Owner",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1ip1n30",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Décisions explicites",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1k0ldwv",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "PMO",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1ksmgzc",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Change Manager",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1lm5plv",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Quatre étapes,<br data-astro-cid-rnckc5ic=\"\">et personne ne perd le fil.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1om1uc1",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Delivery Manager",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1ozy636",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Portage salarial pour consultants Product &amp; Project Management",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1rjw9qs",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Directeur de programme",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1ru8hjc",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Le bon rôle au bon moment.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.1x1yc2h",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Exécution maîtrisée",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.55pbwt",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Ce que la mission doit permettre, une fois finie.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.emmk7d",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Capitalisation",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.gq7jc7",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Une mission déborde souvent sur un autre domaine.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.ix7g9j",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Tout le cadre, sans toucher à votre expertise.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.vts721",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Des missions jugées sur ce qu’elles produisent.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.heading.ye7twz",
-    "route": "/expertises/product-project-management",
-    "type": "heading",
-    "content": "Exécution",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.list_item.1aivemk",
-    "route": "/expertises/product-project-management",
-    "type": "list_item",
-    "content": "Interlocuteur administratif pendant la mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.list_item.1fwdtcy",
-    "route": "/expertises/product-project-management",
-    "type": "list_item",
-    "content": "Contrats et facturation",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.list_item.8j4ub",
-    "route": "/expertises/product-project-management",
-    "type": "list_item",
-    "content": "Paie et frais professionnels validés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.list_item.xywhqh",
-    "route": "/expertises/product-project-management",
-    "type": "list_item",
-    "content": "Cadrage du TJM et du périmètre",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.11cikae",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Ouvrez un périmètre pour voir la place qu’il prend dans la mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.12vv3vb",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Clarifier les arbitrages, les responsabilités et les critères de réussite.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.12y5u51",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Votre besoin",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.139m91f",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Ce que ça change",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.13jrip7",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Notre lecture du domaine",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.148200c",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Product &amp; Project Management",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.14agl03",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Comitologie proportionnée",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.14ppupg",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Suivre les jalons, les risques, les dépendances et les livrables sans alourdir le projet.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.15f181p",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Étape en cours",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.16rw202",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.16xttrd",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Coordination métier / IT",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.18ahffj",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Product &amp; Project Management",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.18nzg3o",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1b54zg",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Relier la donnée à un résultat métier mesurable",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1bwi7b4",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Les profils produit et projet relient la stratégie, les besoins métiers, les équipes techniques et les contraintes de delivery. Leur valeur tient autant à la décision qu’à la coordination et à la qualité du suivi.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1e4y6wq",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cadrez vos missions de pilotage produit, projet ou programme avec un statut salarié, tout en conservant votre autonomie de conseil et votre relation client.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1fs7vfz",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Exécution",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1g2z5zq",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Étape en cours",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1g7flh4",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cybersécurité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1huzjjq",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Toutes les expertises",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1i83z97",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Étape en cours",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1ij70aa",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Capitalisation",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1k3ge1h",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Ce que The Porters prend en charge",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1kr4zmh",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cadrage",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1kwnxac",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Clarifier contexte, périmètre, livrables, contraintes, dépendances, accès, sécurité et conformité.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1l9s8uw",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Conduite du changement",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1lb8ab6",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cadrage",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1lo2isj",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Documenter les décisions, restituer les éléments utiles et transférer les connaissances pour préserver la continuité.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1nj69nd",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Capitalisation",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1np4atg",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "PMO et reporting traçable",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1pvtgpi",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Gestion des risques, dépendances et habilitations",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1q6zv81",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Roadmap et backlog",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1qyht0i",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Pilotage de projet IT",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1sve2ab",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Product &amp; Project Management",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1tbbwqd",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cadrage et priorisation",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1tsakef",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Le mémoire technique du groupe formalise un cycle de delivery lisible : cadrage, exécution proportionnée, recette, puis capitalisation et transfert de connaissances.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1u28esk",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Recette",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1v56u29",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Repère de sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1vyykck",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Étape en cours",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1vzllaq",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Valider le résultat avec des critères explicites, documenter les écarts et sécuriser la clôture des accès.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1w9wyii",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Enjeu de mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1wrxc9z",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1xyqx5e",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Discovery produit",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.1z0v0nf",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Besoin · résultat · contraintes",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.2ssgfk",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Vision et stratégie produit",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.35lrje",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Point de départ",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.464ocj",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Recette",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.4srm6w",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.4ypzux",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Documenter les décisions et organiser le transfert de connaissances pour sécuriser la durée.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.72f20r",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.7n7d0l",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Data &amp; IA",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.7v8q1k",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Profils accompagnés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.b1p3so",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Exécution",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.cwix1j",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.dkn7fn",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.doqh5b",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Un intitulé de poste dit moins de choses que ce qu’on a réellement porté.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.f4zki7",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Gouvernance de programme",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.i1crk6",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "La mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.jc3le3",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "8 profils",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.k63p0s",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cycle en V, agile ou hybride",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.kjhdwn",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Revenir à la carte des domaines",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.l37bw5",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Tracer actions et livrables, arbitrer les priorités et rendre les risques visibles sans surcharger le projet.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.l9zz4u",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.ljyuua",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "<strong data-astro-cid-rnckc5ic=\"\">Le cadre The Porters</strong> Vous gardez la main sur votre expertise et sur la relation avec le client. Nous nous occupons du salariat, du contrat et de l’administratif.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.lush39",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Pour aller plus loin",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.nfcbjn",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Recette, clôture et transfert de connaissances",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.opxcvt",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Comment se déroule une mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.pn1pmf",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Périmètres fréquents",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.pvss8d",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "La sécurité exige une mission précisément cadrée",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.q10fjx",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.wce92a",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "9 périmètres de mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.xyq7uj",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Repère de sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.y78ruo",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Repère de sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.yorddf",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Le portage salarial permet d’intervenir sur une transformation, un lancement produit ou un programme critique sans créer immédiatement sa propre société.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.yx6gri",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Repère de sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.zgimns",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cliquez sur une étape pour voir ce qu’il faut avoir réglé avant de passer à la suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.product-project-management.auto.paragraph.zq9cyh",
-    "route": "/expertises/product-project-management",
-    "type": "paragraph",
-    "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
     "key": "pages.faq.auto.button.4nxp4q",
     "route": "/faq",
     "type": "button",
@@ -14831,7 +13466,7 @@
     "key": "pages.faq.auto.heading.1td4w85",
     "route": "/faq",
     "type": "heading",
-    "content": "Missions, congés et aléas",
+    "content": "Missions et organisation",
     "rich": true
   },
   {
@@ -17488,6 +16123,20 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1042o3u",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Selon le statut et les conditions",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.10io667",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Statut salarié",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.10n12s0",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -17509,10 +16158,45 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.13oassj",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Protection sociale",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.17ysdw7",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Comment ça marche",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.18mx3fp",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Selon le statut du dirigeant",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1ae6yvp",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Plafond du régime micro",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1b2vi3l",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Engagée par l’entrepreneur",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1br0arw",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Assurance chômage",
     "rich": true
   },
   {
@@ -17534,6 +16218,13 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Avant de vous lancer",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1gel5jk",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime des indépendants",
     "rich": true
   },
   {
@@ -17565,6 +16256,20 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1m0a2gs",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Aucun plafond propre à la société",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1m0xuyl",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Déléguée",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1mypb8h",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -17572,10 +16277,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1n1ic2e",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gérée par vous",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1o517vj",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Le mot du président",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1p4ec6p",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Critère",
     "rich": true
   },
   {
@@ -17607,6 +16326,20 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1siv809",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Selon le statut du dirigeant",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1tuis44",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Création de société",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1vh6do0",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -17621,6 +16354,27 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1xb4bcq",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Plafond de chiffre d’affaires",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1xbaho7",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gérée par vous ou un prestataire",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1y47efe",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Portage salarial",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1ygc6qv",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -17628,10 +16382,31 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.30v79k",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Engagée par la société",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.59tsaz",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Non ouverte par la seule micro-entreprise",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.5n1jrb",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Contrat de prestation, facturation, paie, déclarations : tout cela sort de votre quotidien.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.76tg7i",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Responsabilité contractuelle",
     "rich": true
   },
   {
@@ -17646,6 +16421,13 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Convention de mission",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.b3ry4u",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Aucun plafond propre au portage",
     "rich": true
   },
   {
@@ -17691,10 +16473,52 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.ow2f01",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gestion administrative",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.pia7q0",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Selon les conditions du régime salarié",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.q8ijez",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Auto-entrepreneur",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.rmv8hr",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Retraite",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.tof1l8",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime du travailleur indépendant",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.ui6s2f",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Comparateur interactif",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.ushv43",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime général",
     "rich": true
   },
   {
@@ -17716,6 +16540,13 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Contrat de travail",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.yvq2be",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Cadre porté par The Porters",
     "rich": true
   },
   {
@@ -18339,6 +17170,13 @@
     "route": "/qui-sommes-nous",
     "type": "paragraph",
     "content": "Google Cloud Platform",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.16999go",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Nos domaines d’expertise",
     "rich": true
   },
   {
@@ -20680,12 +19518,6 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.button.vjst29",
-    "route": "/rendez-vous",
-    "type": "button",
-    "content": "Préparer l’email"
-  },
-  {
     "key": "pages.rendez-vous.auto.heading.1b27ok",
     "route": "/rendez-vous",
     "type": "heading",
@@ -20735,55 +19567,6 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.label.11sq8kk",
-    "route": "/rendez-vous",
-    "type": "label",
-    "content": "Message *",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.label.13mwmjb",
-    "route": "/rendez-vous",
-    "type": "label",
-    "content": "Société (optionnel)",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.label.1aa1wd5",
-    "route": "/rendez-vous",
-    "type": "label",
-    "content": "Vous êtes *",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.label.6jyw5a",
-    "route": "/rendez-vous",
-    "type": "label",
-    "content": "Vos disponibilités *",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.label.bafay7",
-    "route": "/rendez-vous",
-    "type": "label",
-    "content": "Nom complet *",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.label.kax42s",
-    "route": "/rendez-vous",
-    "type": "label",
-    "content": "Téléphone",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.label.yls1z0",
-    "route": "/rendez-vous",
-    "type": "label",
-    "content": "Email *",
-    "rich": true
-  },
-  {
     "key": "pages.rendez-vous.auto.list_item.1cdhap9",
     "route": "/rendez-vous",
     "type": "list_item",
@@ -20805,31 +19588,17 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.paragraph.11x8qjk",
+    "key": "pages.rendez-vous.auto.paragraph.100ky18",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Le cadre, les deux contrats, la protection sociale et ce qui change concrètement pour vous.",
+    "content": "30 min",
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.paragraph.13z42zi",
+    "key": "pages.rendez-vous.auto.paragraph.13t9urb",
     "route": "/rendez-vous",
     "type": "paragraph",
-    "content": "Parler à quelqu’un près de moi",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.paragraph.156m910",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "45 min",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.paragraph.166tfze",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "45 min",
+    "content": "Suivi",
     "rich": true
   },
   {
@@ -20840,13 +19609,6 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.paragraph.1756k3m",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "Ce que vous gagnez et ce que vous perdez en passant de micro-entreprise ou de SASU au portage.",
-    "rich": true
-  },
-  {
     "key": "pages.rendez-vous.auto.paragraph.17s4a1v",
     "route": "/rendez-vous",
     "type": "paragraph",
@@ -20854,17 +19616,17 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.paragraph.1cly374",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "Passer de freelance à portage",
-    "rich": true
-  },
-  {
     "key": "pages.rendez-vous.auto.paragraph.1dttx4h",
     "route": "/rendez-vous",
     "type": "paragraph",
     "content": "Nous arrivons avec votre simulation relue et les points à trancher, pas avec une présentation générique.",
+    "rich": true
+  },
+  {
+    "key": "pages.rendez-vous.auto.paragraph.1f4jnk6",
+    "route": "/rendez-vous",
+    "type": "paragraph",
+    "content": "Concret",
     "rich": true
   },
   {
@@ -20882,31 +19644,10 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.paragraph.1k0rk7b",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "Discuter de ma mission IT",
-    "rich": true
-  },
-  {
     "key": "pages.rendez-vous.auto.paragraph.1s2fxmr",
     "route": "/rendez-vous",
     "type": "paragraph",
     "content": "Par email",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.paragraph.1sbf0jw",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "Un échange sur place ou à distance, selon votre localisation et votre rythme de mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.paragraph.1sbjj0x",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "Relire ma simulation",
     "rich": true
   },
   {
@@ -20917,13 +19658,6 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.paragraph.1uxoq5h",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "30 min",
-    "rich": true
-  },
-  {
     "key": "pages.rendez-vous.auto.paragraph.1vbfg3j",
     "route": "/rendez-vous",
     "type": "paragraph",
@@ -20931,31 +19665,10 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.paragraph.3snivt",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "30 min",
-    "rich": true
-  },
-  {
     "key": "pages.rendez-vous.auto.paragraph.5fp27r",
     "route": "/rendez-vous",
     "type": "paragraph",
     "content": "Demande de rendez-vous",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.paragraph.631gz6",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "Comprendre le portage salarial",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.paragraph.8431hx",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "* Champs obligatoires. Le bouton ouvre votre messagerie avec un email prérempli ; vérifiez-le avant l’envoi. Consultez notre <a href=\"/confidentialite\" class=\"form-help-link\">politique de confidentialité</a>.",
     "rich": true
   },
   {
@@ -20973,31 +19686,10 @@
     "rich": true
   },
   {
-    "key": "pages.rendez-vous.auto.paragraph.ml9zjf",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "Votre TJM, vos jours facturés, vos frais réels et ce que cela donne en net.",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.paragraph.mruyw3",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "45 min",
-    "rich": true
-  },
-  {
     "key": "pages.rendez-vous.auto.paragraph.t905hv",
     "route": "/rendez-vous",
     "type": "paragraph",
     "content": "Vous choisissez vos disponibilités ; nous confirmons le créneau et le nom de votre interlocuteur par email.",
-    "rich": true
-  },
-  {
-    "key": "pages.rendez-vous.auto.paragraph.wwhw25",
-    "route": "/rendez-vous",
-    "type": "paragraph",
-    "content": "Une mission cyber, data, IA, cloud, DevOps, produit ou agilité déjà identifiée à cadrer.",
     "rich": true
   },
   {

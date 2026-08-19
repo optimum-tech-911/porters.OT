@@ -1,9 +1,11 @@
 ---
+import { cmsAttrs, cmsText } from '../../cms/content';
 
 type NavLink = {
   label: string;
   href: string;
   note?: string;
+  noteKey?: string;
 };
 
 type NavItem = {
@@ -19,11 +21,11 @@ const rightNav: NavItem[] = [
     id: 'group',
     label: 'Le groupe',
     href: '/qui-sommes-nous',
-    description: 'Deux maisons, un même métier : le portage et le recrutement IT.',
+    description: cmsText('nav.group.description'),
     links: [
-      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: 'Notre histoire, nos deux offres' },
-      { label: 'Nos agences', href: '/agences', note: 'Cinq villes, une équipe joignable' },
-      { label: 'Questions fréquentes', href: '/faq', note: 'Les réponses avant l’appel' },
+      { label: 'Qui sommes-nous', href: '/qui-sommes-nous', note: cmsText('nav.group.note.about'), noteKey: 'nav.group.note.about' },
+      { label: 'Nos agences', href: '/agences', note: cmsText('nav.group.note.agences'), noteKey: 'nav.group.note.agences' },
+      { label: 'Questions fréquentes', href: '/faq', note: cmsText('nav.group.note.faq'), noteKey: 'nav.group.note.faq' },
     ],
   },
 ];
@@ -64,14 +66,14 @@ const active = (href: string) => {
           <div class:list={['tp-nav-popover', `tp-nav-popover--${item.id}`]} id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
             <div class="tp-popover-intro">
               <span>{item.label}</span>
-              <p>{item.description}</p>
+              <p {...cmsAttrs('nav.group.description')}>{item.description}</p>
             </div>
             <div class="tp-popover-links">
               {item.links.map((link) => (
                 <a href={link.href}>
                   <span>
                     <strong>{link.label}</strong>
-                    {link.note && <small>{link.note}</small>}
+                    {link.note && <small {...(link.noteKey ? cmsAttrs(link.noteKey) : {})}>{link.note}</small>}
                   </span>
                   <b aria-hidden="true">↗</b>
                 </a>
@@ -114,13 +116,13 @@ const active = (href: string) => {
           <div>
             <a class="tp-mobile-overview" href={item.href}>
               <strong>Vue d’ensemble</strong>
-              <small>{item.description}</small>
+              <small {...cmsAttrs('nav.group.description')}>{item.description}</small>
             </a>
             {item.links.map((link) => (
               <a href={link.href}>
                 <span>
                   <strong>{link.label}</strong>
-                  {link.note && <small>{link.note}</small>}
+                  {link.note && <small {...(link.noteKey ? cmsAttrs(link.noteKey) : {})}>{link.note}</small>}
                 </span>
                 <b aria-hidden="true">→</b>
               </a>

@@ -6,6 +6,7 @@ import SiteIcon from '../components/ui/SiteIcon.astro';
 import TripartiteDiagram from '../components/ui/TripartiteDiagram.astro';
 import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import { pageSeo } from '../data/seo.data';
+import { cmsAttrs, cmsText } from '../cms/content';
 import portageHeroImage from '../../images/advisor-discussion.webp';
 import whyPortageWoman from '../assets/home/why-portage-woman.png';
 import tableMan from '../assets/home/table-man.png';
@@ -217,11 +218,9 @@ const faqItems = [
         to the comparison table below.
       -->
       <div class="portage-comparison-intro reveal" data-cms-ignore>
-        <p data-motion-item="left" style="--motion-order:0">Comparer avant de choisir</p>
-        <h2 data-motion-item="left" style="--motion-order:1">Quel statut <span class="gold-underline">pour vous</span>&nbsp;?</h2>
-        <strong data-motion-item="right" style="--motion-order:2">
-          Autonomie, protection sociale, gestion, coûts : voici ce qui change vraiment d’un statut à l’autre.
-        </strong>
+        <p data-motion-item="left" style="--motion-order:0" {...cmsAttrs('portage.comparison.eyebrow')}>{cmsText('portage.comparison.eyebrow')}</p>
+        <h2 data-motion-item="left" style="--motion-order:1" {...cmsAttrs('portage.comparison.title')} data-cms-rich="true" set:html={cmsText('portage.comparison.title')}></h2>
+        <strong data-motion-item="right" style="--motion-order:2" {...cmsAttrs('portage.comparison.lead')}>{cmsText('portage.comparison.lead')}</strong>
       </div>
       <div class="portage-comparison-toolbar reveal" data-motion-item="up" style="--motion-order:3">
         <div>

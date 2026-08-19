@@ -90,7 +90,7 @@ export const expertises: Expertise[] = [
   },
   {
     slug: 'data-ia',
-    eyebrow: 'Data & IA',
+    eyebrow: 'Big Data / Cloud / IA',
     title: 'Portage salarial pour consultants Data & IA',
     summary:
       'Data engineers, data scientists, consultants BI, ML engineers et architectes IA conservent leur autonomie commerciale tout en déléguant le cadre contractuel, la facturation et la paie.',
@@ -158,7 +158,7 @@ export const expertises: Expertise[] = [
   },
   {
     slug: 'cloud-devops',
-    eyebrow: 'Cloud & DevOps',
+    eyebrow: 'DevOps',
     title: 'Portage salarial pour consultants Cloud & DevOps',
     summary:
       'Architectes cloud, DevOps engineers, SRE, platform engineers et spécialistes cloud security : sécurisez le cadre de votre mission tout en gardant la maîtrise technique de l’intervention.',
@@ -209,72 +209,9 @@ export const expertises: Expertise[] = [
     seoDescription:
       'Portage salarial Cloud et DevOps : architecture cloud, migration, CI/CD, IaC, SRE, platform engineering, FinOps et cloud security.',
   },
-  {
-    slug: 'developpement-integration',
-    eyebrow: 'Développement & intégration',
-    title: 'Développement, intégration et environnements applicatifs',
-    summary:
-      'Développeurs, architectes, intégrateurs, testeurs et responsables applicatifs interviennent sur un périmètre défini, des applications récentes aux socles historiques critiques.',
-    sourceSummary:
-      'Le mémoire technique du groupe documente une continuité complète : qualifier l’existant, concevoir ou faire évoluer, intégrer et tester, puis maintenir et transmettre sans rompre le service.',
-    introTitle: 'Faire évoluer le système sans perdre la maîtrise de l’existant',
-    introParagraphs: [
-      'Une application ne vit jamais seule. Elle dépend de données, d’interfaces, d’habilitations, d’environnements d’exploitation et de pratiques métier parfois anciennes. Le cadrage commence donc par le contexte réel, les dépendances et le niveau de service attendu.',
-      'Le périmètre peut couvrir une réalisation nouvelle, l’intégration d’une solution, la maintenance évolutive ou la modernisation progressive d’un socle critique. Les environnements historiques, dont IBM i / AS400, sont traités comme des actifs de production à comprendre avant de les transformer.',
-      'The Porters structure le cadre contractuel et administratif de la mission. L’expert conserve la responsabilité de ses choix techniques, de ses livrables et de la relation opérationnelle avec les équipes du client.',
-    ],
-    roles: [
-      'Architecte applicatif',
-      'Lead Developer',
-      'Développeur Full Stack',
-      'Intégrateur applicatif',
-      'Analyste-programmeur IBM i / AS400',
-      'Ingénieur tests et recette',
-      'Responsable applicatif',
-      'Ingénieur exploitation',
-      'Business Analyst',
-      'Chef de projet technique',
-    ],
-    missionTypes: [
-      'Conception et développement applicatif',
-      'Architecture, interfaces et intégration de solutions',
-      'Analyse et évolution d’applications IBM i / AS400',
-      'Maintenance corrective et évolutive',
-      'Tests, recette et sécurisation des mises en production',
-      'Modernisation progressive d’un socle existant',
-      'Documentation et transfert de connaissances',
-      'Maintien en conditions opérationnelles',
-    ],
-    methods: [
-      'Cartographie de l’existant, des dépendances et des accès',
-      'Conception proportionnée au périmètre et à la criticité',
-      'Intégration, tests et recette avec des critères explicites',
-      'Documentation, réversibilité et transfert de connaissances',
-    ],
-    methodStages: [
-      { number: '01', title: 'Comprendre', text: 'Qualifier les usages, les dépendances, les interfaces, les habilitations et les contraintes d’exploitation.' },
-      { number: '02', title: 'Concevoir', text: 'Définir une évolution compatible avec l’architecture, la sécurité, la continuité et les pratiques des équipes.' },
-      { number: '03', title: 'Intégrer & tester', text: 'Assembler, contrôler et recetter avec des critères de sortie lisibles avant la mise en production.' },
-      { number: '04', title: 'Maintenir & transmettre', text: 'Stabiliser, documenter et transférer les connaissances afin que la solution reste exploitable dans le temps.' },
-    ],
-    businessValue: [
-      { title: 'Continuité préservée', text: 'Faire évoluer les applications sans traiter l’historique comme une boîte noire ni fragiliser la production.' },
-      { title: 'Intégration maîtrisée', text: 'Rendre explicites les interfaces, les responsabilités, les tests et les conditions de mise en service.' },
-      { title: 'Connaissance transmissible', text: 'Laisser une documentation, des décisions et des repères exploitables par les équipes après la mission.' },
-    ],
-    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
-    support: [
-      'Cadrage du périmètre, du TJM et du calendrier',
-      'Contrat de travail et contrat de prestation',
-      'Facturation, paie et frais professionnels validés',
-      'Suivi administratif du démarrage à la clôture',
-    ],
-    seoDescription:
-      'Développement et intégration IT : architecture applicative, modernisation, IBM i et AS400, tests, maintenance et transfert de connaissances avec The Porters.',
-  },
-  {
+{
     slug: 'agilite-coaching',
-    eyebrow: 'Agilité, produit & transformation',
+    eyebrow: 'Agilité',
     title: 'Portage salarial pour profils Agilité, Produit et Transformation',
     summary:
       'Product Owners, Scrum Masters, Agile Coaches, RTE, Business Analysts et Change Managers interviennent avec autonomie, dans un cadre salarié adapté aux missions de transformation.',
@@ -313,37 +250,5 @@ export const expertises: Expertise[] = [
     support: ['Comparaison des statuts', 'Cadrage du périmètre, du TJM et du calendrier', 'Contrat, facturation et paie', 'Suivi administratif pendant la mission'],
     seoDescription:
       'Portage salarial pour Product Owners, Scrum Masters, Agile Coaches, RTE, Business Analysts, Change Managers et chefs de projet transformation.',
-  },
-  {
-    slug: 'product-project-management',
-    eyebrow: 'Product & Project Management',
-    title: 'Portage salarial pour consultants Product & Project Management',
-    summary:
-      'Cadrez vos missions de pilotage produit, projet ou programme avec un statut salarié, tout en conservant votre autonomie de conseil et votre relation client.',
-    sourceSummary:
-      'Le mémoire technique du groupe formalise un cycle de delivery lisible : cadrage, exécution proportionnée, recette, puis capitalisation et transfert de connaissances.',
-    introTitle: 'Donner une direction claire aux projets complexes',
-    introParagraphs: [
-      'Les profils produit et projet relient la stratégie, les besoins métiers, les équipes techniques et les contraintes de delivery. Leur valeur tient autant à la décision qu’à la coordination et à la qualité du suivi.',
-      'Le portage salarial permet d’intervenir sur une transformation, un lancement produit ou un programme critique sans créer immédiatement sa propre société.',
-    ],
-    roles: ['Product Manager', 'Product Owner', 'Chef de projet IT', 'Directeur de programme', 'PMO', 'Business Analyst', 'Delivery Manager', 'Change Manager'],
-    missionTypes: ['Vision et stratégie produit', 'Cadrage et priorisation', 'Pilotage de projet IT', 'Gouvernance de programme', 'PMO et reporting traçable', 'Coordination métier / IT', 'Gestion des risques, dépendances et habilitations', 'Recette, clôture et transfert de connaissances', 'Conduite du changement'],
-    methods: ['Discovery produit', 'Roadmap et backlog', 'Cycle en V, agile ou hybride', 'Comitologie proportionnée', 'Reporting et indicateurs', 'Capitalisation et transfert de connaissances'],
-    methodStages: [
-      { number: '01', title: 'Cadrage', text: 'Clarifier contexte, périmètre, livrables, contraintes, dépendances, accès, sécurité et conformité.' },
-      { number: '02', title: 'Exécution', text: 'Tracer actions et livrables, arbitrer les priorités et rendre les risques visibles sans surcharger le projet.' },
-      { number: '03', title: 'Recette', text: 'Valider le résultat avec des critères explicites, documenter les écarts et sécuriser la clôture des accès.' },
-      { number: '04', title: 'Capitalisation', text: 'Documenter les décisions, restituer les éléments utiles et transférer les connaissances pour préserver la continuité.' },
-    ],
-    businessValue: [
-      { title: 'Décisions explicites', text: 'Clarifier les arbitrages, les responsabilités et les critères de réussite.' },
-      { title: 'Exécution maîtrisée', text: 'Suivre les jalons, les risques, les dépendances et les livrables sans alourdir le projet.' },
-      { title: 'Continuité', text: 'Documenter les décisions et organiser le transfert de connaissances pour sécuriser la durée.' },
-    ],
-    sectors: [], // F-S01 DO_NOT_PUBLISH — secteurs issus de supports tiers
-    support: ['Cadrage du TJM et du périmètre', 'Contrats et facturation', 'Paie et frais professionnels validés', 'Interlocuteur administratif pendant la mission'],
-    seoDescription:
-      'Portage salarial pour Product Managers, Product Owners, PMO, chefs de projet IT, Business Analysts et directeurs de programme.',
   },
 ];

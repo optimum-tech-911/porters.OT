@@ -12,7 +12,7 @@
 
 import { INLINE_TAGS } from './inline-html.ts';
 
-export const CANDIDATE_SELECTOR = 'h1,h2,h3,h4,h5,h6,p,a,button,label,li,summary,blockquote,figcaption,strong,small,span';
+export const CANDIDATE_SELECTOR = 'h1,h2,h3,h4,h5,h6,p,a,button,label,li,summary,blockquote,figcaption,strong,small,span,div,td,th,dt,dd';
 export const EXCLUDED_SELECTOR = 'script,style,svg,noscript,template,[aria-hidden="true"],[data-cms-ignore]';
 
 const TEXT_NODE = 3;

@@ -49,10 +49,10 @@ export const homeWhyPorters = [
 
 export const homeExpertises = [
   { label: 'Cybersécurité', href: '/expertises/cybersecurite' },
-  { label: 'Data & IA', href: '/expertises/data-ia' },
-  { label: 'Cloud & DevOps', href: '/expertises/cloud-devops' },
-  { label: 'Agilité & Coaching', href: '/expertises/agilite-coaching' },
-  { label: 'Product & Project Management', href: '/expertises/product-project-management' },
+  { label: 'Big Data / Cloud / IA', href: '/expertises/data-ia' },
+  { label: 'DevOps', href: '/expertises/cloud-devops' },
+  { label: 'Agilité', href: '/expertises/agilite-coaching' },
+  
 ];
 
 export const homePortageSteps = [

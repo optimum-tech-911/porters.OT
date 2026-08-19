@@ -151,6 +151,6 @@ export const expertiseSections: ExpertiseSection[] = [
     whyPortage: 'Les professionnels du produit et du projet occupent fréquemment des rôles stratégiques au sein d’équipes clientes pendant plusieurs mois. Le portage salarial leur permet d’exercer en autonomie tout en bénéficiant d’un statut structuré et d’une gestion simplifiée.',
     portersSupport: ['Gestion des contrats et avenants', 'Prise en charge de la facturation', 'Suivi administratif de la mission', 'Accompagnement humain et disponible', 'Protection sociale du salarié porté', 'Soutien dans les échanges avec le client', 'Continuité entre plusieurs projets', 'Cadre adapté aux missions de longue durée'],
     ctaLabel: 'Plus de détails sur Produit & Projet',
-    ctaHref: '/expertises/product-project-management',
+    ctaHref: '/expertises/agilite-coaching',
   },
 ];

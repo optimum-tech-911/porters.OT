@@ -55,11 +55,6 @@ export const enterprisePage = {
     },
     {
       step: '04',
-      title: 'Tests ou mise en situation',
-      text: 'Tests techniques, questionnaire métier ou étude de cas selon le périmètre. Disponibilité vérifiée.',
-    },
-    {
-      step: '05',
       title: 'Validation finale',
       // F-D07 — MT-LOT1 p.20. Le message de continuité était rendu jusqu'à
       // ced125a via enterprisePage.process ; un refactor a cessé d'afficher ce
@@ -73,13 +68,13 @@ export const enterprisePage = {
     {
       title: 'Renfort de projet IT',
       text: 'Développement, architecture, intégration, tests, infrastructure ou pilotage sur un périmètre défini.',
-      href: '/expertises/developpement-integration',
+      href: '/expertises/cloud-devops',
     },
     {
       title: 'Environnements historiques',
       // F-D08 (PUBLISHABLE) — différenciant réel : la plupart des ESN ne vendent que du greenfield
       text: 'Applications métier sur socles anciens mais critiques pour la production, IBM i / AS400 compris, autant que sur des stacks récentes.',
-      href: '/expertises/developpement-integration',
+      href: '/expertises/cloud-devops',
     },
     {
       title: 'Data et intelligence artificielle',

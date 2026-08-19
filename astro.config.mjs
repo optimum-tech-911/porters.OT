@@ -9,6 +9,12 @@ export default defineConfig({
   site: 'https://www.porters.fr',
   trailingSlash: 'never',
   output: 'static',
+  // The two retired expertise domains keep working for anything already linking
+  // or indexing them, rather than turning into 404s.
+  redirects: {
+    '/expertises/developpement-integration': '/expertises',
+    '/expertises/product-project-management': '/expertises',
+  },
   integrations: [
     react(),
     sitemap({

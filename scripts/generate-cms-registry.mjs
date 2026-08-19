@@ -10,7 +10,7 @@ const generatedRegistryPath = path.join(root, 'src/cms/auto-content-registry.jso
 const pagesPath = path.join(root, 'src/cms/editable-pages.json');
 const migrationPath = path.join(root, 'supabase/migrations/20260714153000_seed_all_routes_cms.sql');
 const GLOBAL_ROUTE = '/_global';
-const candidates = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a', 'button', 'label', 'li', 'summary', 'blockquote', 'figcaption', 'strong', 'small', 'span']);
+const candidates = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'a', 'button', 'label', 'li', 'summary', 'blockquote', 'figcaption', 'strong', 'small', 'span', 'div', 'td', 'th', 'dt', 'dd']);
 const excluded = new Set(['script', 'style', 'svg', 'noscript', 'template']);
 
 function hashString(value) {
@@ -184,7 +184,12 @@ const pages = [];
 for (const file of files) {
   const route = routeForFile(file);
   if (route === '/404' || route.startsWith('/admin')) continue;
-  const document = parse(await readFile(file, 'utf8'));
+  const source = await readFile(file, 'utf8');
+  // Astro redirect stubs only forward a retired URL. They carry no editable
+  // copy and the runtime pass never loads them, so skipping keeps both passes
+  // in agreement.
+  if (/http-equiv="refresh"/i.test(source)) continue;
+  const document = parse(source);
   let body;
   let title = '';
   walk(document, (node) => {

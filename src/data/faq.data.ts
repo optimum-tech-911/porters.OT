@@ -92,7 +92,7 @@ export const faqGroups: FaqGroup[] = [
     ],
   },
   {
-    title: 'Missions, congés et aléas',
+    title: 'Missions et organisation',
     slug: 'missions',
     items: [
       {

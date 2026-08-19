@@ -793,8 +793,14 @@ const heroTitleLines = [
   }
 
   @media (min-width: 1181px) {
+    /*
+      nowrap kept the short published headline on one line, but any longer
+      wording (the source fallback that Google and no-JS visitors get) ran
+      straight over the photo. Wrapping is the safe behaviour: a short line
+      still never wraps.
+    */
     .editorial-hero__title-line.is-accent {
-      white-space: nowrap;
+      white-space: normal;
     }
   }
 

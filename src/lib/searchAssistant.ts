@@ -45,7 +45,7 @@ const DIRECT_INTENTS: Array<{ patterns: string[]; targetId: string }> = [
   { patterns: ['data', 'ia', 'intelligence artificielle', 'data scientist', 'data engineer', 'machine learning'], targetId: 'expertise-data-ia' },
   { patterns: ['cloud', 'devops', 'infrastructure cloud', 'sre', 'ci cd', 'kubernetes'], targetId: 'expertise-cloud-devops' },
   { patterns: ['agile', 'agilite', 'scrum', 'product owner', 'scrum master', 'coach agile', 'kanban'], targetId: 'expertise-agilite-coaching' },
-  { patterns: ['product manager', 'project manager', 'pmo', 'directeur de programme'], targetId: 'expertise-product-project-management' },
+  { patterns: ['product manager', 'project manager', 'pmo', 'directeur de programme'], targetId: 'expertise-agilite-coaching' },
   { patterns: ['trouver une expertise', 'nos expertises', 'quelle expertise'], targetId: 'page-expertises' },
   { patterns: ['entreprise', 'besoin consultant', 'recruter un consultant', 'consultant externe', 'renfort it'], targetId: 'page-entreprises' },
   { patterns: ['consultant', 'freelance', 'independant', 'salarie porte'], targetId: 'page-consultants' },

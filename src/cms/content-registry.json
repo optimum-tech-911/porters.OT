@@ -346,5 +346,185 @@
     "route": "/",
     "type": "button",
     "content": "Parler à un conseiller"
+  },
+  {
+    "key": "portage.comparison.eyebrow",
+    "route": "/portage-salarial",
+    "type": "label",
+    "content": "Comparer avant de choisir"
+  },
+  {
+    "key": "portage.comparison.title",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Quel statut <span class=\"gold-underline\">pour vous</span> ?"
+  },
+  {
+    "key": "portage.comparison.lead",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Autonomie, protection sociale, gestion, coûts : voici ce qui change vraiment d’un statut à l’autre."
+  },
+  {
+    "key": "nav.group.description",
+    "route": "/_global",
+    "type": "paragraph",
+    "content": "Deux maisons, un même métier : le portage et le recrutement IT."
+  },
+  {
+    "key": "nav.group.note.about",
+    "route": "/_global",
+    "type": "label",
+    "content": "Notre histoire, nos deux offres"
+  },
+  {
+    "key": "nav.group.note.agences",
+    "route": "/_global",
+    "type": "label",
+    "content": "Cinq villes, une équipe joignable"
+  },
+  {
+    "key": "nav.group.note.faq",
+    "route": "/_global",
+    "type": "label",
+    "content": "Les réponses avant l’appel"
+  },
+  {
+    "key": "rendezvous.topic.1.title",
+    "route": "/rendez-vous",
+    "type": "heading",
+    "content": "Comprendre le portage salarial"
+  },
+  {
+    "key": "rendezvous.topic.1.description",
+    "route": "/rendez-vous",
+    "type": "paragraph",
+    "content": "Le cadre, les deux contrats, la protection sociale et ce qui change concrètement pour vous."
+  },
+  {
+    "key": "rendezvous.topic.2.title",
+    "route": "/rendez-vous",
+    "type": "heading",
+    "content": "Relire ma simulation"
+  },
+  {
+    "key": "rendezvous.topic.2.description",
+    "route": "/rendez-vous",
+    "type": "paragraph",
+    "content": "Votre TJM, vos jours facturés, vos frais réels et ce que cela donne en net."
+  },
+  {
+    "key": "rendezvous.topic.3.title",
+    "route": "/rendez-vous",
+    "type": "heading",
+    "content": "Passer de freelance à portage"
+  },
+  {
+    "key": "rendezvous.topic.3.description",
+    "route": "/rendez-vous",
+    "type": "paragraph",
+    "content": "Ce que vous gagnez et ce que vous perdez en passant de micro-entreprise ou de SASU au portage."
+  },
+  {
+    "key": "rendezvous.topic.4.title",
+    "route": "/rendez-vous",
+    "type": "heading",
+    "content": "Discuter de ma mission IT"
+  },
+  {
+    "key": "rendezvous.topic.4.description",
+    "route": "/rendez-vous",
+    "type": "paragraph",
+    "content": "Une mission cyber, data, IA, cloud, DevOps, produit ou agilité déjà identifiée à cadrer."
+  },
+  {
+    "key": "rendezvous.topic.5.title",
+    "route": "/rendez-vous",
+    "type": "heading",
+    "content": "Parler à quelqu’un près de moi"
+  },
+  {
+    "key": "rendezvous.topic.5.description",
+    "route": "/rendez-vous",
+    "type": "paragraph",
+    "content": "Un échange sur place ou à distance, selon votre localisation et votre rythme de mission."
+  },
+  {
+    "key": "contactform.label.name",
+    "route": "/_global",
+    "type": "label",
+    "content": "Nom complet *"
+  },
+  {
+    "key": "contactform.label.email",
+    "route": "/_global",
+    "type": "label",
+    "content": "Email *"
+  },
+  {
+    "key": "contactform.label.phone",
+    "route": "/_global",
+    "type": "label",
+    "content": "Téléphone"
+  },
+  {
+    "key": "contactform.label.company",
+    "route": "/_global",
+    "type": "label",
+    "content": "Société (optionnel)"
+  },
+  {
+    "key": "contactform.label.availability",
+    "route": "/_global",
+    "type": "label",
+    "content": "Vos disponibilités *"
+  },
+  {
+    "key": "contactform.label.profile",
+    "route": "/_global",
+    "type": "label",
+    "content": "Vous êtes *"
+  },
+  {
+    "key": "contactform.label.message",
+    "route": "/_global",
+    "type": "label",
+    "content": "Message *"
+  },
+  {
+    "key": "contactform.label.submit",
+    "route": "/_global",
+    "type": "button",
+    "content": "Préparer l’email"
+  },
+  {
+    "key": "rendezvous.topic.1.duration",
+    "route": "/rendez-vous",
+    "type": "label",
+    "content": "30 min"
+  },
+  {
+    "key": "rendezvous.topic.2.duration",
+    "route": "/rendez-vous",
+    "type": "label",
+    "content": "45 min"
+  },
+  {
+    "key": "rendezvous.topic.3.duration",
+    "route": "/rendez-vous",
+    "type": "label",
+    "content": "45 min"
+  },
+  {
+    "key": "rendezvous.topic.4.duration",
+    "route": "/rendez-vous",
+    "type": "label",
+    "content": "45 min"
+  },
+  {
+    "key": "rendezvous.topic.5.duration",
+    "route": "/rendez-vous",
+    "type": "label",
+    "content": "30 min"
   }
 ]

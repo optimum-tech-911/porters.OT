@@ -1,19 +1,35 @@
 import { useState, type SubmitEvent } from 'react';
 
+type CmsBinding = Record<string, string>;
+
 type AppointmentTopic = {
   value: string;
   title: string;
   meta?: string;
   description?: string;
+  /**
+   * This island renders after both CMS discovery passes have run, so its text
+   * can never receive an automatic key. The page supplies explicit ones instead,
+   * which is what makes these blocks editable in the visual editor.
+   */
+  titleCms?: CmsBinding;
+  metaCms?: CmsBinding;
+  descriptionCms?: CmsBinding;
 };
 
 type ContactFormProps = {
   appointmentTopics?: AppointmentTopic[];
   requestAvailability?: boolean;
+  /**
+   * Field labels are rendered by this island, i.e. after both CMS discovery
+   * passes. They only become editable if the page hands them explicit keys.
+   */
+  labelCms?: Record<string, Record<string, string>>;
 };
 
 export default function ContactForm({
   appointmentTopics = [],
+  labelCms = {},
   requestAvailability = false,
 }: ContactFormProps) {
   const [formData, setFormData] = useState({
@@ -83,14 +99,14 @@ export default function ContactForm({
                   required
                 />
                 <span>
-                  <span className="block font-heading font-semibold text-porters-navy">{topic.title}</span>
+                  <span className="block font-heading font-semibold text-porters-navy" {...(topic.titleCms || {})}>{topic.title}</span>
                   {topic.meta && (
                     <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.14em] text-porters-gold">
-                      {topic.meta}
+                      <span {...(topic.metaCms || {})}>{topic.meta}</span>
                     </span>
                   )}
                   {topic.description && (
-                    <span className="mt-2 block text-sm leading-relaxed text-porters-black/60">
+                    <span className="mt-2 block text-sm leading-relaxed text-porters-black/60" {...(topic.descriptionCms || {})}>
                       {topic.description}
                     </span>
                   )}
@@ -104,7 +120,7 @@ export default function ContactForm({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className="form-label">
-            Nom complet *
+            <span {...(labelCms.name || {})}>Nom complet *</span>
           </label>
           <input
             type="text"
@@ -119,7 +135,7 @@ export default function ContactForm({
         </div>
         <div>
           <label htmlFor="email" className="form-label">
-            Email *
+            <span {...(labelCms.email || {})}>Email *</span>
           </label>
           <input
             type="email"
@@ -137,7 +153,7 @@ export default function ContactForm({
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="phone" className="form-label">
-            Téléphone
+            <span {...(labelCms.phone || {})}>Téléphone</span>
           </label>
           <input
             type="tel"
@@ -151,7 +167,7 @@ export default function ContactForm({
         </div>
         <div>
           <label htmlFor="company" className="form-label">
-            Société (optionnel)
+            <span {...(labelCms.company || {})}>Société (optionnel)</span>
           </label>
           <input
             type="text"
@@ -168,7 +184,7 @@ export default function ContactForm({
       {requestAvailability && (
         <div>
           <label htmlFor="availability" className="form-label">
-            Vos disponibilités *
+            <span {...(labelCms.availability || {})}>Vos disponibilités *</span>
           </label>
           <textarea
             id="availability"
@@ -186,7 +202,7 @@ export default function ContactForm({
 
       <div>
         <label htmlFor="subject" className="form-label">
-          Vous êtes *
+          <span {...(labelCms.profile || {})}>Vous êtes *</span>
         </label>
         <select
           id="subject"
@@ -205,7 +221,7 @@ export default function ContactForm({
 
       <div>
         <label htmlFor="message" className="form-label">
-          Message *
+          <span {...(labelCms.message || {})}>Message *</span>
         </label>
         <textarea
           id="message"
@@ -232,7 +248,7 @@ export default function ContactForm({
         type="submit"
         className="btn btn-primary w-full"
       >
-        Préparer l’email
+        <span {...(labelCms.submit || {})}>Préparer l’email</span>
         <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>

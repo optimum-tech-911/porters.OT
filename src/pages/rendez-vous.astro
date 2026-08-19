@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import ContactForm from '../components/forms/ContactForm';
 import { pageSeo } from '../data/seo.data';
+import { cmsAttrs, cmsText } from '../cms/content';
 
 const seo = {
   title: pageSeo.rendezVous.title,
@@ -92,16 +93,37 @@ const reasons = [
                 Un sujet, vos coordonnées, vos disponibilités. C’est tout ce dont nous avons besoin pour préparer un échange utile.
               </p>
             </div>
+            <!--
+              This island hydrates after CMS discovery has run, so anything it
+              renders would show up as a runtime-only key and break the
+              build/runtime parity check. Its copy is editable through the
+              explicit keys passed below instead.
+            -->
+            <div data-cms-ignore>
             <ContactForm
               client:visible
-              appointmentTopics={meetingTypes.map((type) => ({
+              appointmentTopics={meetingTypes.map((type, index) => ({
                 value: type.value,
-                title: type.title,
-                meta: type.duration,
-                description: type.description,
+                title: cmsText(`rendezvous.topic.${index + 1}.title`),
+                meta: cmsText(`rendezvous.topic.${index + 1}.duration`),
+                metaCms: cmsAttrs(`rendezvous.topic.${index + 1}.duration`),
+                description: cmsText(`rendezvous.topic.${index + 1}.description`),
+                titleCms: cmsAttrs(`rendezvous.topic.${index + 1}.title`),
+                descriptionCms: cmsAttrs(`rendezvous.topic.${index + 1}.description`),
               }))}
               requestAvailability
+              labelCms={{
+                name: cmsAttrs('contactform.label.name'),
+                email: cmsAttrs('contactform.label.email'),
+                phone: cmsAttrs('contactform.label.phone'),
+                company: cmsAttrs('contactform.label.company'),
+                availability: cmsAttrs('contactform.label.availability'),
+                profile: cmsAttrs('contactform.label.profile'),
+                message: cmsAttrs('contactform.label.message'),
+                submit: cmsAttrs('contactform.label.submit'),
+              }}
             />
+            </div>
           </div>
         </div>
 

@@ -7,7 +7,7 @@ import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import LogoMarquee from '../components/ui/LogoMarquee.astro';
 import { pageSeo } from '../data/seo.data';
 import { expertiseSections } from '../data/expertise-sections.data';
-import bigPortersLogo from '../assets/brands/big-porters-esn.png';
+import bigPortersLogo from '../assets/brands/big-porters-wordmark.png';
 import ericTwoOffers from '../assets/about/eric-two-offers.png';
 import lisaExpertiseGuide from '../assets/about/lisa-expertise-guide.png';
 
@@ -87,7 +87,7 @@ const responsibilityCommitments = [
         <article class="ecosystem-offer ecosystem-offer--esn" data-ecosystem-card="right">
           <div class="ecosystem-offer-glow" aria-hidden="true"></div>
           <div class="ecosystem-logo ecosystem-logo--big-porters">
-            <img src={bigPortersLogo.src} alt="The Big Porters, une ESN de talents" width="1254" height="1254" loading="eager" decoding="async" />
+            <img src={bigPortersLogo.src} alt="The Big Porters" width="1254" height="1254" loading="eager" decoding="async" />
           </div>
           <div class="ecosystem-offer-copy">
             <small>ESN spécialisée IT</small>
@@ -776,7 +776,7 @@ const responsibilityCommitments = [
   .ecosystem-section .section-head{display:grid;grid-template-columns:minmax(0,.95fr) minmax(15rem,.5fr);column-gap:clamp(2rem,7vw,7rem);align-items:end;max-width:none}
   .ecosystem-section .section-head>p{grid-column:1/-1}
   .ecosystem-section .section-head{--ecosystem-final-transform:translateY(clamp(1.6rem,3vw,2.8rem));position:relative;z-index:5;margin-bottom:0;transform:var(--ecosystem-final-transform)}
-  .ecosystem-section .section-head h1{max-width:9ch;margin:0}
+  .ecosystem-section .section-head h1{max-width:min(100%,34ch);margin:0;/* balance splits this heading across two lines even when one fits */text-wrap:wrap}
   .ecosystem-section .section-head strong{max-width:28rem;padding-bottom:.5rem;color:rgba(32,52,64,.62);font-size:clamp(.9rem,1.2vw,1.04rem);font-weight:520;line-height:1.7}
   .ecosystem-stage{--mx:0px;--my:0px;position:relative;width:100vw;min-height:clamp(38rem,48vw,43rem);margin-left:calc(50% - 50vw);overflow:visible;isolation:isolate}
   .ecosystem-stage-shape{position:absolute;z-index:0;border-radius:50%;pointer-events:none;transition:transform .7s cubic-bezier(.16,1,.3,1)}

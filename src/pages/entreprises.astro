@@ -8,7 +8,7 @@ import ambreGuide from '../assets/enterprise/ambre-guide.png';
 import qualifiedMatch from '../assets/enterprise/qualified-match.png';
 import tripartiteClient from '../assets/home/tripartite-client.png';
 import tripartiteConsultant from '../assets/home/tripartite-consultant.png';
-import bigPortersLogo from '../assets/brands/big-porters-esn.png';
+import bigPortersLogo from '../assets/brands/big-porters-wordmark.png';
 import { enterprisePage } from '../content/pages/entreprises';
 
 const scoping = [
@@ -131,7 +131,7 @@ const models = [
     <div class="enterprise-shell process-layout">
       <header class="enterprise-heading process-heading">
         <p data-motion-item="left" style="--motion-order:0">Notre processus de sélection</p>
-        <h2 data-motion-item="left" style="--motion-order:1">Cinq étapes, et <span class="gold-underline">la même grille pour tous</span>.</h2>
+        <h2 data-motion-item="left" style="--motion-order:1">Quatre étapes, et <span class="gold-underline">la même grille pour tous</span>.</h2>
         <strong data-motion-item="left" style="--motion-order:2">
           Le détail apparaît au bon moment pendant votre lecture, sans afficher cinq blocs de texte en parallèle.
         </strong>
@@ -174,18 +174,18 @@ const models = [
         <strong data-motion-item="right" style="--motion-order:2">Un même niveau d’exigence, quel que soit le terrain technique.</strong>
       </header>
 
-      <div class="perimeter-visuals" data-motion-item="wipe" style="--motion-order:3" data-perimeter-visuals data-cms-ignore aria-hidden="true">
+      <div class="perimeter-visuals" data-motion-item="wipe" style="--motion-order:3" data-perimeter-visuals>
         <figure class="perimeter-visual perimeter-visual--one" data-perimeter-visual>
           <Image src={tripartiteConsultant} alt="" widths={[360, 560, 760]} sizes="(max-width:760px) 78vw, 28vw" format="webp" quality={86} />
-          <figcaption>Comprendre l’existant</figcaption>
+          <figcaption>Comprendre votre environnement</figcaption>
         </figure>
         <figure class="perimeter-visual perimeter-visual--two" data-perimeter-visual>
           <Image src={qualifiedMatch} alt="" widths={[420, 680, 900]} sizes="(max-width:760px) 84vw, 36vw" format="webp" quality={88} />
-          <figcaption>Activer la bonne expertise</figcaption>
+          <figcaption>Mobiliser la bonne expertise</figcaption>
         </figure>
         <figure class="perimeter-visual perimeter-visual--three" data-perimeter-visual>
           <Image src={tripartiteClient} alt="" widths={[360, 560, 760]} sizes="(max-width:760px) 78vw, 28vw" format="webp" quality={86} />
-          <figcaption>Livrer dans le contexte réel</figcaption>
+          <figcaption>S’adapter au terrain</figcaption>
         </figure>
       </div>
 
@@ -273,11 +273,6 @@ const models = [
         <h2 data-motion-item="pop" style="--motion-order:1">Deux façons de travailler avec nous.</h2>
       </header>
 
-      <div class="choice-question" data-motion-item="pop" style="--motion-order:2">
-        <small>Une seule question</small>
-        <strong>Le consultant est-il déjà identifié&nbsp;?</strong>
-      </div>
-
       <div class="choice-models">
         {models.map((model, index) => (
           <article
@@ -293,16 +288,12 @@ const models = [
                   <span class="brand-wordmark-porters">Porters</span>
                 </span>
               ) : (
-                <Image class="big-porters-choice-logo" src={bigPortersLogo} alt="The Big Porters — une ESN de talents" widths={[150, 220, 320]} sizes="10rem" format="webp" quality={92} />
+                <Image class="big-porters-choice-logo" src={bigPortersLogo} alt="The Big Porters" widths={[150, 220, 320]} sizes="10rem" format="webp" quality={92} />
               )}
               <div class="icon-chip"><SiteIcon name={model.icon} /></div>
             </div>
-            <p>{model.label}</p>
             <h3>{model.title}</h3>
             <strong>{model.text}</strong>
-            <a href={index === 0 ? '/portage-salarial' : '/contact'}>
-              Découvrir <b aria-hidden="true">↗</b>
-            </a>
           </article>
         ))}
       </div>

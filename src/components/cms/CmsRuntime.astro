@@ -133,6 +133,16 @@
     );
   }
 
+  /** What the page currently renders for a block, in the shape the editor stores. */
+  function domContent(node: HTMLElement) {
+    if (node.dataset.cmsLayoutTarget === 'true') {
+      return node.dataset.cmsLayoutValue || '{"x":0,"y":0,"scale":100}';
+    }
+    return node.dataset.cmsRich === 'true'
+      ? sanitizeInlineHtml(node.innerHTML)
+      : (node.textContent || '').trim();
+  }
+
   function markActive(key: string) {
     document.querySelectorAll('.cms-editor-active').forEach((node) => node.classList.remove('cms-editor-active'));
     document.querySelectorAll(`[data-cms-key="${CSS.escape(key)}"]`).forEach((node) => node.classList.add('cms-editor-active'));
@@ -364,9 +374,34 @@
       if (target?.dataset.cmsKey) {
         event.preventDefault();
         event.stopPropagation();
-        const storedBlock = blockByKey.get(target.dataset.cmsKey);
-        const block = storedBlock;
-        if (!block) return;
+
+        // A question and its answer live in the same <details>. Because this
+        // listener cancels the event in the capture phase, the disclosure never
+        // toggled on its own and the answer stayed unreachable — so drive it by
+        // hand while still selecting the summary.
+        const summary = clicked.closest<HTMLElement>('summary');
+        const disclosure = summary?.closest('details');
+        if (disclosure) disclosure.open = !disclosure.open;
+
+        // A block the database has never seen used to abort selection here,
+        // which looked exactly like a dead element: outlined, but unselectable.
+        // Fall back to what the page itself renders so it stays editable.
+        const block = blockByKey.get(target.dataset.cmsKey) ?? {
+          id: `dom:${target.dataset.cmsKey}`,
+          content_key: target.dataset.cmsKey,
+          route_path: target.dataset.cmsRoute || pageRoute,
+          element_type: target.dataset.cmsElementType || 'paragraph',
+          fallback_content: domContent(target),
+          draft_content: domContent(target),
+          published_content: domContent(target),
+          draft_format: {},
+          published_format: {},
+          status: 'draft',
+          published_version: 0,
+          updated_at: new Date(0).toISOString(),
+          published_at: new Date(0).toISOString(),
+        } as EditorBlock;
+        blockByKey.set(target.dataset.cmsKey, block);
         markActive(target.dataset.cmsKey);
         window.parent.postMessage({
           type: 'cms:select',
