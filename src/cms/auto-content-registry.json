@@ -7,13 +7,6 @@
     "rich": true
   },
   {
-    "key": "global.footer.auto.button.1602jao",
-    "route": "/_global",
-    "type": "button",
-    "content": "Nous contacter<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
-  },
-  {
     "key": "global.footer.auto.button.19iqi8e",
     "route": "/_global",
     "type": "button",
@@ -66,7 +59,7 @@
     "key": "global.footer.auto.button.1mt5wd6",
     "route": "/_global",
     "type": "button",
-    "content": "Nos expertises IT<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "Prendre rendez-vous<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
@@ -101,14 +94,7 @@
     "key": "global.footer.auto.button.1tno1xd",
     "route": "/_global",
     "type": "button",
-    "content": "Notre offre entreprises<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
-  },
-  {
-    "key": "global.footer.auto.button.1v9gido",
-    "route": "/_global",
-    "type": "button",
-    "content": "Espace client<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "Nos expertises IT<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
@@ -150,7 +136,7 @@
     "key": "global.footer.auto.button.zyb6b3",
     "route": "/_global",
     "type": "button",
-    "content": "Prendre rendez-vous<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "Nous contacter<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
