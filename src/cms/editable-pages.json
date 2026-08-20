@@ -15,11 +15,6 @@
     "contentCount": 22
   },
   {
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "name": "Checklist pour démarrer en portage salarial",
-    "contentCount": 48
-  },
-  {
     "route": "/blog/bien-choisir-societe-portage-salarial",
     "name": "Choisir sa société de portage salarial — critères clés",
     "contentCount": 22
@@ -28,11 +23,6 @@
     "route": "/blog/choisir-statut-independant",
     "name": "Choisir son statut indépendant — portage, SASU, EURL",
     "contentCount": 22
-  },
-  {
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "name": "Comparatif des statuts freelances",
-    "contentCount": 48
   },
   {
     "route": "/blog",
@@ -67,7 +57,7 @@
   {
     "route": "/rse",
     "name": "Engagements RSE et numérique responsable",
-    "contentCount": 39
+    "contentCount": 11
   },
   {
     "route": "/espace-client",
@@ -95,24 +85,9 @@
     "contentCount": 60
   },
   {
-    "route": "/tarifs",
-    "name": "Frais de gestion du portage salarial",
-    "contentCount": 39
-  },
-  {
     "route": "/blog/frais-gestion-portage-salarial",
     "name": "Frais de gestion en portage salarial — comprendre et comparer",
     "contentCount": 22
-  },
-  {
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "name": "Guide complet du portage salarial",
-    "contentCount": 48
-  },
-  {
-    "route": "/livres-blancs",
-    "name": "Livres blancs et guides",
-    "contentCount": 24
   },
   {
     "route": "/mentions-legales",
@@ -202,17 +177,17 @@
   {
     "route": "/expertises/data-ia",
     "name": "Portage salarial pour consultants Big Data / Cloud / IA",
-    "contentCount": 115
+    "contentCount": 86
   },
   {
     "route": "/expertises/cloud-devops",
     "name": "Portage salarial pour consultants DevOps",
-    "contentCount": 116
+    "contentCount": 87
   },
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 81
+    "contentCount": 111
   },
   {
     "route": "/blog/portage-salarial-entreprises",
@@ -222,12 +197,12 @@
   {
     "route": "/expertises/cybersecurite",
     "name": "Portage salarial pour experts cybersécurité",
-    "contentCount": 112
+    "contentCount": 83
   },
   {
     "route": "/expertises/agilite-coaching",
     "name": "Portage salarial pour profils Agilité",
-    "contentCount": 114
+    "contentCount": 91
   },
   {
     "route": "/blog/portage-salarial-product-owner-scrum-master",
@@ -282,6 +257,6 @@
   {
     "route": "/consultants",
     "name": "Votre quotidien de salarié porté",
-    "contentCount": 83
+    "contentCount": 58
   }
 ]

@@ -15,6 +15,44 @@ import benefitEmployee from '../assets/portage/benefit-employee.png';
 import benefitAdministration from '../assets/portage/benefit-administration.png';
 import benefitAdviser from '../assets/portage/benefit-adviser.png';
 
+const managementFees = [
+  {
+    title: 'Avance de trésorerie',
+    // F-B14 — REQUIRED. Le versement dès le premier mois, avant règlement de la
+    // première facture client, est une affirmation générique directement portée
+    // par le livre blanc p.22 (« PAS DE FRAIS CACHÉS »). Publiée telle quelle.
+    // Les échéances de paie exactes restent CLIENT_APPROVAL_REQUIRED (F-C14) et
+    // ne sont pas chiffrées ici.
+    text: 'Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture. Le calendrier de paie vous est expliqué avant le démarrage.',
+  },
+  {
+    title: 'Apport d’affaires',
+    text: 'Nous vous proposons des missions issues de nos partenaires ; vous restez libre de trouver les vôtres.',
+  },
+  {
+    title: 'Interlocuteur unique',
+    text: 'Une seule personne suit votre dossier.',
+  },
+  {
+    title: 'Gestion administrative complète',
+    text: 'Contrat, facturation, paie, déclarations sociales et fiscales.',
+  },
+  {
+    title: 'Responsabilité civile professionnelle',
+    text: 'Vous êtes couvert en cas de dommage causé chez un client.',
+  },
+  {
+    title: 'Financement des formations',
+    // Livre blanc p.22, item 6 : « Accompagnement dans vos démarches de formation
+    // (CPF, OPCO, certifications…) ». Les dispositifs sont nommés, comme dans la source.
+    text: 'CPF, OPCO, certifications. Nous vous orientons sur les dispositifs mobilisables selon votre situation.',
+  },
+  {
+    title: 'Garantie financière',
+    text: 'Dispositif obligatoire qui sécurise le versement de votre salaire.',
+  },
+];
+
 const benefits = [
   {
     icon: 'rocket' as const,
@@ -200,7 +238,7 @@ const faqItems = [
             </article>
           ))}
           <div class="portage-benefits-links" data-motion-item="pop" style="--motion-order:7">
-            <a href="/tarifs">Je comprends les frais <span aria-hidden="true">→</span></a>
+            <a href="#frais">Je comprends les frais <span aria-hidden="true">→</span></a>
             <a href="/faq">Je consulte la FAQ <span aria-hidden="true">→</span></a>
           </div>
         </div>
@@ -220,7 +258,6 @@ const faqItems = [
       <div class="portage-comparison-intro reveal" data-cms-ignore>
         <p data-motion-item="left" style="--motion-order:0" {...cmsAttrs('portage.comparison.eyebrow')}>{cmsText('portage.comparison.eyebrow')}</p>
         <h2 data-motion-item="left" style="--motion-order:1" {...cmsAttrs('portage.comparison.title')} data-cms-rich="true" set:html={cmsText('portage.comparison.title')}></h2>
-        <strong data-motion-item="right" style="--motion-order:2" {...cmsAttrs('portage.comparison.lead')}>{cmsText('portage.comparison.lead')}</strong>
       </div>
       <div class="portage-comparison-toolbar reveal" data-motion-item="up" style="--motion-order:3">
         <div>
@@ -280,6 +317,42 @@ const faqItems = [
     </div>
   </section>
 
+  <section class="section bg-porters-navy/[0.03]" id="parrainage">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
+        <div class="reveal">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Programme de parrainage</p>
+          <h2>Vous connaissez quelqu’un à qui cela servirait&nbsp;?</h2>
+          <p class="mt-5 text-porters-black/66">
+            Un consultant qui hésite sur son statut, ou une entreprise qui cherche un profil IT.
+            Présentez-nous la personne : l’équipe confirme l’éligibilité et les conditions en
+            vigueur avant toute mise en relation, et aucune coordonnée n’est transmise sans son accord.
+          </p>
+          <a href="/parrainage" class="mt-6 inline-flex items-center gap-2 font-semibold text-porters-navy hover:text-porters-gold transition-colors">
+            Je découvre le parrainage <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <ol class="grid gap-4 sm:grid-cols-3 reveal">
+          <li class="border-t-2 border-porters-gold bg-white p-5">
+            <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-navy/55">Étape 1</p>
+            <h3 class="mt-1 text-lg">Recommandez</h3>
+            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64">Parlez de nous à un consultant indépendant ou à une entreprise.</p>
+          </li>
+          <li class="border-t-2 border-porters-gold bg-white p-5">
+            <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-navy/55">Étape 2</p>
+            <h3 class="mt-1 text-lg">Mise en relation</h3>
+            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64">La personne nous contacte de votre part, ou vous nous transmettez ses coordonnées — avec son accord.</p>
+          </li>
+          <li class="border-t-2 border-porters-gold bg-white p-5">
+            <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-navy/55">Étape 3</p>
+            <h3 class="mt-1 text-lg">Conditions confirmées</h3>
+            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64">L’équipe vous confirme l’éligibilité et les conditions en vigueur avant toute mise en relation.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <section class="section portage-faq brand-ambient-host" data-motion-section>
     <BrandAmbientShapes placement="left" />
     <div class="container mx-auto px-6 lg:px-8">
@@ -296,6 +369,27 @@ const faqItems = [
       </div>
     </div>
   </section>
+  <section class="section bg-white" id="frais">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-10 max-w-3xl reveal">
+        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Frais de gestion</p>
+        <h2>Ce que couvrent nos frais</h2>
+        <p class="mt-5 text-porters-black/66">
+          Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel et couvrent
+          sept prestations. Votre simulation en donne le montant avant toute signature.
+        </p>
+      </div>
+      <div class="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+        {managementFees.map((item) => (
+          <div class="reveal">
+            <strong class="font-heading font-semibold text-porters-navy">{item.title}</strong>
+            <span class="mt-1 block text-sm leading-relaxed text-porters-black/64">{item.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
 
 </PageLayout>
 

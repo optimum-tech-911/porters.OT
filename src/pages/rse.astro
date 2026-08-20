@@ -80,9 +80,9 @@ const governance = [
     <div class="container relative mx-auto flex min-h-[39rem] items-center px-6 py-20 lg:px-8">
       <div class="max-w-3xl reveal">
         <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Responsabilité sociale et environnementale</p>
-        <h1 class="max-w-3xl text-porters-white">Six engagements que nous pouvons prouver.</h1>
+        <h1 class="max-w-3xl text-porters-white">Notre démarche RSE.</h1>
         <p class="mt-6 max-w-2xl text-lg leading-relaxed text-porters-white/78">
-          Une charte, un référent, des pratiques identifiées et des indicateurs suivis en comité de pilotage.
+          Les référentiels sur lesquels nous nous appuyons, et ce que nous ne revendiquons pas.
         </p>
       </div>
     </div>
@@ -90,85 +90,24 @@ const governance = [
 
   <section class="section bg-white">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-12 max-w-3xl reveal">
+      <div class="max-w-3xl reveal">
         <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Nos engagements</p>
-        <h2>Ce qui est en place aujourd’hui</h2>
-      </div>
-      <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
-        {commitments.map((commitment) => (
-          <article class="border-t-2 border-porters-gold pt-6 reveal">
-            <h3 class="mb-3">{commitment.title}</h3>
-            <p class="mb-0 max-w-xl text-porters-black/66">{commitment.text}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-porters-navy/[0.03]">
-    <div class="container mx-auto grid gap-12 px-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:gap-20 lg:px-8">
-      <div class="reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Gouvernance</p>
-        <h2>Ce qui rend la démarche vérifiable</h2>
-        <p class="mt-5 text-porters-black/66">
-          Un engagement qui n’est ni mesuré ni relu en comité reste une intention. Voici les quatre
-          mécanismes qui font que celui-ci ne l’est pas.
+        <h2 class="mb-6">Ce sur quoi nous nous appuyons</h2>
+        <p class="text-lg leading-relaxed text-porters-black/70">
+          Une charte Numérique Responsable est diffusée en interne et un référent est désigné.
+          Nos pratiques s’appuient sur le RGESN pour l’éco-conception, ainsi que sur le RGAA et
+          les recommandations WCAG pour l’accessibilité numérique.
+        </p>
+        <p class="mt-5 text-lg leading-relaxed text-porters-black/70">
+          The Porters est signataire de la Charte de la diversité : le recrutement repose sur les
+          compétences, l’expérience et le savoir-être.
+        </p>
+        <p class="mt-5 text-lg leading-relaxed text-porters-black/70">
+          Nous distinguons les référentiels que nous utilisons dans nos pratiques des labels
+          effectivement détenus. Notre démarche est une trajectoire structurée : à ce jour, nous
+          ne revendiquons aucune certification.
         </p>
       </div>
-      <div class="reveal">
-        <div class="grid gap-0 border-y border-porters-navy/12">
-          {governance.map((row, index) => (
-            <div class:list={['grid gap-2 py-5 sm:grid-cols-[10rem_1fr]', { 'border-b border-porters-navy/10': index < governance.length - 1 }]}>
-              <strong class="text-porters-navy">{row.label}</strong>
-              <span class="text-porters-black/64">{row.text}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--
-    « Ce que nous ne revendiquons pas » — la section qui rend les six engagements
-    crédibles. Le mémoire technique dit textuellement : « Lorsque certaines
-    certifications ou labels ne sont pas encore détenus, nous nous engageons à
-    inscrire l'organisation dans une trajectoire structurée vers ces référentiels. »
-    copy-plan §13 Q7 : « trajectoire » ne doit jamais devenir « certifié ».
-  -->
-  <section class="section bg-white">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mx-auto max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Précision</p>
-        <h2 class="mb-6">Ce que nous ne revendiquons pas</h2>
-        <div class="space-y-5 text-porters-black/70 leading-relaxed">
-          <p>
-            Nous distinguons les référentiels que nous utilisons dans nos pratiques des certifications ou
-            labels effectivement détenus. Lorsque certaines reconnaissances ne sont pas encore acquises, nous
-            inscrivons notre démarche dans une trajectoire structurée vers ces référentiels, y compris ceux
-            associés à l’Institut du Numérique Responsable.
-          </p>
-          <p>
-            Le RGESN sert de référence à la formation de nos équipes et à nos pratiques d’éco-conception. Le
-            RGAA et les recommandations WCAG servent de référence sur l’accessibilité. Nous les employons
-            comme cadres de travail, et nous ne les présentons pas comme des certifications.
-          </p>
-          <p>
-            Nous ne publions pas d’indicateur chiffré sur cette page. Les indicateurs existent et sont suivis
-            en comité de pilotage&nbsp;; ils seront publiés ici lorsqu’ils porteront sur une période close et
-            une méthode que nous pouvons décrire.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-porters-navy py-16">
-    <div class="container mx-auto flex flex-col gap-7 px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-      <div class="max-w-2xl reveal">
-        <h2 class="mb-2 text-porters-white">Une exigence RSE dans votre appel d’offres&nbsp;?</h2>
-        <p class="mb-0 text-porters-white/65">Dites-nous laquelle. Nous répondons sur ce que nous faisons, pas sur ce que nous visons.</p>
-      </div>
-      <a href="/contact" class="btn btn-gold shrink-0">Contacter l’équipe</a>
     </div>
   </section>
 </PageLayout>

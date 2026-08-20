@@ -89,7 +89,7 @@ export default function SimulatorForm() {
     },
     {
       // Le taux vient de settings.managementFeePercent — source unique, surchargeable
-      // depuis l'admin. Jamais codé en dur ailleurs, et /tarifs ne le duplique pas.
+      // depuis l'admin. Jamais codé en dur ailleurs.
       // TODO-CLIENT: F-C15 — confirmer la politique commerciale de frais de gestion.
       // Tant qu'elle ne l'est pas, ce chiffre reste une hypothèse non contractuelle.
       label: `Hypothèse de frais de gestion : ${managementRatePercent} %`,

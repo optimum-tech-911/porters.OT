@@ -14,6 +14,12 @@ export default defineConfig({
   redirects: {
     '/expertises/developpement-integration': '/expertises',
     '/expertises/product-project-management': '/expertises',
+    // Pages retirées : le contenu vit désormais ailleurs, les URLs restent valides.
+    '/tarifs': '/portage-salarial',
+    '/livres-blancs': '/blog',
+    '/livres-blancs/guide-complet-portage-salarial': '/blog/guide-portage-salarial',
+    '/livres-blancs/comparatif-statuts-freelances': '/blog/choisir-statut-independant',
+    '/livres-blancs/checklist-demarrer-portage-salarial': '/blog/guide-portage-salarial',
   },
   integrations: [
     react(),

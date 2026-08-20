@@ -96,7 +96,7 @@ export const heroExperience: Record<HeroAudienceId, HeroExperience> = {
       { title: 'Statut salarié', image: heroProofImages.security, href: '/portage-salarial' },
       { title: 'Votre net estimé', image: heroProofImages.payment, href: '/simulateur' },
       { title: 'Un conseiller dédié', image: heroProofImages.advisor, href: '/rendez-vous' },
-      { title: 'Frais détaillés', image: heroProofImages.admin, href: '/tarifs' },
+      { title: 'Frais détaillés', image: heroProofImages.admin, href: '/portage-salarial#frais' },
     ],
     journey: [
       {

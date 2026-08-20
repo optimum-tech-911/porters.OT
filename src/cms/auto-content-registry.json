@@ -42,13 +42,6 @@
     "rich": true
   },
   {
-    "key": "global.footer.auto.button.1d9uhab",
-    "route": "/_global",
-    "type": "button",
-    "content": "Questions fréquentes<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
-  },
-  {
     "key": "global.footer.auto.button.1ei7i1h",
     "route": "/_global",
     "type": "button",
@@ -66,7 +59,7 @@
     "key": "global.footer.auto.button.1lxa2jg",
     "route": "/_global",
     "type": "button",
-    "content": "Simulateur<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "Questions fréquentes<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
@@ -94,7 +87,7 @@
     "key": "global.footer.auto.button.1s0j6m9",
     "route": "/_global",
     "type": "button",
-    "content": "Frais et rémunération<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "Simulateur<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
@@ -150,7 +143,7 @@
     "key": "global.footer.auto.button.s88pl6",
     "route": "/_global",
     "type": "button",
-    "content": "Livres blancs<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
+    "content": "Parrainage<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
     "rich": true
   },
   {
@@ -7483,7 +7476,7 @@
     "key": "pages.confidentialite.auto.paragraph.1sve2ab",
     "route": "/confidentialite",
     "type": "paragraph",
-    "content": "Dernière mise à jour : 19/08/2026",
+    "content": "Dernière mise à jour : 20/08/2026",
     "rich": true
   },
   {
@@ -7550,16 +7543,10 @@
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.button.1cmjm7o",
+    "key": "pages.consultants.auto.button.1ft44l5",
     "route": "/consultants",
     "type": "button",
-    "content": "Vous connaissez un consultant que cela intéresserait ? Parlons parrainage"
-  },
-  {
-    "key": "pages.consultants.auto.button.1upc42x",
-    "route": "/consultants",
-    "type": "button",
-    "content": "Je prends rendez-vous",
+    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -7577,17 +7564,17 @@
     "rich": true
   },
   {
+    "key": "pages.consultants.auto.button.co4dn6",
+    "route": "/consultants",
+    "type": "button",
+    "content": "Je prends rendez-vous",
+    "rich": true
+  },
+  {
     "key": "pages.consultants.auto.button.nviywh",
     "route": "/consultants",
     "type": "button",
     "content": "Je parle à un conseiller",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.button.oofb2a",
-    "route": "/consultants",
-    "type": "button",
-    "content": "Je simule mes revenus",
     "rich": true
   },
   {
@@ -7598,24 +7585,10 @@
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.heading.153jy06",
-    "route": "/consultants",
-    "type": "heading",
-    "content": "France entière, et au-delà",
-    "rich": true
-  },
-  {
     "key": "pages.consultants.auto.heading.1604qi4",
     "route": "/consultants",
     "type": "heading",
     "content": "Une fin de contrat documentée",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.heading.16zkso5",
-    "route": "/consultants",
-    "type": "heading",
-    "content": "Aucun lien hiérarchique",
     "rich": true
   },
   {
@@ -7629,21 +7602,7 @@
     "key": "pages.consultants.auto.heading.1hlyx01",
     "route": "/consultants",
     "type": "heading",
-    "content": "Six points que l’on nous demande souvent",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.heading.1ia250k",
-    "route": "/consultants",
-    "type": "heading",
     "content": "Voyez ce que votre TJM donne en net.",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.heading.1l6y4i1",
-    "route": "/consultants",
-    "type": "heading",
-    "content": "Assurance chômage",
     "rich": true
   },
   {
@@ -7682,24 +7641,10 @@
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.heading.3i2jzc",
-    "route": "/consultants",
-    "type": "heading",
-    "content": "Vous gardez vos clients",
-    "rich": true
-  },
-  {
     "key": "pages.consultants.auto.heading.7rpgmw",
     "route": "/consultants",
     "type": "heading",
     "content": "Activité, facturation, paie",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.heading.apw4u3",
-    "route": "/consultants",
-    "type": "heading",
-    "content": "Cumul possible",
     "rich": true
   },
   {
@@ -7714,13 +7659,6 @@
     "route": "/consultants",
     "type": "heading",
     "content": "Ce qui reste chez vous",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.heading.n6zk58",
-    "route": "/consultants",
-    "type": "heading",
-    "content": "Retraite complémentaire",
     "rich": true
   },
   {
@@ -7829,20 +7767,6 @@
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.paragraph.14a6447",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Je lis le détail",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.1510qqy",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Product Owners et Product Managers",
-    "rich": true
-  },
-  {
     "key": "pages.consultants.auto.paragraph.15kwctg",
     "route": "/consultants",
     "type": "paragraph",
@@ -7927,13 +7851,6 @@
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.paragraph.1nrab1u",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Je lis le détail",
-    "rich": true
-  },
-  {
     "key": "pages.consultants.auto.paragraph.1nzigs2",
     "route": "/consultants",
     "type": "paragraph",
@@ -7944,35 +7861,7 @@
     "key": "pages.consultants.auto.paragraph.1pacb1s",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Cloud, DevOps et SRE",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.1pjcirv",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Scrum Masters et Agile Coaches",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.1to13cz",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Vous cotisez à l’assurance chômage dans le cadre du statut salarié. Une indemnisation éventuelle reste soumise aux conditions examinées par France Travail.",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.1vd65na",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Je lis le détail",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.1xh2v6g",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Je lis le détail",
+    "content": "DevOps",
     "rich": true
   },
   {
@@ -7980,27 +7869,6 @@
     "route": "/consultants",
     "type": "paragraph",
     "content": "Votre sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.9erv7",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Je lis le détail",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.aiz2of",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Ni chez votre client, ni chez The Porters. Vous êtes salarié sur la forme, autonome sur le fond.",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.ba829t",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Avec un emploi salarié, sous réserve de l’accord de votre employeur et d’un maximum de 48 heures hebdomadaires cumulées. Ou avec une retraite.",
     "rich": true
   },
   {
@@ -8025,45 +7893,17 @@
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.paragraph.f7qy24",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Chefs de projet IT, PMO et AMOA",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.gc02ow",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Le statut cadre vous permet de cotiser au régime général et à la retraite complémentaire.",
-    "rich": true
-  },
-  {
     "key": "pages.consultants.auto.paragraph.hmq8su",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Cybersécurité, GRC et gouvernance",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.m29l4s",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Le simulateur répond en quelques minutes. Un conseiller reprend ensuite vos hypothèses avec vous.",
+    "content": "Cybersécurité",
     "rich": true
   },
   {
     "key": "pages.consultants.auto.paragraph.nbfxr",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Data, IA et machine learning",
-    "rich": true
-  },
-  {
-    "key": "pages.consultants.auto.paragraph.p4deri",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Mission en France ou à l’étranger, pour un client français ou étranger, en télétravail ou sur site.",
+    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -8074,13 +7914,6 @@
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.paragraph.psteuk",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Vous pouvez vous constituer votre propre clientèle et en rester pleinement responsable. Nous vous proposons aussi des missions issues de nos partenaires.",
-    "rich": true
-  },
-  {
     "key": "pages.consultants.auto.paragraph.qwjkxi",
     "route": "/consultants",
     "type": "paragraph",
@@ -8088,17 +7921,10 @@
     "rich": true
   },
   {
-    "key": "pages.consultants.auto.paragraph.rwkztd",
-    "route": "/consultants",
-    "type": "paragraph",
-    "content": "Je lis le détail",
-    "rich": true
-  },
-  {
     "key": "pages.consultants.auto.paragraph.u1xh8p",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "Architecture et intégration",
+    "content": "Agilité",
     "rich": true
   },
   {
@@ -8112,7 +7938,7 @@
     "key": "pages.consultants.auto.paragraph.xxeyen",
     "route": "/consultants",
     "type": "paragraph",
-    "content": "À savoir",
+    "content": "Le simulateur répond en quelques minutes. Un conseiller reprend ensuite vos hypothèses avec vous.",
     "rich": true
   },
   {
@@ -9298,13 +9124,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.button.8i2pp4",
-    "route": "/expertises/agilite-coaching",
-    "type": "button",
-    "content": "Faire une simulation <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.button.gwvn35",
     "route": "/expertises/agilite-coaching",
     "type": "button",
@@ -9361,13 +9180,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.heading.17ygva",
-    "route": "/expertises/agilite-coaching",
-    "type": "heading",
-    "content": "Transformation accompagnée",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.heading.190pgsd",
     "route": "/expertises/agilite-coaching",
     "type": "heading",
@@ -9393,13 +9205,6 @@
     "route": "/expertises/agilite-coaching",
     "type": "heading",
     "content": "DevOps",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.heading.1ip1n30",
-    "route": "/expertises/agilite-coaching",
-    "type": "heading",
-    "content": "Priorités partagées",
     "rich": true
   },
   {
@@ -9459,13 +9264,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.heading.1x1yc2h",
-    "route": "/expertises/agilite-coaching",
-    "type": "heading",
-    "content": "Boucles de retour courtes",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.heading.3d29wk",
     "route": "/expertises/agilite-coaching",
     "type": "heading",
@@ -9480,31 +9278,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.heading.55pbwt",
-    "route": "/expertises/agilite-coaching",
-    "type": "heading",
-    "content": "Ce que la mission doit permettre, une fois finie.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.heading.emmk7d",
     "route": "/expertises/agilite-coaching",
     "type": "heading",
     "content": "Améliorer",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.heading.gq7jc7",
-    "route": "/expertises/agilite-coaching",
-    "type": "heading",
-    "content": "Une mission déborde souvent sur un autre domaine.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.heading.ix7g9j",
-    "route": "/expertises/agilite-coaching",
-    "type": "heading",
-    "content": "Tout le cadre, sans toucher à votre expertise.",
     "rich": true
   },
   {
@@ -9522,34 +9299,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.list_item.1aivemk",
-    "route": "/expertises/agilite-coaching",
-    "type": "list_item",
-    "content": "Suivi administratif pendant la mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.list_item.1fwdtcy",
-    "route": "/expertises/agilite-coaching",
-    "type": "list_item",
-    "content": "Cadrage du périmètre, du TJM et du calendrier",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.list_item.8j4ub",
-    "route": "/expertises/agilite-coaching",
-    "type": "list_item",
-    "content": "Contrat, facturation et paie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.list_item.xywhqh",
-    "route": "/expertises/agilite-coaching",
-    "type": "list_item",
-    "content": "Comparaison des statuts",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.11cikae",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
@@ -9557,24 +9306,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.12vv3vb",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Relier la roadmap, le backlog et les décisions quotidiennes à des objectifs compréhensibles.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.12y5u51",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
     "content": "Votre besoin",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.139m91f",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Ce que ça change",
     "rich": true
   },
   {
@@ -9596,13 +9331,6 @@
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
     "content": "Lean",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.14ppupg",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Tester, apprendre et ajuster avant que les écarts ne deviennent coûteux.",
     "rich": true
   },
   {
@@ -9641,13 +9369,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.1b54zg",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Relier la donnée à un résultat métier mesurable",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.1bwi7b4",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
@@ -9676,20 +9397,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.1g7flh4",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Cybersécurité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.1huzjjq",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Toutes les expertises",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.1i83z97",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
@@ -9701,13 +9408,6 @@
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
     "content": "Améliorer",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.1k3ge1h",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Ce que The Porters prend en charge",
     "rich": true
   },
   {
@@ -9886,24 +9586,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.4ypzux",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Faire évoluer l’organisation avec les équipes, en traitant les résistances et les dépendances.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.72f20r",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
     "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.7n7d0l",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -9963,13 +9649,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.kjhdwn",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Revenir à la carte des domaines",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.l37bw5",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
@@ -9991,13 +9670,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.lush39",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "Pour aller plus loin",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.agilite-coaching.auto.paragraph.nfcbjn",
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
@@ -10016,13 +9688,6 @@
     "route": "/expertises/agilite-coaching",
     "type": "paragraph",
     "content": "Périmètres fréquents",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.agilite-coaching.auto.paragraph.pvss8d",
-    "route": "/expertises/agilite-coaching",
-    "type": "paragraph",
-    "content": "La sécurité exige une mission précisément cadrée",
     "rich": true
   },
   {
@@ -11020,13 +10685,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.button.1emqw1l",
-    "route": "/expertises/cloud-devops",
-    "type": "button",
-    "content": "Faire une simulation <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.button.1ur26yk",
     "route": "/expertises/cloud-devops",
     "type": "button",
@@ -11090,13 +10748,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.heading.15wd9s5",
-    "route": "/expertises/cloud-devops",
-    "type": "heading",
-    "content": "Cloud gouverné",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.heading.17un98y",
     "route": "/expertises/cloud-devops",
     "type": "heading",
@@ -11146,13 +10797,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.heading.1noobdv",
-    "route": "/expertises/cloud-devops",
-    "type": "heading",
-    "content": "Livraisons plus fiables",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.heading.1om1uc1",
     "route": "/expertises/cloud-devops",
     "type": "heading",
@@ -11188,34 +10832,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.heading.p056tw",
-    "route": "/expertises/cloud-devops",
-    "type": "heading",
-    "content": "Tout le cadre, sans toucher à votre expertise.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.heading.rdhydo",
-    "route": "/expertises/cloud-devops",
-    "type": "heading",
-    "content": "Une mission déborde souvent sur un autre domaine.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.heading.rl4lk4",
-    "route": "/expertises/cloud-devops",
-    "type": "heading",
-    "content": "Ce que la mission doit permettre, une fois finie.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.heading.s6l0qq",
-    "route": "/expertises/cloud-devops",
-    "type": "heading",
-    "content": "Plateforme observable",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.heading.vts721",
     "route": "/expertises/cloud-devops",
     "type": "heading",
@@ -11227,34 +10843,6 @@
     "route": "/expertises/cloud-devops",
     "type": "heading",
     "content": "Concevoir",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.list_item.118h6ja",
-    "route": "/expertises/cloud-devops",
-    "type": "list_item",
-    "content": "Facturation et paie",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.list_item.1vluh6p",
-    "route": "/expertises/cloud-devops",
-    "type": "list_item",
-    "content": "Suivi administratif du démarrage à la clôture",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.list_item.3378pw",
-    "route": "/expertises/cloud-devops",
-    "type": "list_item",
-    "content": "Cadrage contractuel de la mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.list_item.hrau9j",
-    "route": "/expertises/cloud-devops",
-    "type": "list_item",
-    "content": "Lecture du TJM et des frais liés à l’intervention",
     "rich": true
   },
   {
@@ -11342,20 +10930,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1etq2v0",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Ce que ça change",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1f2vi3g",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Performance suivie",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.1fs7vfz",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
@@ -11384,13 +10958,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1kiaeue",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Revenir à la carte des domaines",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.1kr4zmh",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
@@ -11409,13 +10976,6 @@
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "Évaluer",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1lkp9d7",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Toutes les expertises",
     "rich": true
   },
   {
@@ -11440,13 +11000,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1o7idyg",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Concilier autonomie des équipes, sécurité, maîtrise des coûts et exigences d’exploitation.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.1pvtgpi",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
@@ -11465,13 +11018,6 @@
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "CI/CD et automatisation des déploiements",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1r6mgku",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Architecture adaptée",
     "rich": true
   },
   {
@@ -11545,13 +11091,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.1xyk82n",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Notre approche Cloud associe conseil, intégration flexible et optimisation des infrastructures, afin de soutenir une transformation réellement exploitable.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.1xyqx5e",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
@@ -11563,13 +11102,6 @@
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "Besoin · résultat · contraintes",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.24ncss",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Big Data / Cloud / IA",
     "rich": true
   },
   {
@@ -11594,24 +11126,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.4rfmf8",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Pour aller plus loin",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.4srm6w",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.71p4jw",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Ce que The Porters prend en charge",
     "rich": true
   },
   {
@@ -11626,20 +11144,6 @@
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "Profils accompagnés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.825x95",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Relier la donnée à un résultat métier mesurable",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.a1j8hk",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "La sécurité exige une mission précisément cadrée",
     "rich": true
   },
   {
@@ -11678,20 +11182,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.j0hfu3",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "L’ESN du groupe",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.j0xs5e",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Une expertise du groupe Porters",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.jc3le3",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
@@ -11727,13 +11217,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.motg5p",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Donner aux équipes les signaux nécessaires pour comprendre les incidents et la performance.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.nfcbjn",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
@@ -11755,31 +11238,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.pzdmi1",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Cybersécurité",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cloud-devops.auto.paragraph.q10fjx",
     "route": "/expertises/cloud-devops",
     "type": "paragraph",
     "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.skebxx",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Intégration progressive",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cloud-devops.auto.paragraph.vpmyp2",
-    "route": "/expertises/cloud-devops",
-    "type": "paragraph",
-    "content": "Réduire les manipulations manuelles et rendre les déploiements reproductibles.",
     "rich": true
   },
   {
@@ -11832,13 +11294,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.button.1emqw1l",
-    "route": "/expertises/cybersecurite",
-    "type": "button",
-    "content": "Faire une simulation <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.button.1ur26yk",
     "route": "/expertises/cybersecurite",
     "type": "button",
@@ -11888,13 +11343,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.heading.15wd9s5",
-    "route": "/expertises/cybersecurite",
-    "type": "heading",
-    "content": "Faire progresser la sécurité",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.heading.17un98y",
     "route": "/expertises/cybersecurite",
     "type": "heading",
@@ -11937,13 +11385,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.heading.1noobdv",
-    "route": "/expertises/cybersecurite",
-    "type": "heading",
-    "content": "Décider sur des risques qualifiés",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.heading.1ozy636",
     "route": "/expertises/cybersecurite",
     "type": "heading",
@@ -11972,34 +11413,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.heading.p056tw",
-    "route": "/expertises/cybersecurite",
-    "type": "heading",
-    "content": "Tout le cadre, sans toucher à votre expertise.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.heading.rdhydo",
-    "route": "/expertises/cybersecurite",
-    "type": "heading",
-    "content": "Une mission déborde souvent sur un autre domaine.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.heading.rl4lk4",
-    "route": "/expertises/cybersecurite",
-    "type": "heading",
-    "content": "Ce que la mission doit permettre, une fois finie.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.heading.s6l0qq",
-    "route": "/expertises/cybersecurite",
-    "type": "heading",
-    "content": "Rendre la conformité opérationnelle",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.heading.vts721",
     "route": "/expertises/cybersecurite",
     "type": "heading",
@@ -12011,34 +11424,6 @@
     "route": "/expertises/cybersecurite",
     "type": "heading",
     "content": "Conseil &amp; assistance",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.list_item.118h6ja",
-    "route": "/expertises/cybersecurite",
-    "type": "list_item",
-    "content": "Facturation, paie et frais professionnels validés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.list_item.1vluh6p",
-    "route": "/expertises/cybersecurite",
-    "type": "list_item",
-    "content": "Interlocuteur administratif pendant la mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.list_item.3378pw",
-    "route": "/expertises/cybersecurite",
-    "type": "list_item",
-    "content": "Cadrage du périmètre, du TJM et du calendrier",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.list_item.hrau9j",
-    "route": "/expertises/cybersecurite",
-    "type": "list_item",
-    "content": "Contrat de travail et contrat de prestation",
     "rich": true
   },
   {
@@ -12126,20 +11511,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1etq2v0",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Ce que ça change",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1f2vi3g",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Suivi des consultants",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.1fs7vfz",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
@@ -12168,13 +11539,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1kiaeue",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Revenir à la carte des domaines",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.1kr4zmh",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
@@ -12193,13 +11557,6 @@
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
     "content": "Diagnostic",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1lkp9d7",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Toutes les expertises",
     "rich": true
   },
   {
@@ -12224,13 +11581,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1o7idyg",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Passer du diagnostic à une feuille de route suivie, avec des priorités, des responsables et des jalons.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.1pvtgpi",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
@@ -12249,13 +11599,6 @@
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
     "content": "Analyse des risques et de la conformité",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1r6mgku",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Conseil sur mesure",
     "rich": true
   },
   {
@@ -12329,13 +11672,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.1xyk82n",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "L’offre cybersécurité du groupe relie diagnostic, gouvernance, audit, conseil et assistance, puis plan d’actions. Approche orientée conseil et engagement de service, sans dissocier la gouvernance de l’exécution.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.1xyqx5e",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
@@ -12347,13 +11683,6 @@
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
     "content": "Besoin · résultat · contraintes",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.24ncss",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "DevOps",
     "rich": true
   },
   {
@@ -12378,24 +11707,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.4rfmf8",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Pour aller plus loin",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.4srm6w",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
     "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.71p4jw",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Ce que The Porters prend en charge",
     "rich": true
   },
   {
@@ -12410,20 +11725,6 @@
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
     "content": "Profils accompagnés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.825x95",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Accélérer les livraisons sans fragiliser la plateforme",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.a1j8hk",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Relier la donnée à un résultat métier mesurable",
     "rich": true
   },
   {
@@ -12462,20 +11763,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.j0hfu3",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "L’ESN du groupe",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.j0xs5e",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Une expertise du groupe Porters",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.jc3le3",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
@@ -12511,13 +11798,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.motg5p",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Traduire les exigences réglementaires de votre organisation en pratiques et livrables concrets. Nos consultants interviennent sur ces référentiels ; nous n’en détenons pas la certification.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.nfcbjn",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
@@ -12539,31 +11819,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.pzdmi1",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Big Data / Cloud / IA",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.cybersecurite.auto.paragraph.q10fjx",
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
     "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.skebxx",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Continuité de service",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.cybersecurite.auto.paragraph.vpmyp2",
-    "route": "/expertises/cybersecurite",
-    "type": "paragraph",
-    "content": "Transformer les constats techniques en arbitrages compréhensibles par les équipes métiers et la direction.",
     "rich": true
   },
   {
@@ -12613,13 +11872,6 @@
     "route": "/expertises/cybersecurite",
     "type": "paragraph",
     "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.button.1emqw1l",
-    "route": "/expertises/data-ia",
-    "type": "button",
-    "content": "Faire une simulation <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
     "rich": true
   },
   {
@@ -12679,13 +11931,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.heading.15wd9s5",
-    "route": "/expertises/data-ia",
-    "type": "heading",
-    "content": "Construire pour durer",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.heading.17un98y",
     "route": "/expertises/data-ia",
     "type": "heading",
@@ -12735,13 +11980,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.heading.1noobdv",
-    "route": "/expertises/data-ia",
-    "type": "heading",
-    "content": "Mieux décider",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.heading.1om1uc1",
     "route": "/expertises/data-ia",
     "type": "heading",
@@ -12777,34 +12015,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.heading.p056tw",
-    "route": "/expertises/data-ia",
-    "type": "heading",
-    "content": "Tout le cadre, sans toucher à votre expertise.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.heading.rdhydo",
-    "route": "/expertises/data-ia",
-    "type": "heading",
-    "content": "Une mission déborde souvent sur un autre domaine.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.heading.rl4lk4",
-    "route": "/expertises/data-ia",
-    "type": "heading",
-    "content": "Ce que la mission doit permettre, une fois finie.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.heading.s6l0qq",
-    "route": "/expertises/data-ia",
-    "type": "heading",
-    "content": "Automatiser avec discernement",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.heading.vts721",
     "route": "/expertises/data-ia",
     "type": "heading",
@@ -12816,34 +12026,6 @@
     "route": "/expertises/data-ia",
     "type": "heading",
     "content": "Fiabiliser la donnée",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.list_item.118h6ja",
-    "route": "/expertises/data-ia",
-    "type": "list_item",
-    "content": "Facturation, paie et suivi des frais validés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.list_item.1vluh6p",
-    "route": "/expertises/data-ia",
-    "type": "list_item",
-    "content": "Point de contact administratif pendant l’intervention",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.list_item.3378pw",
-    "route": "/expertises/data-ia",
-    "type": "list_item",
-    "content": "Lecture du TJM, de la durée et des conditions de mission",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.list_item.hrau9j",
-    "route": "/expertises/data-ia",
-    "type": "list_item",
-    "content": "Cadre contractuel avec l’entreprise cliente",
     "rich": true
   },
   {
@@ -12931,20 +12113,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.1etq2v0",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Ce que ça change",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.1f2vi3g",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Solutions durables",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.1fs7vfz",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -12973,13 +12141,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.1kiaeue",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Revenir à la carte des domaines",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.1kr4zmh",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -12998,13 +12159,6 @@
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Cadrer la valeur",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.1lkp9d7",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Toutes les expertises",
     "rich": true
   },
   {
@@ -13029,13 +12183,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.1o7idyg",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Documenter les flux, la gouvernance et les responsabilités afin de pérenniser les solutions au-delà du prototype.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.1pvtgpi",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -13054,13 +12201,6 @@
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Business intelligence et analytics",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.1r6mgku",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Data utile à la décision",
     "rich": true
   },
   {
@@ -13134,13 +12274,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.1xyk82n",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Sur la Data, l’IA et le Cloud, le groupe travaille avec une double lecture technique et métier : stratégie, architecture, déploiement et maintien en conditions opérationnelles.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.1xyqx5e",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -13152,13 +12285,6 @@
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Besoin · résultat · contraintes",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.24ncss",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "DevOps",
     "rich": true
   },
   {
@@ -13183,24 +12309,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.4rfmf8",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Pour aller plus loin",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.4srm6w",
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.71p4jw",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Ce que The Porters prend en charge",
     "rich": true
   },
   {
@@ -13215,20 +12327,6 @@
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Profils accompagnés",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.825x95",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Accélérer les livraisons sans fragiliser la plateforme",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.a1j8hk",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "La sécurité exige une mission précisément cadrée",
     "rich": true
   },
   {
@@ -13267,20 +12365,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.j0hfu3",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "L’ESN du groupe",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.j0xs5e",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Une expertise du groupe Porters",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.jc3le3",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -13316,13 +12400,6 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.motg5p",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Identifier les tâches où l’IA apporte un gain réel, puis mesurer sa qualité et ses limites.",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.nfcbjn",
     "route": "/expertises/data-ia",
     "type": "paragraph",
@@ -13344,31 +12421,10 @@
     "rich": true
   },
   {
-    "key": "pages.expertises.data-ia.auto.paragraph.pzdmi1",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Cybersécurité",
-    "rich": true
-  },
-  {
     "key": "pages.expertises.data-ia.auto.paragraph.q10fjx",
     "route": "/expertises/data-ia",
     "type": "paragraph",
     "content": "Cette intervention est cadrée par un résultat attendu, des responsabilités explicites, des accès adaptés et un point de passage vers l’étape suivante.",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.skebxx",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "IA intégrée aux usages",
-    "rich": true
-  },
-  {
-    "key": "pages.expertises.data-ia.auto.paragraph.vpmyp2",
-    "route": "/expertises/data-ia",
-    "type": "paragraph",
-    "content": "Produire des données fiables et des analyses lisibles pour soutenir les arbitrages opérationnels.",
     "rich": true
   },
   {
@@ -14457,1182 +13513,6 @@
     "rich": true
   },
   {
-    "key": "pages.livres-blancs.auto.button.1ca9ilv",
-    "route": "/livres-blancs",
-    "type": "button",
-    "content": "Je parle de ma situation <span aria-hidden=\"true\" data-astro-cid-hdoqvdln=\"\">↗</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.button.1oawc46",
-    "route": "/livres-blancs",
-    "type": "button",
-    "content": "Lire la ressource<b aria-hidden=\"true\" data-astro-cid-hdoqvdln=\"\">→</b>",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.button.4nxp4q",
-    "route": "/livres-blancs",
-    "type": "button",
-    "content": "Accueil",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.button.p10a6j",
-    "route": "/livres-blancs",
-    "type": "button",
-    "content": "Lire la ressource<b aria-hidden=\"true\" data-astro-cid-hdoqvdln=\"\">→</b>",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.button.z1i53h",
-    "route": "/livres-blancs",
-    "type": "button",
-    "content": "Lire la ressource<b aria-hidden=\"true\" data-astro-cid-hdoqvdln=\"\">→</b>",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.heading.120k1wy",
-    "route": "/livres-blancs",
-    "type": "heading",
-    "content": "Trois guides,<br data-astro-cid-hdoqvdln=\"\">écrits pour être utiles.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.heading.18og1zg",
-    "route": "/livres-blancs",
-    "type": "heading",
-    "content": "Guide complet du portage salarial",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.heading.1ksmgl7",
-    "route": "/livres-blancs",
-    "type": "heading",
-    "content": "Lire avant de choisir.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.heading.1xptkyn",
-    "route": "/livres-blancs",
-    "type": "heading",
-    "content": "Des guides qu’on lit jusqu’au bout.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.heading.wny0rd",
-    "route": "/livres-blancs",
-    "type": "heading",
-    "content": "Comparatif des statuts pour freelances",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.heading.ywbdpy",
-    "route": "/livres-blancs",
-    "type": "heading",
-    "content": "Checklist pour démarrer en portage salarial",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.16hb67d",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Checklist",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.18wf2t0",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Comparer micro-entreprise, société et portage selon quatre critères : autonomie, protection, gestion administrative et modèle de coûts.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.1e907ml",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Notre parti pris",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.1fttyx",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Vérifier votre mission, votre TJM, l’accord du client, les documents nécessaires et les points à clarifier avant la contractualisation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.1id3tdl",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Livres blancs",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.1p3n1rq",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Chaque guide sépare les faits, les questions à poser et les points qui dépendent de votre situation. Les chiffres et règles susceptibles d’évoluer ne sont pas présentés comme des vérités permanentes.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.1w9wyii",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "La bibliothèque",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.7jilqy",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Comparatif",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.cwix1j",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.esfffn",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Des contenus tirés de notre documentation métier pour comprendre le portage, comparer les cadres et préparer une mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.km9w97",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Livre blanc The Porters",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.rrq4iv",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Comprendre la relation tripartite, les contrats, la facturation, la paie et les vérifications à effectuer avant de démarrer.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.auto.paragraph.u2k7no",
-    "route": "/livres-blancs",
-    "type": "paragraph",
-    "content": "Guides The Porters",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.134vnmm",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.14uqakc",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "button",
-    "content": "Les conditions",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.1a88paq",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "button",
-    "content": "Le suivi",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.1hthkth",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "button",
-    "content": "Je parle à un conseiller",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.1ur26yk",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "button",
-    "content": "Livres blancs",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.4nxp4q",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "button",
-    "content": "Accueil",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.il65r",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "button",
-    "content": "La mission",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.button.t8n6z9",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "button",
-    "content": "Les contrats",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.heading.10ybqnm",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "heading",
-    "content": "Les responsabilités sont-elles distribuées ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.heading.1dfrmrs",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "heading",
-    "content": "Ce que vous devez pouvoir confirmer.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.heading.1oqf9oe",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "heading",
-    "content": "Les points à verrouiller avant de démarrer en portage.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.heading.1xl9o4p",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "heading",
-    "content": "Les hypothèses économiques sont-elles lisibles ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.heading.634tc4",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "heading",
-    "content": "Passez du guide à votre simulation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.heading.6y9yik",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "heading",
-    "content": "Le besoin est-il suffisamment précis ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.heading.ee9n4f",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "heading",
-    "content": "Savez-vous quoi faire le premier mois ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.13nlk64",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>Le premier cycle activité–facture–paie est compris.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.19nar5r",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Accès à l’espace de suivi confirmé.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.1jmrhjl",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>TJM et volume d’activité prévisionnel validés.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.1ott6vt",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>Mission, TJM et calendrier sont alignés.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.1q2pkqp",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Dates, rythme et conditions d’intervention clarifiés.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.1rf8oss",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Calendrier de déclaration et de validation connu.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.1rvxb60",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Documents transmis et informations exactes.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.1u1ieed",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Interlocuteur Porters enregistré.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.1x2rzzc",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Référent côté client identifié.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.dd8d4q",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Processus de validation compris.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.dwhy23",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Simulation relue avant signature.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.gj8fle",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>Les contraintes client sont connues.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.ha6ioq",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Périmètre et livrables compris par les trois parties.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.qxe4cz",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>Les documents nécessaires sont disponibles.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.sxwh2z",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Exigences de sécurité ou de confidentialité signalées.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.list_item.xi1ei2",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Frais et justificatifs anticipés.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.18ahffj",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Checklist",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1ashd0m",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "TJM, jours prévisionnels, frais éventuels et modalités de facturation alimentent la simulation. Les écarts entre hypothèse et réalité doivent pouvoir être expliqués.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1b2m6dn",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "4 chapitres · lecture en ligne",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1bwx6vr",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Checklist",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1d45hs1",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Le contrat de prestation et la relation de travail ne couvrent pas le même objet. Confidentialité, accès, sécurité et contraintes client doivent être repris au bon endroit.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1fbn3pj",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Les conditions",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1gzqgq",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Les contrats",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1vuo6ng",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Temps de lecture",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1xsqep9",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Le suivi",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.1y8xdqs",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Le démarrage est plus fluide lorsque le calendrier de déclaration d’activité, la validation client et les contacts utiles sont connus avant le premier jour.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.5ru44y",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Dans ce guide",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.8g7sgm",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Une checklist courte pour transformer un accord de principe en mission correctement cadrée, sans multiplier les allers-retours.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.bgnjis",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "La mission",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.cmkdwc",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Votre situation est spécifique ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.cwix1j",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.ps1j88",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Avant de continuer",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.checklist-demarrer-portage-salarial.auto.paragraph.xp7dub",
-    "route": "/livres-blancs/checklist-demarrer-portage-salarial",
-    "type": "paragraph",
-    "content": "Avant la contractualisation, le résultat attendu, le périmètre, le lieu d’intervention, le calendrier et les interlocuteurs doivent être identifiés.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.134vnmm",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.14uqakc",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "button",
-    "content": "Protection",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.1a88paq",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "button",
-    "content": "Coûts",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.1hthkth",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "button",
-    "content": "Je parle à un conseiller",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.1ur26yk",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "button",
-    "content": "Livres blancs",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.4nxp4q",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "button",
-    "content": "Accueil",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.il65r",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "button",
-    "content": "Autonomie",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.button.t8n6z9",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "button",
-    "content": "Gestion",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.heading.10ybqnm",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "heading",
-    "content": "Que voulez-vous administrer vous-même ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.heading.1dfrmrs",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "heading",
-    "content": "Ce que vous devez pouvoir confirmer.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.heading.1oqf9oe",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "heading",
-    "content": "Choisir un cadre selon votre projet, pas selon une promesse.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.heading.1xl9o4p",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "heading",
-    "content": "Quel statut social accompagne l’activité ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.heading.634tc4",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "heading",
-    "content": "Passez du guide à votre simulation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.heading.6y9yik",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "heading",
-    "content": "Qui trouve et négocie la mission ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.heading.ee9n4f",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "heading",
-    "content": "Comparer des modèles complets.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.13nlk64",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>J’ai identifié les sujets qui nécessitent un conseil personnalisé.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.19nar5r",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Demander une simulation détaillée et compréhensible.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.1jmrhjl",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Comparer la couverture, pas seulement le revenu affiché.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.1ott6vt",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>J’ai défini mon niveau d’autonomie souhaité.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.1q2pkqp",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Vérifier la liberté de choisir les missions et les clients.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.1rf8oss",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Identifier les services compris dans les frais.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.1rvxb60",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Lister les tâches que vous souhaitez réellement déléguer.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.1u1ieed",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Comparer sur un même scénario d’activité.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.1x2rzzc",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Identifier les contraintes propres à votre activité.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.dd8d4q",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Vérifier le niveau d’accompagnement proposé.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.dwhy23",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Faire valider les cas particuliers par un conseil compétent.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.gj8fle",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>J’ai comparé la protection et la gestion, pas uniquement le net.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.ha6ioq",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Clarifier qui porte la prospection et la négociation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.qxe4cz",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>J’ai posé le même scénario à chaque solution.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.sxwh2z",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Évaluer le temps consacré à la gestion.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.list_item.xi1ei2",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Intégrer votre situation personnelle et professionnelle.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.18ahffj",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Comparatif",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1ashd0m",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Le portage repose sur un contrat de travail et la protection sociale associée. Les autres formes d’exercice reposent sur des régimes différents qui doivent être comparés avec votre situation réelle.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1b2m6dn",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "4 chapitres · lecture en ligne",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1bwx6vr",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Comparatif",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1d45hs1",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Le portage délègue le cadre contractuel, la facturation, les déclarations sociales et la paie. Créer et gérer une structure implique davantage d’arbitrages et de responsabilités administratives.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1fbn3pj",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Protection",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1gzqgq",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Gestion",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1vuo6ng",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Temps de lecture",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1xsqep9",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Coûts",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.1y8xdqs",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Un pourcentage isolé ne suffit pas. Il faut comparer les services inclus, les cotisations, les assurances, les coûts de structure et le temps de gestion avant de tirer une conclusion.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.5ru44y",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Dans ce guide",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.8g7sgm",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Portage salarial, micro-entreprise ou société : la bonne lecture part de l’autonomie souhaitée, de la protection attendue, de la gestion et de la structure de coûts.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.bgnjis",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Autonomie",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.cmkdwc",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Votre situation est spécifique ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.cwix1j",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.ps1j88",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "Avant de continuer",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.comparatif-statuts-freelances.auto.paragraph.xp7dub",
-    "route": "/livres-blancs/comparatif-statuts-freelances",
-    "type": "paragraph",
-    "content": "En portage, vous restez autonome dans votre prospection et dans la négociation de votre mission. Une société offre également cette autonomie, tandis que chaque cadre organise différemment la relation commerciale.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.134vnmm",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">→</span>",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.14uqakc",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "button",
-    "content": "Préparer l’entrée",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.1a88paq",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "button",
-    "content": "Anticiper la sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.1hthkth",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "button",
-    "content": "Je parle à un conseiller",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.1ur26yk",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "button",
-    "content": "Livres blancs",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.4nxp4q",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "button",
-    "content": "Accueil",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.il65r",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "button",
-    "content": "Comprendre le cadre",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.button.t8n6z9",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "button",
-    "content": "Vivre la mission",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.heading.10ybqnm",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "heading",
-    "content": "Un même fil entre activité, facture et paie.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.heading.1dfrmrs",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "heading",
-    "content": "Ce que vous devez pouvoir confirmer.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.heading.1oqf9oe",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "heading",
-    "content": "Le portage salarial, de la première simulation à la fin de mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.heading.1xl9o4p",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "heading",
-    "content": "Poser les hypothèses avant de signer.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.heading.634tc4",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "heading",
-    "content": "Passez du guide à votre simulation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.heading.6y9yik",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "heading",
-    "content": "Trois acteurs. Deux contrats. Une mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.heading.ee9n4f",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "heading",
-    "content": "Clore la mission sans laisser de zone grise.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.13nlk64",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>Je sais qui contacter pendant et à la fin de la mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.19nar5r",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Confirmer la date et les conditions de fin de mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.1jmrhjl",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Vérifier le périmètre, le TJM et la durée prévisionnelle.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.1ott6vt",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>Je sais distinguer le contrat de travail du contrat de prestation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.1q2pkqp",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>L’entreprise cliente définit le besoin et valide la prestation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.1rf8oss",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Vérifier les derniers éléments d’activité et de facturation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.1rvxb60",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Déclarer et faire valider l’activité selon le calendrier convenu.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.1u1ieed",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Faire le point sur les documents et les étapes suivantes.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.1x2rzzc",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>The Porters assure le cadre contractuel, la facturation et la paie.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.dd8d4q",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Garder un interlocuteur pour les questions de mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.dwhy23",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Comprendre la simulation et les services inclus.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.gj8fle",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>Je sais quelles hypothèses relire dans ma simulation.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.ha6ioq",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Le consultant conserve sa démarche commerciale et son expertise.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.qxe4cz",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\"></span>Je sais ce qui reste sous ma responsabilité commerciale.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.sxwh2z",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Centraliser les échanges contractuels et administratifs.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.list_item.xi1ei2",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "list_item",
-    "content": "<span aria-hidden=\"true\" data-astro-cid-bdolhkxr=\"\">✓</span>Identifier les documents et validations nécessaires.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.18ahffj",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Livre blanc The Porters",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1ashd0m",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Une simulation n’est utile que si ses paramètres sont explicites. Mission, TJM, rythme d’activité, frais éventuels et calendrier doivent pouvoir être relus et questionnés.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1b2m6dn",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "4 chapitres · lecture en ligne",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1bwx6vr",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Livre blanc The Porters",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1d45hs1",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Pendant la mission, l’activité déclarée sert de base au suivi. The Porters coordonne les éléments administratifs, la facturation, les justificatifs acceptés et la préparation de la paie.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1fbn3pj",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Préparer l’entrée",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1gzqgq",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Vivre la mission",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1vuo6ng",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Temps de lecture",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1xsqep9",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Anticiper la sortie",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.1y8xdqs",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "La fin d’une prestation se prépare : date, validation de l’activité, factures restantes et documents liés à la relation de travail doivent être suivis dans le même dossier.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.5ru44y",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Dans ce guide",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.8g7sgm",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Une lecture structurée du dispositif : qui signe quoi, ce que The Porters prend en charge et les décisions qui restent entre vos mains.",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.bgnjis",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Comprendre le cadre",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.cmkdwc",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Votre situation est spécifique ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.cwix1j",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.ps1j88",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Avant de continuer",
-    "rich": true
-  },
-  {
-    "key": "pages.livres-blancs.guide-complet-portage-salarial.auto.paragraph.xp7dub",
-    "route": "/livres-blancs/guide-complet-portage-salarial",
-    "type": "paragraph",
-    "content": "Le consultant choisit sa mission et négocie ses conditions avec l’entreprise cliente. The Porters formalise ensuite la relation de travail et la prestation, puis suit l’activité administrative.",
-    "rich": true
-  },
-  {
     "key": "pages.mentions-legales.auto.button.4nxp4q",
     "route": "/mentions-legales",
     "type": "button",
@@ -15990,17 +13870,17 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.button.1518vu2",
-    "route": "/portage-salarial",
-    "type": "button",
-    "content": "Que couvrent les frais de gestion ?<span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">+</span>",
-    "rich": true
-  },
-  {
     "key": "pages.portage-salarial.auto.button.16l7obd",
     "route": "/portage-salarial",
     "type": "button",
     "content": "Portage salarial",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.17fic7h",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Que couvrent les frais de gestion ?<span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">+</span>",
     "rich": true
   },
   {
@@ -16011,10 +13891,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.button.1agnlz9",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Je découvre le parrainage <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">→</span>",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.button.1fu6q8j",
     "route": "/portage-salarial",
     "type": "button",
     "content": "Création de société",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.1spfzc3",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Qui trouve la mission ?<span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">+</span>",
     "rich": true
   },
   {
@@ -16032,13 +13926,6 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.button.br0k1o",
-    "route": "/portage-salarial",
-    "type": "button",
-    "content": "Qui trouve la mission ?<span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">+</span>",
-    "rich": true
-  },
-  {
     "key": "pages.portage-salarial.auto.button.nviywh",
     "route": "/portage-salarial",
     "type": "button",
@@ -16053,17 +13940,17 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.button.pjz5lw",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Comment le chiffre d’affaires devient-il un salaire ?<span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">+</span>",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.button.wvc156",
     "route": "/portage-salarial",
     "type": "button",
     "content": "Je calcule mon salaire",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.button.y89i57",
-    "route": "/portage-salarial",
-    "type": "button",
-    "content": "Comment le chiffre d’affaires devient-il un salaire ?<span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">+</span>",
     "rich": true
   },
   {
@@ -16081,6 +13968,20 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.heading.1e1o8bm",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Recommandez",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.1hhwqlk",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Conditions confirmées",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.heading.1nsallb",
     "route": "/portage-salarial",
     "type": "heading",
@@ -16088,10 +13989,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.heading.1qnyctv",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Ce que couvrent nos frais",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.heading.1uzhlad",
     "route": "/portage-salarial",
     "type": "heading",
     "content": "Quelqu’un suit votre dossier",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.1xfppdk",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Vous connaissez quelqu’un à qui cela servirait ?",
     "rich": true
   },
   {
@@ -16106,6 +14021,13 @@
     "route": "/portage-salarial",
     "type": "heading",
     "content": "Une vision du portage, au plus près des talents",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.p030lf",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Mise en relation",
     "rich": true
   },
   {
@@ -16144,17 +14066,17 @@
     "rich": true
   },
   {
-    "key": "pages.portage-salarial.auto.paragraph.11m2wvb",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Vous. Vous choisissez vos clients, vous négociez votre TJM et vous organisez votre intervention : nous n’entrons pas dans cette relation.",
-    "rich": true
-  },
-  {
     "key": "pages.portage-salarial.auto.paragraph.1264m40",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Contrat, facturation, paie et déclarations.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.138d0x9",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "La personne nous contacte de votre part, ou vous nous transmettez ses coordonnées — avec son accord.",
     "rich": true
   },
   {
@@ -16165,6 +14087,48 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.14lginf",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gestion administrative complète",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.16622un",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "The Porters facture l’entreprise cliente. Ce qui reste, une fois les frais de gestion et les cotisations déduits, finance votre rémunération.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.16dzxq9",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Financement des formations",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.16gba4u",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Garantie financière",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.16hq9l8",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Avance de trésorerie",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.176ujsy",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Contrat, facturation, paie, déclarations sociales et fiscales.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.17ysdw7",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -16172,10 +14136,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.18c89xg",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "CPF, OPCO, certifications. Nous vous orientons sur les dispositifs mobilisables selon votre situation.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.18mx3fp",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Selon le statut du dirigeant",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.18tj454",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "L’équipe vous confirme l’éligibilité et les conditions en vigueur avant toute mise en relation.",
     "rich": true
   },
   {
@@ -16200,6 +14178,13 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1buro92",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Parlez de nous à un consultant indépendant ou à une entreprise.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1bx0ylt",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -16211,13 +14196,6 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Les raisons qui reviennent le plus souvent",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1f6plij",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Avant de vous lancer",
     "rich": true
   },
   {
@@ -16235,17 +14213,17 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1id1ce8",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Responsabilité civile professionnelle",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1id3tdl",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Portage salarial",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.1iqrv5g",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "The Porters facture l’entreprise cliente. Ce qui reste, une fois les frais de gestion et les cotisations déduits, finance votre rémunération.",
     "rich": true
   },
   {
@@ -16312,6 +14290,13 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1q26vu5",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Étape 1",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1qe1js9",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -16333,10 +14318,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1t8ufay",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Interlocuteur unique",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.1tuis44",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Création de société",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1velxbc",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Nous vous proposons des missions issues de nos partenaires ; vous restez libre de trouver les vôtres.",
     "rich": true
   },
   {
@@ -16382,10 +14381,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.1ygkead",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture. Le calendrier de paie vous est expliqué avant le démarrage.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.30v79k",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Engagée par la société",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.49hgu5",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Apport d’affaires",
     "rich": true
   },
   {
@@ -16396,10 +14409,31 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.5ksvxe",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Le contrat, la facturation, la paie, le suivi administratif, la responsabilité civile professionnelle et la garantie financière. Le détail figure sur la page des frais.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.5n1jrb",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Contrat de prestation, facturation, paie, déclarations : tout cela sort de votre quotidien.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.6liuh2",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Étape 2",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.6okau9",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Vous êtes couvert en cas de dommage causé chez un client.",
     "rich": true
   },
   {
@@ -16417,6 +14451,13 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.8of6qw",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Programme de parrainage",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.9dblg4",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -16424,17 +14465,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.9f1zwi",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel et couvrent sept prestations. Votre simulation en donne le montant avant toute signature.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.ao32w3",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Dispositif obligatoire qui sécurise le versement de votre salaire.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.b3ry4u",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Aucun plafond propre au portage",
-    "rich": true
-  },
-  {
-    "key": "pages.portage-salarial.auto.paragraph.ba6mbd",
-    "route": "/portage-salarial",
-    "type": "paragraph",
-    "content": "Le contrat, la facturation, la paie, le suivi administratif, la responsabilité civile professionnelle et la garantie financière. Le détail figure sur la page des frais.",
     "rich": true
   },
   {
@@ -16459,10 +14507,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.gdhka1",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Frais de gestion",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.ko6uzh",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Le portage salarial est une relation tripartite encadrée par le Code du travail et la convention collective de branche.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.lrj3uk",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Vous. Vous choisissez vos clients, vous négociez votre TJM et vous organisez votre intervention : nous n’entrons pas dans cette relation.",
     "rich": true
   },
   {
@@ -16508,6 +14570,13 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.u85f6z",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Étape 3",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.ui6s2f",
     "route": "/portage-salarial",
     "type": "paragraph",
@@ -16522,10 +14591,24 @@
     "rich": true
   },
   {
+    "key": "pages.portage-salarial.auto.paragraph.wxld7f",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Un consultant qui hésite sur son statut, ou une entreprise qui cherche un profil IT. Présentez-nous la personne : l’équipe confirme l’éligibilité et les conditions en vigueur avant toute mise en relation, et aucune coordonnée n’est transmise sans son accord.",
+    "rich": true
+  },
+  {
     "key": "pages.portage-salarial.auto.paragraph.x07lm1",
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Trouve ses missions et réalise ses prestations.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.xoh46f",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Une seule personne suit votre dossier.",
     "rich": true
   },
   {
@@ -16540,6 +14623,13 @@
     "route": "/portage-salarial",
     "type": "paragraph",
     "content": "Contrat de travail",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.yb10yo",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Avant de vous lancer",
     "rich": true
   },
   {
@@ -19147,94 +17237,17 @@
     "rich": true
   },
   {
-    "key": "pages.rse.auto.button.4ug2g5",
-    "route": "/rse",
-    "type": "button",
-    "content": "Contacter l’équipe",
-    "rich": true
-  },
-  {
     "key": "pages.rse.auto.heading.1co03gw",
     "route": "/rse",
     "type": "heading",
-    "content": "Ce qui est en place aujourd’hui",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.1hlyx01",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Une exigence RSE dans votre appel d’offres ?",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.1n526j4",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Équipements réparés, reconditionnés, donnés",
+    "content": "Ce sur quoi nous nous appuyons",
     "rich": true
   },
   {
     "key": "pages.rse.auto.heading.1nsallb",
     "route": "/rse",
     "type": "heading",
-    "content": "Six engagements que nous pouvons prouver.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.1ot5ix6",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Ce que nous ne revendiquons pas",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.1rm23nx",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Diversité et égalité des chances",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.1tp4gpt",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Éco-conception logicielle",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.1xptkyn",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Ce qui rend la démarche vérifiable",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.1yyel44",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Une charte Numérique Responsable, et un référent désigné",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.xfcupa",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Accessibilité numérique",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.heading.zsyzmz",
-    "route": "/rse",
-    "type": "heading",
-    "content": "Déplacements à faible impact",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.100675a",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Train en priorité sur les longues distances, transports en commun ou mobilités douces en proximité.",
+    "content": "Notre démarche RSE.",
     "rich": true
   },
   {
@@ -19245,59 +17258,10 @@
     "rich": true
   },
   {
-    "key": "pages.rse.auto.paragraph.12l1omt",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Nous distinguons les référentiels que nous utilisons dans nos pratiques des certifications ou labels effectivement détenus. Lorsque certaines reconnaissances ne sont pas encore acquises, nous inscrivons notre démarche dans une trajectoire structurée vers ces référentiels, y compris ceux associés à l’Institut du Numérique Responsable.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.142vmh2",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Ateliers, e-learning et retours d’expérience réguliers sur la mobilité, le travail à distance, la sobriété des outils et l’éco-conception.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.14u2zmf",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Formation",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.15mtsyl",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Dématérialisation",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.166f8fg",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Indicateurs",
-    "rich": true
-  },
-  {
     "key": "pages.rse.auto.paragraph.1bwi7b4",
     "route": "/rse",
     "type": "paragraph",
     "content": "Nos engagements",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.1e907ml",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Gouvernance",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.1gxatta",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Sous-traitance",
     "rich": true
   },
   {
@@ -19308,24 +17272,17 @@
     "rich": true
   },
   {
-    "key": "pages.rse.auto.paragraph.1lruplo",
+    "key": "pages.rse.auto.paragraph.1rot2vm",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Les équipes s’appuient sur le RGESN et les pratiques Green IT pour réduire le poids du code, des requêtes et des dépendances.",
+    "content": "The Porters est signataire de la Charte de la diversité : le recrutement repose sur les compétences, l’expérience et le savoir-être.",
     "rich": true
   },
   {
-    "key": "pages.rse.auto.paragraph.1nzigs2",
+    "key": "pages.rse.auto.paragraph.1sap1at",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Précision",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.265ram",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Le RGESN sert de référence à la formation de nos équipes et à nos pratiques d’éco-conception. Le RGAA et les recommandations WCAG servent de référence sur l’accessibilité. Nous les employons comme cadres de travail, et nous ne les présentons pas comme des certifications.",
+    "content": "Nous distinguons les référentiels que nous utilisons dans nos pratiques des labels effectivement détenus. Notre démarche est une trajectoire structurée : à ce jour, nous ne revendiquons aucune certification.",
     "rich": true
   },
   {
@@ -19336,80 +17293,17 @@
     "rich": true
   },
   {
-    "key": "pages.rse.auto.paragraph.ddta9h",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Des indicateurs RSE sont suivis en comité de pilotage : niveau de dématérialisation des échanges, maîtrise des déplacements, actions de formation et de partage de connaissances.",
-    "rich": true
-  },
-  {
     "key": "pages.rse.auto.paragraph.f0xscj",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Une charte, un référent, des pratiques identifiées et des indicateurs suivis en comité de pilotage.",
+    "content": "Les référentiels sur lesquels nous nous appuyons, et ce que nous ne revendiquons pas.",
     "rich": true
   },
   {
-    "key": "pages.rse.auto.paragraph.fbgqj4",
+    "key": "pages.rse.auto.paragraph.yorddf",
     "route": "/rse",
     "type": "paragraph",
-    "content": "Le groupe est signataire de la Charte de la diversité. Le recrutement repose sur les compétences, l’expérience et le savoir-être.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.fge7zl",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Les prestations qui touchent à une interface s’appuient sur le RGAA et les recommandations WCAG dès la conception.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.go8fnn",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Lorsqu’un prestataire est mobilisé, des critères de numérique responsable entrent dans sa sélection.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.lbu96b",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Réparation quand elle est possible, périphériques reconditionnés, recyclage et dons par des filières identifiées.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.qwjkxi",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Un engagement qui n’est ni mesuré ni relu en comité reste une intention. Voici les quatre mécanismes qui font que celui-ci ne l’est pas.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.r9fah4",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Gestion administrative entièrement dématérialisée : contrats, bons de commande, comptes rendus d’activité et facturation sont traités sans papier.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.wf6ukv",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Nous ne publions pas d’indicateur chiffré sur cette page. Les indicateurs existent et sont suivis en comité de pilotage ; ils seront publiés ici lorsqu’ils porteront sur une période close et une méthode que nous pouvons décrire.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.wxzqyn",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Une charte fixe les principes de sobriété, d’éco-conception et d’accessibilité. Un référent Numérique Responsable est désigné.",
-    "rich": true
-  },
-  {
-    "key": "pages.rse.auto.paragraph.xxeyen",
-    "route": "/rse",
-    "type": "paragraph",
-    "content": "Dites-nous laquelle. Nous répondons sur ce que nous faisons, pas sur ce que nous visons.",
+    "content": "Une charte Numérique Responsable est diffusée en interne et un référent est désigné. Nos pratiques s’appuient sur le RGESN pour l’éco-conception, ainsi que sur le RGAA et les recommandations WCAG pour l’accessibilité numérique.",
     "rich": true
   },
   {
@@ -19795,279 +17689,6 @@
     "route": "/simulateur",
     "type": "paragraph",
     "content": "Hypothèse fixe utilisée dans cette simulation.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.button.1unfqlc",
-    "route": "/tarifs",
-    "type": "button",
-    "content": "Je prends rendez-vous",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.button.4nxp4q",
-    "route": "/tarifs",
-    "type": "button",
-    "content": "Accueil",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.button.nviywh",
-    "route": "/tarifs",
-    "type": "button",
-    "content": "Je découvre les prestations",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.button.wvc156",
-    "route": "/tarifs",
-    "type": "button",
-    "content": "Je simule mes revenus",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.heading.1b27ok",
-    "route": "/tarifs",
-    "type": "heading",
-    "content": "Le calendrier de paie",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.heading.1nsallb",
-    "route": "/tarifs",
-    "type": "heading",
-    "content": "Ce que nous prenons, et ce que ça paie.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.heading.1ot5ix6",
-    "route": "/tarifs",
-    "type": "heading",
-    "content": "Une question sur un chiffre ? Posez-la avant de signer.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.heading.1xptkyn",
-    "route": "/tarifs",
-    "type": "heading",
-    "content": "Ce qui varie d’un consultant à l’autre",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.heading.2zejks",
-    "route": "/tarifs",
-    "type": "heading",
-    "content": "Les sept prestations que couvrent nos frais",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.heading.kj603j",
-    "route": "/tarifs",
-    "type": "heading",
-    "content": "Votre mutuelle",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.heading.yt4j8u",
-    "route": "/tarifs",
-    "type": "heading",
-    "content": "Vos frais professionnels",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.10n12s0",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Frais de gestion",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.13ozq3l",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Garantie financière",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.16b4gq",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Les conditions d’adhésion, la part prise en charge et le montant restant sont expliqués avant votre entrée. Les valeurs applicables figurent ensuite sur votre bulletin.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.17cl4n0",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Financement des formations",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.17ysdw7",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Notre taux",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1c7bps8",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Une seule personne suit votre dossier.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1dttx4h",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Seules les dépenses réelles, justifiées et liées à votre activité peuvent être retenues. La simulation utilise une hypothèse que vous pouvez adapter à votre situation.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1e907ml",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "À valider avant de signer",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1emf2ba",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Vous êtes couvert en cas de dommage causé chez un client.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1h79ne2",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture. Le calendrier de paie vous est expliqué avant le démarrage.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1hkia6c",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Communiqué avant signature",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1id3tdl",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Tarifs",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1m2lcgt",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Interlocuteur unique",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1m774e0",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Apport d’affaires",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1moqen3",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Contrat, facturation, paie, déclarations sociales et fiscales.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1n9ljky",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Gestion administrative complète",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1nzigs2",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Nous reprenons votre simulation ligne par ligne, avec vos vrais paramètres de mission.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1svlduv",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Responsabilité civile professionnelle",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1vbfg3j",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Votre date de versement dépend notamment de la transmission de votre compte rendu d’activité. Les échéances applicables vous sont communiquées au démarrage.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.1vgp6ud",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "CPF, OPCO, certifications. Nous vous orientons sur les dispositifs mobilisables selon votre situation.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.5zhxr7",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Avance de trésorerie",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.b067wa",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Le simulateur utilise une hypothèse de frais de gestion, indicative et non contractuelle, afin d’estimer votre rémunération avant cet échange.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.cwix1j",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.f0xscj",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel. Ils couvrent sept prestations, détaillées ci-dessous. Votre simulation en donne le montant avant toute signature.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.ko6uzh",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Les conditions de frais de gestion applicables vous sont communiquées avant la signature et figurent dans vos documents contractuels. Elles financent les sept services ci-contre.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.qwjkxi",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Ces trois postes dépendent de votre activité : ils se lisent à part du taux de gestion.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.tsi44p",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Nous vous proposons des missions issues de nos partenaires ; vous restez libre de trouver les vôtres.",
-    "rich": true
-  },
-  {
-    "key": "pages.tarifs.auto.paragraph.xbwzs4",
-    "route": "/tarifs",
-    "type": "paragraph",
-    "content": "Dispositif obligatoire qui sécurise le versement de votre salaire.",
     "rich": true
   }
 ]

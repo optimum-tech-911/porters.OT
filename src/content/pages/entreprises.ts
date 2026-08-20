@@ -68,13 +68,13 @@ export const enterprisePage = {
     {
       title: 'Renfort de projet IT',
       text: 'Développement, architecture, intégration, tests, infrastructure ou pilotage sur un périmètre défini.',
-      href: '/expertises/cloud-devops',
+      href: '/expertises',
     },
     {
       title: 'Environnements historiques',
       // F-D08 (PUBLISHABLE) — différenciant réel : la plupart des ESN ne vendent que du greenfield
       text: 'Applications métier sur socles anciens mais critiques pour la production, IBM i / AS400 compris, autant que sur des stacks récentes.',
-      href: '/expertises/cloud-devops',
+      href: '/expertises',
     },
     {
       title: 'Data et intelligence artificielle',

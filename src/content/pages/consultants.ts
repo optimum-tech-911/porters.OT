@@ -1,12 +1,9 @@
 export const consultantsPage = {
   audiences: [
-    'Cybersécurité, GRC et gouvernance',
-    'Data, IA et machine learning',
-    'Cloud, DevOps et SRE',
-    'Architecture et intégration',
-    'Product Owners et Product Managers',
-    'Scrum Masters et Agile Coaches',
-    'Chefs de projet IT, PMO et AMOA',
+    'Cybersécurité',
+    'Big Data / Cloud / IA',
+    'DevOps',
+    'Agilité',
   ],
 
   // Parcours complet du salarié porté, dans l'ordre du livre blanc The Porters

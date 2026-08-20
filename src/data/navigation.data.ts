@@ -53,7 +53,6 @@ export const navigation: Navigation = {
         title: 'Ressources',
         links: [
           { label: 'Blog', href: '/blog' },
-          { label: 'Livres blancs', href: '/livres-blancs' },
           { label: 'Parrainage', href: '/parrainage' },
           { label: 'Prendre rendez-vous', href: '/rendez-vous' },
         ],
