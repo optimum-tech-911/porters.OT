@@ -162,6 +162,25 @@ body {
   }
 }
 
+/* Phone fit-and-finish shared by every public page. This unlayered block has
+   priority over the layered desktop defaults while staying below scoped page CSS. */
+@media (max-width: 640px) {
+  html { scroll-padding-top:5.15rem; }
+  body { font-size:.98rem; }
+  main, main > section, main > article { min-width:0; }
+  img, video, svg { max-width:100%; }
+  input, select, textarea { font-size:16px; }
+  [id] { scroll-margin-top:5.15rem; }
+  .container { padding-inline:1rem; }
+  .section { padding-block:3.75rem; }
+  .section-sm { padding-block:2.75rem; }
+  .card { border-radius:14px;padding:1.25rem; }
+  .btn { min-height:3.1rem; }
+  .prose { font-size:.96rem;line-height:1.72; }
+  .prose h2 { margin-top:2.2rem; }
+  .prose blockquote { margin-inline:0;padding-left:1rem; }
+}
+
 @layer components {
   /* ========================================
      FLOATING ANIMATIONS (Hero Nodes)

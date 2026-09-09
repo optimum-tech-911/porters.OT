@@ -73,6 +73,7 @@ const { id = 'contact-form' } = Astro.props;
       event.preventDefault();
       const data = new FormData(form);
       const subject = String(data.get('subject') || 'Demande de contact');
+      const situation = String(data.get('situation') || '').trim();
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       const status = form.querySelector<HTMLElement>('[data-contact-status]');
       const params = new URLSearchParams(window.location.search);
@@ -94,6 +95,7 @@ const { id = 'contact-form' } = Astro.props;
 
       const { error } = await supabase.from('crm_inquiries').insert({
         kind: 'contact',
+        inquiry_type: situation === 'En recherche de CDI' ? 'application' : 'contact',
         source: 'website',
         status: 'new',
         priority: subject === 'Besoin d’expertise' ? 'high' : 'medium',
@@ -114,7 +116,7 @@ const { id = 'contact-form' } = Astro.props;
         utm_term: params.get('utm_term'),
         session_id: sessionId,
         user_agent: window.navigator.userAgent,
-        metadata: { situation: String(data.get('situation') || '').trim() },
+        metadata: { requestType: situation === 'En recherche de CDI' ? 'application' : 'contact', situation },
       });
 
       if (button) {
@@ -142,5 +144,5 @@ const { id = 'contact-form' } = Astro.props;
 
 <style>
   .contact-form{display:grid;gap:1.35rem}.contact-form__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.contact-form label{display:grid;gap:.5rem}.contact-form label>span,.contact-form legend{color:#253743;font-size:.7rem;font-weight:780}.contact-form input:not([type="radio"]):not([type="checkbox"]),.contact-form textarea{width:100%;border:1px solid rgba(37,55,67,.13);border-radius:.75rem;padding:.85rem 1rem;background:#fbfaf7;color:#253743;font:inherit;transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}.contact-form input:not([type="radio"]):not([type="checkbox"]):focus,.contact-form textarea:focus{border-color:#c6a45a;background:#fff;box-shadow:0 0 0 4px rgba(198,164,90,.1);outline:none}.contact-form fieldset{margin:0;border:0;padding:0}.contact-form legend{margin-bottom:.7rem}.contact-form__choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}.contact-form__choices label{position:relative;cursor:pointer}.contact-form__choices input{position:absolute;opacity:0}.contact-form__choices span{display:flex;min-height:3rem;align-items:center;justify-content:center;border:1px solid rgba(37,55,67,.12);border-radius:999px;padding:.65rem .8rem;background:#fff;text-align:center;transition:transform .2s ease,border-color .2s ease,background .2s ease}.contact-form__choices input:checked+span{border-color:#c6a45a;background:rgba(198,164,90,.12);transform:translateY(-2px)}.contact-form__choices input:focus-visible+span{outline:2px solid #c6a45a;outline-offset:2px}.contact-form__consent{grid-template-columns:auto 1fr!important;align-items:start;gap:.75rem!important;border-radius:.75rem;background:rgba(37,55,67,.035);padding:1rem}.contact-form__consent input{margin-top:.15rem;accent-color:#c6a45a}.contact-form__consent span{font-size:.67rem!important;line-height:1.55;color:rgba(37,55,67,.62)!important}.contact-form__consent a{color:#9b762e;text-decoration:underline}.contact-form__actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}.contact-form__status{margin:0;font-size:.7rem;color:rgba(37,55,67,.62)}.contact-form__status[data-state="error"]{color:#9c2f2f}.contact-form__status[data-state="success"]{color:#39704f}.contact-form button{display:flex;min-height:3.45rem;align-items:center;justify-content:center;gap:.8rem;border:0;border-radius:999px;padding-inline:1.35rem;background:#d5b15c;color:#142d39;cursor:pointer;font:inherit;font-size:.78rem;font-weight:800;transition:transform .24s ease,box-shadow .24s ease,background .24s ease}.contact-form button:disabled{cursor:wait;opacity:.68}.contact-form button:hover,.contact-form button:focus-visible{background:#dfbd6b;box-shadow:0 16px 34px rgba(37,55,67,.14);outline:none;transform:translateY(-3px)}.contact-form button span{font-size:1rem;transition:transform .2s ease}.contact-form button:hover span{transform:translateX(4px)}
-  @media(max-width:680px){.contact-form__grid,.contact-form__choices{grid-template-columns:1fr}}
+  @media(max-width:680px){.contact-form{gap:1.15rem}.contact-form__grid,.contact-form__choices{grid-template-columns:1fr;gap:.75rem}.contact-form input:not([type="radio"]):not([type="checkbox"]),.contact-form textarea{font-size:16px}.contact-form__choices span{min-height:3.1rem}.contact-form__actions,.contact-form button{width:100%}.contact-form button{min-height:3.25rem}.contact-form__status{width:100%}}
 </style>

@@ -116,7 +116,7 @@ const allStructuredData = [
     </main>
     <slot name="footer" />
     <ChatbotAssistant />
-    <HelloWorkOpportunityPopup />
+    {Astro.url.pathname.replace(/\/$/, '') === '' && <HelloWorkOpportunityPopup />}
     <CmsRuntime />
 
     <!-- Orchestrated section entrance observer -->

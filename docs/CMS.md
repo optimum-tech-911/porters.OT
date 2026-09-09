@@ -6,6 +6,11 @@ The CMS keeps the Astro site static and SEO-resilient while loading published ov
 
 - `cms_content_blocks` stores separate draft and published values, controlled formatting, status, editor, timestamps, and the current published version.
 - `cms_content_versions` stores immutable published snapshots.
+- `cms_content_activity` stores immutable before/after records for draft saves,
+  publications, restorations, and content creation. Existing published versions
+  are backfilled into this audit when the migration is applied.
+- `cms_admin_activity_summary` provides per-account totals without counting a
+  draft save and its subsequent publication as two separate edits.
 - `cms_admins` is the explicit allow-list linked to Supabase Auth users.
 - `cms_published_content` is the only anonymous content surface. It contains no draft or audit columns and reads through the narrowly typed `cms_read_published_content()` function; the base table is never granted to anonymous users.
 - `cms_save_draft`, `cms_publish_content`, `cms_restore_version`, and `cms_create_content_block` validate authorization on the database side.
@@ -13,7 +18,7 @@ The CMS keeps the Astro site static and SEO-resilient while loading published ov
 
 The public page makes one request for the current route and shared `/_global` content, then converts the response into a key/value map. The editor uses the same real page inside an iframe and requests the full draft state once for that route.
 
-All 54 public routes are inventoried in `src/cms/editable-pages.json`. `CmsRuntime.astro` discovers eligible rendered text using a deterministic structural key. Explicit keys in `content-registry.json` remain supported for content that needs a human-readable identifier or a mirror attribute. Header and footer text uses shared global keys.
+All 52 editable public routes are inventoried in `src/cms/editable-pages.json`. `CmsRuntime.astro` discovers eligible rendered text using a deterministic structural key. Explicit keys in `content-registry.json` remain supported for content that needs a human-readable identifier or a mirror attribute. Header and footer text uses shared global keys.
 
 ## Environment variables
 
@@ -50,6 +55,21 @@ Edit → Save draft → Preview → Publish
 ```
 
 A restored version becomes a draft first. It must be reviewed and explicitly published.
+
+## Administrator activity audit
+
+The account report is available at `/admin/activity`. It shows, for every
+approved CMS account:
+
+- total known modifications;
+- publications and distinct texts touched;
+- the exact date, page, content key, and action;
+- complete before/after text and formatting snapshots.
+
+The report starts with the first immutable published version in
+`cms_content_versions`. Draft saves made before the activity migration cannot be
+reconstructed because the original CMS stored only the latest draft. After the
+migration, every changed draft save is retained in `cms_content_activity`.
 
 ## Content keys and fallback registry
 
@@ -103,4 +123,12 @@ SUPABASE_ACCESS_TOKEN='your-management-token' npm run cms:verify
 
 ## Current rollout scope
 
-All 54 public routes are connected with 2,250 keys, including 74 shared header/footer keys. SEO metadata, JSON-LD, image attributes, and non-visible source data intentionally remain source-controlled; visible headings, paragraphs, navigation labels, buttons, cards, FAQs, CTAs, and footer copy are editable while their hardcoded text remains the fallback.
+All 52 editable public routes are connected with 2,575 unique keys, including 46 shared header/footer and form keys. SEO metadata, JSON-LD, image attributes, and non-visible source data intentionally remain source-controlled; visible headings, paragraphs, navigation labels, buttons, cards, FAQs, CTAs, and footer copy are editable while their hardcoded text remains the fallback.
+
+
+## September site controls
+
+The public team, homepage notifications and MULA simulator now have dedicated CMS
+settings screens. See [the 6 September audit and rollout status](CMS-AUDIT-2026-09-06.md)
+for their routes, database migrations, verified behavior and remaining CMS issues.
+The prepared migrations have not been applied to Supabase from this session.

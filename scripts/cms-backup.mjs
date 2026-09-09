@@ -4,10 +4,11 @@
  *
  * Scope was determined from the repo, not assumed. The seed migration and the
  * cms_publish_content / cms_restore_version / cms_save_draft functions all write
- * to exactly two tables:
+ * to three tables after the activity-audit migration:
  *
  *   cms_content_blocks     draft + published state per content key
  *   cms_content_versions   immutable published snapshots
+ *   cms_content_activity   immutable per-account before/after audit
  *
  * cms_admins is created by the CMS migration but never written by the seed, so
  * it is captured as well: it is small, and losing the allow-list would lock every
@@ -40,7 +41,8 @@ if (!token) {
   process.exit(1);
 }
 
-/** Every table the later migration or the CMS functions can write to. */
+/** Every table the CMS functions can write to. Activity is optional so this
+ * script can still create the mandatory backup before its migration exists. */
 const TABLES = ['cms_content_blocks', 'cms_content_versions', 'cms_admins'];
 
 async function query(sql) {
@@ -57,6 +59,11 @@ async function query(sql) {
     throw new Error(`Unparseable response: ${body.slice(0, 200)}`);
   }
 }
+
+const activityTable = await query(
+  `select to_regclass('public.cms_content_activity') is not null as present;`,
+);
+if (activityTable[0]?.present) TABLES.push('cms_content_activity');
 
 const startedAt = new Date();
 const stamp = startedAt.toISOString().replace(/[:.]/g, '-').replace('T', '_').slice(0, 19);
@@ -117,8 +124,8 @@ const manifest = {
   projectRef: ref,
   purpose: 'Pre-migration read-only snapshot of writable CMS tables.',
   scopeRationale:
-    'cms_content_blocks and cms_content_versions are written by the seed migration and by ' +
-    'cms_publish_content / cms_restore_version / cms_save_draft. cms_admins is included because ' +
+    'cms_content_blocks, cms_content_versions, and (when installed) cms_content_activity are written by ' +
+    'the CMS functions. cms_admins is included because ' +
     'losing the allow-list would lock administrators out. cms_published_content is a view and ' +
     'needs no separate snapshot.',
   tables: manifestTables,

@@ -1,0 +1,72 @@
+.mula-form { max-width: 1120px; margin: 0 auto; color: #1c222e; font-family: Arial, sans-serif; }
+.mula-form header { margin-bottom: 2.7rem; }
+.mula-form header h2 { margin: 0 0 1.7rem; font: 750 clamp(1.8rem, 3vw, 2.5rem)/1.2 Arial, sans-serif; letter-spacing: -.035em; color: #1c222e; }
+.mula-form header p { margin: 0; font-size: 1.15rem; line-height: 1.6; color: #74849c; }
+.mula-form__prompt { font-weight: 700; margin-bottom: 1.15rem; }
+.mula-form__tabs { display: flex; gap: 3px; }
+.mula-form__tabs button { flex: 1; min-width: 0; padding: 1.5rem 1rem 2.5rem; border: 0; border-radius: 3px 3px 0 0; text-align: left; background: #ebebeb; color: #526073; font: 500 1rem/1.4 Arial, sans-serif; cursor: pointer; }
+.mula-form__tabs button[aria-selected="true"] { background: #c49c4a; color: #fff; font-weight: 700; }
+.mula-form__tabs button:disabled { opacity: .4; cursor: not-allowed; }
+.mula-form button:focus-visible, .mula-form a:focus-visible { outline: 3px solid #203642; outline-offset: 3px; }
+.mula-form__panel { border: 1px solid #c49c4a; border-radius: 0 0 4px 4px; padding: clamp(1.2rem, 3vw, 2.25rem); background: #fff; }
+.mula-form__field { display: block; font-size: 1rem; color: #526073; line-height: 1.5; }
+.mula-form__input { display: flex; align-items: stretch; margin-top: .4rem; }
+.mula-form__field input, .mula-form__field select { width: 100%; min-width: 0; border: 1px solid #e5eaf0; border-radius: 4px; padding: .65rem .8rem; height: 46px; font: 1rem Arial, sans-serif; color: #15191e; background: #fff; box-sizing: border-box; }
+.mula-form__field input:disabled, .mula-form__field select:disabled { color: #53616b; background: #f0f0f0; opacity: 1; }
+.mula-form__field input:focus, .mula-form__field select:focus { outline: 2px solid #c49c4a; outline-offset: 1px; }
+.mula-form__field select { margin-top: .4rem; }
+.mula-form__input input { border-radius: 4px 0 0 4px; }
+.mula-form__input > span { display: grid; place-items: center; padding: 0 .8rem; white-space: nowrap; background: #ebebeb; border-radius: 0 4px 4px 0; color: #1c222e; }
+.mula-form__input > span:empty { display: none; }
+.mula-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.15rem; }
+.mula-form__calculate { margin-top: 2.2rem; width: 100%; border: 0; border-radius: 5px; padding: .65rem 1rem; background: #1c222e; color: #fff; font: 500 1rem Arial, sans-serif; cursor: pointer; }
+.mula-form__calculate:disabled { opacity: .5; cursor: not-allowed; }
+.mula-form__disclaimer { text-align: center; color: #74849c; font-size: .8rem; line-height: 1.5; margin: .45rem 0 1.2rem; }
+.mula-form__error { color: #9f332c; padding: 1rem; background: #fff5f3; font-size: 1rem; }
+.mula-form__results { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #dfe3e6; }
+.mula-form__results h3 { font-size: 1.5rem; margin: 0 0 1.2rem; }
+.mula-form__net { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; padding: 1.5rem; color: #fff; background: #203642; border-radius: 6px; }
+.mula-form__net strong { font-size: 1.8rem; }
+.mula-form__results dl { margin: 1.3rem 0; }
+.mula-form__results dl > div { display: flex; justify-content: space-between; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid #e5eaf0; font-size: .95rem; }
+.mula-form__results dd { margin: 0; white-space: nowrap; font-weight: 600; }
+.mula-form__actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.mula-form__actions a { border-bottom: 1px solid #c49c4a; padding: .5rem 0; font-size: .95rem; }
+.mula-form__lead { margin-top: 2rem; border-radius: 8px; padding: clamp(1.15rem, 3vw, 1.7rem); background: #f7f4ed; }
+.mula-form__lead h4 { margin: 0 0 1rem; color: #203642; font-size: 1.25rem; }
+.mula-form__lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+.mula-form__lead label { display: grid; gap: .35rem; color: #526073; font-size: .9rem; }
+.mula-form__lead input:not([type="checkbox"]), .mula-form__lead select { width: 100%; min-width: 0; height: 44px; border: 1px solid #dce2e6; border-radius: 5px; padding: .6rem .75rem; background: #fff; color: #15191e; font: inherit; }
+.mula-form__lead .mula-form__consent { display: flex; align-items: flex-start; gap: .7rem; margin-top: 1rem; font-size: .8rem; line-height: 1.5; }
+.mula-form__consent input { margin-top: .2rem; accent-color: #c49c4a; }
+.mula-form__consent a { color: #80611f; text-decoration: underline; }
+.mula-form__lead > button { width: 100%; margin-top: 1rem; border: 0; border-radius: 5px; padding: .75rem 1rem; background: #203642; color: #fff; cursor: pointer; font: 600 .95rem Arial,sans-serif; }
+.mula-form__lead > button:disabled { cursor: default; opacity: .65; }
+.mula-form__lead-status { margin: .9rem 0 0; font-size: .85rem; }
+.mula-form__lead-status--error { color: #9f332c; }
+.mula-form__lead-status--success { color: #276443; }
+@media (max-width: 650px) {
+  .mula-form header { margin-bottom:2rem; }
+  .mula-form header h2 { margin-bottom:.85rem;font-size:clamp(1.7rem,8vw,2.15rem); }
+  .mula-form header p { font-size:1rem;line-height:1.5; }
+  .mula-form__tabs { overflow-x:auto;gap:.35rem;margin-inline:-1rem;padding:0 1rem .45rem;scroll-padding-inline:1rem;scroll-snap-type:x mandatory;scrollbar-width:none; }
+  .mula-form__tabs::-webkit-scrollbar { display:none; }
+  .mula-form__tabs button { flex:0 0 10rem;min-height:3.5rem;padding:.8rem .75rem;border-radius:.65rem;text-align:center;font-size:.82rem;line-height:1.25;scroll-snap-align:start; }
+  .mula-form__panel { margin-top:.55rem;border-radius:.8rem;padding:1.1rem; }
+  .mula-form__grid, .mula-form__lead-grid { grid-template-columns:minmax(0,1fr);gap:.85rem; }
+  .mula-form__field input, .mula-form__field select,
+  .mula-form__lead input:not([type="checkbox"]), .mula-form__lead select { font-size:16px; }
+  .mula-form__calculate { min-height:3.15rem;margin-top:1.5rem; }
+  .mula-form__net { display:grid;gap:.4rem;padding:1.15rem; }
+  .mula-form__net strong { font-size:1.55rem; }
+  .mula-form__results dl > div { display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;font-size:.85rem; }
+  .mula-form__results dt { line-height:1.45; }
+  .mula-form__actions { display:grid;gap:.6rem; }
+  .mula-form__actions a { min-height:2.75rem; }
+}
+@media (max-width: 390px) {
+  .mula-form__panel { padding:.9rem; }
+  .mula-form__tabs button { flex-basis:8.8rem;font-size:.76rem; }
+  .mula-form__input > span { padding-inline:.65rem; }
+  .mula-form__results dl > div { gap:.65rem;font-size:.8rem; }
+}

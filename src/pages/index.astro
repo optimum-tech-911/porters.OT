@@ -130,20 +130,21 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
           <div class="light-hellowork-copy">
             <p data-motion-item="left" style="--motion-order:1" {...cmsAttrs('home.jobs.eyebrow')}>{cmsText('home.jobs.eyebrow')}</p>
             <h2 data-motion-item="left" style="--motion-order:2" {...cmsAttrs('home.jobs.title')}>{cmsText('home.jobs.title')}</h2>
-            <strong data-motion-item="left" style="--motion-order:3" {...cmsAttrs('home.jobs.description')}>{cmsText('home.jobs.description')}</strong>
+            <strong data-motion-item="left" style="--motion-order:3" {...cmsAttrs('home.jobs.brand_free.description')}>{cmsText('home.jobs.brand_free.description')}</strong>
             <ul class="light-hellowork-points" aria-label="Repères recrutement">
               <li data-motion-item="chip" style="--motion-order:4" {...cmsAttrs('home.jobs.point.current')}>{cmsText('home.jobs.point.current')}</li>
               <li data-motion-item="chip" style="--motion-order:5" {...cmsAttrs('home.jobs.point.direct')}>{cmsText('home.jobs.point.direct')}</li>
               <li data-motion-item="chip" style="--motion-order:6" {...cmsAttrs('home.jobs.point.full')}>{cmsText('home.jobs.point.full')}</li>
             </ul>
             <div data-motion-item="pop" style="--motion-order:7">
-              <a href={helloWorkUrl} target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.external_cta')}>{cmsText('home.jobs.external_cta')}</span> <b aria-hidden="true">→</b></a>
+              <a href={helloWorkUrl} target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.brand_free.external_cta')}>{cmsText('home.jobs.brand_free.external_cta')}</span> <b aria-hidden="true">→</b></a>
+              <a href="/candidat"><span>Je suis candidat</span> <b aria-hidden="true">→</b></a>
             </div>
           </div>
           <div class="light-hellowork-preview" data-motion-item="right" style="--motion-order:3" aria-hidden="true">
             <div class="light-hellowork-orbit"></div>
             <article class="light-hellowork-panel light-hellowork-panel--primary">
-              <small {...cmsAttrs('home.jobs.preview.platform')}>{cmsText('home.jobs.preview.platform')}</small>
+              <small {...cmsAttrs('home.jobs.brand_free.platform')}>{cmsText('home.jobs.brand_free.platform')}</small>
               <strong {...cmsAttrs('home.jobs.preview.company')}>{cmsText('home.jobs.preview.company')}</strong>
               <span {...cmsAttrs('home.jobs.preview.status')}>{cmsText('home.jobs.preview.status')}</span>
             </article>
@@ -251,19 +252,10 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     margin-bottom: 3rem;
   }
 
-  .light-final-cta p {
-    margin-bottom: 0.8rem;
-    color: var(--color-porters-gold);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
   .light-section-heading h2,
   .light-offer-copy h2,
   .light-proximity-copy h2,
-  .light-faq-copy h2,
-  .light-final-cta h2 {
+  .light-faq-copy h2 {
     margin-bottom: 1rem;
     font-size: clamp(2.3rem, 4.4vw, 4.2rem);
     font-weight: 600;
@@ -272,8 +264,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   }
   .light-section-heading > span,
   .light-proximity-copy > span,
-  .light-faq-copy > span,
-  .light-final-cta > .light-container > span {
+  .light-faq-copy > span {
     display: block;
     color: rgba(40, 55, 67, 0.6);
     line-height: 1.7;
@@ -1208,77 +1199,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
   .light-faq-list details[open] .light-faq-answer > div {
     animation: faq-answer-in 360ms var(--ease-soft) both;
   }
-  .light-final-cta {
-    position: relative;
-    overflow: hidden;
-    padding-block: clamp(5.5rem, 9vw, 8.5rem);
-    background:
-      radial-gradient(circle at 50% 120%, rgba(190, 158, 88, 0.22), transparent 44%),
-      var(--color-porters-navy);
-    text-align: center;
-  }
-  .light-final-cta h2 {
-    max-width: 18ch;
-    margin-inline: auto;
-    color: white;
-  }
-  .light-final-cta > .light-container > span {
-    display: block;
-    max-width: 38rem;
-    margin-inline: auto;
-    color: rgba(255, 255, 255, 0.58);
-  }
-  .light-final-cta > .light-container > div {
-    display: flex;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
-  .light-final-primary,
-  .light-final-secondary {
-    display: inline-flex;
-    min-height: 3.25rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    padding-inline: 1.35rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    transition:
-      transform var(--motion-fast) var(--ease-soft),
-      background-color var(--motion-fast) ease,
-      border-color var(--motion-fast) ease,
-      color var(--motion-fast) ease,
-      box-shadow var(--motion-fast) ease;
-  }
-  .light-final-primary {
-    background: var(--color-porters-gold);
-    color: var(--color-porters-navy);
-    box-shadow: 0 12px 30px rgba(10, 21, 29, 0.18);
-  }
-  .light-final-secondary {
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    color: white;
-  }
-  .light-final-primary:hover,
-  .light-final-secondary:hover {
-    transform: translateY(-3px);
-  }
-  .light-final-primary:hover {
-    background: white;
-    color: var(--color-porters-navy);
-    box-shadow: 0 17px 38px rgba(10, 21, 29, 0.24);
-  }
-  .light-final-secondary:hover {
-    border-color: var(--color-porters-gold);
-    background: rgba(255, 255, 255, 0.06);
-    color: white;
-  }
-  .light-final-primary:active,
-  .light-final-secondary:active {
-    transform: translateY(0);
-  }
-
   @keyframes offer-detail-pop {
     from {opacity: 0.82; transform: translateY(10px) scale(0.985); }
     to {opacity: 1; transform: none; }}
@@ -1308,15 +1228,14 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     .light-proximity-copy,
     .light-faq-copy {
       max-width: 42rem;
-    }}
+    }
+  }
 
   @media (max-width: 700px) {
     .light-container {
       width: min(100% - 2rem, 78rem);
     }
-    .light-section {
-      padding-block: 4.5rem;
-    }
+    .light-section { padding-block:3.8rem; }
     .light-logo-strip {
       grid-template-columns: 1fr;
     }
@@ -1335,6 +1254,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     .light-offer-flow {
       grid-template-columns: 1fr;
       min-height: 0;
+      gap:.65rem;
     }
     .light-offer-flow::before,
     .light-offer-flow::after {
@@ -1342,6 +1262,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     }
     .light-offer-item {
       min-height: auto;
+      padding-block:1rem;
     }
     .light-offer-welcome {
       width: min(100%, 36rem);
@@ -1350,6 +1271,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     .light-reviews-header {
       align-items: start;
       flex-direction: column;
+      gap:.8rem;
     }
     .light-city-list a {
       grid-template-columns: 2rem 1fr auto;
@@ -1357,16 +1279,20 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     .light-city-list small {
       display: none;
     }
-    .light-final-cta > .light-container > div {
-      flex-direction: column;
-    }
-    .light-final-primary,
-    .light-final-secondary {
-      width: 100%;
-    }
-    .light-final-cta {
-      padding-bottom: calc(7rem + env(safe-area-inset-bottom));
-    }}
+    .light-offer-layout,.light-proximity-layout,.light-faq-layout{gap:2.25rem}
+    .light-faq-list summary{min-height:4.25rem;gap:.8rem;padding-block:.75rem}
+    .light-faq-list details>div{padding:0 0 1.2rem}
+    .light-jobs-marquee{margin-inline:-1rem;padding-inline:1rem;mask-image:none;-webkit-mask-image:none}
+    .light-logo-intro{padding-inline:1rem}
+  }
+
+  @media (max-width: 420px) {
+    .light-container{width:min(100% - 1.5rem,78rem)}
+    .light-section{padding-block:3.35rem}
+    .light-job-card{width:15.75rem;flex-basis:15.75rem;padding:1rem}
+    .light-hellowork-preview{min-height:12rem}
+    .light-hellowork-copy a{width:100%;min-height:3rem}
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .light-offer-section.motion-section-ready .light-offer-item[data-motion-item],
@@ -1385,5 +1311,6 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
     }
     .light-faq-answer {
       transition: none;
-    }}
+    }
+  }
 </style>

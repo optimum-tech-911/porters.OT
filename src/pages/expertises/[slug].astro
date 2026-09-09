@@ -612,15 +612,19 @@ const detailImage = detailImages[(expertiseIndex + 1) % detailImages.length];
   @media(max-width:480px){
     .domain-hero-actions{display:grid}
     .domain-hero-actions a{width:100%}
+    .domain-hero-grid{padding-block:2.75rem}
+    .domain-hero-copy h1{font-size:clamp(2.3rem,11.5vw,3.2rem)}
+    .domain-orbit{min-height:29rem}
     .domain-orbit-core{width:9rem;height:9rem}
     .domain-orbit-node{min-width:6.2rem}
     .domain-orbit-node strong{font-size:.6rem}
     .domain-hero-photo figcaption{display:grid;gap:.2rem}
     .method-tabs{grid-template-columns:1fr}
     .method-tabs button{grid-template-columns:minmax(0,1fr) auto}
-    .method-stage article{padding:1.5rem}
+    .method-stage article{min-height:0;padding:1.3rem}
     .method-stage article>span{font-size:3.5rem}
     .role-grid{grid-template-columns:1fr}
+    .domain-next-grid a{min-height:8rem;padding:1.2rem}
   }
 
   @media(prefers-reduced-motion:reduce){

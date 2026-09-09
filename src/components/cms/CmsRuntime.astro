@@ -1,6 +1,6 @@
 ---
 // Every page keeps its rendered copy as an SEO-safe fallback. The runtime adds
-// stable keys to unregistered visible text and then performs one request for
+// stable keys to unregistered visible text and then loads all result pages for
 // the current route plus the shared header/footer content.
 //
 // A block whose children are only inline decoration is claimed whole, so an
@@ -13,6 +13,7 @@
   import type { CmsFormat } from '../../cms/content';
   import { sanitizeInlineHtml } from '../../cms/inline-html';
   import { discoverEditableText } from '../../cms/discover';
+  import { loadCmsPages } from '../../cms/load-pages';
 
   type PublishedBlock = {
     content_key: string;
@@ -255,21 +256,22 @@
         const { data: sessionData } = await supabase.auth.getSession();
         if (!sessionData.session) throw new Error('Session administrateur absente');
 
-        const { data, error } = await supabase
+        const data = await loadCmsPages<EditorBlock>((from, to) => supabase
           .from('cms_content_blocks')
           .select('id,content_key,route_path,element_type,fallback_content,draft_content,published_content,draft_format,published_format,status,published_version,updated_at,published_at')
           .in('route_path', [pageRoute, GLOBAL_ROUTE])
-          .order('content_key');
-        if (error) throw error;
-        (data as EditorBlock[] | null)?.forEach((block) => blockByKey.set(block.content_key, block));
+          .order('content_key')
+          .range(from, to));
+        data.forEach((block) => blockByKey.set(block.content_key, block));
         await createMissingVisibleBlocks();
       } else {
-        const { data, error } = await supabase
+        const data = await loadCmsPages<PublishedBlock>((from, to) => supabase
           .from('cms_published_content')
           .select('content_key,route_path,element_type,published_content,published_format,published_at')
-          .in('route_path', [pageRoute, GLOBAL_ROUTE]);
-        if (error) throw error;
-        (data as PublishedBlock[] | null)?.forEach((block) => blockByKey.set(block.content_key, block));
+          .in('route_path', [pageRoute, GLOBAL_ROUTE])
+          .order('content_key')
+          .range(from, to));
+        data.forEach((block) => blockByKey.set(block.content_key, block));
       }
 
       blockByKey.forEach(applyBlock);

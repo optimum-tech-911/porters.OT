@@ -29,6 +29,7 @@ const statusLabels: Record<string, string> = {
   contact: 'Contact',
   simulator: 'Simulateur',
   appointment: 'Rendez-vous',
+  application: 'Candidature',
   resources: 'Ressources',
   enterprise: 'Entreprise',
   active: 'Actif',

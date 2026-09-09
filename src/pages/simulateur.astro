@@ -1,10 +1,9 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
-import SimulatorForm from '../components/forms/SimulatorForm.tsx';
+import MulaSimulator from '../components/forms/MulaSimulator.tsx';
 import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import { pageSeo } from '../data/seo.data';
 import simulatorImage from '../../images/financial-calculator.webp';
-import calculatorImage from '../../images/business-meeting.webp';
 
 const seo = {
   title: pageSeo.simulateur.title,
@@ -72,31 +71,11 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- Simulator -->
-  <section class="section bg-porters-navy/[0.02] brand-ambient-host">
-    <BrandAmbientShapes placement="right" />
+  <!-- The section keeps its position; the independent JSON settings document
+       owns the replacement form, so legacy positional text cannot overwrite it. -->
+  <section class="section bg-white" id="simulation">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-10 grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.28fr)] lg:items-end">
-        <div class="reveal">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Votre projection</p>
-          <h2 class="mb-4">Partez de vos vrais chiffres</h2>
-          <p class="max-w-2xl text-porters-black/62">
-            Le parcours portage part de votre chiffre d’affaires mensuel. Le parcours freelance part de
-            votre TJM et de vos jours facturés. Dans les deux cas, le chiffre d’affaires n’est jamais
-            présenté comme un net.
-          </p>
-        </div>
-        <div class="reveal overflow-hidden rounded-lg border border-porters-navy/10 bg-white shadow-sm">
-          <img
-            src={calculatorImage.src}
-            width={calculatorImage.width}
-            height={calculatorImage.height}
-            alt="Main utilisant une calculatrice sur des documents financiers."
-            class="h-48 w-full object-cover"
-          />
-        </div>
-      </div>
-      <SimulatorForm client:load />
+      <MulaSimulator client:load />
     </div>
   </section>
 
@@ -141,3 +120,15 @@ const faqItems = [
   </section>
 
 </PageLayout>
+
+<style is:global>
+  @media(max-width:640px){
+    .simulator-hero-content{padding-block:4rem}
+    .simulator-hero-content h1{font-size:clamp(2.25rem,11vw,3rem)}
+    .simulator-hero-content>div>div:last-child{gap:.45rem}
+    .simulator-hero-content>div>div:last-child span{padding:.55rem .72rem;font-size:.75rem}
+    #simulation{padding-block:3.25rem}
+    details summary{gap:.75rem;padding:1rem}
+    details>div{padding-inline:1rem}
+  }
+</style>

@@ -16,6 +16,7 @@ interface CrmInquiryRow {
   created_at: string;
   updated_at: string;
   kind: 'contact' | 'simulation';
+  inquiry_type: 'contact' | 'appointment' | 'application' | 'simulation';
   status: string;
   assigned_admin: string | null;
   first_name: string | null;
@@ -52,6 +53,7 @@ const filters: FilterConfig[] = [
       { value: 'contact', label: 'Contact' },
       { value: 'simulator', label: 'Simulateur' },
       { value: 'appointment', label: 'Rendez-vous' },
+      { value: 'application', label: 'Candidature' },
       { value: 'resources', label: 'Ressources' },
     ],
   },
@@ -120,7 +122,7 @@ export default function AdminLeadsContent() {
             email: row.email,
             phone: row.phone || '',
             company: row.company || '',
-            source: row.kind === 'simulation' ? 'simulator' : 'contact',
+            source: row.inquiry_type === 'simulation' || row.kind === 'simulation' ? 'simulator' : row.inquiry_type,
             status: statusMap[row.status] || 'new',
             assignedAdmin: row.assigned_admin,
             lastInteraction: row.updated_at || row.created_at,

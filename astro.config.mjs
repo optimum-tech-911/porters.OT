@@ -43,11 +43,9 @@ export default defineConfig({
       dedupe: ['react', 'react-dom'],
     },
     optimizeDeps: {
-      // Force the admin islands and their development JSX helpers through the
-      // same pre-bundled React runtime. This prevents stale `_jsxDEV` exports
-      // from blanking the admin shell during local development.
-      include: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
-      force: true,
+      // Keep all shared island dependencies in the initial graph. Re-optimizing
+      // Supabase after pages load expires imports held by existing browser tabs.
+      include: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime', '@supabase/supabase-js'],
     },
   },
 });

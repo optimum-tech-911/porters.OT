@@ -10,7 +10,7 @@ import workspaceImage from '../../images/consultant-workspace.webp';
   }}
   breadcrumbs={[{ label: 'Espace client' }]}
 >
-  <section class="relative min-h-[36rem] overflow-hidden bg-porters-navy text-porters-white">
+  <section class="client-space-hero relative min-h-[36rem] overflow-hidden bg-porters-navy text-porters-white">
     <img
       src={workspaceImage.src}
       width={workspaceImage.width}
@@ -64,3 +64,11 @@ import workspaceImage from '../../images/consultant-workspace.webp';
     </div>
   </section>
 </PageLayout>
+
+<style is:global>
+  @media(max-width:640px){
+    .client-space-hero,.client-space-hero>div:last-child{min-height:29rem}
+    .client-space-hero>div:last-child{padding-block:4rem}
+    .client-space-hero h1{font-size:clamp(2.35rem,11vw,3rem)}
+  }
+</style>

@@ -1,0 +1,20 @@
+.site-settings{color:var(--admin-text-primary);font-size:.9rem}
+.site-settings fieldset{border:0;padding:0;margin:0;min-width:0}
+.site-settings__toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.site-settings__toolbar>a{margin-left:auto;color:var(--admin-accent);font-weight:700}
+.site-settings__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1rem}
+.site-settings__card{background:white;border:1px solid var(--admin-border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+.site-settings label{display:grid;gap:.45rem;font-size:.8rem;font-weight:650;margin-bottom:1rem}
+.site-settings input:not([type=checkbox]),.site-settings textarea,.site-settings select{width:100%;min-height:2.8rem;background:#fff;border:1px solid var(--admin-border);border-radius:8px;padding:.65rem .8rem;color:var(--admin-text-primary);font:inherit;font-weight:400}
+.site-settings textarea{min-height:6rem;resize:vertical;line-height:1.5}
+.site-settings .site-settings__check{display:flex;align-items:center;gap:.7rem;font-size:.88rem}
+.site-settings__check input{width:1.1rem;height:1.1rem;accent-color:#203440}
+.site-settings h2,.site-settings h3{margin:0 0 1rem;font-weight:700;font-size:1.1rem}
+.site-settings__actions{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:1rem}
+.site-settings__error,.site-settings__notice{padding:1rem;border-radius:10px;line-height:1.5;margin-bottom:1rem}
+.site-settings__error{background:#fff1ee;color:#963b2b}.site-settings__notice{background:#eef4f2;color:#254e42}
+.site-settings small{display:block;color:var(--admin-text-secondary);font-weight:400;line-height:1.5}
+.site-settings__portrait{width:7rem;height:8rem;object-fit:cover;border-radius:10px;margin-bottom:1rem}
+.site-settings__split{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,.65fr);gap:2rem;align-items:start}
+.site-settings :focus-visible{outline:2px solid #c6a45a;outline-offset:3px}
+@media(max-width:850px){.site-settings__split{grid-template-columns:1fr}.site-settings__toolbar>a{margin-left:0}}

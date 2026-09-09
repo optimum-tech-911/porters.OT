@@ -532,13 +532,17 @@
   }
 
   .tp-chat-thread {
-    padding: 0.9rem;
+    padding: 0.9rem 0.8rem;
+    overscroll-behavior:contain;
   }
 
   .tp-chat-bubble {
     max-width: calc(100% - 2rem);
     font-size: 0.83rem;
   }
+
+  .tp-chat-composer{padding-bottom:calc(.8rem + env(safe-area-inset-bottom))}
+  .tp-chat-composer input{font-size:16px}
 }
 
 @media (prefers-reduced-motion: reduce) {

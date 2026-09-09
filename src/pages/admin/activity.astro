@@ -1,0 +1,12 @@
+---
+/**
+ * /admin/activity — Per-account CMS change audit.
+ * Protected by AdminAuthGate and Supabase RLS.
+ */
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import CmsActivityContent from '../../components/admin/pages/CmsActivityContent';
+---
+
+<AdminLayout title="Activité éditoriale" pageTitle="Activité éditoriale">
+  <CmsActivityContent client:load />
+</AdminLayout>

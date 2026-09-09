@@ -1,60 +1,66 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import { pageSeo } from '../data/seo.data';
+import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
+import SiteIcon from '../components/ui/SiteIcon.astro';
 ---
 
 <PageLayout
   seo={pageSeo.parrainage}
   breadcrumbs={[{ label: 'The Porters', href: '/qui-sommes-nous' }, { label: 'Parrainage' }]}
 >
-  <section class="section pt-8 lg:pt-16 pb-12">
+  <section class="referral-hero brand-ambient-host" data-motion-section>
+    <BrandAmbientShapes placement="split" />
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal">
-        <div>
-          <p class="text-sm font-semibold uppercase tracking-wider text-porters-gold mb-4">Programme de parrainage</p>
-          <h1 class="mb-6 leading-tight">Vous connaissez quelqu’un<br/><span class="gold-underline">à qui cela servirait&nbsp;?</span></h1>
-          <p class="text-porters-black/60 text-lg leading-relaxed mb-8">
+      <div class="referral-layout reveal">
+        <div class="referral-copy" data-motion-item="left" style="--motion-order:0">
+          <p class="referral-eyebrow">Programme de parrainage</p>
+          <h1>Vous connaissez quelqu’un<br/><span class="gold-underline">à qui cela servirait&nbsp;?</span></h1>
+          <p class="referral-lead">
             Un consultant qui hésite sur son statut, ou une entreprise qui cherche un profil IT. Présentez-nous la personne&nbsp;: nous qualifions le besoin et vous précisons les conditions applicables avant tout partage de coordonnées.
           </p>
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-start gap-3 text-sm text-porters-black/70">
+          <ul class="referral-proof">
+            <li data-motion-item="chip" style="--motion-order:1">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
               Conditions communiquées avant toute mise en relation
             </li>
-            <li class="flex items-start gap-3 text-sm text-porters-black/70">
+            <li data-motion-item="chip" style="--motion-order:2">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
               Éligibilité confirmée par l’équipe The Porters
             </li>
-            <li class="flex items-start gap-3 text-sm text-porters-black/70">
+            <li data-motion-item="chip" style="--motion-order:3">
               <span class="w-1.5 h-1.5 rounded-full bg-porters-gold mt-2 shrink-0"></span>
               Aucune coordonnée transmise sans accord
             </li>
           </ul>
         </div>
         
-        <div class="card p-8 lg:p-10 bg-porters-navy text-porters-white border-porters-navy">
-          <h2 class="text-porters-white mb-6">Comment ça marche ?</h2>
-          <div class="space-y-8">
-            <div>
+        <div class="referral-journey" data-motion-item="right" style="--motion-order:1">
+          <h2>Comment ça marche ?</h2>
+          <div class="referral-steps">
+            <div class="referral-step">
+              <span class="referral-step__icon" data-cms-ignore aria-hidden="true"><SiteIcon name="users" class="h-5 w-5" /></span>
               <div>
-                <h3 class="text-porters-white text-lg font-semibold mb-1">Recommandez</h3>
-                <p class="text-porters-white/60 text-sm">Parlez de nous à un consultant indépendant ou à une entreprise.</p>
+                <h3>Recommandez</h3>
+                <p>Parlez de nous à un consultant indépendant ou à une entreprise.</p>
               </div>
             </div>
-            <div>
+            <div class="referral-step">
+              <span class="referral-step__icon" data-cms-ignore aria-hidden="true"><SiteIcon name="network" class="h-5 w-5" /></span>
               <div>
-                <h3 class="text-porters-white text-lg font-semibold mb-1">Mise en relation</h3>
-                <p class="text-porters-white/60 text-sm">La personne nous contacte de votre part, ou vous nous transmettez ses coordonnées — avec son accord.</p>
+                <h3>Mise en relation</h3>
+                <p>La personne nous contacte de votre part, ou vous nous transmettez ses coordonnées — avec son accord.</p>
               </div>
             </div>
-            <div>
+            <div class="referral-step">
+              <span class="referral-step__icon" data-cms-ignore aria-hidden="true"><SiteIcon name="check" class="h-5 w-5" /></span>
               <div>
-                <h3 class="text-porters-white text-lg font-semibold mb-1">Conditions confirmées</h3>
-                <p class="text-porters-white/60 text-sm">L’équipe vous confirme l’éligibilité et les conditions en vigueur avant toute mise en relation.</p>
+                <h3>Conditions confirmées</h3>
+                <p>L’équipe vous confirme l’éligibilité et les conditions en vigueur avant toute mise en relation.</p>
               </div>
             </div>
           </div>
-          <p class="text-xs text-porters-white/42 mt-8">
+          <p class="referral-conditions">
             Programme soumis aux conditions d'éligibilité communiquées lors de la mise en relation.
           </p>
         </div>
@@ -62,15 +68,282 @@ import { pageSeo } from '../data/seo.data';
     </div>
   </section>
 
-  <section class="section bg-porters-navy/[0.02]">
-    <div class="container mx-auto px-6 lg:px-8 text-center reveal">
-      <h2 class="mb-6">Présentez-nous la bonne personne, avec son accord</h2>
-      <p class="text-porters-black/60 max-w-xl mx-auto mb-8">
+  <section class="referral-contact brand-ambient-host" data-motion-section>
+    <BrandAmbientShapes placement="right" />
+    <div class="container mx-auto px-6 lg:px-8 text-center reveal" data-motion-item="up" style="--motion-order:0">
+      <h2>Présentez-nous la bonne personne, avec son accord</h2>
+      <p>
         Expliquez-nous le contexte. Nous vous indiquons la marche à suivre avant tout partage de coordonnées.
       </p>
-      <a href="/contact" class="btn btn-primary">
+      <a href="/contact" class="btn btn-primary" data-motion-item="pop" style="--motion-order:1">
         Je recommande un profil
       </a>
     </div>
   </section>
 </PageLayout>
+
+<style is:global>
+  .referral-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: clamp(4.5rem, 8vw, 8rem);
+    background:
+      radial-gradient(circle at 8% 12%, rgba(198,164,90,.16), transparent 24rem),
+      linear-gradient(145deg,#fbfaf7 0%,#f3eee4 100%);
+  }
+
+  .referral-hero::before {
+    position: absolute;
+    top: 5rem;
+    right: -8rem;
+    z-index: 0;
+    width: 30rem;
+    aspect-ratio: 1;
+    border: 1px dashed rgba(198,164,90,.25);
+    border-radius: 50%;
+    content: '';
+    animation: referral-orbit 36s linear infinite;
+    pointer-events: none;
+  }
+
+  .referral-layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0,1.02fr) minmax(25rem,.98fr);
+    gap: clamp(3rem,7vw,8rem);
+    align-items: center;
+  }
+
+  .referral-eyebrow {
+    margin: 0 0 1rem;
+    color: var(--color-porters-gold);
+    font: 750 .7rem/1.3 var(--font-heading);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  .referral-copy h1 {
+    max-width: 11ch;
+    margin: 0;
+    font-size: clamp(3rem,5.4vw,5.5rem);
+    line-height: .98;
+    letter-spacing: -.045em;
+  }
+
+  .referral-lead {
+    max-width: 42rem;
+    margin: 2rem 0 0;
+    color: rgba(40,55,67,.67);
+    font-size: clamp(1.03rem,1.4vw,1.2rem);
+    line-height: 1.72;
+  }
+
+  .referral-proof {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: .7rem;
+    margin: 2.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .referral-proof li {
+    position: relative;
+    min-height: 7.2rem;
+    border: 1px solid rgba(32,52,64,.09);
+    border-radius: 1rem;
+    padding: 2.3rem 1rem 1rem;
+    background: rgba(255,255,255,.72);
+    color: rgba(40,55,67,.7);
+    font-size: .72rem;
+    line-height: 1.55;
+    box-shadow: 0 14px 34px rgba(32,52,64,.045);
+    transition: border-color .25s ease,box-shadow .3s ease,transform .3s cubic-bezier(.16,1,.3,1);
+  }
+
+  .referral-proof li > span:first-child {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: .55rem;
+    height: .55rem;
+    margin: 0;
+    border-radius: 50%;
+    background: var(--color-porters-gold);
+    box-shadow: 0 0 0 .35rem rgba(198,164,90,.13);
+    animation: referral-pulse 2.4s ease-in-out infinite;
+  }
+
+  .referral-proof li:hover {
+    border-color: rgba(198,164,90,.5);
+    box-shadow: 0 21px 44px rgba(32,52,64,.09);
+    transform: translateY(-5px);
+  }
+
+  .referral-journey {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(216,189,130,.24);
+    border-radius: 1.75rem;
+    padding: clamp(1.5rem,3.5vw,3rem);
+    background:
+      radial-gradient(circle at 100% 0,rgba(198,164,90,.23),transparent 17rem),
+      linear-gradient(145deg,#2f4b57,#172f3b 76%);
+    color: #fff;
+    box-shadow: 0 32px 80px rgba(16,38,48,.2);
+  }
+
+  .referral-journey::after {
+    position: absolute;
+    right: -8rem;
+    bottom: -10rem;
+    width: 22rem;
+    aspect-ratio: 1;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2rem rgba(255,255,255,.022),0 0 0 5rem rgba(255,255,255,.014);
+    content: '';
+    pointer-events: none;
+  }
+
+  .referral-journey h2 {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 2rem;
+    color: #fff;
+    font-size: clamp(2rem,3vw,3rem);
+  }
+
+  .referral-steps {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: .7rem;
+  }
+
+  .referral-steps::before {
+    position: absolute;
+    top: 2.4rem;
+    bottom: 2.4rem;
+    left: 1.68rem;
+    width: 1px;
+    background: linear-gradient(#d8bd82,rgba(216,189,130,.08));
+    content: '';
+    transform-origin: top;
+    animation: referral-line 1.4s .35s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  .referral-step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3.35rem minmax(0,1fr);
+    gap: 1rem;
+    align-items: start;
+    border: 1px solid transparent;
+    border-radius: 1.1rem;
+    padding: .9rem;
+    transition: border-color .25s ease,background .25s ease,transform .3s cubic-bezier(.16,1,.3,1);
+  }
+
+  .referral-step:hover {
+    border-color: rgba(216,189,130,.2);
+    background: rgba(255,255,255,.055);
+    transform: translateX(.45rem);
+  }
+
+  .referral-step__icon {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 3.35rem;
+    height: 3.35rem;
+    place-items: center;
+    border: 1px solid rgba(216,189,130,.4);
+    border-radius: 50%;
+    background: #203a46;
+    color: #d8bd82;
+    box-shadow: 0 0 0 .45rem rgba(32,58,70,.8);
+    transition: background .25s ease,color .25s ease,transform .3s ease;
+  }
+
+  .referral-step:hover .referral-step__icon { background:#d1aa55;color:#18313c;transform:rotate(-5deg) scale(1.05); }
+  .referral-step h3 { margin:.25rem 0 .35rem;color:#fff;font-size:1.05rem;font-weight:650; }
+  .referral-step p { margin:0;color:rgba(255,255,255,.62);font-size:.78rem;line-height:1.58; }
+  .referral-conditions { position:relative;z-index:1;margin:1.6rem 0 0;border-top:1px solid rgba(255,255,255,.1);padding-top:1.15rem;color:rgba(255,255,255,.4);font-size:.65rem;line-height:1.55; }
+
+  .referral-contact {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: clamp(4rem,7vw,6.5rem);
+    background: linear-gradient(135deg,#f5efe4,#fff 58%,#eee5d5);
+  }
+
+  .referral-contact > .container {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    border: 1px solid rgba(32,52,64,.1);
+    border-radius: 1.5rem;
+    padding: clamp(2.5rem,6vw,5.5rem);
+    background: rgba(255,255,255,.76);
+    box-shadow: 0 28px 70px rgba(32,52,64,.09);
+    backdrop-filter: blur(8px);
+  }
+
+  .referral-contact > .container::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: min(42rem,90%);
+    aspect-ratio: 1;
+    border: 1px dashed rgba(198,164,90,.22);
+    border-radius: 50%;
+    content: '';
+    transform: translate(-50%,-50%);
+    animation: referral-orbit-centered 42s linear infinite;
+  }
+
+  .referral-contact h2 { max-width:22ch;margin:0 auto;font-size:clamp(2.2rem,4.2vw,4rem);line-height:1.02; }
+  .referral-contact p { max-width:38rem;margin:1.3rem auto 2rem;color:rgba(40,55,67,.62);font-size:1rem;line-height:1.7; }
+  .referral-contact a { position:relative;min-height:3.5rem;border-radius:999px;padding-inline:1.45rem 3.7rem;box-shadow:0 15px 34px rgba(32,52,64,.16);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s ease,background .25s ease; }
+  .referral-contact a::after { position:absolute;right:.55rem;top:50%;display:grid;width:2.35rem;height:2.35rem;place-items:center;border:1px solid rgba(255,255,255,.35);border-radius:50%;content:'↗';transform:translateY(-50%);transition:transform .3s cubic-bezier(.16,1,.3,1),background .25s ease; }
+  .referral-contact a:hover,.referral-contact a:focus-visible { box-shadow:0 22px 46px rgba(32,52,64,.22);transform:translateY(-5px); }
+  .referral-contact a:hover::after,.referral-contact a:focus-visible::after { background:rgba(255,255,255,.1);transform:translate(3px,calc(-50% - 3px)); }
+
+  @keyframes referral-orbit { to { transform:rotate(360deg); } }
+  @keyframes referral-orbit-centered { from { transform:translate(-50%,-50%) rotate(0); } to { transform:translate(-50%,-50%) rotate(360deg); } }
+  @keyframes referral-line { from { opacity:0;transform:scaleY(0); } to { opacity:1;transform:scaleY(1); } }
+  @keyframes referral-pulse { 50% { box-shadow:0 0 0 .55rem rgba(198,164,90,.06);transform:scale(.9); } }
+
+  @media(max-width:1000px){
+    .referral-layout{grid-template-columns:1fr}
+    .referral-copy h1{max-width:13ch}
+    .referral-journey{max-width:45rem}
+  }
+
+  @media(max-width:680px){
+    .referral-hero{padding-block:3.2rem 4rem}
+    .referral-copy h1{font-size:clamp(2.35rem,11vw,3.35rem)}
+    .referral-copy>p{font-size:.98rem;line-height:1.6}
+    .referral-proof{grid-template-columns:1fr}
+    .referral-proof li{min-height:0;padding:1.1rem 1rem 1.1rem 2.8rem}
+    .referral-proof li>span:first-child{top:1.45rem}
+    .referral-journey{border-radius:1.2rem;padding:1.1rem}
+    .referral-step{grid-template-columns:3rem minmax(0,1fr);gap:.8rem;padding:.75rem .35rem}
+    .referral-step__icon{width:3rem;height:3rem}
+    .referral-steps::before{left:1.49rem}
+    .referral-contact{padding-block:3rem}
+    .referral-contact>.container{width:calc(100% - 2rem);border-radius:1.2rem;padding:2.5rem 1.25rem}
+    .referral-contact h2{font-size:clamp(2rem,10vw,2.75rem)}
+    .referral-contact a{width:100%;justify-content:center}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .referral-hero::before,.referral-proof li>span:first-child,.referral-steps::before,.referral-contact>.container::before{animation:none}
+    .referral-proof li,.referral-step,.referral-step__icon,.referral-contact a,.referral-contact a::after{transition:none}
+  }
+</style>

@@ -1153,6 +1153,17 @@ const active = (href: string) => {
     .tp-mobile-actions a {
       font-size: 0.78rem;
     }
+
+    .tp-mobile-menu{padding-inline:.75rem}
+    .tp-mobile-primary-link,.tp-mobile-group summary{min-height:3.35rem}
+  }
+
+  @media (max-width: 370px) {
+    .tp-header-inner{width:min(100% - 1rem,94rem);gap:.45rem}
+    .tp-header-brand .brand-wordmark{transform:scale(1.08)}
+    .tp-mobile-appointment{padding-inline:.7rem;font-size:.68rem}
+    .tp-mobile-actions{grid-template-columns:1fr}
+    .tp-mobile-actions a:nth-child(3){grid-column:auto}
   }
 
   @media (prefers-reduced-motion: reduce) {

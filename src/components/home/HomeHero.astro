@@ -19,9 +19,9 @@ const { jobs = [] } = Astro.props;
 const reviewNotes = googleReviewHighlights;
 
 const heroTitleLines = [
-  { key: 'home.hero.editorial.title_line_1', accent: false },
-  { key: 'home.hero.editorial.title_line_2', accent: false },
-  { key: 'home.hero.editorial.title_line_3', accent: true },
+  { key: 'home.hero.editorial.title_line_1', publishedKey: 'pages.home.auto.paragraph.og6wsy', accent: false },
+  { key: 'home.hero.editorial.title_line_2', publishedKey: 'pages.home.auto.paragraph.1ey54qb', accent: false },
+  { key: 'home.hero.editorial.title_line_3', publishedKey: 'pages.home.auto.paragraph.v73dw4', accent: true },
 ];
 ---
 
@@ -38,7 +38,9 @@ const heroTitleLines = [
       >
         {heroTitleLines.map((line) => (
           <span class:list={['editorial-hero__title-line', { 'is-accent': line.accent }]}>
-            <span {...cmsAttrs(line.key)}>{cmsText(line.key)}</span>
+            <!-- These legacy keys own the client's published title. Pin them
+                 explicitly so fixing automatic discovery preserves that copy. -->
+            <span data-cms-key={line.publishedKey} data-cms-route="/" data-cms-element-type="paragraph" data-cms-rich="true">{cmsText(line.key)}</span>
           </span>
         ))}
       </h1>

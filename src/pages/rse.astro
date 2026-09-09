@@ -68,7 +68,7 @@ const governance = [
   }}
   breadcrumbs={[{ label: 'Démarche RSE' }]}
 >
-  <section class="relative min-h-[39rem] overflow-hidden bg-porters-navy text-porters-white">
+  <section class="rse-hero relative min-h-[39rem] overflow-hidden bg-porters-navy text-porters-white">
     <img
       src={workshopImage.src}
       width={workshopImage.width}
@@ -111,3 +111,11 @@ const governance = [
     </div>
   </section>
 </PageLayout>
+
+<style is:global>
+  @media(max-width:640px){
+    .rse-hero,.rse-hero>div:last-child{min-height:30rem}
+    .rse-hero>div:last-child{padding-block:4rem}
+    .rse-hero h1{font-size:clamp(2.4rem,11vw,3.1rem)}
+  }
+</style>

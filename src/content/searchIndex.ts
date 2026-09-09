@@ -235,6 +235,17 @@ const corePages: CorePageDefinition[] = [
     ctaUrl: '/recrutement',
   },
   {
+    id: 'page-candidat',
+    title: pageSeo.candidat.title,
+    description: pageSeo.candidat.description,
+    body: 'Candidature IT, recherche de mission ou de poste, domaine technique, mobilité et disponibilité.',
+    category: 'page',
+    url: '/candidat',
+    keywords: ['candidat', 'candidature', 'emploi IT', 'mission IT', 'poste', 'CV', 'disponibilité'],
+    ctaLabel: 'Présenter mon profil',
+    ctaUrl: '/candidat',
+  },
+  {
     id: 'page-parrainage',
     title: pageSeo.parrainage.title,
     description: pageSeo.parrainage.description,

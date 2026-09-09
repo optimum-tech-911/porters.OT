@@ -2,12 +2,17 @@
   {
     "route": "/",
     "name": "Accueil",
-    "contentCount": 61
+    "contentCount": 62
   },
   {
     "route": "/blog/categorie/actualites",
     "name": "Actualités | Blog The Porters",
     "contentCount": 13
+  },
+  {
+    "route": "/candidat",
+    "name": "Candidats IT — Trouvez votre prochaine opportunité",
+    "contentCount": 52
   },
   {
     "route": "/blog/role-charge-de-compte-portage-salarial",
@@ -187,7 +192,7 @@
   {
     "route": "/portage-salarial",
     "name": "Portage salarial pour consultants IT",
-    "contentCount": 111
+    "contentCount": 45
   },
   {
     "route": "/blog/portage-salarial-entreprises",
@@ -222,7 +227,7 @@
   {
     "route": "/qui-sommes-nous",
     "name": "Qui sommes-nous",
-    "contentCount": 328
+    "contentCount": 352
   },
   {
     "route": "/recrutement",
@@ -242,7 +247,7 @@
   {
     "route": "/simulateur",
     "name": "Simulateur de revenus consultant IT",
-    "contentCount": 55
+    "contentCount": 19
   },
   {
     "route": "/blog/trouver-missions-portage-salarial",

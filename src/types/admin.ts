@@ -53,7 +53,7 @@ export interface ContactMessage {
 
 // --- Leads ---
 
-export type LeadSource = 'contact' | 'simulator' | 'appointment' | 'resources';
+export type LeadSource = 'contact' | 'simulator' | 'appointment' | 'application' | 'resources';
 export type LeadStatus = 'new' | 'contacted' | 'qualified' | 'proposal' | 'converted' | 'lost';
 
 export interface Lead {

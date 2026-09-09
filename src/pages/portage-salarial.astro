@@ -15,6 +15,10 @@ import benefitEmployee from '../assets/portage/benefit-employee.png';
 import benefitAdministration from '../assets/portage/benefit-administration.png';
 import benefitAdviser from '../assets/portage/benefit-adviser.png';
 
+// Explicit legacy keys keep the published content attached when sections move.
+const managementFeeCmsKeys = [["pages.portage-salarial.auto.paragraph.16hq9l8", "pages.portage-salarial.auto.paragraph.1ygkead"], ["pages.portage-salarial.auto.paragraph.49hgu5", "pages.portage-salarial.auto.paragraph.1velxbc"], ["pages.portage-salarial.auto.paragraph.1t8ufay", "pages.portage-salarial.auto.paragraph.xoh46f"], ["pages.portage-salarial.auto.paragraph.14lginf", "pages.portage-salarial.auto.paragraph.176ujsy"], ["pages.portage-salarial.auto.paragraph.1id1ce8", "pages.portage-salarial.auto.paragraph.6okau9"], ["pages.portage-salarial.auto.paragraph.16dzxq9", "pages.portage-salarial.auto.paragraph.18c89xg"], ["pages.portage-salarial.auto.paragraph.16gba4u", "pages.portage-salarial.auto.paragraph.ao32w3"]];
+const faqCmsKeys = [["pages.portage-salarial.auto.button.1spfzc3", "pages.portage-salarial.auto.paragraph.lrj3uk"], ["pages.portage-salarial.auto.button.pjz5lw", "pages.portage-salarial.auto.paragraph.16622un"], ["pages.portage-salarial.auto.button.17fic7h", "pages.portage-salarial.auto.paragraph.5ksvxe"]];
+
 const managementFees = [
   {
     title: 'Avance de trésorerie',
@@ -91,39 +95,81 @@ const benefits = [
 const comparisonRows = [
   {
     criterion: 'Protection sociale',
+    criterionKey: 'pages.portage-salarial.auto.paragraph.13oassj',
     portage: 'Statut salarié',
+    portageKey: 'pages.portage-salarial.auto.paragraph.10io667',
     micro: 'Régime du travailleur indépendant',
+    microKey: 'pages.portage-salarial.auto.paragraph.tof1l8',
+    ei: 'Travailleur non salarié',
     company: 'Selon le statut du dirigeant',
+    companyKey: 'pages.portage-salarial.auto.paragraph.18mx3fp',
+    sasu: 'Président assimilé salarié',
+    eurl: 'Gérant associé : travailleur non salarié',
   },
   {
     criterion: 'Responsabilité contractuelle',
+    criterionKey: 'pages.portage-salarial.auto.paragraph.76tg7i',
     portage: 'Cadre porté par The Porters',
+    portageKey: 'pages.portage-salarial.auto.paragraph.yvq2be',
     micro: 'Engagée par l’entrepreneur',
+    microKey: 'pages.portage-salarial.auto.paragraph.1b2vi3l',
+    ei: 'Engagée par l’entrepreneur individuel',
     company: 'Engagée par la société',
+    companyKey: 'pages.portage-salarial.auto.paragraph.30v79k',
+    sasu: 'Engagée par la société',
+    eurl: 'Engagée par la société',
   },
   {
     criterion: 'Gestion administrative',
+    criterionKey: 'pages.portage-salarial.auto.paragraph.ow2f01',
     portage: 'Déléguée',
+    portageKey: 'pages.portage-salarial.auto.paragraph.1m0xuyl',
     micro: 'Gérée par vous',
+    microKey: 'pages.portage-salarial.auto.paragraph.1n1ic2e',
+    ei: 'Comptabilité et obligations à votre charge',
     company: 'Gérée par vous ou un prestataire',
+    companyKey: 'pages.portage-salarial.auto.paragraph.1xbaho7',
+    sasu: 'Comptabilité et obligations de société',
+    eurl: 'Comptabilité et obligations de société',
   },
   {
     criterion: 'Assurance chômage',
+    criterionKey: 'pages.portage-salarial.auto.paragraph.1br0arw',
     portage: 'Selon les conditions du régime salarié',
+    portageKey: 'pages.portage-salarial.auto.paragraph.pia7q0',
     micro: 'Non ouverte par la seule micro-entreprise',
+    microKey: 'pages.portage-salarial.auto.paragraph.59tsaz',
+    ei: 'Non ouverte par la seule activité indépendante',
     company: 'Selon le statut et les conditions',
+    companyKey: 'pages.portage-salarial.auto.paragraph.1042o3u',
+    sasu: 'Pas d’assurance chômage au seul titre du mandat',
+    eurl: 'Pas d’assurance chômage pour le gérant associé',
   },
   {
     criterion: 'Retraite',
+    criterionKey: 'pages.portage-salarial.auto.paragraph.rmv8hr',
     portage: 'Régime général',
+    portageKey: 'pages.portage-salarial.auto.paragraph.ushv43',
     micro: 'Régime des indépendants',
+    microKey: 'pages.portage-salarial.auto.paragraph.1gel5jk',
+    ei: 'Régime des indépendants',
     company: 'Selon le statut du dirigeant',
+    companyKey: 'pages.portage-salarial.auto.paragraph.1siv809',
+    sasu: 'Régime général sur la rémunération',
+    eurl: 'Régime des indépendants pour le gérant associé',
   },
   {
     criterion: 'Plafond de chiffre d’affaires',
+    criterionKey: 'pages.portage-salarial.auto.paragraph.1xb4bcq',
     portage: 'Aucun plafond propre au portage',
+    portageKey: 'pages.portage-salarial.auto.paragraph.b3ry4u',
     micro: 'Plafond du régime micro',
+    microKey: 'pages.portage-salarial.auto.paragraph.1ae6yvp',
+    ei: 'Pas de plafond propre au statut EI',
     company: 'Aucun plafond propre à la société',
+    companyKey: 'pages.portage-salarial.auto.paragraph.1m0a2gs',
+    sasu: 'Aucun plafond propre à la SASU',
+    eurl: 'Aucun plafond propre à l’EURL',
   },
 ];
 
@@ -265,9 +311,12 @@ const faqItems = [
           <strong>Cliquez sur un statut pour le mettre en avant.</strong>
         </div>
         <div class="portage-comparison-switcher" aria-label="Mettre une option en évidence">
-        <button type="button" class="is-active" data-motion-item="chip" style="--motion-order:4" data-comparison-button="portage" aria-pressed="true">Portage salarial</button>
-        <button type="button" data-motion-item="chip" style="--motion-order:5" data-comparison-button="micro" aria-pressed="false">Auto-entrepreneur</button>
-        <button type="button" data-motion-item="chip" style="--motion-order:6" data-comparison-button="company" aria-pressed="false">Création de société</button>
+        <button type="button" class="is-active" data-motion-item="chip" style="--motion-order:4" data-comparison-button="portage" aria-pressed="true" {...cmsAttrs('pages.portage-salarial.auto.button.16l7obd')}>Portage salarial</button>
+        <button type="button" data-motion-item="chip" style="--motion-order:5" data-comparison-button="micro" aria-pressed="false" {...cmsAttrs('pages.portage-salarial.auto.button.18vlmeq')}>Auto-entrepreneur</button>
+        <button type="button" data-motion-item="chip" style="--motion-order:6" data-comparison-button="ei" aria-pressed="false" {...cmsAttrs('portage.comparison.status.ei')}>Entreprise individuelle</button>
+        <span class="portage-comparison-switcher__group" {...cmsAttrs('pages.portage-salarial.auto.button.1fu6q8j')}>Création de société</span>
+        <button type="button" data-motion-item="chip" style="--motion-order:7" data-comparison-button="sasu" aria-pressed="false" {...cmsAttrs('portage.comparison.status.sasu')}>SASU</button>
+        <button type="button" data-motion-item="chip" style="--motion-order:8" data-comparison-button="eurl" aria-pressed="false" {...cmsAttrs('portage.comparison.status.eurl')}>EURL</button>
         </div>
       </div>
       <div class="portage-table-scene">
@@ -295,24 +344,73 @@ const faqItems = [
           <table class="portage-table">
             <thead>
               <tr style="--row-order:0">
-                <th scope="col">Critère</th>
-                <th scope="col" class="is-portage">Portage salarial</th>
-                <th scope="col">Auto-entrepreneur</th>
-                <th scope="col">Création de société</th>
+                <th scope="col" {...cmsAttrs('pages.portage-salarial.auto.paragraph.1p4ec6p')}>Critère</th>
+                <th scope="col" class="is-portage" {...cmsAttrs('pages.portage-salarial.auto.paragraph.1id3tdl')}>Portage salarial</th>
+                <th scope="col" {...cmsAttrs('pages.portage-salarial.auto.paragraph.q8ijez')}>Auto-entrepreneur</th>
+                <th scope="col" {...cmsAttrs('portage.comparison.status.ei')}>Entreprise individuelle</th>
+                <th scope="col" {...cmsAttrs('portage.comparison.status.sasu')}>SASU</th>
+                <th scope="col" {...cmsAttrs('portage.comparison.status.eurl')}>EURL</th>
               </tr>
             </thead>
             <tbody>
               {comparisonRows.map((row, index) => (
                 <tr style={`--row-order:${index + 1}`}>
-                  <th scope="row">{row.criterion}</th>
-                  <td class="is-portage">{row.portage}</td>
-                  <td>{row.micro}</td>
-                  <td>{row.company}</td>
+                  <th scope="row" {...cmsAttrs(row.criterionKey)}>{row.criterion}</th>
+                  <td class="is-portage" {...cmsAttrs(row.portageKey)}>{row.portage}</td>
+                  <td {...cmsAttrs(row.microKey)}>{row.micro}</td>
+                  <td {...cmsAttrs(`portage.comparison.ei.${index}`)}>{row.ei}</td>
+                  <td {...cmsAttrs(`portage.comparison.sasu.${index}`)}>{row.sasu}</td>
+                  <td {...cmsAttrs(`portage.comparison.eurl.${index}`)}>{row.eurl}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+      </div>
+        <details class="portage-company-reference reveal" data-motion-item="up" style="--motion-order:8">
+          <summary><span>Création de société</span><strong>Voir les repères communs à la SASU et à l’EURL</strong><b aria-hidden="true">+</b></summary>
+          <div>
+            {comparisonRows.map((row) => <p><small data-cms-ignore>{row.criterion}</small><span {...cmsAttrs(row.companyKey)}>{row.company}</span></p>)}
+          </div>
+        </details>
+        <p class="portage-comparison-note" data-cms-ignore>
+          Repères généraux à confirmer selon votre situation. Sources officielles :
+          <a href="https://entreprendre.service-public.fr/vosdroits/F37396" target="_blank" rel="noopener noreferrer">comparatif des formes</a>,
+          <a href="https://entreprendre.service-public.fr/vosdroits/F38152" target="_blank" rel="noopener noreferrer">protection sociale du dirigeant</a>.
+        </p>
+    </div>
+  </section>
+
+  <!-- Existing CMS keys are pinned below: moving these sections preserves published copy. -->
+  <section class="section management-fees" id="frais" data-motion-section data-management-fees>
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="management-fees__intro reveal">
+        <div data-motion-item="left" style="--motion-order:0">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold" {...cmsAttrs('pages.portage-salarial.auto.paragraph.gdhka1')} data-cms-rich="true">Frais de gestion</p>
+          <h2 {...cmsAttrs('pages.portage-salarial.auto.heading.1qnyctv')} data-cms-rich="true">Ce que couvrent nos frais</h2>
+          <p class="mt-5 text-porters-black/66" {...cmsAttrs('pages.portage-salarial.auto.paragraph.9f1zwi')} data-cms-rich="true">
+            Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel et couvrent
+            sept prestations. Votre simulation en donne le montant avant toute signature.
+          </p>
+        </div>
+        <aside class="management-fees__promise" data-motion-item="pop" style="--motion-order:1" data-cms-ignore aria-label="Engagement de clarté">
+          <SiteIcon name="spark" class="h-6 w-6" />
+          <span>Pas de frais cachés<br /><strong>Tout est expliqué avant de signer</strong></span>
+        </aside>
+      </div>
+      <div class="management-fees__grid" aria-label="Prestations couvertes par les frais">
+        {managementFees.map((item, index) => (
+          <button type="button" class:list={['management-fees__card', { 'management-fees__card--featured': index === 0 }]} data-fee-card data-fee-index={index} aria-pressed={index === 0 ? 'true' : 'false'} data-motion-item="pop" style={`--motion-order:${index + 2}`}>
+            <div class="management-fees__card-top" aria-hidden="true" data-cms-ignore>
+              <span class="management-fees__icon"><SiteIcon name={(['chart', 'briefcase', 'user', 'clipboard', 'shield', 'compass', 'scale'] as const)[index]} class="h-6 w-6" /></span>
+            </div>
+            <strong {...cmsAttrs(managementFeeCmsKeys[index][0])} data-cms-rich="true" class="management-fees__title">{item.title}</strong>
+            <span {...cmsAttrs(managementFeeCmsKeys[index][1])} data-cms-rich="true" class="management-fees__description">{item.text}</span>
+          </button>
+        ))}
+      </div>
+      <div class="management-fees__dots" data-cms-ignore aria-label="Choisir une prestation">
+        {managementFees.map((item, index) => <button type="button" data-fee-dot data-fee-index={index} class:list={{ 'is-active': index === 0 }} aria-label={`Afficher ${item.title}`} aria-pressed={index === 0 ? 'true' : 'false'}><span></span></button>)}
       </div>
     </div>
   </section>
@@ -321,32 +419,29 @@ const faqItems = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-center">
         <div class="reveal">
-          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Programme de parrainage</p>
-          <h2>Vous connaissez quelqu’un à qui cela servirait&nbsp;?</h2>
-          <p class="mt-5 text-porters-black/66">
+          <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold" {...cmsAttrs('pages.portage-salarial.auto.paragraph.8of6qw')} data-cms-rich="true">Programme de parrainage</p>
+          <h2 {...cmsAttrs('pages.portage-salarial.auto.heading.1xfppdk')} data-cms-rich="true">Vous connaissez quelqu’un à qui cela servirait&nbsp;?</h2>
+          <p class="mt-5 text-porters-black/66" {...cmsAttrs('pages.portage-salarial.auto.paragraph.wxld7f')} data-cms-rich="true">
             Un consultant qui hésite sur son statut, ou une entreprise qui cherche un profil IT.
             Présentez-nous la personne : l’équipe confirme l’éligibilité et les conditions en
             vigueur avant toute mise en relation, et aucune coordonnée n’est transmise sans son accord.
           </p>
-          <a href="/parrainage" class="mt-6 inline-flex items-center gap-2 font-semibold text-porters-navy hover:text-porters-gold transition-colors">
+          <a href="/parrainage" class="mt-6 inline-flex items-center gap-2 font-semibold text-porters-navy hover:text-porters-gold transition-colors" {...cmsAttrs('pages.portage-salarial.auto.button.1agnlz9')} data-cms-rich="true">
             Je découvre le parrainage <span aria-hidden="true">→</span>
           </a>
         </div>
         <ol class="grid gap-4 sm:grid-cols-3 reveal">
           <li class="border-t-2 border-porters-gold bg-white p-5">
-            <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-navy/55">Étape 1</p>
-            <h3 class="mt-1 text-lg">Recommandez</h3>
-            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64">Parlez de nous à un consultant indépendant ou à une entreprise.</p>
+            <h3 class="mt-0 text-lg" {...cmsAttrs('pages.portage-salarial.auto.heading.1e1o8bm')} data-cms-rich="true">Recommandez</h3>
+            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64" {...cmsAttrs('pages.portage-salarial.auto.paragraph.1buro92')} data-cms-rich="true">Parlez de nous à un consultant indépendant ou à une entreprise.</p>
           </li>
           <li class="border-t-2 border-porters-gold bg-white p-5">
-            <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-navy/55">Étape 2</p>
-            <h3 class="mt-1 text-lg">Mise en relation</h3>
-            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64">La personne nous contacte de votre part, ou vous nous transmettez ses coordonnées — avec son accord.</p>
+            <h3 class="mt-0 text-lg" {...cmsAttrs('pages.portage-salarial.auto.heading.p030lf')} data-cms-rich="true">Mise en relation</h3>
+            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64" {...cmsAttrs('pages.portage-salarial.auto.paragraph.138d0x9')} data-cms-rich="true">La personne nous contacte de votre part, ou vous nous transmettez ses coordonnées — avec son accord.</p>
           </li>
           <li class="border-t-2 border-porters-gold bg-white p-5">
-            <p class="mb-0 text-xs font-semibold uppercase tracking-[0.12em] text-porters-navy/55">Étape 3</p>
-            <h3 class="mt-1 text-lg">Conditions confirmées</h3>
-            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64">L’équipe vous confirme l’éligibilité et les conditions en vigueur avant toute mise en relation.</p>
+            <h3 class="mt-0 text-lg" {...cmsAttrs('pages.portage-salarial.auto.heading.1hhwqlk')} data-cms-rich="true">Conditions confirmées</h3>
+            <p class="mb-0 mt-2 text-sm leading-relaxed text-porters-black/64" {...cmsAttrs('pages.portage-salarial.auto.paragraph.18tj454')} data-cms-rich="true">L’équipe vous confirme l’éligibilité et les conditions en vigueur avant toute mise en relation.</p>
           </li>
         </ol>
       </div>
@@ -357,38 +452,19 @@ const faqItems = [
     <BrandAmbientShapes placement="left" />
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mx-auto mb-10 max-w-3xl text-center reveal" data-motion-item="up" style="--motion-order:0">
-        <h2><span class="gold-underline">Avant de vous lancer</span></h2>
+        <h2><span class="gold-underline" {...cmsAttrs('pages.portage-salarial.auto.paragraph.yb10yo')} data-cms-rich="true">Avant de vous lancer</span></h2>
       </div>
       <div class="portage-faq-list reveal">
         {faqItems.map((item, index) => (
           <details data-motion-item="pop" style={`--motion-order:${index + 1}`}>
-            <summary>{item.question}<span aria-hidden="true">+</span></summary>
-            <div><p>{item.answer}</p></div>
+            <summary {...cmsAttrs(faqCmsKeys[index][0])} data-cms-rich="true">{item.question}<span aria-hidden="true">+</span></summary>
+            <div><p {...cmsAttrs(faqCmsKeys[index][1])} data-cms-rich="true">{item.answer}</p></div>
           </details>
         ))}
       </div>
     </div>
   </section>
-  <section class="section bg-white" id="frais">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-10 max-w-3xl reveal">
-        <p class="mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-porters-gold">Frais de gestion</p>
-        <h2>Ce que couvrent nos frais</h2>
-        <p class="mt-5 text-porters-black/66">
-          Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel et couvrent
-          sept prestations. Votre simulation en donne le montant avant toute signature.
-        </p>
-      </div>
-      <div class="grid gap-x-8 gap-y-5 sm:grid-cols-2">
-        {managementFees.map((item) => (
-          <div class="reveal">
-            <strong class="font-heading font-semibold text-porters-navy">{item.title}</strong>
-            <span class="mt-1 block text-sm leading-relaxed text-porters-black/64">{item.text}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+
 
 
 </PageLayout>
@@ -406,8 +482,85 @@ const faqItems = [
           item.classList.toggle('is-active', active);
           item.setAttribute('aria-pressed', String(active));
         });
+        if (table && table.scrollWidth > table.clientWidth) {
+          const column = { portage: 1, micro: 2, ei: 3, sasu: 4, eurl: 5 }[value as 'portage' | 'micro' | 'ei' | 'sasu' | 'eurl'];
+          table.querySelectorAll('thead th')[column]?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+        }
       });
     });
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-management-fees]').forEach((section) => {
+    const cards = Array.from(section.querySelectorAll<HTMLButtonElement>('[data-fee-card]'));
+    const dots = Array.from(section.querySelectorAll<HTMLButtonElement>('[data-fee-dot]'));
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mobile = window.matchMedia('(max-width: 640px)');
+    let activeIndex = 0;
+    const activate = (index: number, scroll = false) => {
+      if (!cards[index] || index === activeIndex && cards[index].classList.contains('management-fees__card--featured')) return;
+      const previousRects = !reducedMotion && !mobile.matches
+        ? new Map(cards.map((card) => [card, card.getBoundingClientRect()]))
+        : null;
+      activeIndex = index;
+      cards.forEach((card, cardIndex) => {
+        const active = cardIndex === index;
+        card.classList.toggle('management-fees__card--featured', active);
+        card.setAttribute('aria-pressed', String(active));
+      });
+      dots.forEach((dot, dotIndex) => {
+        const active = dotIndex === index;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-pressed', String(active));
+      });
+      if (previousRects) {
+        cards.forEach((card) => {
+          const before = previousRects.get(card);
+          const after = card.getBoundingClientRect();
+          if (!before) return;
+          const x = before.left - after.left;
+          const y = before.top - after.top;
+          const scaleX = before.width / Math.max(after.width, 1);
+          const scaleY = before.height / Math.max(after.height, 1);
+          if (Math.abs(x) < 1 && Math.abs(y) < 1 && Math.abs(scaleX - 1) < .01 && Math.abs(scaleY - 1) < .01) return;
+          card.animate(
+            [
+              { transformOrigin: 'top left', transform: `translate(${x}px, ${y}px) scale(${scaleX}, ${scaleY})` },
+              { transformOrigin: 'top left', transform: 'none' },
+            ],
+            { duration: 720, easing: 'cubic-bezier(.16,1,.3,1)' },
+          );
+        });
+      }
+      if (!reducedMotion) {
+        cards[index].animate(
+          [{ filter: 'brightness(.9)', opacity: .72 }, { filter: 'brightness(1)', opacity: 1 }],
+          { duration: 520, easing: 'cubic-bezier(.16,1,.3,1)' },
+        );
+      }
+      if (scroll && mobile.matches) {
+        cards[index].scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
+      }
+    };
+    cards.forEach((card, index) => {
+      card.addEventListener('click', () => activate(index));
+      card.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        const next = (index + (event.key === 'ArrowRight' ? 1 : -1) + cards.length) % cards.length;
+        activate(next, true);
+        cards[next]?.focus();
+      });
+    });
+    dots.forEach((dot, index) => dot.addEventListener('click', () => activate(index, true)));
+    if (!reducedMotion) {
+      window.setInterval(() => {
+        const bounds = section.getBoundingClientRect();
+        const visible = bounds.top < window.innerHeight * .82 && bounds.bottom > window.innerHeight * .18;
+        const interacting = section.matches(':hover') || section.contains(document.activeElement);
+        if (!visible || interacting || document.hidden || mobile.matches) return;
+        activate((activeIndex + 1) % cards.length);
+      }, 5600);
+    }
   });
 
   document.querySelectorAll<HTMLElement>('[data-table-man]').forEach((man) => {
@@ -432,6 +585,43 @@ const faqItems = [
 </script>
 
 <style>
+  .management-fees { position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(circle at 88% 8%,rgba(198,164,90,.15),transparent 28rem),linear-gradient(145deg,#f5f1e8,#fbfaf7 55%,#f3eee4); }
+  .management-fees::before { position:absolute;right:-13rem;bottom:-19rem;z-index:-1;width:38rem;height:38rem;border:1px dashed rgba(198,164,90,.25);border-radius:50%;content:"";animation:management-orbit 40s linear infinite; }
+  .management-fees__intro { display:grid;max-width:none;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:2rem;margin-bottom:2.75rem; }
+  .management-fees__intro>div { max-width:58rem; }
+  .management-fees__promise { display:flex;align-items:center;gap:.85rem;border:1px solid rgba(198,164,90,.34);border-radius:999px;padding:.8rem 1.1rem;background:rgba(255,255,255,.72);color:#a47f34;box-shadow:0 14px 36px rgba(32,52,64,.06); }
+  .management-fees__promise span { color:rgba(32,52,64,.62);font-size:.67rem;line-height:1.35;text-transform:uppercase;letter-spacing:.08em; }
+  .management-fees__promise strong { color:#203440; }
+  .management-fees__grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;align-items:stretch; }
+  .management-fees__card { position:relative;isolation:isolate;min-height:17rem;overflow:hidden;border:1px solid rgba(32,54,66,.08);border-radius:1.25rem;padding:clamp(1.4rem,2.3vw,2.2rem);background:rgba(255,255,255,.91);box-shadow:0 15px 38px rgba(32,52,64,.045);font:inherit;text-align:left;cursor:pointer;transition:border-color .25s ease,box-shadow .35s ease,transform .35s cubic-bezier(.16,1,.3,1),background .35s ease,color .35s ease; }
+  .management-fees__card::before { position:absolute;inset:-35% -28% auto auto;z-index:-1;width:11rem;height:11rem;border:1px solid rgba(198,164,90,.16);border-radius:50%;box-shadow:0 0 0 2.2rem rgba(198,164,90,.035),0 0 0 4.4rem rgba(198,164,90,.018);content:"";transition:transform .55s cubic-bezier(.16,1,.3,1); }
+  .management-fees__card:hover,.management-fees__card:focus-visible { border-color:rgba(198,164,90,.56);box-shadow:0 24px 58px rgba(32,52,64,.11);outline:none;transform:translateY(-6px); }
+  .management-fees__card:hover::before,.management-fees__card:focus-visible::before { transform:translate(-1rem,1rem) scale(1.08); }
+  .management-fees__card--featured { grid-column:span 2;color:#fff;background:radial-gradient(circle at 90% 12%,rgba(216,189,130,.22),transparent 16rem),linear-gradient(145deg,#31515a,#203642 72%);border-color:transparent;box-shadow:0 24px 58px rgba(32,52,64,.17); }
+  .management-fees__card--featured::before { border-color:rgba(216,189,130,.22);box-shadow:0 0 0 2.2rem rgba(255,255,255,.025),0 0 0 4.4rem rgba(255,255,255,.016);animation:management-halo 5.6s ease-in-out infinite alternate; }
+  .management-fees__card-top { display:flex;align-items:center;gap:1rem;margin-bottom:2.5rem;color:#b99240; }
+  .management-fees__icon { display:grid;width:3.2rem;height:3.2rem;place-items:center;border:1px solid rgba(185,146,64,.24);border-radius:50%;background:rgba(255,255,255,.4);transition:background .25s ease,transform .3s cubic-bezier(.16,1,.3,1); }
+  .management-fees__card:hover .management-fees__icon,.management-fees__card:focus-visible .management-fees__icon { transform:rotate(-5deg) scale(1.06); }
+  .management-fees__title { display:block;color:#203642;font:600 1.16rem/1.35 var(--font-heading);transition:font-size .3s ease,color .3s ease; }
+  .management-fees__description { display:block;margin-top:.9rem;color:#59656b;font-size:.96rem;line-height:1.62;transition:color .3s ease; }
+  .management-fees__card--featured .management-fees__title { color:#fff;font-size:clamp(1.45rem,2.3vw,1.75rem); }
+  .management-fees__card--featured .management-fees__description { max-width:35rem;color:rgba(255,255,255,.76); }
+  .management-fees__card--featured .management-fees__card-top { color:#e0bf70; }
+  .management-fees__card--featured .management-fees__icon { border-color:rgba(224,191,112,.34);background:rgba(255,255,255,.05); }
+  .management-fees__dots { display:flex;justify-content:center;gap:.3rem;margin-top:1.35rem; }
+  .management-fees__dots button { display:grid;width:2.7rem;height:2.7rem;place-items:center;border:0;border-radius:50%;background:transparent;cursor:pointer; }
+  .management-fees__dots button span { display:block;width:.42rem;height:.42rem;border-radius:999px;background:rgba(32,52,64,.23);transition:width .3s cubic-bezier(.16,1,.3,1),background .2s,transform .2s; }
+  .management-fees__dots button:hover span,.management-fees__dots button:focus-visible span { background:#a47f34;transform:scale(1.25); }
+  .management-fees__dots button:focus-visible { outline:2px solid #c6a45a;outline-offset:-4px; }
+  .management-fees__dots button.is-active span { width:1.5rem;background:#c6a45a; }
+  .management-fees.motion-section-ready .management-fees__card { opacity:0;filter:blur(4px);transform:translateY(1.1rem);transition-delay:calc(150ms + var(--motion-order,0) * 70ms); }
+  .management-fees.motion-section-ready.is-motion-visible .management-fees__card { opacity:1;filter:none;transform:none; }
+  @keyframes management-orbit { to { transform:rotate(360deg); } }
+  @keyframes management-halo { from { transform:translate(0,0) scale(1); } to { transform:translate(-1.4rem,1.2rem) scale(1.12); } }
+  @media(max-width:1050px){.management-fees__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:720px){.management-fees__intro{grid-template-columns:1fr}.management-fees__promise{width:fit-content}}
+  @media(max-width:640px){.management-fees{padding-block:3.8rem}.management-fees__grid{grid-auto-columns:84%;grid-template-columns:none;grid-auto-flow:column;overflow-x:auto;gap:.75rem;margin-inline:-1rem;padding:.25rem 1rem 1.2rem;scroll-padding-inline:1rem;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain}.management-fees__grid::-webkit-scrollbar{display:none}.management-fees__card,.management-fees__card--featured{min-height:16.5rem;grid-column:auto;padding:1.25rem;scroll-snap-align:center}.management-fees__card-top{margin-bottom:1.4rem}.management-fees__card--featured .management-fees__title{font-size:1.3rem}.management-fees__dots{margin-top:.2rem}.management-fees__dots button{width:2.2rem;height:2.75rem}.management-fees__promise{border-radius:1rem}.management-fees__intro{margin-bottom:1.7rem}.management-fees__intro h2{font-size:clamp(2.25rem,10vw,3rem)}}
+
   .portage-hero {
     position: relative;
     isolation: isolate;
@@ -704,14 +894,14 @@ const faqItems = [
 
   .portage-table {
     width: 100%;
-    min-width: 48rem;
+    min-width: 76rem;
     border-collapse: collapse;
     text-align: left;
   }
 
   .portage-table th,
   .portage-table td {
-    width: 25%;
+    width: 16.666%;
     border-bottom: 1px solid rgba(40, 55, 67, 0.1);
     padding: 1.2rem 1.25rem;
     color: rgba(40, 55, 67, 0.7);
@@ -748,7 +938,9 @@ const faqItems = [
 
   .portage-table-wrap[data-highlight='portage'] .portage-table tr > :nth-child(2),
   .portage-table-wrap[data-highlight='micro'] .portage-table tr > :nth-child(3),
-  .portage-table-wrap[data-highlight='company'] .portage-table tr > :nth-child(4) {
+  .portage-table-wrap[data-highlight='ei'] .portage-table tr > :nth-child(4),
+  .portage-table-wrap[data-highlight='sasu'] .portage-table tr > :nth-child(5),
+  .portage-table-wrap[data-highlight='eurl'] .portage-table tr > :nth-child(6) {
     background: rgba(198,164,90,.13);
     color: var(--color-porters-navy);
     box-shadow: inset 1px 0 rgba(198,164,90,.34), inset -1px 0 rgba(198,164,90,.34);
@@ -756,7 +948,9 @@ const faqItems = [
 
   .portage-table-wrap[data-highlight='portage'] thead tr > :nth-child(2),
   .portage-table-wrap[data-highlight='micro'] thead tr > :nth-child(3),
-  .portage-table-wrap[data-highlight='company'] thead tr > :nth-child(4) { background: #a47f34; color:#fff; }
+  .portage-table-wrap[data-highlight='ei'] thead tr > :nth-child(4),
+  .portage-table-wrap[data-highlight='sasu'] thead tr > :nth-child(5),
+  .portage-table-wrap[data-highlight='eurl'] thead tr > :nth-child(6) { background: #a47f34; color:#fff; }
 
   .portage-table tbody tr:nth-child(even) {
     background: rgba(40, 55, 67, 0.025);
@@ -825,9 +1019,24 @@ const faqItems = [
   .portage-comparison-toolbar small { color:#a47f34;font-size:.58rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase; }
   .portage-comparison-toolbar strong { color:rgba(32,52,64,.72);font-size:.72rem; }
   .portage-comparison-switcher { display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.55rem; }
+  .portage-comparison-switcher__group { display:inline-flex;align-items:center;padding:0 .25rem;color:rgba(32,52,64,.42);font-size:.6rem;font-weight:760;letter-spacing:.09em;text-transform:uppercase; }
   .portage-comparison-switcher button { position:relative;min-height:2.9rem;border:1px solid rgba(32,52,64,.15);border-radius:999px;padding:0 1.15rem;background:#fff;color:var(--color-porters-navy);font:700 .72rem var(--font-body);cursor:pointer;box-shadow:0 7px 20px rgba(32,52,64,.04);transition:background .2s,color .2s,transform .2s,box-shadow .2s; }
   .portage-comparison-switcher button:hover { transform:translateY(-3px);box-shadow:0 12px 28px rgba(32,52,64,.12); }
   .portage-comparison-switcher button.is-active { border-color:var(--color-porters-navy);background:var(--color-porters-navy);color:#fff;box-shadow:0 12px 28px rgba(32,52,64,.2); }
+
+  .portage-company-reference { margin-top:1rem;border:1px solid rgba(32,52,64,.1);border-radius:1rem;background:rgba(255,255,255,.72);box-shadow:0 12px 34px rgba(32,52,64,.055);overflow:hidden; }
+  .portage-company-reference summary { display:grid;min-height:4.4rem;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem;padding:1rem 1.2rem;color:#203440;cursor:pointer;list-style:none; }
+  .portage-company-reference summary::-webkit-details-marker { display:none; }
+  .portage-company-reference summary>span { border-radius:999px;padding:.45rem .72rem;background:rgba(198,164,90,.14);color:#8d692a;font-size:.62rem;font-weight:780;text-transform:uppercase;letter-spacing:.09em; }
+  .portage-company-reference summary strong { font-size:.78rem; }
+  .portage-company-reference summary b { display:grid;width:2rem;height:2rem;place-items:center;border:1px solid rgba(32,52,64,.14);border-radius:50%;color:#a47f34;font-size:1.2rem;font-weight:400;transition:transform .25s ease,background .25s ease; }
+  .portage-company-reference[open] summary b { background:#203440;color:#fff;transform:rotate(45deg); }
+  .portage-company-reference>div { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;padding:0 1rem 1rem; }
+  .portage-company-reference p { display:grid;gap:.25rem;margin:0;border-top:1px solid rgba(32,52,64,.09);padding:.85rem .25rem 0; }
+  .portage-company-reference small { color:#9a732e;font-size:.58rem;font-weight:760;text-transform:uppercase;letter-spacing:.06em; }
+  .portage-company-reference p span { color:rgba(32,52,64,.65);font-size:.72rem;line-height:1.5; }
+  .portage-comparison-note { margin:1rem .25rem 0;color:rgba(32,52,64,.48);font-size:.65rem;line-height:1.55; }
+  .portage-comparison-note a { color:#8d692a;text-decoration:underline;text-underline-offset:2px; }
 
   .portage-table-scene {
     position: relative;
@@ -840,9 +1049,9 @@ const faqItems = [
     --cms-layout-scale: 1;
     position: absolute;
     z-index: 7;
-    right: clamp(-.45rem, -.25vw, 0rem);
-    bottom: calc(100% - 1.35rem);
-    width: clamp(12.75rem, 15vw, 16.5rem);
+    right: clamp(.45rem, 1.4vw, 1.65rem);
+    bottom: calc(100% - .9rem);
+    width: clamp(11.5rem, 13vw, 14.25rem);
     margin: 0;
     pointer-events: none;
     transform: translate3d(var(--cms-layout-x),var(--cms-layout-y),0) scale(var(--cms-layout-scale));
@@ -868,7 +1077,10 @@ const faqItems = [
     opacity: 1;
     filter: blur(0) drop-shadow(0 22px 22px rgba(32,52,64,.18));
     transform: translate3d(0,0,0) rotate(0) scale(1);
+    animation:table-man-breathe 5.6s 1.1s ease-in-out infinite alternate;
   }
+
+  @keyframes table-man-breathe { from { translate:0 0; } to { translate:0 -.22rem; } }
 
   :global(body.cms-editor-mode) .portage-table-man {
     background: transparent !important;
@@ -909,10 +1121,14 @@ const faqItems = [
 
   @media (max-width: 720px) {
     .portage-hero__visual::after { background:rgba(244,238,228,.88); }
-    .portage-hero h1 { font-size:2.05rem; }
+    .portage-hero__inner{padding-block:4.5rem}
+    .portage-hero h1 { font-size:clamp(2.05rem,10vw,2.8rem); }
+    .portage-hero__lead{font-size:1rem;line-height:1.58}
+    .portage-hero__actions{display:grid;margin-top:1.75rem}
+    .portage-hero__actions>*{width:100%;min-height:3.2rem}
     .portage-benefits-layout { grid-template-columns:1fr; }
-    .portage-benefits-portrait { position:relative;top:auto;min-height:29rem; }
-    .portage-benefits-portrait img { height:29rem; }
+    .portage-benefits-portrait { position:relative;top:auto;width:min(100%,28rem);min-height:24rem;margin-inline:auto;border-radius:8rem 8rem 1.25rem 1.25rem; }
+    .portage-benefits-portrait img { height:24rem; }
     .portage-benefits-stack { gap:.75rem; }
 
     .portage-benefit {
@@ -922,16 +1138,26 @@ const faqItems = [
       padding:.85rem;
     }
     .portage-benefit__media { min-height:6.4rem; }
-    .portage-comparison-intro { grid-template-columns:1fr; }
+    .portage-comparison-intro { grid-template-columns:1fr;padding:1.25rem;margin-bottom:1.5rem; }
     .portage-comparison-intro > p { grid-column:auto; }
     .portage-comparison-intro h2 { max-width:none; }
-    .portage-comparison-switcher,.portage-comparison-switcher button { width:100%; }
-    .portage-comparison-toolbar { padding-right:1rem; }
-    .portage-table-scene { padding-top:15.5rem; }
-    .portage-table-man { right:-.35rem;bottom:calc(100% - 15.5rem - 1.15rem);width:11rem; }
+    .portage-comparison-switcher { display:grid;width:100%;grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .portage-comparison-switcher button { width:100%;padding-inline:.65rem; }
+    .portage-comparison-switcher__group { grid-column:1/-1;padding-top:.25rem; }
+    .portage-comparison-toolbar { padding:1rem; }
+    .portage-table-scene { padding-top:11.5rem; }
+    .portage-table-man { right:.25rem;bottom:calc(100% - 11.5rem - .65rem);width:8.5rem; }
+    .portage-table-wrap { scroll-snap-type:x proximity;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch; }
+    .portage-table th,.portage-table td { scroll-snap-align:start; }
+    .portage-company-reference>div { grid-template-columns:1fr 1fr; }
   }
 
   @media (max-width: 480px) {
+    .portage-comparison-intro h2{font-size:clamp(2.15rem,11vw,2.85rem)}
+    .portage-comparison-switcher{display:flex;overflow-x:auto;margin-inline:-1rem;padding:.2rem 1rem .65rem;scroll-padding-inline:1rem;scroll-snap-type:x mandatory;scrollbar-width:none}
+    .portage-comparison-switcher::-webkit-scrollbar{display:none}
+    .portage-comparison-switcher button{flex:0 0 8.3rem;scroll-snap-align:start}
+    .portage-comparison-switcher__group{display:none}
     .portage-benefit {
       grid-template-columns:auto minmax(0,1fr);
     }
@@ -940,11 +1166,16 @@ const faqItems = [
       min-height:8rem;
       aspect-ratio:16 / 7;
     }
+    .portage-company-reference summary { grid-template-columns:1fr auto; }
+    .portage-company-reference summary>span { grid-column:1/-1;width:fit-content; }
+    .portage-company-reference>div { grid-template-columns:1fr; }
+    .portage-faq-list summary{min-height:4.25rem;font-size:.92rem}
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .portage-benefit,.portage-comparison-switcher button,.portage-faq-list summary span { transition:none; }
-    .portage-table-man img { opacity:1;filter:none;transform:none;transition:none; }
+    .portage-benefit,.portage-comparison-switcher button,.portage-faq-list summary span,.management-fees__card,.management-fees__icon,.management-fees::before { transition:none;animation:none; }
+    .management-fees.motion-section-ready .management-fees__card { opacity:1;filter:none;transform:none; }
+    .portage-table-man img { opacity:1;filter:none;transform:none;transition:none;animation:none; }
     .portage-benefit__media :global(img) { transition:none; }
     .portage-hero__visual,
     .portage-hero__visual img,

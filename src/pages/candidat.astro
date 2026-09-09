@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import PageLayout from '../layouts/PageLayout.astro';
+import SiteIcon from '../components/ui/SiteIcon.astro';
+import CandidateApplicationForm from '../components/forms/CandidateApplicationForm';
+import { pageSeo } from '../data/seo.data';
+import { helloWorkUrl } from '../data/hello-work.data';
+import candidateMeeting from '../assets/enterprise/qualified-match.png';
+
+const candidateBenefits = [
+  { icon: 'search' as const, title: 'Une recherche mieux cadrée', text: 'Métier, environnement technique, mobilité et rythme : votre recherche est reprise avec les bons critères.' },
+  { icon: 'user' as const, title: 'Un contact identifié', text: 'Une personne suit votre candidature, vous répond et vous indique clairement la prochaine étape.' },
+  { icon: 'briefcase' as const, title: 'Des opportunités lisibles', text: 'Vous connaissez le contexte, la localisation et les attentes avant de décider de poursuivre.' },
+];
+
+const journey = [
+  { icon: 'document' as const, title: 'Vous présentez votre profil', text: 'Indiquez votre domaine, votre zone de recherche et votre disponibilité.' },
+  { icon: 'phone' as const, title: 'Nous échangeons', text: 'L’équipe précise votre recherche et vérifie l’adéquation avec les besoins en cours.' },
+  { icon: 'network' as const, title: 'Une opportunité se confirme', text: 'Vous recevez le contexte utile et choisissez librement si vous souhaitez avancer.' },
+];
+---
+
+<PageLayout seo={pageSeo.candidat} breadcrumbs={[{ label: 'Accueil', href: '/' }, { label: 'Candidats' }]}>
+  <section class="candidate-hero" data-motion-section>
+    <div class="candidate-container candidate-hero__layout">
+      <div class="candidate-hero__copy">
+        <p data-motion-item="left" style="--motion-order:0">Candidats IT</p>
+        <h1 data-motion-item="left" style="--motion-order:1">Votre prochaine opportunité commence par un échange utile.</h1>
+        <span data-motion-item="left" style="--motion-order:2">Présentez votre expertise, votre mobilité et ce que vous cherchez. Notre équipe reprend votre candidature avec des informations concrètes et une prochaine étape claire.</span>
+        <div class="candidate-hero__actions" data-motion-item="pop" style="--motion-order:3">
+          <a class="btn btn-primary" href="#candidature">Présenter mon profil <b aria-hidden="true">↓</b></a>
+          <a class="btn btn-secondary" href={helloWorkUrl} target="_blank" rel="noopener noreferrer">Voir les offres en cours <b aria-hidden="true">↗</b></a>
+        </div>
+        <ul class="candidate-hero__pills" aria-label="Informations utiles">
+          <li data-motion-item="chip" style="--motion-order:4">Profils IT</li>
+          <li data-motion-item="chip" style="--motion-order:5">Échange humain</li>
+          <li data-motion-item="chip" style="--motion-order:6">Réponse contextualisée</li>
+        </ul>
+      </div>
+      <figure class="candidate-hero__visual" data-motion-item="right" style="--motion-order:2">
+        <Image src={candidateMeeting} alt="Un candidat échange avec une conseillère The Porters" widths={[640, 960, 1280]} sizes="(max-width: 900px) 100vw, 46vw" format="webp" quality={88} />
+        <figcaption><span>Votre profil</span><strong>repris par une personne</strong></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="candidate-section candidate-benefits" data-motion-section>
+    <div class="candidate-container">
+      <header class="candidate-heading" data-motion-item="up" style="--motion-order:0">
+        <p>Ce que vous trouvez ici</p>
+        <h2>Assez d’informations pour savoir où vous allez.</h2>
+      </header>
+      <div class="candidate-benefits__grid">
+        {candidateBenefits.map((benefit, index) => <article data-motion-item="pop" style={`--motion-order:${index + 1}`}>
+          <span><SiteIcon name={benefit.icon} class="h-6 w-6" /></span>
+          <h3>{benefit.title}</h3>
+          <p>{benefit.text}</p>
+        </article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="candidate-section candidate-journey" data-motion-section>
+    <div class="candidate-container candidate-journey__layout">
+      <header class="candidate-heading" data-motion-item="left" style="--motion-order:0">
+        <p>Comment cela se passe</p>
+        <h2>Un parcours simple, avec une réponse à chaque étape.</h2>
+        <span>Votre candidature reste une prise de contact. Elle ne vous engage à rien et permet à l’équipe de comprendre ce qui serait pertinent pour vous.</span>
+      </header>
+      <div class="candidate-journey__steps">
+        {journey.map((step, index) => <article data-motion-item="right" style={`--motion-order:${index + 1}`}>
+          <span><SiteIcon name={step.icon} class="h-6 w-6" /></span>
+          <div><h3>{step.title}</h3><p>{step.text}</p></div>
+        </article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="candidate-section candidate-application" id="candidature" data-motion-section>
+    <div class="candidate-container candidate-application__layout">
+      <header class="candidate-heading" data-motion-item="left" style="--motion-order:0">
+        <p>Votre candidature</p>
+        <h2>Dites-nous ce que vous savez faire et ce que vous cherchez.</h2>
+        <span>Votre demande est transmise à l’équipe qui suit les candidatures, afin qu’elle puisse reprendre votre profil et vous répondre avec le bon contexte.</span>
+        <aside>
+          <SiteIcon name="shield" class="h-6 w-6" />
+          <div><strong>Vos données restent utiles au suivi.</strong><p>Nous demandons uniquement les informations nécessaires pour reprendre votre recherche.</p></div>
+        </aside>
+      </header>
+      <div class="candidate-application__form" data-motion-item="right" style="--motion-order:1">
+        <CandidateApplicationForm client:load />
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .candidate-container { width:min(100% - 2.5rem,78rem);margin-inline:auto; }
+  .candidate-hero { position:relative;overflow:hidden;padding:clamp(3rem,7vw,7rem) 0 clamp(5rem,8vw,8rem);background:radial-gradient(circle at 9% 10%,rgba(198,164,90,.18),transparent 25rem),linear-gradient(145deg,#f5efe4,#fff 64%); }
+  .candidate-hero::after { position:absolute;right:-12rem;bottom:-15rem;width:38rem;height:38rem;border:1px dashed rgba(198,164,90,.28);border-radius:50%;content:"";animation:candidate-orbit 38s linear infinite; }
+  .candidate-hero__layout { position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.92fr) minmax(24rem,1.08fr);align-items:center;gap:clamp(2.5rem,6vw,6rem); }
+  .candidate-hero__copy>p,.candidate-heading>p { margin:0 0 .8rem;color:#9a732e;font-size:.69rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase; }
+  .candidate-hero h1 { max-width:13ch;margin:0;color:#203440;font-size:clamp(3rem,6vw,5.8rem);line-height:.98;letter-spacing:-.045em; }
+  .candidate-hero__copy>span { display:block;max-width:39rem;margin-top:1.5rem;color:rgba(32,52,64,.66);font-size:1.05rem;line-height:1.7; }
+  .candidate-hero__actions { display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem; }
+  .candidate-hero__actions b { margin-left:.6rem; }
+  .candidate-hero__pills { display:flex;flex-wrap:wrap;gap:.55rem;margin:1.5rem 0 0;padding:0;list-style:none; }
+  .candidate-hero__pills li { border:1px solid rgba(32,52,64,.13);border-radius:999px;padding:.55rem .8rem;background:rgba(255,255,255,.7);color:#203440;font-size:.7rem;font-weight:720;box-shadow:0 8px 20px rgba(32,52,64,.05); }
+  .candidate-hero__visual { position:relative;margin:0; }
+  .candidate-hero__visual::before { position:absolute;inset:-1rem 1rem 1rem -1rem;border:1px solid rgba(198,164,90,.4);border-radius:2rem;content:""; }
+  .candidate-hero__visual :global(img) { position:relative;display:block;width:100%;aspect-ratio:4/3;border-radius:1.5rem;object-fit:cover;box-shadow:0 30px 70px rgba(32,52,64,.18); }
+  .candidate-hero__visual figcaption { position:absolute;right:-1rem;bottom:-1.2rem;display:grid;min-width:13rem;gap:.2rem;border:1px solid rgba(198,164,90,.45);border-radius:1rem;padding:1rem 1.2rem;background:#203440;color:#fff;box-shadow:0 18px 38px rgba(32,52,64,.2); }
+  .candidate-hero__visual figcaption span { color:#d8bd82;font-size:.62rem;font-weight:760;letter-spacing:.11em;text-transform:uppercase; }
+  .candidate-hero__visual figcaption strong { font-size:.83rem; }
+  .candidate-section { padding-block:clamp(5rem,8vw,8rem); }
+  .candidate-heading { max-width:49rem; }
+  .candidate-heading h2 { margin:0;color:#203440;font-size:clamp(2.4rem,4.6vw,4.4rem);line-height:1.02;letter-spacing:-.038em; }
+  .candidate-heading>span { display:block;margin-top:1.25rem;color:rgba(32,52,64,.62);line-height:1.7; }
+  .candidate-benefits { background:#fff; }
+  .candidate-benefits__grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:3rem; }
+  .candidate-benefits__grid article { min-height:17rem;border:1px solid rgba(32,52,64,.1);border-radius:1.25rem;padding:2rem;background:linear-gradient(145deg,#fff,#fbfaf7);box-shadow:0 18px 40px rgba(32,52,64,.05);transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .3s; }
+  .candidate-benefits__grid article:hover { border-color:rgba(198,164,90,.55);box-shadow:0 25px 55px rgba(32,52,64,.11);transform:translateY(-7px); }
+  .candidate-benefits__grid article>span { display:grid;width:3.2rem;height:3.2rem;place-items:center;border:1px solid rgba(198,164,90,.28);border-radius:50%;color:#b08736; }
+  .candidate-benefits__grid h3 { margin:2.3rem 0 .7rem;color:#203440;font-size:1.22rem; }
+  .candidate-benefits__grid p,.candidate-journey__steps p { margin:0;color:rgba(32,52,64,.62);font-size:.9rem;line-height:1.65; }
+  .candidate-journey { background:#f7f4ed; }
+  .candidate-journey__layout { display:grid;grid-template-columns:minmax(0,.82fr) minmax(25rem,1.18fr);align-items:start;gap:clamp(3rem,7vw,7rem); }
+  .candidate-journey__steps { display:grid;gap:.8rem; }
+  .candidate-journey__steps article { display:grid;grid-template-columns:auto 1fr;gap:1rem;border:1px solid rgba(32,52,64,.1);border-radius:1rem;padding:1.2rem;background:rgba(255,255,255,.78);transition:transform .25s ease,border-color .25s ease; }
+  .candidate-journey__steps article:hover { border-color:rgba(198,164,90,.55);transform:translateX(6px); }
+  .candidate-journey__steps article>span { display:grid;width:3rem;height:3rem;place-items:center;border-radius:.8rem;background:#203440;color:#d8bd82; }
+  .candidate-journey__steps h3 { margin:0 0 .35rem;color:#203440;font-size:1rem; }
+  .candidate-application { background:linear-gradient(145deg,#fff,#f7f4ed); }
+  .candidate-application__layout { display:grid;grid-template-columns:minmax(0,.72fr) minmax(28rem,1.28fr);align-items:start;gap:clamp(3rem,7vw,7rem); }
+  .candidate-application .candidate-heading { position:sticky;top:7rem; }
+  .candidate-application aside { display:grid;grid-template-columns:auto 1fr;gap:1rem;margin-top:2rem;border:1px solid rgba(198,164,90,.28);border-radius:1rem;padding:1.15rem;background:rgba(255,255,255,.72);color:#a47f34; }
+  .candidate-application aside strong { display:block;color:#203440;font-size:.85rem; }
+  .candidate-application aside p { margin:.35rem 0 0;color:rgba(32,52,64,.6);font-size:.75rem;line-height:1.55; }
+  .candidate-application__form { border:1px solid rgba(32,52,64,.1);border-radius:1.5rem;padding:clamp(1.25rem,3vw,2.3rem);background:#fff;box-shadow:0 24px 60px rgba(32,52,64,.09); }
+  @keyframes candidate-orbit { to { transform:rotate(360deg); } }
+  @media(max-width:900px){.candidate-hero__layout,.candidate-journey__layout,.candidate-application__layout{grid-template-columns:1fr}.candidate-hero__visual{width:min(100%,42rem)}.candidate-application .candidate-heading{position:static}.candidate-benefits__grid{grid-template-columns:1fr 1fr}.candidate-benefits__grid article:first-child{grid-column:1/-1}}
+  @media(max-width:620px){.candidate-container{width:min(100% - 2rem,78rem)}.candidate-hero{padding-top:2.5rem;padding-bottom:4.5rem}.candidate-hero__layout{grid-template-columns:minmax(0,1fr);gap:2.5rem}.candidate-hero h1{font-size:clamp(2.45rem,12vw,3.4rem)}.candidate-hero__copy>span{font-size:.98rem;line-height:1.58}.candidate-hero__actions,.candidate-hero__actions a{width:100%}.candidate-hero__actions a{justify-content:center}.candidate-hero__pills{gap:.4rem}.candidate-hero__pills li{padding:.5rem .65rem}.candidate-hero__visual::before{inset:-.55rem .55rem .55rem -.55rem;border-radius:1.35rem}.candidate-hero__visual :global(img){border-radius:1.1rem}.candidate-hero__visual figcaption{right:.5rem;bottom:-1rem;min-width:0;max-width:calc(100% - 1rem)}.candidate-section{padding-block:4rem}.candidate-heading h2{font-size:clamp(2.1rem,10vw,2.85rem)}.candidate-benefits__grid{grid-template-columns:1fr;gap:.75rem;margin-top:2rem}.candidate-benefits__grid article:first-child{grid-column:auto}.candidate-benefits__grid article{min-height:0;padding:1.35rem}.candidate-benefits__grid h3{margin:1.25rem 0 .6rem}.candidate-journey__steps article{padding:1rem}.candidate-application__form{padding:1rem;border-radius:1rem}}
+  @media(prefers-reduced-motion:reduce){.candidate-hero::after{animation:none}.candidate-benefits__grid article,.candidate-journey__steps article{transition:none}}
+</style>
+
+<style is:global>
+  .candidate-form{display:grid;gap:1.3rem}.candidate-form label,.candidate-form legend{color:#203440;font-size:.78rem;font-weight:700}.candidate-form label{display:grid;gap:.5rem}.candidate-form__profiles{margin:0;border:0;padding:0}.candidate-form__profiles>div{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.8rem}.candidate-form__profiles label{display:block;cursor:pointer}.candidate-form__profiles input{position:absolute;opacity:0;pointer-events:none}.candidate-form__profiles span{display:inline-flex;min-height:2.75rem;align-items:center;border:1px solid rgba(32,52,64,.14);border-radius:999px;padding:0 .85rem;background:#fff;color:#203440;font-size:.72rem;transition:transform .2s,border-color .2s,background .2s}.candidate-form__profiles label:hover span{border-color:rgba(198,164,90,.7);transform:translateY(-2px)}.candidate-form__profiles input:checked+span{border-color:#203440;background:#203440;color:#fff;box-shadow:0 8px 20px rgba(32,52,64,.16)}.candidate-form__profiles input:focus-visible+span{outline:2px solid #c6a45a;outline-offset:3px}.candidate-form__grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.candidate-form textarea{resize:vertical}.candidate-form__cv-note{margin:0;border-left:3px solid #c6a45a;padding:.25rem 0 .25rem .9rem;color:rgba(32,52,64,.58);font-size:.75rem;line-height:1.55}.candidate-form__consent{grid-template-columns:auto 1fr!important;align-items:start;border-radius:.8rem;padding:1rem;background:rgba(32,52,64,.035);font-weight:500!important;line-height:1.55}.candidate-form__consent input{margin-top:.2rem;accent-color:#b99240}.candidate-form__consent a{color:#8d692a;text-decoration:underline}.candidate-form__status{margin:0;font-size:.78rem}.candidate-form__status--error{color:#b42318}.candidate-form__status--success{color:#18764b}.candidate-form__submit{width:100%}.candidate-form__submit:disabled{cursor:wait;opacity:.65}@media(max-width:620px){.candidate-form__grid{grid-template-columns:1fr}.candidate-form__profiles span{min-height:3rem}.candidate-form__submit{min-height:3.4rem}}
+</style>

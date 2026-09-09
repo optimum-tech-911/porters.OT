@@ -214,6 +214,7 @@ export default function CmsDashboardContent() {
         <section className="cms-admin-card">
           <div className="cms-admin-card-heading">
             <div><span>Activité</span><h3>Dernières modifications</h3></div>
+            <a href="/admin/activity" className="admin-btn admin-btn-ghost admin-btn-sm">Historique complet →</a>
           </div>
           <div className="cms-recent-list">
             {loading && <p className="cms-admin-muted">Chargement…</p>}

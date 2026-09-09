@@ -321,13 +321,13 @@
     "key": "home.final_cta.eyebrow",
     "route": "/",
     "type": "label",
-    "content": "Votre prochaine étape"
+    "content": "Et maintenant ?"
   },
   {
     "key": "home.final_cta.title",
     "route": "/",
     "type": "heading",
-    "content": "Voyez ce que votre TJM donne en net."
+    "content": "Prêt à vous lancer ?"
   },
   {
     "key": "home.final_cta.description",
@@ -339,13 +339,25 @@
     "key": "home.final_cta.simulator",
     "route": "/",
     "type": "button",
-    "content": "Ouvrir le simulateur"
+    "content": "Je simule mes revenus"
   },
   {
     "key": "home.final_cta.advisor",
     "route": "/",
     "type": "button",
-    "content": "Parler à un conseiller"
+    "content": "Je parle à un conseiller"
+  },
+  {
+    "key": "global.footer.auto.button.3vss45",
+    "route": "/_global",
+    "type": "button",
+    "content": "Je parle à un conseiller"
+  },
+  {
+    "key": "global.footer.auto.button.19iqi8e",
+    "route": "/_global",
+    "type": "button",
+    "content": "Je simule mes revenus"
   },
   {
     "key": "portage.comparison.eyebrow",
@@ -495,7 +507,7 @@
     "key": "contactform.label.submit",
     "route": "/_global",
     "type": "button",
-    "content": "Préparer l’email"
+    "content": "Envoyer ma demande"
   },
   {
     "key": "rendezvous.topic.1.duration",
@@ -526,5 +538,674 @@
     "route": "/rendez-vous",
     "type": "label",
     "content": "30 min"
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.8of6qw",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Programme de parrainage",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.1xfppdk",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Vous connaissez quelqu’un à qui cela servirait&#160;?",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.wxld7f",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Un consultant qui hésite sur son statut, ou une entreprise qui cherche un profil IT. Présentez-nous la personne : l’équipe confirme l’éligibilité et les conditions en vigueur avant toute mise en relation, et aucune coordonnée n’est transmise sans son accord.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.1agnlz9",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Je découvre le parrainage <span aria-hidden=\"true\">→</span>",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1q26vu5",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Étape 1",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.1e1o8bm",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Recommandez",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1buro92",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Parlez de nous à un consultant indépendant ou à une entreprise.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.6liuh2",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Étape 2",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.p030lf",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Mise en relation",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.138d0x9",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "La personne nous contacte de votre part, ou vous nous transmettez ses coordonnées — avec son accord.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.u85f6z",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Étape 3",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.1hhwqlk",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Conditions confirmées",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.18tj454",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "L’équipe vous confirme l’éligibilité et les conditions en vigueur avant toute mise en relation.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.gdhka1",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Frais de gestion",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.heading.1qnyctv",
+    "route": "/portage-salarial",
+    "type": "heading",
+    "content": "Ce que couvrent nos frais",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.9f1zwi",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Nos frais de gestion sont prélevés sur votre chiffre d’affaires mensuel et couvrent sept prestations. Votre simulation en donne le montant avant toute signature.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.16hq9l8",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Avance de trésorerie",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1ygkead",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Vous êtes payé dès le premier mois, avant même que votre client nous règle sa première facture. Le calendrier de paie vous est expliqué avant le démarrage.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.49hgu5",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Apport d’affaires",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1velxbc",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Nous vous proposons des missions issues de nos partenaires ; vous restez libre de trouver les vôtres.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1t8ufay",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Interlocuteur unique",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.xoh46f",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Une seule personne suit votre dossier.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.14lginf",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gestion administrative complète",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.176ujsy",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Contrat, facturation, paie, déclarations sociales et fiscales.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1id1ce8",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Responsabilité civile professionnelle",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.6okau9",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Vous êtes couvert en cas de dommage causé chez un client.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.16dzxq9",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Financement des formations",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.18c89xg",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "CPF, OPCO, certifications. Nous vous orientons sur les dispositifs mobilisables selon votre situation.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.16gba4u",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Garantie financière",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.ao32w3",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Dispositif obligatoire qui sécurise le versement de votre salaire.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.yb10yo",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Avant de vous lancer",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.1spfzc3",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Qui trouve la mission ?<span aria-hidden=\"true\">+</span>",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.lrj3uk",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Vous. Vous choisissez vos clients, vous négociez votre TJM et vous organisez votre intervention : nous n’entrons pas dans cette relation.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.pjz5lw",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Comment le chiffre d’affaires devient-il un salaire ?<span aria-hidden=\"true\">+</span>",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.16622un",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "The Porters facture l’entreprise cliente. Ce qui reste, une fois les frais de gestion et les cotisations déduits, finance votre rémunération.",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.17fic7h",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Que couvrent les frais de gestion ?<span aria-hidden=\"true\">+</span>",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.5ksvxe",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Le contrat, la facturation, la paie, le suivi administratif, la responsabilité civile professionnelle et la garantie financière. Le détail figure sur la page des frais.",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.fy64ee",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "ESN spécialisée IT",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.heading.9v7ll4",
+    "route": "/qui-sommes-nous",
+    "type": "heading",
+    "content": "The Big Porters",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.zf42rv",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "The Big Porters accompagne les entreprises à la recherche de talents IT qualifiés, avec une sélection attentive des profils, un cadrage précis et un suivi de mission dédié.",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.button.17jaic7",
+    "route": "/qui-sommes-nous",
+    "type": "button",
+    "content": "Notre offre pour les entreprises <b aria-hidden=\"true\">↗</b>",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1o5r4u2",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Cybersécurité",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.1bsin5",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Big Data / Cloud / IA",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.saw9s8",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "DevOps",
+    "rich": true
+  },
+  {
+    "key": "pages.qui-sommes-nous.auto.paragraph.n0s7pz",
+    "route": "/qui-sommes-nous",
+    "type": "paragraph",
+    "content": "Agilité",
+    "rich": true
+  },
+  {
+    "key": "home.jobs.brand_free.description",
+    "route": "/",
+    "type": "paragraph",
+    "content": "Une opportunité vous intéresse ? Notre équipe vous accompagne dans la suite du processus."
+  },
+  {
+    "key": "home.jobs.brand_free.external_cta",
+    "route": "/",
+    "type": "button",
+    "content": "Découvrez nos offres en ligne ici"
+  },
+  {
+    "key": "home.jobs.brand_free.platform",
+    "route": "/",
+    "type": "label",
+    "content": "Nos offres en ligne"
+  },
+  {
+    "key": "portage.comparison.status.sasu",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "SASU"
+  },
+  {
+    "key": "portage.comparison.status.eurl",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "EURL"
+  },
+  {
+    "key": "portage.comparison.status.ei",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Entreprise individuelle"
+  },
+  {
+    "key": "portage.comparison.ei.0",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Travailleur non salarié"
+  },
+  {
+    "key": "portage.comparison.ei.1",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Engagée par l’entrepreneur individuel"
+  },
+  {
+    "key": "portage.comparison.ei.2",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Comptabilité et obligations à votre charge"
+  },
+  {
+    "key": "portage.comparison.ei.3",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Non ouverte par la seule activité indépendante"
+  },
+  {
+    "key": "portage.comparison.ei.4",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime des indépendants"
+  },
+  {
+    "key": "portage.comparison.ei.5",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Pas de plafond propre au statut EI"
+  },
+  {
+    "key": "portage.comparison.sasu.0",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Président assimilé salarié"
+  },
+  {
+    "key": "portage.comparison.eurl.0",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gérant associé : travailleur non salarié"
+  },
+  {
+    "key": "portage.comparison.sasu.1",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Engagée par la société"
+  },
+  {
+    "key": "portage.comparison.eurl.1",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Engagée par la société"
+  },
+  {
+    "key": "portage.comparison.sasu.2",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Comptabilité et obligations de société"
+  },
+  {
+    "key": "portage.comparison.eurl.2",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Comptabilité et obligations de société"
+  },
+  {
+    "key": "portage.comparison.sasu.3",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Pas d’assurance chômage au seul titre du mandat"
+  },
+  {
+    "key": "portage.comparison.eurl.3",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Pas d’assurance chômage pour le gérant associé"
+  },
+  {
+    "key": "portage.comparison.sasu.4",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime général sur la rémunération"
+  },
+  {
+    "key": "portage.comparison.eurl.4",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime des indépendants pour le gérant associé"
+  },
+  {
+    "key": "portage.comparison.sasu.5",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Aucun plafond propre à la SASU"
+  },
+  {
+    "key": "portage.comparison.eurl.5",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Aucun plafond propre à l’EURL"
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.16l7obd",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Portage salarial",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.18vlmeq",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Auto-entrepreneur",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.button.1fu6q8j",
+    "route": "/portage-salarial",
+    "type": "button",
+    "content": "Création de société",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1p4ec6p",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Critère",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1id3tdl",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Portage salarial",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.q8ijez",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Auto-entrepreneur",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.13oassj",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Protection sociale",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.10io667",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Statut salarié",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.tof1l8",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime du travailleur indépendant",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.18mx3fp",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Selon le statut du dirigeant",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.76tg7i",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Responsabilité contractuelle",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.yvq2be",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Cadre porté par The Porters",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1b2vi3l",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Engagée par l’entrepreneur",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.30v79k",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Engagée par la société",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.ow2f01",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gestion administrative",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1m0xuyl",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Déléguée",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1n1ic2e",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gérée par vous",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1xbaho7",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Gérée par vous ou un prestataire",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1br0arw",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Assurance chômage",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.pia7q0",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Selon les conditions du régime salarié",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.59tsaz",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Non ouverte par la seule micro-entreprise",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1042o3u",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Selon le statut et les conditions",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.rmv8hr",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Retraite",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.ushv43",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime général",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1gel5jk",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Régime des indépendants",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1siv809",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Selon le statut du dirigeant",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1xb4bcq",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Plafond de chiffre d’affaires",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.b3ry4u",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Aucun plafond propre au portage",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1ae6yvp",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Plafond du régime micro",
+    "rich": true
+  },
+  {
+    "key": "pages.portage-salarial.auto.paragraph.1m0a2gs",
+    "route": "/portage-salarial",
+    "type": "paragraph",
+    "content": "Aucun plafond propre à la société",
+    "rich": true
   }
 ]

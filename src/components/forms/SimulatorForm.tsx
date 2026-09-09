@@ -147,6 +147,7 @@ export default function SimulatorForm() {
 
     const { error } = await supabase.from('crm_inquiries').insert({
       kind: 'simulation',
+      inquiry_type: 'simulation',
       source: 'website',
       status: 'new',
       priority: Number(ca) >= 10000 ? 'high' : 'medium',

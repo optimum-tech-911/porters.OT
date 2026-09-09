@@ -15,6 +15,10 @@ export const navigation: Navigation = {
       href: '/expertises',
     },
     {
+      label: 'Candidats',
+      href: '/candidat',
+    },
+    {
       label: 'Le groupe',
       items: [
         { label: 'Qui sommes-nous', href: '/qui-sommes-nous' },
@@ -52,6 +56,7 @@ export const navigation: Navigation = {
       {
         title: 'Ressources',
         links: [
+          { label: 'Je suis candidat', href: '/candidat' },
           { label: 'Blog', href: '/blog' },
           { label: 'Parrainage', href: '/parrainage' },
           { label: 'Prendre rendez-vous', href: '/rendez-vous' },

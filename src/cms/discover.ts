@@ -128,7 +128,10 @@ export function discoverEditableText(doc: Document, pageRoute: string, globalRou
     if (!LETTER.test(element.textContent || '')) return;
 
     const target = resolveBlock(element);
-    if (target !== element && (target.matches(EXCLUDED_SELECTOR) || target.closest(EXCLUDED_SELECTOR))) return;
+    // A wrapper may resolve to a child that already has an explicit key. Keep
+    // that identity, just as the build-time discovery does, instead of replacing
+    // it with a new positional key (and dropping the published content).
+    if (target !== element && (target.matches(EXCLUDED_SELECTOR) || target.closest(EXCLUDED_SELECTOR) || target.closest('[data-cms-key]'))) return;
 
     const main = target.closest('main');
     const header = main ? null : target.closest('header');

@@ -143,11 +143,24 @@ async function verify() {
   const restored = restore.data?.draft_content === 'Initial verification';
   console.log('history and restore:', versions.data.length, restore.status, restored ? 'verified' : 'unexpected');
   if (restore.status !== 200 || !restored) throw new Error('Version restoration failed.');
+
+  const activity = await rest(
+    `/rest/v1/cms_content_activity?content_block_id=eq.${create.data.id}&select=action,previous_content,new_content,changed_by&order=id.asc`,
+    accessToken,
+  );
+  const activityActions = Array.isArray(activity.data) ? activity.data.map((event) => event.action) : [];
+  const expectedActions = ['create', 'draft_save', 'publish', 'restore'];
+  const activityVerified = activity.status === 200
+    && expectedActions.every((action) => activityActions.includes(action))
+    && activity.data.every((event) => event.changed_by === userId);
+  console.log('account activity audit:', activityActions.join(', '), activityVerified ? 'verified' : 'unexpected');
+  if (!activityVerified) throw new Error('Per-account CMS activity audit verification failed.');
 }
 
 async function cleanup() {
   if (!userId) return;
   await managementQuery(`
+    delete from public.cms_content_activity where content_key = 'system.verify.workflow';
     delete from public.cms_content_blocks where content_key = 'system.verify.workflow';
     delete from public.cms_admins where user_id = '${userId}';
   `);

@@ -66,6 +66,11 @@ export const pageSeo: Record<string, PageSeo> = {
     description:
       'Rejoignez l\'équipe The Porters. Découvrez nos offres d\'emploi et participez au développement d\'une société de portage salarial à taille humaine.',
   },
+  candidat: {
+    title: 'Candidats IT — Trouvez votre prochaine opportunité | The Porters',
+    description:
+      'Présentez votre profil IT, votre mobilité et votre disponibilité. L’équipe The Porters reprend votre candidature et vous oriente vers les opportunités adaptées.',
+  },
   parrainage: {
     title: 'Programme de parrainage — The Porters',
     description:

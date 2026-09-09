@@ -80,6 +80,12 @@ for (const file of files) {
   const { document } = parseHTML(await readFile(file, 'utf8'));
   discoverEditableText(document, route, GLOBAL_ROUTE);
 
+  // Protected legacy content may now be explicitly pinned to its historic key.
+  // It still must exist on the intended rendered route and stays out of seeds.
+  for (const [key, entry] of allowedRuntimeOnly) {
+    if (entry.route === route && document.querySelector(`[data-cms-key="${key}"]`)) usedOverrides.add(key);
+  }
+
   for (const node of document.querySelectorAll('[data-cms-key][data-cms-auto="true"]')) {
     const key = node.getAttribute('data-cms-key');
     seen.add(key);

@@ -14,10 +14,10 @@ const seo = {
 };
 
 const commonJourney = [
-  { number: '01', title: 'Cadrer', text: 'Contexte, résultat attendu, responsabilités et contraintes.' },
-  { number: '02', title: 'Choisir', text: 'Le domaine et le niveau d’expertise réellement nécessaires.' },
-  { number: '03', title: 'Intervenir', text: 'Une mission autonome, avec des livrables et des points de passage lisibles.' },
-  { number: '04', title: 'Transmettre', text: 'Décisions, documentation et connaissances restent dans l’organisation.' },
+  { title: 'Cadrer', text: 'Contexte, résultat attendu, responsabilités et contraintes.' },
+  { title: 'Choisir', text: 'Le domaine et le niveau d’expertise réellement nécessaires.' },
+  { title: 'Intervenir', text: 'Une mission autonome, avec des livrables et des points de passage lisibles.' },
+  { title: 'Transmettre', text: 'Décisions, documentation et connaissances restent dans l’organisation.' },
 ];
 ---
 
@@ -51,17 +51,17 @@ const commonJourney = [
           <span>Besoin · résultat · contraintes</span>
         </div>
         <div class="signal-card signal-card--brief">
-          <small>01 · Le brief</small>
+          <small>Le brief</small>
           <strong>Votre problème</strong>
           <span>Contexte · résultat · contraintes</span>
         </div>
         <div class="signal-card signal-card--match">
-          <small>02 · Le choix</small>
+          <small>Le choix</small>
           <strong>La bonne expertise</strong>
           <span>Le niveau réellement nécessaire</span>
         </div>
         <div class="signal-card signal-card--result">
-          <small>03 · La sortie</small>
+          <small>La sortie</small>
           <strong>Un résultat cadré</strong>
           <span>Livrables · passage · transmission</span>
         </div>
@@ -1340,7 +1340,7 @@ const commonJourney = [
       width: min(100% - 2rem, 84rem);
     }
 
-    .expertise-signal-stage { min-height:32rem; }
+    .expertise-signal-stage { min-height:30rem; }
     .signal-core { width:11rem; }
     .signal-core::before { inset:-2.8rem; }
     .signal-core::after { inset:-4.8rem; }
@@ -1363,6 +1363,12 @@ const commonJourney = [
 
     .expertise-panel-top { align-items:stretch;flex-direction:column; }
     .expertise-panel-actions { justify-items:start; }
+    .expertise-selector{scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain}
+    .expertise-selector::-webkit-scrollbar{display:none}
+    .expertise-selector-button{min-width:11.5rem;scroll-snap-align:start}
+    .expertise-panels{min-height:0}
+    .expertise-panel{padding:1.35rem}
+    .expertise-panel-cta{min-height:3rem}
     .expertise-panel-index { display:none; }
 
     .journey-line {
@@ -1381,6 +1387,21 @@ const commonJourney = [
     .journey-step {
       padding-left: 1rem;
     }
+  }
+
+  @media (max-width: 480px) {
+    .expertise-signal-stage{min-height:26rem}
+    .signal-core{width:8.5rem}
+    .signal-core::before{inset:-2rem}.signal-core::after{inset:-3.5rem}
+    .signal-card{width:8.4rem;padding:.58rem .62rem}
+    .signal-card strong{font-size:.65rem}
+    .signal-image{width:8rem}
+    .signal-image--brief{top:19%;left:1%}.signal-image--result{right:1%;bottom:17%}
+    .expertise-panel{padding:1.1rem}
+    .expertise-panel-actions,.expertise-panel-cta{width:100%}
+    .expertise-panel-cta{justify-content:space-between}
+    .journey-track{gap:1.5rem}
+    .journey-step{gap:.7rem}
   }
 
   @media (prefers-reduced-motion: reduce) {
