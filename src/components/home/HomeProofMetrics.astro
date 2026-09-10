@@ -88,7 +88,7 @@ const metrics: ProofMetric[] = [
           src={bubbleSectionImage}
           alt=""
           widths={[720, 1080, 1440]}
-          sizes="(max-width: 640px) 124vw, (max-width: 1000px) 75vw, 62vw"
+          sizes="(max-width: 520px) 75vw, (max-width: 900px) 70vw, 62vw"
           format="webp"
           quality={92}
           loading="lazy"
@@ -787,18 +787,63 @@ const metrics: ProofMetric[] = [
   }
 
   @media (max-width: 520px) {
-    .home-proof__inner { padding-block: 3.75rem 4.5rem; }
-    .home-proof h2 { width: min(100%, 23rem); font-size:clamp(2.35rem,11vw,3.15rem); }
-
-    .home-proof__diagram { display: block; }
-
-    .home-proof__portrait {
-      width: min(124%, 31rem);
-      margin: 1.35rem 0 .75rem -12%;
+    .home-proof__inner {
+      width: min(100% - 1.5rem, 30rem);
+      padding-block: 3.75rem 4.5rem;
     }
 
-    .home-proof__portrait img { width: 100%; margin: 0; }
-    .home-proof__cluster { min-height: clamp(21rem,92vw,25rem); }
+    .home-proof h2 {
+      width: min(100%, 21rem);
+      font-size: clamp(2.2rem, 10.5vw, 3rem);
+      overflow-wrap: normal;
+    }
+
+    .home-proof__diagram {
+      display: block;
+      margin-top: 1.25rem;
+    }
+
+    .home-proof__cluster {
+      min-height: clamp(21.5rem, 104vw, 27rem);
+      overflow: hidden;
+    }
+
+    .home-proof__portrait {
+      position: absolute;
+      top: clamp(.75rem, 4vw, 1.25rem);
+      bottom: auto;
+      left: clamp(-2.25rem, -7vw, -1.25rem);
+      width: min(75vw, 18.5rem);
+      height: auto;
+      margin: 0;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0 86%, rgba(0, 0, 0, .92) 92%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0 86%, rgba(0, 0, 0, .92) 92%, transparent 100%);
+      transform-origin: left top;
+    }
+
+    .home-proof__portrait img {
+      width: 100%;
+      height: auto;
+      margin: 0;
+    }
+
+    .home-proof__bubble--missions {
+      --bubble-size: min(43vw, 10.5rem);
+      top: 1rem;
+      right: .1rem;
+      left: auto;
+      transform: none;
+    }
+
+    .home-proof__bubble--remuneration {
+      --bubble-size: min(34vw, 8.25rem);
+      top: auto;
+      right: .15rem;
+      bottom: 1.25rem;
+    }
+
+    .home-proof__value { font-size: clamp(2.35rem, 12vw, 3.5rem); }
+    .home-proof__bubble--remuneration .home-proof__value { font-size: clamp(1.15rem, 5vw, 1.55rem); }
     .home-proof__callout { padding: 1.15rem 0; }
     .home-proof__callout strong { font-size: 1.12rem; }
     .home-proof__callout p { font-size: 1.05rem; }

@@ -49,6 +49,8 @@ export interface ContactMessage {
   utmTerm?: string;
   landingPage?: string;
   sessionId?: string;
+  userAgent?: string;
+  metadata?: Record<string, unknown>;
 }
 
 // --- Leads ---
@@ -86,6 +88,8 @@ export interface Lead {
   utmTerm?: string;
   landingPage?: string;
   sessionId?: string;
+  userAgent?: string;
+  metadata?: Record<string, unknown>;
 }
 
 // --- Meetings ---

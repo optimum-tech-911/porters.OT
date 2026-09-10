@@ -4,6 +4,7 @@ import type { ContactMessage } from '../../types/admin';
 import type { CmsAdmin } from '../../types/cms';
 import { supabase } from '../../lib/supabase';
 import AdminStatusBadge from './AdminStatusBadge';
+import CrmMetadataDetails from './CrmMetadataDetails';
 
 interface Props {
   message: ContactMessage;
@@ -140,6 +141,8 @@ export default function AdminMessageDetailPanel({ message, admins, onClose, onUp
               <div className="admin-panel-field-value">{message.subject}</div>
             </div>
           )}
+
+          <CrmMetadataDetails metadata={message.metadata} userAgent={message.userAgent} />
 
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Page source</div>

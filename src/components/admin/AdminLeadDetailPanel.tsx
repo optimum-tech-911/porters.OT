@@ -4,6 +4,7 @@ import type { Lead } from '../../types/admin';
 import type { CmsAdmin } from '../../types/cms';
 import { supabase } from '../../lib/supabase';
 import AdminStatusBadge from './AdminStatusBadge';
+import CrmMetadataDetails from './CrmMetadataDetails';
 
 interface Props {
   lead: Lead;
@@ -163,6 +164,8 @@ export default function AdminLeadDetailPanel({ lead, admins, onClose, onUpdated 
               <div className="admin-panel-field-value">{lead.message}</div>
             </div>
           )}
+
+          <CrmMetadataDetails metadata={lead.metadata} userAgent={lead.userAgent} />
 
           {(lead.sourcePage || lead.landingPage || lead.utmSource || lead.referrer || lead.sessionId) && (
             <div className="admin-panel-field">

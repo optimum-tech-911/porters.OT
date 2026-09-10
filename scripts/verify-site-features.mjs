@@ -33,6 +33,7 @@ const notifications = await loadModule('src/data/site-notifications.ts');
 const team = await loadModule('src/data/public-team.ts');
 const { NotificationCard } = await loadModule('src/components/ui/SiteNotifications.tsx');
 const { default: TeamCarousel } = await loadModule('src/components/about/TeamCarousel.tsx');
+const { default: CrmMetadataDetails } = await loadModule('src/components/admin/CrmMetadataDetails.tsx');
 const mula = await loadModule('src/data/mula-settings.ts');
 const calculator = await loadModule('src/lib/mula-calculator.ts');
 
@@ -237,6 +238,29 @@ test('notification preview has no modal overlay and cannot execute an unsafe dra
   const { document } = parseHTML(html);
   assert.equal(document.querySelector('a').getAttribute('href'), null);
   assert.equal(document.querySelector('[aria-modal]'), null);
+});
+
+test('admin CRM details expose every useful field submitted by contact, candidate and simulator forms', () => {
+  const html = renderToStaticMarkup(createElement(CrmMetadataDetails, {
+    metadata: {
+      requestType: 'application',
+      appointmentTopic: 'Comprendre le portage',
+      availability: 'Mardi matin',
+      city: 'Aix-en-Provence',
+      linkedin: 'https://www.linkedin.com/in/exemple',
+      situation: 'Consultant en mission',
+      simulatorMode: 'tjm',
+      sourceSerial: '6535194A4DB03',
+      payload: { tjm: 650, management_fee: 5, nombre_jours: 20, contract_type: 'CDI' },
+    },
+    userAgent: 'Mobile test browser',
+  }));
+  const { document } = parseHTML(`<html><body>${html}</body></html>`);
+  const text = document.body.textContent;
+  for (const expected of ['Candidature', 'Comprendre le portage', 'Mardi matin', 'Aix-en-Provence', 'Consultant en mission', '6535194A4DB03', '650 €', '5 %', '20', 'CDI', 'Mobile test browser']) {
+    assert.ok(text.includes(expected), `missing CRM detail: ${expected}`);
+  }
+  assert.equal(document.querySelector('a').getAttribute('href'), 'https://www.linkedin.com/in/exemple');
 });
 
 test('built pages preserve section keys and only mount notifications on the homepage', async () => {

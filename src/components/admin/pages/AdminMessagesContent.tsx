@@ -32,6 +32,8 @@ interface ContactInquiryRow {
   utm_content: string | null;
   utm_term: string | null;
   session_id: string | null;
+  user_agent: string | null;
+  metadata: Record<string, unknown> | null;
 }
 
 const baseFilters: FilterConfig[] = [
@@ -126,6 +128,8 @@ export default function AdminMessagesContent() {
           utmContent: row.utm_content || undefined,
           utmTerm: row.utm_term || undefined,
           sessionId: row.session_id || undefined,
+          userAgent: row.user_agent || undefined,
+          metadata: row.metadata || undefined,
         })));
         setLoading(false);
       });
