@@ -1,11 +1,9 @@
 /**
  * AdminSidebar — Dark navy sidebar navigation
  * Uses brand palette. Active state with gold accent.
- * TODO: When Supabase Auth is connected, show current user's permissions
- *       and only display nav items they have access to.
  */
 import { useEffect, useState, type ReactElement } from 'react';
-import { adminNavItems } from '../../data/admin-demo.data';
+import { adminNavItems } from '../../data/admin-navigation';
 import { supabase } from '../../lib/supabase';
 
 const iconMap: Record<string, ReactElement> = {

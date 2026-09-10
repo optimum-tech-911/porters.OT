@@ -1,12 +1,13 @@
 /** AdminLeadDetailPanel — Slide-over detail panel for a CRM lead. */
 import { useEffect, useState } from 'react';
 import type { Lead } from '../../types/admin';
-import { adminUsers } from '../../data/admin-demo.data';
+import type { CmsAdmin } from '../../types/cms';
 import { supabase } from '../../lib/supabase';
 import AdminStatusBadge from './AdminStatusBadge';
 
 interface Props {
   lead: Lead;
+  admins: CmsAdmin[];
   onClose: () => void;
   onUpdated: (lead: Lead) => void;
 }
@@ -30,7 +31,7 @@ const databaseStatus: Record<Lead['status'], string> = {
   lost: 'archived',
 };
 
-export default function AdminLeadDetailPanel({ lead, onClose, onUpdated }: Props) {
+export default function AdminLeadDetailPanel({ lead, admins, onClose, onUpdated }: Props) {
   const [status, setStatus] = useState<Lead['status']>(lead.status);
   const [saving, setSaving] = useState(false);
   const [feedback, setFeedback] = useState('');
@@ -40,7 +41,7 @@ export default function AdminLeadDetailPanel({ lead, onClose, onUpdated }: Props
     setFeedback('');
   }, [lead.id, lead.status]);
 
-  const assignedUser = adminUsers.find((u) => u.id === lead.assignedAdmin);
+  const assignedAdmin = admins.find((admin) => admin.user_id === lead.assignedAdmin);
 
   const scoreClass = lead.score >= 70 ? 'high' : lead.score >= 40 ? 'medium' : 'low';
 
@@ -194,7 +195,7 @@ export default function AdminLeadDetailPanel({ lead, onClose, onUpdated }: Props
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Assigné à</div>
             <div className="admin-panel-field-value">
-              {assignedUser ? assignedUser.name : lead.assignedAdmin ? 'Votre équipe admin' : 'Non assigné'}
+              {assignedAdmin?.display_name || (lead.assignedAdmin ? 'Administrateur' : 'Non assigné')}
             </div>
           </div>
 

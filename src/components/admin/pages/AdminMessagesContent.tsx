@@ -7,7 +7,7 @@ import AdminFilterBar, { type FilterConfig } from '../AdminFilterBar';
 import AdminTable, { type Column } from '../AdminTable';
 import AdminStatusBadge from '../AdminStatusBadge';
 import AdminMessageDetailPanel from '../AdminMessageDetailPanel';
-import { adminUsers } from '../../../data/admin-demo.data';
+import { useAdminDirectory } from '../useAdminDirectory';
 import { supabase } from '../../../lib/supabase';
 import type { ContactMessage } from '../../../types/admin';
 
@@ -34,7 +34,7 @@ interface ContactInquiryRow {
   session_id: string | null;
 }
 
-const filters: FilterConfig[] = [
+const baseFilters: FilterConfig[] = [
   {
     key: 'status',
     label: 'Statut',
@@ -54,11 +54,6 @@ const filters: FilterConfig[] = [
       { value: 'low', label: 'Basse' },
     ],
   },
-  {
-    key: 'assigned',
-    label: 'Assigné à',
-    options: adminUsers.map((u) => ({ value: u.id, label: u.name })),
-  },
 ];
 
 function formatDate(dateStr: string): string {
@@ -71,12 +66,22 @@ function formatDate(dateStr: string): string {
 }
 
 export default function AdminMessagesContent() {
+  const admins = useAdminDirectory();
   const [contactMessages, setContactMessages] = useState<ContactMessage[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [selectedMessage, setSelectedMessage] = useState<ContactMessage | null>(null);
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
   const [searchQuery, setSearchQuery] = useState('');
+
+  const filters = useMemo<FilterConfig[]>(() => [
+    ...baseFilters,
+    {
+      key: 'assigned',
+      label: 'Assigné à',
+      options: admins.map((admin) => ({ value: admin.user_id, label: admin.display_name })),
+    },
+  ], [admins]);
 
   useEffect(() => {
     let active = true;
@@ -145,7 +150,7 @@ export default function AdminMessagesContent() {
       }
       return true;
     });
-  }, [activeFilters, searchQuery]);
+  }, [activeFilters, contactMessages, searchQuery]);
 
   const columns: Column<ContactMessage>[] = [
     {
@@ -188,8 +193,8 @@ export default function AdminMessagesContent() {
       key: 'assignedAdmin',
       label: 'Assigné',
       render: (row) => {
-        const user = adminUsers.find((u) => u.id === row.assignedAdmin);
-        return <span>{user ? user.name : '—'}</span>;
+        const admin = admins.find((item) => item.user_id === row.assignedAdmin);
+        return <span>{admin?.display_name || (row.assignedAdmin ? 'Administrateur' : '—')}</span>;
       },
     },
     {
@@ -227,6 +232,7 @@ export default function AdminMessagesContent() {
       {selectedMessage && (
         <AdminMessageDetailPanel
           message={selectedMessage}
+          admins={admins}
           onUpdated={(updatedMessage) => {
             setContactMessages((current) => current.map((message) => message.id === updatedMessage.id ? updatedMessage : message));
             setSelectedMessage(updatedMessage);

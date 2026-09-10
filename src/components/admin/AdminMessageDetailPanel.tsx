@@ -1,12 +1,13 @@
 /** AdminMessageDetailPanel — Slide-over detail panel for a CRM message. */
 import { useEffect, useState } from 'react';
 import type { ContactMessage } from '../../types/admin';
-import { adminUsers } from '../../data/admin-demo.data';
+import type { CmsAdmin } from '../../types/cms';
 import { supabase } from '../../lib/supabase';
 import AdminStatusBadge from './AdminStatusBadge';
 
 interface Props {
   message: ContactMessage;
+  admins: CmsAdmin[];
   onClose: () => void;
   onUpdated: (message: ContactMessage) => void;
 }
@@ -28,7 +29,7 @@ const databaseStatus: Record<ContactMessage['status'], string> = {
   archived: 'archived',
 };
 
-export default function AdminMessageDetailPanel({ message, onClose, onUpdated }: Props) {
+export default function AdminMessageDetailPanel({ message, admins, onClose, onUpdated }: Props) {
   const [status, setStatus] = useState<ContactMessage['status']>(message.status);
   const [priority, setPriority] = useState<ContactMessage['priority']>(message.priority);
   const [saving, setSaving] = useState(false);
@@ -40,7 +41,7 @@ export default function AdminMessageDetailPanel({ message, onClose, onUpdated }:
     setFeedback('');
   }, [message.id, message.priority, message.status]);
 
-  const assignedUser = adminUsers.find((u) => u.id === message.assignedAdmin);
+  const assignedAdmin = admins.find((admin) => admin.user_id === message.assignedAdmin);
 
   async function saveMessage() {
     setSaving(true);
@@ -169,7 +170,7 @@ export default function AdminMessageDetailPanel({ message, onClose, onUpdated }:
           <div className="admin-panel-field">
             <div className="admin-panel-field-label">Assigné à</div>
             <div className="admin-panel-field-value">
-              {assignedUser ? assignedUser.name : message.assignedAdmin ? 'Votre équipe admin' : 'Non assigné'}
+              {assignedAdmin?.display_name || (message.assignedAdmin ? 'Administrateur' : 'Non assigné')}
             </div>
           </div>
 

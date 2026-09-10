@@ -260,6 +260,11 @@ test('built pages preserve section keys and only mount notifications on the home
   assert.ok(!/hellowork/i.test(home.querySelector('.light-hellowork-section').textContent));
   assert.equal(home.querySelector('.site-footer__cta h2').textContent.trim(), 'Il reste sûrement une question. Posez-la.');
   assert.equal(home.querySelectorAll('.site-footer__cta-actions a').length, 2);
+  const simulatorCta = home.querySelector('.site-footer__cta-actions a[href="/simulateur"]');
+  assert.equal(simulatorCta.querySelector('.site-footer__cta-label').textContent.trim(), 'Je simule mes revenus');
+  assert.equal(simulatorCta.querySelector('.site-footer__cta-label').dataset.cmsKey, 'global.footer.auto.button.19iqi8e');
+  assert.equal(simulatorCta.querySelector('[aria-hidden="true"]').hasAttribute('data-cms-ignore'), true);
+  assert.equal(simulatorCta.querySelector('[aria-hidden="true"]').hasAttribute('data-cms-key'), false);
   assert.ok(home.querySelector('a[href="/candidat"]'));
   const { document: about } = parseHTML(await readFile('dist/qui-sommes-nous/index.html', 'utf8'));
   assert.equal(about.querySelector('.site-notice-host'), null);
@@ -289,5 +294,10 @@ test('built pages preserve section keys and only mount notifications on the home
   assert.deepEqual([...portage.querySelectorAll('[data-comparison-button]')].map((button) => button.dataset.comparisonButton), ['portage', 'micro', 'ei', 'sasu', 'eurl']);
   const { document: admin } = parseHTML(await readFile('dist/admin/dashboard/index.html', 'utf8'));
   const adminLinks = [...admin.querySelectorAll('.admin-nav-item')].map((link) => link.getAttribute('href'));
-  for (const removed of ['/admin/meetings', '/admin/calendar', '/admin/analytics', '/admin/team', '/admin/notifications']) assert.ok(!adminLinks.includes(removed));
+  for (const removed of ['meetings', 'calendar', 'analytics', 'team', 'notifications']) {
+    assert.ok(!adminLinks.includes(`/admin/${removed}`));
+    const { document: redirect } = parseHTML(await readFile(`dist/admin/${removed}/index.html`, 'utf8'));
+    assert.equal(redirect.querySelector('meta[http-equiv="refresh"]').getAttribute('content'), '2;url=/admin/dashboard');
+    assert.equal(redirect.querySelector('.admin-layout'), null);
+  }
 });

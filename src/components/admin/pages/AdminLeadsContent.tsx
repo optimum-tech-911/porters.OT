@@ -7,7 +7,7 @@ import AdminFilterBar, { type FilterConfig } from '../AdminFilterBar';
 import AdminTable, { type Column } from '../AdminTable';
 import AdminStatusBadge from '../AdminStatusBadge';
 import AdminLeadDetailPanel from '../AdminLeadDetailPanel';
-import { adminUsers } from '../../../data/admin-demo.data';
+import { useAdminDirectory } from '../useAdminDirectory';
 import { supabase } from '../../../lib/supabase';
 import type { Lead } from '../../../types/admin';
 
@@ -45,7 +45,7 @@ interface CrmInquiryRow {
   session_id: string | null;
 }
 
-const filters: FilterConfig[] = [
+const baseFilters: FilterConfig[] = [
   {
     key: 'source',
     label: 'Source',
@@ -69,11 +69,6 @@ const filters: FilterConfig[] = [
       { value: 'lost', label: 'Perdu' },
     ],
   },
-  {
-    key: 'assigned',
-    label: 'Assigné à',
-    options: adminUsers.map((u) => ({ value: u.id, label: u.name })),
-  },
 ];
 
 function formatDate(dateStr: string): string {
@@ -84,12 +79,22 @@ function formatDate(dateStr: string): string {
 }
 
 export default function AdminLeadsContent() {
+  const admins = useAdminDirectory();
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [activeFilters, setActiveFilters] = useState<Record<string, string>>({});
   const [searchQuery, setSearchQuery] = useState('');
+
+  const filters = useMemo<FilterConfig[]>(() => [
+    ...baseFilters,
+    {
+      key: 'assigned',
+      label: 'Assigné à',
+      options: admins.map((admin) => ({ value: admin.user_id, label: admin.display_name })),
+    },
+  ], [admins]);
 
   useEffect(() => {
     let active = true;
@@ -171,7 +176,7 @@ export default function AdminLeadsContent() {
       }
       return true;
     });
-  }, [activeFilters, searchQuery]);
+  }, [activeFilters, leads, searchQuery]);
 
   const columns: Column<Lead>[] = [
     {
@@ -221,8 +226,8 @@ export default function AdminLeadsContent() {
       key: 'assignedAdmin',
       label: 'Assigné',
       render: (row) => {
-        const user = adminUsers.find((u) => u.id === row.assignedAdmin);
-        return <span>{user ? user.name : '—'}</span>;
+        const admin = admins.find((item) => item.user_id === row.assignedAdmin);
+        return <span>{admin?.display_name || (row.assignedAdmin ? 'Administrateur' : '—')}</span>;
       },
     },
     {
@@ -260,6 +265,7 @@ export default function AdminLeadsContent() {
       {selectedLead && (
         <AdminLeadDetailPanel
           lead={selectedLead}
+          admins={admins}
           onUpdated={(updatedLead) => {
             setLeads((current) => current.map((lead) => lead.id === updatedLead.id ? updatedLead : lead));
             setSelectedLead(updatedLead);

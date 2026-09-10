@@ -52,20 +52,6 @@ export default function AdminTopbar({ pageTitle }: Props) {
       {/* Left side */}
       <div className="admin-topbar-left">
         <h1 className="admin-topbar-title">{pageTitle}</h1>
-
-        {/* Search */}
-        <div className="admin-topbar-search">
-          <svg className="admin-topbar-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            type="text"
-            placeholder="Rechercher..."
-            aria-label="Rechercher"
-            readOnly
-          />
-          {/* TODO: Connect to Supabase search */}
-        </div>
       </div>
 
       {/* Right side */}

@@ -1,8 +1,3 @@
 ---
-import AdminLayout from '../../layouts/AdminLayout.astro';
-import AdminAnalyticsContent from '../../components/admin/pages/AdminAnalyticsContent';
+return Astro.redirect('/admin/dashboard', 302);
 ---
-
-<AdminLayout title="Analytics" pageTitle="Analytics">
-  <AdminAnalyticsContent client:load />
-</AdminLayout>
