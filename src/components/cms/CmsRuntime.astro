@@ -79,6 +79,10 @@
   function applyValue(key: string, content: string, format: CmsFormat) {
     document.querySelectorAll<HTMLElement>('[data-cms-key]').forEach((node) => {
       if (node.dataset.cmsKey !== key) return;
+      // Structured settings render a complete interactive component from one
+      // JSON block. The visual editor links to their dedicated form instead of
+      // replacing the component's DOM with that raw JSON value.
+      if (node.dataset.cmsStructuredEditor) return;
       if (node.dataset.cmsLayoutTarget === 'true') {
         try {
           const layout = JSON.parse(content) as { x?: number; y?: number; scale?: number };
@@ -378,6 +382,14 @@
         event.preventDefault();
         event.stopPropagation();
 
+        if (target.dataset.cmsStructuredEditor) {
+          window.parent.postMessage({
+            type: 'cms:open-structured-editor',
+            url: target.dataset.cmsStructuredEditor,
+          }, window.location.origin);
+          return;
+        }
+
         // A question and its answer live in the same <details>. Because this
         // listener cancels the event in the capture phase, the disclosure never
         // toggled on its own and the answer stayed unreachable — so drive it by
@@ -501,6 +513,31 @@
     font-weight: 500;
     letter-spacing: normal;
     line-height: 1.4;
+    text-transform: none;
+  }
+
+  body.cms-editor-mode [data-cms-structured-editor] {
+    position: relative;
+    cursor: pointer !important;
+  }
+
+  body.cms-editor-mode [data-cms-structured-editor]::after {
+    content: attr(data-cms-structured-label);
+    position: absolute;
+    z-index: 20;
+    top: 0.75rem;
+    right: 0.75rem;
+    border: 1px solid rgba(190, 158, 88, 0.65);
+    border-radius: 999px;
+    padding: 0.55rem 0.8rem;
+    background: #fffaf0;
+    box-shadow: 0 8px 24px rgba(20, 45, 57, 0.14);
+    color: #283743;
+    font-family: system-ui, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 1.2;
     text-transform: none;
   }
 

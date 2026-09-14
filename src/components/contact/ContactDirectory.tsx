@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import {
   CONTACT_DIRECTORY_KEY,
+  CONTACT_DIRECTORY_ROUTE,
   defaultContactDirectory,
   parseContactDirectory,
   type ContactDirectorySettings,
@@ -21,7 +22,14 @@ export default function ContactDirectory({ preview }: { preview?: ContactDirecto
     return watchPublishedSettings(CONTACT_DIRECTORY_KEY, parseContactDirectory, setPublished);
   }, [preview]);
 
-  return <div className="lg:col-span-2 space-y-12 reveal" data-cms-ignore>
+  return <div
+    className="lg:col-span-2 space-y-12 reveal"
+    data-cms-key={CONTACT_DIRECTORY_KEY}
+    data-cms-route={CONTACT_DIRECTORY_ROUTE}
+    data-cms-element-type="paragraph"
+    data-cms-structured-editor="/admin/contact-directory"
+    data-cms-structured-label="Modifier les coordonnées et agences →"
+  >
     {(settings.generalHeading || settings.generalEmail) && <div>
       {settings.generalHeading && <h3 className="text-xl font-heading font-semibold text-porters-navy mb-6">{settings.generalHeading}</h3>}
       {settings.generalEmail && <div className="space-y-4 text-porters-black/70">

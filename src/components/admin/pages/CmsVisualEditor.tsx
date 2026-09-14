@@ -220,6 +220,11 @@ export default function CmsVisualEditor() {
       if (event.data.type === 'cms:navigate-request' && typeof event.data.url === 'string') {
         approveNavigation(event.data.route || '/', event.data.url);
       }
+      if (event.data.type === 'cms:open-structured-editor' && typeof event.data.url === 'string' && !busy) {
+        if (dirty && !window.confirm('Vous avez des modifications non enregistrées. Ouvrir cet éditeur sans les enregistrer ?')) return;
+        const next = new URL(event.data.url, window.location.origin);
+        if (next.origin === window.location.origin) window.location.assign(next);
+      }
       if (event.data.type === 'cms:select' && event.data.block && !busy) chooseBlock(event.data.block as CmsContentBlock);
       if (event.data.type === 'cms:layout-preview' && typeof event.data.content === 'string') {
         setContent(event.data.content);
