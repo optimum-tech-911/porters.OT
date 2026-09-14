@@ -265,12 +265,6 @@ export default function CmsVisualEditor() {
 
   async function persistDraft(nextContent = content, nextFormat = format): Promise<CmsContentBlock | null> {
     if (!selected) return null;
-    // A merged block can look empty while still holding markup such as a stray
-    // line break, so emptiness is judged on the text a visitor would read.
-    if (!readableText(nextContent).trim()) {
-      setError('Le contenu ne peut pas être vide.');
-      return null;
-    }
     if (nextContent.length > 10000) {
       setError('Ce texte est trop long pour être enregistré. Raccourcissez-le puis réessayez.');
       return null;
@@ -497,6 +491,7 @@ export default function CmsVisualEditor() {
                 <textarea id="cms-content" value={content} onChange={(event) => setContent(event.target.value)} rows={selected.element_type === 'heading' ? 4 : 7} maxLength={10000} />
               )}
               <div className="cms-character-count">{readableText(content).length} / 10 000</div>
+              {!readableText(content).trim() && <div className="cms-admin-alert cms-admin-alert--info" role="status">Ce texte sera masqué sur le site après publication. Vous pourrez toujours le retrouver et le modifier dans l’éditeur.</div>}
 
               <div className="cms-format-grid">
                 <label>Taille

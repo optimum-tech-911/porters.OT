@@ -1,7 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import ContactFormStatic from '../components/forms/ContactFormStatic.astro';
-import { agencies } from '../data/agencies.data';
+import ContactDirectory from '../components/contact/ContactDirectory';
 import { pageSeo } from '../data/seo.data';
 import contactImage from '../../images/enterprise-collaboration.webp';
 ---
@@ -45,52 +45,8 @@ import contactImage from '../../images/enterprise-collaboration.webp';
           </div>
         </div>
 
-        <!-- Contact Info & Agencies -->
-        <div class="lg:col-span-2 space-y-12 reveal">
-          <div>
-            <h3 class="text-xl font-heading font-semibold text-porters-navy mb-6">Contact général</h3>
-            <div class="space-y-4 text-porters-black/70">
-              <div class="flex items-start gap-4">
-                <svg class="w-6 h-6 text-porters-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                <div>
-                  <p class="font-medium text-porters-navy">Email</p>
-                  <a href="mailto:contact@porters.fr" class="hover:text-porters-gold transition-colors">contact@porters.fr</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <h3 class="text-xl font-heading font-semibold text-porters-navy mb-6">Nos agences</h3>
-            <div class="space-y-6">
-              {agencies.map((agency) => (
-                <div class="border-l-2 border-porters-gold/30 pl-4">
-                  <a href={`/agences/${agency.slug}`} class="font-heading font-semibold text-porters-navy hover:text-porters-gold transition-colors block mb-1">
-                    The Porters {agency.city}
-                  </a>
-                  <p class="text-sm text-porters-black/60 mb-2">
-                    {agency.address && agency.postalCode
-                      ? `${agency.address}, ${agency.postalCode} ${agency.city}`
-                      : 'Rendez-vous à distance ou selon les modalités confirmées par l’équipe.'}
-                  </p>
-                  <div class="flex items-center gap-4 text-sm">
-                    {agency.phone && (
-                      <a href={`tel:${agency.phone.replace(/\s+/g, '')}`} class="text-porters-navy hover:text-porters-gold transition-colors">{agency.phone}</a>
-                    )}
-                    {agency.phone && <span class="text-porters-black/20">|</span>}
-                    <a href={`mailto:${agency.email}`} class="text-porters-navy hover:text-porters-gold transition-colors">{agency.email}</a>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div class="mt-6">
-              <a href="/agences" class="text-sm font-medium text-porters-navy hover:text-porters-gold transition-colors inline-flex items-center gap-1">
-                Voir toutes nos agences
-                <svg class="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
+        <!-- Contact information is a structured CMS block so agencies can be added, reordered or removed. -->
+        <ContactDirectory client:load />
       </div>
     </div>
   </section>

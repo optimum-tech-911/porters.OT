@@ -6,6 +6,7 @@ export const adminNavItems: AdminNavItem[] = [
   { label: 'Activité éditoriale', href: '/admin/activity', icon: 'activity', group: 'main' },
   { label: 'Notifications du site', href: '/admin/site-notifications', icon: 'notifications', group: 'main' },
   { label: 'Équipe du site', href: '/admin/public-team', icon: 'team', group: 'main' },
+  { label: 'Contact et agences', href: '/admin/contact-directory', icon: 'contact', group: 'main' },
   { label: 'Messages', href: '/admin/messages', icon: 'messages', group: 'communication' },
   { label: 'Leads', href: '/admin/leads', icon: 'leads', group: 'communication' },
   { label: 'Simulateur', href: '/admin/calculator', icon: 'calculator', group: 'tools' },

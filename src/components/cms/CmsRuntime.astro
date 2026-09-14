@@ -104,6 +104,7 @@
         const trailing = node.dataset.cmsAuto === 'true' ? node.dataset.cmsTrailing || '' : '';
         node.textContent = `${leading}${content}${trailing}`;
       }
+      node.dataset.cmsEmpty = node.textContent?.trim() ? 'false' : 'true';
       applyFormat(node, format);
 
       const mirrorAttribute = node.dataset.cmsMirrorAttribute;
@@ -481,6 +482,27 @@
   [data-cms-format-line-height='compact'] { line-height: 1.08 !important; }
   [data-cms-format-line-height='normal'] { line-height: 1.4 !important; }
   [data-cms-format-line-height='relaxed'] { line-height: 1.75 !important; }
+
+  body:not(.cms-editor-mode) [data-cms-empty='true'] { display: none !important; }
+
+  body.cms-editor-mode [data-cms-empty='true'] {
+    display: inline-block !important;
+    min-width: 9rem;
+    min-height: 1.75rem;
+    vertical-align: middle;
+  }
+
+  body.cms-editor-mode [data-cms-empty='true']::before {
+    content: 'Texte masqué · cliquer pour modifier';
+    color: rgba(40, 55, 67, 0.62);
+    font-family: system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1.4;
+    text-transform: none;
+  }
 
   /*
    * Editor affordances never use a positive outline-offset. Two blocks share a

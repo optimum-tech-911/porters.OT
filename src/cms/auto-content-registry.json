@@ -8278,55 +8278,6 @@
     "rich": true
   },
   {
-    "key": "pages.contact.auto.button.1ckwpu",
-    "route": "/contact",
-    "type": "button",
-    "content": "The Porters Toulouse",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.1d7kq46",
-    "route": "/contact",
-    "type": "button",
-    "content": "The Porters Lyon",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.1f0wpes",
-    "route": "/contact",
-    "type": "button",
-    "content": "The Porters Marseille",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.1fugsph",
-    "route": "/contact",
-    "type": "button",
-    "content": "contact@porters.fr",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.1ksa759",
-    "route": "/contact",
-    "type": "button",
-    "content": "The Porters Paris",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.1l69mwh",
-    "route": "/contact",
-    "type": "button",
-    "content": "clarence@porters.fr",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.1wde3jg",
-    "route": "/contact",
-    "type": "button",
-    "content": "contact@porters.fr",
-    "rich": true
-  },
-  {
     "key": "pages.contact.auto.button.1ywlppw",
     "route": "/contact",
     "type": "button",
@@ -8334,65 +8285,10 @@
     "rich": true
   },
   {
-    "key": "pages.contact.auto.button.2he4up",
-    "route": "/contact",
-    "type": "button",
-    "content": "Voir toutes nos agences"
-  },
-  {
-    "key": "pages.contact.auto.button.4ipuqx",
-    "route": "/contact",
-    "type": "button",
-    "content": "The Porters Montpellier",
-    "rich": true
-  },
-  {
     "key": "pages.contact.auto.button.4nxp4q",
     "route": "/contact",
     "type": "button",
     "content": "Accueil",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.5s08v9",
-    "route": "/contact",
-    "type": "button",
-    "content": "ebensaid@porters.fr",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.cqzxzu",
-    "route": "/contact",
-    "type": "button",
-    "content": "simon@porters.fr",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.hft69k",
-    "route": "/contact",
-    "type": "button",
-    "content": "ebensaid@porters.fr",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.irygq9",
-    "route": "/contact",
-    "type": "button",
-    "content": "contact@porters.fr",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.button.rsc92j",
-    "route": "/contact",
-    "type": "button",
-    "content": "The Porters Aix-en-Provence",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.heading.14us0mo",
-    "route": "/contact",
-    "type": "heading",
-    "content": "Contact général",
     "rich": true
   },
   {
@@ -8410,31 +8306,10 @@
     "rich": true
   },
   {
-    "key": "pages.contact.auto.heading.6bjust",
-    "route": "/contact",
-    "type": "heading",
-    "content": "Nos agences",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.paragraph.10e76yb",
-    "route": "/contact",
-    "type": "paragraph",
-    "content": "4 place Amédée Bonnet, 69002 Lyon",
-    "rich": true
-  },
-  {
     "key": "pages.contact.auto.paragraph.14dc9tg",
     "route": "/contact",
     "type": "paragraph",
     "content": "Décrivez votre contexte *",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.paragraph.1c0coqn",
-    "route": "/contact",
-    "type": "paragraph",
-    "content": "Rendez-vous à distance ou selon les modalités confirmées par l’équipe.",
     "rich": true
   },
   {
@@ -8459,20 +8334,6 @@
     "rich": true
   },
   {
-    "key": "pages.contact.auto.paragraph.1f2j4xa",
-    "route": "/contact",
-    "type": "paragraph",
-    "content": "Rendez-vous à distance ou selon les modalités confirmées par l’équipe.",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.paragraph.1fk2qck",
-    "route": "/contact",
-    "type": "paragraph",
-    "content": "Email",
-    "rich": true
-  },
-  {
     "key": "pages.contact.auto.paragraph.1gk17og",
     "route": "/contact",
     "type": "paragraph",
@@ -8491,13 +8352,6 @@
     "route": "/contact",
     "type": "paragraph",
     "content": "Mission et statut",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.paragraph.1t3lek",
-    "route": "/contact",
-    "type": "paragraph",
-    "content": "120 rue de Thor, 34000 Montpellier",
     "rich": true
   },
   {
@@ -8547,20 +8401,6 @@
     "route": "/contact",
     "type": "paragraph",
     "content": "Mission déjà trouvée, statut à comparer, simulation à relire, ou un besoin de profil à couvrir. Plus le contexte est précis, plus la réponse l’est — et plus vite elle arrive.",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.paragraph.udtob4",
-    "route": "/contact",
-    "type": "paragraph",
-    "content": "27 rue Marbeuf, 75008 Paris",
-    "rich": true
-  },
-  {
-    "key": "pages.contact.auto.paragraph.uir5rl",
-    "route": "/contact",
-    "type": "paragraph",
-    "content": "Rendez-vous à distance ou selon les modalités confirmées par l’équipe.",
     "rich": true
   },
   {
@@ -8711,13 +8551,6 @@
     "rich": true
   },
   {
-    "key": "pages.entreprises.auto.heading.pmn40x",
-    "route": "/entreprises",
-    "type": "heading",
-    "content": "Trois missions, racontées <span class=\"gold-underline\" data-astro-cid-5bmr6dtb=\"\">sans les enjoliver</span>.",
-    "rich": true
-  },
-  {
     "key": "pages.entreprises.auto.heading.r4oq2q",
     "route": "/entreprises",
     "type": "heading",
@@ -8820,13 +8653,6 @@
     "route": "/entreprises",
     "type": "paragraph",
     "content": "Reprise de modèles de données",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.1iwezo3",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Un même niveau d’exigence, quel que soit le terrain technique.",
     "rich": true
   },
   {
@@ -9037,13 +8863,6 @@
     "route": "/entreprises",
     "type": "paragraph",
     "content": "Une question ?",
-    "rich": true
-  },
-  {
-    "key": "pages.entreprises.auto.paragraph.doqh5b",
-    "route": "/entreprises",
-    "type": "paragraph",
-    "content": "Changez de projet pour voir ce que chacune a réellement demandé.",
     "rich": true
   },
   {

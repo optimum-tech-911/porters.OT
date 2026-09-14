@@ -2116,6 +2116,7 @@ body.cms-editor-admin-sidebar-collapsed .admin-main-wrapper {
 .cms-admin-alert { margin: .85rem 0; border-radius: 6px; padding: .7rem .8rem; font-size: .7rem; line-height: 1.5; }
 .cms-admin-alert--error { border: 1px solid rgba(181,74,74,.18); background: rgba(181,74,74,.06); color: #9d3f3f; }
 .cms-admin-alert--success { border: 1px solid rgba(45,122,79,.18); background: rgba(45,122,79,.06); color: #286c47; }
+.cms-admin-alert--info { border: 1px solid rgba(62,103,125,.2); background: rgba(62,103,125,.07); color: #345d72; }
 
 /* Visual editor */
 .admin-content:has(.cms-editor-shell) { padding: 0; }

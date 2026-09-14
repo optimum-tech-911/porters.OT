@@ -72,7 +72,7 @@
   {
     "route": "/entreprises",
     "name": "Expertises IT externes, cadre maîtrisé",
-    "contentCount": 88
+    "contentCount": 85
   },
   {
     "route": "/expertises",
@@ -112,7 +112,7 @@
   {
     "route": "/contact",
     "name": "Parlons de votre situation",
-    "contentCount": 45
+    "contentCount": 21
   },
   {
     "route": "/confidentialite",
