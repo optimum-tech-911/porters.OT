@@ -1,5 +1,6 @@
 ---
 import { cmsAttrs, cmsText } from '../../cms/content';
+import SiteIcon from '../ui/SiteIcon.astro';
 
 type NavLink = {
   label: string;
@@ -61,7 +62,7 @@ const active = (href: string) => {
             aria-controls={`tp-nav-popover-${item.id}`}
             aria-expanded="false"
           >
-            <span aria-hidden="true">⌄</span>
+            <span aria-hidden="true"><SiteIcon name="chevron-down" class="site-arrow-icon" /></span>
           </button>
           <div class:list={['tp-nav-popover', `tp-nav-popover--${item.id}`]} id={`tp-nav-popover-${item.id}`} role="group" aria-label={item.label}>
             <div class="tp-popover-intro">
@@ -75,7 +76,7 @@ const active = (href: string) => {
                     <strong>{link.label}</strong>
                     {link.note && <small {...(link.noteKey ? cmsAttrs(link.noteKey) : {})}>{link.note}</small>}
                   </span>
-                  <b aria-hidden="true">↗</b>
+                  <b><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b>
                 </a>
               ))}
             </div>
@@ -93,7 +94,7 @@ const active = (href: string) => {
           <path d="m5 7 7 6 7-6"></path>
         </svg>
       </a>
-      <a href="/simulateur" class="tp-appointment-link">Simulateur <span aria-hidden="true">→</span></a>
+      <a href="/simulateur" class="tp-appointment-link">Simulateur <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
     </div>
 
     <a href="/simulateur" class="tp-mobile-appointment">Simulateur</a>
@@ -111,7 +112,7 @@ const active = (href: string) => {
         <details class="tp-mobile-group">
           <summary>
             {item.label}
-            <b aria-hidden="true">⌄</b>
+            <b aria-hidden="true"><SiteIcon name="chevron-down" class="site-arrow-icon" /></b>
           </summary>
           <div>
             <a class="tp-mobile-overview" href={item.href}>
@@ -124,7 +125,7 @@ const active = (href: string) => {
                   <strong>{link.label}</strong>
                   {link.note && <small {...(link.noteKey ? cmsAttrs(link.noteKey) : {})}>{link.note}</small>}
                 </span>
-                <b aria-hidden="true">→</b>
+                <b><SiteIcon name="arrow-right" class="site-arrow-icon" /></b>
               </a>
             ))}
           </div>

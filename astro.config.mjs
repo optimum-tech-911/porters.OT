@@ -6,6 +6,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
+/** @type {import('astro').AstroIntegration} */
 const syncRootSitemap = {
   name: 'the-porters-root-sitemap',
   hooks: {

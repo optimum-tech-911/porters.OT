@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import { faqGroups } from '../data/faq.data';
 import { pageSeo } from '../data/seo.data';
+import SiteIcon from '../components/ui/SiteIcon.astro';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -92,8 +93,8 @@ const seo = {
           <h2>Un conseiller reprend votre situation ligne par ligne.</h2>
         </div>
         <div>
-          <a href="/simulateur">Je simule mes revenus <span>→</span></a>
-          <a href="/rendez-vous">Je parle à un conseiller <span>→</span></a>
+          <a href="/simulateur">Je simule mes revenus <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
+          <a href="/rendez-vous">Je parle à un conseiller <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
         </div>
       </section>
     </div>

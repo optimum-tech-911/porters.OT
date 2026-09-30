@@ -3,15 +3,13 @@
     "key": "global.footer.auto.button.11fv2d1",
     "route": "/_global",
     "type": "button",
-    "content": "Nos engagements RSE<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Nos engagements RSE"
   },
   {
     "key": "global.footer.auto.button.1aaujqk",
     "route": "/_global",
     "type": "button",
-    "content": "Cybersécurité<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Cybersécurité"
   },
   {
     "key": "global.footer.auto.button.1ajzfkv",
@@ -24,85 +22,73 @@
     "key": "global.footer.auto.button.1bi6303",
     "route": "/_global",
     "type": "button",
-    "content": "Qui sommes-nous<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Qui sommes-nous"
   },
   {
     "key": "global.footer.auto.button.1ei7i1h",
     "route": "/_global",
     "type": "button",
-    "content": "Agilité<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Agilité"
   },
   {
     "key": "global.footer.auto.button.1l61122",
     "route": "/_global",
     "type": "button",
-    "content": "Comment fonctionne le portage<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Comment fonctionne le portage"
   },
   {
     "key": "global.footer.auto.button.1lxa2jg",
     "route": "/_global",
     "type": "button",
-    "content": "Questions fréquentes<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Questions fréquentes"
   },
   {
     "key": "global.footer.auto.button.1mt5wd6",
     "route": "/_global",
     "type": "button",
-    "content": "Prendre rendez-vous<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Prendre rendez-vous"
   },
   {
     "key": "global.footer.auto.button.1q89lnj",
     "route": "/_global",
     "type": "button",
-    "content": "Blog<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Blog"
   },
   {
     "key": "global.footer.auto.button.1qq8i7s",
     "route": "/_global",
     "type": "button",
-    "content": "contact@porters.fr <span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "contact@porters.fr"
   },
   {
     "key": "global.footer.auto.button.1s0j6m9",
     "route": "/_global",
     "type": "button",
-    "content": "Simulateur<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Simulateur"
   },
   {
     "key": "global.footer.auto.button.1sqtwv4",
     "route": "/_global",
     "type": "button",
-    "content": "Nos agences<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Nos agences"
   },
   {
     "key": "global.footer.auto.button.1tno1xd",
     "route": "/_global",
     "type": "button",
-    "content": "Nos expertises IT<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Nos expertises IT"
   },
   {
     "key": "global.footer.auto.button.gilzjz",
     "route": "/_global",
     "type": "button",
-    "content": "Big Data / Cloud / IA<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Big Data / Cloud / IA"
   },
   {
     "key": "global.footer.auto.button.rlhpm",
     "route": "/_global",
     "type": "button",
-    "content": "DevOps<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "DevOps"
   },
   {
     "key": "global.footer.auto.button.rvvh64",
@@ -115,15 +101,13 @@
     "key": "global.footer.auto.button.s88pl6",
     "route": "/_global",
     "type": "button",
-    "content": "Parrainage<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Parrainage"
   },
   {
     "key": "global.footer.auto.button.zyb6b3",
     "route": "/_global",
     "type": "button",
-    "content": "Nous contacter<span aria-hidden=\"true\" data-astro-cid-qup6pdxl=\"\">↗</span>",
-    "rich": true
+    "content": "Nous contacter"
   },
   {
     "key": "global.footer.auto.heading.11kccf9",
@@ -213,8 +197,7 @@
     "key": "global.header.auto.button.1jekl5x",
     "route": "/_global",
     "type": "button",
-    "content": "Simulateur <span aria-hidden=\"true\" data-astro-cid-vwn3tmth=\"\">→</span>",
-    "rich": true
+    "content": "Simulateur"
   },
   {
     "key": "global.header.auto.button.1jvacw2",
@@ -7266,8 +7249,7 @@
     "key": "pages.candidat.auto.button.1s4za5v",
     "route": "/candidat",
     "type": "button",
-    "content": "Envoyer ma candidature <span aria-hidden=\"true\">→</span>",
-    "rich": true
+    "content": "Envoyer ma candidature"
   },
   {
     "key": "pages.candidat.auto.button.1ur26yk",
@@ -7287,15 +7269,13 @@
     "key": "pages.candidat.auto.button.gwvn35",
     "route": "/candidat",
     "type": "button",
-    "content": "Présenter mon profil <b aria-hidden=\"true\" data-astro-cid-lz2k2sbc=\"\">↓</b>",
-    "rich": true
+    "content": "Présenter mon profil"
   },
   {
     "key": "pages.candidat.auto.button.s7gcxm",
     "route": "/candidat",
     "type": "button",
-    "content": "Voir les offres en cours <b aria-hidden=\"true\" data-astro-cid-lz2k2sbc=\"\">↗</b>",
-    "rich": true
+    "content": "Voir les offres en cours"
   },
   {
     "key": "pages.candidat.auto.heading.11wg1ww",
@@ -8281,8 +8261,7 @@
     "key": "pages.contact.auto.button.1ywlppw",
     "route": "/contact",
     "type": "button",
-    "content": "Envoyer ma demande <span aria-hidden=\"true\" data-astro-cid-kk24rp7q=\"\">→</span>",
-    "rich": true
+    "content": "Envoyer ma demande"
   },
   {
     "key": "pages.contact.auto.button.4nxp4q",
@@ -8428,15 +8407,13 @@
     "key": "pages.entreprises.auto.button.13ayosw",
     "route": "/entreprises",
     "type": "button",
-    "content": "Je confie mon besoin <span aria-hidden=\"true\" data-astro-cid-5bmr6dtb=\"\">→</span>",
-    "rich": true
+    "content": "Je confie mon besoin"
   },
   {
     "key": "pages.entreprises.auto.button.161dbf3",
     "route": "/entreprises",
     "type": "button",
-    "content": "Décrire mon besoin <span aria-hidden=\"true\" data-astro-cid-5bmr6dtb=\"\">→</span>",
-    "rich": true
+    "content": "Décrire mon besoin"
   },
   {
     "key": "pages.entreprises.auto.heading.120k1wy",
@@ -9275,8 +9252,7 @@
     "key": "pages.expertises.agilite-coaching.auto.button.gwvn35",
     "route": "/expertises/agilite-coaching",
     "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
+    "content": "Je simule mes revenus"
   },
   {
     "key": "pages.expertises.agilite-coaching.auto.button.s7gcxm",
@@ -9898,29 +9874,25 @@
     "key": "pages.expertises.auto.button.11ehjng",
     "route": "/expertises",
     "type": "button",
-    "content": "Voir le domaine en détail <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↗</span>",
-    "rich": true
+    "content": "Voir le domaine en détail"
   },
   {
     "key": "pages.expertises.auto.button.1kk0vbn",
     "route": "/expertises",
     "type": "button",
-    "content": "Voir le domaine en détail <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↗</span>",
-    "rich": true
+    "content": "Voir le domaine en détail"
   },
   {
     "key": "pages.expertises.auto.button.1q8ls5y",
     "route": "/expertises",
     "type": "button",
-    "content": "Je découvre les domaines <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↓</span>",
-    "rich": true
+    "content": "Je découvre les domaines"
   },
   {
     "key": "pages.expertises.auto.button.23lfn1",
     "route": "/expertises",
     "type": "button",
-    "content": "Voir le domaine en détail <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↗</span>",
-    "rich": true
+    "content": "Voir le domaine en détail"
   },
   {
     "key": "pages.expertises.auto.button.4nxp4q",
@@ -9933,8 +9905,7 @@
     "key": "pages.expertises.auto.button.gn7rhi",
     "route": "/expertises",
     "type": "button",
-    "content": "Voir le domaine en détail <span aria-hidden=\"true\" data-astro-cid-siqzw6pp=\"\">↗</span>",
-    "rich": true
+    "content": "Voir le domaine en détail"
   },
   {
     "key": "pages.expertises.auto.heading.120k1wy",
@@ -10850,8 +10821,7 @@
     "key": "pages.expertises.cloud-devops.auto.button.gwvn35",
     "route": "/expertises/cloud-devops",
     "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
+    "content": "Je simule mes revenus"
   },
   {
     "key": "pages.expertises.cloud-devops.auto.button.s7gcxm",
@@ -11459,8 +11429,7 @@
     "key": "pages.expertises.cybersecurite.auto.button.gwvn35",
     "route": "/expertises/cybersecurite",
     "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
+    "content": "Je simule mes revenus"
   },
   {
     "key": "pages.expertises.cybersecurite.auto.button.s7gcxm",
@@ -12040,8 +12009,7 @@
     "key": "pages.expertises.data-ia.auto.button.gwvn35",
     "route": "/expertises/data-ia",
     "type": "button",
-    "content": "Je simule mes revenus <span aria-hidden=\"true\" data-astro-cid-rnckc5ic=\"\">→</span>",
-    "rich": true
+    "content": "Je simule mes revenus"
   },
   {
     "key": "pages.expertises.data-ia.auto.button.s7gcxm",
@@ -12635,15 +12603,13 @@
     "key": "pages.faq.auto.button.bubqhp",
     "route": "/faq",
     "type": "button",
-    "content": "Je parle à un conseiller <span data-astro-cid-vagwt47q=\"\">→</span>",
-    "rich": true
+    "content": "Je parle à un conseiller"
   },
   {
     "key": "pages.faq.auto.button.vjh4vq",
     "route": "/faq",
     "type": "button",
-    "content": "Je simule mes revenus <span data-astro-cid-vagwt47q=\"\">→</span>",
-    "rich": true
+    "content": "Je simule mes revenus"
   },
   {
     "key": "pages.faq.auto.heading.16l9rai",
@@ -13888,8 +13854,7 @@
     "key": "pages.parrainage.auto.button.mq50re",
     "route": "/parrainage",
     "type": "button",
-    "content": "Je recommande un profil",
-    "rich": true
+    "content": "Je recommande un profil"
   },
   {
     "key": "pages.parrainage.auto.heading.1167sah",
@@ -14021,15 +13986,13 @@
     "key": "pages.portage-salarial.auto.button.14m5iej",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Je comprends les frais <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">→</span>",
-    "rich": true
+    "content": "Je comprends les frais"
   },
   {
     "key": "pages.portage-salarial.auto.button.1ty856i",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Voir le parcours complet du consultant <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">→</span>",
-    "rich": true
+    "content": "Voir le parcours complet du consultant"
   },
   {
     "key": "pages.portage-salarial.auto.button.4nxp4q",
@@ -14042,15 +14005,13 @@
     "key": "pages.portage-salarial.auto.button.nviywh",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Voir comment ça marche <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">↓</span>",
-    "rich": true
+    "content": "Voir comment ça marche"
   },
   {
     "key": "pages.portage-salarial.auto.button.pc30mw",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Je consulte la FAQ <span aria-hidden=\"true\" data-astro-cid-gpe2ahup=\"\">→</span>",
-    "rich": true
+    "content": "Je consulte la FAQ"
   },
   {
     "key": "pages.portage-salarial.auto.button.wvc156",
@@ -14336,8 +14297,7 @@
     "key": "pages.qui-sommes-nous.auto.button.15itwkr",
     "route": "/qui-sommes-nous",
     "type": "button",
-    "content": "Plus de détails <b aria-hidden=\"true\" data-astro-cid-auz7fwxu=\"\">↗</b>",
-    "rich": true
+    "content": "Plus de détails"
   },
   {
     "key": "pages.qui-sommes-nous.auto.button.15v7dxy",
@@ -14349,29 +14309,25 @@
     "key": "pages.qui-sommes-nous.auto.button.1bip5g",
     "route": "/qui-sommes-nous",
     "type": "button",
-    "content": "Plus de détails <b aria-hidden=\"true\" data-astro-cid-auz7fwxu=\"\">↗</b>",
-    "rich": true
+    "content": "Plus de détails"
   },
   {
     "key": "pages.qui-sommes-nous.auto.button.1ef2bd0",
     "route": "/qui-sommes-nous",
     "type": "button",
-    "content": "Comment fonctionne le portage <b aria-hidden=\"true\" data-astro-cid-auz7fwxu=\"\">↗</b>",
-    "rich": true
+    "content": "Comment fonctionne le portage"
   },
   {
     "key": "pages.qui-sommes-nous.auto.button.78y8cl",
     "route": "/qui-sommes-nous",
     "type": "button",
-    "content": "Plus de détails <b aria-hidden=\"true\" data-astro-cid-auz7fwxu=\"\">↗</b>",
-    "rich": true
+    "content": "Plus de détails"
   },
   {
     "key": "pages.qui-sommes-nous.auto.button.t8ed4a",
     "route": "/qui-sommes-nous",
     "type": "button",
-    "content": "Plus de détails <b aria-hidden=\"true\" data-astro-cid-auz7fwxu=\"\">↗</b>",
-    "rich": true
+    "content": "Plus de détails"
   },
   {
     "key": "pages.qui-sommes-nous.auto.button.yye7y5",

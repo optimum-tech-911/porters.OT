@@ -119,9 +119,35 @@ export function serializeInlineNodes(nodes: InlineNode[]): string {
 export function plainTextFromInlineNodes(nodes: InlineNode[]): string {
   return nodes.map((node) => {
     if (node.tag === null) return node.text;
+    if (DROP_TAGS.has(node.tag)) return '';
     if (node.tag === 'br') return '\n';
     return plainTextFromInlineNodes(node.children);
   }).join('');
+}
+
+const LEGACY_ARROW_GLYPHS = new Set(['→', '↗', '↘', '↓', '←', '⌄', '⌃', '⇧', '⇩']);
+
+/**
+ * Earlier published button and footer labels stored decorative arrow spans as
+ * inline HTML. Current links render the arrow as a separate SVG and edit only
+ * their text node, so flatten those old values before assigning textContent.
+ */
+export function publishedCmsPlainText(content: string): string {
+  if (!/<\/?[a-z][^>]*>/i.test(content)) return content;
+
+  function readableText(nodes: InlineNode[]): string {
+    return nodes.map((node) => {
+      if (node.tag === null) return node.text;
+      if (DROP_TAGS.has(node.tag)) return '';
+      const decorative = node.attributes.some(([name, value]) =>
+        (name === 'aria-hidden' && value === 'true') || name.startsWith('data-astro-cid-'));
+      if (decorative && LEGACY_ARROW_GLYPHS.has(plainTextFromInlineNodes(node.children).trim())) return '';
+      if (node.tag === 'br') return '\n';
+      return readableText(node.children);
+    }).join('');
+  }
+
+  return readableText(parseInert(content)).trim();
 }
 
 function readDomNodes(parent: Node): InlineNode[] {

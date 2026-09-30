@@ -11,7 +11,7 @@
 <script>
   import { supabase } from '../../lib/supabase';
   import type { CmsFormat } from '../../cms/content';
-  import { sanitizeInlineHtml } from '../../cms/inline-html';
+  import { publishedCmsPlainText, sanitizeInlineHtml } from '../../cms/inline-html';
   import { discoverEditableText } from '../../cms/discover';
   import { loadCmsPages } from '../../cms/load-pages';
 
@@ -65,6 +65,18 @@
     return !editorMode && preMergeFragments.get(key) === content.trim();
   }
 
+  function removeLegacyArrowIcons(content: string) {
+    const template = document.createElement('template');
+    template.innerHTML = content;
+    const legacyArrows = new Set(['→', '↗', '↘', '↓', '←', '⌄', '⌃', '⇧', '⇩']);
+    template.content.querySelectorAll<HTMLElement>('*').forEach((element) => {
+      const decorative = element.getAttribute('aria-hidden') === 'true'
+        || Array.from(element.attributes).some(({ name }) => name.startsWith('data-astro-cid-'));
+      if (decorative && legacyArrows.has(element.textContent?.trim() ?? '')) element.remove();
+    });
+    return template.innerHTML;
+  }
+
   const formatAttributes = ['size', 'weight', 'alignment', 'color', 'line-height'] as const;
 
   function applyFormat(node: HTMLElement, format: CmsFormat = {}) {
@@ -102,11 +114,14 @@
         if (isPreMergeRow(key, content)) return;
         // Sanitized on the way in as well as on the way out: the stored value is
         // admin-authored, but it still reaches every visitor's page.
-        node.innerHTML = sanitizeInlineHtml(content);
+        // Old rich CMS values sometimes include Unicode arrow glyphs that
+        // were used as icons. Remove those decorative nodes; their vector
+        // replacement lives next to, rather than inside, the editable copy.
+        node.innerHTML = sanitizeInlineHtml(removeLegacyArrowIcons(content));
       } else {
         const leading = node.dataset.cmsAuto === 'true' ? node.dataset.cmsLeading || '' : '';
         const trailing = node.dataset.cmsAuto === 'true' ? node.dataset.cmsTrailing || '' : '';
-        node.textContent = `${leading}${content}${trailing}`;
+        node.textContent = `${leading}${publishedCmsPlainText(content)}${trailing}`;
       }
       node.dataset.cmsEmpty = node.textContent?.trim() ? 'false' : 'true';
       applyFormat(node, format);
@@ -279,7 +294,13 @@
         data.forEach((block) => blockByKey.set(block.content_key, block));
       }
 
-      blockByKey.forEach(applyBlock);
+      // On static hosting the HTML contains fallback copy. Keep it covered
+      // until the published batch has been applied, then reveal one stable page.
+      // If the loading gate has expired, retain the fallback instead of making
+      // an already visible page change again.
+      if (editorMode || document.documentElement.dataset.cmsGateState !== 'expired') {
+        blockByKey.forEach(applyBlock);
+      }
       announceReady();
     } catch (error) {
       console.warn('[CMS] Fallback content retained:', error);
@@ -291,6 +312,11 @@
             : 'Chargement impossible';
         window.parent.postMessage({ type: 'cms:error', message }, window.location.origin);
       }
+    } finally {
+      if (document.documentElement.dataset.cmsGateState === 'pending') {
+        document.documentElement.dataset.cmsGateState = 'complete';
+      }
+      document.documentElement.classList.remove('cms-loading');
     }
   }
 

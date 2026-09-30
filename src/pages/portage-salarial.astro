@@ -210,7 +210,7 @@ const faqItems = [
         </p>
         <div class="portage-hero__actions">
           <a href="/simulateur" class="btn btn-primary">Je calcule mon salaire</a>
-          <a href="#fonctionnement" class="portage-anchor">Voir comment ça marche <span aria-hidden="true">↓</span></a>
+          <a href="#fonctionnement" class="portage-anchor">Voir comment ça marche <span><SiteIcon name="arrow-down" class="site-arrow-icon" /></span></a>
         </div>
       </div>
     </div>
@@ -231,7 +231,7 @@ const faqItems = [
             collective de branche.
           </p>
           <a data-motion-item="pop" style="--motion-order:4" href="/consultants" class="mt-6 inline-flex items-center gap-2 font-semibold text-porters-navy hover:text-porters-gold transition-colors">
-            Voir le parcours complet du consultant <span aria-hidden="true">→</span>
+            Voir le parcours complet du consultant <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span>
           </a>
         </div>
         <div class="reveal" data-motion-item="right" style="--motion-order:2">
@@ -284,8 +284,8 @@ const faqItems = [
             </article>
           ))}
           <div class="portage-benefits-links" data-motion-item="pop" style="--motion-order:7">
-            <a href="#frais">Je comprends les frais <span aria-hidden="true">→</span></a>
-            <a href="/faq">Je consulte la FAQ <span aria-hidden="true">→</span></a>
+            <a href="#frais">Je comprends les frais <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
+            <a href="/faq">Je consulte la FAQ <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
           </div>
         </div>
       </div>
@@ -426,8 +426,9 @@ const faqItems = [
             Présentez-nous la personne : l’équipe confirme l’éligibilité et les conditions en
             vigueur avant toute mise en relation, et aucune coordonnée n’est transmise sans son accord.
           </p>
-          <a href="/parrainage" class="mt-6 inline-flex items-center gap-2 font-semibold text-porters-navy hover:text-porters-gold transition-colors" {...cmsAttrs('pages.portage-salarial.auto.button.1agnlz9')} data-cms-rich="true">
-            Je découvre le parrainage <span aria-hidden="true">→</span>
+          <a href="/parrainage" class="mt-6 inline-flex items-center gap-2 font-semibold text-porters-navy hover:text-porters-gold transition-colors">
+            <span {...cmsAttrs('pages.portage-salarial.auto.button.1agnlz9')} data-cms-rich="true">Je découvre le parrainage</span>
+            <span aria-hidden="true" data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></span>
           </a>
         </div>
         <ol class="grid gap-4 sm:grid-cols-3 reveal">

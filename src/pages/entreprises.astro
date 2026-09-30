@@ -5,9 +5,12 @@ import SiteIcon from '../components/ui/SiteIcon.astro';
 import BrandAmbientShapes from '../components/ui/BrandAmbientShapes.astro';
 import { pageSeo } from '../data/seo.data';
 import ambreGuide from '../assets/enterprise/ambre-guide.png';
-import qualifiedMatch from '../assets/enterprise/qualified-match.png';
-import tripartiteClient from '../assets/home/tripartite-client.png';
-import tripartiteConsultant from '../assets/home/tripartite-consultant.png';
+import qualifiedMatchSmall from '../assets/enterprise/qualified-match-560.webp';
+import qualifiedMatchLarge from '../assets/enterprise/qualified-match-1200.webp';
+import tripartiteClientSmall from '../assets/home/tripartite-client-560.webp';
+import tripartiteClientLarge from '../assets/home/tripartite-client-1200.webp';
+import tripartiteConsultantSmall from '../assets/home/tripartite-consultant-560.webp';
+import tripartiteConsultantLarge from '../assets/home/tripartite-consultant-1200.webp';
 import bigPortersLogo from '../assets/brands/big-porters-wordmark.png';
 import { enterprisePage } from '../content/pages/entreprises';
 
@@ -25,21 +28,24 @@ const projects = [
     context: 'Organisme public national',
     text: 'Passage de Hortonworks à Cloudera Data Platform, avec reprise de l’architecture et sécurisation de la trajectoire.',
     profiles: ['Architecture système', 'Big Data', 'Développement senior'],
-    image: tripartiteClient,
+    imageSmall: tripartiteClientSmall,
+    imageLarge: tripartiteClientLarge,
   },
   {
     title: 'Applications critiques IBM i / AS400',
     context: 'Environnement métier historique',
     text: 'Analyse, développement spécifique et maintenance d’applications centrales, sans fragiliser la continuité de service.',
     profiles: ['Analyse-programmation', 'Pilotage applicatif', 'Maintenance évolutive'],
-    image: tripartiteConsultant,
+    imageSmall: tripartiteConsultantSmall,
+    imageLarge: tripartiteConsultantLarge,
   },
   {
     title: 'Reprise de modèles de données',
     context: 'Contexte industriel',
     text: 'Audit de l’existant, recommandations d’outils et construction d’applicatifs internes autour de données fiabilisées.',
     profiles: ['Architecture data', 'Data science', 'Fullstack'],
-    image: qualifiedMatch,
+    imageSmall: qualifiedMatchSmall,
+    imageLarge: qualifiedMatchLarge,
   },
 ];
 
@@ -76,7 +82,7 @@ const models = [
           le mode d’intervention adapté. Pas une pile de CV.
         </strong>
         <a data-motion-item="pop" style="--motion-order:3" href="/contact">
-          Décrire mon besoin <span aria-hidden="true">→</span>
+          Décrire mon besoin <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span>
         </a>
       </div>
 
@@ -136,7 +142,7 @@ const models = [
           Le détail apparaît au bon moment pendant votre lecture, sans afficher cinq blocs de texte en parallèle.
         </strong>
         <figure class="process-visual" data-motion-item="pop" style="--motion-order:3" data-process-visual>
-          <Image src={tripartiteClient} alt="Équipe réunie pour cadrer un besoin numérique" widths={[420, 640, 820]} sizes="(max-width:820px) 88vw, 31vw" format="webp" quality={88} />
+          <img src={tripartiteClientLarge.src} srcset={`${tripartiteClientSmall.src} 560w, ${tripartiteClientLarge.src} 1200w`} sizes="(max-width:820px) 88vw, 31vw" width={tripartiteClientLarge.width} height={tripartiteClientLarge.height} alt="Équipe réunie pour cadrer un besoin numérique" loading="lazy" decoding="async" />
           <figcaption><span>Un cadre commun</span><strong>Un besoin se précise toujours en parlant aux gens qui le portent.</strong></figcaption>
         </figure>
       </header>
@@ -157,7 +163,7 @@ const models = [
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </div>
-              <b aria-hidden="true">↘</b>
+              <b><SiteIcon name="arrow-down-right" class="site-arrow-icon" /></b>
             </div>
           </li>
         ))}
@@ -184,15 +190,15 @@ const models = [
 
       <div class="perimeter-visuals" data-motion-item="wipe" style="--motion-order:3" data-perimeter-visuals>
         <figure class="perimeter-visual perimeter-visual--one" data-perimeter-visual>
-          <Image src={tripartiteConsultant} alt="" widths={[360, 560, 760]} sizes="(max-width:760px) 78vw, 28vw" format="webp" quality={86} />
+          <img src={tripartiteConsultantLarge.src} srcset={`${tripartiteConsultantSmall.src} 560w, ${tripartiteConsultantLarge.src} 1200w`} sizes="(max-width:760px) 78vw, 28vw" width={tripartiteConsultantLarge.width} height={tripartiteConsultantLarge.height} alt="" loading="lazy" decoding="async" />
           <figcaption>Comprendre votre environnement</figcaption>
         </figure>
         <figure class="perimeter-visual perimeter-visual--two" data-perimeter-visual>
-          <Image src={qualifiedMatch} alt="" widths={[420, 680, 900]} sizes="(max-width:760px) 84vw, 36vw" format="webp" quality={88} />
+          <img src={qualifiedMatchLarge.src} srcset={`${qualifiedMatchSmall.src} 560w, ${qualifiedMatchLarge.src} 1200w`} sizes="(max-width:760px) 84vw, 36vw" width={qualifiedMatchLarge.width} height={qualifiedMatchLarge.height} alt="" loading="lazy" decoding="async" />
           <figcaption>Mobiliser la bonne expertise</figcaption>
         </figure>
         <figure class="perimeter-visual perimeter-visual--three" data-perimeter-visual>
-          <Image src={tripartiteClient} alt="" widths={[360, 560, 760]} sizes="(max-width:760px) 78vw, 28vw" format="webp" quality={86} />
+          <img src={tripartiteClientLarge.src} srcset={`${tripartiteClientSmall.src} 560w, ${tripartiteClientLarge.src} 1200w`} sizes="(max-width:760px) 78vw, 28vw" width={tripartiteClientLarge.width} height={tripartiteClientLarge.height} alt="" loading="lazy" decoding="async" />
           <figcaption>S’adapter au terrain</figcaption>
         </figure>
       </div>
@@ -211,7 +217,7 @@ const models = [
             <div class="perimeter-card-inner">
               <h3>{useCase.title}</h3>
               <p>{useCase.text}</p>
-              <b aria-hidden="true">↗</b>
+              <b><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b>
             </div>
           </a>
         ))}
@@ -273,7 +279,7 @@ const models = [
               hidden={index !== 0}
               data-project-panel
             >
-              <Image class="project-panel-image" src={project.image} alt="" widths={[520, 760, 1040]} sizes="(max-width:820px) 100vw, 50vw" format="webp" quality={86} />
+              <img class="project-panel-image" src={project.imageLarge.src} srcset={`${project.imageSmall.src} 560w, ${project.imageLarge.src} 1200w`} sizes="(max-width:820px) 100vw, 50vw" width={project.imageLarge.width} height={project.imageLarge.height} alt="" loading="lazy" decoding="async" />
               <div class="project-panel-copy">
                 <p>{project.context}</p>
                 <h3>{project.title}</h3>
@@ -332,7 +338,7 @@ const models = [
         <h2 data-motion-item="left" style="--motion-order:1">Racontez-nous le contexte.<br /><span>Nous nous occupons du reste.</span></h2>
         <strong data-motion-item="left" style="--motion-order:2">Technologies, organisation, délai, autonomie et sécurité&nbsp;: cinq informations suffisent pour commencer.</strong>
       </div>
-      <a data-motion-item="pop" style="--motion-order:3" href="/contact">Je confie mon besoin <span aria-hidden="true">→</span></a>
+      <a data-motion-item="pop" style="--motion-order:3" href="/contact">Je confie mon besoin <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
     </div>
   </section>
 </PageLayout>

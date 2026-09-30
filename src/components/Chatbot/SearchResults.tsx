@@ -1,4 +1,5 @@
 import { emitAssistantEvent, type AssistantResponse } from '../../lib/searchAssistant';
+import ArrowIcon from '../ui/ArrowIcon';
 
 interface Props {
   response: AssistantResponse;
@@ -46,7 +47,7 @@ export default function SearchResults({ response }: Props) {
                 <small>{categoryLabels[item.category] ?? item.category}</small>
                 <strong>{item.title}</strong>
               </span>
-              <span aria-hidden="true">↗</span>
+              <ArrowIcon direction="up-right" />
             </a>
           ))}
         </div>
@@ -54,4 +55,3 @@ export default function SearchResults({ response }: Props) {
     </div>
   );
 }
-

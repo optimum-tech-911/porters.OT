@@ -1,6 +1,7 @@
 ---
 import { franceMapPins, franceMapRoutes } from '../../data/france-map.data';
 import type { Agency } from '../../types/agency';
+import SiteIcon from '../ui/SiteIcon.astro';
 
 /**
  * `coverage` switches the intro from an agency directory to a national-coverage
@@ -66,14 +67,14 @@ const agencyCities = referencePoints.filter((point) => point.agency).map((point)
             {agency?.address && <span>{agency.address}{agency.postalCode ? ` · ${agency.postalCode}` : ''}</span>}
             {agency && !agency.address && <span>Rendez-vous selon les modalités confirmées</span>}
             {!agency && <span>Présence historique à confirmer avant publication d’une page locale.</span>}
-            <b>{agency ? 'Découvrir l’agence' : 'Voir les points confirmés'} →</b>
+            <b>{agency ? 'Découvrir l’agence' : 'Voir les points confirmés'} <SiteIcon name="arrow-right" class="site-arrow-icon" /></b>
           </span>
         </a>
       );
     })}
   </div>
   <div class="agency-mobile-list">
-    {agencies.map((agency) => <a href={`/agences/${agency.slug}`}><span><small>{agency.region}</small><strong>{agency.city}</strong></span><b>→</b></a>)}
+    {agencies.map((agency) => <a href={`/agences/${agency.slug}`}><span><small>{agency.region}</small><strong>{agency.city}</strong></span><b><SiteIcon name="arrow-right" class="site-arrow-icon" /></b></a>)}
   </div>
 </div>
 

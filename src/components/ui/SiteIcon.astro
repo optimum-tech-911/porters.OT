@@ -20,7 +20,13 @@ interface Props {
     | 'shield'
     | 'spark'
     | 'user'
-    | 'users';
+    | 'users'
+    | 'arrow-right'
+    | 'arrow-up-right'
+    | 'arrow-down-right'
+    | 'arrow-down'
+    | 'arrow-left'
+    | 'chevron-down';
   class?: string;
 }
 
@@ -67,6 +73,18 @@ const paths: Record<Props['name'], string> = {
     '<circle cx="12" cy="8" r="4" /><path d="M4 21a8 8 0 0 1 16 0" />',
   users:
     '<path d="M16 21a6 6 0 0 0-12 0" /><circle cx="10" cy="8" r="4" /><path d="M22 21a5 5 0 0 0-4-4.9" /><path d="M16 4.1a4 4 0 0 1 0 7.8" />',
+  'arrow-right':
+    '<path d="M4 12h15" /><path d="m13 6 6 6-6 6" />',
+  'arrow-up-right':
+    '<path d="m6 18 12-12" /><path d="M8 6h10v10" />',
+  'arrow-down-right':
+    '<path d="m6 6 12 12" /><path d="M18 8v10H8" />',
+  'arrow-down':
+    '<path d="M12 4v15" /><path d="m6 13 6 6 6-6" />',
+  'arrow-left':
+    '<path d="M20 12H5" /><path d="m11 6-6 6 6 6" />',
+  'chevron-down':
+    '<path d="m5 9 7 7 7-7" />',
 };
 ---
 

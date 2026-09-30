@@ -1,5 +1,6 @@
 import { heroExperience, type HeroAudienceId } from './heroExperience.data';
 import HeroCardPopover from './HeroCardPopover';
+import ArrowIcon from '../ui/ArrowIcon';
 
 export default function HeroFloatingStickers({ audienceId }: { audienceId: HeroAudienceId }) {
   const stickers = heroExperience[audienceId].stickers;
@@ -20,7 +21,7 @@ export default function HeroFloatingStickers({ audienceId }: { audienceId: HeroA
               <strong>{sticker.title}</strong>
               <small>{sticker.text}</small>
             </span>
-            <span className="hero-card-arrow" aria-hidden="true">↗</span>
+            <ArrowIcon direction="up-right" className="hero-card-arrow" />
             <HeroCardPopover
               eyebrow={sticker.detail.eyebrow}
               title={sticker.title}

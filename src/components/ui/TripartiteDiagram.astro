@@ -15,8 +15,10 @@
  */
 import { Image } from 'astro:assets';
 import SiteIcon from './SiteIcon.astro';
-import consultantImage from '../../assets/home/tripartite-consultant.png';
-import clientImage from '../../assets/home/tripartite-client.png';
+import consultantImageSmall from '../../assets/home/tripartite-consultant-560.webp';
+import consultantImageLarge from '../../assets/home/tripartite-consultant-1200.webp';
+import clientImageSmall from '../../assets/home/tripartite-client-560.webp';
+import clientImageLarge from '../../assets/home/tripartite-client-1200.webp';
 import portersImage from '../../assets/home/welcome-porters.png';
 
 const parties = [
@@ -178,9 +180,9 @@ const initial = parties.find((p) => p.id === 'porters')!;
 
     <aside class="tri-detail" data-tri-detail aria-live="polite" data-cms-ignore>
       <div class="tri-detail-media" aria-live="off">
-        <Image class="tri-detail-image" data-detail-image="consultant" src={consultantImage} alt="Consultant en échange avec une conseillère" widths={[420, 640]} sizes="(max-width: 1080px) 80vw, 20vw" format="webp" quality={86} />
+        <img class="tri-detail-image" data-detail-image="consultant" src={consultantImageLarge.src} srcset={`${consultantImageSmall.src} 560w, ${consultantImageLarge.src} 1200w`} sizes="(max-width: 1080px) 80vw, 20vw" width={consultantImageLarge.width} height={consultantImageLarge.height} alt="Consultant en échange avec une conseillère" loading="lazy" decoding="async" />
         <Image class="tri-detail-image" data-detail-image="porters" src={portersImage} alt="Carte de bienvenue The Porters" widths={[420, 640]} sizes="(max-width: 1080px) 80vw, 20vw" format="webp" quality={86} />
-        <Image class="tri-detail-image" data-detail-image="client" src={clientImage} alt="Équipe d’une entreprise cliente en réunion" widths={[420, 640]} sizes="(max-width: 1080px) 80vw, 20vw" format="webp" quality={86} />
+        <img class="tri-detail-image" data-detail-image="client" src={clientImageLarge.src} srcset={`${clientImageSmall.src} 560w, ${clientImageLarge.src} 1200w`} sizes="(max-width: 1080px) 80vw, 20vw" width={clientImageLarge.width} height={clientImageLarge.height} alt="Équipe d’une entreprise cliente en réunion" loading="lazy" decoding="async" />
       </div>
       <div class="tri-detail-copy">
         <span class="tri-detail-kind" data-detail-kind>Acteur</span>

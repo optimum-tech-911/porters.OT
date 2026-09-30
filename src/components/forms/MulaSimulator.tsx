@@ -4,6 +4,7 @@ import { buildMulaRequest, calculateWithMula, mulaPdfUrl, type MulaInput, type M
 import { crmAttribution } from '../../lib/crm-attribution';
 import { watchPublishedSettings } from '../../lib/published-settings';
 import { supabase } from '../../lib/supabase';
+import ArrowIcon from '../ui/ArrowIcon';
 import './mula-simulator.css';
 
 const initialInput = (settings: MulaSettings): MulaInput => ({ amount: '', managementFee: settings.managementFee, fixedFee: settings.fixedFee, expenses: settings.expenses, days: settings.days, contract: settings.contract });
@@ -104,7 +105,7 @@ export default function MulaSimulator({ preview }: { preview?: MulaSettings }) {
   }
 
   const field = (key: 'managementFee' | 'fixedFee' | 'expenses' | 'days', label: string, unit: string, min: number, max: number) => settings.fields[key] !== 'hidden' && <label className="mula-form__field">{label}<span className="mula-form__input"><input name={key} type="number" min={min} max={max} step="any" required disabled={settings.fields[key] === 'disabled'} value={settings.fields[key] === 'enabled' ? (Number.isNaN(input[key]) ? '' : input[key]) : settings[key]} onChange={(event) => edit({ [key]: event.target.value === '' ? NaN : Number(event.target.value) })} /><span aria-hidden="true">{unit}</span></span></label>;
-  return <div className="mula-form" data-cms-ignore>
+  return <div className="mula-form" data-cms-ignore data-published-settings-ready={ready}>
     <header><h2>{settings.title}</h2><p>{settings.description}</p></header>
     {!settings.enabled ? <p role="status">Le simulateur est momentanément indisponible.</p> : <>
       <p className="mula-form__prompt">Je connais :</p>
@@ -138,8 +139,8 @@ export default function MulaSimulator({ preview }: { preview?: MulaSettings }) {
             {settings.showDetails && <dl>{rows.map(([key, label]) => <div key={key}><dt>{label}</dt><dd>{money(key === 'tjm' ? Number(result.data.ca_mensuel) / Number(result.payload.nombre_jours) : result.data[key])}</dd></div>)}</dl>}
           </> : <p>Votre simulation a été calculée. Un conseiller peut vous en présenter le détail.</p>}
           <div className="mula-form__actions">
-            {settings.pdfEnabled && settings.showResults && result.data.simulator_show_results !== false && <a href={mulaPdfUrl(result.serial, result.payload)} target="_blank" rel="noopener noreferrer">Télécharger la simulation PDF ↗</a>}
-            {settings.contactEnabled && <a href={settings.contactHref}>{settings.contactLabel} →</a>}
+            {settings.pdfEnabled && settings.showResults && result.data.simulator_show_results !== false && <a href={mulaPdfUrl(result.serial, result.payload)} target="_blank" rel="noopener noreferrer">Télécharger la simulation PDF <ArrowIcon direction="up-right" /></a>}
+            {settings.contactEnabled && <a href={settings.contactHref}>{settings.contactLabel} <ArrowIcon direction="right" /></a>}
           </div>
           {settings.leadCaptureEnabled && <form className="mula-form__lead" onSubmit={submitLead}>
             <h4>{settings.leadTitle}</h4>

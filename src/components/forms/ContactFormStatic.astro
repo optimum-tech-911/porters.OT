@@ -1,4 +1,6 @@
 ---
+import SiteIcon from '../ui/SiteIcon.astro';
+
 interface Props {
   id?: string;
 }
@@ -60,7 +62,7 @@ const { id = 'contact-form' } = Astro.props;
   </label>
 
   <div class="contact-form__actions">
-    <button type="submit">Envoyer ma demande <span aria-hidden="true">→</span></button>
+    <button type="submit">Envoyer ma demande <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></button>
     <p class="contact-form__status" data-contact-status role="status" aria-live="polite"></p>
   </div>
 </form>
@@ -121,7 +123,7 @@ const { id = 'contact-form' } = Astro.props;
 
       if (button) {
         button.disabled = false;
-        button.innerHTML = error ? 'Réessayer <span aria-hidden="true">→</span>' : 'Demande envoyée <span aria-hidden="true">✓</span>';
+        button.innerHTML = error ? 'Réessayer <svg class="site-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>' : 'Demande envoyée <span aria-hidden="true">✓</span>';
       }
 
       if (error) {

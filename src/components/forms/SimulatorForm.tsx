@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type SubmitEventHandler } from 'react';
 import NumericSliderField from './NumericSliderField';
 import { supabase } from '../../lib/supabase';
+import ArrowIcon from '../ui/ArrowIcon';
 import {
   defaultSimulatorSettings,
   parseSimulatorSettings,
@@ -418,7 +419,7 @@ export default function SimulatorForm() {
               <div className="relative my-8 flex items-center justify-center" aria-hidden="true">
                 <span className="absolute h-44 w-44 rounded-full border border-porters-gold/25 animate-[spin_18s_linear_infinite]" />
                 <span className="absolute h-28 w-28 rounded-full border border-dashed border-white/18 animate-[spin_12s_linear_infinite_reverse]" />
-                <span className="grid h-20 w-20 place-items-center rounded-full bg-porters-gold text-3xl text-porters-navy shadow-[0_0_45px_rgba(219,178,87,0.24)]">↗</span>
+                <span className="grid h-20 w-20 place-items-center rounded-full bg-porters-gold text-porters-navy shadow-[0_0_45px_rgba(219,178,87,0.24)]"><ArrowIcon direction="up-right" className="text-3xl" /></span>
               </div>
               <button type="button" className="btn btn-primary w-full justify-center" onClick={focusLeadForm}>
                 Voir mon résultat détaillé

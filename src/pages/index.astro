@@ -75,7 +75,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
         <p data-motion-item="left" style="--motion-order:0" {...cmsAttrs('home.offer.eyebrow')}>{cmsText('home.offer.eyebrow')}</p>
         <h2 data-motion-item="left" style="--motion-order:1" {...cmsAttrs('home.offer.title')}>{cmsText('home.offer.title')}</h2>
         <span data-motion-item="left" style="--motion-order:2" {...cmsAttrs('home.offer.description')}>{cmsText('home.offer.description')}</span>
-        <a data-motion-item="pop" style="--motion-order:3" href="/portage-salarial"><span {...cmsAttrs('home.offer.cta')}>{cmsText('home.offer.cta')}</span> <span aria-hidden="true">→</span></a>
+        <a data-motion-item="pop" style="--motion-order:3" href="/portage-salarial"><span {...cmsAttrs('home.offer.cta')}>{cmsText('home.offer.cta')}</span> <span data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
         <figure class="light-offer-welcome reveal-scale" data-reveal data-motion-item="wipe" style="--motion-order:4" aria-label="Bienvenue chez The Porters">
           <Image
             src={welcomePortersImage}
@@ -117,7 +117,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
         <aside class="light-offer-detail" data-motion-item="up" style="--motion-order:8" aria-live="polite">
           <h3 {...cmsAttrs('home.offer.it.title')}>{offerItems[0]?.title}</h3>
           <p {...cmsAttrs('home.offer.it.description')}>{offerItems[0]?.text}</p>
-          <a href={offerItems[0].href} data-offer-link><span data-cms-ignore>{offerItems[0].cta}</span> <b aria-hidden="true">→</b></a>
+          <a href={offerItems[0].href} data-offer-link><span data-cms-ignore>{offerItems[0].cta}</span> <b data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></b></a>
         </aside>
       </div>
     </div>
@@ -137,8 +137,8 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
               <li data-motion-item="chip" style="--motion-order:6" {...cmsAttrs('home.jobs.point.full')}>{cmsText('home.jobs.point.full')}</li>
             </ul>
             <div data-motion-item="pop" style="--motion-order:7">
-              <a href={helloWorkUrl} target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.brand_free.external_cta')}>{cmsText('home.jobs.brand_free.external_cta')}</span> <b aria-hidden="true">→</b></a>
-              <a href="/candidat"><span>Je suis candidat</span> <b aria-hidden="true">→</b></a>
+              <a href={helloWorkUrl} target="_blank" rel="noopener noreferrer"><span {...cmsAttrs('home.jobs.brand_free.external_cta')}>{cmsText('home.jobs.brand_free.external_cta')}</span> <b data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></b></a>
+              <a href="/candidat"><span>Je suis candidat</span> <b data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></b></a>
             </div>
           </div>
           <div class="light-hellowork-preview" data-motion-item="right" style="--motion-order:3" aria-hidden="true">
@@ -184,7 +184,7 @@ const faqPreview = faqGroups.flatMap((group) => group.items).slice(0, 4);
         <p data-motion-item="left" style="--motion-order:0" {...cmsAttrs('home.faq.eyebrow')}>{cmsText('home.faq.eyebrow')}</p>
         <h2 data-motion-item="left" style="--motion-order:1" {...cmsAttrs('home.faq.title')}>{cmsText('home.faq.title')}</h2>
         <span data-motion-item="left" style="--motion-order:2" {...cmsAttrs('home.faq.description')}>{cmsText('home.faq.description')}</span>
-        <a data-motion-item="pop" style="--motion-order:3" href="/faq"><span {...cmsAttrs('home.faq.cta')}>{cmsText('home.faq.cta')}</span> <b aria-hidden="true">→</b></a>
+        <a data-motion-item="pop" style="--motion-order:3" href="/faq"><span {...cmsAttrs('home.faq.cta')}>{cmsText('home.faq.cta')}</span> <b data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></b></a>
       </div>
       <div class="light-faq-list reveal-up" data-reveal>
         {faqPreview.map((faq, index) => (

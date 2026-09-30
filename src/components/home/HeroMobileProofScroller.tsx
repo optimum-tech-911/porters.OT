@@ -1,5 +1,6 @@
 import { heroExperience, type HeroAudienceId } from './heroExperience.data';
 import useAutoScrollRail from './useAutoScrollRail';
+import ArrowIcon from '../ui/ArrowIcon';
 
 type Props = {
   audienceId: HeroAudienceId;
@@ -35,7 +36,7 @@ export default function HeroMobileProofScroller({ audienceId, reducedMotion }: P
               <img src={item.image.src} alt="" width="256" height="256" />
             </span>
             <span>{item.title}</span>
-            <span className="hero-mobile-proof-arrow" aria-hidden="true">↗</span>
+            <ArrowIcon direction="up-right" className="hero-mobile-proof-arrow" />
           </a>
         ))}
       </div>

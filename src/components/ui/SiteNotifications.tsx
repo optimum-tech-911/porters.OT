@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { defaultNotifications, NOTIFICATIONS_KEY, parseNotifications, nextNotificationTime, safeWebUrl, type SiteMessage } from '../../data/site-notifications';
 import { watchPublishedSettings } from '../../lib/published-settings';
 import './site-notifications.css';
+import ArrowIcon from './ArrowIcon';
 
 export function NotificationCard({ message, portraitSrc, onClose, preview = false }: { message: SiteMessage; portraitSrc?: string; onClose?: () => void; preview?: boolean }) {
   const imageSrc = message.showImage ? safeWebUrl(message.image) || portraitSrc : '';
@@ -23,7 +24,7 @@ export function NotificationCard({ message, portraitSrc, onClose, preview = fals
     <span className="site-notice__brand">The Porters</span>
     <h2>{message.title}</h2>
     <p>{message.text}</p>
-    <a href={safeWebUrl(message.href) || undefined} {...(message.href.startsWith('https:') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{message.linkLabel}<span aria-hidden="true">↗</span></a>
+    <a href={safeWebUrl(message.href) || undefined} {...(message.href.startsWith('https:') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{message.linkLabel}<ArrowIcon direction="up-right" /></a>
     {imageSrc && <img className="site-notice__portrait" src={imageSrc} alt={message.imageAlt} width="220" height="290" decoding="async" />}
   </aside>;
 }

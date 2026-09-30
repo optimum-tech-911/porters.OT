@@ -3,9 +3,11 @@ import { defaultPublicTeam, parsePublicTeam, PUBLIC_TEAM_KEY, type PublicTeamSet
 import { watchPublishedSettings } from '../../lib/published-settings';
 import { safeWebUrl } from '../../data/site-notifications';
 import './team-carousel.css';
+import ArrowIcon from '../ui/ArrowIcon';
 
 export default function TeamCarousel({ preview }: { preview?: PublicTeamSettings }) {
   const [published, setPublished] = useState(defaultPublicTeam);
+  const [ready, setReady] = useState(Boolean(preview));
   const settings = preview ?? published;
   const members = settings.members.filter((person) => person.visible);
   const [activeId, setActiveId] = useState('');
@@ -22,7 +24,7 @@ export default function TeamCarousel({ preview }: { preview?: PublicTeamSettings
 
   useEffect(() => {
     if (preview) return;
-    return watchPublishedSettings(PUBLIC_TEAM_KEY, parsePublicTeam, setPublished);
+    return watchPublishedSettings(PUBLIC_TEAM_KEY, parsePublicTeam, setPublished, () => setReady(true));
   }, [preview]);
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -44,7 +46,7 @@ export default function TeamCarousel({ preview }: { preview?: PublicTeamSettings
 
   const select = (next: number) => { setPaused(true); setActiveId(members[(next + members.length) % members.length].id); };
   if (!members.length) return null;
-  return <div className="team-carousel" ref={root} role="region" aria-roledescription="carrousel" aria-label={settings.heading} data-cms-ignore onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+  return <div className="team-carousel" ref={root} role="region" aria-roledescription="carrousel" aria-label={settings.heading} data-cms-ignore data-published-settings-ready={ready} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
     <div className="team-carousel__header"><p>L’équipe The Porters</p><h2>{settings.heading}</h2></div>
     <div className="team-carousel__viewport">
       <div className="team-carousel__track" style={{ transform: `translateX(-${index * 100}%)` }} aria-live={running ? 'off' : 'polite'}>
@@ -57,7 +59,7 @@ export default function TeamCarousel({ preview }: { preview?: PublicTeamSettings
           <div className="team-carousel__copy">
             <h3>{person.name}</h3><p className="team-carousel__role">{person.role}</p>
             {person.quote && <blockquote><span aria-hidden="true">“</span><p>{person.quote}</p></blockquote>}
-            {safeWebUrl(person.linkedin) && <a className="team-carousel__link" href={safeWebUrl(person.linkedin)} target="_blank" rel="noopener noreferrer">Retrouver {person.name.split(' ')[0]} sur LinkedIn <span aria-hidden="true">↗</span></a>}
+            {safeWebUrl(person.linkedin) && <a className="team-carousel__link" href={safeWebUrl(person.linkedin)} target="_blank" rel="noopener noreferrer">Retrouver {person.name.split(' ')[0]} sur LinkedIn <ArrowIcon direction="up-right" /></a>}
           </div>
         </article>)}
       </div>
@@ -65,8 +67,8 @@ export default function TeamCarousel({ preview }: { preview?: PublicTeamSettings
     {members.length > 1 && <div className="team-carousel__controls">
       <div className="team-carousel__dots">{members.map((person, position) => <button key={person.id} type="button" aria-label={`Voir ${person.name}`} aria-current={position === index ? 'true' : undefined} onClick={() => select(position)}><span /></button>)}</div>
       {settings.autoplay && !reduced && !editor && <button type="button" className="team-carousel__pause" onClick={() => { if (paused) { setHovered(false); setFocused(false); } setPaused(!paused); }} aria-label={paused ? 'Reprendre le défilement automatique' : 'Mettre le défilement automatique en pause'}>{paused ? 'Reprendre' : 'Pause'}</button>}
-      <button type="button" className="team-carousel__arrow" aria-label="Personne précédente" onClick={() => select(index - 1)}>←</button>
-      <button type="button" className="team-carousel__arrow" aria-label="Personne suivante" onClick={() => select(index + 1)}>→</button>
+      <button type="button" className="team-carousel__arrow" aria-label="Personne précédente" onClick={() => select(index - 1)}><ArrowIcon direction="left" /></button>
+      <button type="button" className="team-carousel__arrow" aria-label="Personne suivante" onClick={() => select(index + 1)}><ArrowIcon direction="right" /></button>
     </div>}
   </div>;
 }

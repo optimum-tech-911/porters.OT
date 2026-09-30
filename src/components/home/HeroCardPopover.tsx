@@ -1,3 +1,5 @@
+import ArrowIcon from '../ui/ArrowIcon';
+
 type Props = {
   eyebrow: string;
   title: string;
@@ -17,7 +19,7 @@ export default function HeroCardPopover({ eyebrow, title, body, points }: Props)
           <span key={point}><i aria-hidden="true" />{point}</span>
         ))}
       </span>
-      <span className="hero-card-popover-cta">Voir le détail <b aria-hidden="true">→</b></span>
+      <span className="hero-card-popover-cta">Voir le détail <b><ArrowIcon direction="right" /></b></span>
       <span className="hero-card-popover-caret" aria-hidden="true" />
     </span>
   );

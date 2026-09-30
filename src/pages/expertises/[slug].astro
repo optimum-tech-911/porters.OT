@@ -1,12 +1,14 @@
 ---
-import { Image } from 'astro:assets';
 import PageLayout from '../../layouts/PageLayout.astro';
 import SiteIcon from '../../components/ui/SiteIcon.astro';
 import BrandAmbientShapes from '../../components/ui/BrandAmbientShapes.astro';
 import { expertises, type Expertise } from '../../data/expertises.data';
-import tripartiteClient from '../../assets/home/tripartite-client.png';
-import tripartiteConsultant from '../../assets/home/tripartite-consultant.png';
-import qualifiedMatch from '../../assets/enterprise/qualified-match.png';
+import tripartiteClientSmall from '../../assets/home/tripartite-client-560.webp';
+import tripartiteClientLarge from '../../assets/home/tripartite-client-1200.webp';
+import tripartiteConsultantSmall from '../../assets/home/tripartite-consultant-560.webp';
+import tripartiteConsultantLarge from '../../assets/home/tripartite-consultant-1200.webp';
+import qualifiedMatchSmall from '../../assets/enterprise/qualified-match-560.webp';
+import qualifiedMatchLarge from '../../assets/enterprise/qualified-match-1200.webp';
 
 export function getStaticPaths() {
   return expertises.map((expertise) => ({
@@ -19,7 +21,11 @@ const { expertise } = Astro.props as { expertise: Expertise };
 const relatedExpertises = expertises
   .filter((item) => item.slug !== expertise.slug)
   .slice(0, 2);
-const detailImages = [tripartiteClient, tripartiteConsultant, qualifiedMatch];
+const detailImages = [
+  { small: tripartiteClientSmall, large: tripartiteClientLarge },
+  { small: tripartiteConsultantSmall, large: tripartiteConsultantLarge },
+  { small: qualifiedMatchSmall, large: qualifiedMatchLarge },
+];
 const expertiseIndex = Math.max(0, expertises.findIndex((item) => item.slug === expertise.slug));
 const heroImage = detailImages[expertiseIndex % detailImages.length];
 const detailImage = detailImages[(expertiseIndex + 1) % detailImages.length];
@@ -51,14 +57,14 @@ const detailImage = detailImages[(expertiseIndex + 1) % detailImages.length];
         <h1 data-motion-item="left" style="--motion-order:1">{expertise.title}</h1>
         <strong data-motion-item="left" style="--motion-order:2">{expertise.summary}</strong>
         <div class="domain-hero-actions" data-motion-item="pop" style="--motion-order:3">
-          <a href="/simulateur">Je simule mes revenus <span aria-hidden="true">→</span></a>
+          <a href="/simulateur">Je simule mes revenus <span><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
           <a href="/rendez-vous">Je parle de ma mission</a>
         </div>
       </div>
 
       <div class="domain-orbit" data-domain-orbit data-motion-item="pop" style="--motion-order:2" aria-label={`Cycle d’intervention ${expertise.eyebrow}`}>
         <figure class="domain-hero-photo">
-          <Image src={heroImage} alt={`Professionnels réunis autour d’une mission ${expertise.eyebrow}`} widths={[640, 900, 1200]} sizes="(max-width:1050px) 92vw, 42vw" format="webp" quality={86} />
+          <img src={heroImage.large.src} srcset={`${heroImage.small.src} 560w, ${heroImage.large.src} 1200w`} sizes="(max-width:1050px) 92vw, 42vw" width={heroImage.large.width} height={heroImage.large.height} alt={`Professionnels réunis autour d’une mission ${expertise.eyebrow}`} loading="eager" fetchpriority="high" decoding="async" />
           <figcaption><strong>{expertise.roles.length} profils</strong><span>{expertise.missionTypes.length} périmètres de mission</span></figcaption>
         </figure>
         <svg viewBox="0 0 600 600" aria-hidden="true">
@@ -103,7 +109,7 @@ const detailImage = detailImages[(expertiseIndex + 1) % detailImages.length];
         <p data-motion-item="left" style="--motion-order:0">Enjeu de mission</p>
         <h2 data-motion-item="left" style="--motion-order:1">{expertise.introTitle}</h2>
         <figure class="domain-intro-visual" data-motion-item="pop" style="--motion-order:3">
-          <Image src={detailImage} alt={`Échange professionnel autour d’une mission ${expertise.eyebrow}`} widths={[460, 720, 960]} sizes="(max-width:1050px) 92vw, 43vw" format="webp" quality={88} />
+          <img src={detailImage.large.src} srcset={`${detailImage.small.src} 560w, ${detailImage.large.src} 1200w`} sizes="(max-width:1050px) 92vw, 43vw" width={detailImage.large.width} height={detailImage.large.height} alt={`Échange professionnel autour d’une mission ${expertise.eyebrow}`} loading="lazy" decoding="async" />
         </figure>
       </header>
       <div class="domain-intro-copy" data-motion-item="right" style="--motion-order:2">
@@ -138,7 +144,7 @@ const detailImage = detailImages[(expertiseIndex + 1) % detailImages.length];
               data-method-tab
             >
               <strong>{stage.title}</strong>
-              <b aria-hidden="true">↗</b>
+              <b><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b>
             </button>
           ))}
         </div>

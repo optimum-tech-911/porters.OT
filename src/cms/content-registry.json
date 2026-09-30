@@ -564,7 +564,7 @@
     "key": "pages.portage-salarial.auto.button.1agnlz9",
     "route": "/portage-salarial",
     "type": "button",
-    "content": "Je découvre le parrainage <span aria-hidden=\"true\">→</span>",
+    "content": "Je découvre le parrainage",
     "rich": true
   },
   {
@@ -823,7 +823,7 @@
     "key": "pages.qui-sommes-nous.auto.button.17jaic7",
     "route": "/qui-sommes-nous",
     "type": "button",
-    "content": "Notre offre pour les entreprises <b aria-hidden=\"true\">↗</b>",
+    "content": "Notre offre pour les entreprises",
     "rich": true
   },
   {

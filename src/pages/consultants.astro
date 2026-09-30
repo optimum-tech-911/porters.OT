@@ -2,6 +2,7 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import consultantImage from '../../images/consultant-workspace.webp';
 import { consultantsPage } from '../content/pages/consultants';
+import SiteIcon from '../components/ui/SiteIcon.astro';
 
 const audienceRoutes = [
   '/expertises/cybersecurite',
@@ -47,7 +48,7 @@ const audienceRoutes = [
             href={audienceRoutes[index]}
             class="group flex min-h-20 items-center justify-between gap-4 border-l-[3px] border-porters-gold bg-porters-navy/[0.03] px-5 py-4 font-heading font-semibold text-porters-navy transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_14px_34px_rgba(25,43,99,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-porters-gold/50 reveal"
           >
-            <span>{audience}</span><b class="text-porters-gold transition-transform group-hover:translate-x-1" aria-hidden="true">→</b>
+            <span>{audience}</span><b class="text-porters-gold transition-transform group-hover:translate-x-1"><SiteIcon name="arrow-right" class="site-arrow-icon" /></b>
           </a>
         ))}
       </div>

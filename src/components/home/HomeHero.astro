@@ -2,6 +2,7 @@
 import { cmsAttrs, cmsText } from '../../cms/content';
 import { googleReviewHighlights } from '../../content/pages/home';
 import { helloWorkUrl } from '../../data/hello-work.data';
+import SiteIcon from '../ui/SiteIcon.astro';
 
 type HeroJob = {
   title: string;
@@ -52,17 +53,17 @@ const heroTitleLines = [
       <div class="editorial-hero__actions">
         <a class="editorial-hero__action editorial-hero__action--primary" href="/simulateur">
           <span {...cmsAttrs('home.hero.editorial_v2.action.simulator')}>{cmsText('home.hero.editorial_v2.action.simulator')}</span>
-          <b aria-hidden="true">→</b>
+          <b><SiteIcon name="arrow-right" class="site-arrow-icon" /></b>
         </a>
         <a class="editorial-hero__action editorial-hero__action--secondary" href="/rendez-vous">
           <span {...cmsAttrs('home.hero.editorial_v2.action.advisor')}>{cmsText('home.hero.editorial_v2.action.advisor')}</span>
-          <b aria-hidden="true">→</b>
+          <b><SiteIcon name="arrow-right" class="site-arrow-icon" /></b>
         </a>
       </div>
 
       <a class="editorial-hero__enterprise" href="/entreprises">
         <span {...cmsAttrs('home.hero.editorial_v2.action.enterprise')}>{cmsText('home.hero.editorial_v2.action.enterprise')}</span>
-        <b aria-hidden="true">↗</b>
+        <b><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b>
       </a>
     </div>
 
@@ -105,7 +106,7 @@ const heroTitleLines = [
     >
       <span>HelloWork</span>
       <strong>Offres The Porters</strong>
-      <b aria-hidden="true">↗</b>
+      <SiteIcon name="arrow-up-right" class="editorial-hero__arrow site-arrow-icon" />
     </a>
     <div class="editorial-hero__jobs-marquee">
       <div class="editorial-hero__jobs-track">
@@ -128,7 +129,7 @@ const heroTitleLines = [
                   <strong>{job.title}</strong>
                   <small>{job.city}</small>
                 </div>
-                <b aria-hidden="true">↗</b>
+                <SiteIcon name="arrow-up-right" class="editorial-hero__arrow site-arrow-icon" />
               </a>
             ))}
           </div>
@@ -142,7 +143,7 @@ const heroTitleLines = [
     <span data-preview-salary></span>
     <strong data-preview-title></strong>
     <p data-preview-meta></p>
-    <b>Voir toutes nos opportunités&nbsp; ↗</b>
+    <b>Voir toutes nos opportunités <SiteIcon name="arrow-up-right" class="editorial-hero__arrow site-arrow-icon" /></b>
   </div>
 </section>
 
@@ -541,7 +542,7 @@ const heroTitleLines = [
     font-size: 0.82rem;
   }
 
-  .editorial-hero__jobs-intro b {
+  .editorial-hero__jobs-intro .editorial-hero__arrow {
     position: absolute;
     opacity: 0;
   }
@@ -623,9 +624,17 @@ const heroTitleLines = [
     font-size: 0.62rem;
   }
 
-  .editorial-hero__jobs-group b {
+  .editorial-hero__jobs-group .editorial-hero__arrow {
+    display: block;
+    width: 0.85rem;
+    height: 0.85rem;
     color: var(--hero-gold);
-    font-size: 0.78rem;
+    transition: transform 180ms ease;
+  }
+
+  .editorial-hero__jobs-group > a:hover .editorial-hero__arrow,
+  .editorial-hero__jobs-group > a:focus-visible .editorial-hero__arrow {
+    transform: translate(2px, -2px);
   }
 
   .editorial-hero__job-preview {
@@ -717,9 +726,24 @@ const heroTitleLines = [
   }
 
   .editorial-hero__job-preview b {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     margin-top: 0.35rem;
     color: #f2d996;
     font-size: 0.68rem;
+  }
+
+  .editorial-hero__arrow {
+    display: block;
+    width: 0.9rem;
+    height: 0.9rem;
+    flex: 0 0 auto;
+  }
+
+  .editorial-hero__job-preview .editorial-hero__arrow {
+    width: 0.82rem;
+    height: 0.82rem;
   }
 
   .editorial-hero__job-preview.is-open {

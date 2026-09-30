@@ -1,5 +1,6 @@
 import { heroExperience, type HeroAudienceId } from './heroExperience.data';
 import useAutoScrollRail from './useAutoScrollRail';
+import ArrowIcon from '../ui/ArrowIcon';
 
 type Props = {
   audienceId: HeroAudienceId;
@@ -38,7 +39,7 @@ export default function HeroJourneyRail({ audienceId, reducedMotion }: Props) {
               <strong>{step.title}</strong>
               <small>{step.text}</small>
             </span>
-            <span className="hero-journey-arrow" aria-hidden="true">↗</span>
+            <ArrowIcon direction="up-right" className="hero-journey-arrow" />
           </a>
         ))}
       </div>

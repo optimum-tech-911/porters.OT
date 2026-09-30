@@ -1,4 +1,6 @@
 ---
+import SiteIcon from '../ui/SiteIcon.astro';
+
 const footerColumns = [
   {
     title: 'Le portage salarial',
@@ -54,11 +56,11 @@ const currentYear = new Date().getFullYear();
     <div class="site-footer__cta-actions">
       <a href="/rendez-vous" data-motion-item="left" style="--motion-order:1">
         <span class="site-footer__cta-label" data-cms-key="global.footer.auto.button.3vss45" data-cms-route="/_global" data-cms-element-type="button">Je parle à un conseiller</span>
-        <span aria-hidden="true" data-cms-ignore>→</span>
+        <span aria-hidden="true" data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></span>
       </a>
       <a href="/simulateur" data-motion-item="right" style="--motion-order:2">
         <span class="site-footer__cta-label" data-cms-key="global.footer.auto.button.19iqi8e" data-cms-route="/_global" data-cms-element-type="button">Je simule mes revenus</span>
-        <span aria-hidden="true" data-cms-ignore>→</span>
+        <span aria-hidden="true" data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></span>
       </a>
     </div>
   </div>
@@ -72,7 +74,7 @@ const currentYear = new Date().getFullYear();
         </span>
       </a>
       <p>Portage salarial et expertises IT, pour les consultants indépendants comme pour les entreprises qui les recrutent.</p>
-      <a class="site-footer__contact" href="mailto:contact@porters.fr">contact@porters.fr <span aria-hidden="true">↗</span></a>
+      <a class="site-footer__contact" href="mailto:contact@porters.fr">contact@porters.fr <span aria-hidden="true"><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></span></a>
     </div>
 
     <nav class="site-footer__nav" aria-label="Navigation de pied de page">
@@ -82,7 +84,7 @@ const currentYear = new Date().getFullYear();
           <p>{column.note}</p>
           <ul>
             {column.links.map((link) => (
-              <li><a href={link.href}>{link.label}<span aria-hidden="true">↗</span></a></li>
+              <li><a href={link.href}>{link.label}<span aria-hidden="true"><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></span></a></li>
             ))}
           </ul>
         </section>

@@ -15,11 +15,12 @@ function MailIcon() {
 
 export default function ContactDirectory({ preview }: { preview?: ContactDirectorySettings }) {
   const [published, setPublished] = useState(defaultContactDirectory);
+  const [ready, setReady] = useState(Boolean(preview));
   const settings = preview ?? published;
 
   useEffect(() => {
     if (preview) return;
-    return watchPublishedSettings(CONTACT_DIRECTORY_KEY, parseContactDirectory, setPublished);
+    return watchPublishedSettings(CONTACT_DIRECTORY_KEY, parseContactDirectory, setPublished, () => setReady(true));
   }, [preview]);
 
   return <div
@@ -28,7 +29,8 @@ export default function ContactDirectory({ preview }: { preview?: ContactDirecto
     data-cms-route={CONTACT_DIRECTORY_ROUTE}
     data-cms-element-type="paragraph"
     data-cms-structured-editor="/admin/contact-directory"
-    data-cms-structured-label="Modifier les coordonnées et agences →"
+    data-cms-structured-label="Modifier les coordonnées et agences"
+    data-published-settings-ready={ready}
   >
     {(settings.generalHeading || settings.generalEmail) && <div>
       {settings.generalHeading && <h3 className="text-xl font-heading font-semibold text-porters-navy mb-6">{settings.generalHeading}</h3>}

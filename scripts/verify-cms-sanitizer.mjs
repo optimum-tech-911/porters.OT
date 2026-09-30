@@ -13,7 +13,7 @@ const { document, Node } = parseHTML('<html><body></body></html>');
 globalThis.document = document;
 globalThis.Node = Node;
 
-const { inlineHtmlToPlainText, sanitizeInlineHtml } = await import('../src/cms/inline-html.ts');
+const { inlineHtmlToPlainText, publishedCmsPlainText, sanitizeInlineHtml } = await import('../src/cms/inline-html.ts');
 
 /** `contains` must survive; `forbids` must not appear anywhere in the output. */
 const cases = [
@@ -66,8 +66,20 @@ if (sanitizeInlineHtml(once) !== once) fail('sanitizing is idempotent', `${once}
 const plain = inlineHtmlToPlainText('Quel cadre correspond à <span class="gold-underline">votre projet</span> ?');
 if (plain !== 'Quel cadre correspond à votre projet ?') fail('reads plain text back', JSON.stringify(plain));
 
+const publishedLabels = [
+  ['header simulator', 'Simulateur <span aria-hidden="true" data-astro-cid-vwn3tmth="">→</span>', 'Simulateur'],
+  ['footer link', 'Nos expertises IT<span aria-hidden="true" data-astro-cid-qup6pdxl="">↗</span>', 'Nos expertises IT'],
+  ['plain label', 'Prendre rendez-vous', 'Prendre rendez-vous'],
+  ['rich text label', '<strong>Nous contacter</strong> <span aria-hidden="true">→</span>', 'Nous contacter'],
+  ['unsafe embedded tag', 'Bonjour<script>alert(1)</script>', 'Bonjour'],
+];
+for (const [name, input, expected] of publishedLabels) {
+  const actual = publishedCmsPlainText(input);
+  if (actual !== expected) fail(name, `expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`);
+}
+
 if (failures) {
   console.error(`\n${failures} sanitizer failure(s).`);
   process.exit(1);
 }
-console.log(`Sanitizer verified: ${cases.length} markup cases plus idempotence and plain-text extraction.`);
+console.log(`Sanitizer verified: ${cases.length} markup cases, ${publishedLabels.length} published labels, idempotence and plain-text extraction.`);

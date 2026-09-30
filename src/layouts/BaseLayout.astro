@@ -3,6 +3,7 @@ import '../styles/global.css';
 import ChatbotAssistant from '../components/Chatbot/ChatbotAssistant.astro';
 import CmsRuntime from '../components/cms/CmsRuntime.astro';
 import HelloWorkOpportunityPopup from '../components/ui/HelloWorkOpportunityPopup.astro';
+import { supabaseUrl } from '../lib/supabase';
 
 interface Props {
   seo: {
@@ -17,12 +18,13 @@ interface Props {
 }
 
 const { seo } = Astro.props;
+const siteUrl = Astro.site ?? new URL('https://www.porters.fr');
 const canonicalUrl = seo.canonical || (Astro.url.pathname === '/'
-  ? new URL(Astro.site).origin
-  : new URL(Astro.url.pathname, Astro.site).toString());
-const ogImage = seo.ogImage || new URL('/images/seo/portage-salarial-it-social.jpg', Astro.site).toString();
+  ? siteUrl.origin
+  : new URL(Astro.url.pathname, siteUrl).toString());
+const ogImage = seo.ogImage || new URL('/images/seo/portage-salarial-it-social.jpg', siteUrl).toString();
 const siteName = 'The Porters';
-const logoUrl = new URL('/favicon.svg', Astro.site).toString();
+const logoUrl = new URL('/favicon.svg', siteUrl).toString();
 const organizationId = 'https://www.porters.fr/#organization';
 
 // Organization structured data (global)
@@ -105,6 +107,72 @@ const allStructuredData = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Public CMS copy is resolved before the page becomes visible. The HTML
+         fallback stays available to crawlers and visitors without JavaScript. -->
+    <link rel="preconnect" href={supabaseUrl} crossorigin />
+    <style is:inline>
+      body > :not(#cms-loading-cover) { transition: opacity .48s cubic-bezier(.22, 1, .36, 1); }
+      html.cms-loading body > :not(#cms-loading-cover) { opacity: 0 !important; pointer-events: none !important; }
+      #cms-loading-cover {
+        position: fixed;
+        z-index: 9999;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background: #f5f1e9;
+        color: #203440;
+        text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity .46s ease, visibility 0s linear .46s;
+      }
+      html.cms-loading #cms-loading-cover { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity .2s ease; }
+      #cms-loading-cover::before,
+      #cms-loading-cover::after {
+        position: absolute;
+        width: min(74vw, 48rem);
+        aspect-ratio: 1;
+        border: 1px solid rgba(185, 147, 75, .14);
+        border-radius: 50%;
+        content: '';
+        pointer-events: none;
+      }
+      #cms-loading-cover::before { top: -24rem; left: -17rem; animation: cms-loading-orbit 7s ease-in-out infinite alternate; }
+      #cms-loading-cover::after { right: -18rem; bottom: -25rem; animation: cms-loading-orbit 8s ease-in-out infinite alternate-reverse; }
+      .cms-loading-content { position: relative; z-index: 1; display: grid; justify-items: center; gap: 1rem; padding: 2rem; }
+      .cms-loading-emblem { position: relative; display: grid; place-items: center; width: 4rem; height: 4rem; margin-bottom: .3rem; border: 1px solid rgba(185, 147, 75, .55); border-radius: 50%; }
+      .cms-loading-emblem::before { position: absolute; inset: -.42rem; border: 1px dashed rgba(185, 147, 75, .45); border-radius: 50%; content: ''; animation: cms-loading-spin 8s linear infinite; }
+      .cms-loading-emblem::after { width: .7rem; height: .7rem; background: #bc9953; border-radius: 50%; content: ''; animation: cms-loading-breathe 1.7s ease-in-out infinite; }
+      .cms-loading-content strong { font: 600 clamp(2rem, 6vw, 3rem)/1 Georgia, serif; letter-spacing: -.045em; }
+      .cms-loading-content small { font: 500 .7rem/1.4 system-ui, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: #79858a; }
+      .cms-loading-track { display: block; width: 9rem; height: 2px; margin: .35rem auto 0; overflow: hidden; background: #e4d8bf; }
+      .cms-loading-track::after { display: block; width: 40%; height: 100%; background: #b9934b; content: ''; animation: cms-loading-progress 1.4s cubic-bezier(.65, 0, .35, 1) infinite alternate; }
+      @keyframes cms-loading-progress { to { transform: translateX(5.4rem); } }
+      @keyframes cms-loading-spin { to { transform: rotate(360deg); } }
+      @keyframes cms-loading-breathe { 50% { opacity: .45; transform: scale(.65); } }
+      @keyframes cms-loading-orbit { to { transform: translate(2rem, -1.5rem) scale(1.07); } }
+      @media (prefers-reduced-motion: reduce) {
+        body > :not(#cms-loading-cover), #cms-loading-cover { transition-duration: .01ms; }
+        #cms-loading-cover::before, #cms-loading-cover::after, .cms-loading-emblem::before, .cms-loading-emblem::after, .cms-loading-track::after { animation: none; }
+        .cms-loading-track::after { width: 100%; }
+      }
+    </style>
+    <script is:inline>
+      if (new URLSearchParams(location.search).get('cms-editor') !== '1') {
+        const root = document.documentElement;
+        root.dataset.cmsGateState = 'pending';
+        root.classList.add('cms-loading');
+        // A failed or slow CMS request must never leave the site invisible.
+        setTimeout(() => {
+          if (root.dataset.cmsGateState !== 'pending') return;
+          root.dataset.cmsGateState = 'expired';
+          root.classList.remove('cms-loading');
+        }, 5000);
+      }
+    </script>
+
     <!-- SEO -->
     <title>{seo.title}</title>
     <meta name="description" content={seo.description} />
@@ -149,6 +217,14 @@ const allStructuredData = [
     ))}
   </head>
   <body class="bg-porters-white text-porters-black font-body antialiased">
+    <div id="cms-loading-cover" role="status" aria-live="polite" data-cms-ignore>
+      <div class="cms-loading-content">
+        <span class="cms-loading-emblem" aria-hidden="true"></span>
+        <strong>The Porters</strong>
+        <small>Préparation de votre visite</small>
+        <span class="cms-loading-track" aria-hidden="true"></span>
+      </div>
+    </div>
     <div class="page-scroll-progress" aria-hidden="true"></div>
     <slot name="header" />
     <main>
@@ -180,6 +256,18 @@ const allStructuredData = [
       window.addEventListener('scroll', queueScrollProgress, { passive: true });
       window.addEventListener('resize', queueScrollProgress, { passive: true });
       updateScrollProgress();
+
+      // The first viewport should animate when the CMS cover begins to leave,
+      // rather than finishing its entrance unseen behind the cover.
+      const afterCmsReveal = (start: () => void) => {
+        if (!root.classList.contains('cms-loading')) { start(); return; }
+        const readyObserver = new MutationObserver(() => {
+          if (root.classList.contains('cms-loading')) return;
+          readyObserver.disconnect();
+          window.setTimeout(start, 80);
+        });
+        readyObserver.observe(root, { attributes: true, attributeFilter: ['class'] });
+      };
 
       /* Sections with hand-authored choreography replay when they re-enter the
          viewport. Each pass rotates the direction/shape so the motion responds
@@ -232,7 +320,7 @@ const allStructuredData = [
           { threshold: 0.04, rootMargin: '0px 0px -6% 0px' }
         );
 
-        motionSections.forEach((section) => sectionObserver.observe(section));
+        afterCmsReveal(() => motionSections.forEach((section) => sectionObserver.observe(section)));
       }
 
       const motionOwnedSelector = [
@@ -380,8 +468,8 @@ const allStructuredData = [
           const sectionIndex = Number(element.closest<HTMLElement>('section')?.dataset.scrollMotionSection || 0);
           element.dataset.motionStyle = revealStyles[(sectionIndex + index) % revealStyles.length];
           revealPasses.set(element, 0);
-          observer.observe(element);
         });
+        afterCmsReveal(() => revealElements.forEach((element) => observer.observe(element)));
       }
     </script>
   </body>

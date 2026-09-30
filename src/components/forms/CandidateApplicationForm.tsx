@@ -1,6 +1,7 @@
 import { useState, type SubmitEvent } from 'react';
 import { crmAttribution } from '../../lib/crm-attribution';
 import { supabase } from '../../lib/supabase';
+import ArrowIcon from '../ui/ArrowIcon';
 
 const profiles = [
   'Infrastructure',
@@ -116,7 +117,7 @@ export default function CandidateApplicationForm() {
     {status.text && <p className={`candidate-form__status candidate-form__status--${status.type}`} role="status" aria-live="polite">{status.text}</p>}
 
     <button className="btn btn-primary candidate-form__submit" type="submit" disabled={submitting}>
-      {submitting ? 'Envoi en cours…' : 'Envoyer ma candidature'} <span aria-hidden="true">→</span>
+      {submitting ? 'Envoi en cours…' : 'Envoyer ma candidature'} <ArrowIcon direction="right" />
     </button>
   </form>;
 }

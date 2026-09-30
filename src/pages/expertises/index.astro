@@ -1,11 +1,12 @@
 ---
-import { Image } from 'astro:assets';
 import PageLayout from '../../layouts/PageLayout.astro';
 import SiteIcon from '../../components/ui/SiteIcon.astro';
 import BrandAmbientShapes from '../../components/ui/BrandAmbientShapes.astro';
 import { expertises } from '../../data/expertises.data';
-import tripartiteClient from '../../assets/home/tripartite-client.png';
-import qualifiedMatch from '../../assets/enterprise/qualified-match.png';
+import tripartiteClientSmall from '../../assets/home/tripartite-client-560.webp';
+import tripartiteClientLarge from '../../assets/home/tripartite-client-1200.webp';
+import qualifiedMatchSmall from '../../assets/enterprise/qualified-match-560.webp';
+import qualifiedMatchLarge from '../../assets/enterprise/qualified-match-1200.webp';
 
 const seo = {
   title: 'Expertises IT, data, cyber, cloud et produit — The Porters',
@@ -32,16 +33,16 @@ const commonJourney = [
           Cyber, data, IA, cloud, DevOps, produit ou transformation&nbsp;: chaque mission commence
           par un contexte précis, jamais par une étiquette.
         </strong>
-        <a href="#explorer" data-motion-item="pop" style="--motion-order:3">Je découvre les domaines <span aria-hidden="true">↓</span></a>
+        <a href="#explorer" data-motion-item="pop" style="--motion-order:3">Je découvre les domaines <span><SiteIcon name="arrow-down" class="site-arrow-icon" /></span></a>
       </div>
 
       <div class="expertise-signal-stage" data-motion-item="pop" style="--motion-order:2" data-expertise-stage aria-label="Du besoin au résultat avec The Porters">
         <figure class="signal-image signal-image--brief is-active" data-signal-image>
-          <Image src={tripartiteClient} alt="" widths={[320, 520]} sizes="(max-width: 720px) 42vw, 15rem" format="webp" quality={82} />
+          <img src={tripartiteClientLarge.src} srcset={`${tripartiteClientSmall.src} 560w, ${tripartiteClientLarge.src} 1200w`} sizes="(max-width: 720px) 42vw, 15rem" width={tripartiteClientLarge.width} height={tripartiteClientLarge.height} alt="" loading="lazy" decoding="async" />
           <figcaption>Le besoin, avec les personnes qui le portent</figcaption>
         </figure>
         <figure class="signal-image signal-image--result" data-signal-image>
-          <Image src={qualifiedMatch} alt="" widths={[320, 520]} sizes="(max-width: 720px) 42vw, 15rem" format="webp" quality={82} />
+          <img src={qualifiedMatchLarge.src} srcset={`${qualifiedMatchSmall.src} 560w, ${qualifiedMatchLarge.src} 1200w`} sizes="(max-width: 720px) 42vw, 15rem" width={qualifiedMatchLarge.width} height={qualifiedMatchLarge.height} alt="" loading="lazy" decoding="async" />
           <figcaption>Une expertise qualifiée pour le contexte</figcaption>
         </figure>
         <div class="signal-spine" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -109,7 +110,7 @@ const commonJourney = [
             >
               <strong>{expertise.eyebrow}</strong>
               <small>{expertise.roles.slice(0, 2).join(' · ')}</small>
-              <b aria-hidden="true">→</b>
+              <b><SiteIcon name="arrow-right" class="site-arrow-icon" /></b>
             </button>
           ))}
         </div>
@@ -132,7 +133,7 @@ const commonJourney = [
                 </div>
                 <div class="expertise-panel-actions">
                   <a class="expertise-panel-cta" href={`/expertises/${expertise.slug}`}>
-                    Voir le domaine en détail <span aria-hidden="true">↗</span>
+                    Voir le domaine en détail <span><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></span>
                   </a>
                 </div>
               </div>

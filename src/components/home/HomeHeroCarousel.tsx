@@ -7,6 +7,7 @@ import HeroProofTicker from './HeroProofTicker';
 import HeroTestimonialBar from './HeroTestimonialBar';
 import HeroCardPopover from './HeroCardPopover';
 import { heroProofImages } from './heroExperience.data';
+import DirectionalArrowIcon from '../ui/ArrowIcon';
 
 type HeroImage = {
   src: string;
@@ -192,7 +193,7 @@ export default function HomeHeroCarousel({ audiences, children }: Props) {
               <strong>{audience.stat.value}</strong>
               <small>{audience.stat.label}</small>
             </span>
-            <span className="hero-card-arrow" aria-hidden="true">↗</span>
+            <DirectionalArrowIcon direction="up-right" className="hero-card-arrow" />
             <HeroCardPopover
               eyebrow={statDetail.eyebrow}
               title={`${audience.stat.value} ${audience.stat.label}`}

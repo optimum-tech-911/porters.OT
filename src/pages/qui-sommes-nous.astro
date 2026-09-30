@@ -124,7 +124,7 @@ const portageOfferHighlights = [
           <div class="ecosystem-expertises" aria-label="Domaines d’expertise">
             {ecosystemExpertises.map((expertise) => <span>{expertise}</span>)}
           </div>
-          <a class="ecosystem-offer-link" href="/portage-salarial">Comment fonctionne le portage <b aria-hidden="true">↗</b></a>
+          <a class="ecosystem-offer-link" href="/portage-salarial">Comment fonctionne le portage <b><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b></a>
         </article>
 
         <figure class="ecosystem-guide" aria-hidden="true" data-ecosystem-eric>
@@ -152,7 +152,7 @@ const portageOfferHighlights = [
           <div class="ecosystem-expertises" aria-label="Domaines d’expertise">
             {ecosystemExpertises.map((expertise, index) => <span {...cmsAttrs(bigPortersExpertiseKeys[index])} data-cms-rich="true">{expertise}</span>)}
           </div>
-          <a class="ecosystem-offer-link" href="/entreprises" {...cmsAttrs('pages.qui-sommes-nous.auto.button.17jaic7')} data-cms-rich="true">Notre offre pour les entreprises <b aria-hidden="true">↗</b></a>
+          <a class="ecosystem-offer-link" href="/entreprises"><span {...cmsAttrs('pages.qui-sommes-nous.auto.button.17jaic7')} data-cms-rich="true">Notre offre pour les entreprises</span><b aria-hidden="true" data-cms-ignore><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b></a>
         </article>
         </div>
       </div>
@@ -203,7 +203,7 @@ const portageOfferHighlights = [
               <span class="expertise-node-copy">
                 <span><strong>{expertise.title}</strong><small>{expertise.shortSubtitle}</small></span>
               </span>
-              <b class="expertise-node-arrow" aria-hidden="true">↗</b>
+              <b class="expertise-node-arrow"><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b>
             </button>
 
             <article
@@ -224,7 +224,7 @@ const portageOfferHighlights = [
                     <p>{expertise.sourceSummary}</p>
                   </div>
                   <a href={expertise.ctaHref} aria-label={expertise.ctaLabel}>
-                    Plus de détails <b aria-hidden="true">↗</b>
+                    Plus de détails <b><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b>
                   </a>
                 </div>
                 <div class="expertise-intro-grid expertise-live-block" data-live-block>
@@ -376,7 +376,7 @@ const portageOfferHighlights = [
                 <small>{service.eyebrow}</small>
                 <strong>{service.title}</strong>
               </span>
-              <b aria-hidden="true" data-cms-ignore>↗</b>
+              <b aria-hidden="true" data-cms-ignore><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></b>
             </button>
           ))}
         </div>
@@ -415,8 +415,8 @@ const portageOfferHighlights = [
       </div>
 
       <div class="portage-offer-actions reveal" data-motion-item="up" style="--motion-order:8">
-        <a href="/portage-salarial#frais">Voir ce que couvrent les frais <span aria-hidden="true" data-cms-ignore>→</span></a>
-        <a href="/rendez-vous">Parler de votre situation <span aria-hidden="true" data-cms-ignore>↗</span></a>
+        <a href="/portage-salarial#frais">Voir ce que couvrent les frais <span aria-hidden="true" data-cms-ignore><SiteIcon name="arrow-right" class="site-arrow-icon" /></span></a>
+        <a href="/rendez-vous">Parler de votre situation <span aria-hidden="true" data-cms-ignore><SiteIcon name="arrow-up-right" class="site-arrow-icon" /></span></a>
       </div>
     </div>
   </section>
