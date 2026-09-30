@@ -1,0 +1,27 @@
+# The Porters
+
+> The Porters accompagne les consultants indépendants en portage salarial, avec une spécialisation dans les métiers IT, data, cybersécurité, cloud, DevOps et produit. L’entreprise intervient en France et prend en charge le cadre contractuel, la facturation, la paie et le suivi administratif.
+
+## Pages principales
+
+- [Portage salarial pour consultants IT](https://www.porters.fr/portage-salarial): fonctionnement du portage salarial, accompagnement et cadre salarié pour les consultants du numérique.
+- [Expertises IT](https://www.porters.fr/expertises): domaines accompagnés, dont la cybersécurité, la data, le cloud, DevOps et l’agilité.
+- [Solutions pour les entreprises](https://www.porters.fr/entreprises): cadrage et mobilisation d’expertises IT externes.
+- [Simulateur de revenus](https://www.porters.fr/simulateur): estimation indicative à partir du TJM, des jours facturés et des frais professionnels.
+- [Agences et accompagnement](https://www.porters.fr/agences): points de contact et accompagnement en France.
+- [Questions fréquentes](https://www.porters.fr/faq): réponses sur le portage salarial, la rémunération, les frais et les missions.
+
+## Guides
+
+- [Portage salarial informatique](https://www.porters.fr/blog/portage-salarial-informatique): profils IT, missions, TJM et cadre salarié.
+- [Guide du portage salarial](https://www.porters.fr/blog/guide-portage-salarial): définition, fonctionnement et acteurs du portage salarial.
+- [Contrat de portage salarial](https://www.porters.fr/blog/contrat-portage-salarial): contrat de travail, contrat de prestation et relation tripartite.
+- [Frais de gestion en portage salarial](https://www.porters.fr/blog/frais-gestion-portage-salarial): comprendre les frais et les services associés.
+- [Choisir un statut indépendant](https://www.porters.fr/blog/choisir-statut-independant): comparaison du portage salarial avec d’autres statuts.
+- [Tous les articles](https://www.porters.fr/blog): guides sur l’indépendance, le portage salarial et les métiers IT.
+
+## Contact
+
+- [Contacter The Porters](https://www.porters.fr/contact)
+- [Prendre rendez-vous](https://www.porters.fr/rendez-vous)
+- [Qui sommes-nous](https://www.porters.fr/qui-sommes-nous)

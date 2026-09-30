@@ -11,3 +11,12 @@
 
 /fonts/*
   Cache-Control: public, max-age=31556952, immutable
+
+/admin
+  X-Robots-Tag: noindex, nofollow
+
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+
+/espace-client
+  X-Robots-Tag: noindex, nofollow

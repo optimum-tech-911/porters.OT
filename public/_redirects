@@ -2,7 +2,6 @@
 # The Porters — Cloudflare Pages Redirects
 # Priority redirects BEFORE SPA fallback
 # =============================================
-
 # === PAGES CŒUR ===
 /portage-salarial-sur-mesure/ /portage-salarial 301
 /portage-salarial-sur-mesure /portage-salarial 301

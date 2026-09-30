@@ -2,9 +2,9 @@ import type { PageSeo } from '../types/seo';
 
 export const pageSeo: Record<string, PageSeo> = {
   home: {
-    title: 'Portage salarial pour experts IT — The Porters',
+    title: 'Portage salarial IT en France | The Porters',
     description:
-      'Gardez la liberté de choisir vos missions IT. The Porters prend en charge contrats, facturation, paie et suivi dans un cadre salarié.',
+      'The Porters accompagne les consultants IT en portage salarial en France : contrats, facturation, paie et suivi, pour garder la liberté de choisir vos missions.',
   },
   portageSalarial: {
     title: 'Portage salarial pour consultants IT — The Porters',
@@ -80,12 +80,10 @@ export const pageSeo: Record<string, PageSeo> = {
     title: 'Mentions légales — The Porters',
     description:
       'Mentions légales de The Porters, société de portage salarial. Informations juridiques, éditeur du site, hébergement et propriété intellectuelle.',
-    noindex: true,
   },
   confidentialite: {
     title: 'Politique de confidentialité — The Porters',
     description:
       'Politique de confidentialité de The Porters. Découvrez comment nous collectons, utilisons et protégeons vos données personnelles conformément au RGPD.',
-    noindex: true,
   },
 };

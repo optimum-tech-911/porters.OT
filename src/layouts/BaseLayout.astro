@@ -10,31 +10,63 @@ interface Props {
     description: string;
     canonical?: string;
     ogImage?: string;
+    type?: 'website' | 'article';
     noindex?: boolean;
     structuredData?: Record<string, unknown>;
   };
 }
 
 const { seo } = Astro.props;
-const canonicalUrl = seo.canonical || new URL(Astro.url.pathname, Astro.site).toString();
-const ogImage = seo.ogImage || new URL('/favicon.svg', Astro.site).toString();
+const canonicalUrl = seo.canonical || (Astro.url.pathname === '/'
+  ? new URL(Astro.site).origin
+  : new URL(Astro.url.pathname, Astro.site).toString());
+const ogImage = seo.ogImage || new URL('/images/seo/portage-salarial-it-social.jpg', Astro.site).toString();
 const siteName = 'The Porters';
+const logoUrl = new URL('/favicon.svg', Astro.site).toString();
+const organizationId = 'https://www.porters.fr/#organization';
 
 // Organization structured data (global)
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': organizationId,
   name: 'The Porters',
+  legalName: 'THE PORTERS',
   url: 'https://www.porters.fr',
-  logo: 'https://www.porters.fr/favicon.svg',
+  logo: logoUrl,
   description: 'Portage salarial pour consultants IT : contrats, facturation, paie et suivi administratif dans un cadre lisible.',
+  email: 'contact@porters.fr',
+  telephone: '+33768670850',
+  vatID: 'FR42828954735',
+  taxID: '828954735',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '120 rue de Thor',
+    postalCode: '34000',
+    addressLocality: 'Montpellier',
+    addressCountry: 'FR',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'France',
+  },
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'customer service',
+    email: 'contact@porters.fr',
+    telephone: '+33768670850',
     availableLanguage: 'French',
   },
-  sameAs: [
-  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://www.porters.fr/#website',
+  url: 'https://www.porters.fr/',
+  name: siteName,
+  inLanguage: 'fr-FR',
+  publisher: { '@id': organizationId },
 };
 
 // Breadcrumb structured data
@@ -60,6 +92,7 @@ const breadcrumbSchema = pathSegments.length > 0 ? {
 
 const allStructuredData = [
   organizationSchema,
+  websiteSchema,
   ...(breadcrumbSchema ? [breadcrumbSchema] : []),
   ...(seo.structuredData ? [seo.structuredData] : []),
 ];
@@ -77,13 +110,18 @@ const allStructuredData = [
     <meta name="description" content={seo.description} />
     <link rel="canonical" href={canonicalUrl} />
     {seo.noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="describedby" href="/llms.txt" />
 
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={seo.type || 'website'} />
     <meta property="og:title" content={seo.title} />
     <meta property="og:description" content={seo.description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="The Porters accompagne les consultants IT en portage salarial en France." />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="fr_FR" />
 
@@ -92,6 +130,7 @@ const allStructuredData = [
     <meta name="twitter:title" content={seo.title} />
     <meta name="twitter:description" content={seo.description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="The Porters accompagne les consultants IT en portage salarial en France." />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -110,6 +149,7 @@ const allStructuredData = [
     ))}
   </head>
   <body class="bg-porters-white text-porters-black font-body antialiased">
+    <div class="page-scroll-progress" aria-hidden="true"></div>
     <slot name="header" />
     <main>
       <slot />
@@ -123,27 +163,37 @@ const allStructuredData = [
     <script>
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      /* Deliberate page choreography. A section owns one viewport trigger and
-         its children share a short, readable stagger. Keeping the trigger on
-         the section prevents late elements from firing in an arbitrary order
-         while still letting marquees and interactive scenes keep their own
-         transforms. */
+      // Keep a lightweight progress cue in sync with the document scroll.
+      // One animation frame per scroll burst avoids doing layout work per event.
+      const root = document.documentElement;
+      let progressFrame = 0;
+      const updateScrollProgress = () => {
+        const scrollable = root.scrollHeight - window.innerHeight;
+        root.style.setProperty('--page-scroll-progress', String(
+          scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0
+        ));
+        progressFrame = 0;
+      };
+      const queueScrollProgress = () => {
+        if (!progressFrame) progressFrame = window.requestAnimationFrame(updateScrollProgress);
+      };
+      window.addEventListener('scroll', queueScrollProgress, { passive: true });
+      window.addEventListener('resize', queueScrollProgress, { passive: true });
+      updateScrollProgress();
+
+      /* Sections with hand-authored choreography replay when they re-enter the
+         viewport. Each pass rotates the direction/shape so the motion responds
+         to the scroll instead of behaving like a one-time page-load effect. */
       const motionSections = Array.from(
         document.querySelectorAll<HTMLElement>('[data-motion-section]')
       );
+      const sectionPasses = new WeakMap<HTMLElement, number>();
+      const sectionFrames = new WeakMap<HTMLElement, number>();
 
-      const finishSectionMotion = (section: HTMLElement, delay = 0) => {
-        window.setTimeout(() => {
-          section.classList.remove('motion-section-ready', 'is-motion-visible');
-          section.querySelectorAll<HTMLElement>('[data-motion-item]').forEach((item) => {
-            item.style.removeProperty('--motion-order');
-          });
-        }, delay);
-      };
-
-      motionSections.forEach((section) => {
+      motionSections.forEach((section, sectionIndex) => {
         const items = Array.from(section.querySelectorAll<HTMLElement>('[data-motion-item]'));
         section.classList.add('motion-section-ready');
+        sectionPasses.set(section, sectionIndex % 4);
         items.forEach((item, index) => {
           if (!item.style.getPropertyValue('--motion-order')) {
             item.style.setProperty('--motion-order', String(Math.min(index, 12)));
@@ -154,23 +204,32 @@ const allStructuredData = [
       if (reducedMotion || !('IntersectionObserver' in window)) {
         motionSections.forEach((section) => {
           section.classList.add('is-motion-visible');
-          finishSectionMotion(section);
         });
       } else {
         const sectionObserver = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
               const section = entry.target as HTMLElement;
-              const itemCount = section.querySelectorAll('[data-motion-item]').length;
-              const requestedHold = Number(section.dataset.motionHold || 0);
-              const defaultHold = 1200 + Math.min(itemCount, 12) * 90;
-              section.classList.add('is-motion-visible');
-              sectionObserver.unobserve(section);
-              finishSectionMotion(section, Math.max(defaultHold, requestedHold));
+              if (entry.isIntersecting) {
+                const pass = sectionPasses.get(section) || 0;
+                section.dataset.scrollMotionVariant = String(pass % 4);
+                sectionPasses.set(section, pass + 1);
+                const frame = (sectionFrames.get(section) || 0) + 1;
+                sectionFrames.set(section, frame);
+                section.classList.remove('is-motion-visible');
+                window.requestAnimationFrame(() => {
+                  const bounds = section.getBoundingClientRect();
+                  if (sectionFrames.get(section) === frame && bounds.bottom > 0 && bounds.top < window.innerHeight) {
+                    section.classList.add('is-motion-visible');
+                  }
+                });
+              } else {
+                sectionFrames.set(section, (sectionFrames.get(section) || 0) + 1);
+                section.classList.remove('is-motion-visible');
+              }
             });
           },
-          { threshold: 0.11, rootMargin: '0px 0px -8% 0px' }
+          { threshold: 0.04, rootMargin: '0px 0px -6% 0px' }
         );
 
         motionSections.forEach((section) => sectionObserver.observe(section));
@@ -201,7 +260,8 @@ const allStructuredData = [
       const belongsToMotionOwner = (element: Element) =>
         isMotionOwned(element) || Boolean(element.closest(motionOwnedSelector));
 
-      document.querySelectorAll<HTMLElement>('main section').forEach((section) => {
+      document.querySelectorAll<HTMLElement>('main section').forEach((section, sectionIndex) => {
+        section.dataset.scrollMotionSection = String(sectionIndex);
         const sectionReveal = section.matches('[data-reveal], .reveal') ? [section] : [];
         const existing = [
           ...sectionReveal,
@@ -221,14 +281,14 @@ const allStructuredData = [
         // Sections without explicit reveal markup still get an entrance on their
         // direct content blocks. Components with their own continuous animation
         // retain full ownership of their timing.
-        if (activeExisting.length === 0 && !isMotionOwned(section)) {
+        if (activeExisting.length === 0) {
           const shell = section.querySelector<HTMLElement>(':scope > .container, :scope > [class*="shell"]') || section;
           Array.from(shell.children)
             .filter((child): child is HTMLElement =>
               child instanceof HTMLElement
               && !child.matches('script,style,[aria-hidden="true"]')
               && !/ambient|background|overlay/i.test(child.className)
-              && !isMotionOwned(child)
+              && !belongsToMotionOwner(child)
             )
             .slice(0, 8)
             .forEach((child) => child.classList.add('reveal'));
@@ -247,7 +307,7 @@ const allStructuredData = [
           .slice(0, 14)
           .forEach((element, index) => {
             element.classList.add('reveal', 'motion-enhanced', 'motion-pop');
-            element.style.setProperty('--reveal-delay', `${Math.min((index % 7) * 70, 420)}ms`);
+            element.style.setProperty('--reveal-delay', `${Math.min((index % 7) * 54, 324)}ms`);
           });
 
         const reveals = [
@@ -269,54 +329,59 @@ const allStructuredData = [
           else element.classList.add('motion-slide-left');
 
           if (!element.style.getPropertyValue('--reveal-delay')) {
-            element.style.setProperty('--reveal-delay', `${Math.min(index * 95, 475)}ms`);
+            element.style.setProperty('--reveal-delay', `${Math.min(index * 58, 348)}ms`);
           }
         });
       });
 
-      const revealElements = document.querySelectorAll('[data-reveal], .reveal');
-
-      // Release the animation classes after the entrance finishes so existing
-      // hover transforms and interactive motion regain full control.
-      const finishEntrance = (element: Element, delay = 0) => {
-        window.setTimeout(() => {
-          element.classList.remove(
-            'reveal',
-            'reveal-up',
-            'reveal-fade',
-            'reveal-scale',
-            'reveal-left',
-            'reveal-right',
-            'motion-enhanced',
-            'motion-slide-left',
-            'motion-slide-right',
-            'motion-pop'
-          );
-          element.removeAttribute('data-reveal');
-          if (element instanceof HTMLElement) element.style.removeProperty('--reveal-delay');
-        }, delay);
-      };
+      const revealElements = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal], .reveal'));
+      const revealPasses = new WeakMap<HTMLElement, number>();
+      const revealFrames = new WeakMap<HTMLElement, number>();
+      const revealStyles = ['rise', 'drift-left', 'drift-right', 'focus'];
+      const revealOrder = new WeakMap<HTMLElement, number>();
+      revealElements.forEach((element, index) => revealOrder.set(element, index));
 
       if (reducedMotion || !('IntersectionObserver' in window)) {
         revealElements.forEach((element) => {
           element.classList.add('visible', 'is-visible');
-          finishEntrance(element);
         });
       } else {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
+              const element = entry.target as HTMLElement;
               if (entry.isIntersecting) {
-                entry.target.classList.add('visible', 'is-visible');
-                observer.unobserve(entry.target);
-                finishEntrance(entry.target, 1550);
+                const section = element.closest<HTMLElement>('section');
+                const sectionIndex = Number(section?.dataset.scrollMotionSection || 0);
+                const pass = revealPasses.get(element) || 0;
+                const itemIndex = revealOrder.get(element) || 0;
+                element.dataset.motionStyle = revealStyles[(sectionIndex + itemIndex + pass) % revealStyles.length];
+                revealPasses.set(element, pass + 1);
+                const frame = (revealFrames.get(element) || 0) + 1;
+                revealFrames.set(element, frame);
+                element.classList.remove('visible', 'is-visible');
+                window.requestAnimationFrame(() => {
+                  const bounds = element.getBoundingClientRect();
+                  if (revealFrames.get(element) === frame && bounds.bottom > 0 && bounds.top < window.innerHeight) {
+                    element.classList.add('visible', 'is-visible');
+                  }
+                });
+              } else {
+                revealFrames.set(element, (revealFrames.get(element) || 0) + 1);
+                element.classList.remove('visible', 'is-visible');
               }
             });
           },
           { threshold: 0.08, rootMargin: '0px 0px -55px 0px' }
         );
 
-        revealElements.forEach((element) => observer.observe(element));
+        revealElements.forEach((element, index) => {
+          element.classList.remove('visible', 'is-visible');
+          const sectionIndex = Number(element.closest<HTMLElement>('section')?.dataset.scrollMotionSection || 0);
+          element.dataset.motionStyle = revealStyles[(sectionIndex + index) % revealStyles.length];
+          revealPasses.set(element, 0);
+          observer.observe(element);
+        });
       }
     </script>
   </body>

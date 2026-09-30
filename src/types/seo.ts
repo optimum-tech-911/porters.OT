@@ -3,6 +3,7 @@ export interface PageSeo {
   description: string;
   canonical?: string;
   ogImage?: string;
+  type?: 'website' | 'article';
   noindex?: boolean;
   structuredData?: Record<string, unknown>;
 }

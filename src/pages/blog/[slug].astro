@@ -34,9 +34,13 @@ const articleSchema = {
       description: post.excerpt,
       datePublished: post.publishedAt,
       dateModified: post.updatedAt || post.publishedAt,
-      mainEntityOfPage: `https://www.porters.fr/blog/${post.slug}`,
-      author: { '@type': 'Organization', name: 'The Porters' },
-      publisher: { '@type': 'Organization', name: 'The Porters' },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `https://www.porters.fr/blog/${post.slug}`,
+      },
+      author: { '@id': 'https://www.porters.fr/#organization' },
+      publisher: { '@id': 'https://www.porters.fr/#organization' },
+      inLanguage: 'fr-FR',
     },
     ...(post.faq?.length
       ? [{
@@ -53,7 +57,7 @@ const articleSchema = {
 ---
 
 <PageLayout
-  seo={{ ...post.seo, structuredData: articleSchema }}
+  seo={{ ...post.seo, type: 'article', structuredData: articleSchema }}
   breadcrumbs={[
     { label: 'Blog', href: '/blog' },
     { label: post.title }

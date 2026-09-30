@@ -1,8 +1,24 @@
 // @ts-check
+import { copyFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+
+const syncRootSitemap = {
+  name: 'the-porters-root-sitemap',
+  hooks: {
+    'astro:build:done': async ({ dir }) => {
+      // Astro's sitemap integration emits sitemap-0.xml during the build.
+      // Publish the same URL set at the conventional /sitemap.xml path and
+      // retain a copy in public/ so the path also works in the dev server.
+      const generatedSitemap = fileURLToPath(new URL('sitemap-0.xml', dir));
+      await copyFile(generatedSitemap, fileURLToPath(new URL('sitemap.xml', dir)));
+      await copyFile(generatedSitemap, fileURLToPath(new URL('./public/sitemap.xml', import.meta.url)));
+    },
+  },
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,16 +41,17 @@ export default defineConfig({
     react(),
     sitemap({
       filter: (page) => {
-        // Exclude non-indexable pages from sitemap
-        const excludePatterns = [
-          '/mentions-legales',
-          '/confidentialite',
-          '/blog/categorie/actualites',
-          '/admin',
-        ];
-        return !excludePatterns.some((pattern) => page.includes(pattern));
+        // Keep the sitemap aligned with pages that search engines may index.
+        // Admin and client-space URLs must remain crawlable so their noindex
+        // directives can be read, but they should never be suggested here.
+        const { pathname } = new URL(page);
+        return pathname !== '/404'
+          && pathname !== '/espace-client'
+          && pathname !== '/admin'
+          && !pathname.startsWith('/admin/');
       },
     }),
+    syncRootSitemap,
   ],
   vite: {
     plugins: [tailwindcss()],
