@@ -1,5 +1,6 @@
 import { useState, type SubmitEvent } from 'react';
 import { crmAttribution } from '../../lib/crm-attribution';
+import { notifyInquiryByEmail } from '../../lib/inquiry-email-notification';
 import { supabase } from '../../lib/supabase';
 
 type CmsBinding = Record<string, string>;
@@ -87,12 +88,14 @@ export default function ContactForm({
       metadata: { requestType: inquiryType, appointmentTopic: formData.appointmentTopic || null, availability: formData.availability || null },
       ...crmAttribution(),
     });
-    setSubmitting(false);
     if (error) {
+      setSubmitting(false);
       console.error('[Contact] Unable to save inquiry:', error);
       setStatus({ state: 'error', text: 'L’envoi a échoué. Réessayez ou écrivez à contact@porters.fr.' });
       return;
     }
+    await notifyInquiryByEmail(inquiryType);
+    setSubmitting(false);
     setFormData({ name: '', email: '', phone: '', company: '', subject: '', appointmentTopic: '', availability: '', message: '', consent: false });
     setStatus({ state: 'success', text: 'Merci. Votre demande a bien été transmise à notre équipe.' });
   };

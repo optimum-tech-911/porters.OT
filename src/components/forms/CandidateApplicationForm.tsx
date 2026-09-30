@@ -1,5 +1,6 @@
 import { useState, type SubmitEvent } from 'react';
 import { crmAttribution } from '../../lib/crm-attribution';
+import { notifyInquiryByEmail } from '../../lib/inquiry-email-notification';
 import { supabase } from '../../lib/supabase';
 import ArrowIcon from '../ui/ArrowIcon';
 
@@ -60,13 +61,15 @@ export default function CandidateApplicationForm() {
       ...crmAttribution(),
     });
 
-    setSubmitting(false);
     if (error) {
+      setSubmitting(false);
       console.error('[Candidate application] Unable to save inquiry:', error);
       setStatus({ type: 'error', text: 'L’envoi a échoué. Réessayez ou écrivez à contact@porters.fr.' });
       return;
     }
 
+    await notifyInquiryByEmail('application');
+    setSubmitting(false);
     setForm({ name: '', email: '', phone: '', city: '', profile: '', availability: '', linkedin: '', message: '', consent: false });
     setStatus({ type: 'success', text: 'Merci. Votre candidature a bien été transmise à notre équipe.' });
   };

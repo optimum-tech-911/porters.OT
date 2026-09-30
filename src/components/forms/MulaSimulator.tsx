@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type SubmitEvent } from 'react';
 import { defaultMulaSettings, MULA_SETTINGS_KEY, parseMulaSettings, simulatorModes, type MulaSettings, type SimulatorMode } from '../../data/mula-settings';
 import { buildMulaRequest, calculateWithMula, mulaPdfUrl, type MulaInput, type MulaPayload, type MulaResult } from '../../lib/mula-calculator';
 import { crmAttribution } from '../../lib/crm-attribution';
+import { notifyInquiryByEmail } from '../../lib/inquiry-email-notification';
 import { watchPublishedSettings } from '../../lib/published-settings';
 import { supabase } from '../../lib/supabase';
 import ArrowIcon from '../ui/ArrowIcon';
@@ -100,6 +101,7 @@ export default function MulaSimulator({ preview }: { preview?: MulaSettings }) {
       setLeadState({ status: 'error', message: 'La demande n’a pas pu être transmise. Réessayez ou utilisez le lien de contact.' });
       return;
     }
+    await notifyInquiryByEmail('simulation');
     formElement.reset();
     setLeadState({ status: 'success', message: 'Votre simulation a bien été transmise à notre équipe.' });
   }

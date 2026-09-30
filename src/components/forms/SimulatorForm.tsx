@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type SubmitEventHandler } from 'react';
 import NumericSliderField from './NumericSliderField';
+import { notifyInquiryByEmail } from '../../lib/inquiry-email-notification';
 import { supabase } from '../../lib/supabase';
 import ArrowIcon from '../ui/ArrowIcon';
 import {
@@ -191,6 +192,7 @@ export default function SimulatorForm() {
       return;
     }
 
+    await notifyInquiryByEmail('simulation');
     setResultUnlocked(true);
     setSubmissionState('success');
     setSubmissionMessage('Votre estimation est prête. Elle est maintenant affichée ci-dessus.');

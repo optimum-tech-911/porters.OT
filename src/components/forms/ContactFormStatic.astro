@@ -68,6 +68,7 @@ const { id = 'contact-form' } = Astro.props;
 </form>
 
 <script>
+  import { notifyInquiryByEmail } from '../../lib/inquiry-email-notification';
   import { supabase } from '../../lib/supabase';
 
   document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
@@ -120,6 +121,8 @@ const { id = 'contact-form' } = Astro.props;
         user_agent: window.navigator.userAgent,
         metadata: { requestType: situation === 'En recherche de CDI' ? 'application' : 'contact', situation },
       });
+
+      if (!error) await notifyInquiryByEmail(situation === 'En recherche de CDI' ? 'application' : 'contact');
 
       if (button) {
         button.disabled = false;
