@@ -12,19 +12,19 @@ const { id = 'contact-form' } = Astro.props;
   <div class="contact-form__grid">
     <label>
       <span>Nom complet *</span>
-      <input type="text" name="name" autocomplete="name" placeholder="Votre nom" required />
+      <input type="text" name="name" autocomplete="name" placeholder="Votre nom" minlength="2" maxlength="200" required />
     </label>
     <label>
       <span>Email *</span>
-      <input type="email" name="email" autocomplete="email" placeholder="votre@email.com" required />
+      <input type="email" name="email" autocomplete="email" placeholder="votre@email.com" maxlength="320" required />
     </label>
     <label>
       <span>Téléphone</span>
-      <input type="tel" name="phone" autocomplete="tel" placeholder="06 00 00 00 00" />
+      <input type="tel" name="phone" autocomplete="tel" placeholder="06 00 00 00 00" maxlength="60" />
     </label>
     <label>
       <span>Société</span>
-      <input type="text" name="company" autocomplete="organization" placeholder="Nom de votre société" />
+      <input type="text" name="company" autocomplete="organization" placeholder="Nom de votre société" maxlength="180" />
     </label>
     <label>
       <span>Votre situation *</span>
@@ -50,7 +50,7 @@ const { id = 'contact-form' } = Astro.props;
 
   <label>
     <span>Décrivez votre contexte *</span>
-    <textarea name="message" rows="6" placeholder="Mission, calendrier, expertise recherchée, TJM ou question à clarifier…" required></textarea>
+    <textarea name="message" rows="6" placeholder="Mission, calendrier, expertise recherchée, TJM ou question à clarifier…" minlength="5" maxlength="5000" required></textarea>
   </label>
 
   <label class="contact-form__consent">
@@ -68,6 +68,8 @@ const { id = 'contact-form' } = Astro.props;
 </form>
 
 <script>
+  import { crmAttribution } from '../../lib/crm-attribution';
+  import { contactValidationError } from '../../lib/crm-validation';
   import { notifyInquiryByEmail } from '../../lib/inquiry-email-notification';
   import { supabase } from '../../lib/supabase';
 
@@ -79,11 +81,14 @@ const { id = 'contact-form' } = Astro.props;
       const situation = String(data.get('situation') || '').trim();
       const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       const status = form.querySelector<HTMLElement>('[data-contact-status]');
-      const params = new URLSearchParams(window.location.search);
-      let sessionId = window.localStorage.getItem('porters_session_id');
-      if (!sessionId) {
-        sessionId = window.crypto?.randomUUID?.() || `session-${Date.now()}-${Math.random().toString(36).slice(2)}`;
-        window.localStorage.setItem('porters_session_id', sessionId);
+      if (button?.disabled) return;
+      const validationError = contactValidationError(String(data.get('name') || ''), String(data.get('message') || ''));
+      if (validationError) {
+        if (status) {
+          status.textContent = validationError;
+          status.dataset.state = 'error';
+        }
+        return;
       }
 
       if (button) {
@@ -109,17 +114,8 @@ const { id = 'contact-form' } = Astro.props;
         subject,
         message: String(data.get('message') || '').trim(),
         consent: data.get('consent') === 'on',
-        source_page: window.location.pathname,
-        landing_page: window.location.href,
-        referrer: document.referrer || null,
-        utm_source: params.get('utm_source'),
-        utm_medium: params.get('utm_medium'),
-        utm_campaign: params.get('utm_campaign'),
-        utm_content: params.get('utm_content'),
-        utm_term: params.get('utm_term'),
-        session_id: sessionId,
-        user_agent: window.navigator.userAgent,
         metadata: { requestType: situation === 'En recherche de CDI' ? 'application' : 'contact', situation },
+        ...crmAttribution(),
       });
 
       if (!error) await notifyInquiryByEmail(situation === 'En recherche de CDI' ? 'application' : 'contact');

@@ -4,6 +4,9 @@ export type InquiryNotificationType = 'contact' | 'appointment' | 'application' 
 const recipient = 'a.lambert@porters.fr';
 const endpoint = `https://formsubmit.co/ajax/${recipient}`;
 const adminOrigin = 'https://www.porters.fr';
+// Match the URL used to request recipient activation. All request forms share
+// this identity, including submissions made from the local development site.
+const notificationFormUrl = `${adminOrigin}/`;
 const labels: Record<InquiryNotificationType, string> = {
   contact: 'message',
   appointment: 'demande de rendez-vous',
@@ -25,14 +28,18 @@ export async function notifyInquiryByEmail(type: InquiryNotificationType): Promi
       body: JSON.stringify({
         _subject: `[The Porters] Nouvelle demande : ${labels[type]}`,
         _captcha: 'false',
-        _url: `${adminOrigin}${window.location.pathname}`,
+        _url: notificationFormUrl,
         message: `Une nouvelle demande (${labels[type]}) a été enregistrée sur le site. Consultez ${adminOrigin}${inbox} pour la traiter.`,
       }),
     });
     if (!response.ok) throw new Error(`FormSubmit HTTP ${response.status}`);
-    const result: { success?: boolean | string } = await response.json();
-    if (result.success === false || result.success === 'false') throw new Error('FormSubmit rejected the notification');
-    return true;
+    const result: { success?: boolean | string; message?: string } = await response.json();
+    if (result.success === true || result.success === 'true') return true;
+    if (typeof result.message === 'string' && /needs activation/i.test(result.message)) {
+      console.info('[Inquiry notification] Awaiting the recipient’s FormSubmit activation. The inquiry is saved in the CRM.');
+      return false;
+    }
+    throw new Error('FormSubmit did not accept the notification');
   } catch (error) {
     // The CRM save already succeeded. An email outage must not lose the inquiry.
     console.error('[Inquiry notification] Email alert failed:', error);

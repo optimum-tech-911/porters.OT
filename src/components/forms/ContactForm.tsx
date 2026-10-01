@@ -1,5 +1,6 @@
 import { useState, type SubmitEvent } from 'react';
 import { crmAttribution } from '../../lib/crm-attribution';
+import { contactValidationError } from '../../lib/crm-validation';
 import { notifyInquiryByEmail } from '../../lib/inquiry-email-notification';
 import { supabase } from '../../lib/supabase';
 
@@ -56,6 +57,12 @@ export default function ContactForm({
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitting) return;
+    const validationError = contactValidationError(formData.name, formData.message);
+    if (validationError) {
+      setStatus({ state: 'error', text: validationError });
+      return;
+    }
     const profile = formData.subject === 'consultant'
       ? 'Consultant / Indépendant'
       : formData.subject === 'entreprise'

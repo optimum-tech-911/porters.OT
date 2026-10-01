@@ -1,5 +1,6 @@
 import { useState, type SubmitEvent } from 'react';
 import { crmAttribution } from '../../lib/crm-attribution';
+import { contactValidationError } from '../../lib/crm-validation';
 import { notifyInquiryByEmail } from '../../lib/inquiry-email-notification';
 import { supabase } from '../../lib/supabase';
 import ArrowIcon from '../ui/ArrowIcon';
@@ -35,6 +36,12 @@ export default function CandidateApplicationForm() {
 
   const submit = async (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (submitting) return;
+    const validationError = contactValidationError(form.name, form.message);
+    if (validationError) {
+      setStatus({ type: 'error', text: validationError });
+      return;
+    }
     setSubmitting(true);
     setStatus({ type: 'idle', text: 'Transmission sécurisée de votre candidature…' });
 
